@@ -4751,11 +4751,19 @@ var platoJsClient = (function () {
                 req.method = verb;
             }
             
-            var client = rest
-                .wrap(mime)
-                .wrap(pathPrefix, { prefix: host });
+            var client = createClient();
         
             return client(req);
+        }
+        
+        /**
+         * Create a client instance
+         * 
+         * @returns {Object}
+         */
+        function createClient() {
+            return rest.wrap(mime)
+                .wrap(pathPrefix, { prefix: host });
         }
 
         /**
@@ -4797,6 +4805,20 @@ var platoJsClient = (function () {
          */
         this.get = function(req) {
             return request(req, 'GET');
+        };
+
+        /**
+         * Post method
+         * 
+         * @param {Object} req  Request object
+         * 
+         * @returns {Response}
+         */
+        this.post = function(req) {
+            req.headers = {
+                "Content-Type": "application/x-www-form-urlencoded"
+            };
+            return request(req, 'POST');
         };
     }
 

@@ -61,11 +61,19 @@ var platoJsClient = (function () {
                 req.method = verb;
             }
             
-            var client = rest
-                .wrap(mime)
-                .wrap(pathPrefix, { prefix: host });
+            var client = createClient();
         
             return client(req);
+        }
+        
+        /**
+         * Create a client instance
+         * 
+         * @returns {Object}
+         */
+        function createClient() {
+            return rest.wrap(mime)
+                .wrap(pathPrefix, { prefix: host });
         }
 
         /**
@@ -101,12 +109,62 @@ var platoJsClient = (function () {
         /**
          * Get method
          * 
-         * @param {Object} req  Request object
+         * @param {Object} req Request object
          * 
          * @returns {Response}
          */
         this.get = function(req) {
             return request(req, 'GET');
+        };
+
+        /**
+         * Post method
+         * 
+         * @param {Object} req Request object
+         * 
+         * @returns {Response}
+         */
+        this.post = function(req) {
+            req.headers = {
+                "Content-Type": "application/x-www-form-urlencoded"
+            };
+            return request(req, 'POST');
+        };
+        
+        /**
+         * Put method
+         * 
+         * @param {Object} req Request object
+         * 
+         * @returns {Response}
+         */
+        this.put = function(req) {
+            req.headers = {
+                "Content-Type": "application/x-www-form-urlencoded"
+            };
+            return request(req, 'PUT');
+        };
+        
+        /**
+         * Delete method
+         * 
+         * @param {Object} req Request object
+         * 
+         * @returns {Response}
+         */
+        this.delete = function(req) {
+            return request(req, 'DELETE');
+        };
+        
+        /**
+         * Options method
+         * 
+         * @param {Object} req Request object
+         * 
+         * @returns {Response}
+         */
+        this.options = function(req) {
+            return request(req, 'OPTIONS');
         };
     }
 

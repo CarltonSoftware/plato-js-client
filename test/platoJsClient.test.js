@@ -16,4 +16,10 @@ describe('platoJsClient test', function() {
             assert.equal(res.entity.url, host + '/get');
         });
     });
+
+    it('Using the post function post request data', function() {
+        client.post({ path: '/post', entity: { foo: 'bar' } }).then(function(res) {
+            assert.equal(res.entity.form.foo, 'bar');
+        });
+    });
 });
