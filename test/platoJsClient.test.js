@@ -22,4 +22,10 @@ describe('platoJsClient test', function() {
             assert.equal(res.entity.form.foo, 'bar');
         });
     });
+
+    it('Using the put function put request data', function() {
+        client.put({ path: '/put', entity: { foo: 'bar' } }).then(function(res) {
+            assert.equal(res.entity.form.foo, 'bar');
+        });
+    });
 });
