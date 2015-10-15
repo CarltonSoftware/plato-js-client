@@ -4799,7 +4799,7 @@ var platoJsClient = (function () {
         /**
          * Get method
          * 
-         * @param {Object} req  Request object
+         * @param {Object} req Request object
          * 
          * @returns {Response}
          */
@@ -4810,7 +4810,7 @@ var platoJsClient = (function () {
         /**
          * Post method
          * 
-         * @param {Object} req  Request object
+         * @param {Object} req Request object
          * 
          * @returns {Response}
          */
@@ -4819,6 +4819,42 @@ var platoJsClient = (function () {
                 "Content-Type": "application/x-www-form-urlencoded"
             };
             return request(req, 'POST');
+        };
+        
+        /**
+         * Put method
+         * 
+         * @param {Object} req Request object
+         * 
+         * @returns {Response}
+         */
+        this.put = function(req) {
+            req.headers = {
+                "Content-Type": "application/x-www-form-urlencoded"
+            };
+            return request(req, 'PUT');
+        };
+        
+        /**
+         * Delete method
+         * 
+         * @param {Object} req Request object
+         * 
+         * @returns {Response}
+         */
+        this.delete = function(req) {
+            return request(req, 'DELETE');
+        };
+        
+        /**
+         * Options method
+         * 
+         * @param {Object} req Request object
+         * 
+         * @returns {Response}
+         */
+        this.options = function(req) {
+            return request(req, 'OPTIONS');
         };
     }
 
