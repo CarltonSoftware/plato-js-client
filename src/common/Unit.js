@@ -1,9 +1,9 @@
 var Entity = require('./Entity');
 
-Unit.prototype = new Entity();
 function Unit(id) {
     this.path = 'unit';
     this.id = id;
 }
+Unit.prototype = new Entity();
 
 module.exports = Unit;
