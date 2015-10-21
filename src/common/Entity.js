@@ -3,7 +3,6 @@ var pathNotSpecifiedError = require('./../error/pathNotSpecified');
 var idNotFoundError = require('./../error/pathNotSpecified');
 
 function Entity() {};
-
 Entity.prototype.get = function() {
     if (typeof this.id === 'undefined') {
         throw new idNotFoundError('Id not specified.');

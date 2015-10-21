@@ -1,11 +1,13 @@
-var client = require('./common/platoJsClient').getInstance('http://private-anon-e71b8397b-plato.apiary-mock.com/v2');
+var client = require('./common/platoJsClient').getInstance('http://localhost/plato/web/app_dev.php/v2');
 var Unit = require('./common/Unit');
 var Collection = require('./common/Collection');
 
-var u = new Unit(1);
+var u = new Unit(5);
 
 u.get().then(function(res) {
     console.log(res.entity);
+}, function(err) {
+    console.log(err);
 });
 
 var Units = new Collection('unit');

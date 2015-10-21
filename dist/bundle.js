@@ -322,7 +322,7 @@ process.umask = function() { return 0; };
 	// Boilerplate for AMD and Node
 ));
 
-},{"./util/mixin":38}],3:[function(require,module,exports){
+},{"./util/mixin":39}],3:[function(require,module,exports){
 /*
  * Copyright 2014 the original author or authors
  * @license MIT, see LICENSE.txt for details
@@ -717,7 +717,7 @@ process.umask = function() { return 0; };
 	// Boilerplate for AMD and Node
 ));
 
-},{"../UrlBuilder":2,"../client":4,"../util/normalizeHeaderName":39,"../util/responsePromise":40,"when":35}],7:[function(require,module,exports){
+},{"../UrlBuilder":2,"../client":4,"../util/normalizeHeaderName":40,"../util/responsePromise":41,"when":36}],7:[function(require,module,exports){
 /*
  * Copyright 2012-2015 the original author or authors
  * @license MIT, see LICENSE.txt for details
@@ -884,7 +884,88 @@ process.umask = function() { return 0; };
 	// Boilerplate for AMD and Node
 ));
 
-},{"./client":4,"./client/default":5,"./util/mixin":38,"./util/responsePromise":40,"when":35}],8:[function(require,module,exports){
+},{"./client":4,"./client/default":5,"./util/mixin":39,"./util/responsePromise":41,"when":36}],8:[function(require,module,exports){
+/*
+ * Copyright 2013 the original author or authors
+ * @license MIT, see LICENSE.txt for details
+ *
+ * @author Scott Andrews
+ */
+
+(function (define) {
+	'use strict';
+
+	define(function (require) {
+
+		var interceptor, mixinUtil, defaulter;
+
+		interceptor = require('../interceptor');
+		mixinUtil = require('../util/mixin');
+
+		defaulter = (function () {
+
+			function mixin(prop, target, defaults) {
+				if (prop in target || prop in defaults) {
+					target[prop] = mixinUtil({}, defaults[prop], target[prop]);
+				}
+			}
+
+			function copy(prop, target, defaults) {
+				if (prop in defaults && !(prop in target)) {
+					target[prop] = defaults[prop];
+				}
+			}
+
+			var mappings = {
+				method: copy,
+				path: copy,
+				params: mixin,
+				headers: mixin,
+				entity: copy,
+				mixin: mixin
+			};
+
+			return function (target, defaults) {
+				for (var prop in mappings) {
+					/*jshint forin: false */
+					mappings[prop](prop, target, defaults);
+				}
+				return target;
+			};
+
+		}());
+
+		/**
+		 * Provide default values for a request. These values will be applied to the
+		 * request if the request object does not already contain an explicit value.
+		 *
+		 * For 'params', 'headers', and 'mixin', individual values are mixed in with the
+		 * request's values. The result is a new object representiing the combined
+		 * request and config values. Neither input object is mutated.
+		 *
+		 * @param {Client} [client] client to wrap
+		 * @param {string} [config.method] the default method
+		 * @param {string} [config.path] the default path
+		 * @param {Object} [config.params] the default params, mixed with the request's existing params
+		 * @param {Object} [config.headers] the default headers, mixed with the request's existing headers
+		 * @param {Object} [config.mixin] the default "mixins" (http/https options), mixed with the request's existing "mixins"
+		 *
+		 * @returns {Client}
+		 */
+		return interceptor({
+			request: function handleRequest(request, config) {
+				return defaulter(request, config);
+			}
+		});
+
+	});
+
+}(
+	typeof define === 'function' && define.amd ? define : function (factory) { module.exports = factory(require); }
+	// Boilerplate for AMD and Node
+));
+
+},{"../interceptor":7,"../util/mixin":39}],9:[function(require,module,exports){
 /*
  * Copyright 2012-2014 the original author or authors
  * @license MIT, see LICENSE.txt for details
@@ -996,7 +1077,7 @@ process.umask = function() { return 0; };
 	// Boilerplate for AMD and Node
 ));
 
-},{"../interceptor":7,"../mime":11,"../mime/registry":12,"when":35}],9:[function(require,module,exports){
+},{"../interceptor":7,"../mime":12,"../mime/registry":13,"when":36}],10:[function(require,module,exports){
 /*
  * Copyright 2012-2013 the original author or authors
  * @license MIT, see LICENSE.txt for details
@@ -1057,7 +1138,7 @@ process.umask = function() { return 0; };
 	// Boilerplate for AMD and Node
 ));
 
-},{"../UrlBuilder":2,"../interceptor":7}],10:[function(require,module,exports){
+},{"../UrlBuilder":2,"../interceptor":7}],11:[function(require,module,exports){
 /*
  * Copyright 2015 the original author or authors
  * @license MIT, see LICENSE.txt for details
@@ -1113,7 +1194,7 @@ process.umask = function() { return 0; };
 	// Boilerplate for AMD and Node
 ));
 
-},{"../interceptor":7,"../util/mixin":38,"../util/uriTemplate":42}],11:[function(require,module,exports){
+},{"../interceptor":7,"../util/mixin":39,"../util/uriTemplate":43}],12:[function(require,module,exports){
 /*
 * Copyright 2014 the original author or authors
 * @license MIT, see LICENSE.txt for details
@@ -1168,7 +1249,7 @@ process.umask = function() { return 0; };
 	// Boilerplate for AMD and Node
 ));
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 /*
  * Copyright 2012-2014 the original author or authors
  * @license MIT, see LICENSE.txt for details
@@ -1285,7 +1366,7 @@ process.umask = function() { return 0; };
 	// Boilerplate for AMD and Node
 ));
 
-},{"../mime":11,"./type/application/hal":13,"./type/application/json":14,"./type/application/x-www-form-urlencoded":15,"./type/multipart/form-data":16,"./type/text/plain":17,"when":35}],13:[function(require,module,exports){
+},{"../mime":12,"./type/application/hal":14,"./type/application/json":15,"./type/application/x-www-form-urlencoded":16,"./type/multipart/form-data":17,"./type/text/plain":18,"when":36}],14:[function(require,module,exports){
 /*
  * Copyright 2013-2015 the original author or authors
  * @license MIT, see LICENSE.txt for details
@@ -1426,7 +1507,7 @@ process.umask = function() { return 0; };
 	// Boilerplate for AMD and Node
 ));
 
-},{"../../../interceptor/pathPrefix":9,"../../../interceptor/template":10,"../../../util/find":36,"../../../util/lazyPromise":37,"../../../util/responsePromise":40,"when":35}],14:[function(require,module,exports){
+},{"../../../interceptor/pathPrefix":10,"../../../interceptor/template":11,"../../../util/find":37,"../../../util/lazyPromise":38,"../../../util/responsePromise":41,"when":36}],15:[function(require,module,exports){
 /*
  * Copyright 2012-2015 the original author or authors
  * @license MIT, see LICENSE.txt for details
@@ -1475,7 +1556,7 @@ process.umask = function() { return 0; };
 	// Boilerplate for AMD and Node
 ));
 
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 /*
  * Copyright 2012 the original author or authors
  * @license MIT, see LICENSE.txt for details
@@ -1567,7 +1648,7 @@ process.umask = function() { return 0; };
 	// Boilerplate for AMD and Node
 ));
 
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 /*
  * Copyright 2014 the original author or authors
  * @license MIT, see LICENSE.txt for details
@@ -1642,7 +1723,7 @@ process.umask = function() { return 0; };
 	// Boilerplate for AMD and Node
 ));
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 /*
  * Copyright 2012 the original author or authors
  * @license MIT, see LICENSE.txt for details
@@ -1673,7 +1754,7 @@ process.umask = function() { return 0; };
 	// Boilerplate for AMD and Node
 ));
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 /** @license MIT License (c) copyright 2010-2014 original author or authors */
 /** @author Brian Cavalier */
 /** @author John Hann */
@@ -1692,7 +1773,7 @@ define(function (require) {
 });
 })(typeof define === 'function' && define.amd ? define : function (factory) { module.exports = factory(require); });
 
-},{"./Scheduler":19,"./env":31,"./makePromise":33}],19:[function(require,module,exports){
+},{"./Scheduler":20,"./env":32,"./makePromise":34}],20:[function(require,module,exports){
 /** @license MIT License (c) copyright 2010-2014 original author or authors */
 /** @author Brian Cavalier */
 /** @author John Hann */
@@ -1774,7 +1855,7 @@ define(function() {
 });
 }(typeof define === 'function' && define.amd ? define : function(factory) { module.exports = factory(); }));
 
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 /** @license MIT License (c) copyright 2010-2014 original author or authors */
 /** @author Brian Cavalier */
 /** @author John Hann */
@@ -1802,7 +1883,7 @@ define(function() {
 	return TimeoutError;
 });
 }(typeof define === 'function' && define.amd ? define : function(factory) { module.exports = factory(); }));
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 /** @license MIT License (c) copyright 2010-2014 original author or authors */
 /** @author Brian Cavalier */
 /** @author John Hann */
@@ -1859,7 +1940,7 @@ define(function() {
 
 
 
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 /** @license MIT License (c) copyright 2010-2014 original author or authors */
 /** @author Brian Cavalier */
 /** @author John Hann */
@@ -2150,7 +2231,7 @@ define(function(require) {
 });
 }(typeof define === 'function' && define.amd ? define : function(factory) { module.exports = factory(require); }));
 
-},{"../apply":21,"../state":34}],23:[function(require,module,exports){
+},{"../apply":22,"../state":35}],24:[function(require,module,exports){
 /** @license MIT License (c) copyright 2010-2014 original author or authors */
 /** @author Brian Cavalier */
 /** @author John Hann */
@@ -2312,7 +2393,7 @@ define(function() {
 });
 }(typeof define === 'function' && define.amd ? define : function(factory) { module.exports = factory(); }));
 
-},{}],24:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 /** @license MIT License (c) copyright 2010-2014 original author or authors */
 /** @author Brian Cavalier */
 /** @author John Hann */
@@ -2341,7 +2422,7 @@ define(function() {
 });
 }(typeof define === 'function' && define.amd ? define : function(factory) { module.exports = factory(); }));
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 /** @license MIT License (c) copyright 2010-2014 original author or authors */
 /** @author Brian Cavalier */
 /** @author John Hann */
@@ -2363,7 +2444,7 @@ define(function(require) {
 });
 }(typeof define === 'function' && define.amd ? define : function(factory) { module.exports = factory(require); }));
 
-},{"../state":34}],26:[function(require,module,exports){
+},{"../state":35}],27:[function(require,module,exports){
 /** @license MIT License (c) copyright 2010-2014 original author or authors */
 /** @author Brian Cavalier */
 /** @author John Hann */
@@ -2430,7 +2511,7 @@ define(function() {
 });
 }(typeof define === 'function' && define.amd ? define : function(factory) { module.exports = factory(); }));
 
-},{}],27:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 /** @license MIT License (c) copyright 2010-2014 original author or authors */
 /** @author Brian Cavalier */
 /** @author John Hann */
@@ -2456,7 +2537,7 @@ define(function() {
 });
 }(typeof define === 'function' && define.amd ? define : function(factory) { module.exports = factory(); }));
 
-},{}],28:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 /** @license MIT License (c) copyright 2010-2014 original author or authors */
 /** @author Brian Cavalier */
 /** @author John Hann */
@@ -2536,7 +2617,7 @@ define(function(require) {
 });
 }(typeof define === 'function' && define.amd ? define : function(factory) { module.exports = factory(require); }));
 
-},{"../TimeoutError":20,"../env":31}],29:[function(require,module,exports){
+},{"../TimeoutError":21,"../env":32}],30:[function(require,module,exports){
 /** @license MIT License (c) copyright 2010-2014 original author or authors */
 /** @author Brian Cavalier */
 /** @author John Hann */
@@ -2624,7 +2705,7 @@ define(function(require) {
 });
 }(typeof define === 'function' && define.amd ? define : function(factory) { module.exports = factory(require); }));
 
-},{"../env":31,"../format":32}],30:[function(require,module,exports){
+},{"../env":32,"../format":33}],31:[function(require,module,exports){
 /** @license MIT License (c) copyright 2010-2014 original author or authors */
 /** @author Brian Cavalier */
 /** @author John Hann */
@@ -2664,7 +2745,7 @@ define(function() {
 }(typeof define === 'function' && define.amd ? define : function(factory) { module.exports = factory(); }));
 
 
-},{}],31:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 (function (process){
 /** @license MIT License (c) copyright 2010-2014 original author or authors */
 /** @author Brian Cavalier */
@@ -2741,7 +2822,7 @@ define(function(require) {
 }(typeof define === 'function' && define.amd ? define : function(factory) { module.exports = factory(require); }));
 
 }).call(this,require('_process'))
-},{"_process":1}],32:[function(require,module,exports){
+},{"_process":1}],33:[function(require,module,exports){
 /** @license MIT License (c) copyright 2010-2014 original author or authors */
 /** @author Brian Cavalier */
 /** @author John Hann */
@@ -2799,7 +2880,7 @@ define(function() {
 });
 }(typeof define === 'function' && define.amd ? define : function(factory) { module.exports = factory(); }));
 
-},{}],33:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 (function (process){
 /** @license MIT License (c) copyright 2010-2014 original author or authors */
 /** @author Brian Cavalier */
@@ -3730,7 +3811,7 @@ define(function() {
 }(typeof define === 'function' && define.amd ? define : function(factory) { module.exports = factory(); }));
 
 }).call(this,require('_process'))
-},{"_process":1}],34:[function(require,module,exports){
+},{"_process":1}],35:[function(require,module,exports){
 /** @license MIT License (c) copyright 2010-2014 original author or authors */
 /** @author Brian Cavalier */
 /** @author John Hann */
@@ -3767,7 +3848,7 @@ define(function() {
 });
 }(typeof define === 'function' && define.amd ? define : function(factory) { module.exports = factory(); }));
 
-},{}],35:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 /** @license MIT License (c) copyright 2010-2014 original author or authors */
 
 /**
@@ -3997,7 +4078,7 @@ define(function (require) {
 });
 })(typeof define === 'function' && define.amd ? define : function (factory) { module.exports = factory(require); });
 
-},{"./lib/Promise":18,"./lib/TimeoutError":20,"./lib/apply":21,"./lib/decorators/array":22,"./lib/decorators/flow":23,"./lib/decorators/fold":24,"./lib/decorators/inspect":25,"./lib/decorators/iterate":26,"./lib/decorators/progress":27,"./lib/decorators/timed":28,"./lib/decorators/unhandledRejection":29,"./lib/decorators/with":30}],36:[function(require,module,exports){
+},{"./lib/Promise":19,"./lib/TimeoutError":21,"./lib/apply":22,"./lib/decorators/array":23,"./lib/decorators/flow":24,"./lib/decorators/fold":25,"./lib/decorators/inspect":26,"./lib/decorators/iterate":27,"./lib/decorators/progress":28,"./lib/decorators/timed":29,"./lib/decorators/unhandledRejection":30,"./lib/decorators/with":31}],37:[function(require,module,exports){
 /*
  * Copyright 2013 the original author or authors
  * @license MIT, see LICENSE.txt for details
@@ -4040,7 +4121,7 @@ define(function (require) {
 	// Boilerplate for AMD and Node
 ));
 
-},{}],37:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 /*
  * Copyright 2013 the original author or authors
  * @license MIT, see LICENSE.txt for details
@@ -4097,7 +4178,7 @@ define(function (require) {
 	// Boilerplate for AMD and Node
 ));
 
-},{"when":35}],38:[function(require,module,exports){
+},{"when":36}],39:[function(require,module,exports){
 /*
  * Copyright 2012-2013 the original author or authors
  * @license MIT, see LICENSE.txt for details
@@ -4147,7 +4228,7 @@ define(function (require) {
 	// Boilerplate for AMD and Node
 ));
 
-},{}],39:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 /*
  * Copyright 2012 the original author or authors
  * @license MIT, see LICENSE.txt for details
@@ -4187,7 +4268,7 @@ define(function (require) {
 	// Boilerplate for AMD and Node
 ));
 
-},{}],40:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 /*
  * Copyright 2014-2015 the original author or authors
  * @license MIT, see LICENSE.txt for details
@@ -4329,7 +4410,7 @@ define(function (require) {
 	// Boilerplate for AMD and Node
 ));
 
-},{"./normalizeHeaderName":39,"when":35}],41:[function(require,module,exports){
+},{"./normalizeHeaderName":40,"when":36}],42:[function(require,module,exports){
 /*
  * Copyright 2015 the original author or authors
  * @license MIT, see LICENSE.txt for details
@@ -4510,7 +4591,7 @@ define(function (require) {
 	// Boilerplate for AMD and Node
 ));
 
-},{}],42:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 /*
  * Copyright 2015 the original author or authors
  * @license MIT, see LICENSE.txt for details
@@ -4684,10 +4765,72 @@ define(function (require) {
 	// Boilerplate for AMD and Node
 ));
 
-},{"./uriEncoder":41}],43:[function(require,module,exports){
-var platoJsClient = require('./common/platoJsClient.js').getInstance();
+},{"./uriEncoder":42}],44:[function(require,module,exports){
+var client = require('./common/platoJsClient').getInstance('http://localhost/plato/web/app_dev.php/v2');
+var Unit = require('./common/Unit');
+var Collection = require('./common/Collection');
 
-},{"./common/platoJsClient.js":44}],44:[function(require,module,exports){
+var u = new Unit(5);
+
+u.get().then(function(res) {
+    console.log(res.entity);
+}, function(err) {
+    console.log(err);
+});
+
+var Units = new Collection('unit');
+Units.fetch().then(function(res) {
+    console.log(res.entity);
+});
+
+
+
+},{"./common/Collection":45,"./common/Unit":47,"./common/platoJsClient":48}],45:[function(require,module,exports){
+var client = require('./platoJsClient').getInstance();
+function Collection(path) {
+    this.path = path;
+};
+Collection.prototype.fetch = function() {
+    if (typeof this.path === 'undefined') {
+        throw new pathNotSpecifiedError('No path specified for entity');
+    }
+        
+    return client.get(this.path);
+};
+
+module.exports = Collection;
+},{"./platoJsClient":48}],46:[function(require,module,exports){
+var client = require('./platoJsClient').getInstance();
+var pathNotSpecifiedError = require('./../error/pathNotSpecified');
+var idNotFoundError = require('./../error/pathNotSpecified');
+
+function Entity() {};
+
+Entity.prototype.get = function() {
+    if (typeof this.id === 'undefined') {
+        throw new idNotFoundError('Id not specified.');
+    }
+
+    if (typeof this.path === 'undefined') {
+        throw new pathNotSpecifiedError('No path specified for entity');
+    }
+
+    return client.get(this.path + '/' + this.id);
+};
+
+
+module.exports = Entity;
+},{"./../error/pathNotSpecified":49,"./platoJsClient":48}],47:[function(require,module,exports){
+var Entity = require('./Entity');
+
+function Unit(id) {
+    this.path = 'unit';
+    this.id = id;
+}
+Unit.prototype = new Entity();
+
+module.exports = Unit;
+},{"./Entity":46}],48:[function(require,module,exports){
 var platoJsClient = (function () {
 
     // Instance stores a reference to the Singleton
@@ -4705,7 +4848,8 @@ var platoJsClient = (function () {
 
         var rest = require('rest'),
             pathPrefix = require('rest/interceptor/pathPrefix'),
-            mime = require('rest/interceptor/mime');
+            mime = require('rest/interceptor/mime'),
+            defaultRequest = require('rest/interceptor/defaultRequest');
 
         var host = (!url) ? "http://localhost" : url;
 
@@ -4763,7 +4907,12 @@ var platoJsClient = (function () {
          */
         function createClient() {
             return rest.wrap(mime)
-                .wrap(pathPrefix, { prefix: host });
+                .wrap(pathPrefix, { prefix: host })
+                .wrap(defaultRequest, {
+                    headers: {
+                        'Authorization': 'Bearer Y2ViNDM2NTc0NTMwYjljYWMwYzExMzIxZGE0ZjdlYmE3MjgwNmMxMzRlNzVhOTcyMGU1MjE0M2I2Njc0ZjcxZQ'
+                    }
+                });
         }
 
         /**
@@ -4881,4 +5030,12 @@ var platoJsClient = (function () {
 
 module.exports = platoJsClient;
 
-},{"rest":3,"rest/interceptor/mime":8,"rest/interceptor/pathPrefix":9}]},{},[43]);
+},{"rest":3,"rest/interceptor/defaultRequest":8,"rest/interceptor/mime":9,"rest/interceptor/pathPrefix":10}],49:[function(require,module,exports){
+function pathNotSpecified(message) {
+    this.name = 'pathNotSpecified';
+    this.message = (message || '');
+}
+pathNotSpecified.prototype = Error.prototype;
+
+module.exports = pathNotSpecified;
+},{}]},{},[44]);

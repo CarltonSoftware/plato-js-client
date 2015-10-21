@@ -15,7 +15,8 @@ var platoJsClient = (function () {
 
         var rest = require('rest'),
             pathPrefix = require('rest/interceptor/pathPrefix'),
-            mime = require('rest/interceptor/mime');
+            mime = require('rest/interceptor/mime'),
+            defaultRequest = require('rest/interceptor/defaultRequest');
 
         var host = (!url) ? "http://localhost" : url;
 
@@ -73,7 +74,12 @@ var platoJsClient = (function () {
          */
         function createClient() {
             return rest.wrap(mime)
-                .wrap(pathPrefix, { prefix: host });
+                .wrap(pathPrefix, { prefix: host })
+                .wrap(defaultRequest, {
+                    headers: {
+                        'Authorization': 'Bearer Y2ViNDM2NTc0NTMwYjljYWMwYzExMzIxZGE0ZjdlYmE3MjgwNmMxMzRlNzVhOTcyMGU1MjE0M2I2Njc0ZjcxZQ'
+                    }
+                });
         }
 
         /**
