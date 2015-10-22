@@ -6034,7 +6034,9 @@ var platoJsClient = (function () {
             
             var client = createClient();
         
-            return client(req);
+            var c = client(req);
+            
+            return c;
         }
         
         /**
