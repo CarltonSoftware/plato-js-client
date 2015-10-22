@@ -4,6 +4,7 @@
     "description": "Node client for the tabs2 api.",
     "author": "Tabs Software",
     "license": "MIT",
+    "main": "src/index.js",
     "devDependencies": {
         "browserify": "^11.2.0",
         "gulp": "^3.9.0",
