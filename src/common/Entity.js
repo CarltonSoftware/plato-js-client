@@ -12,16 +12,33 @@ var Promise = require("es6-promise").Promise;
 function Entity() {};
 
 /**
- * Function responsible for mapping the values onto the parent object
+ * Function used to map json values onto a single object. This will be
+ * extended in the collection class to handle arrays.
  * 
  * @param {Object} res Entity
  * 
  * @returns {Entity.prototype}
  */
 Entity.prototype.mutateResponse = function(entity) {
+    return this.mutateEntity(entity);
+};
+
+/**
+ * Function responsible for mapping the values onto the parent object
+ * 
+ * @param {Object} res Entity
+ * 
+ * @returns {Entity.prototype}
+ */
+Entity.prototype.mutateEntity = function(entity) {
     for (var prop in entity) {
         if (entity.hasOwnProperty(prop)) {
-            this[prop] = entity[prop];
+            if (this.hasOwnProperty(prop) && typeof this[prop] === 'object') {
+                // Recursive call
+                this[prop].mutateResponse(entity[prop]);
+            } else {
+                this[prop] = entity[prop];
+            }
         }
     }
     
@@ -29,20 +46,14 @@ Entity.prototype.mutateResponse = function(entity) {
 };
 
 /**
- * Request method
+ * Return a mutated promised result
+ * 
+ * @param {String} path Path to request
  * 
  * @returns {Promise}
  */
-Entity.prototype.get = function() {
-    if (typeof this.id === 'undefined') {
-        throw new idNotFoundError('Id not specified.');
-    }
-
-    if (typeof this.path === 'undefined') {
-        throw new pathNotSpecifiedError('No path specified for entity');
-    }
-
-    var result = client.get(this.path + '/' + this.id);
+Entity.prototype.promiseResult = function(path) {
+    var result = client.get(path);
     var e = this;
     return new Promise(function(resolve, reject) {
         result.then(function(res) {
