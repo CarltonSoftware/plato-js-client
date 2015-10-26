@@ -10,12 +10,12 @@ var Collection = require('./common/Collection');
 //   console.log(err.message); 
 //});
 
-var a = new Attribute(1);
-a.get().then(function(attribute) {
-    console.log(attribute);
-}, function(err) {
-   console.log(err.message); 
-});
+//var a = new Attribute(1);
+//a.get().then(function(attribute) {
+//    console.log(attribute);
+//}, function(err) {
+//   console.log(err.message); 
+//});
 
 //u.get().then(function(res) {
 //    console.log(res);

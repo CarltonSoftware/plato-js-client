@@ -5737,7 +5737,7 @@ define(function (require) {
 ));
 
 },{"./uriEncoder":43}],45:[function(require,module,exports){
-var client = require('./common/platoJsClient').getInstance('http://plato.local/plato/web/app_dev.php/v2');
+var client = require('./common/platoJsClient').getInstance('http://private-anon-d9986b1e4-plato.apiary-mock.com/v2');
 var Unit = require('./common/Unit');
 var Attribute = require('./common/Attribute');
 var Collection = require('./common/Collection');
@@ -5772,16 +5772,18 @@ a.get().then(function(attribute) {
 },{"./common/Attribute":46,"./common/Collection":48,"./common/Unit":51,"./common/platoJsClient":52}],46:[function(require,module,exports){
 var SingleEntity = require('./SingleEntity');
 var AttributeGroup = require('./AttributeGroup');
+var Unit = require('./Unit');
 
 function Attribute(id) {
     this.path = 'attribute';
     this.id = id;
     this.group = new AttributeGroup();
+    this.unit = new Unit();
 }
 Attribute.prototype = new SingleEntity();
 
 module.exports = Attribute;
-},{"./AttributeGroup":47,"./SingleEntity":50}],47:[function(require,module,exports){
+},{"./AttributeGroup":47,"./SingleEntity":50,"./Unit":51}],47:[function(require,module,exports){
 var SingleEntity = require('./SingleEntity');
 
 function AttributeGroup(id) {
@@ -5960,9 +5962,10 @@ function Unit(id) {
     this.path = 'unit';
     this.id = id;
     
-    this.calc = function() {
-        return this.id * 5;
-    };
+    // Example function
+//    this.calc = function() {
+//        return this.id * 5;
+//    };
 }
 Unit.prototype = new Entity();
 
@@ -6034,7 +6037,9 @@ var platoJsClient = (function () {
             
             var client = createClient();
         
-            return client(req);
+            var c = client(req);
+            
+            return c;
         }
         
         /**
@@ -6047,7 +6052,7 @@ var platoJsClient = (function () {
                 .wrap(pathPrefix, { prefix: host })
                 .wrap(defaultRequest, {
                     headers: {
-                        'Authorization': 'Bearer Y2ViNDM2NTc0NTMwYjljYWMwYzExMzIxZGE0ZjdlYmE3MjgwNmMxMzRlNzVhOTcyMGU1MjE0M2I2Njc0ZjcxZQ'
+                        //'Authorization': 'Bearer Y2ViNDM2NTc0NTMwYjljYWMwYzExMzIxZGE0ZjdlYmE3MjgwNmMxMzRlNzVhOTcyMGU1MjE0M2I2Njc0ZjcxZQ'
                     }
                 });
         }

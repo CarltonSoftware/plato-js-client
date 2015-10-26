@@ -5749,12 +5749,12 @@ var Collection = require('./common/Collection');
 //   console.log(err.message); 
 //});
 
-var a = new Attribute(1);
-a.get().then(function(attribute) {
-    console.log(attribute);
-}, function(err) {
-   console.log(err.message); 
-});
+//var a = new Attribute(1);
+//a.get().then(function(attribute) {
+//    console.log(attribute);
+//}, function(err) {
+//   console.log(err.message); 
+//});
 
 //u.get().then(function(res) {
 //    console.log(res);
@@ -5762,10 +5762,10 @@ a.get().then(function(attribute) {
 //    console.log(err);
 //});
 //
-//var Attributes = new Collection({ path: 'attribute', object: Attribute });
-//Attributes.fetch().then(function(res) {
-//    console.log(res.collection);
-//});
+var Attributes = new Collection({ path: 'attribute', object: Attribute });
+Attributes.fetch().then(function(res) {
+    console.log(res.collection);
+});
 
 
 
@@ -6052,9 +6052,7 @@ var platoJsClient = (function () {
                 .wrap(pathPrefix, { prefix: host })
                 .wrap(defaultRequest, {
                     headers: {
-                        //'Authorization': 'Bearer Y2ViNDM2NTc0NTMwYjljYWMwYzExMzIxZGE0ZjdlYmE3MjgwNmMxMzRlNzVhOTcyMGU1MjE0M2I2Njc0ZjcxZQ',
-                        //'X-Prototype-Version':null,
-                        //'X-Requested-With':null
+                        //'Authorization': 'Bearer Y2ViNDM2NTc0NTMwYjljYWMwYzExMzIxZGE0ZjdlYmE3MjgwNmMxMzRlNzVhOTcyMGU1MjE0M2I2Njc0ZjcxZQ'
                     }
                 });
         }
