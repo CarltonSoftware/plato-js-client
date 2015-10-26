@@ -1,4 +1,4 @@
-var client = require('./common/platoJsClient').getInstance('http://plato.local/plato/web/app_dev.php/v2');
+var client = require('./common/platoJsClient').getInstance('http://private-anon-d9986b1e4-plato.apiary-mock.com/v2');
 var Unit = require('./common/Unit');
 var Attribute = require('./common/Attribute');
 var Collection = require('./common/Collection');

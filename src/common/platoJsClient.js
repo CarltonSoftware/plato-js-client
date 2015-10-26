@@ -79,7 +79,7 @@ var platoJsClient = (function () {
                 .wrap(pathPrefix, { prefix: host })
                 .wrap(defaultRequest, {
                     headers: {
-                        'Authorization': 'Bearer Y2ViNDM2NTc0NTMwYjljYWMwYzExMzIxZGE0ZjdlYmE3MjgwNmMxMzRlNzVhOTcyMGU1MjE0M2I2Njc0ZjcxZQ'
+                        //'Authorization': 'Bearer Y2ViNDM2NTc0NTMwYjljYWMwYzExMzIxZGE0ZjdlYmE3MjgwNmMxMzRlNzVhOTcyMGU1MjE0M2I2Njc0ZjcxZQ'
                     }
                 });
         }
