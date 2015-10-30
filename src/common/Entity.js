@@ -52,7 +52,7 @@ Entity.prototype.mutateEntity = function(entity) {
  * 
  * @returns {Promise}
  */
-Entity.prototype.promiseResult = function(path) {
+Entity.prototype.okPromiseResult = function(path) {
     var result = client.get(path);
     var e = this;
     return new Promise(function(resolve, reject) {
@@ -66,5 +66,26 @@ Entity.prototype.promiseResult = function(path) {
     });
 };
 
+/**
+ * Return a promised result for an update
+ * 
+ * @param {String} path Path to request
+ * @param {Object} data Data to update
+ * 
+ * @returns {Promise}
+ */
+Entity.prototype.updatePromiseResult = function(path, data) {
+    var result = client.put({ path: path, entity: data });
+    var e = this;
+    return new Promise(function(resolve, reject) {
+        result.then(function(res) {
+            if (res.status.code === 204) {
+                resolve(e);
+            } else {
+                reject(new statusError(res));
+            }
+        });
+    });
+};
 
 module.exports = Entity;

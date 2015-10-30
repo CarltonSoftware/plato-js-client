@@ -5741,6 +5741,7 @@ var client = require('./common/platoJsClient').getInstance('http://private-anon-
 var Unit = require('./common/Unit');
 var Attribute = require('./common/Attribute');
 var Collection = require('./common/Collection');
+var Vatband = require('./common/Vatband');
 
 //var u = new Unit(1);
 //u.get().then(function(unit) {
@@ -5749,12 +5750,17 @@ var Collection = require('./common/Collection');
 //   console.log(err.message); 
 //});
 
-var a = new Attribute(1);
-a.get().then(function(attribute) {
-    console.log(attribute);
-}, function(err) {
-   console.log(err.message); 
-});
+//var a = new Vatband(3);
+//a.get().then(function(attribute) {
+//    attribute.update().then(function(attribute) {
+//        console.log(attribute);
+//    }, function(err) {
+//        console.log(err); 
+//    });
+//    
+//}, function(err) {
+//   console.log(err.message); 
+//});
 
 //u.get().then(function(res) {
 //    console.log(res);
@@ -5764,26 +5770,30 @@ a.get().then(function(attribute) {
 //
 //var Attributes = new Collection({ path: 'attribute', object: Attribute });
 //Attributes.fetch().then(function(res) {
-//    console.log(res.collection);
+//    res.collection.forEach(function(e) {
+//        console.log(e.options.collection);
+//    });
 //});
 
 
 
-},{"./common/Attribute":46,"./common/Collection":48,"./common/Unit":51,"./common/platoJsClient":52}],46:[function(require,module,exports){
+},{"./common/Attribute":46,"./common/Collection":49,"./common/Unit":53,"./common/Vatband":54,"./common/platoJsClient":55}],46:[function(require,module,exports){
 var SingleEntity = require('./SingleEntity');
 var AttributeGroup = require('./AttributeGroup');
-var Unit = require('./Unit');
+var Collection = require('./StaticCollection');
+var Option = require('./AttributeOption');
 
 function Attribute(id) {
     this.path = 'attribute';
     this.id = id;
     this.group = new AttributeGroup();
     this.unit = new Unit();
+    this.options = new Collection({ object: Option });
 }
 Attribute.prototype = new SingleEntity();
 
 module.exports = Attribute;
-},{"./AttributeGroup":47,"./SingleEntity":50,"./Unit":51}],47:[function(require,module,exports){
+},{"./AttributeGroup":47,"./AttributeOption":48,"./SingleEntity":51,"./StaticCollection":52}],47:[function(require,module,exports){
 var SingleEntity = require('./SingleEntity');
 
 function AttributeGroup(id) {
@@ -5793,47 +5803,17 @@ function AttributeGroup(id) {
 AttributeGroup.prototype = new SingleEntity();
 
 module.exports = AttributeGroup;
-},{"./SingleEntity":50}],48:[function(require,module,exports){
+},{"./SingleEntity":51}],48:[function(require,module,exports){
 var Entity = require('./Entity');
 
-/**
- * Collection object
- * 
- * @param {Object} options
- * 
- * @returns {Collection}
- */
-function Collection(options) {
-    this.options = options;
-    this.collection = [];
-};
+function AttributeOption(id) {
+    this.id = id;
+}
+AttributeOption.prototype = new Entity();
 
-/**
- * Inherit methods from Entity object
- * 
- * @type Entity
- */
-Collection.prototype = new Entity();
-
-/**
- * Function used to map json values onto a single object. This will be
- * extended in the collection class to handle arrays.
- * 
- * @param {Object} res Entity
- * 
- * @returns {Entity.prototype}
- */
-Collection.prototype.mutateResponse = function(entity) {
-    var _self = this;
-    entity.forEach(function(e) {
-        var element = new _self.options.object;
-        _self.collection.push(
-            element.mutateEntity(e)
-        );
-    });
-    
-    return this;
-};
+module.exports = AttributeOption;
+},{"./Entity":50}],49:[function(require,module,exports){
+var Collection = require('./StaticCollection');
 
 /**
  * Returns a promise of the fetched resource
@@ -5849,7 +5829,7 @@ Collection.prototype.fetch = function() {
 };
 
 module.exports = Collection;
-},{"./Entity":49}],49:[function(require,module,exports){
+},{"./StaticCollection":52}],50:[function(require,module,exports){
 var client = require('./platoJsClient').getInstance();
 var pathNotSpecifiedError = require('./../error/pathNotSpecified');
 var idNotFoundError = require('./../error/pathNotSpecified');
@@ -5904,7 +5884,7 @@ Entity.prototype.mutateEntity = function(entity) {
  * 
  * @returns {Promise}
  */
-Entity.prototype.promiseResult = function(path) {
+Entity.prototype.okPromiseResult = function(path) {
     var result = client.get(path);
     var e = this;
     return new Promise(function(resolve, reject) {
@@ -5918,9 +5898,30 @@ Entity.prototype.promiseResult = function(path) {
     });
 };
 
+/**
+ * Return a promised result for an update
+ * 
+ * @param {String} path Path to request
+ * @param {Object} data Data to update
+ * 
+ * @returns {Promise}
+ */
+Entity.prototype.updatePromiseResult = function(path, data) {
+    var result = client.put({ path: path, entity: data });
+    var e = this;
+    return new Promise(function(resolve, reject) {
+        result.then(function(res) {
+            if (res.status.code === 204) {
+                resolve(e);
+            } else {
+                reject(new statusError(res));
+            }
+        });
+    });
+};
 
 module.exports = Entity;
-},{"./../error/pathNotSpecified":53,"./../error/statusError":54,"./platoJsClient":52,"es6-promise":2}],50:[function(require,module,exports){
+},{"./../error/pathNotSpecified":56,"./../error/statusError":57,"./platoJsClient":55,"es6-promise":2}],51:[function(require,module,exports){
 var Entity = require('./Entity');
 
 /**
@@ -5938,7 +5939,7 @@ function SingleEntity() {};
 SingleEntity.prototype = new Entity();
 
 /**
- * Request method
+ * Get request method
  * 
  * @returns {Promise}
  */
@@ -5951,11 +5952,80 @@ SingleEntity.prototype.get = function() {
         throw new pathNotSpecifiedError('No path specified for entity');
     }
     
-    return this.promiseResult(this.path + '/' + this.id);
+    return this.okPromiseResult(this.path + '/' + this.id);
+};
+
+/**
+ * Update request method
+ * 
+ * @returns {Promise}
+ */
+SingleEntity.prototype.update = function() {
+    if (typeof this.id === 'undefined') {
+        throw new idNotFoundError('Id not specified.');
+    }
+
+    if (typeof this.path === 'undefined') {
+        throw new pathNotSpecifiedError('No path specified for entity');
+    }
+    
+    return this.updatePromiseResult(this.path + '/' + this.id, this.toArray());
+};
+
+/**
+ * Return the post representation
+ * 
+ * @returns {Entity.prototype.toArray.EntityAnonym$0}
+ */
+SingleEntity.prototype.toArray = function() {
+    return {};
 };
 
 module.exports = SingleEntity;
-},{"./Entity":49}],51:[function(require,module,exports){
+},{"./Entity":50}],52:[function(require,module,exports){
+var Entity = require('./Entity');
+
+/**
+ * Collection object
+ * 
+ * @param {Object} options
+ * 
+ * @returns {Collection}
+ */
+function StaticCollection(options) {
+    this.options = options;
+    this.collection = [];
+};
+
+/**
+ * Inherit methods from Entity object
+ * 
+ * @type Entity
+ */
+StaticCollection.prototype = new Entity();
+
+/**
+ * Function used to map json values onto a single object. This will be
+ * extended in the collection class to handle arrays.
+ * 
+ * @param {Object} res Entity
+ * 
+ * @returns {Entity.prototype}
+ */
+StaticCollection.prototype.mutateResponse = function(entity) {
+    var _self = this;
+    entity.forEach(function(e) {
+        var element = new _self.options.object;
+        _self.collection.push(
+            element.mutateEntity(e)
+        );
+    });
+    
+    return this;
+};
+
+module.exports = StaticCollection;
+},{"./Entity":50}],53:[function(require,module,exports){
 var Entity = require('./Entity');
 
 function Unit(id) {
@@ -5970,7 +6040,24 @@ function Unit(id) {
 Unit.prototype = new Entity();
 
 module.exports = Unit;
-},{"./Entity":49}],52:[function(require,module,exports){
+},{"./Entity":50}],54:[function(require,module,exports){
+var SingleEntity = require('./SingleEntity');
+
+function Vatband(id) {
+    this.path = 'vatband';
+    this.id = id;
+}
+
+Vatband.prototype = new SingleEntity();
+Vatband.prototype.toArray = function() {
+    return {
+        id: this.id,
+        vatband: this.vatband
+    };
+};
+
+module.exports = Vatband;
+},{"./SingleEntity":51}],55:[function(require,module,exports){
 var platoJsClient = (function () {
 
     // Instance stores a reference to the Singleton
@@ -6101,7 +6188,7 @@ var platoJsClient = (function () {
         /**
          * Post method
          * 
-         * @param {Object} req Request object
+         * @param {Object} req  Request object
          * 
          * @returns {Response}
          */
@@ -6172,7 +6259,7 @@ var platoJsClient = (function () {
 
 module.exports = platoJsClient;
 
-},{"rest":4,"rest/interceptor/defaultRequest":9,"rest/interceptor/mime":10,"rest/interceptor/pathPrefix":11}],53:[function(require,module,exports){
+},{"rest":4,"rest/interceptor/defaultRequest":9,"rest/interceptor/mime":10,"rest/interceptor/pathPrefix":11}],56:[function(require,module,exports){
 function pathNotSpecified(message) {
     this.name = 'pathNotSpecified';
     this.message = (message || '');
@@ -6180,7 +6267,7 @@ function pathNotSpecified(message) {
 pathNotSpecified.prototype = Error.prototype;
 
 module.exports = pathNotSpecified;
-},{}],54:[function(require,module,exports){
+},{}],57:[function(require,module,exports){
 function statusError(response) {
     this.name = 'statusError';
     this.message = 'Entity not found';

@@ -128,7 +128,7 @@ var platoJsClient = (function () {
         /**
          * Post method
          * 
-         * @param {Object} req Request object
+         * @param {Object} req  Request object
          * 
          * @returns {Response}
          */

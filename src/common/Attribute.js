@@ -1,12 +1,14 @@
 var SingleEntity = require('./SingleEntity');
 var AttributeGroup = require('./AttributeGroup');
-var Unit = require('./Unit');
+var Collection = require('./StaticCollection');
+var Option = require('./AttributeOption');
 
 function Attribute(id) {
     this.path = 'attribute';
     this.id = id;
     this.group = new AttributeGroup();
     this.unit = new Unit();
+    this.options = new Collection({ object: Option });
 }
 Attribute.prototype = new SingleEntity();
 
