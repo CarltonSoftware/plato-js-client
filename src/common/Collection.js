@@ -10,7 +10,7 @@ Collection.prototype.fetch = function() {
         throw new pathNotSpecifiedError('No path specified for entity');
     }
     
-    return this.promiseResult(this.options.path);
+    return this.okPromiseResult(this.options.path);
 };
 
 module.exports = Collection;

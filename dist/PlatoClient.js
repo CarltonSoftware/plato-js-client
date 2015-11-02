@@ -5754,7 +5754,7 @@ var a = new Vatband(3);
 a.get().then(function(attribute) {
     console.log(attribute);
     attribute.update().then(function(attribute) {
-        console.log('updated');
+        console.log(attribute);
     }, function(err) {
         console.log(err); 
     });
@@ -5908,11 +5908,12 @@ Entity.prototype.okPromiseResult = function(path) {
  * @returns {Promise}
  */
 Entity.prototype.updatePromiseResult = function(path, data) {
-    var result = client.put(path, data);
+    var result = client.put({ path: path, entity: data });
+    var e = this;
     return new Promise(function(resolve, reject) {
         result.then(function(res) {
             if (res.status.code === 204) {
-                resolve(res.entity);
+                resolve(e);
             } else {
                 reject(new statusError(res));
             }
@@ -6189,15 +6190,13 @@ var platoJsClient = (function () {
          * Post method
          * 
          * @param {Object} req  Request object
-         * @param {Object} data Post data
          * 
          * @returns {Response}
          */
-        this.post = function(req, data) {
+        this.post = function(req) {
             req.headers = {
                 "Content-Type": "application/x-www-form-urlencoded"
             };
-            req.entity = data;
             return request(req, 'POST');
         };
         
@@ -6205,16 +6204,13 @@ var platoJsClient = (function () {
          * Put method
          * 
          * @param {Object} req Request object
-         * @param {Object} data Post data
          * 
          * @returns {Response}
          */
-        this.put = function(req, data) {
-            console.log(data);
+        this.put = function(req) {
             req.headers = {
                 "Content-Type": "application/x-www-form-urlencoded"
             };
-            req.entity = data;
             return request(req, 'PUT');
         };
         

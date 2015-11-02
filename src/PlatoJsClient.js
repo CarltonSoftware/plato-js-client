@@ -13,6 +13,7 @@ var Vatband = require('./common/Vatband');
 
 //var a = new Vatband(3);
 //a.get().then(function(attribute) {
+//    console.log(attribute);
 //    attribute.update().then(function(attribute) {
 //        console.log(attribute);
 //    }, function(err) {
@@ -29,11 +30,11 @@ var Vatband = require('./common/Vatband');
 //    console.log(err);
 //});
 //
-//var Attributes = new Collection({ path: 'attribute', object: Attribute });
-//Attributes.fetch().then(function(res) {
-//    res.collection.forEach(function(e) {
-//        console.log(e.options.collection);
-//    });
-//});
+var Attributes = new Collection({ path: 'attribute', object: Attribute });
+Attributes.fetch().then(function(res) {
+    res.collection.forEach(function(e) {
+        console.log(e.options.collection);
+    });
+});
 
 
