@@ -1,4 +1,4 @@
-var Entity = require('./Entity');
+var SingleEntity = require('./SingleEntity');
 
 function Unit(id) {
     this.path = 'unit';
@@ -9,6 +9,6 @@ function Unit(id) {
 //        return this.id * 5;
 //    };
 }
-Unit.prototype = new Entity();
+Unit.prototype = new SingleEntity();
 
 module.exports = Unit;
