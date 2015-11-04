@@ -88,4 +88,14 @@ Entity.prototype.updatePromiseResult = function(path, data) {
     });
 };
 
+Entity.prototype.get = function(path) {
+
+    if (typeof this.path === 'undefined') {
+        throw new pathNotSpecifiedError('No path specified for entity');
+    }
+    
+    return this.okPromiseResult(this.path);
+};
+
+
 module.exports = Entity;
