@@ -13,5 +13,13 @@ function Customer(id) {
     };
 }
 Customer.prototype = new SingleEntity();
+Customer.prototype.toArray = function() {
+    return {
+        id: this.id,
+        title: this.title,
+        firstname: this.firstname,
+        surname: this.surname
+    };
+};
 
 module.exports = Customer;
