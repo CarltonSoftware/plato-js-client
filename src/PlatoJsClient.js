@@ -58,6 +58,7 @@ v.get().then(function(vb) {
    console.log(err.message); 
 });
 */
+
 var c = new Customer(6);
 c.get().then(function(cust) {
     console.log(cust);

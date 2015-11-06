@@ -8,7 +8,7 @@ var Entity = require('./Entity');
  * @returns {Collection}
  */
 function StaticCollection(options) {
-    this.options = options;
+    this.options = options || {};
     this.collection = [];
 };
 

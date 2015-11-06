@@ -1,4 +1,5 @@
 var Collection = require('./StaticCollection');
+var pathNotSpecifiedError = require('./../error/pathNotSpecified');
 
 /**
  * Returns a promise of the fetched resource
