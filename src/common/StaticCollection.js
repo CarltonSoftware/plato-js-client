@@ -10,7 +10,7 @@ var _ = require('underscore');
  * @returns {Collection}
  */
 function StaticCollection(options) {
-    this.options = options;
+    this.options = options || {};
     this.collection = [];
 };
 

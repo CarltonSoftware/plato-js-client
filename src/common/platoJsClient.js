@@ -63,9 +63,8 @@ var platoJsClient = (function () {
             }
             
             var client = createClient();
-        
-            var c = client(req);
-            return c;
+
+            return client(req);
         }
         
         /**
@@ -178,7 +177,7 @@ var platoJsClient = (function () {
     return {
         init: function () {
             if (!INSTANCE) {
-                return INSTANCE = platoJsClient.apply(null, arguments);
+                INSTANCE = platoJsClient.apply(null, arguments);
             }
             return INSTANCE;
         },

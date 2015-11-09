@@ -59,16 +59,16 @@ v.get().then(function(vb) {
    console.log(err.message);
 });
 */
-/*var c = new Customer(6);
-c.get().then(function(cust) {
-    console.log(cust);
-}, function(err) {
-   console.log(err.message);
-});*/
 
 var Countries = new Collection({ path: 'country', object: Country });
 Countries.fetch().then(function(res) {
   res.collection.forEach(function(e) {
     console.log(e);
   });
+
+var c = new Customer(6);
+c.get().then(function(cust) {
+    console.log(cust);
+}, function(err) {
+   console.log(err.message); 
 });
