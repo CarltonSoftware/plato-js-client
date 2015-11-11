@@ -5,6 +5,9 @@ var Collection = require('./common/Collection');
 var Vatband = require('./common/Vatband');
 var Customer = require('./common/Customer');
 var Country = require('./common/Country');
+var CustomerContact = require('./common/CustomerContact');
+var ContactMethodType = require('./common/ContactMethodType');
+var Branding = require('./common/Branding');
 
 /*
 var u = new Unit(1);
@@ -60,15 +63,23 @@ v.get().then(function(vb) {
 });
 */
 
-var Countries = new Collection({ path: 'country', object: Country });
-Countries.fetch().then(function(res) {
+/*var path = 'branding';
+var entities = new Collection({ path: path, object: Branding });
+entities.fetch().then(function(res) {
   res.collection.forEach(function(e) {
     console.log(e);
   });
+});*/
 
-var c = new Customer(6);
-c.get().then(function(cust) {
-    console.log(cust);
-}, function(err) {
-   console.log(err.message); 
-});
+var c = new CustomerContact();
+c.contacttype = 'Direct Email';
+c.contactmethodtype = 'Email';
+c.contactdatetime = '2015-01-01 00:00:02';
+c.content = 'fooo';
+
+c.create().then(function(response) {
+  console.log(response);
+}.bind(this), function(err) {
+  console.log('error');
+  console.log(response);
+}.bind(this));

@@ -7,6 +7,17 @@ module.exports.common.vatband = require('./common/Vatband');
 module.exports.common.customer = require('./common/Customer');
 module.exports.common.customers = require('./common/Customers');
 module.exports.common.country = require('./common/Country');
-module.exports.common.customerContact = require('./common/customerContact');
+module.exports.common.customerContactDetailOther = require('./common/customerContactDetailOther');
+module.exports.common.CustomerContact = require('./common/CustomerContact');
+module.exports.common.ContactEntity = require('./common/ContactEntity');
+module.exports.common.ContactType = require('./common/ContactType');
+module.exports.common.ContactMethodType = require('./common/ContactMethodType');
+
+/***** Brand Related Objects *****/
+module.exports.common.BookingBrand = require('./common/BookingBrand');
+module.exports.common.MarketingBrand = require('./common/MarketingBrand');
+module.exports.common.BrandingGroup = require('./common/BrandingGroup');
+module.exports.common.Branding = require('./common/Branding');
+
 
 module.exports.collection = require('./common/Collection');
