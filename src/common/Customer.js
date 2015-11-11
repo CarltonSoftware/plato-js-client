@@ -7,6 +7,10 @@ var SingleEntity = require('./SingleEntity');
 function Customer(id) {
     this.path = 'customer';
     this.id = id;
+
+    this.contactPreferences = function() {
+      console.log(this.path + ' ' + this.id);
+    };
 }
 Customer.prototype = new SingleEntity();
 Customer.prototype.toArray = function() {

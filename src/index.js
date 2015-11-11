@@ -8,5 +8,7 @@ module.exports.common.customer = require('./common/Customer');
 module.exports.common.customerContact = require('./common/CustomerContact');
 module.exports.common.customerAddress = require('./common/CustomerAddress');
 module.exports.common.customers = require('./common/Customers');
+module.exports.common.country = require('./common/Country');
+module.exports.common.customerContact = require('./common/customerContact');
 
-module.exports.collection = require('./common/Collection'); 
+module.exports.collection = require('./common/Collection');

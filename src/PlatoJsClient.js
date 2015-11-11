@@ -5,74 +5,29 @@ var Attribute = require('./common/Attribute');
 var Collection = require('./common/Collection');
 var Vatband = require('./common/Vatband');
 var Customer = require('./common/Customer');
-var Customers = require('./common/Customers');
-var CustomerContact = require('./common/CustomerContact');
-var ContactMethodType = require('./common/ContactMethodType');
-
-/* var c = new ContactMethodType(1);
-c.get().then(function(cmt) {
-  console.log(cmt);
-}, function(err) {
-  console.log(err);
-}); */
-
-var c = new Collection({ path: 'contentmethodtype', object: ContactMethodType });
-c.fetch().then(function(res) {
-    res.collection.forEach(function(e) {
-      console.log(e);
-    //    console.log(e.options.collection);
-    });
-});
+var Country = require('./common/Country');
 
 /*
 var u = new Unit(1);
 u.get().then(function(unit) {
     console.log(unit);
-}, function(err) { 
-   console.log(err.message); 
-});
-*/
-/*var a = new Vatband(3);
-a.get().then(function(vatband) {
-    a.vatband = "Reduced";
-    a.update().then(function(attribute) {
-        console.log("2",attribute);
-    }, function(err) {
-        console.log("1",err); 
-    });
 }, function(err) {
-   console.log("2",err.message); 
-});
-
-var b = new Vatband(3);
-console.log("b",b); */
-
-
-/* var a = new Vatband(3);
-a.vatband = 'Reduced';
-a.update().then(function(attribute) {
-  console.log(attribute);
-},function(err) {
-   console.log("2",err.message); 
-});  */
-/*
-var c = new CustomerContact(8,7);
-c.get().then(function(attribute) {
-  console.log(1,attribute);
-  c.value = 123123123;
-  c.update().then(function(attribute) {
-      console.log("2",attribute);
-      var c = new CustomerContact(8,7);
-      c.get().then(function(attribute) {
-        console.log(3,attribute);
-      }, function(err) {});
-  }, function(err) {
-      console.log("1",err); 
-  });
-},function(err) {
-   console.log("2",err.message); 
+   console.log(err.message);
 });
 */
+//var a = new Vatband(3);
+//a.get().then(function(attribute) {
+//    console.log(attribute);
+//    attribute.update().then(function(attribute) {
+//        console.log(attribute);
+//    }, function(err) {
+//        console.log(err);
+//    });
+//
+//}, function(err) {
+//   console.log(err.message);
+//});
+
 //u.get().then(function(res) {
 //    console.log(res);
 //}, function(err) {
@@ -80,25 +35,30 @@ c.get().then(function(attribute) {
 //});
 //
 
-/* var Attributes = new Collection({ path: 'attribute', object: Attribute });
+/*var Attributes = new Collection({ path: 'attribute', object: Attribute });
 Attributes.fetch().then(function(res) {
     res.collection.forEach(function(e) {
       console.log(e);
     //    console.log(e.options.collection);
     });
-});
-*/
+});*/
 
 /*
 var v = new Vatband(3);
 v.get().then(function(vb) {
     console.log(vb.toArray());
 }, function(err) {
-   console.log(err.message); 
+   console.log(err.message);
 });
 */
-/*
-var c = new Customer(27);
+
+var Countries = new Collection({ path: 'country', object: Country });
+Countries.fetch().then(function(res) {
+  res.collection.forEach(function(e) {
+    console.log(e);
+  });
+
+var c = new Customer(6);
 c.get().then(function(cust) {
     console.log(cust);
 }, function(err) {
