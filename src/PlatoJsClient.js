@@ -1,4 +1,5 @@
-var client = require('./common/platoJsClient').getInstance('http://private-anon-d9986b1e4-plato.apiary-mock.com/v2');
+//var client = require('./common/platoJsClient').getInstance('http://private-anon-d9986b1e4-plato.apiary-mock.com/v2');
+var client = require('./common/platoJsClient').getInstance('http://docker.carltonsoftware.co.uk:49157/app_dev.php/v2');
 var Unit = require('./common/Unit');
 var Attribute = require('./common/Attribute');
 var Collection = require('./common/Collection');
@@ -46,15 +47,6 @@ Attributes.fetch().then(function(res) {
 });*/
 
 /*
-var VBs = new Collection({ path: 'vatband', object: Vatband });
-VBs.fetch().then(function(res) {
-    res.collection.forEach(function(e) {
-      console.log(e);
-    //    console.log(e.options.collection);
-    });
-});
-*/
-/*
 var v = new Vatband(3);
 v.get().then(function(vb) {
     console.log(vb.toArray());
@@ -71,15 +63,11 @@ entities.fetch().then(function(res) {
   });
 });*/
 
-var c = new CustomerContact();
-c.contacttype = 'Direct Email';
-c.contactmethodtype = 'Email';
-c.contactdatetime = '2015-01-01 00:00:02';
-c.content = 'fooo';
-
-c.create().then(function(response) {
-  console.log(response);
-}.bind(this), function(err) {
-  console.log('error');
-  console.log(response);
-}.bind(this));
+/*
+var customers = new Collection({ path: 'customer', object: Customer });
+customers.fetch().then(function(res) {
+    res.collection.forEach(function(e) {
+      console.log(e);
+    //    console.log(e.options.collection);
+    });
+}); */

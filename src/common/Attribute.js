@@ -9,7 +9,7 @@ function Attribute(id) {
     this.id = id;
     this.group = new AttributeGroup();
     this.unit = new Unit();
-    this.options = new Collection({ object: Option });
+    this.options = new Collection({ object: Option }); 
 }
 Attribute.prototype = new SingleEntity();
 
