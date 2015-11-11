@@ -35,7 +35,7 @@ SingleEntity.prototype.get = function() {
  * Update request method
  * 
  * @returns {Promise}
- */
+ */ 
 SingleEntity.prototype.update = function() {
     if (typeof this.id === 'undefined') {
         throw new idNotFoundError('Id not specified.');
@@ -44,7 +44,6 @@ SingleEntity.prototype.update = function() {
     if (typeof this.path === 'undefined') {
         throw new pathNotSpecifiedError('No path specified for entity');
     }
-    
     return this.updatePromiseResult(this.path + '/' + this.id, this.toArray());
 };
 
