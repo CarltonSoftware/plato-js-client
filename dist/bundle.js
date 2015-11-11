@@ -5737,63 +5737,146 @@ define(function (require) {
 ));
 
 },{"./uriEncoder":43}],45:[function(require,module,exports){
-var client = require('./common/platoJsClient').getInstance('http://private-anon-d9986b1e4-plato.apiary-mock.com/v2');
+//var client = require('./common/platoJsClient').getInstance('http://private-anon-d9986b1e4-plato.apiary-mock.com/v2');
+var client = require('./common/platoJsClient').getInstance('http://docker.carltonsoftware.co.uk:49157/app_dev.php/v2');
 var Unit = require('./common/Unit');
 var Attribute = require('./common/Attribute');
 var Collection = require('./common/Collection');
 var Vatband = require('./common/Vatband');
+var Customer = require('./common/Customer');
+var Customers = require('./common/Customers');
+var CustomerContact = require('./common/CustomerContact');
+var ContactMethodType = require('./common/ContactMethodType');
 
-//var u = new Unit(1);
-//u.get().then(function(unit) {
-//    console.log(unit);
-//}, function(err) {
-//   console.log(err.message); 
-//});
+/* var c = new ContactMethodType(1);
+c.get().then(function(cmt) {
+  console.log(cmt);
+}, function(err) {
+  console.log(err);
+}); */
 
-//var a = new Vatband(3);
-//a.get().then(function(attribute) {
-//    attribute.update().then(function(attribute) {
-//        console.log(attribute);
-//    }, function(err) {
-//        console.log(err); 
-//    });
-//    
-//}, function(err) {
-//   console.log(err.message); 
-//});
+var c = new Collection({ path: 'contentmethodtype', object: ContactMethodType });
+c.fetch().then(function(res) {
+    res.collection.forEach(function(e) {
+      console.log(e);
+    //    console.log(e.options.collection);
+    });
+});
 
+/*
+var u = new Unit(1);
+u.get().then(function(unit) {
+    console.log(unit);
+}, function(err) { 
+   console.log(err.message); 
+});
+*/
+/*var a = new Vatband(3);
+a.get().then(function(vatband) {
+    a.vatband = "Reduced";
+    a.update().then(function(attribute) {
+        console.log("2",attribute);
+    }, function(err) {
+        console.log("1",err); 
+    });
+}, function(err) {
+   console.log("2",err.message); 
+});
+
+var b = new Vatband(3);
+console.log("b",b); */
+
+
+/* var a = new Vatband(3);
+a.vatband = 'Reduced';
+a.update().then(function(attribute) {
+  console.log(attribute);
+},function(err) {
+   console.log("2",err.message); 
+});  */
+/*
+var c = new CustomerContact(8,7);
+c.get().then(function(attribute) {
+  console.log(1,attribute);
+  c.value = 123123123;
+  c.update().then(function(attribute) {
+      console.log("2",attribute);
+      var c = new CustomerContact(8,7);
+      c.get().then(function(attribute) {
+        console.log(3,attribute);
+      }, function(err) {});
+  }, function(err) {
+      console.log("1",err); 
+  });
+},function(err) {
+   console.log("2",err.message); 
+});
+*/
 //u.get().then(function(res) {
 //    console.log(res);
 //}, function(err) {
 //    console.log(err);
 //});
 //
-//var Attributes = new Collection({ path: 'attribute', object: Attribute });
-//Attributes.fetch().then(function(res) {
-//    res.collection.forEach(function(e) {
-//        console.log(e.options.collection);
-//    });
-//});
 
+/* var Attributes = new Collection({ path: 'attribute', object: Attribute });
+Attributes.fetch().then(function(res) {
+    res.collection.forEach(function(e) {
+      console.log(e);
+    //    console.log(e.options.collection);
+    });
+});
+*/
 
+/*
+var v = new Vatband(3);
+v.get().then(function(vb) {
+    console.log(vb.toArray());
+}, function(err) {
+   console.log(err.message); 
+});
+*/
+/*
+var c = new Customer(27);
+c.get().then(function(cust) {
+    console.log(cust);
+}, function(err) {
+   console.log(err.message); 
+});
 
-},{"./common/Attribute":46,"./common/Collection":49,"./common/Unit":53,"./common/Vatband":54,"./common/platoJsClient":55}],46:[function(require,module,exports){
+var c = new Customers();
+c.get().then(function(cust) {
+    console.log(cust);
+}, function(err) {
+   console.log(err.message); 
+});
+*/
+/*
+var customers = new Collection({ path: 'customer', object: Customer });
+customers.fetch().then(function(res) {
+    res.collection.forEach(function(e) {
+      console.log(e);
+    //    console.log(e.options.collection);
+    });
+}); */
+},{"./common/Attribute":46,"./common/Collection":49,"./common/ContactMethodType":50,"./common/Customer":51,"./common/CustomerContact":52,"./common/Customers":53,"./common/Unit":57,"./common/Vatband":58,"./common/platoJsClient":59}],46:[function(require,module,exports){
 var SingleEntity = require('./SingleEntity');
 var AttributeGroup = require('./AttributeGroup');
 var Collection = require('./StaticCollection');
 var Option = require('./AttributeOption');
+var Unit = require('./Unit');
 
 function Attribute(id) {
     this.path = 'attribute';
     this.id = id;
     this.group = new AttributeGroup();
     this.unit = new Unit();
-    this.options = new Collection({ object: Option });
+    this.options = new Collection({ object: Option }); 
 }
 Attribute.prototype = new SingleEntity();
 
 module.exports = Attribute;
-},{"./AttributeGroup":47,"./AttributeOption":48,"./SingleEntity":51,"./StaticCollection":52}],47:[function(require,module,exports){
+},{"./AttributeGroup":47,"./AttributeOption":48,"./SingleEntity":55,"./StaticCollection":56,"./Unit":57}],47:[function(require,module,exports){
 var SingleEntity = require('./SingleEntity');
 
 function AttributeGroup(id) {
@@ -5803,7 +5886,7 @@ function AttributeGroup(id) {
 AttributeGroup.prototype = new SingleEntity();
 
 module.exports = AttributeGroup;
-},{"./SingleEntity":51}],48:[function(require,module,exports){
+},{"./SingleEntity":55}],48:[function(require,module,exports){
 var Entity = require('./Entity');
 
 function AttributeOption(id) {
@@ -5812,7 +5895,7 @@ function AttributeOption(id) {
 AttributeOption.prototype = new Entity();
 
 module.exports = AttributeOption;
-},{"./Entity":50}],49:[function(require,module,exports){
+},{"./Entity":54}],49:[function(require,module,exports){
 var Collection = require('./StaticCollection');
 
 /**
@@ -5825,11 +5908,81 @@ Collection.prototype.fetch = function() {
         throw new pathNotSpecifiedError('No path specified for entity');
     }
     
-    return this.promiseResult(this.options.path);
+    return this.okPromiseResult(this.options.path);
 };
 
 module.exports = Collection;
-},{"./StaticCollection":52}],50:[function(require,module,exports){
+},{"./StaticCollection":56}],50:[function(require,module,exports){
+var SingleEntity = require('./SingleEntity');
+
+function ContactMethodType(id) {
+    this.path = 'contactmethodtype';
+    this.id = id;
+}
+ContactMethodType.prototype = new SingleEntity();
+ContactMethodType.prototype.toArray = function() {
+    return {
+        id: this.id,
+        method: this.method,
+        characterlimit: this.characterlimit,
+    };
+};
+
+module.exports = ContactMethodType;
+},{"./SingleEntity":55}],51:[function(require,module,exports){
+var SingleEntity = require('./SingleEntity');
+//var AttributeGroup = require('./AttributeGroup');
+//var Collection = require('./StaticCollection');
+//var Option = require('./AttributeOption');
+//var Unit = require('./Unit');
+
+function Customer(id) {
+    this.path = 'customer';
+    this.id = id;
+}
+Customer.prototype = new SingleEntity();
+Customer.prototype.toArray = function() {
+    return {
+        id: this.id,
+        title: this.title,
+        firstname: this.firstname,
+        surname: this.surname
+    };
+};
+
+module.exports = Customer;
+},{"./SingleEntity":55}],52:[function(require,module,exports){
+var SingleEntity = require('./SingleEntity');
+
+function CustomerContact(cust_id,contact_id) {
+    this.path = 'customer/'+cust_id+'/contactdetailother'; 
+    this.id = contact_id;
+}
+CustomerContact.prototype = new SingleEntity();
+CustomerContact.prototype.toArray = function() {
+    return {
+        id: this.id,
+        contactmethodsubtype: this.contactmethodsubtype,
+        contactmethodtype: this.contactmethodtype,
+        value: this.value
+    };
+};
+
+module.exports = CustomerContact;
+},{"./SingleEntity":55}],53:[function(require,module,exports){
+var Entity = require('./Entity');
+//var AttributeGroup = require('./AttributeGroup');
+//var Collection = require('./StaticCollection');
+//var Option = require('./AttributeOption');
+//var Unit = require('./Unit');
+
+function Customers(id) {
+    this.path = 'customer';
+}
+Customers.prototype = new Entity();
+
+module.exports = Customers;
+},{"./Entity":54}],54:[function(require,module,exports){
 var client = require('./platoJsClient').getInstance();
 var pathNotSpecifiedError = require('./../error/pathNotSpecified');
 var idNotFoundError = require('./../error/pathNotSpecified');
@@ -5920,8 +6073,18 @@ Entity.prototype.updatePromiseResult = function(path, data) {
     });
 };
 
+Entity.prototype.get = function(path) {
+
+    if (typeof this.path === 'undefined') {
+        throw new pathNotSpecifiedError('No path specified for entity');
+    }
+    
+    return this.okPromiseResult(this.path);
+};
+
+
 module.exports = Entity;
-},{"./../error/pathNotSpecified":56,"./../error/statusError":57,"./platoJsClient":55,"es6-promise":2}],51:[function(require,module,exports){
+},{"./../error/pathNotSpecified":60,"./../error/statusError":61,"./platoJsClient":59,"es6-promise":2}],55:[function(require,module,exports){
 var Entity = require('./Entity');
 
 /**
@@ -5959,7 +6122,7 @@ SingleEntity.prototype.get = function() {
  * Update request method
  * 
  * @returns {Promise}
- */
+ */ 
 SingleEntity.prototype.update = function() {
     if (typeof this.id === 'undefined') {
         throw new idNotFoundError('Id not specified.');
@@ -5968,7 +6131,6 @@ SingleEntity.prototype.update = function() {
     if (typeof this.path === 'undefined') {
         throw new pathNotSpecifiedError('No path specified for entity');
     }
-    
     return this.updatePromiseResult(this.path + '/' + this.id, this.toArray());
 };
 
@@ -5982,7 +6144,7 @@ SingleEntity.prototype.toArray = function() {
 };
 
 module.exports = SingleEntity;
-},{"./Entity":50}],52:[function(require,module,exports){
+},{"./Entity":54}],56:[function(require,module,exports){
 var Entity = require('./Entity');
 
 /**
@@ -6025,8 +6187,8 @@ StaticCollection.prototype.mutateResponse = function(entity) {
 };
 
 module.exports = StaticCollection;
-},{"./Entity":50}],53:[function(require,module,exports){
-var Entity = require('./Entity');
+},{"./Entity":54}],57:[function(require,module,exports){
+var SingleEntity = require('./SingleEntity');
 
 function Unit(id) {
     this.path = 'unit';
@@ -6037,10 +6199,10 @@ function Unit(id) {
 //        return this.id * 5;
 //    };
 }
-Unit.prototype = new Entity();
+Unit.prototype = new SingleEntity();
 
 module.exports = Unit;
-},{"./Entity":50}],54:[function(require,module,exports){
+},{"./SingleEntity":55}],58:[function(require,module,exports){
 var SingleEntity = require('./SingleEntity');
 
 function Vatband(id) {
@@ -6057,7 +6219,7 @@ Vatband.prototype.toArray = function() {
 };
 
 module.exports = Vatband;
-},{"./SingleEntity":51}],55:[function(require,module,exports){
+},{"./SingleEntity":55}],59:[function(require,module,exports){
 var platoJsClient = (function () {
 
     // Instance stores a reference to the Singleton
@@ -6123,9 +6285,8 @@ var platoJsClient = (function () {
             }
             
             var client = createClient();
-        
             var c = client(req);
-            
+
             return c;
         }
         
@@ -6139,7 +6300,7 @@ var platoJsClient = (function () {
                 .wrap(pathPrefix, { prefix: host })
                 .wrap(defaultRequest, {
                     headers: {
-                        //'Authorization': 'Bearer Y2ViNDM2NTc0NTMwYjljYWMwYzExMzIxZGE0ZjdlYmE3MjgwNmMxMzRlNzVhOTcyMGU1MjE0M2I2Njc0ZjcxZQ'
+                        'Authorization': 'Bearer Y2ViNDM2NTc0NTMwYjljYWMwYzExMzIxZGE0ZjdlYmE3MjgwNmMxMzRlNzVhOTcyMGU1MjE0M2I2Njc0ZjcxZQ'
                     }
                 });
         }
@@ -6259,7 +6420,7 @@ var platoJsClient = (function () {
 
 module.exports = platoJsClient;
 
-},{"rest":4,"rest/interceptor/defaultRequest":9,"rest/interceptor/mime":10,"rest/interceptor/pathPrefix":11}],56:[function(require,module,exports){
+},{"rest":4,"rest/interceptor/defaultRequest":9,"rest/interceptor/mime":10,"rest/interceptor/pathPrefix":11}],60:[function(require,module,exports){
 function pathNotSpecified(message) {
     this.name = 'pathNotSpecified';
     this.message = (message || '');
@@ -6267,7 +6428,7 @@ function pathNotSpecified(message) {
 pathNotSpecified.prototype = Error.prototype;
 
 module.exports = pathNotSpecified;
-},{}],57:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 function statusError(response) {
     this.name = 'statusError';
     this.message = 'Entity not found';
