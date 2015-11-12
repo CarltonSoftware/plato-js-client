@@ -54,12 +54,28 @@ SingleEntity.prototype.update = function() {
  * @returns {Promise}
  */
 SingleEntity.prototype.create = function() {
-  console.log('aaa', this);
     if (typeof this.createPath === 'undefined') {
         throw new pathNotSpecifiedError('No createPath specified for entity');
     }
 
     return this.createPromiseResult(this.createPath, this.toCreateArray());
+};
+
+/**
+ * Delete request method
+ *
+ * @returns {Promise}
+ */
+SingleEntity.prototype.delete = function() {
+    if (typeof this.id === 'undefined') {
+        throw new idNotFoundError('Id not specified.');
+    }
+
+    if (typeof this.deletePath === 'undefined') {
+        throw new pathNotSpecifiedError('No deletePath specified for entity');
+    }
+
+    return this.deletePromiseResult(this.deletePath);
 };
 
 /**

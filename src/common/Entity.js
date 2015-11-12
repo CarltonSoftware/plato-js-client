@@ -116,6 +116,26 @@ Entity.prototype.createPromiseResult = function(path, data) {
     });
 };
 
+/**
+ * Return a promised result for a delete
+ *
+ * @param {String} path Path to request
+ *
+ * @returns {Promise}
+ */
+Entity.prototype.deletePromiseResult = function(path) {
+    var result = client.delete({ path: path });
+    return new Promise(function(resolve, reject) {
+        result.then(function() {
+            if (res.status.code === 204) {
+                resolve(true);
+            } else {
+                reject(new statusError(res));
+            }
+        });
+    });
+};
+
 Entity.prototype.get = function(path) {
 
     if (typeof this.path === 'undefined') {
