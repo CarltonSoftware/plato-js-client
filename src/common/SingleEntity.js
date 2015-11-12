@@ -27,8 +27,23 @@ SingleEntity.prototype.get = function() {
     if (typeof this.path === 'undefined') {
         throw new pathNotSpecifiedError('No path specified for entity');
     }
-
     return this.okPromiseResult(this.path + '/' + this.id);
+};
+
+/**
+ * delete request method
+ *
+ * @returns {Promise}
+ */
+SingleEntity.prototype.delete = function() {
+    if (typeof this.id === 'undefined') {
+        throw new idNotFoundError('Id not specified.');
+    }
+
+    if (typeof this.path === 'undefined') {
+        throw new pathNotSpecifiedError('No path specified for entity');
+    }
+    return this.deletePromiseResult(this.path + '/' + this.id);
 };
 
 /**

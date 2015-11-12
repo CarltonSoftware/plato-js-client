@@ -21,5 +21,9 @@ module.exports.common.MarketingBrand = require('./common/MarketingBrand');
 module.exports.common.BrandingGroup = require('./common/BrandingGroup');
 module.exports.common.Branding = require('./common/Branding');
 
+/***** Note Related Objects *****/
+module.exports.common.Note = require('./common/Note');
+module.exports.common.NoteText = require('./common/NoteText');
+
 
 module.exports.collection = require('./common/Collection');
