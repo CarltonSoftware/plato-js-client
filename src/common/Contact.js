@@ -1,14 +1,14 @@
 var SingleEntity = require('./SingleEntity');
 
-function CustomerContact(actorId, contactId) {
-    this.path = 'customer/' + actorId + '/contact';
+function Contact(contactId) {
+    this.path = 'contact';
     this.createPath = 'contact';
     this.id = contactId;
     this.deleted = false;
 }
-CustomerContact.prototype = new SingleEntity();
+Contact.prototype = new SingleEntity();
 
-CustomerContact.prototype.toArray = function() {
+Contact.prototype.toArray = function() {
     return {
         id: this.id,
         contacttype: this.contacttype.type,
@@ -17,7 +17,7 @@ CustomerContact.prototype.toArray = function() {
     };
 };
 
-CustomerContact.prototype.toCreateArray = function() {
+Contact.prototype.toCreateArray = function() {
     return {
         contacttype: this.contacttype,
         contactmethodtype: this.contactmethodtype,
@@ -27,4 +27,4 @@ CustomerContact.prototype.toCreateArray = function() {
     };
 };
 
-module.exports = CustomerContact;
+module.exports = Contact;
