@@ -109,7 +109,6 @@ Entity.prototype.updatePromiseResult = function(path, data) {
     });
 };
 
-
 /**
  * Return a promised result for an update
  *

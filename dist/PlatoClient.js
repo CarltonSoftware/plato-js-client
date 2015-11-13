@@ -1543,6 +1543,8 @@ process.umask = function() { return 0; };
 			if (!raw) { return headers; }
 
 			raw.trim().split(headerSplitRE).forEach(function (header) {
+        
+        
 				var boundary, name, value;
 				boundary = header.indexOf(':');
 				name = normalizeHeaderName(header.substring(0, boundary).trim());

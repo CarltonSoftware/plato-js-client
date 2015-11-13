@@ -9,7 +9,24 @@ var Country = require('./common/Country');
 var CustomerContact = require('./common/CustomerContact');
 var ContactMethodType = require('./common/ContactMethodType');
 var Branding = require('./common/Branding');
+var NoteText = require('./common/NoteText');
+var Note = require('./common/Note');
 
+/* var n = new NoteText(1,1);
+  n.get().then(function(notetext) {
+    console.log(notetext);
+  }, function(err) {
+    console.log(err.message);
+  });
+
+var n = new NoteText(1,5);
+    n.delete().then(function(notetext) {
+      console.log('success');
+      console.log(notetext);
+    }, function(err) {
+      console.log(err.message);
+    });
+*/
 /*
 var u = new Unit(1);
 u.get().then(function(unit) {

@@ -24,6 +24,6 @@ module.exports.common.Branding = require('./common/Branding');
 /***** Note Related Objects *****/
 module.exports.common.Note = require('./common/Note');
 module.exports.common.NoteText = require('./common/NoteText');
-
+module.exports.common.ActorNote = require('./common/ActorNote');
 
 module.exports.collection = require('./common/Collection');
