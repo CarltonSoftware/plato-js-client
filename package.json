@@ -7,6 +7,9 @@
   "main": "src/index.js",
   "devDependencies": {
     "browserify": "^11.2.0",
+    "chai": "^3.4.1",
+    "chai-as-promised": "^5.1.0",
+    "debug": "^2.2.0",
     "gulp": "^3.9.0",
     "gulp-jshint": "^1.11.2",
     "gulp-mocha": "^2.1.3",

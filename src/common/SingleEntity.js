@@ -1,4 +1,6 @@
 var Entity = require('./Entity');
+var idNotFoundError = require('./../error/idNotFound');
+var pathNotSpecifiedError = require('./../error/pathNotSpecified');
 
 /**
  * Base object
