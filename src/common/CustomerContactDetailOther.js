@@ -1,6 +1,6 @@
 var SingleEntity = require('./SingleEntity');
 
-function CustomerContactDetailOther(cust_id,contact_id) {
+function CustomerContactDetailOther(cust_id, contact_id) {
     this.path = 'customer/'+cust_id+'/contactdetailother';
     this.id = contact_id;
 }

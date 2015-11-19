@@ -1,7 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 
-function CustomerAddress(cust_id,address_id) {
-    this.path = 'customer/'+cust_id+'/address'; 
+function CustomerAddress(cust_id, address_id) {
+    this.path = 'customer/'+cust_id+'/address';
     this.id = address_id;
 }
 CustomerAddress.prototype = new SingleEntity();

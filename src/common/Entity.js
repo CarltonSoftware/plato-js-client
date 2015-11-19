@@ -48,11 +48,12 @@ Entity.prototype.mutateEntity = function(entity) {
  * Return a mutated promised result
  *
  * @param {String} path Path to request
+ * @param {Object} params Request paramaters
  *
  * @returns {Promise}
  */
-Entity.prototype.okPromiseResult = function(path) {
-    var result = client.get(path);
+Entity.prototype.okPromiseResult = function(path, params) {
+    var result = client.get({ path: path, params: params });
     var e = this;
     return new Promise(function(resolve, reject) {
         result.then(function(res) {

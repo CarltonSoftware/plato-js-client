@@ -10,8 +10,13 @@ Collection.prototype.fetch = function() {
     if (typeof this.options.path === 'undefined') {
         throw new pathNotSpecifiedError('No path specified for entity');
     }
-    
-    return this.okPromiseResult(this.options.path);
+
+    var params = {
+        page: this.page || 1,
+        limit: this.limit || 10
+    };
+
+    return this.okPromiseResult(this.options.path, params);
 };
 
 module.exports = Collection;
