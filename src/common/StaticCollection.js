@@ -30,19 +30,28 @@ StaticCollection.prototype = new Entity();
  * @returns {Entity.prototype}
  */
 StaticCollection.prototype.mutateResponse = function(entity) {
-    var _self = this;
-    _.each(entity, function(value, key) {
-      var element = new _self.options.object;
-      _self.collection.push(
-          element.mutateEntity(value)
-      );
-    });
+    var object = this.options.object;
 
+    if (entity.elements) {
+        var elements = entity.elements;
+
+        this.total = entity.total;
+        this.page = entity.page;
+        this.limit = entity.limit;
+        this.time = entity.time;
+    } else {
+        var elements = entity;
+    }
+
+    this.collection = _.map(elements, function(element) {
+        var entity = new object();
+        return entity.mutateEntity(element);
+    });
     return this;
 };
 
 StaticCollection.prototype.forEach = function(callback) {
-  collection.forEach(callback);
+    this.collection.forEach(callback);
 }
 
 module.exports = StaticCollection;

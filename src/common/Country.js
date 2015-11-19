@@ -1,5 +1,4 @@
 var SingleEntity = require('./SingleEntity');
-var Collection = require('./StaticCollection');
 
 function Country(id) {
     this.path = 'country';

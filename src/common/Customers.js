@@ -1,12 +1,12 @@
-var Entity = require('./Entity');
-//var AttributeGroup = require('./AttributeGroup');
-//var Collection = require('./StaticCollection');
-//var Option = require('./AttributeOption');
-//var Unit = require('./Unit');
+var Customer = require('./Customer');
+var Collection = require('./Collection');
+
 
 function Customers(id) {
     this.path = 'customer';
+    this.options.path = 'customer';
+    this.options.object = Customer;
 }
-Customers.prototype = new Entity();
+Customers.prototype = new Collection();
 
 module.exports = Customers;
