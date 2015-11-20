@@ -24,5 +24,9 @@ module.exports.common.Branding = require('./common/Branding');
 module.exports.common.Note = require('./common/Note');
 module.exports.common.NoteText = require('./common/NoteText');
 module.exports.common.ActorNote = require('./common/ActorNote');
+module.exports.common.NoteType = require('./common/NoteType');
+
+/***** Tabs user *****/
+module.exports.common.TabsUser = require('./common/TabsUser');
 
 module.exports.collection = require('./common/Collection');
