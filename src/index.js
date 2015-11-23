@@ -1,6 +1,7 @@
 module.exports.client = require('./common/platoJsClient');
 
 module.exports.common = {};
+module.exports.common.Encoding = require('./common/Encoding');
 module.exports.common.unit = require('./common/Unit');
 module.exports.common.attribute = require('./common/Attribute');
 module.exports.common.vatband = require('./common/Vatband');
@@ -29,4 +30,5 @@ module.exports.common.NoteType = require('./common/NoteType');
 /***** Tabs user *****/
 module.exports.common.TabsUser = require('./common/TabsUser');
 
+module.exports.staticCollection = require('./common/StaticCollection');
 module.exports.collection = require('./common/Collection');

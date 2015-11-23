@@ -102,12 +102,12 @@ Entity.prototype.createPromiseResult = function(path, data) {
     return new Promise(function(resolve, reject) {
         result.then(function(res) {
             if (res.status.code === 201) {
-              var newLocation = res.headers['Content-Location'].replace('/app_dev.php/v2', '');//TODO: remove the need for .replace(...)
-              client.get({ path: newLocation}).then(function(res) {
-                resolve(e.mutateResponse(res.entity));
-              }, function(res) {
-                reject(new statusError(res));
-              });
+                var newLocation = res.headers['Content-Location'].replace('/app_dev.php/v2', '');//TODO: remove the need for .replace(...)
+                client.get({ path: newLocation}).then(function(res) {
+                    resolve(e.mutateResponse(res.entity));
+                }, function(res) {
+                    reject(new statusError(res));
+                });
             } else {
                 reject(new statusError(res));
             }
@@ -125,7 +125,7 @@ Entity.prototype.createPromiseResult = function(path, data) {
 Entity.prototype.deletePromiseResult = function(path) {
     var result = client.delete({ path: path });
     return new Promise(function(resolve, reject) {
-        result.then(function() {
+        result.then(function(res) {
             if (res.status.code === 204) {
                 resolve(true);
             } else {
@@ -135,8 +135,14 @@ Entity.prototype.deletePromiseResult = function(path) {
     });
 };
 
+/**
+ * Get a result from a provided path
+ *
+ * @param {String} path
+ *
+ * @returns {Promise}
+ */
 Entity.prototype.get = function(path) {
-
     if (typeof this.path === 'undefined') {
         throw new pathNotSpecifiedError('No path specified for entity');
     }

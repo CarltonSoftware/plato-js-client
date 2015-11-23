@@ -76,7 +76,7 @@ SingleEntity.prototype.delete = function() {
         throw new pathNotSpecifiedError('No deletePath specified for entity');
     }
 
-    return this.deletePromiseResult(this.path);
+    return this.deletePromiseResult(this.path + '/' + this.id);
 };
 
 /**

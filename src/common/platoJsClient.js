@@ -38,38 +38,38 @@ var platoJsClient = (function () {
             if (typeof req === 'string') {
                 req = { path: req };
             }
-            
+
             // Test to see if its not an object
             if (typeof req !== 'object') {
                 return { path: '/' };
             }
-            
+
             return req;
         }
-        
+
         /**
          * Returns the request object read for use
-         * 
+         *
          * @param {Object} req  Request object
          * @param {string} verb HTTP Verb
-         * 
+         *
          * @returns {Object}
          */
         function request(req, verb) {
             req = validateRequest(req);
-            
+
             if (!req.hasOwnProperty('method')) {
                 req.method = verb;
             }
-            
+
             var client = createClient();
 
             return client(req);
         }
-        
+
         /**
          * Create a client instance
-         * 
+         *
          * @returns {Object}
          */
         function createClient() {
@@ -84,7 +84,7 @@ var platoJsClient = (function () {
 
         /**
          * Return the Client
-         * 
+         *
          * @returns {Client}
          */
         this.getClient = function() {
@@ -93,7 +93,7 @@ var platoJsClient = (function () {
 
         /**
          * Return the host of the client
-         * 
+         *
          * @returns {String}
          */
         this.getHost = function() {
@@ -102,9 +102,9 @@ var platoJsClient = (function () {
 
         /**
          * Set the host of the client
-         * 
+         *
          * @param {String} url
-         * 
+         *
          * @returns {Object}
          */
         this.setHost = function(url) {
@@ -114,9 +114,9 @@ var platoJsClient = (function () {
 
         /**
          * Get method
-         * 
+         *
          * @param {Object} req Request object
-         * 
+         *
          * @returns {Response}
          */
         this.get = function(req) {
@@ -125,9 +125,9 @@ var platoJsClient = (function () {
 
         /**
          * Post method
-         * 
+         *
          * @param {Object} req  Request object
-         * 
+         *
          * @returns {Response}
          */
         this.post = function(req) {
@@ -136,12 +136,12 @@ var platoJsClient = (function () {
             };
             return request(req, 'POST');
         };
-        
+
         /**
          * Put method
-         * 
+         *
          * @param {Object} req Request object
-         * 
+         *
          * @returns {Response}
          */
         this.put = function(req) {
@@ -150,23 +150,23 @@ var platoJsClient = (function () {
             };
             return request(req, 'PUT');
         };
-        
+
         /**
          * Delete method
-         * 
+         *
          * @param {Object} req Request object
-         * 
+         *
          * @returns {Response}
          */
         this.delete = function(req) {
             return request(req, 'DELETE');
         };
-        
+
         /**
          * Options method
-         * 
+         *
          * @param {Object} req Request object
-         * 
+         *
          * @returns {Response}
          */
         this.options = function(req) {
