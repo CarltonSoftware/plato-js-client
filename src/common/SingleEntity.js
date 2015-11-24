@@ -1,6 +1,7 @@
 var Entity = require('./Entity');
 var idNotFoundError = require('./../error/idNotFound');
 var pathNotSpecifiedError = require('./../error/pathNotSpecified');
+var _ = require('underscore');
 
 /**
  * Base object
@@ -46,7 +47,10 @@ SingleEntity.prototype.update = function() {
         throw new pathNotSpecifiedError('No path specified for entity');
     }
 
-    return this.updatePromiseResult(this.path + '/' + this.id, this.toArray());
+    return this.updatePromiseResult(
+        this.path + '/' + this.id,
+        _.pick(this.toUpdateArray(), _.identity)
+    );
 };
 
 /**
@@ -59,7 +63,10 @@ SingleEntity.prototype.create = function() {
         throw new pathNotSpecifiedError('No createPath specified for entity');
     }
 
-    return this.createPromiseResult(this.createPath, this.toCreateArray());
+    return this.createPromiseResult(
+        this.createPath,
+        _.pick(this.toCreateArray(), _.identity)
+    );
 };
 
 /**
@@ -86,6 +93,24 @@ SingleEntity.prototype.delete = function() {
  */
 SingleEntity.prototype.toArray = function() {
     return {};
+};
+
+/**
+ * Return the post representation
+ *
+ * @returns {Entity.prototype.toArray.EntityAnonym$0}
+ */
+SingleEntity.prototype.toCreateArray = function() {
+    return this.toArray();
+};
+
+/**
+ * Return the put data representation
+ * 
+ * @returns {SingleEntity.prototype.toUpdateArray.SingleEntityAnonym$1}
+ */
+SingleEntity.prototype.toUpdateArray = function() {
+    return _.extend({ id: this.id }, this.toCreateArray());
 };
 
 module.exports = SingleEntity;
