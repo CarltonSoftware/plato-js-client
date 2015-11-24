@@ -7,15 +7,8 @@ function Encoding(id) {
 }
 Encoding.prototype = new SingleEntity();
 
-Encoding.prototype.toCreateArray = function() {
+Encoding.prototype.toArray = function() {
     return {
-        'encoding': this.encoding
-    };
-};
-
-Encoding.prototype.toUpdateArray = function() {
-    return {
-        'id': this.id,
         'encoding': this.encoding
     };
 };
