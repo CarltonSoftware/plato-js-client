@@ -11,8 +11,8 @@ BookingBrand.prototype = new SingleEntity();
 
 BookingBrand.prototype.toArray = function() {
   return {
-    code: this.code,
-    name: this.name,
+    bookingbrandcode: this.code,
+    bookingbrand: this.name,
     agencyid: this.agency.id
   };
 };

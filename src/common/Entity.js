@@ -170,7 +170,7 @@ Entity.prototype.get = function(path) {
  */
  Entity.prototype.mapRouteIds = function(route) {
   var routeParts = route.split('/');
-  this.id = routeParts.pop();
+  this.id = parseInt(routeParts.pop());
 
   return this;
 };
