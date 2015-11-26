@@ -1,12 +1,5 @@
-var StaticCollection = require('./StaticCollection');
+var Collection = require('./StaticCollection');
 var pathNotSpecifiedError = require('./../error/pathNotSpecified');
-
-function Collection() {
-  this.page = 1;
-  this.limit = 10;
-}
-
-Collection.prototype = new StaticCollection();
 
 /**
  * Get the maximum pages supported by this collection

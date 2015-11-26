@@ -13,7 +13,7 @@ BookingBrand.prototype.toArray = function() {
   return {
     code: this.code,
     name: this.name,
-    agencyid: this.agencyid
+    agencyid: this.agency.id
   };
 };
 
