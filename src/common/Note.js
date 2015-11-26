@@ -17,7 +17,8 @@ Note.prototype.toArray = function() {
       visibletoowner: this.visibletoowner,
       visibletocleaner: this.visibletocleaner,
       visibletokeyholder: this.visibletokeyholder,
-      hightlight: this.highlight
+      hightlight: this.highlight,
+      pin: this.pin
     };
 };
 
@@ -31,6 +32,7 @@ Note.prototype.toCreateArray = function() {
       visibletocleaner: this.visibletocleaner,
       visibletokeyholder: this.visibletokeyholder,
       highlight: this.highlight,
+      pin: this.pin,
       notetext_createdbyactorid: this.notetext_createdbyactorid,
       notetext_notetext: this.notetext_notetext,
       notetext_followupdatetime: this.notetext_followupdatetime

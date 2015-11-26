@@ -13,7 +13,8 @@ CustomerAddress.prototype.toArray = function() {
         line3: this.line3,
         town: this.town,
         county: this.county,
-        postcode: this.postcode
+        postcode: this.postcode,
+        countryalpha2code: this.countryalpha2code
     };
 };
 
