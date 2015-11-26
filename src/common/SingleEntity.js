@@ -23,14 +23,14 @@ SingleEntity.prototype = new Entity();
  * @returns {Promise}
  */
 SingleEntity.prototype.get = function() {
-    if (typeof this.id === 'undefined') {
-        throw new idNotFoundError('Id not specified.');
-    }
+  if (typeof this.id === 'undefined') {
+    throw new idNotFoundError('Id not specified.');
+  }
 
-    if (typeof this.path === 'undefined') {
-        throw new pathNotSpecifiedError('No path specified for entity');
-    }
-    return this.okPromiseResult(this.path + '/' + this.id);
+  if (typeof this.path === 'undefined') {
+    throw new pathNotSpecifiedError('No path specified for entity');
+  }
+  return this.okPromiseResult(this.path + '/' + this.id);
 };
 
 /**
@@ -39,18 +39,18 @@ SingleEntity.prototype.get = function() {
  * @returns {Promise}
  */
 SingleEntity.prototype.update = function() {
-    if (typeof this.id === 'undefined') {
-        throw new idNotFoundError('Id not specified.');
-    }
+  if (typeof this.id === 'undefined') {
+    throw new idNotFoundError('Id not specified.');
+  }
 
-    if (typeof this.path === 'undefined') {
-        throw new pathNotSpecifiedError('No path specified for entity');
-    }
+  if (typeof this.path === 'undefined') {
+    throw new pathNotSpecifiedError('No path specified for entity');
+  }
 
-    return this.updatePromiseResult(
-        this.path + '/' + this.id,
-        _.pick(this.toUpdateArray(), _.identity)
-    );
+  return this.updatePromiseResult(
+    this.path + '/' + this.id,
+    _.pick(this.toUpdateArray(), _.identity)
+  );
 };
 
 /**
@@ -59,14 +59,14 @@ SingleEntity.prototype.update = function() {
  * @returns {Promise}
  */
 SingleEntity.prototype.create = function() {
-    if (typeof this.createPath === 'undefined') {
-        throw new pathNotSpecifiedError('No createPath specified for entity');
-    }
+  if (typeof this.createPath === 'undefined') {
+    throw new pathNotSpecifiedError('No createPath specified for entity');
+  }
 
-    return this.createPromiseResult(
-        this.createPath,
-        _.pick(this.toCreateArray(), _.identity)
-    );
+  return this.createPromiseResult(
+    this.createPath,
+    _.pick(this.toCreateArray(), _.identity)
+  );
 };
 
 /**
@@ -75,15 +75,15 @@ SingleEntity.prototype.create = function() {
  * @returns {Promise}
  */
 SingleEntity.prototype.delete = function() {
-    if (typeof this.id === 'undefined') {
-        throw new idNotFoundError('Id not specified.');
-    }
+  if (typeof this.id === 'undefined') {
+    throw new idNotFoundError('Id not specified.');
+  }
 
-    if (typeof this.path === 'undefined') {
-        throw new pathNotSpecifiedError('No deletePath specified for entity');
-    }
+  if (typeof this.path === 'undefined') {
+    throw new pathNotSpecifiedError('No deletePath specified for entity');
+  }
 
-    return this.deletePromiseResult(this.path + '/' + this.id);
+  return this.deletePromiseResult(this.path + '/' + this.id);
 };
 
 /**
@@ -92,7 +92,7 @@ SingleEntity.prototype.delete = function() {
  * @returns {Entity.prototype.toArray.EntityAnonym$0}
  */
 SingleEntity.prototype.toArray = function() {
-    return {};
+  return {};
 };
 
 /**
@@ -101,16 +101,16 @@ SingleEntity.prototype.toArray = function() {
  * @returns {Entity.prototype.toArray.EntityAnonym$0}
  */
 SingleEntity.prototype.toCreateArray = function() {
-    return this.toArray();
+  return this.toArray();
 };
 
 /**
  * Return the put data representation
- * 
+ *
  * @returns {SingleEntity.prototype.toUpdateArray.SingleEntityAnonym$1}
  */
 SingleEntity.prototype.toUpdateArray = function() {
-    return _.extend({ id: this.id }, this.toCreateArray());
+  return _.extend({ id: this.id }, this.toCreateArray());
 };
 
 module.exports = SingleEntity;

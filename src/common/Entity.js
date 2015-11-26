@@ -19,7 +19,7 @@ function Entity() {};
  * @returns {Entity.prototype}
  */
 Entity.prototype.mutateResponse = function(entity) {
-    return this.mutateEntity(entity);
+  return this.mutateEntity(entity);
 };
 
 /**
@@ -30,18 +30,26 @@ Entity.prototype.mutateResponse = function(entity) {
  * @returns {Entity.prototype}
  */
 Entity.prototype.mutateEntity = function(entity) {
-    for (var prop in entity) {
-        if (entity.hasOwnProperty(prop)) {
-            if (this.hasOwnProperty(prop) && typeof this[prop] === 'object') {
-                // Recursive call
-                this[prop].mutateResponse(entity[prop]);
-            } else {
-                this[prop] = entity[prop];
-            }
+  for (var prop in entity) {
+    if (entity.hasOwnProperty(prop)) {
+      if (this.hasOwnProperty(prop) && typeof this[prop] === 'object') {
+        if (typeof entity[prop] === 'string'
+          && entity[prop].indexOf('/v2') === 0
+        ) {
+          // Map id's of route string to entity object so the get() request will
+          // know of the correct path.
+          this[prop].mapRouteIds(entity[prop]);
+        } else {
+          // Recursive call
+          this[prop].mutateResponse(entity[prop]);
         }
+      } else {
+        this[prop] = entity[prop];
+      }
     }
+  }
 
-    return this;
+  return this;
 };
 
 /**
@@ -53,17 +61,17 @@ Entity.prototype.mutateEntity = function(entity) {
  * @returns {Promise}
  */
 Entity.prototype.okPromiseResult = function(path, params) {
-    var result = client.get({ path: path, params: params });
-    var e = this;
-    return new Promise(function(resolve, reject) {
-        result.then(function(res) {
-            if (res.status.code === 200) {
-                resolve(e.mutateResponse(res.entity));
-            } else {
-                reject(new statusError(res));
-            }
-        });
+  var result = client.get({ path: path, params: params });
+  var e = this;
+  return new Promise(function(resolve, reject) {
+    result.then(function(res) {
+      if (res.status.code === 200) {
+        resolve(e.mutateResponse(res.entity));
+      } else {
+        reject(new statusError(res));
+      }
     });
+  });
 };
 
 /**
@@ -75,17 +83,17 @@ Entity.prototype.okPromiseResult = function(path, params) {
  * @returns {Promise}
  */
 Entity.prototype.updatePromiseResult = function(path, data) {
-    var result = client.put({ path: path, entity: data });
-    var e = this;
-    return new Promise(function(resolve, reject) {
-        result.then(function(res) {
-            if (res.status.code === 204) {
-                resolve(e);
-            } else {
-                reject(new statusError(res));
-            }
-        });
+  var result = client.put({ path: path, entity: data });
+  var e = this;
+  return new Promise(function(resolve, reject) {
+    result.then(function(res) {
+      if (res.status.code === 204) {
+        resolve(e);
+      } else {
+        reject(new statusError(res));
+      }
     });
+  });
 };
 
 /**
@@ -97,22 +105,22 @@ Entity.prototype.updatePromiseResult = function(path, data) {
  * @returns {Promise}
  */
 Entity.prototype.createPromiseResult = function(path, data) {
-    var result = client.post({ path: path, entity: data });
-    var e = this;
-    return new Promise(function(resolve, reject) {
-        result.then(function(res) {
-            if (res.status.code === 201) {
-                var newLocation = res.headers['Content-Location'].replace('/app_dev.php/v2', '');//TODO: remove the need for .replace(...)
-                client.get({ path: newLocation}).then(function(res) {
-                    resolve(e.mutateResponse(res.entity));
-                }, function(res) {
-                    reject(new statusError(res));
-                });
-            } else {
-                reject(new statusError(res));
-            }
+  var result = client.post({ path: path, entity: data });
+  var e = this;
+  return new Promise(function(resolve, reject) {
+    result.then(function(res) {
+      if (res.status.code === 201) {
+        var newLocation = res.headers['Content-Location'].replace('/app_dev.php/v2', '');//TODO: remove the need for .replace(...)
+        client.get({ path: newLocation}).then(function(res) {
+          resolve(e.mutateResponse(res.entity));
+        }, function(res) {
+          reject(new statusError(res));
         });
+      } else {
+        reject(new statusError(res));
+      }
     });
+  });
 };
 
 /**
@@ -123,16 +131,16 @@ Entity.prototype.createPromiseResult = function(path, data) {
  * @returns {Promise}
  */
 Entity.prototype.deletePromiseResult = function(path) {
-    var result = client.delete({ path: path });
-    return new Promise(function(resolve, reject) {
-        result.then(function(res) {
-            if (res.status.code === 204) {
-                resolve(true);
-            } else {
-                reject(new statusError(res));
-            }
-        });
+  var result = client.delete({ path: path });
+  return new Promise(function(resolve, reject) {
+    result.then(function(res) {
+      if (res.status.code === 204) {
+        resolve(true);
+      } else {
+        reject(new statusError(res));
+      }
     });
+  });
 };
 
 /**
@@ -143,11 +151,28 @@ Entity.prototype.deletePromiseResult = function(path) {
  * @returns {Promise}
  */
 Entity.prototype.get = function(path) {
-    if (typeof this.path === 'undefined') {
-        throw new pathNotSpecifiedError('No path specified for entity');
-    }
+  if (typeof this.path === 'undefined') {
+    throw new pathNotSpecifiedError('No path specified for entity');
+  }
 
-    return this.okPromiseResult(this.path);
+  return this.okPromiseResult(this.path);
+};
+
+/**
+ * Map the id's of the route to any properties that may be on the object.  This
+ * method will be the default and will map the last element of the exploded
+ * string to the id of the object.  Any complex routes will need to be handled
+ * with a prototyped method.
+ *
+ * @param string route
+ *
+ * @returns {SingleEntity}
+ */
+ Entity.prototype.mapRouteIds = function(route) {
+  var routeParts = route.split('/');
+  this.id = routeParts.pop();
+
+  return this;
 };
 
 
