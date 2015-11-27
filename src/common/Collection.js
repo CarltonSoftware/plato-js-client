@@ -4,6 +4,8 @@ var pathNotSpecifiedError = require('./../error/pathNotSpecified');
 function Collection(options) {
   this.page = 1;
   this.limit = 10;
+  this.category = null;
+  this.searchterm = null;
 
   StaticCollection.apply(this, arguments);
 }
@@ -72,7 +74,7 @@ Collection.prototype.fetch = function() {
     limit: this.limit || 10
   };
 
-  return this.okPromiseResult(this.options.path, { page: this.page, limit: this.limit });
+  return this.okPromiseResult(this.options.path, { page: this.page, limit: this.limit, category: this.category, searchterm: this.searchterm });
 };
 
 module.exports = Collection;
