@@ -33,7 +33,7 @@ StaticCollection.prototype = new Entity();
  */
 StaticCollection.prototype.mutateResponse = function(entity) {
     var object, entity, elements;
-    
+
     if (this.discriminator && entity.hasOwnProperty(this.discriminator)) {
         var discr = entity[this.discriminator];
         if (this.discriminatorMap.hasOwnProperty(discr)) {
@@ -63,14 +63,114 @@ StaticCollection.prototype.mutateResponse = function(entity) {
 };
 
 /**
+ * Get by id shortcut
+ *
+ * @param {number} Id
+ *
+ * @returns {Entity}
+ */
+StaticCollection.prototype.getEntityById = function(id) {
+  return _.find(this.collection, function(item) {
+    return item.id === id;
+  });
+};
+
+/**
+ * Get by object by reference
+ *
+ * @param {object} Item
+ *
+ * @returns {Entity}
+ */
+StaticCollection.prototype.getEntity = function(object) {
+  return this.getEntityById(object.id);
+};
+
+/**
  * Forearch shortcut
- * 
+ *
  * @param {Function} callback
- * 
+ *
  * @returns {undefined}
  */
 StaticCollection.prototype.forEach = function(callback) {
-    this.collection.forEach(callback);
+  this.collection.forEach(callback);
+};
+
+/**
+ * Map shortcut
+ *
+ * @param {object} Loop item
+ *
+ * @returns {undefined}
+ */
+StaticCollection.prototype.map = function(callback) {
+  return this.collection.map(callback);
+};
+
+/**
+ * Add an element to collection
+ *
+ * @param {object} Item to add
+ *
+ * @returns {undefined}
+ */
+StaticCollection.prototype.push = function(object) {
+  this.collection.push(object);
+};
+
+/**
+ * Update an element in the collection
+ *
+ * @param {object} Item
+ *
+ * @returns {undefined}
+ */
+StaticCollection.prototype.updateElement = function(object) {
+  this.updateElementById(object.id, object);
+};
+
+/**
+ * Update an element in the collection
+ *
+ * @param {object} Item
+ *
+ * @returns {undefined}
+ */
+StaticCollection.prototype.updateElementById = function(id, object) {
+  for (var i = 0; i < this.collection.length; i++) {
+    if (this.collection[i].id === id) {
+      this.collection[i] = object;
+      continue;
+    }
+  }
+};
+
+/**
+ * Delete element from collection
+ *
+ * @param {object} Loop item
+ *
+ * @returns {undefined}
+ */
+StaticCollection.prototype.deleteElement = function(object) {
+  this.deleteElementById(object.id);
+};
+
+/**
+ * Delete element from collection
+ *
+ * @param {object} Loop item
+ *
+ * @returns {undefined}
+ */
+StaticCollection.prototype.deleteElementById = function(id) {
+  for (var i = 0; i < this.collection.length; i++) {
+    if (this.collection[i].id === id) {
+      this.collection.splice(i, 1);
+      continue;
+    }
+  }
 };
 
 module.exports = StaticCollection;
