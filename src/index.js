@@ -33,5 +33,8 @@ module.exports.common.NoteType = require('./common/NoteType');
 /***** Tabs user *****/
 module.exports.common.TabsUser = require('./common/TabsUser');
 
+/***** Search *****/
+module.exports.common.Search = require('./common/Search');
+
 module.exports.staticCollection = require('./common/StaticCollection');
 module.exports.collection = require('./common/Collection');
