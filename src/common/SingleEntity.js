@@ -8,7 +8,11 @@ var _ = require('underscore');
  *
  * @returns {SingleEntity}
  */
-function SingleEntity() {};
+function SingleEntity() {
+  this.isDefined = function(val) {
+    return typeof val !== 'undefined';
+  }
+};
 
 /**
  * Inherit methods from Entity object
@@ -49,7 +53,7 @@ SingleEntity.prototype.update = function() {
 
   return this.updatePromiseResult(
     this.path + '/' + this.id,
-    _.pick(this.toUpdateArray(), _.identity)
+    _.pick(this.toUpdateArray(), this.isDefined)
   );
 };
 
@@ -65,7 +69,7 @@ SingleEntity.prototype.create = function() {
 
   return this.createPromiseResult(
     this.createPath,
-    _.pick(this.toCreateArray(), _.identity)
+    _.pick(this.toCreateArray(), this.isDefined)
   );
 };
 
