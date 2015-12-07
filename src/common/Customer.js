@@ -23,4 +23,15 @@ Customer.prototype.toArray = function() {
     };
 };
 
+/* Hardcode language for now */
+Customer.prototype.createArray = function() {
+    return {
+        title: this.title,
+        firstname: this.firstname,
+        surname: this.surname,
+        salutation: this.salutation,
+        languagecode: 'EN'
+    };
+};
+
 module.exports = Customer;
