@@ -17,6 +17,7 @@ module.exports.common.ContactEntity = require('./common/ContactEntity');
 module.exports.common.ContactType = require('./common/ContactType');
 module.exports.common.ContactMethodType = require('./common/ContactMethodType');
 module.exports.common.ContactMethodSubType = require('./common/ContactMethodSubType');
+module.exports.common.Source = require('./common/Source');
 
 /***** Brand Related Objects *****/
 module.exports.common.BookingBrand = require('./common/BookingBrand');
