@@ -7,6 +7,7 @@ var SingleEntity = require('./SingleEntity');
 
 function Customer(id) {
     this.path = 'customer';
+    this.createPath = 'customer';
     this.id = id;
     // this.language = new Language();
     // this.contactdetails = new StaticCollection();
@@ -24,7 +25,7 @@ Customer.prototype.toArray = function() {
 };
 
 /* Hardcode language for now */
-Customer.prototype.createArray = function() {
+Customer.prototype.toCreateArray = function() {
     return {
         title: this.title,
         firstname: this.firstname,

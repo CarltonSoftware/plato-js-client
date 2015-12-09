@@ -66,7 +66,6 @@ SingleEntity.prototype.create = function() {
   if (typeof this.createPath === 'undefined') {
     throw new pathNotSpecifiedError('No createPath specified for entity');
   }
-
   return this.createPromiseResult(
     this.createPath,
     _.pick(this.toCreateArray(), this.isDefined)
