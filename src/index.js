@@ -2,9 +2,9 @@ module.exports.client = require('./common/platoJsClient');
 
 module.exports.common = {};
 module.exports.common.Encoding = require('./common/Encoding');
-module.exports.common.unit = require('./common/Unit');
-module.exports.common.attribute = require('./common/Attribute');
-module.exports.common.vatband = require('./common/Vatband');
+module.exports.common.Unit = require('./common/Unit');
+module.exports.common.Attribute = require('./common/Attribute');
+module.exports.common.Vatband = require('./common/Vatband');
 module.exports.common.Contact = require('./common/Contact');
 module.exports.common.Agency = require('./common/Agency');
 module.exports.common.AgencyCollection = require('./common/AgencyCollection');
@@ -22,16 +22,16 @@ module.exports.common.ActorAddress = require('./common/ActorAddress');
 module.exports.common.ActorContactDetailOther = require('./common/ActorContactDetailOther');
 
 /***** Customer Releated Objects *****/
-module.exports.common.customer = require('./common/Customer');
-module.exports.common.customerAddress = require('./common/CustomerAddress');
-module.exports.common.customers = require('./common/Customers');
-module.exports.common.customerContactDetailOther = require('./common/CustomerContactDetailOther');
+module.exports.common.Customer = require('./common/Customer');
+module.exports.common.CustomerAddress = require('./common/CustomerAddress');
+module.exports.common.Customers = require('./common/Customers');
+module.exports.common.CustomerContactDetailOther = require('./common/CustomerContactDetailOther');
 
 /***** Property Related Objects *****/
-module.exports.common.property = require('./common/Property');
-module.exports.common.properties = require('./common/Properties');
-module.exports.common.propertyOwner = require('./common/PropertyOwner');
-module.exports.common.propertyBooking = require('./common/PropertyBooking');
+module.exports.common.Property = require('./common/Property');
+module.exports.common.Properties = require('./common/Properties');
+module.exports.common.PropertyOwner = require('./common/PropertyOwner');
+module.exports.common.PropertyBooking = require('./common/PropertyBooking');
 
 /***** Brand Related Objects *****/
 module.exports.common.BookingBrand = require('./common/BookingBrand');
@@ -51,5 +51,5 @@ module.exports.common.TabsUser = require('./common/TabsUser');
 /***** Search *****/
 module.exports.common.Search = require('./common/Search');
 
-module.exports.staticCollection = require('./common/StaticCollection');
-module.exports.collection = require('./common/Collection');
+module.exports.StaticCollection = require('./common/StaticCollection');
+module.exports.Collection = require('./common/Collection');
