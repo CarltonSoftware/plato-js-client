@@ -97,15 +97,42 @@ Entity.prototype.updatePromiseResult = function(path, data) {
 };
 
 /**
- * Return a promised result for an update
+ * Return a promised result for a create
  *
  * @param {String} path Path to request
- * @param {Object} data Data to update
+ * @param {Object} data Data to create
  *
  * @returns {Promise}
  */
 Entity.prototype.createPromiseResult = function(path, data) {
   var result = client.post({ path: path, entity: data });
+  var e = this;
+  return new Promise(function(resolve, reject) {
+    result.then(function(res) {
+      if (res.status.code === 201) {
+        var newLocation = res.headers['Content-Location'].replace('/app_dev.php/v2', '');//TODO: remove the need for .replace(...)
+        client.get({ path: newLocation}).then(function(res) {
+          resolve(e.mutateResponse(res.entity));
+        }, function(res) {
+          reject(new statusError(res));
+        });
+      } else {
+        reject(new statusError(res));
+      }
+    });
+  });
+};
+
+/**
+ * Return a promised result for an upload
+ *
+ * @param {String} path Path to request
+ * @param {Object} data Data to upload
+ *
+ * @returns {Promise}
+ */
+Entity.prototype.uploadPromiseResult = function(path, data) {
+  var result = client.upload({ path: path, entity: data });
   var e = this;
   return new Promise(function(resolve, reject) {
     result.then(function(res) {
