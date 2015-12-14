@@ -1,3 +1,5 @@
+/* use ActorContactDetailOther */
+
 var SingleEntity = require('./SingleEntity');
 
 function CustomerContactDetailOther(cust_id, contact_id) {
