@@ -33,6 +33,7 @@ module.exports.common.Property = require('./common/Property');
 module.exports.common.Properties = require('./common/Properties');
 module.exports.common.PropertyOwner = require('./common/PropertyOwner');
 module.exports.common.PropertyBooking = require('./common/PropertyBooking');
+module.exports.common.PropertyDescription = require('./common/PropertyDescription');
 
 /***** Brand Related Objects *****/
 module.exports.common.BookingBrand = require('./common/BookingBrand');
