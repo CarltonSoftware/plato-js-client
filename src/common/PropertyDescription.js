@@ -16,6 +16,7 @@ PropertyDescription.prototype.toArray = function() {
 };
 
 PropertyDescription.prototype.toUpdateArray = function() {
+  console.log(this);
   return {
     //TODO: Add in the fields necessary to update a PropertyDescription
     descriptiontype: this.descriptiontype,
