@@ -4,7 +4,7 @@ function Document(id) {
   this.path = 'document';
   this.createPath = 'document';
   this.id = id;
- }
+}
 Document.prototype = new SingleEntity();
 Document.prototype.toArray = function() {
   return {
