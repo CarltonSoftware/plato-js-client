@@ -138,6 +138,20 @@ var platoJsClient = (function () {
         };
 
         /**
+         * Upload method
+         *
+         * @param {Object} req  Request object
+         *
+         * @returns {Response}
+         */
+        this.upload = function(req) {
+            req.headers = {
+                "Content-Type": "multipart/form-data"
+            };
+            return request(req, 'POST');
+        };
+
+        /**
          * Put method
          *
          * @param {Object} req Request object

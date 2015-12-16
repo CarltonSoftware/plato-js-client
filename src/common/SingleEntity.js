@@ -73,6 +73,22 @@ SingleEntity.prototype.create = function() {
 };
 
 /**
+ * Upload request method
+ *
+ * @returns {Promise}
+ */
+SingleEntity.prototype.upload = function() {
+  if (typeof this.createPath === 'undefined') {
+    throw new pathNotSpecifiedError('No createPath specified for entity');
+  }
+
+  return this.uploadPromiseResult(
+    this.createPath,
+    this.toFormData()
+  );
+};
+
+/**
  * Delete request method
  *
  * @returns {Promise}
@@ -105,6 +121,16 @@ SingleEntity.prototype.toArray = function() {
  */
 SingleEntity.prototype.toCreateArray = function() {
   return this.toArray();
+};
+
+/**
+ * Return the FormData representation
+ *
+ * @returns {Entity.prototype.toArray.EntityAnonym$0}
+ */
+SingleEntity.prototype.toFormData = function() {
+  var formData = new FormData();
+  return formData;
 };
 
 /**

@@ -13,7 +13,9 @@ module.exports.common.ContactEntity = require('./common/ContactEntity');
 module.exports.common.ContactType = require('./common/ContactType');
 module.exports.common.ContactMethodType = require('./common/ContactMethodType');
 module.exports.common.ContactMethodSubType = require('./common/ContactMethodSubType');
+module.exports.common.Document = require('./common/Document');
 module.exports.common.Source = require('./common/Source');
+module.exports.common.Setting = require('./common/Setting');
 
 /***** Actor Related Objects *****/
 module.exports.common.Actor = require('./common/Actor');
@@ -27,6 +29,7 @@ module.exports.common.Customer = require('./common/Customer');
 module.exports.common.CustomerAddress = require('./common/CustomerAddress');
 module.exports.common.Customers = require('./common/Customers');
 module.exports.common.CustomerContactDetailOther = require('./common/CustomerContactDetailOther');
+//module.exports.common.CustomerDocument = require('./common/CustomerDocument');
 
 /***** Property Related Objects *****/
 module.exports.common.Property = require('./common/Property');
@@ -34,6 +37,7 @@ module.exports.common.Properties = require('./common/Properties');
 module.exports.common.PropertyOwner = require('./common/PropertyOwner');
 module.exports.common.PropertyBooking = require('./common/PropertyBooking');
 module.exports.common.PropertyNote = require('./common/PropertyNote');
+module.exports.common.PropertyDescription = require('./common/PropertyDescription');
 
 /***** Brand Related Objects *****/
 module.exports.common.BookingBrand = require('./common/BookingBrand');

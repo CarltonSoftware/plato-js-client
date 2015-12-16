@@ -2,7 +2,6 @@ var client = require('./common/platoJsClient').getInstance('http://docker.carlto
 var platoJsClient = require('./index');
 var Encoding = platoJsClient.common.Encoding;
 var Collection = platoJsClient.Collection;
-var coll = new Collection({path: 'encoding', object: Encoding });
 
 coll.fetch().then(function(col) {
   console.log(col.collection[0]);
