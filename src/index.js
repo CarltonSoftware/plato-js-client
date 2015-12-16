@@ -20,6 +20,7 @@ module.exports.common.Actor = require('./common/Actor');
 module.exports.common.Actors = require('./common/Actors');
 module.exports.common.ActorAddress = require('./common/ActorAddress');
 module.exports.common.ActorContactDetailOther = require('./common/ActorContactDetailOther');
+module.exports.common.ActorNote = require('./common/ActorNote');
 
 /***** Customer Releated Objects *****/
 module.exports.common.Customer = require('./common/Customer');
@@ -32,6 +33,7 @@ module.exports.common.Property = require('./common/Property');
 module.exports.common.Properties = require('./common/Properties');
 module.exports.common.PropertyOwner = require('./common/PropertyOwner');
 module.exports.common.PropertyBooking = require('./common/PropertyBooking');
+module.exports.common.PropertyNote = require('./common/PropertyNote');
 
 /***** Brand Related Objects *****/
 module.exports.common.BookingBrand = require('./common/BookingBrand');
@@ -42,7 +44,6 @@ module.exports.common.Branding = require('./common/Branding');
 /***** Note Related Objects *****/
 module.exports.common.Note = require('./common/Note');
 module.exports.common.NoteText = require('./common/NoteText');
-module.exports.common.ActorNote = require('./common/ActorNote');
 module.exports.common.NoteType = require('./common/NoteType');
 
 /***** Tabs user *****/
