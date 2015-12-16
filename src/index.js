@@ -28,7 +28,7 @@ module.exports.common.Customer = require('./common/Customer');
 module.exports.common.CustomerAddress = require('./common/CustomerAddress');
 module.exports.common.Customers = require('./common/Customers');
 module.exports.common.CustomerContactDetailOther = require('./common/CustomerContactDetailOther');
-module.exports.common.CustomerDocument = require('./common/CustomerDocument');
+//module.exports.common.CustomerDocument = require('./common/CustomerDocument');
 
 /***** Property Related Objects *****/
 module.exports.common.Property = require('./common/Property');
