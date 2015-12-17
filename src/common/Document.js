@@ -1,9 +1,11 @@
 var SingleEntity = require('./SingleEntity');
+var Mimetype = require('./Mimetype');
 
 function Document(id) {
   this.path = 'document';
   this.createPath = 'document';
   this.id = id;
+  this.mimetype = new Mimetype;
 }
 Document.prototype = new SingleEntity();
 Document.prototype.toArray = function() {
