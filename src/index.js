@@ -4,6 +4,7 @@ module.exports.common = {};
 module.exports.common.Encoding = require('./common/Encoding');
 module.exports.common.Unit = require('./common/Unit');
 module.exports.common.Attribute = require('./common/Attribute');
+module.exports.common.AttributeGroup = require('./common/AttributeGroup');
 module.exports.common.Vatband = require('./common/Vatband');
 module.exports.common.Contact = require('./common/Contact');
 module.exports.common.Agency = require('./common/Agency');
@@ -16,6 +17,7 @@ module.exports.common.ContactMethodSubType = require('./common/ContactMethodSubT
 module.exports.common.Document = require('./common/Document');
 module.exports.common.Mimetype = require('./common/Mimetype');
 module.exports.common.Source = require('./common/Source');
+module.exports.common.SourceCategory = require('./common/SourceCategory');
 module.exports.common.Setting = require('./common/Setting');
 
 /***** Actor Related Objects *****/
