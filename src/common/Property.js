@@ -1,10 +1,14 @@
 var SingleEntity = require('./SingleEntity');
+var Collection = require('./Collection');
+var Note = require('./Note');
+var Branding = require('./Branding');
 
 function Property(id) {
     this.path = 'property';
     this.createPath = 'property';
     this.id = id;
-
+    // this.notes = new Collection({object: Note});
+    this.brandings = new Collection({object: Branding});
 }
 Property.prototype = new SingleEntity();
 Property.prototype.toArray = function() {

@@ -15,6 +15,7 @@ module.exports.common.ContactType = require('./common/ContactType');
 module.exports.common.ContactMethodType = require('./common/ContactMethodType');
 module.exports.common.ContactMethodSubType = require('./common/ContactMethodSubType');
 module.exports.common.Document = require('./common/Document');
+module.exports.common.Mimetype = require('./common/Mimetype');
 module.exports.common.Source = require('./common/Source');
 module.exports.common.Setting = require('./common/Setting');
 
@@ -23,19 +24,21 @@ module.exports.common.Actor = require('./common/Actor');
 module.exports.common.Actors = require('./common/Actors');
 module.exports.common.ActorAddress = require('./common/ActorAddress');
 module.exports.common.ActorContactDetailOther = require('./common/ActorContactDetailOther');
+module.exports.common.ActorNote = require('./common/ActorNote');
 
 /***** Customer Releated Objects *****/
 module.exports.common.Customer = require('./common/Customer');
 module.exports.common.CustomerAddress = require('./common/CustomerAddress');
 module.exports.common.Customers = require('./common/Customers');
 module.exports.common.CustomerContactDetailOther = require('./common/CustomerContactDetailOther');
-//module.exports.common.CustomerDocument = require('./common/CustomerDocument');
+module.exports.common.CustomerDocument = require('./common/CustomerDocument');
 
 /***** Property Related Objects *****/
 module.exports.common.Property = require('./common/Property');
 module.exports.common.Properties = require('./common/Properties');
 module.exports.common.PropertyOwner = require('./common/PropertyOwner');
 module.exports.common.PropertyBooking = require('./common/PropertyBooking');
+module.exports.common.PropertyNote = require('./common/PropertyNote');
 module.exports.common.PropertyDescription = require('./common/PropertyDescription');
 
 /***** Brand Related Objects *****/
@@ -47,7 +50,6 @@ module.exports.common.Branding = require('./common/Branding');
 /***** Note Related Objects *****/
 module.exports.common.Note = require('./common/Note');
 module.exports.common.NoteText = require('./common/NoteText');
-module.exports.common.ActorNote = require('./common/ActorNote');
 module.exports.common.NoteType = require('./common/NoteType');
 
 /***** Tabs user *****/
