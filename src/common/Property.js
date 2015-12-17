@@ -1,13 +1,13 @@
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
-var Note = require('./Note');
+var PropertyNote = require('./PropertyNote');
 var Branding = require('./Branding');
 
 function Property(id) {
     this.path = 'property';
     this.createPath = 'property';
     this.id = id;
-    // this.notes = new Collection({object: Note});
+    this.notes = new Collection({object: PropertyNote});
     this.brandings = new Collection({object: Branding});
 }
 Property.prototype = new SingleEntity();

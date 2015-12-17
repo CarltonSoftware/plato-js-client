@@ -6,8 +6,8 @@ function MarketingBrand(id) {
     this.path = 'marketingbrand';
     this.createPath = 'marketingbrand';
     this.id = id;
-    this.agency = new Agency();
-    this.defaultbookingbrand = new BookingBrand();
+    this.agency = new Agency;
+    this.defaultbookingbrand = new BookingBrand;
 }
 MarketingBrand.prototype = new SingleEntity();
 

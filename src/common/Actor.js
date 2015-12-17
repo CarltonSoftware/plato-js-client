@@ -1,9 +1,15 @@
 var SingleEntity = require('./SingleEntity');
+var Collection = require('./Collection');
+var CustomerDocument = require('./CustomerDocument');
+var Note = require('./Note');
 
 function Actor(actor, id) {
     this.path = actor;
     this.createPath = actor;
     this.id = id;
+    this.notes = new Collection({object: Note});
+    this.documents = new Collection({object: CustomerDocument});
+    this.duplicates = new Collection({object: Actor});
 }
 Actor.prototype = new SingleEntity();
 Actor.prototype.toArray = function() {
