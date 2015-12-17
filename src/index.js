@@ -16,6 +16,7 @@ module.exports.common.ContactMethodSubType = require('./common/ContactMethodSubT
 module.exports.common.Document = require('./common/Document');
 module.exports.common.Mimetype = require('./common/Mimetype');
 module.exports.common.Source = require('./common/Source');
+module.exports.common.SourceCategory = require('./common/SourceCategory');
 module.exports.common.Setting = require('./common/Setting');
 
 /***** Actor Related Objects *****/
