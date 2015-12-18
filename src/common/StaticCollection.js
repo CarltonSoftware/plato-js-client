@@ -32,7 +32,7 @@ StaticCollection.prototype = new Entity();
  * @returns {Entity.prototype}
  */
 StaticCollection.prototype.mutateResponse = function(entity) {
-    var object, entity, elements;
+    var object, elements;
 
     if (this.discriminator && entity.hasOwnProperty(this.discriminator)) {
         var discr = entity[this.discriminator];
@@ -55,9 +55,13 @@ StaticCollection.prototype.mutateResponse = function(entity) {
         elements = entity;
     }
 
-    this.collection = _.map(elements, function(element) {
+    this.collection = elements.map(function(element) {
         var entity = new object();
-        return entity.mutateEntity(element);
+        if (typeof element === 'string') {
+            return entity.mapRouteIds(element);
+        } else {
+            return entity.mutateEntity(element);
+        }
     });
     return this;
 };

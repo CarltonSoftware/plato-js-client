@@ -7,9 +7,9 @@ function Actor(actor, id) {
     this.path = actor;
     this.createPath = actor;
     this.id = id;
-    this.notes = new Collection({object: Note});
+    this.notes = new Collection({object: ActorNote});
     this.documents = new Collection({object: CustomerDocument});
-    this.duplicates = new Collection({object: Actor});
+    this.duplicates = new Collection({object: Customer});
 }
 Actor.prototype = new SingleEntity();
 Actor.prototype.toArray = function() {

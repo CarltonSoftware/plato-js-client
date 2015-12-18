@@ -1,18 +1,17 @@
 var SingleEntity = require('./SingleEntity');
-// var StaticCollection = require('./StaticCollection');
+var Collection = require('./Collection');
 // var Language = require('./Language');
 // var CustomerContactDetailOther = require('./CustomerContactDetailOther');
-// var CustomerContactDetails = require('./CustomerContactDetails');
-// var Note = require('./ActorNote');
+var CustomerDocument = require('./CustomerDocument');
+var Note = require('./Note');
 
 function Customer(id) {
     this.path = 'customer';
     this.createPath = 'customer';
     this.id = id;
-    // this.language = new Language();
-    // this.contactdetails = new StaticCollection();
-    // this.contactdetails = new StaticCollection({ object: CustomerContactDetailOther });
-    // this.notes = new StaticCollection({ object: Note });
+    this.notes = new Collection({object: Note});
+    this.documents = new Collection({object: CustomerDocument});
+    this.duplicates = new Collection({object: Customer});
 }
 Customer.prototype = new SingleEntity();
 Customer.prototype.toArray = function() {
