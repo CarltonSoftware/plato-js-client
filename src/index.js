@@ -38,6 +38,7 @@ module.exports.common.Customers = require('./common/Customers');
 /***** Property Related Objects *****/
 module.exports.common.Property = require('./common/Property');
 module.exports.common.Properties = require('./common/Properties');
+module.exports.common.PropertyAttribute = require('./common/PropertyAttribute');
 module.exports.common.PropertyOwner = require('./common/PropertyOwner');
 module.exports.common.PropertyBooking = require('./common/PropertyBooking');
 module.exports.common.PropertyNote = require('./common/PropertyNote');
