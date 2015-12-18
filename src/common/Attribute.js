@@ -10,6 +10,69 @@ function Attribute(id) {
     this.group = new AttributeGroup();
     this.unit = new Unit();
     this.options = new Collection({ object: Option });
+
+    this.toArray = function() {
+      if (this.type == 'boolean') {
+        return {
+          type: 'boolean',
+          code: this.code,
+          name: this.name,
+          description: this.description,
+          group: this.group,
+          usedinavailabilitysearch: this.usedinavailabilitysearch,
+          baseattribute: this.baseattribute,
+          defaultvalue: this.defaultvalue
+        }
+      }
+
+      if (this.type == 'hybrid') {
+        return {
+          type: 'hybrid',
+          code: this.code,
+          name: this.name,
+          description: this.description,
+          group: this.group,
+          usedinavailabilitysearch: this.usedinavailabilitysearch,
+          baseattribute: this.baseattribute,
+          operator: this.operator,
+          defaultbooleanvalue: this.defaultbooleanvalue,
+          defaultnumbervalue: this.defaultnumbervalue,
+          minimumvalue: this.minimumvalue,
+          maximumvalue: this.maximumvalue,
+          unit: this.unit
+        }
+      }
+
+      if (this.type == 'number') {
+        return {
+          type: 'number',
+          code: this.code,
+          name: this.name,
+          description: this.description,
+          group: this.group,
+          usedinavailabilitysearch: this.usedinavailabilitysearch,
+          baseattribute: this.baseattribute,
+          operator: this.operator,
+          defaultvalue: this.defaultvalue,
+          minimumvalue: this.minimumvalue,
+          maximumvalue: this.maximumvalue,
+          unit: this.unit
+        }
+      }
+
+      if (this.type == 'string') {
+        return {
+          type: 'string',
+          code: this.code,
+          name: this.name,
+          description: this.description,
+          group: this.group,
+          usedinavailabilitysearch: this.usedinavailabilitysearch,
+          baseattribute: this.baseattribute,
+          defaultvalue: this.defaultvalue
+        }
+      }
+    };
 }
 Attribute.prototype = new SingleEntity();
 

@@ -2,12 +2,16 @@ var SingleEntity = require('./SingleEntity');
 
 function Unit(id) {
     this.path = 'unit';
+    this.createPath = 'unit';
     this.id = id;
-    
-    // Example function
-//    this.calc = function() {
-//        return this.id * 5;
-//    };
+
+    this.toArray = function() {
+      return {
+        name: this.name,
+        description: this.description,
+        decimalplaces: this.decimalplaces
+      }
+    }
 }
 Unit.prototype = new SingleEntity();
 
