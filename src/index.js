@@ -4,6 +4,7 @@ module.exports.common = {};
 module.exports.common.Encoding = require('./common/Encoding');
 module.exports.common.Unit = require('./common/Unit');
 module.exports.common.Attribute = require('./common/Attribute');
+module.exports.common.AttributeGroup = require('./common/AttributeGroup');
 module.exports.common.Vatband = require('./common/Vatband');
 module.exports.common.Contact = require('./common/Contact');
 module.exports.common.Agency = require('./common/Agency');
@@ -29,9 +30,10 @@ module.exports.common.ActorNote = require('./common/ActorNote');
 /***** Customer Releated Objects *****/
 module.exports.common.Customer = require('./common/Customer');
 module.exports.common.CustomerAddress = require('./common/CustomerAddress');
-module.exports.common.Customers = require('./common/Customers');
+module.exports.common.CustomerBooking = require('./common/CustomerBooking');
 module.exports.common.CustomerContactDetailOther = require('./common/CustomerContactDetailOther');
 module.exports.common.CustomerDocument = require('./common/CustomerDocument');
+module.exports.common.Customers = require('./common/Customers');
 
 /***** Property Related Objects *****/
 module.exports.common.Property = require('./common/Property');
