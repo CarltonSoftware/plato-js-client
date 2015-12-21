@@ -2,7 +2,7 @@ var SingleEntity = require('./SingleEntity');
 var Attribute = require('./Attribute');
 
 function PropertyAttribute(propertyId, id) {
-    this.path = propertyid + '/attribute/' + id;
+    this.path = propertyId + '/attribute/' + id;
     this.createPath = this.path;
     this.id = id;
     this.attribute = new Attribute();
