@@ -32,7 +32,7 @@ StaticCollection.prototype = new Entity();
  * @returns {Entity.prototype}
  */
 StaticCollection.prototype.mutateResponse = function(entity) {
-    var object, entity, elements;
+    var object, elements;
 
     if (this.discriminator && entity.hasOwnProperty(this.discriminator)) {
         var discr = entity[this.discriminator];
@@ -55,9 +55,13 @@ StaticCollection.prototype.mutateResponse = function(entity) {
         elements = entity;
     }
 
-    this.collection = _.map(elements, function(element) {
+    this.collection = elements.map(function(element) {
         var entity = new object();
-        return entity.mutateEntity(element);
+        if (typeof element === 'string') {
+            return entity.mapRouteIds(element);
+        } else {
+            return entity.mutateEntity(element);
+        }
     });
     return this;
 };
@@ -87,25 +91,39 @@ StaticCollection.prototype.getEntity = function(object) {
 };
 
 /**
- * Forearch shortcut
+ * forEach shortcut
  *
- * @param {Function} callback
+ * @param {function} callback
+ * @param {*} [thisArg] - Value to use as this
  *
  * @returns {undefined}
  */
-StaticCollection.prototype.forEach = function(callback) {
-  this.collection.forEach(callback);
+StaticCollection.prototype.forEach = function(callback, thisArg) {
+  this.collection.forEach(callback, thisArg);
 };
 
 /**
  * Map shortcut
  *
- * @param {object} Loop item
+ * @param {function} callback
+ * @param {*} [thisArg] - Value to use as this
  *
- * @returns {undefined}
+ * @returns {Array}
  */
-StaticCollection.prototype.map = function(callback) {
-  return this.collection.map(callback);
+StaticCollection.prototype.map = function(callback, thisArg) {
+  return this.collection.map(callback, thisArg);
+};
+
+/**
+ * Filter shortcut
+ *
+ * @param {function} callback - Test function
+ * @param {*} [thisArg] - Value to use as this
+ *
+ * @returns {Array}
+ */
+StaticCollection.prototype.filter = function(callback, thisArg) {
+  return this.collection.filter(callback, thisArg);
 };
 
 /**
