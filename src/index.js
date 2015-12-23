@@ -15,6 +15,7 @@ module.exports.common.ContactType = require('./common/ContactType');
 module.exports.common.ContactMethodType = require('./common/ContactMethodType');
 module.exports.common.ContactMethodSubType = require('./common/ContactMethodSubType');
 module.exports.common.Document = require('./common/Document');
+module.exports.common.File = require('./common/File');
 module.exports.common.Mimetype = require('./common/Mimetype');
 module.exports.common.Source = require('./common/Source');
 module.exports.common.SourceCategory = require('./common/SourceCategory');
