@@ -12,7 +12,8 @@ function Property(id) {
     this.notes = new Collection({object: PropertyNote});
     this.documents = new Collection({
         object: PropertyDocument,
-        path: this.path + '/' + id + '/' + 'document'
+        path: 'document',
+        parent: this
     });
 }
 Property.prototype = new SingleEntity();

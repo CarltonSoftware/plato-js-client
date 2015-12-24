@@ -69,7 +69,13 @@ Collection.prototype.fetch = function() {
     throw new pathNotSpecifiedError('No path specified for entity');
   }
 
-  return this.okPromiseResult(this.options.path, { page: this.page, limit: this.limit, category: this.category, searchterm: this.searchterm });
+  var path = this.options.path;
+
+  if (typeof this.options.parent !== 'undefined') {
+    path = this.options.parent.path + '/' + this.options.parent.id + '/' + path;
+  }
+
+  return this.okPromiseResult(path, { page: this.page, limit: this.limit, category: this.category, searchterm: this.searchterm });
 };
 
 module.exports = Collection;
