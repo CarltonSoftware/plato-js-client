@@ -1,10 +1,12 @@
 var SingleEntity = require('./SingleEntity');
 var Mimetype = require('./Mimetype');
+var File = require('./File');
 
 function Document(id) {
   this.path = 'document';
   this.createPath = 'document';
   this.id = id;
+  this.file = new File;
   this.mimetype = new Mimetype;
 }
 Document.prototype = new SingleEntity();

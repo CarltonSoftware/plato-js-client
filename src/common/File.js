@@ -17,7 +17,7 @@ File.prototype.okPromiseResult = function(path, params) {
       if (this.readyState === 4) {
         self.data = this.response;
         self.url = URL.createObjectURL(this.response);
-        resolve(this.response);
+        resolve(self);
       }
     };
     request.send();
