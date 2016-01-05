@@ -31,7 +31,6 @@ module.exports.common.ActorNote = require('./common/ActorNote');
 /***** Customer Releated Objects *****/
 module.exports.common.Customer = require('./common/Customer');
 module.exports.common.CustomerAddress = require('./common/CustomerAddress');
-module.exports.common.CustomerBooking = require('./common/CustomerBooking');
 module.exports.common.CustomerContactDetailOther = require('./common/CustomerContactDetailOther');
 module.exports.common.CustomerDocument = require('./common/CustomerDocument');
 module.exports.common.Customers = require('./common/Customers');
@@ -43,9 +42,12 @@ module.exports.common.Property = require('./common/Property');
 module.exports.common.PropertyCleaner = require('./common/PropertyCleaner');
 module.exports.common.PropertyKeyholder = require('./common/PropertyKeyholder');
 module.exports.common.PropertyOwner = require('./common/PropertyOwner');
-module.exports.common.PropertyBooking = require('./common/PropertyBooking');
 module.exports.common.PropertyNote = require('./common/PropertyNote');
 module.exports.common.PropertyDescription = require('./common/PropertyDescription');
+
+/***** Booking Related Objects *****/
+module.exports.common.Booking = require('./common/Booking');
+module.exports.common.BookingCustomer = require('./common/BookingCustomer');
 
 /***** Brand Related Objects *****/
 module.exports.common.BookingBrand = require('./common/BookingBrand');
