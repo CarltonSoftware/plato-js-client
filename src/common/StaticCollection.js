@@ -215,7 +215,7 @@ StaticCollection.prototype.orderBy = function(field, order) {
   var compareFunction = function(a, b) {
     if (a[field] === b[field]) {
       return 0;
-    } else if (a[field] < b[field]) {
+    } else if (a[field] > b[field]) {
       return 1;
     } else {
       return -1;
@@ -223,11 +223,11 @@ StaticCollection.prototype.orderBy = function(field, order) {
   };
 
   if (order === 'desc') {
-    return this.sort(compareFunction);
-  } else {
     return this.sort(function(a, b) {
       return compareFunction(b, a);
     });
+  } else {
+    return this.sort(compareFunction);
   }
 };
 
