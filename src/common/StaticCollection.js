@@ -191,4 +191,44 @@ StaticCollection.prototype.deleteElementById = function(id) {
   }
 };
 
+/**
+ * Sort the entities currently in the collection using a function
+ *
+ * @param {function} [compareFunction]
+ *
+ * @returns {Collection}
+ */
+StaticCollection.prototype.sort = function(compare) {
+  this.collection.sort(compare);
+  return this;
+}
+
+/**
+ * Sort the entities currently in the collection by a particular field
+ *
+ * @param {string} field - Name of field to order by
+ * @param {string} [order] - 'asc' (default) or 'desc'
+ *
+ * @returns {Collection}
+ */
+StaticCollection.prototype.orderBy = function(field, order) {
+  var compareFunction = function(a, b) {
+    if (a[field] === b[field]) {
+      return 0;
+    } else if (a[field] < b[field]) {
+      return 1;
+    } else {
+      return -1;
+    }
+  };
+
+  if (order === 'desc') {
+    return this.sort(compareFunction);
+  } else {
+    return this.sort(function(a, b) {
+      return compareFunction(b, a);
+    });
+  }
+};
+
 module.exports = StaticCollection;
