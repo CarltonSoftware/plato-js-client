@@ -6,10 +6,16 @@ var Unit = require('./Unit');
 
 function Attribute(id) {
     this.path = 'attribute';
+    this.createPath = this.path;
     this.id = id;
     this.group = new AttributeGroup();
     this.unit = new Unit();
     this.options = new Collection({ object: Option });
+    this.baseattribute = false;
+
+    this.toCreateArray = function() {
+      return this.toArray();
+    }
 
     this.toArray = function() {
       if (this.type == 'boolean') {
@@ -35,7 +41,6 @@ function Attribute(id) {
           usedinavailabilitysearch: this.usedinavailabilitysearch,
           baseattribute: this.baseattribute,
           operator: this.operator,
-          defaultbooleanvalue: this.defaultbooleanvalue,
           defaultnumbervalue: this.defaultnumbervalue,
           minimumvalue: this.minimumvalue,
           maximumvalue: this.maximumvalue,

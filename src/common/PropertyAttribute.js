@@ -2,7 +2,7 @@ var SingleEntity = require('./SingleEntity');
 var Attribute = require('./Attribute');
 
 function PropertyAttribute(propertyId, id) {
-    this.path = propertyId + '/attribute/' + id;
+    this.path = 'property/' + propertyId + '/attribute';
     this.createPath = this.path;
     this.id = id;
     this.attribute = new Attribute();
@@ -21,7 +21,7 @@ PropertyAttribute.prototype.toUpdateArray = function() {
   return {
     attributeid: this.attribute.id,
     value: this.value,
-    unit: 'metre' //TODO: change me to work
+    unit: this.attribute.unit.name
   };
 };
 

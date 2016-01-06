@@ -1,6 +1,7 @@
 var client = require('./platoJsClient').getInstance();
 var pathNotSpecifiedError = require('./../error/pathNotSpecified');
 var statusError = require('./../error/statusError');
+var badRequestError = require('./../error/badRequestError');
 var Promise = require('es6-promise').Promise;
 
 /**
@@ -90,7 +91,8 @@ Entity.prototype.updatePromiseResult = function(path, data) {
       if (res.status.code === 204) {
         resolve(e);
       } else {
-        reject(new statusError(res));
+        console.log(res);
+        reject(Entity.prototype.handleError(res));
       }
     });
   });
@@ -201,6 +203,15 @@ Entity.prototype.get = function(path) {
 
   return this;
 };
+
+Entity.prototype.handleError = function(res) {
+  //TODO: At the moment the API sends a 404 status code for client errors.  We'd ideally handle these differently from actual 404s.
+  //if (res.status.code == 404) {
+  //  return new statusError(res);
+  //} else if (res.status.code === 400) {
+    return new badRequestError(res);
+  //}
+}
 
 
 module.exports = Entity;
