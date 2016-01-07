@@ -15,6 +15,7 @@ module.exports.common.ContactType = require('./common/ContactType');
 module.exports.common.ContactMethodType = require('./common/ContactMethodType');
 module.exports.common.ContactMethodSubType = require('./common/ContactMethodSubType');
 module.exports.common.Document = require('./common/Document');
+module.exports.common.Image = require('./common/Image');
 module.exports.common.File = require('./common/File');
 module.exports.common.Mimetype = require('./common/Mimetype');
 module.exports.common.SecurityFeature = require('./common/SecurityFeature');
@@ -46,6 +47,7 @@ module.exports.common.PropertyOwner = require('./common/PropertyOwner');
 module.exports.common.PropertyNote = require('./common/PropertyNote');
 module.exports.common.PropertyDescription = require('./common/PropertyDescription');
 module.exports.common.PropertySecurityFeature = require('./common/PropertySecurityFeature');
+module.exports.common.PropertyDocument = require('./common/PropertyDocument');
 
 /***** Booking Related Objects *****/
 module.exports.common.Booking = require('./common/Booking');
