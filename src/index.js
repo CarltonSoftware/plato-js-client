@@ -49,6 +49,7 @@ module.exports.common.PropertySecurityFeature = require('./common/PropertySecuri
 
 /***** Booking Related Objects *****/
 module.exports.common.Booking = require('./common/Booking');
+module.exports.common.Bookings = require('./common/Bookings');
 module.exports.common.BookingCustomer = require('./common/BookingCustomer');
 
 /***** Brand Related Objects *****/
