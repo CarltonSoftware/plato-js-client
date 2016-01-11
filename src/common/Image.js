@@ -23,5 +23,16 @@ Image.prototype.toFormData = function() {
   // formData.append('alt', this.alt);
   return formData;
 };
+Image.prototype.toArray = function() {
+  return {
+    name: this.name,
+    weight: this.weight,
+    description: this.description,
+    private: this.private,
+    height: this.height,
+    width: this.width,
+    alt: this.alt,
+  };
+};
 
 module.exports = Image;
