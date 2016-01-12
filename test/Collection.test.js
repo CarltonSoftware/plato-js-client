@@ -1,31 +1,106 @@
 var assert = require('assert');
+var expect = require('chai').expect;
 var Collection = require('../src/').Collection;
+var Entity = require('../src/').Entity;
+var PropertyOwner = require('../src/').common.PropertyOwner;
 
 describe('Collection', function() {
   var collection = new Collection();
 
-  it('should throw an error when the path is undefined', function() {
-    assert.throws(function() {
-      collection.fetch();
-    }, /No path specified for entity/);
+  describe('#fetch', function() {
+    it('should throw an error when the path is undefined', function() {
+      assert.throws(function() {
+        collection.fetch();
+      }, /No path specified for entity/);
+    });
   });
 
-  collection.collection = [{name: 'Bob'}, {name: 'Alice'}, {name: 'Bob'}];
+  describe('#mutateResponse', function() {
+    var collection = new Collection({object: PropertyOwner});
 
-  it('orderBy should order the collection in ascending order by default', function() {
-    var sortedCollection = collection.orderBy('name');
+    it('should mutate lists of strings into entities', function() { 
+      collection.mutateResponse([
+        '/v2/owner/6',
+        '/v2/owner/7',
+        '/v2/owner/20'
+      ]);
 
-    assert.equal(sortedCollection.collection[0].name, 'Alice');
-    assert.equal(sortedCollection.collection[1].name, 'Bob');
-    assert.equal(sortedCollection.collection[2].name, 'Bob');
+      collection.forEach(function(entity) {
+        expect(entity).to.be.an('object');
+      });
+      expect(collection.collection.pop().id).to.equal(20);
+      expect(collection.collection.pop().id).to.equal(7);
+      expect(collection.collection.pop().id).to.equal(6);
+    });
+
+    it('should mutate lists of objects into entities', function() {
+      var response = [
+        {
+          id: 1,
+          owner: '/v2/customer/6'
+        },
+        {
+          id: 2,
+          owner: '/v2/customer/7'
+        },
+        {
+          id: 3,
+          owner: '/v2/customer/20'
+        }
+      ];
+      collection.mutateResponse(response);
+
+      response.forEach(function(item) {
+        var entity = collection.getEntityById(item.id);
+        expect(entity).to.be.an('object');
+        expect(entity.id).to.equal(item.id);
+      });
+      expect(collection.collection[0].owner.id).to.equal(6);
+      expect(collection.collection[1].owner.id).to.equal(7);
+      expect(collection.collection[2].owner.id).to.equal(20);
+    });
   });
 
-  it('orderBy should order the collection in descending order', function() {
-    var sortedCollection = collection.orderBy('name', 'desc');
+  collection.collection = [
+    {
+      id: 1,
+      name: 'Bob'
+    },
+    {
+      id: 2,
+      name: 'Alice'
+    },
+    {
+      id: 3,
+      name: 'Bob'
+    }
+  ];
 
-    assert.equal(sortedCollection.collection[0].name, 'Bob');
-    assert.equal(sortedCollection.collection[1].name, 'Bob');
-    assert.equal(sortedCollection.collection[2].name, 'Alice');
+  describe('#getEntityById', function() {
+    it('should return the entity with the given id', function() {
+      var entity = collection.getEntityById(2);
+
+      assert.equal(entity.id, 2);
+      assert.equal(entity.name, 'Alice');
+    });
+  });
+
+  describe('#orderBy', function() {
+    it('should order the collection in ascending order by default', function() {
+      var sortedCollection = collection.orderBy('name');
+
+      assert.equal(sortedCollection.collection[0].name, 'Alice');
+      assert.equal(sortedCollection.collection[1].name, 'Bob');
+      assert.equal(sortedCollection.collection[2].name, 'Bob');
+    });
+
+    it('should order the collection in descending order', function() {
+      var sortedCollection = collection.orderBy('name', 'desc');
+
+      assert.equal(sortedCollection.collection[0].name, 'Bob');
+      assert.equal(sortedCollection.collection[1].name, 'Bob');
+      assert.equal(sortedCollection.collection[2].name, 'Alice');
+    });
   });
 
 });
