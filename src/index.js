@@ -72,5 +72,7 @@ module.exports.common.TabsUser = require('./common/TabsUser');
 /***** Search *****/
 module.exports.common.Search = require('./common/Search');
 
+module.exports.common.SalesChannel = require('./common/SalesChannel');
+
 module.exports.StaticCollection = require('./common/StaticCollection');
 module.exports.Collection = require('./common/Collection');

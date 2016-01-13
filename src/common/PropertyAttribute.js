@@ -12,7 +12,7 @@ PropertyAttribute.prototype = new SingleEntity();
 PropertyAttribute.prototype.toArray = function() {
   return {
     //TODO: Add in the fields necessary to create a PropertyAttribute
-    attribute: this.attribute,
+    attributeid: this.attribute.id,
     value: this.value,
   };
 };
