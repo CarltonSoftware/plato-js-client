@@ -34,6 +34,7 @@ SingleEntity.prototype.get = function() {
   if (typeof this.path === 'undefined') {
     throw new pathNotSpecifiedError('No path specified for entity');
   }
+
   return this.okPromiseResult(this.path + '/' + this.id);
 };
 
