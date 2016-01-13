@@ -13,7 +13,9 @@ Document.prototype = new SingleEntity();
 Document.prototype.toArray = function() {
   return {
     name: this.name,
-    description: this.description
+    description: this.description,
+    weight: this.weight,
+    private: this.private
   };
 };
 
