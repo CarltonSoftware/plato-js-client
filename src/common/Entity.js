@@ -182,7 +182,7 @@ Entity.prototype.get = function(path) {
     throw new pathNotSpecifiedError('No path specified for entity');
   }
 
-  return this.okPromiseResult(this.path);
+  return this.okPromiseResult(this.path, this.params);
 };
 
 /**
