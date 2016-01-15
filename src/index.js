@@ -5,7 +5,6 @@ module.exports.common.Encoding = require('./common/Encoding');
 module.exports.common.Unit = require('./common/Unit');
 module.exports.common.Attribute = require('./common/Attribute');
 module.exports.common.AttributeGroup = require('./common/AttributeGroup');
-module.exports.common.Vatband = require('./common/Vatband');
 module.exports.common.Contact = require('./common/Contact');
 module.exports.common.Agency = require('./common/Agency');
 module.exports.common.AgencyCollection = require('./common/AgencyCollection');
@@ -74,6 +73,7 @@ module.exports.common.Search = require('./common/Search');
 
 module.exports.common.Currency = require('./common/Currency');
 module.exports.common.SalesChannel = require('./common/SalesChannel');
+module.exports.common.VatBand = require('./common/VatBand');
 
 module.exports.StaticCollection = require('./common/StaticCollection');
 module.exports.Collection = require('./common/Collection');

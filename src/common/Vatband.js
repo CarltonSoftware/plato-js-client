@@ -1,16 +1,24 @@
 var SingleEntity = require('./SingleEntity');
 
-function Vatband(id) {
+function VatBand(id) {
     this.path = 'vatband';
+    this.createPath = 'vatband';
     this.id = id;
 }
+VatBand.prototype = new SingleEntity();
 
-Vatband.prototype = new SingleEntity();
-Vatband.prototype.toArray = function() {
-    return {
-        id: this.id,
-        vatband: this.vatband
-    };
+VatBand.prototype.toCreateArray = function() {
+  return {
+    //TODO: Add in the fields necessary to create a VatBand
+    vatband: this.vatband,
+  };
 };
 
-module.exports = Vatband;
+VatBand.prototype.toUpdateArray = function() {
+  return {
+    //TODO: Add in the fields necessary to update a VatBand
+    vatband: this.vatband,
+  };
+};
+
+module.exports = VatBand;
