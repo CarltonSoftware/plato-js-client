@@ -74,6 +74,7 @@ module.exports.common.Search = require('./common/Search');
 module.exports.common.Currency = require('./common/Currency');
 module.exports.common.PricingMethod = require('./common/PricingMethod');
 module.exports.common.PricingPeriod = require('./common/PricingPeriod');
+module.exports.common.PriceType = require('./common/PriceType');
 module.exports.common.SalesChannel = require('./common/SalesChannel');
 module.exports.common.VatBand = require('./common/VatBand');
 
