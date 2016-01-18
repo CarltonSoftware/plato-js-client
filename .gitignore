@@ -5,3 +5,4 @@ node_modules/
 test.html
 dist/PlatoClient.js
 dist/bundle.js
+.DS_Store
