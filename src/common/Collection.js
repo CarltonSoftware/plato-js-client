@@ -72,6 +72,7 @@ Collection.prototype.fetch = function() {
   var path = this.options.path;
 
   if (typeof this.options.parent !== 'undefined') {
+    //TODO: possibly need to be recursive to handle chains of parents
     path = this.options.parent.path + '/' + this.options.parent.id + '/' + path;
   }
 
