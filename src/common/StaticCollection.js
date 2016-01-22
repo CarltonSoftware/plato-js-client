@@ -241,4 +241,40 @@ StaticCollection.prototype.orderBy = function(field, order) {
   }
 };
 
+
+/**
+ * Finds entities using a function
+ *
+ * @param  function predicate [description]
+ *
+ * @return array An array of entities that match the given predicate
+ */
+StaticCollection.prototype.find = function(predicate) {
+  return _.find(this.collection, predicate);
+}
+
+
+/**
+ * Finds entities that match the given properties
+ *
+ * @param Object properties eg. { id: 6 }
+ *
+ * @return array An array of entities that match the given properties
+ */
+StaticCollection.prototype.findBy = function(properties) {
+  return _.where(this.collection, properties);
+}
+
+/**
+ * Finds the first entity that match the given properties
+ *
+ * @param Object properties eg. { id: 6 }
+ *
+ * @return Object The first entity that match the given properties
+ */
+StaticCollection.prototype.findOneBy = function(properties) {
+  return _.findWhere(this.collection, properties);
+}
+
+
 module.exports = StaticCollection;

@@ -30,12 +30,12 @@ PriceTypeBranding.prototype.toUpdateArray = function() {
   return {
     //TODO: Add in the fields necessary to update a PriceTypeBranding
     branding: this.branding,
-    saleschannel: this.saleschannel,
+    saleschannel: this.saleschannel.id,
     fromdate: this.fromdate,
     todate: this.todate,
     type: this.type,
     percentage: this.percentage,
-    basepricetype: this.basepricetype
+    pricetypebrandingfixedid: this.basepricetype.id
   };
 };
 
