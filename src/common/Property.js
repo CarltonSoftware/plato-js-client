@@ -4,6 +4,7 @@ var Branding = require('./Branding');
 var PropertyNote = require('./PropertyNote');
 var PropertyDocument = require('./PropertyDocument');
 var PropertyOwner = require('./PropertyOwner');
+var Address = require('./Address');
 
 function Property(id) {
   this.path = 'property';
@@ -21,6 +22,7 @@ function Property(id) {
     path: 'owner',
     parent: this
   });
+  this.address = new Address;
 }
 Property.prototype = new SingleEntity();
 Property.prototype.toArray = function() {
