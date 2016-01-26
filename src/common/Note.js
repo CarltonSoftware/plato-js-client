@@ -1,12 +1,14 @@
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
 var NoteText = require('./NoteText');
+var TabsUser = require('./TabsUser');
 
 function Note(noteID) {
     this.createPath = 'note';
     this.path = 'note';
     this.id = noteID;
     this.notetexts = new Collection({object: NoteText});
+    this.note = new TabsUser;
 }
 Note.prototype = new SingleEntity();
 

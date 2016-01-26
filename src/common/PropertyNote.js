@@ -1,9 +1,11 @@
 var SingleEntity = require('./SingleEntity');
+var TabsUser = require('./TabsUser');
 
 function PropertyNote(propertyNoteID) {
   this.createPath = 'propertynote';
   this.path = 'propertynote';
   this.id = propertyNoteID;
+  this.createdby = new TabsUser;
 }
 PropertyNote.prototype = new SingleEntity();
 
