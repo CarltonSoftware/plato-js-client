@@ -81,7 +81,7 @@ Collection.prototype.fetch = function() {
     limit: this.limit,
     category: this.category,
     searchterm: this.searchterm,
-    filter: this.filter
+    filter: this.filters
   });
 };
 
