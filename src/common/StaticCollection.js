@@ -56,12 +56,18 @@ StaticCollection.prototype.mutateResponse = function(entity) {
   }
 
   var parent = this.options.parent || null;
+  var grandparent = this.options.grandparent || null;
   this.collection = elements.map(function(parent, element) {
     var entity;
     //If the object has a parent, pass the parent id into the constructor of the object
     //TODO: May need to be modified to handle a chain of parents
     if (parent) {
-      entity = new object(parent.id);
+      if (grandparent) {
+        entity = new object(grandparent.id, parent.id);
+      } else {
+        entity = new object(parent.id);
+      }
+
     } else {
       entity = new object();
     }

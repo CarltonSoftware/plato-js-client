@@ -73,7 +73,11 @@ Collection.prototype.fetch = function() {
 
   if (typeof this.options.parent !== 'undefined') {
     //TODO: possibly need to be recursive to handle chains of parents
-    path = this.options.parent.path + '/' + this.options.parent.id + '/' + path;
+    if (typeof this.options.grandparent !== 'undefined') {
+      path = this.options.grandparent.path + '/' + this.options.grandparent.id + '/' + this.options.parent.path + '/' + this.options.parent.id + '/' + path;
+    } else {
+      path = this.options.parent.path + '/' + this.options.parent.id + '/' + path;
+    }
   }
 
   return this.okPromiseResult(path, { page: this.page, limit: this.limit, category: this.category, searchterm: this.searchterm });
