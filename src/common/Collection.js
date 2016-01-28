@@ -80,7 +80,13 @@ Collection.prototype.fetch = function() {
     }
   }
 
-  return this.okPromiseResult(path, { page: this.page, limit: this.limit, category: this.category, searchterm: this.searchterm });
+  return this.okPromiseResult(path, {
+    page: this.page,
+    limit: this.limit,
+    category: this.category,
+    searchterm: this.searchterm,
+    filter: this.filters
+  });
 };
 
 module.exports = Collection;
