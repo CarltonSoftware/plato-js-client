@@ -256,7 +256,7 @@ StaticCollection.prototype.orderBy = function(field, order) {
  * @return array An array of entities that match the given predicate
  */
 StaticCollection.prototype.find = function(predicate) {
-  return _.find(this.collection, predicate);
+  return _.filter(this.collection, predicate) || [];
 }
 
 

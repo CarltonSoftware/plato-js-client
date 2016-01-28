@@ -82,6 +82,7 @@ module.exports.common.PriceType = require('./common/PriceType');
 module.exports.common.PriceTypeBranding = require('./common/PriceTypeBranding');
 module.exports.common.SalesChannel = require('./common/SalesChannel');
 module.exports.common.VatBand = require('./common/VatBand');
+module.exports.common.VatRate = require('./common/VatRate');
 
 module.exports.StaticCollection = require('./common/StaticCollection');
 module.exports.Collection = require('./common/Collection');
