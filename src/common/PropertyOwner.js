@@ -2,7 +2,7 @@ var SingleEntity = require('./SingleEntity');
 var Owner = require('./Owner');
 // var Property = require('./Property');
 
-function PropertyOwner(id) {
+function PropertyOwner(propertyId, id) {
   this.path = 'owner';
   this.createPath = 'owner';
   this.id = id;

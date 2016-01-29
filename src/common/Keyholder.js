@@ -1,8 +1,8 @@
 var Actor = require('./Actor');
 
 function Keyholder(id) {
-  this.path = 'actor';
-  this.createPath = 'actor';
+  this.path = 'keyholder';
+  this.createPath = 'keyholder';
 }
 Keyholder.prototype = new Actor();
 

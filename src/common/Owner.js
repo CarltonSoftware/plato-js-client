@@ -1,8 +1,8 @@
 var Actor = require('./Actor');
 
 function Owner(id) {
-  this.path = 'actor';
-  this.createPath = 'actor';
+  this.path = 'owner';
+  this.createPath = 'owner';
 }
 Owner.prototype = new Actor();
 

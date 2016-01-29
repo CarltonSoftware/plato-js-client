@@ -1,8 +1,8 @@
 var Actor = require('./Actor');
 
 function Cleaner(id) {
-  this.path = 'actor';
-  this.createPath = 'actor';
+  this.path = 'cleaner';
+  this.createPath = 'cleaner';
 }
 Cleaner.prototype = new Actor();
 
