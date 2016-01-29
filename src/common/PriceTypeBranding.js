@@ -16,27 +16,33 @@ PriceTypeBranding.prototype = new SingleEntity();
 PriceTypeBranding.prototype.toCreateArray = function() {
   return {
     //TODO: Add in the fields necessary to create a PriceTypeBranding
-    branding: this.branding,
-    saleschannel: this.saleschannel,
+    brandingid: this.branding.id,
+    saleschannelid: this.saleschannel.id,
     fromdate: this.fromdate,
     todate: this.todate,
     type: this.type,
     percentage: this.percentage,
-    basepricetype: this.basepricetype
+    basepricetype: this.basepricetype.id
   };
 };
 
 PriceTypeBranding.prototype.toUpdateArray = function() {
-  return {
+
+  var ret = {
     //TODO: Add in the fields necessary to update a PriceTypeBranding
-    branding: this.branding,
+    branding: this.branding.id,
     saleschannel: this.saleschannel.id,
     fromdate: this.fromdate,
     todate: this.todate,
-    type: this.type,
-    percentage: this.percentage,
-    pricetypebrandingfixedid: this.basepricetype.id
+    type: this.type
   };
+
+  if (this.type == 'Percentage') {
+    ret.percentage = this.percentage;
+    ret.pricetypebrandingfixedid = this.basepricetype.id;
+  }
+
+  return ret;
 };
 
 module.exports = PriceTypeBranding;

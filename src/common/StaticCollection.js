@@ -55,23 +55,24 @@ StaticCollection.prototype.mutateResponse = function(entity) {
     elements = entity;
   }
 
-  var parent = this.options.parent || null;
-  this.collection = elements.map(function(parent, element) {
-    var entity;
-    //If the object has a parent, pass the parent id into the constructor of the object
-    //TODO: May need to be modified to handle a chain of parents
-    if (parent) {
-      entity = new object(parent.id);
-    } else {
-      entity = new object();
+  var parents = this.options.parents || [];
+  this.collection = elements.map(function(parents, element) {
+    //Create an array containing all of the ids of parent objects
+    var params = [null]; //the first parameter is reserved for 'this', which we don't need, so set it to null
+    for (var i = 0; i < parents.length; i++) {
+      params.push(parents[i].id);
     }
+
+    //Create a new entity, passing in an array of parents ids to the constructor
+    //http://stackoverflow.com/questions/1606797/use-of-apply-with-new-operator-is-this-possible
+    var entity = new (Function.prototype.bind.apply(object, params));
 
     if (typeof element === 'string') {
       return entity.mapRouteIds(element);
     } else {
       return entity.mutateEntity(element);
     }
-  }.bind(this, parent));
+  }.bind(this, parents));
 
   return this;
 };
@@ -250,7 +251,7 @@ StaticCollection.prototype.orderBy = function(field, order) {
  * @return array An array of entities that match the given predicate
  */
 StaticCollection.prototype.find = function(predicate) {
-  return _.find(this.collection, predicate);
+  return _.filter(this.collection, predicate) || [];
 }
 
 
