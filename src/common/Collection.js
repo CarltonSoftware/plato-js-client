@@ -69,16 +69,15 @@ Collection.prototype.fetch = function() {
     throw new pathNotSpecifiedError('No path specified for entity');
   }
 
-  var path = this.options.path;
+  //var path = this.options.path;
 
-  if (typeof this.options.parent !== 'undefined') {
-    //TODO: possibly need to be recursive to handle chains of parents
-    if (typeof this.options.grandparent !== 'undefined') {
-      path = this.options.grandparent.path + '/' + this.options.grandparent.id + '/' + this.options.parent.path + '/' + this.options.parent.id + '/' + path;
-    } else {
-      path = this.options.parent.path + '/' + this.options.parent.id + '/' + path;
-    }
+  var path = '';
+  var parents = this.options.parents || [];
+  for (var i = 0; i < parents.length; i++) {
+    path += parents[i].path + '/' + parents[i].id + '/';
   }
+
+  path += this.options.path;
 
   return this.okPromiseResult(path, {
     page: this.page,

@@ -1,9 +1,9 @@
 var SingleEntity = require('./SingleEntity');
 
-function ExtraBranding(id) {
-    this.path = 'extra';
-    this.createPath = 'extra';
-    this.id = id;
+function ExtraBranding(extraId, id) {
+  this.path = 'extra/' + extraId + '/branding';
+  this.createPath = 'extra';
+  this.id = id;
 }
 ExtraBranding.prototype = new SingleEntity();
 
