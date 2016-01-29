@@ -76,6 +76,7 @@ module.exports.common.Currency = require('./common/Currency');
 module.exports.common.Extra = require('./common/Extra');
 module.exports.common.ExtraBranding = require('./common/ExtraBranding');
 module.exports.common.ExtraBrandingConfiguration = require('./common/ExtraBrandingConfiguration');
+module.exports.common.ExtraBrandingPricing = require('./common/ExtraBrandingPricing');
 module.exports.common.PricingMethod = require('./common/PricingMethod');
 module.exports.common.PricingPeriod = require('./common/PricingPeriod');
 module.exports.common.PriceType = require('./common/PriceType');
