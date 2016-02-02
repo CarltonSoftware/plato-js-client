@@ -20,7 +20,7 @@ function Property(id) {
   this.owners = new Collection({
     object: PropertyOwner,
     path: 'owner',
-    parent: [this]
+    parents: [this]
   });
   this.address = new Address;
 }
