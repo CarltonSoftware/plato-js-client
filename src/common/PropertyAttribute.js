@@ -25,4 +25,16 @@ PropertyAttribute.prototype.toUpdateArray = function() {
   };
 };
 
+PropertyAttribute.prototype.toString = function() {
+  switch (this.attribute.type) {
+    case 'Boolean':
+      return this.value ? 'yes' : 'no';
+    case 'Hybrid':
+      return (this.value.boolean ? 'yes' : 'no') + ', ' + this.value.number + this.attribute.unit.name;
+    case 'Number':
+      return this.value + this.attribute.unit.name;
+  }
+  return this.value.toString();
+};
+
 module.exports = PropertyAttribute;
