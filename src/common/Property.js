@@ -15,12 +15,12 @@ function Property(id) {
   this.documents = new Collection({
     object: PropertyDocument,
     path: 'document',
-    parent: this
+    parents: [this]
   });
   this.owners = new Collection({
     object: PropertyOwner,
     path: 'owner',
-    parent: this
+    parents: [this]
   });
   this.address = new Address;
 }
