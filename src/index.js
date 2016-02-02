@@ -53,6 +53,8 @@ module.exports.common.PropertyDocument = require('./common/PropertyDocument');
 module.exports.common.Booking = require('./common/Booking');
 module.exports.common.Bookings = require('./common/Bookings');
 module.exports.common.BookingCustomer = require('./common/BookingCustomer');
+module.exports.common.GuestAgeRange = require('./common/GuestAgeRange');
+module.exports.common.GuestType = require('./common/GuestType');
 
 /***** Brand Related Objects *****/
 module.exports.common.BookingBrand = require('./common/BookingBrand');
