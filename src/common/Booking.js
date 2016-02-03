@@ -3,6 +3,7 @@ var Branding = require('./Branding');
 var Property = require('./Property');
 var Collection = require('./Collection');
 var BookingCustomer = require('./BookingCustomer');
+var BookingGuest = require('./BookingGuest');
 var Note = require('./Note');
 
 function Booking(id) {
@@ -16,6 +17,11 @@ function Booking(id) {
   // this.price = ;
   // this.currency = new Currency;
   // this.potentialbooking = new PotentialBooking;
+  this.guests = new Collection({
+    object: BookingGuest,
+    path: 'guest',
+    parents: [this]
+  });
   this.customers = new Collection({ object: BookingCustomer });
   this.notes = new Collection({ object: Note });
 }
