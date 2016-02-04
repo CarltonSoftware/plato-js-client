@@ -1,5 +1,4 @@
 var SingleEntity = require('./SingleEntity');
-var Guest = require('./Guest');
 
 function BookingGuest(bookingId, id) {
     this.path = 'booking/' + bookingId + '/guest';
