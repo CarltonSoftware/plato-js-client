@@ -48,6 +48,8 @@ module.exports.common.PropertyNote = require('./common/PropertyNote');
 module.exports.common.PropertyDescription = require('./common/PropertyDescription');
 module.exports.common.PropertySecurityFeature = require('./common/PropertySecurityFeature');
 module.exports.common.PropertyDocument = require('./common/PropertyDocument');
+module.exports.common.PropertyRoom = require('./common/PropertyRoom');
+module.exports.common.RoomType = require('./common/RoomType');
 
 /***** Booking Related Objects *****/
 module.exports.common.Booking = require('./common/Booking');
