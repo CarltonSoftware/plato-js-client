@@ -4,6 +4,9 @@ var Branding = require('./Branding');
 var PropertyNote = require('./PropertyNote');
 var PropertyDocument = require('./PropertyDocument');
 var PropertyOwner = require('./PropertyOwner');
+var PropertyCleaner = require('./PropertyCleaner');
+var PropertyKeyholder = require('./PropertyKeyHolder');
+var PropertySecurityFeature = require('./PropertySecurityFeature');
 var Address = require('./Address');
 
 function Property(id) {
@@ -20,6 +23,21 @@ function Property(id) {
   this.owners = new Collection({
     object: PropertyOwner,
     path: 'owner',
+    parents: [this]
+  });
+  this.cleaners = new Collection({
+    object: PropertyCleaner,
+    path: 'cleaner',
+    parents: [this]
+  });
+  this.keyholders = new Collection({
+    object: PropertyKeyholder,
+    path: 'keyholder',
+    parents: [this]
+  });
+  this.securityFeatures = new Collection({
+    object: PropertySecurityFeature,
+    path: 'securityfeature',
     parents: [this]
   });
   this.address = new Address;
