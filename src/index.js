@@ -81,6 +81,8 @@ module.exports.common.Extra = require('./common/Extra');
 module.exports.common.ExtraBranding = require('./common/ExtraBranding');
 module.exports.common.ExtraBrandingConfiguration = require('./common/ExtraBrandingConfiguration');
 module.exports.common.ExtraBrandingPricing = require('./common/ExtraBrandingPricing');
+module.exports.common.ExtraBrandingPricingRangeElement = require('./common/ExtraBrandingPricingRangeElement');
+module.exports.common.ExtraBrandingPricingRangeElementPriceType = require('./common/ExtraBrandingPricingRangeElementPriceType');
 module.exports.common.PricingMethod = require('./common/PricingMethod');
 module.exports.common.PricingPeriod = require('./common/PricingPeriod');
 module.exports.common.PriceType = require('./common/PriceType');
@@ -88,6 +90,9 @@ module.exports.common.PriceTypeBranding = require('./common/PriceTypeBranding');
 module.exports.common.SalesChannel = require('./common/SalesChannel');
 module.exports.common.VatBand = require('./common/VatBand');
 module.exports.common.VatRate = require('./common/VatRate');
+
+/***** Property Pricing *****/
+module.exports.common.PropertyBrandingPrice = require('./common/PropertyBrandingPrice');
 
 module.exports.StaticCollection = require('./common/StaticCollection');
 module.exports.Collection = require('./common/Collection');
