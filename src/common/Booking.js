@@ -2,7 +2,10 @@ var SingleEntity = require('./SingleEntity');
 var Branding = require('./Branding');
 var Property = require('./Property');
 var Collection = require('./Collection');
+var Currency = require('./Currency');
 var BookingCustomer = require('./BookingCustomer');
+var BookingDocument = require('./BookingDocument');
+var BookingGuest = require('./BookingGuest');
 var Note = require('./Note');
 
 function Booking(id) {
@@ -14,8 +17,18 @@ function Booking(id) {
   // this.saleschannel = new SalesChannel;
   // this.pricingperiod = new PricingPeriod;
   // this.price = ;
-  // this.currency = new Currency;
+  this.currency = new Currency;
   // this.potentialbooking = new PotentialBooking;
+  this.documents = new Collection({
+    object: BookingDocument,
+    path: 'document',
+    parents: [this]
+  });
+  this.guests = new Collection({
+    object: BookingGuest,
+    path: 'guest',
+    parents: [this]
+  });
   this.customers = new Collection({ object: BookingCustomer });
   this.notes = new Collection({ object: Note });
 }
