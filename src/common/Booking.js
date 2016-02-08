@@ -6,6 +6,7 @@ var Currency = require('./Currency');
 var BookingCustomer = require('./BookingCustomer');
 var BookingDocument = require('./BookingDocument');
 var BookingGuest = require('./BookingGuest');
+var BookingSecurityDeposit = require('./BookingSecurityDeposit');
 var Note = require('./Note');
 
 function Booking(id) {
@@ -19,6 +20,7 @@ function Booking(id) {
   // this.price = ;
   this.currency = new Currency;
   // this.potentialbooking = new PotentialBooking;
+
   this.documents = new Collection({
     object: BookingDocument,
     path: 'document',
