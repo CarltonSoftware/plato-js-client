@@ -8,7 +8,7 @@ var PropertyCleaner = require('./PropertyCleaner');
 var PropertyKeyholder = require('./PropertyKeyholder');
 var PropertySecurityFeature = require('./PropertySecurityFeature');
 var PropertyRoom = require('./PropertyRoom');
-var Address = require('./Address');
+var PropertyAddress = require('./PropertyAddress');
 
 function Property(id) {
   this.path = 'property';
@@ -46,14 +46,13 @@ function Property(id) {
     path: 'room',
     parents: [this]
   });
-  this.address = new Address;
+  this.address = new PropertyAddress(id);
 }
 Property.prototype = new SingleEntity();
 Property.prototype.toArray = function() {
   return {
     id: this.id,
     name: this.name,
-    address: this.address,
     sleeps: this.sleeps,
     namequalifier: this.namequalifier,
     bedrooms: this.bedrooms,
