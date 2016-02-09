@@ -2,7 +2,7 @@ var SingleEntity = require('./SingleEntity');
 var SecurityFeature = require('./SecurityFeature');
 
 function PropertySecurityFeature(propertyId, id) {
-  this.path = '/property/' + propertyId + '/securityfeature/' + id;
+  this.path = '/property/' + propertyId + '/securityfeature';
   this.createPath = this.path;
   this.id = id;
   this.securityfeature = new SecurityFeature();

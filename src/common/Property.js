@@ -4,7 +4,11 @@ var Branding = require('./Branding');
 var PropertyNote = require('./PropertyNote');
 var PropertyDocument = require('./PropertyDocument');
 var PropertyOwner = require('./PropertyOwner');
-var Address = require('./Address');
+var PropertyCleaner = require('./PropertyCleaner');
+var PropertyKeyholder = require('./PropertyKeyholder');
+var PropertySecurityFeature = require('./PropertySecurityFeature');
+var PropertyRoom = require('./PropertyRoom');
+var PropertyAddress = require('./PropertyAddress');
 
 function Property(id) {
   this.path = 'property';
@@ -22,14 +26,33 @@ function Property(id) {
     path: 'owner',
     parents: [this]
   });
-  this.address = new Address;
+  this.cleaners = new Collection({
+    object: PropertyCleaner,
+    path: 'cleaner',
+    parents: [this]
+  });
+  this.keyholders = new Collection({
+    object: PropertyKeyholder,
+    path: 'keyholder',
+    parents: [this]
+  });
+  this.securityFeatures = new Collection({
+    object: PropertySecurityFeature,
+    path: 'securityfeature',
+    parents: [this]
+  });
+  this.rooms = new Collection({
+    object: PropertyRoom,
+    path: 'room',
+    parents: [this]
+  });
+  this.address = new PropertyAddress(id);
 }
 Property.prototype = new SingleEntity();
 Property.prototype.toArray = function() {
   return {
     id: this.id,
     name: this.name,
-    address: this.address,
     sleeps: this.sleeps,
     namequalifier: this.namequalifier,
     bedrooms: this.bedrooms,

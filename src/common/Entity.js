@@ -91,7 +91,6 @@ Entity.prototype.updatePromiseResult = function(path, data) {
       if (res.status.code === 204) {
         resolve(e);
       } else {
-        console.log(res);
         reject(Entity.prototype.handleError(res));
       }
     });

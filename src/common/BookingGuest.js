@@ -10,7 +10,7 @@ BookingGuest.prototype = new SingleEntity();
 BookingGuest.prototype.toArray = function() {
   return {
     name: this.name,
-    guesttype: this.type,
+    guesttype: this.guesttype,
     guestagerangeid: this.guestagerangeid,
     bookingcustomerid: this.bookingcustomerid
   };

@@ -44,11 +44,10 @@ SingleEntity.prototype.get = function() {
  * @returns {Promise}
  */
 SingleEntity.prototype.update = function(fields) {
-  //Loop over each of the supplied fields, and set them on the current object
+  // Loop over each of the supplied fields, and set them on the current object
   _.each(fields, function(value, key) {
     this[key] = value;
   }.bind(this));
-
 
   if (typeof this.id === 'undefined') {
     throw new idNotFoundError('Id not specified.');
