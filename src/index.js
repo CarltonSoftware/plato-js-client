@@ -94,5 +94,9 @@ module.exports.common.VatRate = require('./common/VatRate');
 /***** Property Pricing *****/
 module.exports.common.PropertyBrandingPrice = require('./common/PropertyBrandingPrice');
 
+/***** Bookings *****/
+module.exports.common.DepositAmount = require('./common/DepositAmount');
+module.exports.common.DepositAmountType = require('./common/DepositAmountType');
+
 module.exports.StaticCollection = require('./common/StaticCollection');
 module.exports.Collection = require('./common/Collection');
