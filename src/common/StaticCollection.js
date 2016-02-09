@@ -57,8 +57,8 @@ StaticCollection.prototype.mutateResponse = function(entity) {
 
   var parents = this.options.parents || [];
   this.collection = elements.map(function(parents, element) {
-    //Create an array containing all of the ids of parent objects
-    var params = [null]; //the first parameter is reserved for 'this', which we don't need, so set it to null
+    // Create an array containing all of the ids of parent objects
+    var params = [null]; // the first parameter is reserved for 'this', which we don't need, so set it to null
     for (var i = 0; i < parents.length; i++) {
       params.push(parents[i].id);
     }
