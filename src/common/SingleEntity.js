@@ -68,7 +68,12 @@ SingleEntity.prototype.update = function(fields) {
  *
  * @returns {Promise}
  */
-SingleEntity.prototype.create = function() {
+SingleEntity.prototype.create = function(fields) {
+  // Loop over each of the supplied fields, and set them on the current object
+  _.each(fields, function(value, key) {
+    this[key] = value;
+  }.bind(this));
+
   if (typeof this.createPath === 'undefined') {
     throw new pathNotSpecifiedError('No createPath specified for entity');
   }

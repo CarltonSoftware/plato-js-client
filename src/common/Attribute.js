@@ -11,7 +11,13 @@ function Attribute(id) {
   this.id = id;
   this.group = new AttributeGroup();
   this.unit = new Unit();
-  this.options = new Collection({ object: Option });
+  this.options = new Collection({
+    object: Option,
+    path: 'option',
+    parents: [
+      this
+    ]
+  });
   this.extras = new Collection({ object: Extra });
   this.baseattribute = false;
   this.donotmodify = false;
