@@ -47,6 +47,7 @@ module.exports.common.PropertyOwner = require('./common/PropertyOwner');
 module.exports.common.PropertyNote = require('./common/PropertyNote');
 module.exports.common.PropertyDescription = require('./common/PropertyDescription');
 module.exports.common.PropertySecurityDeposit = require('./common/PropertySecurityDeposit');
+module.exports.common.DescriptionType = require('./common/DescriptionType');
 module.exports.common.PropertySecurityFeature = require('./common/PropertySecurityFeature');
 module.exports.common.PropertyDocument = require('./common/PropertyDocument');
 module.exports.common.PropertyRoom = require('./common/PropertyRoom');

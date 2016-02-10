@@ -1,7 +1,19 @@
 var client = require('./common/platoJsClient').getInstance('http://docker.carltonsoftware.co.uk:49158/app_dev.php/v2');
 var platoJsClient = require('./');
 
+
 /*
+var propertyAttributes = new platoJsClient.Collection({
+  path: 'attribute',
+  object: platoJsClient.common.PropertyAttribute,
+  parents: [
+    new platoJsClient.common.Property(1)
+  ]
+});
+
+propertyAttributes.fetch().then(function(propertyAttributes) {
+  console.log(propertyAttributes);
+});
 
 var File = platoJsClient.common.File;
 

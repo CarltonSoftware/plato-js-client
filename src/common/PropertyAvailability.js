@@ -7,4 +7,8 @@ function PropertyAvailability(propertyId, brandId, fromDate, toDate, includeChan
 }
 PropertyAvailability.prototype = new Entity();
 
+PropertyAvailability.prototype.mutateEntity = function(entity) {
+    return entity;
+}
+
 module.exports = PropertyAvailability;

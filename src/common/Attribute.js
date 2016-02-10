@@ -2,82 +2,62 @@ var SingleEntity = require('./SingleEntity');
 var AttributeGroup = require('./AttributeGroup');
 var Collection = require('./StaticCollection');
 var Option = require('./AttributeOption');
+var Extra = require('./Extra');
 var Unit = require('./Unit');
 
 function Attribute(id) {
-    this.path = 'attribute';
-    this.createPath = this.path;
-    this.id = id;
-    this.group = new AttributeGroup();
-    this.unit = new Unit();
-    this.options = new Collection({ object: Option });
-    this.baseattribute = false;
+  this.path = 'attribute';
+  this.createPath = this.path;
+  this.id = id;
+  this.group = new AttributeGroup();
+  this.unit = new Unit();
+  this.options = new Collection({ object: Option });
+  this.extras = new Collection({ object: Extra });
+  this.baseattribute = false;
+  this.donotmodify = false;
+  this.important = false;
+  this.usedinavailabilitysearch = false;
+  this.type = 'boolean';
 
-    this.toCreateArray = function() {
-      return this.toArray();
+  this.toArray = function() {
+    var base = {
+      type: this.type,
+      code: this.code,
+      name: this.name,
+      description: this.description,
+      group: this.group,
+      usedinavailabilitysearch: this.usedinavailabilitysearch,
+      baseattribute: this.baseattribute,
+      donotmodify: this.donotmodify,
+      important: this.important
+    };
+
+    if (this.type == 'boolean') {
+      base.defaultvalue = this.defaultvalue;
     }
 
-    this.toArray = function() {
-      if (this.type == 'boolean') {
-        return {
-          type: 'boolean',
-          code: this.code,
-          name: this.name,
-          description: this.description,
-          group: this.group,
-          usedinavailabilitysearch: this.usedinavailabilitysearch,
-          baseattribute: this.baseattribute,
-          defaultvalue: this.defaultvalue
-        }
-      }
+    if (this.type == 'hybrid') {
+      base.operator = this.operator;
+      base.defaultnumbervalue = this.defaultnumbervalue;
+      base.minimumvalue = this.minimumvalue;
+      base.maximumvalue = this.maximumvalue;
+      base.unit = this.unit;
+    }
 
-      if (this.type == 'hybrid') {
-        return {
-          type: 'hybrid',
-          code: this.code,
-          name: this.name,
-          description: this.description,
-          group: this.group,
-          usedinavailabilitysearch: this.usedinavailabilitysearch,
-          baseattribute: this.baseattribute,
-          operator: this.operator,
-          defaultnumbervalue: this.defaultnumbervalue,
-          minimumvalue: this.minimumvalue,
-          maximumvalue: this.maximumvalue,
-          unit: this.unit
-        }
-      }
+    if (this.type == 'number') {
+      base.operator = this.operator;
+      base.defaultvalue = this.defaultvalue;
+      base.minimumvalue = this.minimumvalue;
+      base.maximumvalue = this.maximumvalue;
+      base.unit = this.unit;
+    }
 
-      if (this.type == 'number') {
-        return {
-          type: 'number',
-          code: this.code,
-          name: this.name,
-          description: this.description,
-          group: this.group,
-          usedinavailabilitysearch: this.usedinavailabilitysearch,
-          baseattribute: this.baseattribute,
-          operator: this.operator,
-          defaultvalue: this.defaultvalue,
-          minimumvalue: this.minimumvalue,
-          maximumvalue: this.maximumvalue,
-          unit: this.unit
-        }
-      }
+    if (this.type == 'string') {
+      base.defaultvalue = this.defaultvalue;
+    }
 
-      if (this.type == 'string') {
-        return {
-          type: 'string',
-          code: this.code,
-          name: this.name,
-          description: this.description,
-          group: this.group,
-          usedinavailabilitysearch: this.usedinavailabilitysearch,
-          baseattribute: this.baseattribute,
-          defaultvalue: this.defaultvalue
-        }
-      }
-    };
+    return base;
+  };
 }
 Attribute.prototype = new SingleEntity();
 
