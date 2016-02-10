@@ -5,6 +5,7 @@ module.exports.common.Encoding = require('./common/Encoding');
 module.exports.common.Unit = require('./common/Unit');
 module.exports.common.Attribute = require('./common/Attribute');
 module.exports.common.AttributeGroup = require('./common/AttributeGroup');
+module.exports.common.AttributeOption = require('./common/AttributeOption');
 module.exports.common.Contact = require('./common/Contact');
 module.exports.common.Agency = require('./common/Agency');
 module.exports.common.AgencyCollection = require('./common/AgencyCollection');

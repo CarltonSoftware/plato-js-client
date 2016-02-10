@@ -162,6 +162,7 @@ StaticCollection.prototype.updateElement = function(object) {
 /**
 * Update an element in the collection
 *
+* @param {Number} Item Id
 * @param {object} Item
 *
 * @returns {undefined}
@@ -170,6 +171,22 @@ StaticCollection.prototype.updateElementById = function(id, object) {
   for (var i = 0; i < this.collection.length; i++) {
     if (this.collection[i].id === id) {
       this.collection[i] = object;
+      continue;
+    }
+  }
+};
+
+/**
+* Update an element in the collection
+*
+* @param {object} Item
+*
+* @returns {undefined}
+*/
+StaticCollection.prototype.updateElementByComparsion = function(object, newObject) {
+  for (var i = 0; i < this.collection.length; i++) {
+    if (this.collection[i] === object) {
+      this.collection[i] = newObject;
       continue;
     }
   }
@@ -189,13 +206,29 @@ StaticCollection.prototype.deleteElement = function(object) {
 /**
 * Delete element from collection
 *
-* @param {object} Loop item
+* @param {Number} Element ID
 *
 * @returns {undefined}
 */
 StaticCollection.prototype.deleteElementById = function(id) {
   for (var i = 0; i < this.collection.length; i++) {
     if (this.collection[i].id === id) {
+      this.collection.splice(i, 1);
+      continue;
+    }
+  }
+};
+
+/**
+* Delete element from collection by instance comparison
+*
+* @param {object} Loop item
+*
+* @returns {undefined}
+*/
+StaticCollection.prototype.deleteElementByComparison = function(object) {
+  for (var i = 0; i < this.collection.length; i++) {
+    if (this.collection[i] === object) {
       this.collection.splice(i, 1);
       continue;
     }
