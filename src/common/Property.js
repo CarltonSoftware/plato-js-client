@@ -2,10 +2,10 @@ var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
 var Branding = require('./Branding');
 var PropertyNote = require('./PropertyNote');
+var PropertyBranding = require('./PropertyBranding');
 var PropertyDocument = require('./PropertyDocument');
 var PropertyOwner = require('./PropertyOwner');
 var PropertySupplier = require('./PropertySupplier');
-var PropertyKeyholder = require('./PropertyKeyholder');
 var PropertySecurityFeature = require('./PropertySecurityFeature');
 var PropertyRoom = require('./PropertyRoom');
 var PropertyAddress = require('./PropertyAddress');
@@ -14,7 +14,11 @@ function Property(id) {
   this.path = 'property';
   this.createPath = 'property';
   this.id = id;
-  this.brandings = new Collection({object: Branding});
+  this.brandings = new Collection({
+    object: PropertyBranding,
+    path: 'branding',
+    parents:[this]
+  });
   this.notes = new Collection({object: PropertyNote});
   this.documents = new Collection({
     object: PropertyDocument,
