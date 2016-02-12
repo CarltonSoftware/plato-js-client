@@ -71,7 +71,7 @@ Booking.prototype.getStatus = function() {
       break;
     case 'customer':
       // Customer Booking
-      item.bookingCustomer = this.customers.collection[0].name;
+      item.bookingCustomer = this.customers.collection.length ? this.customers.collection[0].name : 'None';
       item.bookingType = this.status;
       // This is pretty damn horrible. Must be a better way to this, Still being worked on in the API
       // indexOf because every state can be suffixed by - Cancelled or transferred or have brand specific stuff :sadface:
