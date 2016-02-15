@@ -1,7 +1,9 @@
 var SingleEntity = require('./SingleEntity');
 var Branding = require('./Branding');
 var PriceType = require('./PriceType');
+var PriceOverride = require('./PriceOverride');
 var SalesChannel = require('./SalesChannel');
+var StaticCollection = require('./StaticCollection');
 
 function PriceTypeBranding(brandingId, id) {
     this.path = 'pricetype/' + brandingId + '/branding';
@@ -10,6 +12,8 @@ function PriceTypeBranding(brandingId, id) {
     this.saleschannel = new SalesChannel();
     this.branding = new Branding();
     this.basepricetype = new PriceType();
+    this.percentages = new StaticCollection({ object: PriceTypeBranding });
+    this.overrides = new StaticCollection({ object: PriceOverride });
 }
 PriceTypeBranding.prototype = new SingleEntity();
 

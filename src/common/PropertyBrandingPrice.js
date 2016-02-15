@@ -1,9 +1,11 @@
 var SingleEntity = require('./SingleEntity');
+var PriceTypeBranding = require('./PriceTypeBranding');
 
 function PropertyBrandingPrice(id) {
     this.path = 'price';
     this.createPath = 'price';
     this.id = id;
+    this.pricetypebranding = new PriceTypeBranding();
 }
 PropertyBrandingPrice.prototype = new SingleEntity();
 
