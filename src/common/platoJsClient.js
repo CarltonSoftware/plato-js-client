@@ -1,3 +1,5 @@
+var _ = require('underscore');
+
 var platoJsClient = (function () {
 
     // Instance stores a reference to the Singleton
@@ -42,6 +44,8 @@ var platoJsClient = (function () {
             // Test to see if its not an object
             if (typeof req !== 'object') {
                 return { path: '/' };
+            } else if (typeof req === 'object' && req.hasOwnProperty('path')) {
+                req.path = '/' + req.path.replace(new RegExp('^/+'), '');
             }
 
             return req;
