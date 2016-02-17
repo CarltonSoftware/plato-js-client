@@ -1,24 +1,11 @@
-var SingleEntity = require('./SingleEntity');
+var Actor = require('./Actor');
 
 function Agency(id) {
   this.path = 'agency';
   this.createPath = 'agency';
-  this.id = id;
-}
-Agency.prototype = new SingleEntity();
-Agency.prototype.toArray = function() {
-  return {
-    id: this.id,
-    title: this.title,
-    firstname: this.firstname,
-    surname: this.surname
-  };
-};
 
-Agency.prototype.toCreateArray = function() {
-    return {
-        companyname: this.companyname
-    };
-};
+  Actor.apply(this, arguments);
+}
+Agency.prototype = new Actor();
 
 module.exports = Agency;
