@@ -40,9 +40,11 @@ Entity.prototype.mutateEntity = function(entity) {
           // Map id's of route string to entity object so the get() request will
           // know of the correct path.
           this[prop].mapRouteIds(entity[prop]);
-        } else {
+        } else if (typeof this[prop].mutateResponse === 'function') {
           // Recursive call
           this[prop].mutateResponse(entity[prop]);
+        } else {
+          this[prop] = entity[prop];
         }
       } else {
         this[prop] = entity[prop];
