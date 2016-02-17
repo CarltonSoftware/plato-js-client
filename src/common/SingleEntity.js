@@ -58,7 +58,7 @@ SingleEntity.prototype.update = function(fields) {
   }
 
   return this.updatePromiseResult(
-    this.path + '/' + this.id,
+    this.getUpdatePath(),
     _.pick(this.toUpdateArray(), this.isDefined)
   );
 };
@@ -77,8 +77,9 @@ SingleEntity.prototype.create = function(fields) {
   if (typeof this.createPath === 'undefined') {
     throw new pathNotSpecifiedError('No createPath specified for entity');
   }
+
   return this.createPromiseResult(
-    this.createPath,
+    this.getCreatePath(),
     _.pick(this.toCreateArray(), this.isDefined)
   );
 };
@@ -94,7 +95,7 @@ SingleEntity.prototype.upload = function() {
   }
 
   return this.uploadPromiseResult(
-    this.createPath,
+    this.getUpdatePath(),
     this.toFormData()
   );
 };
@@ -113,7 +114,7 @@ SingleEntity.prototype.delete = function() {
     throw new pathNotSpecifiedError('No deletePath specified for entity');
   }
 
-  return this.deletePromiseResult(this.path + '/' + this.id);
+  return this.deletePromiseResult(this.getUpdatePath());
 };
 
 /**
@@ -151,6 +152,34 @@ SingleEntity.prototype.toFormData = function() {
  */
 SingleEntity.prototype.toUpdateArray = function() {
   return _.extend({ id: this.id }, this.toCreateArray());
+};
+
+/**
+ * Check for a parent object and recurse through, creating a path
+ * based on the parents of the object
+ *
+ * @returns {String}
+ */
+SingleEntity.prototype.getCreatePath = function(prefix) {
+  if (typeof this.parent === 'object') {
+    prefix = this.parent.getUpdatePath(prefix);
+  }
+
+  return ((typeof prefix === 'string') ? prefix : '') + '/' + this.createPath;
+};
+
+/**
+ * Check for a parent object and recurse through, creating a path
+ * based on the parents of the object
+ *
+ * @returns {String}
+ */
+SingleEntity.prototype.getUpdatePath = function(prefix) {
+  if (typeof this.parent === 'object') {
+    prefix = this.parent.getUpdatePath(prefix);
+  }
+
+  return ((typeof prefix === 'string') ? prefix : '') + '/' + this.createPath + '/' + this.id;
 };
 
 module.exports = SingleEntity;
