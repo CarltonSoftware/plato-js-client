@@ -36,6 +36,7 @@ Actor.prototype.toArray = function() {
     title: this.title,
     firstname: this.firstname,
     surname: this.surname,
+    salutation: this.salutation,
     languagecode: this.language.code
   };
 };

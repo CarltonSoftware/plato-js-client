@@ -95,7 +95,7 @@ SingleEntity.prototype.upload = function() {
   }
 
   return this.uploadPromiseResult(
-    this.getUpdatePath(),
+    this.getCreatePath(),
     this.toFormData()
   );
 };

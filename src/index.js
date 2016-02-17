@@ -30,6 +30,7 @@ module.exports.common.Actors = require('./common/Actors');
 module.exports.common.ActorAddress = require('./common/ActorAddress');
 module.exports.common.ActorContactDetailOther = require('./common/ActorContactDetailOther');
 module.exports.common.ActorNote = require('./common/ActorNote');
+module.exports.common.ActorDocument = require('./common/ActorDocument');
 
 /***** Customer Releated Objects *****/
 module.exports.common.Customer = require('./common/Customer');
