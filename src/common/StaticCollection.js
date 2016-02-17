@@ -12,8 +12,6 @@ var _ = require('underscore');
 function StaticCollection(options) {
   this.options = options || {};
   this.collection = [];
-  this.discriminator;
-  this.discriminatorMap = {};
 };
 
 /**
@@ -34,17 +32,6 @@ StaticCollection.prototype = new Entity();
 StaticCollection.prototype.mutateResponse = function(entity) {
   var object, elements;
 
-  if (this.discriminator && entity.hasOwnProperty(this.discriminator)) {
-    var discr = entity[this.discriminator];
-    if (this.discriminatorMap.hasOwnProperty(discr)) {
-      object = new this.discriminatorMap[discr];
-    } else {
-      throw new discriminatorError(discr);
-    }
-  } else {
-    object = this.options.object;
-  }
-
   if (entity.elements) {
     elements = entity.elements;
     this.total = entity.total;
@@ -63,9 +50,22 @@ StaticCollection.prototype.mutateResponse = function(entity) {
       params.push(parents[i].id);
     }
 
+    if (this.options.discriminator && element.hasOwnProperty(this.options.discriminator)) {
+      var discr = element[this.options.discriminator];
+      if (this.options.discriminatorMap.hasOwnProperty(discr)) {
+        object = this.options.discriminatorMap[discr];
+      }
+    } else {
+      object = this.options.object;
+    }
+
     //Create a new entity, passing in an array of parents ids to the constructor
     //http://stackoverflow.com/questions/1606797/use-of-apply-with-new-operator-is-this-possible
     var entity = new (Function.prototype.bind.apply(object, params));
+
+    if (typeof this.options.parent === 'object') {
+      entity.parent = this.options.parent;
+    }
 
     if (typeof element === 'string') {
       return entity.mapRouteIds(element);
