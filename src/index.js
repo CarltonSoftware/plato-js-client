@@ -25,6 +25,7 @@ module.exports.common.SourceCategory = require('./common/SourceCategory');
 
 /***** Actor Related Objects *****/
 module.exports.common.Actor = require('./common/Actor');
+module.exports.common.ActorInstance = require('./common/ActorInstance');
 module.exports.common.Actors = require('./common/Actors');
 module.exports.common.ActorAddress = require('./common/ActorAddress');
 module.exports.common.ActorContactDetailOther = require('./common/ActorContactDetailOther');
@@ -73,6 +74,7 @@ module.exports.common.Branding = require('./common/Branding');
 
 /***** Managed Services Related Objects *****/
 module.exports.common.ManagedActivity = require('./common/ManagedActivity');
+module.exports.common.Supplier = require('./common/Supplier');
 
 /***** Note Related Objects *****/
 module.exports.common.Note = require('./common/Note');
