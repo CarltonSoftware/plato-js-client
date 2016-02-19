@@ -15,12 +15,4 @@ ManagedActivity.prototype.toCreateArray = function() {
   };
 };
 
-ManagedActivity.prototype.toUpdateArray = function() {
-  return {
-    name: this.name,
-    description: this.description,
-    donotmodify: this.donotmodify,
-  };
-};
-
 module.exports = ManagedActivity;
