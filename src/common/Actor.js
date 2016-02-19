@@ -30,6 +30,21 @@ function Actor(id) {
 }
 
 Actor.prototype = new SingleEntity();
+
+/**
+ * Return the full name of the actor
+ *
+ * @return {String}
+ */
+Actor.prototype.getFullName = function() {
+  return [this.title, this.firstname, this.surname].join(" ");
+};
+
+/**
+ * Return the create/put array
+ *
+ * @return {Object}
+ */
 Actor.prototype.toArray = function() {
   return {
     id: this.id,
