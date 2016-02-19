@@ -14,14 +14,7 @@ PropertyOwner.prototype = new SingleEntity();
 PropertyOwner.prototype.toArray = function() {
   return {
     id: this.id,
-    owner: this.owner,
-    ownerfromdate: this.ownerfromdate,
-    ownertodate: this.ownertodate,
-  };
-};
-PropertyOwner.prototype.toCreateArray = function() {
-  return {
-    ownerid: this.ownerid,
+    ownerid: this.owner.id,
     ownerfromdate: this.ownerfromdate,
     ownertodate: this.ownertodate,
   };
