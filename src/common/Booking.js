@@ -86,17 +86,17 @@ Booking.prototype.getStatus = function() {
         */
         'Provisional',
         /*
-          "Confirmed" - customer has paid the deposit
-          "Confirmed - Fully Paid" - customer has paid the deposit
-        */
-        'Confirmed',
-        /*
           If the booking has been transferred to another property, or different dates,
           it will have " - Transferred" after whatever status it was at the time of transfer.
           We should probably distinguish from cancelled as I assume there won't be the same
           financial penalty if a transferred booking isn't rebooked.
         */
-        'Transferred'
+        'Transferred',
+        /*
+          "Confirmed" - customer has paid the deposit
+          "Confirmed - Fully Paid" - customer has paid the deposit
+        */
+        'Confirmed'
       ];
       for (var i in showAsOptions) {
         if (this.status.indexOf(showAsOptions[i]) !== -1) {
