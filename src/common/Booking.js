@@ -39,14 +39,14 @@ Booking.prototype.toArray = function() {
   var array = {
     id: this.id,
     guesttype: this.guesttype,
-    fromdate: this.id,
-    todate: this.id,
-    bookeddatetime: this.id,
-    // actorid:
-    estimatedarrivaltime: this.id,
+    fromdate: this.fromdate,
+    todate: this.todate,
+    bookeddatetime: this.bookeddatetime,
+    estimatedarrivaltime: this.estimatedarrivaltime,
     adults: this.adults,
     children: this.children,
     infants: this.infants,
+    potentialbooking_expirydatetime: this.potentialbooking_expirydatetime
   };
   if (this.guesttype === 'Owner') {
     array.propertyid = this.property.id;
@@ -86,17 +86,17 @@ Booking.prototype.getStatus = function() {
         */
         'Provisional',
         /*
-          "Confirmed" - customer has paid the deposit
-          "Confirmed - Fully Paid" - customer has paid the deposit
-        */
-        'Confirmed',
-        /*
           If the booking has been transferred to another property, or different dates,
           it will have " - Transferred" after whatever status it was at the time of transfer.
           We should probably distinguish from cancelled as I assume there won't be the same
           financial penalty if a transferred booking isn't rebooked.
         */
-        'Transferred'
+        'Transferred',
+        /*
+          "Confirmed" - customer has paid the deposit
+          "Confirmed - Fully Paid" - customer has paid the deposit
+        */
+        'Confirmed'
       ];
       for (var i in showAsOptions) {
         if (this.status.indexOf(showAsOptions[i]) !== -1) {
