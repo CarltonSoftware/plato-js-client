@@ -114,6 +114,7 @@ Entity.prototype.createPromiseResult = function(path, data) {
     result.then(function(res) {
       if (res.status.code === 201) {
         var newLocation = res.headers['Content-Location'].replace('/app_dev.php/v2', '');//TODO: remove the need for .replace(...)
+        newLocation = newLocation.replace('/v2', '');
         client.get({ path: newLocation}).then(function(res) {
           resolve(e.mutateResponse(res.entity));
         }, function(res) {
@@ -141,6 +142,7 @@ Entity.prototype.uploadPromiseResult = function(path, data) {
     result.then(function(res) {
       if (res.status.code === 201) {
         var newLocation = res.headers['Content-Location'].replace('/app_dev.php/v2', '');//TODO: remove the need for .replace(...)
+        newLocation = newLocation.replace('/v2', '');
         client.get({ path: newLocation}).then(function(res) {
           resolve(e.mutateResponse(res.entity));
         }, function(res) {
