@@ -59,10 +59,11 @@ module.exports.common.RoomType = require('./common/RoomType');
 
 /***** Booking Related Objects *****/
 module.exports.common.Booking = require('./common/Booking');
-module.exports.common.Bookings = require('./common/Bookings');
 module.exports.common.BookingCustomer = require('./common/BookingCustomer');
+module.exports.common.BookingEnquiry = require('./common/BookingEnquiry');
 module.exports.common.BookingDocument = require('./common/BookingDocument');
 module.exports.common.BookingGuest = require('./common/BookingGuest');
+module.exports.common.Bookings = require('./common/Bookings');
 module.exports.common.GuestAgeRange = require('./common/GuestAgeRange');
 module.exports.common.GuestType = require('./common/GuestType');
 
