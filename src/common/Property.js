@@ -17,7 +17,7 @@ function Property(id) {
   this.brandings = new Collection({
     object: PropertyBranding,
     path: 'branding',
-    parents:[this],
+    parents:[this]
   });
   this.notes = new Collection({object: PropertyNote});
   this.documents = new Collection({

@@ -46,6 +46,13 @@ Booking.prototype.toArray = function() {
     adults: this.adults,
     children: this.children,
     infants: this.infants,
+    propertybrandingid: this.propertybrandingid,
+    currencycode: this.currencycode,
+    saleschannel: this.saleschannel,
+    pricingperiod: this.pricingperiod,
+    sourcemarketingbrandid: this.sourcemarketingbrandid,
+    /* potential */
+    potentialbooking_type: this.potentialbooking_type,
     potentialbooking_expirydatetime: this.potentialbooking_expirydatetime
   };
   if (this.guesttype === 'Owner') {
