@@ -3,6 +3,7 @@ var pathNotSpecifiedError = require('./../error/pathNotSpecified');
 var statusError = require('./../error/statusError');
 var badRequestError = require('./../error/badRequestError');
 var Promise = require('es6-promise').Promise;
+var _ = require('underscore');
 
 /**
  * Base object
@@ -64,7 +65,7 @@ Entity.prototype.mutateEntity = function(entity) {
  * @returns {Promise}
  */
 Entity.prototype.okPromiseResult = function(path, params) {
-  var result = client.get({ path: path, params: params });
+  var result = client.get({ path: path, params: _.pick(params, _.identity) });
   var e = this;
   return new Promise(function(resolve, reject) {
     result.then(function(res) {
