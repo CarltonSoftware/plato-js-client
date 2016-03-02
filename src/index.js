@@ -44,6 +44,7 @@ module.exports.common.Properties = require('./common/Properties');
 module.exports.common.Property = require('./common/Property');
 module.exports.common.PropertyAttribute = require('./common/PropertyAttribute');
 module.exports.common.PropertyAvailability= require('./common/PropertyAvailability');
+module.exports.common.PropertyBranding = require('./common/PropertyBranding');
 module.exports.common.PropertyCleaner = require('./common/PropertyCleaner');
 module.exports.common.PropertyKeyholder = require('./common/PropertyKeyholder');
 module.exports.common.PropertyOwner = require('./common/PropertyOwner');
