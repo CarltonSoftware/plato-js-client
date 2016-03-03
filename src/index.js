@@ -8,6 +8,7 @@ module.exports.common.AttributeGroup = require('./common/AttributeGroup');
 module.exports.common.AttributeOption = require('./common/AttributeOption');
 module.exports.common.Contact = require('./common/Contact');
 module.exports.common.Agency = require('./common/Agency');
+module.exports.common.AgencyBookingType = require('./common/AgencyBookingType');
 module.exports.common.AgencyCollection = require('./common/AgencyCollection');
 module.exports.common.Country = require('./common/Country');
 module.exports.common.ContactEntity = require('./common/ContactEntity');
