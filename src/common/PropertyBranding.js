@@ -5,8 +5,8 @@ var PropertyBookingBrand = require('./PropertyBookingBrand');
 var PropertyMarketingBrand = require('./PropertyMarketingBrand');
 
 function PropertyBranding(propertyID, id) {
-  this.path = 'branding';
-  this.createPath = 'branding';
+  this.path = 'property/' + propertyID + '/branding';
+  this.createPath = this.path;
   this.id = id;
   this.branding = new Branding();
   this.brandinggroup = new BrandingGroup();
@@ -20,7 +20,15 @@ PropertyBranding.prototype.toArray = function() {
     brandingid: this.branding.id,
     brandinggroupid: this.brandinggroup.id,
     bookingbrandid: this.bookingbrand.id,
-    marketingbrandid: this.marketingbrand.id
+    marketingbrandid: this.marketingbrand.id,
+    status: this.status.name
+  };
+}
+
+PropertyBranding.prototype.toCreateArray = function() {
+  return {
+    brandingid: this.brandingid,
+    status: this.status.name
   };
 }
 
