@@ -88,8 +88,6 @@ Collection.prototype.fetch = function() {
 
   path += this.options.path;
 
-  console.log(path);
-
   return this.okPromiseResult(path, {
     page: this.page,
     limit: this.limit,

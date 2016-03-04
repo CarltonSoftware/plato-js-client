@@ -1,5 +1,25 @@
 var client = require('./common/platoJsClient').getInstance('http://docker.carltonsoftware.co.uk:49158/app_dev.php/v2');
 var platoJsClient = require('./');
+var PriceTypeBranding = require('./common/PriceTypeBranding');
+var Collection = require('./common/Collection');
+
+var pt = new platoJsClient.common.PriceType(1);
+pt.get().then(function(nPt) {
+  var ptb = new Collection({
+    object: PriceTypeBranding,
+    parent: nPt
+  });
+
+  ptb.fetch().then(function(nPtb) {
+    nPtb.forEach(function(ele) {
+      console.log(ele.getUpdatePath());
+    });
+  }).catch(function(err) {
+    console.log(err);
+  });
+}).catch(function(err) {
+  console.log(err);
+});
 
 /*
 
