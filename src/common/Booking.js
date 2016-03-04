@@ -20,7 +20,6 @@ function Booking(id) {
   // this.price = ;
   this.currency = new Currency;
   // this.potentialbooking = new PotentialBooking;
-
   this.documents = new Collection({
     object: BookingDocument,
     path: 'document',
@@ -46,20 +45,17 @@ Booking.prototype.toArray = function() {
     adults: this.adults,
     children: this.children,
     infants: this.infants,
+    propertyid: this.propertyid,
     propertybrandingid: this.propertybrandingid,
     currencycode: this.currencycode,
     saleschannel: this.saleschannel,
     pricingperiod: this.pricingperiod,
     sourcemarketingbrandid: this.sourcemarketingbrandid,
-    /* potential */
     potentialbooking_type: this.potentialbooking_type,
-    potentialbooking_expirydatetime: this.potentialbooking_expirydatetime
+    potentialbooking_expirydatetime: this.potentialbooking_expirydatetime,
+    agencybookingtypeid : this.agencybookingtypeid
   };
-  if (this.guesttype === 'Owner') {
-    array.propertyid = this.property.id;
-  } else {
-    // TODO
-  }
+
   return array;
 };
 
