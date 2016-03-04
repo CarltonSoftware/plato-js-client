@@ -7,6 +7,11 @@ var BankAccount = require('./BankAccount');
 var ActorContactDetailOther = require('./ActorContactDetailOther');
 var ActorContactDetailAddress = require('./ActorContactDetailAddress');
 
+/**
+ * Actor instance
+ *
+ * @param {number} id
+ */
 function Actor(id) {
   this.id = id;
   this.notes = new Collection({ object: Note });
@@ -17,7 +22,11 @@ function Actor(id) {
   this.language.code = 'EN';
   this.language.name = 'English';
 
-  this.bankaccounts = new Collection({ object: BankAccount, parent: this });
+  this.bankaccounts = new Collection({
+    object: BankAccount,
+    parent: this
+  });
+
   this.contactdetails = new Collection({
     object: ActorContactDetailOther,
     parent: this,

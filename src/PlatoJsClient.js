@@ -2,6 +2,14 @@ var client = require('./common/platoJsClient').getInstance('http://docker.carlto
 var platoJsClient = require('./');
 
 /*
+
+var c = new platoJsClient.common.Customer(6);
+c.get().then(function(c) {
+  c.bankaccounts.fetch().then(function(b) {
+    console.log(b);
+  });
+});
+
 var propertyAttributes = new platoJsClient.Collection({
   path: 'attribute',
   object: platoJsClient.common.PropertyAttribute,

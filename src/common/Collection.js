@@ -65,7 +65,16 @@ Collection.prototype.previousPage = function() {
  * @returns {Collection.prototype@call;promiseResult}
  */
 Collection.prototype.fetch = function() {
-  if (typeof this.options.path === 'undefined') {
+
+  // Add in path if not set and parent applied
+  if (typeof this.options.path === 'undefined'
+    && typeof this.options.parent === 'object'
+    && typeof this.options.object === 'function'
+  ) {
+    var o = new this.options.object();
+    this.options.path = this.options.parent.getUpdatePath()
+      + '/' + o.path;
+  } else if (typeof this.options.path === 'undefined') {
     throw new pathNotSpecifiedError('No path specified for entity');
   }
 
@@ -78,6 +87,8 @@ Collection.prototype.fetch = function() {
   }
 
   path += this.options.path;
+
+  console.log(path);
 
   return this.okPromiseResult(path, {
     page: this.page,
