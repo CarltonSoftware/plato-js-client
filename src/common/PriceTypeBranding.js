@@ -11,6 +11,7 @@ function PriceTypeBranding(id) {
   this.id = id;
   this.saleschannel = new SalesChannel();
   this.branding = new Branding();
+  this.pricetype = new PriceType();
   this.basepricetype = new PriceType();
   this.basepricetypebranding = new Branding();
   this.percentages = new StaticCollection({ object: PriceTypeBranding });

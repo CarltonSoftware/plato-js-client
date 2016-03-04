@@ -64,7 +64,11 @@ StaticCollection.prototype.mutateResponse = function(entity) {
     var entity = new (Function.prototype.bind.apply(object, params));
 
     if (typeof this.options.parent === 'object') {
-      entity.parent = this.options.parent;
+      if (typeof entity.setParent === 'function') {
+        entity.setParent(this.options.parent);
+      } else {
+        entity.parent = this.options.parent;
+      }
     }
 
     if (typeof element === 'string') {

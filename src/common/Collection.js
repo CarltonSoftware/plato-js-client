@@ -67,13 +67,11 @@ Collection.prototype.previousPage = function() {
 Collection.prototype.fetch = function() {
 
   // Add in path if not set and parent applied
-  if (typeof this.options.path === 'undefined'
-    && typeof this.options.parent === 'object'
-    && typeof this.options.object === 'function'
+  if (typeof this.options.parent === 'object'
+    && typeof this.options.path === 'string'
   ) {
-    var o = new this.options.object();
     this.options.path = this.options.parent.getUpdatePath()
-      + '/' + o.path;
+      + '/' + this.options.path;
   } else if (typeof this.options.path === 'undefined') {
     throw new pathNotSpecifiedError('No path specified for entity');
   }

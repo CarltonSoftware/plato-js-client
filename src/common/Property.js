@@ -47,6 +47,12 @@ function Property(id) {
     path: 'room',
     parents: [this]
   });
+  this.brandings = new Collection({
+    object: PropertyBranding,
+    path: 'branding',
+    parent: this
+  });
+
   this.address = new PropertyAddress(id);
 }
 Property.prototype = new SingleEntity();

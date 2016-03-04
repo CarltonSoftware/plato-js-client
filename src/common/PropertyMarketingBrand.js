@@ -2,15 +2,15 @@ var SingleEntity = require('./SingleEntity');
 var Agency = require('./Agency');
 var BookingBrand = require('./BookingBrand');
 
-function PropertyMarketingBrand(propertyID, id) {
-    this.path = '/property/'+propertyID+'/marketingbrand';
-    this.createPath = '/property/'+propertyID+'/marketingbrand';
+function PropertyMarketingBrand(id) {
+    this.path = 'marketingbrand';
+    this.createPath = this.path;
     this.id = id;
     this.agency = new Agency;
     this.defaultbookingbrand = new BookingBrand;
 }
-PropertyMarketingBrand.prototype = new SingleEntity();
 
+PropertyMarketingBrand.prototype = new SingleEntity();
 PropertyMarketingBrand.prototype.toArray = function() {
   return {
     marketingbrandcode: this.code,
