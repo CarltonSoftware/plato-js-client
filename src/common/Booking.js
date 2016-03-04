@@ -80,6 +80,8 @@ Booking.prototype.getStatus = function() {
       // indexOf because every state can be suffixed by - Cancelled or transferred or have brand specific stuff :sadface:
 
       var showAsOptions = [
+        /*Invalid - this should probably?? never happen as something has gone wrong */
+        'Invalid',
         /*
           "Potential - xxxx" - a potential booking of type xxxx (e.g. 'Hold'). Brands can decide what types they want to use.
         */
