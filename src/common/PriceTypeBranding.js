@@ -26,7 +26,10 @@ PriceTypeBranding.prototype.toArray = function() {
     fromdate: this.fromdate,
     todate: this.todate,
     type: this.type,
-    basepricetype: this.basepricetype.id
+    basepricetype: this.basepricetype.id,
+
+    // Hardcode to 2 at the moment
+    decimalplaces: 2
   };
 
   if (this.type === 'Percentage') {
