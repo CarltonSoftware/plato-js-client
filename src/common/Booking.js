@@ -45,15 +45,39 @@ Booking.prototype.toArray = function() {
     adults: this.adults,
     children: this.children,
     infants: this.infants,
+    /* Owner and Agency */
     propertyid: this.propertyid,
+    agencybookingtypeid : this.agencybookingtypeid,
+    /* Customer */
     propertybrandingid: this.propertybrandingid,
     currencycode: this.currencycode,
     saleschannel: this.saleschannel,
     pricingperiod: this.pricingperiod,
     sourcemarketingbrandid: this.sourcemarketingbrandid,
+    /* Web Booking */
+    webbooking_createddatetime: this.webbooking_createddatetime,
+    webbooking_reviewstartdatetime: this.webbooking_reviewstartdatetime,
+    webbooking_reviewingtabsuserid: this.webbooking_reviewingtabsuserid,
+    /* Potential Booking */
     potentialbooking_type: this.potentialbooking_type,
     potentialbooking_expirydatetime: this.potentialbooking_expirydatetime,
-    agencybookingtypeid : this.agencybookingtypeid
+    /* Provisional Booking */
+    provisionalbooking_depositamountid: this.provisionalbooking_depositamountid,
+    provisionalbooking_depositduedate: this.provisionalbooking_depositduedate,
+    provisionalbooking_balanceduedate: this.provisionalbooking_balanceduedate,
+    provisionalbooking_commissionpercentage: this.provisionalbooking_commissionpercentage,
+    provisionalbooking_ownerpaymenttermsid: this.provisionalbooking_ownerpaymenttermsid,
+    /* Transferred */
+    transferredbooking_tobookingid: this.transferredbooking_tobookingid,
+    /* Cancelled */
+    cancelledbooking_reason: this.cancelledbooking_reason,
+    cancelledbooking_adviseddate: this.cancelledbooking_adviseddate,
+    cancelledbooking_completeddate: this.cancelledbooking_completeddate,
+    cancelledbooking_completedbytabsuserid: this.cancelledbooking_completedbytabsuserid,
+    /* Security Deposit */
+    bookingsecuritydeposit_amount: this.bookingsecuritydeposit_amount,
+    bookingsecuritydeposit_dueindate: this.bookingsecuritydeposit_dueindate,
+    bookingsecuritydeposit_dueoutdate: this.bookingsecuritydeposit_dueoutdate
   };
 
   return array;
