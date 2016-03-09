@@ -109,6 +109,9 @@ Entity.prototype.updatePromiseResult = function(path, data) {
  * @returns {Promise}
  */
 Entity.prototype.createPromiseResult = function(path, data) {
+
+  console.log(data);
+
   var result = client.post({ path: path, entity: data });
   var e = this;
   return new Promise(function(resolve, reject) {
@@ -208,6 +211,13 @@ Entity.prototype.get = function(path) {
   return this;
 };
 
+/**
+ * Handle the errors thown by the client
+ *
+ * @param {Object} res
+ *
+ * @return {Error}
+ */
 Entity.prototype.handleError = function(res) {
   //TODO: At the moment the API sends a 404 status code for client errors.  We'd ideally handle these differently from actual 404s.
   //if (res.status.code == 404) {
@@ -215,7 +225,20 @@ Entity.prototype.handleError = function(res) {
   //} else if (res.status.code === 400) {
     return new badRequestError(res);
   //}
-}
+};
+
+Entity.prototype.getAsUriParameters = function(data) {
+  return Object.keys(data).map(function (k) {
+    if (_.isArray(data[k])) {
+      var keyE = encodeURIComponent(k + '[]');
+      return data[k].map(function (subData) {
+        return keyE + '=' + encodeURIComponent(subData);
+      }).join('&');
+    } else {
+      return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]);
+    }
+  }).join('&');
+};
 
 
 module.exports = Entity;
