@@ -51,8 +51,8 @@ Booking.prototype.toArray = function() {
     /* Customer */
     propertybrandingid: this.propertybrandingid,
     currencycode: this.currencycode,
-    saleschannel: this.saleschannel,
-    pricingperiod: this.pricingperiod,
+    saleschannel: this.saleschannel.saleschannel ? this.saleschannel.saleschannel : this.saleschannel,
+    pricingperiod: this.pricingperiod.pricingperiod ? this.pricingperiod.pricingperiod : this.pricingperiod,
     sourcemarketingbrandid: this.sourcemarketingbrandid,
     /* Web Booking */
     webbooking_createddatetime: this.webbooking_createddatetime,
@@ -108,6 +108,7 @@ Booking.prototype.getStatus = function() {
         'Invalid',
         /*
           "Potential - xxxx" - a potential booking of type xxxx (e.g. 'Hold'). Brands can decide what types they want to use.
+          TODO: we probably don't what to display enquiries, but probably do want to display holds. User configurable?
         */
         'Potential',
         /*
