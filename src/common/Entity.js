@@ -109,9 +109,6 @@ Entity.prototype.updatePromiseResult = function(path, data) {
  * @returns {Promise}
  */
 Entity.prototype.createPromiseResult = function(path, data) {
-
-  console.log(data);
-
   var result = client.post({ path: path, entity: data });
   var e = this;
   return new Promise(function(resolve, reject) {
@@ -119,6 +116,7 @@ Entity.prototype.createPromiseResult = function(path, data) {
       if (res.status.code === 201) {
         var newLocation = res.headers['Content-Location'].replace('/app_dev.php/v2', '');//TODO: remove the need for .replace(...)
         newLocation = newLocation.replace('/v2', '');
+        newLocation = newLocation.replace('/plato/web', '');
         client.get({ path: newLocation}).then(function(res) {
           resolve(e.mutateResponse(res.entity));
         }, function(res) {

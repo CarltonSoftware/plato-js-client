@@ -1,6 +1,13 @@
-var SingleEntity = require('./SingleEntity');
+var SingleEntity = require('./SingleEntity'),
+  Country = require('./Country');
 
 function Address() {
+  var country = new Country();
+  country.alpha2 = 'GB';
+  country.alpha3 = 'GBR';
+  country.name = 'United Kingdom';
+
+  this.country = country;
 }
 Address.prototype = new SingleEntity();
 
@@ -13,7 +20,7 @@ Address.prototype.toArray = function() {
     town: this.town,
     county: this.county,
     postcode: this.postcode,
-    countryalpha2code: this.countryalpha2code
+    countryalpha2code: this.country.alpha2
   };
 };
 

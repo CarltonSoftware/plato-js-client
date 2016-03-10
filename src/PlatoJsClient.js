@@ -1,30 +1,36 @@
-var client = require('./common/platoJsClient').getInstance('http://docker.carltonsoftware.co.uk:49158/app_dev.php/v2');
+/**var client = require('./common/platoJsClient').getInstance('http://localhost/plato/web/app_dev.php/v2');
 var platoJsClient = require('./');
 var PriceTypeBranding = require('./common/PriceTypeBranding');
 var Collection = require('./common/Collection');
 var Property = require('./common/Property');
+var Customer = require('./common/Customer');
+var BankAccount = require('./common/BankAccount');
+var Address = require('./common/Address');
+var Country = require('./common/Country');
 
-var p = new Property(1);
-p.get().then(function(p) {
+var c = new Customer(6);
+var b = new BankAccount();
+b.accountnumber = 1234567;
+b.sortcode = 123455;
 
-  // PropertyBranding
-  p.brandings.fetch().then(function(b) {
-    b.forEach(function(br) {
+var a = new Address();
+a.line1 = 'Test';
+a.town = 'Test';
 
-      // PropertyBrandingPrice
-      br.prices.fetch().then(function(pr) {
-        pr.forEach(function(price) {
+b.address = a;
 
-          // PropertyBrani
-          console.log(price.getUpdatePath());
-          console.log(price.pricetypebranding.getUpdatePath());
-        });
-      });
-    });
+
+c.get().then(function(customer) {
+
+
+  b.parent = customer;
+  console.log(b.toArray());
+  b.create().then(function(bNew) {
+    console.log(bNew);
   }).catch(function(err) {
-    console.log(err);
-    console.log(this);
+    console.log(err)
   });
 }).catch(function(err) {
-  console.log(err);
+  console.log(err)
 });
+*/
