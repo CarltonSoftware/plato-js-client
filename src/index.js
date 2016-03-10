@@ -76,6 +76,9 @@ module.exports.common.MarketingBrand = require('./common/MarketingBrand');
 module.exports.common.BrandingGroup = require('./common/BrandingGroup');
 module.exports.common.Branding = require('./common/Branding');
 
+/***** Brochure Related Objects *****/
+module.exports.common.Brochure = require('./common/Brochure');
+module.exports.common.BrochureRequest = require('./common/BrochureRequest');
 
 /***** Managed Services Related Objects *****/
 module.exports.common.ManagedActivity = require('./common/ManagedActivity');
