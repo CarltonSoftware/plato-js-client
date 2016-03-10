@@ -1,8 +1,9 @@
 var SingleEntity = require('./SingleEntity');
 
 function Setting(id) {
-    this.path = 'setting';
-    this.id = 'id';
+  this.path = 'setting';
+  this.createPath = this.path;
+  this.id = 'id';
 }
 Setting.prototype = new SingleEntity();
 Setting.prototype.toArray = function() {
