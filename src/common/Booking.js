@@ -41,19 +41,9 @@ Booking.prototype.toArray = function() {
     fromdate: this.fromdate,
     todate: this.todate,
     bookeddatetime: this.bookeddatetime,
-    estimatedarrivaltime: this.estimatedarrivaltime,
     adults: this.adults,
     children: this.children,
     infants: this.infants,
-    /* Owner and Agency */
-    propertyid: this.propertyid,
-    agencybookingtypeid : this.agencybookingtypeid,
-    /* Customer */
-    propertybrandingid: this.propertybrandingid,
-    currencycode: this.currencycode,
-    saleschannel: this.saleschannel.saleschannel ? this.saleschannel.saleschannel : this.saleschannel,
-    pricingperiod: this.pricingperiod.pricingperiod ? this.pricingperiod.pricingperiod : this.pricingperiod,
-    sourcemarketingbrandid: this.sourcemarketingbrandid,
     /* Web Booking */
     webbooking_createddatetime: this.webbooking_createddatetime,
     webbooking_reviewstartdatetime: this.webbooking_reviewstartdatetime,
@@ -79,6 +69,20 @@ Booking.prototype.toArray = function() {
     bookingsecuritydeposit_dueindate: this.bookingsecuritydeposit_dueindate,
     bookingsecuritydeposit_dueoutdate: this.bookingsecuritydeposit_dueoutdate
   };
+
+  if (this.guesttype === 'Customer') {
+    array.propertybrandingid = this.propertybrandingid;
+    array.currencycode = this.currencycode;
+    array.saleschannel = this.saleschannel.saleschannel ? this.saleschannel.saleschannel : this.saleschannel;
+    array.pricingperiod = this.pricingperiod.pricingperiod ? this.pricingperiod.pricingperiod : this.pricingperiod;
+    array.sourcemarketingbrandid = this.sourcemarketingbrandid;
+    array.estimatedarrivaltime = this.estimatedarrivaltime;
+  } else {
+    array.propertyid = this.propertyid;
+    if (this.guesttype !== 'Owner') {
+      array.agencybookingtypeid = this.agencybookingtypeid;
+    }
+  }
 
   return array;
 };
