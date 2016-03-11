@@ -1,28 +1,20 @@
 var SingleEntity = require('./SingleEntity');
-var VatRate = require('./VatBand');
+var VatBand = require('./VatBand');
 
 function VatRate(id) {
-    this.path = 'vatrate';
-    this.createPath = 'vatrate';
-    this.id = id;
-    this.vatband = new VatBand;
+  this.path = 'vatrate';
+  this.createPath = 'vatrate';
+  this.id = id;
+  this.vatband = new VatBand();
 }
 VatRate.prototype = new SingleEntity();
 
-VatRate.prototype.toCreateArray = function() {
+VatRate.prototype.toArray = function() {
   return {
     fromdate: this.fromdate,
     todate: this.todate,
     percentage: this.percentage,
+    vatband: this.vatband.vatband
   };
 };
-
-VatRate.prototype.toUpdateArray = function() {
-  return {
-    fromdate: this.fromdate,
-    todate: this.todate,
-    percentage: this.percentage,
-  };
-};
-
 module.exports = VatRate;
