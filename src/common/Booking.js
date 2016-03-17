@@ -81,6 +81,7 @@ Booking.prototype.toArray = function() {
     array.currencycode = this.currencycode;
     array.saleschannel = this.saleschannel.saleschannel ? this.saleschannel.saleschannel : this.saleschannel;
     array.pricingperiod = this.pricingperiod.pricingperiod ? this.pricingperiod.pricingperiod : this.pricingperiod;
+    array.ignorechangedayrules = this.ignorechangedayrules;
     array.sourcemarketingbrandid = this.sourcemarketingbrandid;
     array.estimatedarrivaltime = this.estimatedarrivaltime;
   } else {
