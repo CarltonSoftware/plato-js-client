@@ -6,6 +6,7 @@ var Currency = require('./Currency');
 var BookingCustomer = require('./BookingCustomer');
 var BookingDocument = require('./BookingDocument');
 var BookingGuest = require('./BookingGuest');
+var BookingNote = require('./BookingNote');
 var BookingSecurityDeposit = require('./BookingSecurityDeposit');
 var Note = require('./Note');
 
@@ -30,8 +31,12 @@ function Booking(id) {
     path: 'guest',
     parents: [this]
   });
-  this.customers = new Collection({ object: BookingCustomer });
-  this.notes = new Collection({ object: Note });
+  this.customers = new Collection({
+    object: BookingCustomer,
+    path: 'customer',
+    parents: [this]
+  });
+  this.notes = new Collection({object: BookingNote});
 }
 Booking.prototype = new SingleEntity();
 Booking.prototype.toArray = function() {
@@ -57,6 +62,7 @@ Booking.prototype.toArray = function() {
     provisionalbooking_balanceduedate: this.provisionalbooking_balanceduedate,
     provisionalbooking_commissionpercentage: this.provisionalbooking_commissionpercentage,
     provisionalbooking_ownerpaymenttermsid: this.provisionalbooking_ownerpaymenttermsid,
+    provisionalbooking_tabsuserid: this.provisionalbooking_tabsuserid,
     /* Transferred */
     transferredbooking_tobookingid: this.transferredbooking_tobookingid,
     /* Cancelled */
