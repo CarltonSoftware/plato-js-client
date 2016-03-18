@@ -4,6 +4,7 @@ var BrandingGroup = require('./BrandingGroup');
 var PropertyBookingBrand = require('./PropertyBookingBrand');
 var PropertyMarketingBrand = require('./PropertyMarketingBrand');
 var PropertyBrandingPrice = require('./PropertyBrandingPrice');
+var Status = require('./Status');
 var Collection = require('./Collection');
 
 function PropertyBranding(id) {
@@ -14,6 +15,7 @@ function PropertyBranding(id) {
   this.brandinggroup = new BrandingGroup();
   this.bookingbrand = new PropertyBookingBrand();
   this.marketingbrand = new PropertyMarketingBrand();
+  this.status = new Status();
 
   this.prices = new Collection({
     object: PropertyBrandingPrice,

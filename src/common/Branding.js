@@ -13,6 +13,17 @@ function Branding(id) {
 }
 
 Branding.prototype = new SingleEntity();
+Branding.prototype.toString = function(sep) {
+  if (!sep) {
+    sep = ' / ';
+  }
+  var grp = [
+    this.brandinggroup.name,
+    this.bookingbrand.name,
+    this.marketingbrand.name
+  ]
+  return grp.join(sep);
+};
 Branding.prototype.toArray = function() {
   return {
     brandinggroupid: this.brandinggroup.id,
