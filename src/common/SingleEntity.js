@@ -59,8 +59,19 @@ SingleEntity.prototype.update = function(fields) {
 
   return this.updatePromiseResult(
     this.getUpdatePath(),
-    _.pick(this.toUpdateArray(), this.isDefined)
+    this.removeUndefineds(this.toUpdateArray())
   );
+};
+
+/**
+ * Return a filtered array
+ *
+ * @param {array} array
+ *
+ * @return {array}
+ */
+SingleEntity.prototype.removeUndefineds = function(array) {
+  return _.pick(array, this.isDefined);
 };
 
 /**
@@ -80,7 +91,7 @@ SingleEntity.prototype.create = function(fields) {
 
   return this.createPromiseResult(
     this.getCreatePath(),
-    _.pick(this.toCreateArray(), this.isDefined)
+    this.removeUndefineds(this.toCreateArray())
   );
 };
 
