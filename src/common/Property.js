@@ -43,7 +43,7 @@ function Property(id) {
   this.rooms = new Collection({
     object: PropertyRoom,
     path: 'room',
-    parents: [this]
+    parent: this
   });
   this.brandings = new Collection({
     object: PropertyBranding,

@@ -9,9 +9,10 @@ RoomType.prototype = new SingleEntity();
 
 RoomType.prototype.toArray = function() {
   return {
-    'name': this.name,
-    'sleeps': this.sleeps,
-    'description': this.description
+    id: this.id,
+    name: this.name,
+    sleeps: this.sleeps,
+    description: this.description
   };
 };
 
