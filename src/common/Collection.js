@@ -65,26 +65,25 @@ Collection.prototype.previousPage = function() {
  * @returns {Collection.prototype@call;promiseResult}
  */
 Collection.prototype.fetch = function() {
+  var path = '';
 
   // Add in path if not set and parent applied
   if (typeof this.options.parent === 'object'
     && typeof this.options.path === 'string'
   ) {
-    this.options.path = this.options.parent.getUpdatePath()
-      + '/' + this.options.path;
+    path = this.options.parent.getUpdatePath() + '/' + this.options.path;
   } else if (typeof this.options.path === 'undefined') {
     throw new pathNotSpecifiedError('No path specified for entity');
   }
 
-  //var path = this.options.path;
-
-  var path = '';
   var parents = this.options.parents || [];
-  for (var i = 0; i < parents.length; i++) {
-    path += parents[i].path + '/' + parents[i].id + '/';
-  }
+  if (path.length === 0) {
+    for (var i = 0; i < parents.length; i++) {
+      path += parents[i].path + '/' + parents[i].id + '/';
+    }
 
-  path += this.options.path;
+    path += this.options.path;
+  }
 
   return this.okPromiseResult(path, {
     page: this.page,
