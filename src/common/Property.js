@@ -8,6 +8,7 @@ var PropertyOwner = require('./PropertyOwner');
 var PropertySupplier = require('./PropertySupplier');
 var PropertySecurityFeature = require('./PropertySecurityFeature');
 var PropertyRoom = require('./PropertyRoom');
+var PropertyTarget = require('./PropertyTarget');
 var PropertyAddress = require('./PropertyAddress');
 
 function Property(id) {
@@ -43,6 +44,11 @@ function Property(id) {
   this.rooms = new Collection({
     object: PropertyRoom,
     path: 'room',
+    parent: this
+  });
+  this.targets = new Collection({
+    object: PropertyTarget,
+    path: 'target',
     parent: this
   });
   this.brandings = new Collection({
