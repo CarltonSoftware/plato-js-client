@@ -225,6 +225,21 @@ Entity.prototype.handleError = function(res) {
   //}
 };
 
+/**
+ * Extend the entity object
+ *
+ * @param {Object} parent
+ *
+ * @return {undefined}
+ */
+Entity.prototype.extend = function(parent) {
+  var child = this;
+  child.prototype = parent;
+  child.prototype.$super = parent;
+  child.prototype = new child(Array.prototype.slice.call(1,arguments));
+  child.prototype.constructor = child;
+}
+
 Entity.prototype.getAsUriParameters = function(data) {
   return Object.keys(data).map(function (k) {
     if (_.isArray(data[k])) {

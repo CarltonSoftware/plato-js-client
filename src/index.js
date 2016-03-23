@@ -124,3 +124,4 @@ module.exports.common.DepositAmountType = require('./common/DepositAmountType');
 
 module.exports.StaticCollection = require('./common/StaticCollection');
 module.exports.Collection = require('./common/Collection');
+module.exports.GroupingCollection = require('./common/GroupingCollection');

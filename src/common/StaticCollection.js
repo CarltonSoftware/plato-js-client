@@ -78,6 +78,11 @@ StaticCollection.prototype.mutateResponse = function(entity) {
     }
   }.bind(this, parents));
 
+  // Added this in so we can process the collection once its been populated
+  if (typeof this.postResponse === 'function') {
+    this.postResponse.bind(this).call();
+  }
+
   return this;
 };
 

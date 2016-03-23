@@ -1,12 +1,15 @@
-/*var client = require('./common/platoJsClient').getInstance('http://localhost/plato/web/app_dev.php/v2');
+var client = require('./common/platoJsClient').getInstance('http://docker.carltonsoftware.co.uk:49158/app_dev.php/v2');
 var platoJsClient = require('./');
-var Collection = require('./common/Collection');
-var Grouping = require('./common/Grouping');
+var GroupingCollection = require('./common/GroupingCollection');
 
-var groupings = new platoJsClient.Collection({ path: 'grouping', object: platoJsClient.common.Grouping });
+var groupings = new GroupingCollection();
 groupings.fetch().then(function(groupings) {
-  groupings.forEach(function(ele) {
-    console.log(ele.hasParent());
+  var t = groupings.getNestedGroupings();
+  //console.log(JSON.stringify(t, null, " "));
+  var s = '';
+  groupings.traverse(t, function() {
+    s += Array(this.depth).join('-') + (this.depth > 0 ? '> ' : '') + this.name + ' (' + this.depth + ')\n';
   });
+
+  console.log(s);
 });
-*/
