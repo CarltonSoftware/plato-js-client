@@ -2,12 +2,54 @@ var Collection = require('./Collection');
 var Grouping = require('./Grouping');
 var _ = require('underscore');
 
-function GroupingCollection() {};
+function GroupingCollection() {
+  this.nestedGroups = [];
+};
 
 GroupingCollection.prototype = new Collection({
   path: 'grouping',
   object: Grouping
 });
+
+/**
+ * Callback function used to populate the nestedGroups after a fetch
+ *
+ * @return {undefined}
+ */
+GroupingCollection.prototype.postResponse = function() {
+  // The following code will update the depth of each grouping
+	var depth = 0,
+    // Get the groupings without any parent
+    nodes = this.collection.filter(function(item) {
+	    return item.hasParent() === false;
+    }),
+    total = nodes.length;
+
+  do {
+
+    // Add the depth to each of the groupings found
+		nodes.forEach(function(node) {
+      node.depth = depth;
+    });
+		depth++;
+
+    // Get the id's of each grouping
+		var ids = nodes.map(function(item) {
+      return item["id"];
+    });
+
+    // Find any nodes which have a parent in the current id array
+		nodes = this.collection.filter(function(item) {
+			return typeof item.parentgrouping === 'object'
+        && ids.indexOf(item.parentgrouping.id) > -1;
+		});
+
+    // Update total so we can use the breakout clause
+		total += nodes.length;
+	} while (nodes.length > 0 && total <= this.collection.length);
+
+  this.nestedGroups = this.getNestedGroupings();
+};
 
 /**
  * Return a multi dimensional list of groups and children
@@ -27,10 +69,14 @@ GroupingCollection.prototype.getNestedGroupings = function() {
   var _unflatten = function(array, parent, tree) {
     var tree = typeof tree !== 'undefined' ? tree : [];
     var parent = typeof parent !== 'undefined' ? parent : { };
+
     var children = _.filter(
       array,
       function(child) {
-        return typeof child.parentgrouping === 'object' && child.parentgrouping.id === parent.id;
+        if (typeof child.parentgrouping === 'undefined') {
+          child.parentgrouping = {};
+        }
+        return child.parentgrouping.id === parent.id;
       }
     );
 
@@ -42,8 +88,7 @@ GroupingCollection.prototype.getNestedGroupings = function() {
       }
 
       _.each(children, function(child) {
-        child.depth = (typeof parent.depth === 'undefined') ? 0 : parent.depth + 1;
-        _unflatten(array, child, tree);
+        _unflatten(array, child);
       });
     }
 
@@ -61,16 +106,16 @@ GroupingCollection.prototype.getNestedGroupings = function() {
  *
  * @return void
  */
-GroupingCollection.prototype.traverse = function(array, func) {
+GroupingCollection.prototype.traverse = function(func) {
 
   if (typeof func !== 'function') {
     func = function() {
-      console.log(Array(this.depth).join('-') + (this.depth > 0 ? '> ' : '') + this.name + ' (' + this.depth + ')');
+      console.log(Array(this.depth).join('-') + (this.depth > 0 ? '-> ' : '') + this.name + ' (' + this.depth + ')');
     }
   }
 
   var _traverse = function(array) {
-    array.forEach(function(e, i) {
+    array.forEach(function(e) {
       func.call(e);
       if (e.children && e.children.length > 0) {
         _traverse(e.children);
@@ -78,7 +123,7 @@ GroupingCollection.prototype.traverse = function(array, func) {
     });
   }
 
-  return _traverse(array);
+  return _traverse(this.nestedGroups);
 }
 
 module.exports = GroupingCollection;
