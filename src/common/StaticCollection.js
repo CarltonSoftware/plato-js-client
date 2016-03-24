@@ -155,7 +155,66 @@ StaticCollection.prototype.filter = function(callback, thisArg) {
 */
 StaticCollection.prototype.push = function(object) {
   this.collection.push(object);
+
+  // Added this in so we can process the collection once its been populated
+  if (typeof this.postResponse === 'function') {
+    this.postResponse.bind(this).call();
+  }
 };
+
+/**
+ * Iterator function for all of the collections objects
+ *
+ * @param {object}   object   comparison object
+ * @param {function} callback callback function
+ *
+ * @return {*}
+ */
+StaticCollection.prototype.loopAndMatch = function(object, callback) {
+  return this.loopAndMatchById(object.id, callback);
+}
+
+/**
+ * Iterator function for all of the collections objects
+ *
+ * @param {number}   id       comparison object id
+ * @param {function} callback callback function
+ *
+ * @return {*}
+ */
+StaticCollection.prototype.loopAndMatchById = function(id, callback) {
+  this.forEach(function(ele, i) {
+    if (ele.id === id) {
+      callback.call(this, i);
+    }
+  }.bind(this));
+
+  // Added this in so we can process the collection once its been populated
+  if (typeof this.postResponse === 'function') {
+    this.postResponse.bind(this).call();
+  }
+}
+
+/**
+ * Iterator function for all of the collections objects
+ *
+ * @param {number}   id       comparison object id
+ * @param {function} callback callback function
+ *
+ * @return {*}
+ */
+StaticCollection.prototype.loopAndMatchByComparison = function(object, callback) {
+  this.forEach(function(ele, i) {
+    if (ele === object) {
+      callback.call(this, i);
+    }
+  }.bind(this));
+
+  // Added this in so we can process the collection once its been populated
+  if (typeof this.postResponse === 'function') {
+    this.postResponse.bind(this).call();
+  }
+}
 
 /**
 * Update an element in the collection
@@ -177,12 +236,9 @@ StaticCollection.prototype.updateElement = function(object) {
 * @returns {undefined}
 */
 StaticCollection.prototype.updateElementById = function(id, object) {
-  for (var i = 0; i < this.collection.length; i++) {
-    if (this.collection[i].id === id) {
-      this.collection[i] = object;
-      continue;
-    }
-  }
+  this.loopAndMatchById(id, function(i) {
+    this.collection[i] = object;
+  });
 };
 
 /**
@@ -193,12 +249,9 @@ StaticCollection.prototype.updateElementById = function(id, object) {
 * @returns {undefined}
 */
 StaticCollection.prototype.updateElementByComparsion = function(object, newObject) {
-  for (var i = 0; i < this.collection.length; i++) {
-    if (this.collection[i] === object) {
-      this.collection[i] = newObject;
-      continue;
-    }
-  }
+  this.loopAndMatchByComparison(object, function(i) {
+    this.collection[i] = newObject;
+  });
 };
 
 /**
@@ -220,12 +273,9 @@ StaticCollection.prototype.deleteElement = function(object) {
 * @returns {undefined}
 */
 StaticCollection.prototype.deleteElementById = function(id) {
-  for (var i = 0; i < this.collection.length; i++) {
-    if (this.collection[i].id === id) {
-      this.collection.splice(i, 1);
-      continue;
-    }
-  }
+  this.loopAndMatchById(id, function(i) {
+    this.collection.splice(i, 1);
+  });
 };
 
 /**
@@ -236,12 +286,9 @@ StaticCollection.prototype.deleteElementById = function(id) {
 * @returns {undefined}
 */
 StaticCollection.prototype.deleteElementByComparison = function(object) {
-  for (var i = 0; i < this.collection.length; i++) {
-    if (this.collection[i] === object) {
-      this.collection.splice(i, 1);
-      continue;
-    }
-  }
+  this.loopAndMatchByComparison(object, function(i) {
+    this.collection.splice(i, 1);
+  });
 };
 
 /**
