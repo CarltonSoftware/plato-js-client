@@ -62,6 +62,7 @@ module.exports.common.PropertyRoom = require('./common/PropertyRoom');
 module.exports.common.PropertyTarget = require('./common/PropertyTarget');
 module.exports.common.RoomType = require('./common/RoomType');
 module.exports.common.Grouping = require('./common/Grouping');
+module.exports.common.GroupingValue = require('./common/GroupingValue');
 
 /***** Booking Related Objects *****/
 module.exports.common.Booking = require('./common/Booking');
@@ -124,4 +125,5 @@ module.exports.common.DepositAmountType = require('./common/DepositAmountType');
 
 module.exports.StaticCollection = require('./common/StaticCollection');
 module.exports.Collection = require('./common/Collection');
+module.exports.MultiCollection = require('./common/MultiCollection');
 module.exports.GroupingCollection = require('./common/GroupingCollection');

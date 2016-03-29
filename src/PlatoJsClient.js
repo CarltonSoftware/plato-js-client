@@ -30,5 +30,9 @@ groupings.fetch().then(function(groupings) {
   groupings.traverse();
   console.log("\n");
 
+  groupings.getGroupingValueCollections().fetchAll().then(function(multi) {
+    console.log(multi);
+  });
+
 });
 */
