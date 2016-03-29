@@ -6,6 +6,7 @@ function Grouping(id) {
   this.id = (typeof id === 'undefined') ? 0 : id;
   this.parentgrouping = Object.create(Grouping.prototype);
   this.depth = 0;
+  this.children = [];
 
   this.hasParent = function() {
     return typeof this.parentgrouping === 'object'

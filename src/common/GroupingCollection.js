@@ -48,6 +48,11 @@ GroupingCollection.prototype.postResponse = function() {
 		total += nodes.length;
 	} while (nodes.length > 0 && total <= this.collection.length);
 
+  // Clear children, this avoids duplicates
+  for (var i = 0; i < this.collection.length; i++) {
+    this.collection[i].children = [];
+  }
+
   this.nestedGroups = this.getNestedGroupings();
 };
 
@@ -95,7 +100,7 @@ GroupingCollection.prototype.getNestedGroupings = function() {
     return tree;
   }
 
-  return _unflatten(this.collection);
+  return _unflatten(this.collection, undefined, []);
 };
 
 /**

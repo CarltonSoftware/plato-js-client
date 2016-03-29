@@ -1,4 +1,4 @@
-/**var client = require('./common/platoJsClient').getInstance('http://docker.carltonsoftware.co.uk:49158/app_dev.php/v2');
+/*var client = require('./common/platoJsClient').getInstance('http://docker.carltonsoftware.co.uk:49158/app_dev.php/v2');
 var platoJsClient = require('./');
 var GroupingCollection = require('./common/GroupingCollection');
 var Collection = require('./common/Collection');
@@ -15,7 +15,7 @@ groupings.fetch().then(function(groupings) {
   groupings.traverse();
   console.log("\n");
 
-  groupings.collection[4].parentgrouping.id = 1;
+  groupings.collection[1].parentgrouping.id = 4;
   groupings.postResponse();
   groupings.traverse();
   console.log("\n");
@@ -23,8 +23,8 @@ groupings.fetch().then(function(groupings) {
   // Investigate why deleting this or setting to undefined breaks the nesting
   // function. Setting to object seems to work fine though.
   //
-  delete groupings.collection[4].parentgrouping;
-  // groupings.collection[4].parentgrouping = undefined;
+  //delete groupings.collection[4].parentgrouping;
+  groupings.collection[1].parentgrouping = undefined;
   //groupings.collection[4].parentgrouping = {};
   groupings.postResponse();
   groupings.traverse();
