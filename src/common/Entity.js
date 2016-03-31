@@ -38,9 +38,14 @@ Entity.prototype.mutateEntity = function(entity) {
         if (typeof entity[prop] === 'string'
           && entity[prop].indexOf('/v2') === 0
         ) {
-          // Map id's of route string to entity object so the get() request will
-          // know of the correct path.
-          this[prop].mapRouteIds(entity[prop]);
+          // See if EntityLink function is being used
+          if (typeof this[prop].factory === 'function') {
+            this[prop] = this[prop].factory(entity[prop]);
+          } else {
+            // Map id's of route string to entity object so the get() request will
+            // know of the correct path.
+            this[prop].mapRouteIds(entity[prop]);
+          }
         } else if (typeof this[prop].mutateResponse === 'function') {
           // Recursive call
           this[prop].mutateResponse(entity[prop]);

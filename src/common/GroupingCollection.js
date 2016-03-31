@@ -1,5 +1,7 @@
 var Collection = require('./Collection');
 var Grouping = require('./Grouping');
+var GroupingValue = require('./GroupingValue');
+var MultiCollection = require('./MultiCollection');
 var _ = require('underscore');
 
 function GroupingCollection() {
@@ -10,6 +12,26 @@ GroupingCollection.prototype = new Collection({
   path: 'grouping',
   object: Grouping
 });
+
+/**
+ * Get the multicollection for the grouping values
+ *
+ * @return {MultiCollection}
+ */
+GroupingCollection.prototype.getGroupingValueCollections = function() {
+  var m = new MultiCollection();
+  for (var i = 0; i < this.collection.length; i++) {
+    m.collections.push(
+      new Collection({
+        path: 'value',
+        parent: this.collection[i],
+        object: GroupingValue
+      })
+    );
+  }
+
+  return m;
+}
 
 /**
  * Callback function used to populate the nestedGroups after a fetch
@@ -47,6 +69,11 @@ GroupingCollection.prototype.postResponse = function() {
     // Update total so we can use the breakout clause
 		total += nodes.length;
 	} while (nodes.length > 0 && total <= this.collection.length);
+
+  // Clear children, this avoids duplicates
+  for (var i = 0; i < this.collection.length; i++) {
+    this.collection[i].children = [];
+  }
 
   this.nestedGroups = this.getNestedGroupings();
 };
@@ -95,7 +122,7 @@ GroupingCollection.prototype.getNestedGroupings = function() {
     return tree;
   }
 
-  return _unflatten(this.collection);
+  return _unflatten(this.collection, undefined, []);
 };
 
 /**
