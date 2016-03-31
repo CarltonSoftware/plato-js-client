@@ -1,13 +1,23 @@
 var SingleEntity = require('./SingleEntity');
 var Agency = require('./Agency');
 var BookingBrand = require('./BookingBrand');
+var Collection = require('./Collection');
+var PropertyGroupingValue = require('./PropertyGroupingValue');
 
 function PropertyMarketingBrand(id) {
-    this.path = 'marketingbrand';
-    this.createPath = this.path;
-    this.id = id;
-    this.agency = new Agency;
-    this.defaultbookingbrand = new BookingBrand;
+  this.path = 'marketingbrand';
+  this.createPath = this.path;
+  this.id = id;
+  this.agency = new Agency;
+  this.defaultbookingbrand = new BookingBrand;
+
+  // Collection of grouping values.  This will create the update path
+  // /property/{id}/marketingbrand/{mid}/groupingvalue/{gid}
+  this.groupings = new Collection({
+    parent: this,
+    path: 'groupingvalue',
+    object: PropertyGroupingValue
+  });
 }
 
 PropertyMarketingBrand.prototype = new SingleEntity();

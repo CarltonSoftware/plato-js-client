@@ -15,11 +15,6 @@ function Property(id) {
   this.path = 'property';
   this.createPath = 'property';
   this.id = id;
-  this.brandings = new Collection({
-    object: PropertyBranding,
-    path: 'branding',
-    parents:[this]
-  });
   this.notes = new Collection({object: PropertyNote});
   this.documents = new Collection({
     object: PropertyDocument,
