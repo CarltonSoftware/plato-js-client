@@ -149,7 +149,7 @@ Booking.prototype.getStatus = function() {
     default:
       // Neither customer or owner, this is normally for maintenance, photos, inspections etc.
       item.bookingCustomer = 'None';
-      item.bookingType = 'Property unavailable';
+      item.bookingType = 'Property Unavailable';
       item.showAs = 'unavailable';
   }
   if (this.cancelled) {
