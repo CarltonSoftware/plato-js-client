@@ -22,6 +22,22 @@ function MultiCollection() {
 
     return Promise.all(promises);
   };
+
+  /**
+   * Return all entities in the multicollection
+   *
+   * @return {Array}
+   */
+  this.getAllEntities = function() {
+    var entities = [];
+    this.collections.forEach(function(collection) {
+      collection.forEach(function(entity) {
+        entities.push(entity);
+      })
+    });
+
+    return entities;
+  };
 };
 
 module.exports = MultiCollection;

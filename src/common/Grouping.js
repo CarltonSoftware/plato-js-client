@@ -1,10 +1,13 @@
-var SingleEntity = require('./SingleEntity');
+var SingleEntity = require('./SingleEntity'),
+  EntityLink = require('./EntityLink')
 
 function Grouping(id) {
   this.path = 'grouping';
   this.createPath = this.path;
   this.id = (typeof id === 'undefined') ? 0 : id;
-  this.parentgrouping = Object.create(Grouping.prototype);
+  this.parentgrouping = new EntityLink({
+    entity: 'Grouping'
+  });
   this.depth = 0;
   this.children = [];
 
