@@ -63,6 +63,7 @@ module.exports.common.PropertyTarget = require('./common/PropertyTarget');
 module.exports.common.RoomType = require('./common/RoomType');
 module.exports.common.Grouping = require('./common/Grouping');
 module.exports.common.GroupingValue = require('./common/GroupingValue');
+module.exports.common.PropertyGroupingValue = require('./common/PropertyGroupingValue');
 
 /***** Booking Related Objects *****/
 module.exports.common.Booking = require('./common/Booking');
