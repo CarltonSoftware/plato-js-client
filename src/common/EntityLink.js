@@ -18,6 +18,8 @@ function EntityLink(options) {
       && typeof this.parent.factory === 'function'
     ) {
       e.parent = this.parent.factory(routeParts.join('/'));
+    } else if (typeof this.parent === 'object') {
+      e.parent = this.parent;
     }
 
     return e;
