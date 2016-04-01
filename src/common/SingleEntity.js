@@ -35,7 +35,9 @@ SingleEntity.prototype.get = function() {
     throw new pathNotSpecifiedError('No path specified for entity');
   }
 
-  return this.okPromiseResult(this.path + '/' + this.id);
+  return this.okPromiseResult(
+    this.getUpdatePath()
+  );
 };
 
 /**
