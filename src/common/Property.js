@@ -24,12 +24,12 @@ function Property(id) {
   this.owners = new Collection({
     object: PropertyOwner,
     path: 'owner',
-    parent: this
+    parents: [this]
   });
   this.suppliers = new Collection({
     object: PropertySupplier,
     path: 'supplier',
-    parent: this
+    parents: [this]
   });
   this.securityFeatures = new Collection({
     object: PropertySecurityFeature,
