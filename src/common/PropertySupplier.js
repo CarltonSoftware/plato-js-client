@@ -7,7 +7,7 @@ function PropertySupplier(id) {
   this.createPath = 'supplier';
   this.id = id;
   this.actor = new Supplier();
-  this.managedactivity = new ManagedActivity();
+  this.activity = new ManagedActivity();
 }
 PropertySupplier.prototype = new SingleEntity();
 
@@ -17,7 +17,7 @@ PropertySupplier.prototype.toArray = function() {
     actorid: this.actor.id,
     fromdate: this.fromdate,
     todate: this.todate,
-    managedactivityid: this.managedactivity.id
+    managedactivityid: this.activity.id
   };
 };
 
