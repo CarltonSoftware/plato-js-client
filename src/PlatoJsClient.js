@@ -1,5 +1,14 @@
 /*var client = require('./common/platoJsClient').getInstance('http://docker.carltonsoftware.co.uk:49158/app_dev.php/v2');
 var platoJsClient = require('./');
+
+var n = new platoJsClient.common.Note(1);
+n.get().then(function(note) {
+  note.createdby.get().then(function(tabsuser) {
+    console.log(tabsuser);
+  });
+});
+
+
 var GroupingCollection = require('./common/GroupingCollection');
 var GroupingValue = require('./common/GroupingValue');
 var Collection = require('./common/Collection');

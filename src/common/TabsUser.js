@@ -1,9 +1,11 @@
-var SingleEntity = require('./SingleEntity');
+var Actor = require('./Actor');
 
 function TabsUser(id) {
-    this.path = 'tabsuser';
-    this.id = id;
+  this.path = 'tabsuser';
+  this.createPath = 'tabsuser';
+
+  Actor.apply(this, arguments);
 }
-TabsUser.prototype = new SingleEntity();
+TabsUser.prototype = new Actor();
 
 module.exports = TabsUser;

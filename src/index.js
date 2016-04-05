@@ -24,7 +24,7 @@ module.exports.common.Setting = require('./common/Setting');
 module.exports.common.Source = require('./common/Source');
 module.exports.common.SourceCategory = require('./common/SourceCategory');
 
-/***** Actor Related Objects *****/
+// Actor Related Objects
 module.exports.common.Actor = require('./common/Actor');
 module.exports.common.ActorInstance = require('./common/ActorInstance');
 module.exports.common.Actors = require('./common/Actors');
@@ -35,14 +35,14 @@ module.exports.common.ActorNote = require('./common/ActorNote');
 module.exports.common.ActorDocument = require('./common/ActorDocument');
 module.exports.common.BankAccount = require('./common/BankAccount');
 
-/***** Customer Releated Objects *****/
+// Customer Releated Objects
 module.exports.common.Customer = require('./common/Customer');
 module.exports.common.CustomerAddress = require('./common/CustomerAddress');
 module.exports.common.CustomerContactDetailOther = require('./common/CustomerContactDetailOther');
 module.exports.common.CustomerDocument = require('./common/CustomerDocument');
 module.exports.common.Customers = require('./common/Customers');
 
-/***** Property Related Objects *****/
+// Property Related Objects
 module.exports.common.Properties = require('./common/Properties');
 module.exports.common.Property = require('./common/Property');
 module.exports.common.PropertyAttribute = require('./common/PropertyAttribute');
@@ -67,7 +67,7 @@ module.exports.common.PropertyGroupingValue = require('./common/PropertyGrouping
 module.exports.common.PropertyMarketingBrand = require('./common/PropertyMarketingBrand');
 module.exports.common.PropertyBookingBrand = require('./common/PropertyBookingBrand');
 
-/***** Booking Related Objects *****/
+// Booking Related Objects
 module.exports.common.Booking = require('./common/Booking');
 module.exports.common.BookingCustomer = require('./common/BookingCustomer');
 module.exports.common.BookingEnquiry = require('./common/BookingEnquiry');
@@ -78,32 +78,32 @@ module.exports.common.Bookings = require('./common/Bookings');
 module.exports.common.GuestAgeRange = require('./common/GuestAgeRange');
 module.exports.common.GuestType = require('./common/GuestType');
 
-/***** Brand Related Objects *****/
+// Brand Related Objects
 module.exports.common.BookingBrand = require('./common/BookingBrand');
 module.exports.common.MarketingBrand = require('./common/MarketingBrand');
 module.exports.common.BrandingGroup = require('./common/BrandingGroup');
 module.exports.common.Branding = require('./common/Branding');
 
-/***** Brochure Related Objects *****/
+// Brochure Related Objects
 module.exports.common.Brochure = require('./common/Brochure');
 module.exports.common.BrochureRequest = require('./common/BrochureRequest');
 
-/***** Managed Services Related Objects *****/
+// Managed Services Related Objects
 module.exports.common.ManagedActivity = require('./common/ManagedActivity');
 module.exports.common.Supplier = require('./common/Supplier');
 
-/***** Note Related Objects *****/
+// Note Related Objects
 module.exports.common.Note = require('./common/Note');
 module.exports.common.NoteText = require('./common/NoteText');
 module.exports.common.NoteType = require('./common/NoteType');
 
-/***** Tabs user *****/
+// Tabs user
 module.exports.common.TabsUser = require('./common/TabsUser');
 
-/***** Search *****/
+// Search
 module.exports.common.Search = require('./common/Search');
 
-/***** Pricing *****/
+// Pricing
 module.exports.common.Currency = require('./common/Currency');
 module.exports.common.Extra = require('./common/Extra');
 module.exports.common.ExtraBranding = require('./common/ExtraBranding');
@@ -119,10 +119,10 @@ module.exports.common.SalesChannel = require('./common/SalesChannel');
 module.exports.common.VatBand = require('./common/VatBand');
 module.exports.common.VatRate = require('./common/VatRate');
 
-/***** Property Pricing *****/
+// Property Pricing
 module.exports.common.PropertyBrandingPrice = require('./common/PropertyBrandingPrice');
 
-/***** Bookings *****/
+// Bookings
 module.exports.common.DepositAmount = require('./common/DepositAmount');
 module.exports.common.DepositAmountType = require('./common/DepositAmountType');
 
