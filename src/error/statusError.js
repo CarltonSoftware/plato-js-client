@@ -4,9 +4,13 @@ function statusError(response) {
   this.statusCode = response.status.code;
 
   if (typeof response.entity === 'object' && response.entity.hasOwnProperty('errorDescription')) {
-    var error = JSON.parse(response.entity.errorDescription);
-    if (error) {
-      this.message = error.description;
+    try {
+      var error = JSON.parse(response.entity.errorDescription);
+      if (error) {
+        this.message = error.description;
+      }
+    } catch(e) {
+      this.message = response.entity.errorDescription;
     }
   }
 };
