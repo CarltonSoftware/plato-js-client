@@ -19,22 +19,22 @@ function Property(id) {
   this.documents = new Collection({
     object: PropertyDocument,
     path: 'document',
-    parents: [this]
+    parent: this
   });
   this.owners = new Collection({
     object: PropertyOwner,
     path: 'owner',
-    parents: [this]
+    parent: this
   });
   this.suppliers = new Collection({
     object: PropertySupplier,
     path: 'supplier',
-    parents: [this]
+    parent: this
   });
   this.securityFeatures = new Collection({
     object: PropertySecurityFeature,
     path: 'securityfeature',
-    parents: [this]
+    parent: this
   });
   this.rooms = new Collection({
     object: PropertyRoom,
