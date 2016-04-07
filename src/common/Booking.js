@@ -49,6 +49,9 @@ Booking.prototype.toArray = function() {
     adults: this.adults,
     children: this.children,
     infants: this.infants,
+    checkinearliesttime: this.checkinearliesttime,
+    checkinlatesttime: this.checkinlatesttime,
+    checkouttime: this.checkouttime,
     /* Web Booking */
     webbooking_createddatetime: this.webbooking_createddatetime,
     webbooking_reviewstartdatetime: this.webbooking_reviewstartdatetime,
@@ -90,7 +93,6 @@ Booking.prototype.toArray = function() {
       array.agencybookingtypeid = this.agencybookingtypeid;
     }
   }
-
   return array;
 };
 
