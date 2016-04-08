@@ -3,6 +3,7 @@ var Agency = require('./Agency');
 var BookingBrand = require('./BookingBrand');
 var Collection = require('./Collection');
 var PropertyGroupingValue = require('./PropertyGroupingValue');
+var PropertyBrochure = require('./PropertyBrochure');
 var MarketingBrand = require('./MarketingBrand');
 
 function PropertyMarketingBrand(id) {
@@ -19,6 +20,11 @@ function PropertyMarketingBrand(id) {
     parent: this,
     path: 'groupingvalue',
     object: PropertyGroupingValue
+  });
+  this.brochures = new Collection({
+    parent: this,
+    path: 'brochure',
+    object: PropertyBrochure
   });
 }
 
