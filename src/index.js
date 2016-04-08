@@ -46,7 +46,7 @@ module.exports.common.Customers = require('./common/Customers');
 module.exports.common.Properties = require('./common/Properties');
 module.exports.common.Property = require('./common/Property');
 module.exports.common.PropertyAttribute = require('./common/PropertyAttribute');
-module.exports.common.PropertyAvailability= require('./common/PropertyAvailability');
+module.exports.common.PropertyAvailability = require('./common/PropertyAvailability');
 module.exports.common.PropertyBranding = require('./common/PropertyBranding');
 module.exports.common.PropertyCleaner = require('./common/PropertyCleaner');
 module.exports.common.PropertyKeyholder = require('./common/PropertyKeyholder');
@@ -64,6 +64,7 @@ module.exports.common.RoomType = require('./common/RoomType');
 module.exports.common.Grouping = require('./common/Grouping');
 module.exports.common.GroupingValue = require('./common/GroupingValue');
 module.exports.common.PropertyGroupingValue = require('./common/PropertyGroupingValue');
+module.exports.common.PropertyBrochure = require('./common/PropertyBrochure');
 module.exports.common.PropertyMarketingBrand = require('./common/PropertyMarketingBrand');
 module.exports.common.PropertyBookingBrand = require('./common/PropertyBookingBrand');
 
