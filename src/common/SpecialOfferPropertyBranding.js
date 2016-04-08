@@ -2,7 +2,7 @@ var SingleEntity = require('./SingleEntity');
 var PropertyBranding = require('./PropertyBranding');
 
 function SpecialOfferPropertyBranding(id) {
-  this.path = this.createPath = 'promotion';
+  this.path = this.createPath = 'propertybranding';
   this.id = id;
   this.propertybranding = new PropertyBranding();
 }

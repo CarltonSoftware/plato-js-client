@@ -1,20 +1,17 @@
 var SingleEntity = require('./SingleEntity');
-var ExtraBranding = require('./ExtraBranding');
+var SalesChannel = require('./SalesChannel');
 
-function Promotion(id) {
+function SpecialOfferSalesChannel(id) {
   this.path = this.createPath = 'promotion';
   this.id = id;
-  this.extrabranding = new ExtraBranding();
+  this.saleschannel = new SalesChannel();
 }
 
-Promotion.prototype = new SingleEntity();
-Promotion.prototype.toArray = function() {
+SpecialOfferSalesChannel.prototype = new SingleEntity();
+SpecialOfferSalesChannel.prototype.toArray = function() {
   return {
-    promotioncode: this.promotioncode,
-    extrabrandingid: this.extrabranding.id,
-    limit: this.limit,
-    usecount: this.usecount,
+    saleschannelid: this.saleschannel.id,
   };
 };
 
-module.exports = Promotion;
+module.exports = SpecialOfferSalesChannel;
