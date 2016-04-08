@@ -1,19 +1,19 @@
 var SingleEntity = require('./SingleEntity');
 
-function ContactEntity(contactId, contactEntityId) {
-    this.createPath = 'contact/' + contactId + '/entity';
-    this.path = 'contact/' + contactId + '/entity/' + contactEntityId;
-    this.id = contactEntityId;
+function ContactEntity(id) {
+  this.createPath = 'entity';
+  this.path = 'entity';
+  this.id = id;
 }
 ContactEntity.prototype = new SingleEntity();
 
 ContactEntity.prototype.toCreateArray = function() {
-    return {
-        contactentitytype: this.contactEntityType,
-        entityid: this.entityId,
-        function: this.function,
-        contactdetailid: this.contactDetailId
-    };
+  return {
+    contactentitytype: this.contactEntityType,
+    entityid: this.entityid,
+    function: this.function,
+    contactdetailid: this.contactdetailid
+  };
 };
 
 module.exports = ContactEntity;
