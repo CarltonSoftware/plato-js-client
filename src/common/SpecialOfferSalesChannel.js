@@ -2,7 +2,7 @@ var SingleEntity = require('./SingleEntity');
 var SalesChannel = require('./SalesChannel');
 
 function SpecialOfferSalesChannel(id) {
-  this.path = this.createPath = 'promotion';
+  this.path = this.createPath = 'saleschannel';
   this.id = id;
   this.saleschannel = new SalesChannel();
 }
