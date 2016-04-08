@@ -90,6 +90,7 @@ module.exports.common.BrochureRequest = require('./common/BrochureRequest');
 
 // Managed Services Related Objects
 module.exports.common.ManagedActivity = require('./common/ManagedActivity');
+module.exports.common.ManagedService = require('./common/ManagedService');
 module.exports.common.Supplier = require('./common/Supplier');
 
 // Note Related Objects
