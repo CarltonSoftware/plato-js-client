@@ -77,3 +77,5 @@ SpecialOffer.prototype.toArray = function() {
     applytopartysizepricing: this.applytopartysizepricing,
   };
 };
+
+module.exports = SpecialOffer;
