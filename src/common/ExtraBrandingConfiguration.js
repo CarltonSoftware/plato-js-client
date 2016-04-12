@@ -20,8 +20,10 @@ ExtraBrandingConfiguration.prototype.toCreateArray = function() {
     payowner: this.payowner ? 'true' : 'false',
     visibletoowner: this.visibletoowner ? 'true' : 'false',
     vatband: this.vatband.vatband,
+    visibletocustomer: this.visibletocustomer ? 'true' : 'false',
     customerselectable: this.customerselectable ? 'true' : 'false',
     maximumquantity: this.maximumquantity,
+    decimalplaces: this.decimalplaces,
     type: this.type,
   };
 };
@@ -37,8 +39,10 @@ ExtraBrandingConfiguration.prototype.toUpdateArray = function() {
     payowner: this.payowner,
     visibletoowner: this.visibletoowner,
     vatband: this.vatband,
+    visibletocustomer: this.visibletocustomer,
     customerselectable: this.customerselectable,
     maximumquantity: this.maximumquantity,
+    decimalplaces: this.decimalplaces,
     type: this.type,
   };
 };

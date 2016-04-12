@@ -20,7 +20,10 @@ ExtraBrandingPricing.prototype.toCreateArray = function() {
     todate: this.todate,
     currencycode: this.currency.code,
     pricingtype: this.pricingtype,
-    perperiod: this.perperiod,
+    perperiod: this.perperiod ? 'true' : 'false',
+    peradult: this.peradult ? 'true' : 'false',
+    perchild: this.perchild ? 'true' : 'false',
+    perinfant: this.perinfant ? 'true' : 'false',
     basedon: this.basedon,
     ranges: this.ranges,
     price: this.price
