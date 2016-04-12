@@ -21,6 +21,7 @@ function Actor(id) {
   this.language = new Language();
   this.language.code = 'EN';
   this.language.name = 'English';
+  this.abroad = false;
 
   this.bankaccounts = new Collection({
     object: BankAccount,
@@ -61,7 +62,10 @@ Actor.prototype.toArray = function() {
     firstname: this.firstname,
     surname: this.surname,
     salutation: this.salutation,
-    languagecode: this.language.code
+    languagecode: this.language.code,
+    abroad: this.abroad,
+    tabsusername: this.tabsusername,
+    companyname: this.companyname
   };
 };
 

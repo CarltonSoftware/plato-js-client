@@ -31,13 +31,29 @@ function Attribute(id) {
       code: this.code,
       name: this.name,
       description: this.description,
-      group: this.group,
+      group: this.group.name,
       usedinavailabilitysearch: this.usedinavailabilitysearch,
       baseattribute: this.baseattribute,
       donotmodify: this.donotmodify,
       important: this.important
     };
 
+    return this.mergeInAdditionalFields(base);
+  };
+
+  this.toUpdateArray = function() {
+    var base = {
+      type: this.type,
+      group: this.group.name,
+      usedinavailabilitysearch: this.usedinavailabilitysearch,
+      baseattribute: this.baseattribute,
+      important: this.important
+    };
+
+    return this.mergeInAdditionalFields(base);
+  };
+
+  this.mergeInAdditionalFields = function(base) {
     if (this.type == 'boolean') {
       base.defaultvalue = this.defaultvalue;
     }
@@ -47,7 +63,7 @@ function Attribute(id) {
       base.defaultnumbervalue = this.defaultnumbervalue;
       base.minimumvalue = this.minimumvalue;
       base.maximumvalue = this.maximumvalue;
-      base.unit = this.unit;
+      base.unit = this.unit.name;
     }
 
     if (this.type == 'number') {
@@ -55,7 +71,7 @@ function Attribute(id) {
       base.defaultvalue = this.defaultvalue;
       base.minimumvalue = this.minimumvalue;
       base.maximumvalue = this.maximumvalue;
-      base.unit = this.unit;
+      base.unit = this.unit.name;
     }
 
     if (this.type == 'string') {
@@ -63,8 +79,9 @@ function Attribute(id) {
     }
 
     return base;
-  };
+  }
 }
+
 Attribute.prototype = new SingleEntity();
 
 module.exports = Attribute;

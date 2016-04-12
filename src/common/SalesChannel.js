@@ -1,9 +1,9 @@
 var SingleEntity = require('./SingleEntity');
 
 function SalesChannel(id) {
-    this.path = 'saleschannel';
-    this.createPath = 'saleschannel';
-    this.id = id;
+  this.path = 'saleschannel';
+  this.createPath = 'saleschannel';
+  this.id = id;
 }
 SalesChannel.prototype = new SingleEntity();
 

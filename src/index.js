@@ -46,7 +46,7 @@ module.exports.common.Customers = require('./common/Customers');
 module.exports.common.Properties = require('./common/Properties');
 module.exports.common.Property = require('./common/Property');
 module.exports.common.PropertyAttribute = require('./common/PropertyAttribute');
-module.exports.common.PropertyAvailability= require('./common/PropertyAvailability');
+module.exports.common.PropertyAvailability = require('./common/PropertyAvailability');
 module.exports.common.PropertyBranding = require('./common/PropertyBranding');
 module.exports.common.PropertyCleaner = require('./common/PropertyCleaner');
 module.exports.common.PropertyKeyholder = require('./common/PropertyKeyholder');
@@ -64,6 +64,7 @@ module.exports.common.RoomType = require('./common/RoomType');
 module.exports.common.Grouping = require('./common/Grouping');
 module.exports.common.GroupingValue = require('./common/GroupingValue');
 module.exports.common.PropertyGroupingValue = require('./common/PropertyGroupingValue');
+module.exports.common.PropertyBrochure = require('./common/PropertyBrochure');
 module.exports.common.PropertyMarketingBrand = require('./common/PropertyMarketingBrand');
 module.exports.common.PropertyBookingBrand = require('./common/PropertyBookingBrand');
 
@@ -91,6 +92,7 @@ module.exports.common.BrochureRequest = require('./common/BrochureRequest');
 
 // Managed Services Related Objects
 module.exports.common.ManagedActivity = require('./common/ManagedActivity');
+module.exports.common.ManagedService = require('./common/ManagedService');
 module.exports.common.Supplier = require('./common/Supplier');
 
 // Note Related Objects
@@ -119,6 +121,17 @@ module.exports.common.PriceTypeBranding = require('./common/PriceTypeBranding');
 module.exports.common.SalesChannel = require('./common/SalesChannel');
 module.exports.common.VatBand = require('./common/VatBand');
 module.exports.common.VatRate = require('./common/VatRate');
+
+module.exports.common.SpecialOffer = require('./common/SpecialOffer');
+module.exports.common.BookingPeriod = require('./common/BookingPeriod');
+module.exports.common.HolidayPeriod = require('./common/HolidayPeriod');
+module.exports.common.Promotion = require('./common/Promotion');
+module.exports.common.PropertyBrochure = require('./common/PropertyBrochure');
+module.exports.common.SpecialOfferBranding = require('./common/SpecialOfferBranding');
+module.exports.common.SpecialOfferPropertyBranding = require('./common/SpecialOfferPropertyBranding');
+module.exports.common.SpecialOfferSalesChannel = require('./common/SpecialOfferSalesChannel');
+module.exports.common.SpecialOfferWebsiteSection = require('./common/SpecialOfferWebsiteSection');
+module.exports.common.WebsiteSection = require('./common/WebsiteSection');
 
 // Property Pricing
 module.exports.common.PropertyBrandingPrice = require('./common/PropertyBrandingPrice');

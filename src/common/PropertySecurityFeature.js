@@ -1,8 +1,8 @@
 var SingleEntity = require('./SingleEntity');
 var SecurityFeature = require('./SecurityFeature');
 
-function PropertySecurityFeature(propertyId, id) {
-  this.path = '/property/' + propertyId + '/securityfeature';
+function PropertySecurityFeature(id) {
+  this.path = 'securityfeature';
   this.createPath = this.path;
   this.id = id;
   this.securityfeature = new SecurityFeature();
@@ -11,7 +11,7 @@ PropertySecurityFeature.prototype = new SingleEntity();
 
 PropertySecurityFeature.prototype.toArray = function() {
   return {
-    securityfeatureid: this.securityfeatureid,
+    securityfeatureid: this.securityfeature.id,
     code: this.code,
     notes: this.notes,
     fromdate: this.fromdate,
