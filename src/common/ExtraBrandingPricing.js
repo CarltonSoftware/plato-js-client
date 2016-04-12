@@ -12,22 +12,44 @@ function ExtraBrandingPricing(extraId, brandingId, id) {
 ExtraBrandingPricing.prototype = new SingleEntity();
 
 ExtraBrandingPricing.prototype.toCreateArray = function() {
-  return {
-    //TODO: Add in the fields necessary to create a ExtraBrandingPricing
-    pricingperiod: this.pricingperiod,
-    propertypricing: this.propertypricing,
-    fromdate: this.fromdate,
-    todate: this.todate,
-    currencycode: this.currency.code,
-    pricingtype: this.pricingtype,
-    perperiod: this.perperiod ? 'true' : 'false',
-    peradult: this.peradult ? 'true' : 'false',
-    perchild: this.perchild ? 'true' : 'false',
-    perinfant: this.perinfant ? 'true' : 'false',
-    basedon: this.basedon,
-    ranges: this.ranges,
-    price: this.price
-  };
+  if (this.pricingtype == 'Amount') {
+    return {
+      pricingperiod: this.pricingperiod,
+      perperiod: this.perperiod,
+      propertypricing: this.propertypricing,
+      fromdate: this.fromdate,
+      todate: this.todate,
+      currencycode: this.currency.code,
+      pricingtype: this.pricingtype,
+      price: this.price,
+      perperiod: this.perperiod ? 'true' : 'false',
+      peradult: this.peradult ? 'true' : 'false',
+      perchild: this.perchild ? 'true' : 'false',
+      perinfant: this.perinfant ? 'true' : 'false',
+    };
+  } else if (this.pricingtype == 'Percentage') {
+    return {
+      pricingperiod: this.pricingperiod,
+      propertypricing: this.propertypricing,
+      fromdate: this.fromdate,
+      todate: this.todate,
+      currencycode: this.currency.code,
+      pricingtype: this.pricingtype,
+      percentage: this.percentage,
+      basedon: this.basedon,
+    };
+  } else if (this.pricingtype == 'Range') {
+    return {
+      pricingperiod: this.pricingperiod,
+      perperiod: this.perperiod,
+      propertypricing: this.propertypricing,
+      fromdate: this.fromdate,
+      todate: this.todate,
+      currencycode: this.currency.code,
+      pricingtype: this.pricingtype,
+      basedon: this.basedon,
+    };
+  }
 };
 
 ExtraBrandingPricing.prototype.toUpdateArray = function() {

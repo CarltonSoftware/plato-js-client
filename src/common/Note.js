@@ -24,7 +24,7 @@ Note.prototype.toArray = function() {
     visibletoowner: this.visibletoowner,
     visibletocleaner: this.visibletocleaner,
     visibletokeyholder: this.visibletokeyholder,
-    hightlight: this.highlight,
+    highlight: this.highlight,
     pin: this.pin
   };
 };

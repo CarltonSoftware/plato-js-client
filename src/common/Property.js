@@ -59,9 +59,18 @@ Property.prototype.toArray = function() {
   return {
     id: this.id,
     name: this.name,
-    sleeps: this.sleeps,
     namequalifier: this.namequalifier,
     bedrooms: this.bedrooms,
+    sleeps: this.sleeps,
+    maximumpets: this.maximumpets,
+    telephonenumber: this.telephonenumber,
+    address_line1: this.address.line1,
+    address_line2: this.address.line2,
+    address_line3: this.address.line3,
+    address_town: this.address.town,
+    address_county: this.address.county,
+    address_postcode: this.address.postcode,
+    address_countryalpha2code: this.address.country.alpha2,
   };
 };
 
