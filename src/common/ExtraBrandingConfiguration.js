@@ -11,7 +11,6 @@ ExtraBrandingConfiguration.prototype = new SingleEntity();
 
 ExtraBrandingConfiguration.prototype.toCreateArray = function() {
   return {
-    //TODO: Add in the fields necessary to create a ExtraBrandingConfiguration
     fromdate: this.fromdate,
     todate: this.todate,
     compulsory: this.compulsory ? 'true' : 'false',
@@ -19,7 +18,7 @@ ExtraBrandingConfiguration.prototype.toCreateArray = function() {
     payagency: this.payagency ? 'true' : 'false',
     payowner: this.payowner ? 'true' : 'false',
     visibletoowner: this.visibletoowner ? 'true' : 'false',
-    vatband: this.vatband.vatband,
+    vatband: this.vatband,
     visibletocustomer: this.visibletocustomer ? 'true' : 'false',
     customerselectable: this.customerselectable ? 'true' : 'false',
     maximumquantity: this.maximumquantity,
@@ -30,7 +29,6 @@ ExtraBrandingConfiguration.prototype.toCreateArray = function() {
 
 ExtraBrandingConfiguration.prototype.toUpdateArray = function() {
   return {
-    //TODO: Add in the fields necessary to update a ExtraBrandingConfiguration
     fromdate: this.fromdate,
     todate: this.todate,
     compulsory: this.compulsory,
