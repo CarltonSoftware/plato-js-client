@@ -102,6 +102,9 @@ module.exports.common.NoteType = require('./common/NoteType');
 // Tabs user
 module.exports.common.TabsUser = require('./common/TabsUser');
 
+// Offices
+module.exports.common.Office = require('./common/Office');
+
 // Search
 module.exports.common.Search = require('./common/Search');
 
