@@ -66,7 +66,7 @@ Actor.prototype.toArray = function() {
     abroad: this.abroad,
     tabsusername: this.tabsusername,
     companyname: this.companyname,
-    officename: this.officename
+    name: this.officename
   };
 };
 
