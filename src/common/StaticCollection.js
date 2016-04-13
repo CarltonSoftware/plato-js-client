@@ -167,7 +167,7 @@ StaticCollection.prototype.push = function(object) {
 *
 * @returns {object} The first element in the collection
 */
-StaticCollection.prototype.first = function(object) {
+StaticCollection.prototype.first = function() {
   if (this.collection.length) {
     return this.collection[0];
   }
