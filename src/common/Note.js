@@ -11,6 +11,9 @@ function Note(noteID) {
   this.createdby = new EntityLink({
     entity: 'TabsUser'
   });
+  this.actornote = new EntityLink({
+    entity: 'ActorNote'
+  });
 }
 Note.prototype = new SingleEntity();
 
