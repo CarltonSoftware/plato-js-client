@@ -20,7 +20,7 @@ Image.prototype.toFormData = function() {
   // formData.append('private', this.private);
   // formData.append('height', this.height);
   // formData.append('width', this.width);
-  // formData.append('alt', this.alt);
+  formData.append('alt', this.alt);
   return formData;
 };
 Image.prototype.toArray = function() {
