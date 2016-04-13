@@ -99,6 +99,7 @@ module.exports.common.Supplier = require('./common/Supplier');
 module.exports.common.Note = require('./common/Note');
 module.exports.common.NoteText = require('./common/NoteText');
 module.exports.common.NoteType = require('./common/NoteType');
+module.exports.common.NoteActor = require('./common/NoteActor');
 
 // Tabs user
 module.exports.common.TabsUser = require('./common/TabsUser');

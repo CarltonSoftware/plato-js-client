@@ -6,7 +6,6 @@ var Currency = require('./Currency');
 var BookingCustomer = require('./BookingCustomer');
 var BookingDocument = require('./BookingDocument');
 var BookingGuest = require('./BookingGuest');
-var BookingNote = require('./BookingNote');
 var BookingSecurityDeposit = require('./BookingSecurityDeposit');
 var Note = require('./Note');
 
@@ -36,7 +35,7 @@ function Booking(id) {
     path: 'customer',
     parents: [this]
   });
-  this.notes = new Collection({object: BookingNote});
+  this.notes = new Collection({object: Note});
 }
 Booking.prototype = new SingleEntity();
 Booking.prototype.toArray = function() {
