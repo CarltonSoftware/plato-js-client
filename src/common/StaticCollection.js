@@ -163,6 +163,17 @@ StaticCollection.prototype.push = function(object) {
 };
 
 /**
+* Get the first element from the collection, if any
+*
+* @returns {object} The first element in the collection
+*/
+StaticCollection.prototype.first = function(object) {
+  if (this.collection.length) {
+    return this.collection[0];
+  }
+};
+
+/**
  * Iterator function for all of the collections objects
  *
  * @param {object}   object   comparison object
@@ -172,7 +183,7 @@ StaticCollection.prototype.push = function(object) {
  */
 StaticCollection.prototype.loopAndMatch = function(object, callback) {
   return this.loopAndMatchById(object.id, callback);
-}
+};
 
 /**
  * Iterator function for all of the collections objects
@@ -187,13 +198,13 @@ StaticCollection.prototype.loopAndMatchById = function(id, callback) {
     if (ele.id === id) {
       callback.call(this, i);
     }
-  }.bind(this));
+  }, this);
 
   // Added this in so we can process the collection once its been populated
   if (typeof this.postResponse === 'function') {
     this.postResponse.bind(this).call();
   }
-}
+};
 
 /**
  * Iterator function for all of the collections objects
@@ -208,13 +219,13 @@ StaticCollection.prototype.loopAndMatchByComparison = function(object, callback)
     if (ele === object) {
       callback.call(this, i);
     }
-  }.bind(this));
+  }, this);
 
   // Added this in so we can process the collection once its been populated
   if (typeof this.postResponse === 'function') {
     this.postResponse.bind(this).call();
   }
-}
+};
 
 /**
 * Update an element in the collection
@@ -301,7 +312,7 @@ StaticCollection.prototype.deleteElementByComparison = function(object) {
 StaticCollection.prototype.sort = function(compare) {
   this.collection.sort(compare);
   return this;
-}
+};
 
 /**
 * Sort the entities currently in the collection by a particular field
@@ -341,7 +352,7 @@ StaticCollection.prototype.orderBy = function(field, order) {
  */
 StaticCollection.prototype.find = function(predicate) {
   return _.filter(this.collection, predicate) || [];
-}
+};
 
 
 /**
@@ -353,7 +364,7 @@ StaticCollection.prototype.find = function(predicate) {
  */
 StaticCollection.prototype.findBy = function(properties) {
   return _.where(this.collection, properties);
-}
+};
 
 /**
  * Finds the first entity that match the given properties
@@ -364,7 +375,6 @@ StaticCollection.prototype.findBy = function(properties) {
  */
 StaticCollection.prototype.findOneBy = function(properties) {
   return _.findWhere(this.collection, properties);
-}
-
+};
 
 module.exports = StaticCollection;
