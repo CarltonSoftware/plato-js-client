@@ -154,6 +154,15 @@ StaticCollection.prototype.filter = function(callback, thisArg) {
 * @returns {undefined}
 */
 StaticCollection.prototype.push = function(object) {
+
+  // Call the set parent if it exists on the object
+  if (typeof this.options.parent === 'object') {
+    if (typeof object.setParent === 'function') {
+      object.setParent(this.options.parent);
+    }
+  }
+
+  // Add into collection
   this.collection.push(object);
 
   // Added this in so we can process the collection once its been populated
