@@ -23,6 +23,7 @@ module.exports.common.SecurityFeature = require('./common/SecurityFeature');
 module.exports.common.Setting = require('./common/Setting');
 module.exports.common.Source = require('./common/Source');
 module.exports.common.SourceCategory = require('./common/SourceCategory');
+module.exports.common.OwnerPaymentTerm = require('./common/OwnerPaymentTerm');
 
 // Actor Related Objects
 module.exports.common.Actor = require('./common/Actor');
