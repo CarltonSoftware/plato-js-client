@@ -1,11 +1,13 @@
 var SingleEntity = require('./SingleEntity');
-var Customer = require('./Customer');
+var EntityLink = require('./EntityLink');
 
 function BookingCustomer(bookingId, id) {
   this.path = 'booking/' + bookingId + '/customer';
   this.createPath = 'booking/' + bookingId + '/customer';
   this.id = id;
-  this.details = new Customer;
+  this.details = new EntityLink({
+    entity: 'Customer'
+  });
 }
 BookingCustomer.prototype = new SingleEntity();
 

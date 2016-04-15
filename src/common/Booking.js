@@ -1,6 +1,5 @@
 var SingleEntity = require('./SingleEntity');
-var Branding = require('./Branding');
-var Property = require('./Property');
+var EntityLink = require('./EntityLink');
 var Collection = require('./Collection');
 var Currency = require('./Currency');
 var BookingCustomer = require('./BookingCustomer');
@@ -13,8 +12,15 @@ function Booking(id) {
   this.path = 'booking';
   this.createPath = 'booking';
   this.id = id;
-  this.branding = new Branding;
-  this.property = new Property;
+  
+  this.branding = new EntityLink({
+    entity: 'Branding'
+  });
+
+  this.property = new EntityLink({
+    entity: 'Property'
+  });
+
   // this.saleschannel = new SalesChannel;
   // this.pricingperiod = new PricingPeriod;
   // this.price = ;

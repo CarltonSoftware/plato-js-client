@@ -1,13 +1,15 @@
 var SingleEntity = require('./SingleEntity');
-var Agency = require('./Agency');
+var EntityLink = require('./EntityLink');
 var BookingBrand = require('./BookingBrand');
 
 function MarketingBrand(id) {
-    this.path = 'marketingbrand';
-    this.createPath = 'marketingbrand';
-    this.id = id;
-    this.agency = new Agency;
-    this.defaultbookingbrand = new BookingBrand;
+  this.path = 'marketingbrand';
+  this.createPath = 'marketingbrand';
+  this.id = id;
+  this.agency = new EntityLink({
+    entity: 'Agency'
+  });
+  this.defaultbookingbrand = new BookingBrand;
 }
 MarketingBrand.prototype = new SingleEntity();
 
