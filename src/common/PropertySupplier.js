@@ -1,12 +1,14 @@
 var SingleEntity = require('./SingleEntity');
-var Supplier = require('./Supplier');
+var EntityLink = require('./EntityLink');
 var ManagedActivity = require('./ManagedActivity');
 
 function PropertySupplier(id) {
   this.path = 'supplier';
   this.createPath = 'supplier';
   this.id = id;
-  this.actor = new Supplier();
+  this.actor = new EntityLink({
+    entity: 'Supplier'
+  });
   this.activity = new ManagedActivity();
 }
 PropertySupplier.prototype = new SingleEntity();

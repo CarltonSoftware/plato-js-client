@@ -1,13 +1,14 @@
 var SingleEntity = require('./SingleEntity');
-var Owner = require('./Owner');
+var EntityLink = require('./EntityLink');
 // var Property = require('./Property');
 
-function PropertyOwner(propertyId, id) {
+function PropertyOwner(id) {
   this.path = 'owner';
   this.createPath = 'owner';
   this.id = id;
-  // this.property = new Property;
-  this.owner = new Owner;
+  this.owner = new EntityLink({
+    entity: 'Owner'
+  });
 }
 PropertyOwner.prototype = new SingleEntity();
 

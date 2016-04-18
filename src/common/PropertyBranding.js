@@ -25,10 +25,18 @@ function PropertyBranding(id) {
 };
 
 PropertyBranding.prototype = new SingleEntity();
-PropertyBranding.prototype.setParent = function(property) {
-  this.parent = property;
-  this.bookingbrand.parent = property;
-  this.marketingbrand.parent = property;
+
+/**
+ * This function will be called whenever this object is
+ * pushed into the collection either by StaticCollection.push()
+ * or by StaticCollection.mutateResponse()
+ *
+ * @param {object} parent
+ */
+PropertyBranding.prototype.setParent = function(parent) {
+  this.parent = parent;
+  this.bookingbrand.parent = parent;
+  this.marketingbrand.parent = parent;
 };
 
 PropertyBranding.prototype.toArray = function() {

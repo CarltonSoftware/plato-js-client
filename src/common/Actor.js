@@ -1,8 +1,10 @@
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
+var StaticCollection = require('./StaticCollection');
 var CustomerDocument = require('./CustomerDocument');
 var Note = require('./Note');
 var Language = require('./Language');
+var Booking = require('./Booking');
 var BankAccount = require('./BankAccount');
 var ActorContactDetailOther = require('./ActorContactDetailOther');
 var ActorContactDetailAddress = require('./ActorContactDetailAddress');
@@ -40,6 +42,22 @@ function Actor(id) {
 }
 
 Actor.prototype = new SingleEntity();
+
+/**
+ * Add in collections.  Done this way instead of in the constructor
+ * because of recursive dependancy on Actor.
+ *
+ * @param {object} entity JSON response from api
+ */
+Actor.prototype.mutateResponse = function(entity) {
+  this.bookings = new Collection({
+    path: 'booking',
+    object: Booking,
+    parent: this
+  });
+
+  return this.mutateEntity(entity);
+};
 
 /**
  * Return the full name of the actor

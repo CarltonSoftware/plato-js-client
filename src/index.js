@@ -23,6 +23,7 @@ module.exports.common.SecurityFeature = require('./common/SecurityFeature');
 module.exports.common.Setting = require('./common/Setting');
 module.exports.common.Source = require('./common/Source');
 module.exports.common.SourceCategory = require('./common/SourceCategory');
+module.exports.common.OwnerPaymentTerm = require('./common/OwnerPaymentTerm');
 
 // Actor Related Objects
 module.exports.common.Actor = require('./common/Actor');
@@ -34,6 +35,7 @@ module.exports.common.ActorContactDetailOther = require('./common/ActorContactDe
 module.exports.common.ActorNote = require('./common/ActorNote');
 module.exports.common.ActorDocument = require('./common/ActorDocument');
 module.exports.common.BankAccount = require('./common/BankAccount');
+module.exports.common.PotentialDuplicate = require('./common/PotentialDuplicate');
 
 // Customer Releated Objects
 module.exports.common.Customer = require('./common/Customer');
@@ -41,6 +43,12 @@ module.exports.common.CustomerAddress = require('./common/CustomerAddress');
 module.exports.common.CustomerContactDetailOther = require('./common/CustomerContactDetailOther');
 module.exports.common.CustomerDocument = require('./common/CustomerDocument');
 module.exports.common.Customers = require('./common/Customers');
+
+// Other Actors
+module.exports.common.TabsUser = require('./common/TabsUser');
+module.exports.common.Owner = require('./common/Owner');
+module.exports.common.Office = require('./common/Office');
+module.exports.common.Supplier = require('./common/Supplier');
 
 // Property Related Objects
 module.exports.common.Properties = require('./common/Properties');
@@ -67,6 +75,8 @@ module.exports.common.PropertyGroupingValue = require('./common/PropertyGrouping
 module.exports.common.PropertyBrochure = require('./common/PropertyBrochure');
 module.exports.common.PropertyMarketingBrand = require('./common/PropertyMarketingBrand');
 module.exports.common.PropertyBookingBrand = require('./common/PropertyBookingBrand');
+module.exports.common.PropertyOwnerPaymentTerm = require('./common/PropertyOwnerPaymentTerm');
+module.exports.common.PropertyCommission = require('./common/PropertyCommission');
 
 // Booking Related Objects
 module.exports.common.Booking = require('./common/Booking');
@@ -93,18 +103,12 @@ module.exports.common.BrochureRequest = require('./common/BrochureRequest');
 // Managed Services Related Objects
 module.exports.common.ManagedActivity = require('./common/ManagedActivity');
 module.exports.common.ManagedService = require('./common/ManagedService');
-module.exports.common.Supplier = require('./common/Supplier');
 
 // Note Related Objects
 module.exports.common.Note = require('./common/Note');
 module.exports.common.NoteText = require('./common/NoteText');
 module.exports.common.NoteType = require('./common/NoteType');
-
-// Tabs user
-module.exports.common.TabsUser = require('./common/TabsUser');
-
-// Offices
-module.exports.common.Office = require('./common/Office');
+module.exports.common.NoteActor = require('./common/NoteActor');
 
 // Search
 module.exports.common.Search = require('./common/Search');

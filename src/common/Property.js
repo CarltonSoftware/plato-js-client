@@ -10,6 +10,8 @@ var PropertySecurityFeature = require('./PropertySecurityFeature');
 var PropertyRoom = require('./PropertyRoom');
 var PropertyTarget = require('./PropertyTarget');
 var PropertyAddress = require('./PropertyAddress');
+var PropertyOwnerPaymentTerm = require('./PropertyOwnerPaymentTerm');
+var PropertyCommission = require('./PropertyCommission');
 
 function Property(id) {
   this.path = 'property';
@@ -49,6 +51,16 @@ function Property(id) {
   this.brandings = new Collection({
     object: PropertyBranding,
     path: 'branding',
+    parent: this
+  });
+  this.ownerpaymentterms = new Collection({
+    object: PropertyOwnerPaymentTerm,
+    path: 'ownerpaymentterms',
+    parent: this
+  });
+  this.commission = new Collection({
+    object: PropertyCommission,
+    path: 'commission',
     parent: this
   });
 
