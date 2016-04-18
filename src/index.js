@@ -76,6 +76,7 @@ module.exports.common.PropertyBrochure = require('./common/PropertyBrochure');
 module.exports.common.PropertyMarketingBrand = require('./common/PropertyMarketingBrand');
 module.exports.common.PropertyBookingBrand = require('./common/PropertyBookingBrand');
 module.exports.common.PropertyOwnerPaymentTerm = require('./common/PropertyOwnerPaymentTerm');
+module.exports.common.PropertyCommission = require('./common/PropertyCommission');
 
 // Booking Related Objects
 module.exports.common.Booking = require('./common/Booking');
