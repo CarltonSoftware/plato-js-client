@@ -1,11 +1,11 @@
 var SingleEntity = require('./SingleEntity');
-var OnwerPaymentTerm = require('./OwnerPaymentTerm');
+var OwnerPaymentTerm = require('./OwnerPaymentTerm');
 
 function PropertyOwnerPaymentTerm(id) {
   this.path = 'ownerpaymentterms';
   this.createPath = 'ownerpaymentterms';
   this.id = id;
-  this.ownerpaymentterm = new OwnerPaymentTerm();
+  this.ownerpaymentterms = new OwnerPaymentTerm();
 };
 
 PropertyOwnerPaymentTerm.prototype = new SingleEntity();
@@ -14,7 +14,7 @@ PropertyOwnerPaymentTerm.prototype.toArray = function() {
     id: this.id,
     fromdate: this.fromdate,
     todate: this.todate,
-    ownerpaymenttermsid: this.ownerpaymentterm.id
+    ownerpaymenttermsid: this.ownerpaymentterms.id
   }
 };
 
