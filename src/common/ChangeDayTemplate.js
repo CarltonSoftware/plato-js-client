@@ -1,4 +1,5 @@
 var SingleEntity = require('./SingleEntity');
+var EntityLink = require('./EntityLink');
 var Collection = require('./Collection');
 var ChangeDayTemplateRule = require('./ChangeDayTemplateRule');
 
@@ -7,10 +8,8 @@ function ChangeDayTemplate(id) {
   this.createPath = 'changedaytemplate';
   this.id = id;
 
-  this.rule = new Collection({
-    object: ChangeDayTemplateRule,
-    path: 'rule',
-    parent: this
+  this.owner = new EntityLink({
+    entity: 'Branding'
   });
 
 }
