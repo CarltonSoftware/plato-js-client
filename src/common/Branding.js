@@ -1,15 +1,14 @@
 var SingleEntity = require('./SingleEntity');
-var BrandingGroup = require('./BrandingGroup');
-var BookingBrand = require('./BookingBrand');
-var MarketingBrand = require('./MarketingBrand');
+var EntityLink = require('./EntityLink');
 
 function Branding(id) {
   this.path = 'branding';
   this.createPath = 'branding';
   this.id = id;
-  this.brandinggroup = new BrandingGroup();
-  this.bookingbrand = new BookingBrand();
-  this.marketingbrand = new MarketingBrand();
+  this.brandinggroup = new EntityLink({ entity: 'BrandingGroup' });
+  this.bookingbrand = new EntityLink({ entity: 'BookingBrand' });
+  this.marketingbrand = new EntityLink({ entity: 'MarketingBrand' });
+  this.lettingincomevatband = new EntityLink({ entity: 'VatBand' });
 }
 
 Branding.prototype = new SingleEntity();
@@ -28,7 +27,8 @@ Branding.prototype.toArray = function() {
   return {
     brandinggroupid: this.brandinggroup.id,
     bookingbrandid: this.bookingbrand.id,
-    marketingbrandid: this.marketingbrand.id
+    marketingbrandid: this.marketingbrand.id,
+    lettingincomevatbandid: this.lettingincomevatband.id,
   };
 }
 
