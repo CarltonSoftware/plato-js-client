@@ -9,6 +9,7 @@ var Promotion = require('./Promotion');
 var SpecialOfferBranding = require('./SpecialOfferBranding');
 var SpecialOfferSalesChannel = require('./SpecialOfferSalesChannel');
 var SpecialOfferWebsiteSection = require('./SpecialOfferWebsiteSection');
+var EntityLink = require('./EntityLink');
 
 function SpecialOffer(id) {
   this.path = this.createPath = 'specialoffer';
@@ -50,10 +51,16 @@ function SpecialOffer(id) {
     path: 'branding',
     parent: this,
   });
+  this.pricetype = new EntityLink({
+    entity: 'PriceType',
+  });
+  this.forpricetype = new EntityLink({
+    entity: 'PriceType',
+  });
 }
 
 SpecialOffer.prototype = new SingleEntity();
-SpecialOffer.prototype.toArray = function() {
+SpecialOffer.prototype.toUpdateArray = function() {
   return {
     type: this.type,
     description: this.description,
@@ -72,10 +79,17 @@ SpecialOffer.prototype.toArray = function() {
     fixedprice: this.fixedprice,
     percentage: this.percentage,
     active: this.active,
-    pricingperiod: this.pricingperiod.pricingperiod,
     perperiod: this.perperiod,
     applytopartysizepricing: this.applytopartysizepricing,
+    pricetypeid: this.pricetype.id,
+    forpricetypeid: this.forpricetype.id,
   };
+};
+
+SpecialOffer.prototype.toCreateArray = function() {
+  var array = this.toUpdateArray();
+  array.pricingperiod = this.pricingperiod.pricingperiod;
+  return array;
 };
 
 module.exports = SpecialOffer;
