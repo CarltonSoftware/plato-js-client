@@ -96,6 +96,7 @@ module.exports.common.BookingBrand = require('./common/BookingBrand');
 module.exports.common.MarketingBrand = require('./common/MarketingBrand');
 module.exports.common.BrandingGroup = require('./common/BrandingGroup');
 module.exports.common.Branding = require('./common/Branding');
+module.exports.common.SourceMarketingBrand = require('./common/SourceMarketingBrand');
 
 // Brochure Related Objects
 module.exports.common.Brochure = require('./common/Brochure');
