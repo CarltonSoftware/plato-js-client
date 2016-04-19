@@ -145,6 +145,7 @@ module.exports.common.PropertyBrandingPrice = require('./common/PropertyBranding
 
 // ChangeDayRules
 module.exports.common.ChangeDayTemplate = require('./common/ChangeDayTemplate');
+module.exports.common.ChangeDayTemplateDay = require('./common/ChangeDayTemplateDay');
 module.exports.common.ChangeDayTemplateRule = require('./common/ChangeDayTemplateRule');
 
 // Bookings
