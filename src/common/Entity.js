@@ -119,9 +119,7 @@ Entity.prototype.createPromiseResult = function(path, data) {
   return new Promise(function(resolve, reject) {
     result.then(function(res) {
       if (res.status.code === 201) {
-        var newLocation = res.headers['Content-Location'].replace('/app_dev.php/v2', '');//TODO: remove the need for .replace(...)
-        newLocation = newLocation.replace('/v2', '');
-        newLocation = newLocation.replace('/plato/web', '');
+        var newLocation = e.replacePath(res.headers['Content-Location']);
         client.get({ path: newLocation}).then(function(res) {
           resolve(e.mutateResponse(res.entity));
         }, function(res) {
@@ -148,8 +146,7 @@ Entity.prototype.uploadPromiseResult = function(path, data) {
   return new Promise(function(resolve, reject) {
     result.then(function(res) {
       if (res.status.code === 201) {
-        var newLocation = res.headers['Content-Location'].replace('/app_dev.php/v2', '');//TODO: remove the need for .replace(...)
-        newLocation = newLocation.replace('/v2', '');
+        var newLocation = e.replacePath(res.headers['Content-Location']);
         client.get({ path: newLocation}).then(function(res) {
           resolve(e.mutateResponse(res.entity));
         }, function(res) {
@@ -160,6 +157,21 @@ Entity.prototype.uploadPromiseResult = function(path, data) {
       }
     });
   });
+};
+
+/**
+ * Remove some stuff from the path
+ *
+ * @param {String} path
+ *
+ * @return {String}
+ */
+Entity.prototype.replacePath = function(path) {
+    var newPath = path.replace('/app_dev.php/v2', '');//TODO: remove the need for .replace(...)
+    newPath = newPath.replace('/v2', '');
+    newPath = newPath.replace('/plato/web', '');
+
+    return newPath;
 };
 
 /**
