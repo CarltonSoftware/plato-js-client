@@ -63,6 +63,7 @@ module.exports.common.PropertyNote = require('./common/PropertyNote');
 module.exports.common.PropertyDescription = require('./common/PropertyDescription');
 module.exports.common.PropertySecurityDeposit = require('./common/PropertySecurityDeposit');
 module.exports.common.PropertySupplier = require('./common/PropertySupplier');
+module.exports.common.PropertyOffice = require('./common/PropertyOffice');
 module.exports.common.DescriptionType = require('./common/DescriptionType');
 module.exports.common.PropertySecurityFeature = require('./common/PropertySecurityFeature');
 module.exports.common.PropertyDocument = require('./common/PropertyDocument');
@@ -95,6 +96,7 @@ module.exports.common.BookingBrand = require('./common/BookingBrand');
 module.exports.common.MarketingBrand = require('./common/MarketingBrand');
 module.exports.common.BrandingGroup = require('./common/BrandingGroup');
 module.exports.common.Branding = require('./common/Branding');
+module.exports.common.SourceMarketingBrand = require('./common/SourceMarketingBrand');
 
 // Brochure Related Objects
 module.exports.common.Brochure = require('./common/Brochure');

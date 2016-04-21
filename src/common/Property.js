@@ -6,6 +6,7 @@ var PropertyBranding = require('./PropertyBranding');
 var PropertyDocument = require('./PropertyDocument');
 var PropertyOwner = require('./PropertyOwner');
 var PropertySupplier = require('./PropertySupplier');
+var PropertyOffice = require('./PropertyOffice');
 var PropertySecurityFeature = require('./PropertySecurityFeature');
 var PropertyRoom = require('./PropertyRoom');
 var PropertyTarget = require('./PropertyTarget');
@@ -31,6 +32,11 @@ function Property(id) {
   this.suppliers = new Collection({
     object: PropertySupplier,
     path: 'supplier',
+    parent: this
+  });
+  this.offices = new Collection({
+    object: PropertyOffice,
+    path: 'office',
     parent: this
   });
   this.securityFeatures = new Collection({
