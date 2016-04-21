@@ -4,6 +4,7 @@ var BrandingGroup = require('./BrandingGroup');
 var PropertyBookingBrand = require('./PropertyBookingBrand');
 var PropertyMarketingBrand = require('./PropertyMarketingBrand');
 var PropertyBrandingPrice = require('./PropertyBrandingPrice');
+var PropertyBrandingChangeDayTemplate = require('./PropertyBrandingChangeDayTemplate');
 var Status = require('./Status');
 var Collection = require('./Collection');
 
@@ -22,6 +23,12 @@ function PropertyBranding(id) {
     path: 'price',
     parent: this
   });
+
+  this.changedaytemplates = new Collection({
+    object: PropertyBrandingChangeDayTemplate,
+    path: 'changedaytemplate',
+    parent: this
+  })
 };
 
 PropertyBranding.prototype = new SingleEntity();
