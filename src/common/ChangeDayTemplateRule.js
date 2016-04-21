@@ -26,8 +26,6 @@ ChangeDayTemplateRule.prototype.toArray = function() {
     withindays: this.withindays,
     unlessholidayatleast: this.unlessholidayatleast,
     showonavailability : this.showonavailability,
-    daysbeforeeaster : this.daysbeforeeaster,
-    daysaftereaster : this.daysaftereaster,
     description : this.description
   };
 
