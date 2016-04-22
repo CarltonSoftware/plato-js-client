@@ -29,7 +29,6 @@ module.exports.common.OwnerPaymentTerm = require('./common/OwnerPaymentTerm');
 module.exports.common.Actor = require('./common/Actor');
 module.exports.common.ActorInstance = require('./common/ActorInstance');
 module.exports.common.Actors = require('./common/Actors');
-module.exports.common.ActorAddress = require('./common/ActorAddress');
 module.exports.common.ActorContactDetailAddress = require('./common/ActorContactDetailAddress');
 module.exports.common.ActorContactDetailOther = require('./common/ActorContactDetailOther');
 module.exports.common.ActorNote = require('./common/ActorNote');

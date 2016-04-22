@@ -6,7 +6,7 @@ function SourceMarketingBrand(id) {
   this.createPath = 'marketingbrand';
   this.id = id;
   this.marketingbrand = new EntityLink({
-  	object: 'MarketingBrand'
+    object: 'MarketingBrand'
   });
 }
 SourceMarketingBrand.prototype = new SingleEntity();
