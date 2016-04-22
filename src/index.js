@@ -39,8 +39,6 @@ module.exports.common.PotentialDuplicate = require('./common/PotentialDuplicate'
 
 // Customer Releated Objects
 module.exports.common.Customer = require('./common/Customer');
-module.exports.common.CustomerAddress = require('./common/CustomerAddress');
-module.exports.common.CustomerContactDetailOther = require('./common/CustomerContactDetailOther');
 module.exports.common.CustomerDocument = require('./common/CustomerDocument');
 module.exports.common.Customers = require('./common/Customers');
 
@@ -142,6 +140,10 @@ module.exports.common.SpecialOfferSalesChannel = require('./common/SpecialOfferS
 module.exports.common.SpecialOfferWebsiteSection = require('./common/SpecialOfferWebsiteSection');
 module.exports.common.WebsiteSection = require('./common/WebsiteSection');
 
+module.exports.common.Role = require('./common/Role');
+module.exports.common.Reason = require('./common/Reason');
+module.exports.common.RoleReason = require('./common/RoleReason');
+
 // Property Pricing
 module.exports.common.PropertyBrandingPrice = require('./common/PropertyBrandingPrice');
 
@@ -149,6 +151,7 @@ module.exports.common.PropertyBrandingPrice = require('./common/PropertyBranding
 module.exports.common.ChangeDayTemplate = require('./common/ChangeDayTemplate');
 module.exports.common.ChangeDayTemplateDay = require('./common/ChangeDayTemplateDay');
 module.exports.common.ChangeDayTemplateRule = require('./common/ChangeDayTemplateRule');
+module.exports.common.PropertyBrandingChangeDayTemplate = require('./common/PropertyBrandingChangeDayTemplate');
 
 // Bookings
 module.exports.common.DepositAmount = require('./common/DepositAmount');
