@@ -8,19 +8,21 @@ var platoJsClient = (function () {
     /**
      * PlatoApi generic javascipt client
      *
-     * @param {String} url
+     * @param {object} options
      */
-    function platoJsClient(url) {
+    function platoJsClient(options) {
         if (!(this instanceof platoJsClient)) {
-          return new platoJsClient(url);
+          return new platoJsClient(options);
         }
 
         var rest = require('rest'),
           pathPrefix = require('rest/interceptor/pathPrefix'),
           mime = require('rest/interceptor/mime'),
-          defaultRequest = require('rest/interceptor/defaultRequest');
-
-        var host = (!url) ? "http://localhost" : url;
+          defaultRequest = require('rest/interceptor/defaultRequest'),
+          oAuth = require('rest/interceptor/oAuth'),
+          host = '/',
+          oAuthRedirectUrl = undefined,
+          defaultToken = false;
 
         /**
          * Function use to validate the request object passed to each verb
@@ -52,6 +54,67 @@ var platoJsClient = (function () {
         }
 
         /**
+         * Used to set the api instance
+         *
+         * @param {object} options
+         *
+         * @return {platoJsClient}
+         */
+        this.setInstance = function(options) {
+          if (!options) {
+            options = {};
+          }
+
+          host = (!options.apiRoot) ? host : options.apiRoot;
+          oAuthRedirectUrl = (!options.oAuthRedirectUrl) ? oAuthRedirectUrl : options.oAuthRedirectUrl;
+          defaultToken = (options.defaultToken === true) ? 'Bearer Y2ViNDM2NTc0NTMwYjljYWMwYzExMzIxZGE0ZjdlYmE3MjgwNmMxMzRlNzVhOTcyMGU1MjE0M2I2Njc0ZjcxZQ' : false;
+
+          if (localStorage.getItem('plato-js-client:token')) {
+            this.token = localStorage.getItem('plato-js-client:token');
+          }
+
+          return this;
+        };
+
+        /**
+         * oAuth call back.  Sets the token which is sent back from
+         * the oAuth server
+         *
+         * @param {String} url
+         */
+        this.oAuthCallback = function(hash) {
+          var params, queryString, regex, m;
+
+          queryString = hash.indexOf('#') === 0 ? hash.substring(1) : hash;
+          params = {};
+          regex = /([^&=]+)=([^&]*)/g;
+
+          m = regex.exec(queryString);
+          do {
+            params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+            m = regex.exec(queryString);
+          } while (m);
+
+          if (!this.token) {
+            this.token = 'Bearer ' + params.access_token;
+            
+            if (!localStorage.getItem('plato-js-client:token')) {
+              localStorage.setItem('plato-js-client:token', this.token);
+            }
+          }
+        };
+
+        /**
+         * Redirect function.  Handles the oAuth redirect
+         *
+         * @param {String} url
+         */
+        function redirect(url) {
+          window.location = url;
+          return function () {};
+        }
+
+        /**
          * Returns the request object read for use
          *
          * @param {Object} req  Request object
@@ -59,36 +122,36 @@ var platoJsClient = (function () {
          *
          * @returns {Object}
          */
-        function request(req, verb) {
+        this.request = function(req, verb) {
           req = validateRequest(req);
 
           if (!req.hasOwnProperty('method')) {
             req.method = verb;
           }
 
-          //if (typeof req.data === 'object') {
-          //  req.data = this.param(req.data);
-          //}
-
-          var client = createClient();
+          var client = this.createClient();
 
           return client(req);
-        }
+        };
 
         /**
          * Create a client instance
          *
          * @returns {Object}
          */
-        function createClient() {
+        this.createClient = function() {
           return rest.wrap(mime)
             .wrap(pathPrefix, { prefix: host })
-            .wrap(defaultRequest, {
-              headers: {
-                'Authorization': 'Bearer Y2ViNDM2NTc0NTMwYjljYWMwYzExMzIxZGE0ZjdlYmE3MjgwNmMxMzRlNzVhOTcyMGU1MjE0M2I2Njc0ZjcxZQ'
-              }
+            .wrap(defaultRequest)
+            .wrap(oAuth, {
+                clientId: '1_1hxi5f5x74cg4ccskc0sokw4kk8044wck4kc4scsk4cgk8ggkk',
+                authorizationUrlBase: 'http://docker.carltonsoftware.co.uk:49158/app_dev.php/oauth/v2/auth',
+                windowStrategy: redirect,
+                token: (defaultToken !== false) ? defaultToken : this.token,
+                redirectUrl: oAuthRedirectUrl/*,
+                token: 'Bearer Y2ViNDM2NTc0NTMwYjljYWMwYzExMzIxZGE0ZjdlYmE3MjgwNmMxMzRlNzVhOTcyMGU1MjE0M2I2Njc0ZjcxZQ'*/
             });
-        }
+        };
 
         /**
          * Return the Client
@@ -128,7 +191,7 @@ var platoJsClient = (function () {
          * @returns {Response}
          */
         this.get = function(req) {
-          return request(req, 'GET');
+          return this.request(req, 'GET');
         };
 
         /**
@@ -142,7 +205,7 @@ var platoJsClient = (function () {
           req.headers = {
             "Content-Type": "application/x-www-form-urlencoded"
           };
-          return request(req, 'POST');
+          return this.request(req, 'POST');
         };
 
         /**
@@ -156,7 +219,7 @@ var platoJsClient = (function () {
           req.headers = {
             "Content-Type": "multipart/form-data"
           };
-          return request(req, 'POST');
+          return this.request(req, 'POST');
         };
 
         /**
@@ -170,7 +233,7 @@ var platoJsClient = (function () {
           req.headers = {
             "Content-Type": "application/x-www-form-urlencoded"
           };
-          return request(req, 'PUT');
+          return this.request(req, 'PUT');
         };
 
         /**
@@ -181,7 +244,7 @@ var platoJsClient = (function () {
          * @returns {Response}
          */
         this.delete = function(req) {
-          return request(req, 'DELETE');
+          return this.request(req, 'DELETE');
         };
 
         /**
@@ -192,7 +255,7 @@ var platoJsClient = (function () {
          * @returns {Response}
          */
         this.options = function(req) {
-          return request(req, 'OPTIONS');
+          return this.request(req, 'OPTIONS');
         };
 
         /**
@@ -287,18 +350,18 @@ var platoJsClient = (function () {
     }
 
     return {
-        init: function () {
-            if (!INSTANCE) {
-                INSTANCE = platoJsClient.apply(null, arguments);
-            }
-            return INSTANCE;
-        },
-        getInstance: function () {
-            if (!INSTANCE) {
-                return this.init.apply(this, arguments);
-            }
-            return INSTANCE;
+      init: function () {
+        if (!INSTANCE) {
+          INSTANCE = platoJsClient.apply(null, arguments);
         }
+        return INSTANCE;
+      },
+      getInstance: function () {
+        if (!INSTANCE) {
+          return this.init.apply(this, arguments);
+        }
+        return INSTANCE;
+      }
     };
 }());
 

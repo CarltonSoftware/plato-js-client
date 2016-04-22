@@ -6,3 +6,4 @@ test.html
 dist/PlatoClient.js
 dist/bundle.js
 .DS_Store
+dist
