@@ -39,8 +39,6 @@ module.exports.common.PotentialDuplicate = require('./common/PotentialDuplicate'
 
 // Customer Releated Objects
 module.exports.common.Customer = require('./common/Customer');
-module.exports.common.CustomerAddress = require('./common/CustomerAddress');
-module.exports.common.CustomerContactDetailOther = require('./common/CustomerContactDetailOther');
 module.exports.common.CustomerDocument = require('./common/CustomerDocument');
 module.exports.common.Customers = require('./common/Customers');
 
@@ -141,6 +139,10 @@ module.exports.common.SpecialOfferPropertyBranding = require('./common/SpecialOf
 module.exports.common.SpecialOfferSalesChannel = require('./common/SpecialOfferSalesChannel');
 module.exports.common.SpecialOfferWebsiteSection = require('./common/SpecialOfferWebsiteSection');
 module.exports.common.WebsiteSection = require('./common/WebsiteSection');
+
+module.exports.common.Role = require('./common/Role');
+module.exports.common.Reason = require('./common/Reason');
+module.exports.common.RoleReason = require('./common/RoleReason');
 
 // Property Pricing
 module.exports.common.PropertyBrandingPrice = require('./common/PropertyBrandingPrice');
