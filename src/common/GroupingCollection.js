@@ -40,35 +40,35 @@ GroupingCollection.prototype.getGroupingValueCollections = function() {
  */
 GroupingCollection.prototype.postResponse = function() {
   // The following code will update the depth of each grouping
-	var depth = 0,
+  var depth = 0,
     // Get the groupings without any parent
     nodes = this.collection.filter(function(item) {
-	    return item.hasParent() === false;
+      return item.hasParent() === false;
     }),
     total = nodes.length;
 
   do {
 
     // Add the depth to each of the groupings found
-		nodes.forEach(function(node) {
+    nodes.forEach(function(node) {
       node.depth = depth;
     });
-		depth++;
+    depth++;
 
     // Get the id's of each grouping
-		var ids = nodes.map(function(item) {
+    var ids = nodes.map(function(item) {
       return item["id"];
     });
 
     // Find any nodes which have a parent in the current id array
-		nodes = this.collection.filter(function(item) {
-			return typeof item.parentgrouping === 'object'
+    nodes = this.collection.filter(function(item) {
+      return typeof item.parentgrouping === 'object'
         && ids.indexOf(item.parentgrouping.id) > -1;
-		});
+    });
 
     // Update total so we can use the breakout clause
-		total += nodes.length;
-	} while (nodes.length > 0 && total <= this.collection.length);
+    total += nodes.length;
+  } while (nodes.length > 0 && total <= this.collection.length);
 
   // Clear children, this avoids duplicates
   for (var i = 0; i < this.collection.length; i++) {

@@ -9,9 +9,9 @@ function Source(id) {
   this.id = id;
   this.sourcecategory = new SourceCategory();
   this.marketingbrands = new Collection({
-  	object: SourceMarketingBrand,
-  	path: 'marketingbrand',
-  	parent: this
+    object: SourceMarketingBrand,
+    path: 'marketingbrand',
+    parent: this
   });
 }
 Source.prototype = new SingleEntity();
