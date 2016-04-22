@@ -3,7 +3,10 @@ var _ = require('underscore');
 var platoJsClient = (function () {
 
     // Instance stores a reference to the Singleton
-    var INSTANCE;
+    var INSTANCE,
+      STORAGESCHEMA = 'plato-js-client',
+      TOKENNAME = STORAGESCHEMA + ':token';
+
 
     /**
      * PlatoApi generic javascipt client
@@ -69,8 +72,8 @@ var platoJsClient = (function () {
           oAuthRedirectUrl = (!options.oAuthRedirectUrl) ? oAuthRedirectUrl : options.oAuthRedirectUrl;
           defaultToken = (options.defaultToken === true) ? 'Bearer Y2ViNDM2NTc0NTMwYjljYWMwYzExMzIxZGE0ZjdlYmE3MjgwNmMxMzRlNzVhOTcyMGU1MjE0M2I2Njc0ZjcxZQ' : false;
 
-          if (localStorage.getItem('plato-js-client:token')) {
-            this.token = localStorage.getItem('plato-js-client:token');
+          if (localStorage.getItem(TOKENNAME)) {
+            this.token = localStorage.getItem(TOKENNAME);
           }
 
           return this;
@@ -98,8 +101,8 @@ var platoJsClient = (function () {
           if (!this.token) {
             this.token = 'Bearer ' + params.access_token;
             
-            if (!localStorage.getItem('plato-js-client:token')) {
-              localStorage.setItem('plato-js-client:token', this.token);
+            if (!localStorage.getItem(TOKENNAME)) {
+              localStorage.setItem(TOKENNAME, this.token);
             }
           }
         };
@@ -111,6 +114,7 @@ var platoJsClient = (function () {
          */
         function redirect(url) {
           window.location = url;
+          localStorage.removeItem(TOKENNAME);
           return function () {};
         }
 
