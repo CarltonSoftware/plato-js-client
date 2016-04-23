@@ -158,6 +158,23 @@ var platoJsClient = (function () {
         };
 
         /**
+         * Find out who is using this token
+         * 
+         * @return {Promise}
+         */
+        this.whoAmi = function() {
+          var client = this.createClient();
+          var req = {
+            path: '/whoami',
+            method: 'get',
+            headers: {
+              'tabs2-token': this.token
+            }
+          }
+          return client(req);
+        };
+
+        /**
          * Return the Client
          *
          * @returns {Client}
