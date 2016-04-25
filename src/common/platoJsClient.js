@@ -24,6 +24,7 @@ var platoJsClient = (function () {
           defaultRequest = require('rest/interceptor/defaultRequest'),
           oAuth = require('rest/interceptor/oAuth'),
           host = '/',
+          prefix = '',
           oAuthRedirectUrl = undefined,
           defaultToken = false;
 
@@ -69,6 +70,7 @@ var platoJsClient = (function () {
           }
 
           host = (!options.apiRoot) ? host : options.apiRoot;
+          prefix = (!options.apiPrefix) ? prefix : options.apiPrefix;
           oAuthRedirectUrl = (!options.oAuthRedirectUrl) ? oAuthRedirectUrl : options.oAuthRedirectUrl;
           defaultToken = (options.defaultToken === true) ? 'Bearer Y2ViNDM2NTc0NTMwYjljYWMwYzExMzIxZGE0ZjdlYmE3MjgwNmMxMzRlNzVhOTcyMGU1MjE0M2I2Njc0ZjcxZQ' : false;
 
@@ -145,11 +147,11 @@ var platoJsClient = (function () {
          */
         this.createClient = function() {
           return rest.wrap(mime)
-            .wrap(pathPrefix, { prefix: host })
+            .wrap(pathPrefix, { prefix: host + prefix })
             .wrap(defaultRequest)
             .wrap(oAuth, {
                 clientId: '1_1hxi5f5x74cg4ccskc0sokw4kk8044wck4kc4scsk4cgk8ggkk',
-                authorizationUrlBase: 'http://docker.carltonsoftware.co.uk:49158/app_dev.php/oauth/v2/auth',
+                authorizationUrlBase: host + '/oauth/v2/auth',
                 windowStrategy: redirect,
                 token: (defaultToken !== false) ? defaultToken : this.token,
                 redirectUrl: oAuthRedirectUrl/*,
