@@ -19,7 +19,6 @@ PropertyNote.prototype = new SingleEntity();
 
 PropertyNote.prototype.toArray = function() {
   return {
-    id: this.id,
     propertyid: this.property.id,
     noteid: this.note.id,
     fromdate: this.fromdate,

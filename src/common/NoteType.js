@@ -9,7 +9,6 @@ NoteType.prototype = new SingleEntity();
 
 NoteType.prototype.toArray = function() {
   return {
-    id: this.id,
     notetype: this.notetype,
     description: this.description,
     donotdelete: this.donotdelete

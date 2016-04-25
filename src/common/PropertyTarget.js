@@ -8,7 +8,6 @@ function PropertyTarget(id) {
 PropertyTarget.prototype = new SingleEntity();
 PropertyTarget.prototype.toArray = function() {
   return {
-    id: this.id,
     year: this.year,
     daysbooked: this.daysbooked
   };

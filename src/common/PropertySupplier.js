@@ -15,7 +15,6 @@ PropertySupplier.prototype = new SingleEntity();
 
 PropertySupplier.prototype.toArray = function() {
   return {
-    id: this.id,
     actorid: this.actor.id,
     fromdate: this.fromdate,
     todate: this.todate,

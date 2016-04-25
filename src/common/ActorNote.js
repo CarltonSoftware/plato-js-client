@@ -9,7 +9,6 @@ ActorNote.prototype = new SingleEntity();
 
 ActorNote.prototype.toArray = function() {
   return {
-    id: this.id,
     actorid: this.actorid,
     noteid: this.noteid,
   };

@@ -11,7 +11,6 @@ function PropertyOwnerPaymentTerm(id) {
 PropertyOwnerPaymentTerm.prototype = new SingleEntity();
 PropertyOwnerPaymentTerm.prototype.toArray = function() {
   return {
-    id: this.id,
     fromdate: this.fromdate,
     todate: this.todate,
     ownerpaymenttermsid: this.ownerpaymentterms.id

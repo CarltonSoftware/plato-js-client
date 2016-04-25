@@ -9,7 +9,6 @@ RoomType.prototype = new SingleEntity();
 
 RoomType.prototype.toArray = function() {
   return {
-    id: this.id,
     name: this.name,
     sleeps: this.sleeps,
     description: this.description

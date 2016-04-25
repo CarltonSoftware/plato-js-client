@@ -11,7 +11,6 @@ BookingNote.prototype = new SingleEntity();
 
 BookingNote.prototype.toArray = function() {
   return {
-    id: this.id,
     bookingid: this.bookingid,
     noteid: this.noteid
   };

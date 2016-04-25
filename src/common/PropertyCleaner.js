@@ -11,7 +11,6 @@ PropertyCleaner.prototype = new SingleEntity();
 
 PropertyCleaner.prototype.toArray = function() {
   return {
-    id: this.id,
     cleaner: this.cleaner,
     cleanerfromdate: this.cleanerfromdate,
     cleanertodate: this.cleanertodate,

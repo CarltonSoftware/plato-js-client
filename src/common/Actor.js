@@ -75,7 +75,6 @@ Actor.prototype.getFullName = function() {
  */
 Actor.prototype.toArray = function() {
   return {
-    id: this.id,
     title: this.title,
     firstname: this.firstname,
     surname: this.surname,

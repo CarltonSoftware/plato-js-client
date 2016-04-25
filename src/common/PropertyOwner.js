@@ -14,7 +14,6 @@ PropertyOwner.prototype = new SingleEntity();
 
 PropertyOwner.prototype.toArray = function() {
   return {
-    id: this.id,
     ownerid: this.owner.id,
     ownerfromdate: this.ownerfromdate,
     ownertodate: this.ownertodate,

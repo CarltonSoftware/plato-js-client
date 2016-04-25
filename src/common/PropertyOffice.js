@@ -13,7 +13,6 @@ PropertyOffice.prototype = new SingleEntity();
 
 PropertyOffice.prototype.toArray = function() {
   return {
-    id: this.id,
     officeid: this.office.id,
     fromdate: this.fromdate,
     todate: this.todate
