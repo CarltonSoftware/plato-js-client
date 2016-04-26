@@ -4,7 +4,7 @@ var Document = require('./Document');
 function CustomerDocument(customerId, id) {
   this.path = 'customer/' + customerId + '/document';
   this.createPath = 'customer/' + customerId + '/document';
-  this.document = new Document;
+  this.document = new Document();
   this.id = id;
 }
 CustomerDocument.prototype = new SingleEntity();

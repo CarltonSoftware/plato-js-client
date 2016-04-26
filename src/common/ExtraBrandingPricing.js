@@ -3,11 +3,11 @@ var Collection = require('./Collection');
 var Currency = require('./Currency');
 
 function ExtraBrandingPricing(extraId, brandingId, id) {
-    this.path = 'extra/' + extraId + '/branding/' + brandingId + '/pricing';
-    this.createPath = this.path;
-    this.id = id;
-    this.currency = new Currency;
-    this.dailyprices = new Collection({ object: Currency });
+  this.path = 'extra/' + extraId + '/branding/' + brandingId + '/pricing';
+  this.createPath = this.path;
+  this.id = id;
+  this.currency = new Currency();
+  this.dailyprices = new Collection({ object: Currency });
 }
 ExtraBrandingPricing.prototype = new SingleEntity();
 
@@ -15,7 +15,6 @@ ExtraBrandingPricing.prototype.toCreateArray = function() {
   if (this.pricingtype == 'Amount') {
     return {
       pricingperiod: this.pricingperiod,
-      perperiod: this.perperiod,
       propertypricing: this.propertypricing,
       fromdate: this.fromdate,
       todate: this.todate,

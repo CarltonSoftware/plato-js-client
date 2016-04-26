@@ -15,6 +15,6 @@ BookingCustomer.prototype.toArray = function() {
   return {
     customerid: this.customerid ? this.customerid : this.details.id,
   };
-}
+};
 
 module.exports = BookingCustomer;

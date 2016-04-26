@@ -1,5 +1,5 @@
-var SingleEntity = require('./SingleEntity'),
-  EntityLink = require('./EntityLink')
+var SingleEntity = require('./SingleEntity');
+var EntityLink = require('./EntityLink');
 
 function Grouping(id) {
   this.path = 'grouping';
@@ -12,9 +12,9 @@ function Grouping(id) {
   this.children = [];
 
   this.hasParent = function() {
-    return typeof this.parentgrouping === 'object'
-      && typeof this.parentgrouping.id !== 'undefined'
-      && this.parentgrouping.id > 0;
+    return typeof this.parentgrouping === 'object' &&
+      typeof this.parentgrouping.id !== 'undefined' &&
+      this.parentgrouping.id > 0;
   }.bind(this);
 
   this.hasChildren = function() {
@@ -24,7 +24,7 @@ function Grouping(id) {
 
   this.hasChildGroup = function(id) {
     if (this.hasChildren()) {
-      for (i in this.children) {
+      for (var i in this.children) {
         if (this.children[i].id === id) {
           return true;
         } else {

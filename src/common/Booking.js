@@ -24,7 +24,7 @@ function Booking(id) {
   // this.saleschannel = new SalesChannel;
   // this.pricingperiod = new PricingPeriod;
   // this.price = ;
-  this.currency = new Currency;
+  this.currency = new Currency();
   // this.potentialbooking = new PotentialBooking;
   this.documents = new Collection({
     object: BookingDocument,

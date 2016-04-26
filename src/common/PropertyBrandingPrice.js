@@ -37,15 +37,17 @@ PropertyBrandingPrice.prototype.toArray = function() {
 };
 
 PropertyBrandingPrice.prototype.getDayPrice = function(day) {
+  var dayPrice;
+
   if (day == 7) {
 
   } else {
-    var dayPrice = this.pricetypebranding.percentages.find(function(percentage) {
+    dayPrice = this.pricetypebranding.percentages.find(function(percentage) {
       return percentage.pricetype.periods == day;
     });
   }
 
   return dayPrice[0];
-}
+};
 
 module.exports = PropertyBrandingPrice;

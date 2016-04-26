@@ -5,7 +5,7 @@ function PropertyCleaner(propertyId, id) {
   this.path = 'cleaner';
   this.createPath = 'cleaner';
   this.id = id;
-  this.cleaner = new Cleaner; 
+  this.cleaner = new Cleaner();
 }
 PropertyCleaner.prototype = new SingleEntity();
 

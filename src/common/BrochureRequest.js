@@ -6,7 +6,7 @@ function BrochureRequest(id) {
   this.path = this.createPath = 'request';
   this.id = id;
   // this.sourcemarketingbrand = new SourceMarketingBrand;
-  this.customer = new Customer;
+  this.customer = new Customer();
 }
 
 BrochureRequest.prototype = new SingleEntity();

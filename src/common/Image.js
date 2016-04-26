@@ -6,8 +6,8 @@ function Image(id) {
   this.path = 'image';
   this.createPath =  'image';
   this.id = id;
-  this.mimetype = new Mimetype;
-  this.file = new File;
+  this.mimetype = new Mimetype();
+  this.file = new File();
 }
 Image.prototype = new SingleEntity();
 

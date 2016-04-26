@@ -14,6 +14,6 @@ BookingGuest.prototype.toArray = function() {
     guestagerangeid: this.guestagerangeid,
     bookingcustomerid: this.bookingcustomerid
   };
-}
+};
 
 module.exports = BookingGuest;

@@ -17,6 +17,6 @@ PotentialDuplicate.prototype.toArray = function() {
   return {
 
   };
-}
+};
 
 module.exports = PotentialDuplicate;

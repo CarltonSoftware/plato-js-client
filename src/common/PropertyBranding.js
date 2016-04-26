@@ -28,8 +28,8 @@ function PropertyBranding(id) {
     object: PropertyBrandingChangeDayTemplate,
     path: 'changedaytemplate',
     parent: this
-  })
-};
+  });
+}
 
 PropertyBranding.prototype = new SingleEntity();
 

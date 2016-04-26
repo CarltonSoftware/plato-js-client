@@ -20,7 +20,7 @@ Branding.prototype.toString = function(sep) {
     this.brandinggroup.name,
     this.bookingbrand.name,
     this.marketingbrand.name
-  ]
+  ];
   return grp.join(sep);
 };
 Branding.prototype.toArray = function() {
@@ -30,6 +30,6 @@ Branding.prototype.toArray = function() {
     marketingbrandid: this.marketingbrand.id,
     lettingincomevatbandid: this.lettingincomevatband.id,
   };
-}
+};
 
 module.exports = Branding;

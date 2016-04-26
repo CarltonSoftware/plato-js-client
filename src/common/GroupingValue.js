@@ -19,9 +19,9 @@ function GroupingValue(id) {
   });
 
   this.hasParent = function() {
-    return typeof this.parentgroupingvalue === 'object'
-      && typeof this.parentgroupingvalue.id !== 'undefined'
-      && this.parentgroupingvalue.id > 0;
+    return typeof this.parentgroupingvalue === 'object' &&
+      typeof this.parentgroupingvalue.id !== 'undefined' &&
+      this.parentgroupingvalue.id > 0;
   }.bind(this);
 }
 GroupingValue.prototype = new SingleEntity();

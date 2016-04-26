@@ -5,7 +5,7 @@ function PropertyBrochure(id) {
   this.path = 'brochure';
   this.createPath = this.path;
   this.id = id;
-  this.brochure = new Brochure;
+  this.brochure = new Brochure();
 }
 
 PropertyBrochure.prototype = new SingleEntity();

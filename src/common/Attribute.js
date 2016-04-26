@@ -79,7 +79,7 @@ function Attribute(id) {
     }
 
     return base;
-  }
+  };
 }
 
 Attribute.prototype = new SingleEntity();

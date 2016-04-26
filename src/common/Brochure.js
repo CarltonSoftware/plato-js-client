@@ -4,7 +4,7 @@ var MarketingBrand = require('./MarketingBrand');
 function Brochure(id) {
   this.path = this.createPath = 'brochure';
   this.id = id;
-  this.marketingbrand = new MarketingBrand;
+  this.marketingbrand = new MarketingBrand();
 }
 
 Brochure.prototype = new SingleEntity();

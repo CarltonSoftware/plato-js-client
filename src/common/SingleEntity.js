@@ -11,8 +11,8 @@ var _ = require('underscore');
 function SingleEntity() {
   this.isDefined = function(val) {
     return typeof val !== 'undefined';
-  }
-};
+  };
+}
 
 /**
  * Inherit methods from Entity object

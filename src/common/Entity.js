@@ -10,7 +10,7 @@ var _ = require('underscore');
  *
  * @returns {Entity}
  */
-function Entity() {};
+function Entity() {}
 
 /**
  * Function used to map json values onto a single object. This will be
@@ -219,7 +219,7 @@ Entity.prototype.get = function(path) {
  *
  * @returns {SingleEntity}
  */
- Entity.prototype.mapRouteIds = function(route) {
+Entity.prototype.mapRouteIds = function(route) {
   var routeParts = route.split('/');
   this.id = parseInt(routeParts.pop());
 

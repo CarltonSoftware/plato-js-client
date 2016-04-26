@@ -13,7 +13,7 @@ function statusError(response) {
       this.message = response.entity.errorDescription;
     }
   }
-};
+}
 
 statusError.prototype = Error.prototype;
 

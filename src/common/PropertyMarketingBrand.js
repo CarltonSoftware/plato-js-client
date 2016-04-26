@@ -10,7 +10,7 @@ function PropertyMarketingBrand(id) {
   this.path = 'marketingbrand';
   this.createPath = this.path;
   this.id = id;
-  this.agency = new Agency;
+  this.agency = new Agency();
   this.defaultbookingbrand = new BookingBrand();
   this.marketingbrand = new MarketingBrand();
 

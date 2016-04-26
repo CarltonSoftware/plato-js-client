@@ -7,7 +7,7 @@ function PropertyKeyholder(propertyId, id) {
   this.createPath = 'keyholder';
   this.id = id;
   // this.property = new Property;
-  this.keyholder = new Keyholder;
+  this.keyholder = new Keyholder();
 }
 PropertyKeyholder.prototype = new SingleEntity();
 

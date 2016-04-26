@@ -12,7 +12,7 @@ var _ = require('underscore');
 function StaticCollection(options) {
   this.options = options || {};
   this.collection = [];
-};
+}
 
 /**
 * Inherit methods from Entity object

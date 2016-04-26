@@ -5,7 +5,7 @@ function ExtraBrandingConfiguration(extraId, brandingId) {
     this.path = 'extra/' + extraId + '/branding/' + brandingId + '/configuration';
     this.createPath = this.path;
     this.id = 0;
-    this.vatband = new VatBand;
+    this.vatband = new VatBand();
 }
 ExtraBrandingConfiguration.prototype = new SingleEntity();
 

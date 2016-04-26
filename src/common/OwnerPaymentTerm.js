@@ -20,7 +20,7 @@ function OnwerPaymentTerm(id) {
   // Last: Owner is paid anything left after all the commission has been taken
   // First: Owner is paid as much as possible as soon as possible
   this.ownerpaid = '';
-};
+}
 
 OnwerPaymentTerm.prototype = new SingleEntity();
 OnwerPaymentTerm.prototype.toArray = function() {
@@ -35,7 +35,7 @@ OnwerPaymentTerm.prototype.toArray = function() {
     percentageofpayment: this.percentageofpayment,
     ownerpaid: this.ownerpaid,
     currencyid: this.currency.id
-  }
+  };
 };
 
 module.exports = OnwerPaymentTerm;

@@ -5,8 +5,8 @@ var Document = require('./Document');
 function PropertyDocument(propertyId, id) {
   this.path = 'property/' + propertyId + '/document';
   this.createPath = 'property/' + propertyId + '/document';
-  this.image = new Image;
-  this.document = new Document;
+  this.image = new Image();
+  this.document = new Document();
   this.id = id;
 }
 PropertyDocument.prototype = new SingleEntity();

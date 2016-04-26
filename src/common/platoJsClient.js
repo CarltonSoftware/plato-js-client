@@ -154,8 +154,7 @@ var platoJsClient = (function () {
                 authorizationUrlBase: host + '/oauth/v2/auth',
                 windowStrategy: redirect,
                 token: (defaultToken !== false) ? defaultToken : this.token,
-                redirectUrl: oAuthRedirectUrl/*,
-                token: 'Bearer Y2ViNDM2NTc0NTMwYjljYWMwYzExMzIxZGE0ZjdlYmE3MjgwNmMxMzRlNzVhOTcyMGU1MjE0M2I2Njc0ZjcxZQ'*/
+                redirectUrl: oAuthRedirectUrl
             });
         };
 
@@ -172,7 +171,7 @@ var platoJsClient = (function () {
             headers: {
               'tabs2-token': this.token
             }
-          }
+          };
           return client(req);
         };
 
@@ -323,7 +322,7 @@ var platoJsClient = (function () {
 
           if(Array.isArray(obj)) {
             for(var key in obj) {
-              value = obj[key]
+              value = obj[key];
               if(rbracket.test(prefix)) {
                 add(prefix, value);
               } else {

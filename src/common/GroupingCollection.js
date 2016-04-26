@@ -6,7 +6,7 @@ var _ = require('underscore');
 
 function GroupingCollection() {
   this.nestedGroups = [];
-};
+}
 
 GroupingCollection.prototype = new Collection({
   path: 'grouping',
@@ -31,7 +31,7 @@ GroupingCollection.prototype.getGroupingValueCollections = function() {
   }
 
   return m;
-}
+};
 
 /**
  * Callback function used to populate the nestedGroups after a fetch
@@ -57,7 +57,7 @@ GroupingCollection.prototype.postResponse = function() {
 
     // Get the id's of each grouping
     var ids = nodes.map(function(item) {
-      return item["id"];
+      return item.id;
     });
 
     // Find any nodes which have a parent in the current id array
@@ -94,8 +94,8 @@ GroupingCollection.prototype.getNestedGroupings = function() {
    * @return {Array}
    */
   var _unflatten = function(array, parent, tree) {
-    var tree = typeof tree !== 'undefined' ? tree : [];
-    var parent = typeof parent !== 'undefined' ? parent : { };
+    tree = tree || [];
+    parent = parent || {};
 
     var children = _.filter(
       array,
@@ -111,7 +111,7 @@ GroupingCollection.prototype.getNestedGroupings = function() {
       if (typeof parent.id === 'undefined') {
         tree = children;
       } else {
-        parent['children'] = children;
+        parent.children = children;
       }
 
       _.each(children, function(child) {
@@ -120,7 +120,7 @@ GroupingCollection.prototype.getNestedGroupings = function() {
     }
 
     return tree;
-  }
+  };
 
   return _unflatten(this.collection, undefined, []);
 };
@@ -138,7 +138,7 @@ GroupingCollection.prototype.traverse = function(func) {
   if (typeof func !== 'function') {
     func = function() {
       console.log(Array(this.depth).join('-') + (this.depth > 0 ? '-> ' : '') + this.name + ' (' + this.depth + ')');
-    }
+    };
   }
 
   var _traverse = function(array) {
@@ -148,9 +148,9 @@ GroupingCollection.prototype.traverse = function(func) {
         _traverse(e.children);
       }
     });
-  }
+  };
 
   return _traverse(this.nestedGroups);
-}
+};
 
 module.exports = GroupingCollection;

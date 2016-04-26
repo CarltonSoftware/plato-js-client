@@ -9,7 +9,7 @@ function MarketingBrand(id) {
   this.agency = new EntityLink({
     entity: 'Agency'
   });
-  this.defaultbookingbrand = new BookingBrand;
+  this.defaultbookingbrand = new BookingBrand();
 }
 MarketingBrand.prototype = new SingleEntity();
 

@@ -4,12 +4,12 @@ var Currency = require('./Currency');
 var DepositAmountType = require('./DepositAmountType');
 
 function DepositAmount(id) {
-    this.path = 'depositamount';
-    this.createPath = 'depositamount';
-    this.id = id;
-    this.branding = new Branding;
-    this.currency = new Currency;
-    this.depositamounttype = new DepositAmountType;
+  this.path = 'depositamount';
+  this.createPath = 'depositamount';
+  this.id = id;
+  this.branding = new Branding();
+  this.currency = new Currency();
+  this.depositamounttype = new DepositAmountType();
 }
 DepositAmount.prototype = new SingleEntity();
 
@@ -39,7 +39,7 @@ DepositAmount.prototype.toCreateArray = function() {
   }
 
   return r;
-}
+};
 
 DepositAmount.prototype.toUpdateArray = function() {
   var r = {

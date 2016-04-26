@@ -6,8 +6,8 @@ function Document(id) {
   this.path = 'document';
   this.createPath = 'document';
   this.id = id;
-  this.file = new File;
-  this.mimetype = new Mimetype;
+  this.file = new File();
+  this.mimetype = new Mimetype();
 }
 Document.prototype = new SingleEntity();
 Document.prototype.toArray = function() {

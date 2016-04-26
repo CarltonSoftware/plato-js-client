@@ -1,5 +1,4 @@
 var Collection = require('./Collection');
-var _ = require('underscore');
 
 function MultiCollection() {
   /**
@@ -33,11 +32,11 @@ function MultiCollection() {
     this.collections.forEach(function(collection) {
       collection.forEach(function(entity) {
         entities.push(entity);
-      })
+      });
     });
 
     return entities;
   };
-};
+}
 
 module.exports = MultiCollection;

@@ -23,7 +23,7 @@ Collection.prototype.getMaxPages = function() {
   }
 
   return this.page;
-}
+};
 
 /**
  * Get the next page of the collection if the total is set.  If not set, the
@@ -40,7 +40,7 @@ Collection.prototype.nextPage = function() {
   this.page = np;
 
   return this;
-}
+};
 
 /**
  * Get the previous page of the collection if the total is set.  If not set or
@@ -57,7 +57,7 @@ Collection.prototype.previousPage = function() {
   this.page = pp;
 
   return this;
-}
+};
 
 /**
  * Returns a promise of the fetched resource

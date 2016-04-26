@@ -13,6 +13,6 @@ BookingExtra.prototype.toArray = function() {
     quantity: this.quantity,
     unitprice: this.unitprice,
   };
-}
+};
 
 module.exports = BookingExtra;

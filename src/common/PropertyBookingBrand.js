@@ -6,7 +6,7 @@ function PropertyBookingBrand(id) {
   this.createPath = 'bookingbrand';
   this.id = id;
   this.agency = new Agency();
-};
+}
 
 PropertyBookingBrand.prototype = new SingleEntity();
 PropertyBookingBrand.prototype.toArray = function() {

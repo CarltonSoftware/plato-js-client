@@ -6,7 +6,7 @@ function PropertyOwnerPaymentTerm(id) {
   this.createPath = 'ownerpaymentterms';
   this.id = id;
   this.ownerpaymentterms = new OwnerPaymentTerm();
-};
+}
 
 PropertyOwnerPaymentTerm.prototype = new SingleEntity();
 PropertyOwnerPaymentTerm.prototype.toArray = function() {
@@ -14,7 +14,7 @@ PropertyOwnerPaymentTerm.prototype.toArray = function() {
     fromdate: this.fromdate,
     todate: this.todate,
     ownerpaymenttermsid: this.ownerpaymentterms.id
-  }
+  };
 };
 
 module.exports = PropertyOwnerPaymentTerm;

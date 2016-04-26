@@ -32,7 +32,7 @@ Address.prototype.toString = function() {
     this.county,
     this.postcode
   ].filter(function(line) {
-    return line != '';
+    return line !== '';
   }).join(', ');
 };
 
