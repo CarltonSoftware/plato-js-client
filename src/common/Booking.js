@@ -70,8 +70,6 @@ Booking.prototype.toArray = function() {
     provisionalbooking_commissionpercentage: this.provisionalbooking_commissionpercentage,
     provisionalbooking_ownerpaymenttermsid: this.provisionalbooking_ownerpaymenttermsid,
     provisionalbooking_tabsuserid: this.provisionalbooking_tabsuserid,
-    /* Transferred */
-    transferredbooking_tobookingid: this.transferredbooking_tobookingid,
     /* Cancelled */
     cancelledbooking_reason: this.cancelledbooking_reason,
     cancelledbooking_adviseddate: this.cancelledbooking_adviseddate,
@@ -82,6 +80,16 @@ Booking.prototype.toArray = function() {
     bookingsecuritydeposit_dueindate: this.bookingsecuritydeposit_dueindate,
     bookingsecuritydeposit_dueoutdate: this.bookingsecuritydeposit_dueoutdate
   };
+
+  // Transferred */
+  if (this.transferredtobooking) {
+    array.transferredbooking_tobookingid = this.transferredtobooking.tobooking.id;
+    array.transferredbooking_tabsuserid = this.transferredtobooking.tabsuser.id || this.tabsuser.id;
+  }
+  if (this.transferredfrombooking) {
+    array.transferredbooking_frombookingid = this.transferredfrombooking.frombooking.id;
+    array.transferredbooking_tabsuserid = this.transferredfrombooking.tabsuser.id || this.tabsuser.id;
+  }
 
   if (this.guesttype === 'Customer') {
     array.propertybrandingid = this.propertybrandingid;
@@ -164,6 +172,13 @@ Booking.prototype.getStatus = function() {
   // TBD - Web bookings, flexilet
 
   return item;
+};
+
+Booking.prototype.toString = function() {
+  if (this.bookref) {
+    return this.id + ' (' + this.bookref + ')';
+  }
+  return this.id;
 };
 
 module.exports = Booking;
