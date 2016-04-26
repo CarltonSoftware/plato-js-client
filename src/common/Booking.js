@@ -12,7 +12,7 @@ function Booking(id) {
   this.path = 'booking';
   this.createPath = 'booking';
   this.id = id;
-  
+
   this.branding = new EntityLink({
     entity: 'Branding'
   });
@@ -46,7 +46,6 @@ function Booking(id) {
 Booking.prototype = new SingleEntity();
 Booking.prototype.toArray = function() {
   var array = {
-    id: this.id,
     guesttype: this.guesttype,
     fromdate: this.fromdate,
     todate: this.todate,

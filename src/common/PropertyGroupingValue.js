@@ -14,7 +14,6 @@ function PropertyGroupingValue(id) {
 PropertyGroupingValue.prototype = new SingleEntity();
 PropertyGroupingValue.prototype.toArray = function() {
   return {
-    id: this.id,
     groupingid: this.grouping.id,
     groupingvalueid: this.groupingvalue.id
   };

@@ -9,14 +9,13 @@ function ActorContactDetailOther(contact_id) {
   this.contactpreferences = new Collection({
     object: ContactPreference,
     path: 'contactpreference',
-    parent: this
+    parent: this.parent
   });
 }
 
 ActorContactDetailOther.prototype = new SingleEntity();
 ActorContactDetailOther.prototype.toArray = function() {
   return {
-    id: this.id,
     contactmethodsubtype: this.contactmethodsubtype,
     contactmethodtype: this.contactmethodtype,
     value: this.value

@@ -26,7 +26,6 @@ Note.prototype = new SingleEntity();
 
 Note.prototype.toArray = function() {
   return {
-    id: this.id,
     notetype: this.notetype,
     subject: this.subject,
     createdby: this.createdby,

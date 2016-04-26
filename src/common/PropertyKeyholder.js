@@ -13,7 +13,6 @@ PropertyKeyholder.prototype = new SingleEntity();
 
 PropertyKeyholder.prototype.toArray = function() {
   return {
-    id: this.id,
     keyholder: this.keyholder,
     keyholderfromdate: this.keyholderfromdate,
     keyholdertodate: this.keyholdertodate,

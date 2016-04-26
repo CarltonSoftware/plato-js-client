@@ -9,7 +9,6 @@ function AttributeOption(attributeId, id) {
 AttributeOption.prototype = new SingleEntity();
 AttributeOption.prototype.toArray = function() {
   return {
-    id: this.id,
     optionname: this.option,
     optionorder: this.optionorder
   }

@@ -28,7 +28,6 @@ GroupingValue.prototype = new SingleEntity();
 
 GroupingValue.prototype.toArray = function() {
   var d = {
-    id: this.id,
     name: this.name,
     qualifier: this.qualifier,
     description: this.description,

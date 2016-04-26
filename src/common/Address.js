@@ -13,7 +13,6 @@ Address.prototype = new SingleEntity();
 
 Address.prototype.toArray = function() {
   return {
-    id: this.id,
     line1: this.line1,
     line2: this.line2,
     line3: this.line3,
