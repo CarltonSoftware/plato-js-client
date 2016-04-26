@@ -5,6 +5,7 @@ function ChangeDayTemplateRule(changedaytemplateid, id) {
   this.createPath = this.path;
   this.id = id;
 }
+
 ChangeDayTemplateRule.prototype = new SingleEntity();
 
 ChangeDayTemplateRule.prototype.toArray = function() {

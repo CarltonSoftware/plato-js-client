@@ -12,6 +12,12 @@ function ChangeDayTemplate(id) {
     entity: 'Branding'
   });
 
+  this.rules = new Collection({
+    object: ChangeDayTemplateRule,
+    path: 'rule',
+    parents: [this]
+  });
+
 }
 ChangeDayTemplate.prototype = new SingleEntity();
 
@@ -28,6 +34,7 @@ ChangeDayTemplate.prototype.toArray = function() {
     fields.parentid = this.parentid;
   } else if (this.type == 'Property') {
     fields.propertybrandingid = this.propertybrandingid;
+    fields.parentid = this.parentid;
   }
   return fields;
 };

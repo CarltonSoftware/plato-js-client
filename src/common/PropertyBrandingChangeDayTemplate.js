@@ -5,8 +5,8 @@ var ChangeDayTemplate = require('./ChangeDayTemplate.js');
  *
  * @param {number} id
  */
-function PropertyBrandingChangeDayTemplate(id) {
-  this.path = 'changedaytemplate';
+function PropertyBrandingChangeDayTemplate(propertyid, brandingid, id) {
+  this.path = 'property/' + propertyid + '/branding/' + brandingid + '/changedaytemplate';
   this.createPath = this.path;
   this.id = id;
   this.changedaytemplate = new ChangeDayTemplate();
@@ -15,7 +15,7 @@ function PropertyBrandingChangeDayTemplate(id) {
 PropertyBrandingChangeDayTemplate.prototype = new SingleEntity();
 PropertyBrandingChangeDayTemplate.prototype.toArray = function() {
   return {
-    type: this.type,
+    changedaytemplateid: this.changedaytemplateid,
     fromdate: this.fromdate,
     todate: this.todate,
   };
