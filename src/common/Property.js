@@ -95,6 +95,8 @@ Property.prototype.toArray = function() {
     address_county: this.address.county,
     address_postcode: this.address.postcode,
     address_countryalpha2code: this.address.country.alpha2,
+    address_latitude: this.address.latitude,
+    address_longitude: this.address.longitude,
   };
 };
 
