@@ -19,7 +19,9 @@ Address.prototype.toArray = function() {
     town: this.town,
     county: this.county,
     postcode: this.postcode,
-    countryalpha2code: this.country.alpha2
+    countryalpha2code: this.country.alpha2,
+    longitude: this.longitude,
+    latitude: this.latitude
   };
 };
 

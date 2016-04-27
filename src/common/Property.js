@@ -81,6 +81,12 @@ Property.prototype.toArray = function() {
     bedrooms: this.bedrooms,
     sleeps: this.sleeps,
     maximumpets: this.maximumpets,
+    accomodationdescription: this.accomodationdescription,
+    tabspropref: this.tabspropref,
+    status: this.status ? this.status.status : null,
+    checkinearliesttime: this.checkinearliesttime,
+    checkinlatesttime: this.checkinlatesttime,
+    checkouttime: this.checkouttime,
     telephonenumber: this.telephonenumber,
     address_line1: this.address.line1,
     address_line2: this.address.line2,
@@ -89,6 +95,8 @@ Property.prototype.toArray = function() {
     address_county: this.address.county,
     address_postcode: this.address.postcode,
     address_countryalpha2code: this.address.country.alpha2,
+    address_latitude: this.address.latitude,
+    address_longitude: this.address.longitude,
   };
 };
 
