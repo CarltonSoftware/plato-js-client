@@ -84,6 +84,7 @@ module.exports.common.BookingExtra = require('./common/BookingExtra');
 module.exports.common.BookingDocument = require('./common/BookingDocument');
 module.exports.common.BookingGuest = require('./common/BookingGuest');
 module.exports.common.BookingNote = require('./common/BookingNote');
+module.exports.common.BookingSecurityDeposit = require('./common/BookingSecurityDeposit');
 module.exports.common.Bookings = require('./common/Bookings');
 module.exports.common.GuestAgeRange = require('./common/GuestAgeRange');
 module.exports.common.GuestType = require('./common/GuestType');

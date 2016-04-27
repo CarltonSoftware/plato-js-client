@@ -10,7 +10,9 @@ BookingSecurityDeposit.prototype.toCreateArray = function() {
   return {
     amount: this.amount,
     dueindate: this.dueindate,
-    dueoutdate: this.dueoutdate
+    dueoutdate: this.dueoutdate,
+    ownerchargecodeid: this.ownerchargecodeid,
+    ownerchargeamount: this.ownerchargeamount
   };
 };
 
