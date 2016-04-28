@@ -22,7 +22,6 @@ ChangeDayTemplateRule.prototype.toArray = function() {
     istodate: this.istodate ? 'true' : 'false',
     isnotfromdate: this.isnotfromdate ? 'true' : 'false',
     isnottodate: this.isnottodate ? 'true' : 'false',
-    withindays: this.withindays,
     unlessholidayatleast: this.unlessholidayatleast,
     showonavailability : this.showonavailability,
     description : this.description
@@ -34,6 +33,10 @@ ChangeDayTemplateRule.prototype.toArray = function() {
   if (this.todate != '') {
     array.todate = this.todate;
   }
+  if (this.withindays != '') {
+    array.withindays = this.withindays;
+  }
+
 
   return array;
 };
