@@ -9,7 +9,7 @@ function ChangeDayTemplateRule(changedaytemplateid, id) {
 ChangeDayTemplateRule.prototype = new SingleEntity();
 
 ChangeDayTemplateRule.prototype.toArray = function() {
-  return {
+  var array = {
     ruleorder: this.ruleorder,
     everysaturday: this.everysaturday ? 'true' : 'false',
     everysunday: this.everysunday ? 'true' : 'false',
@@ -18,8 +18,6 @@ ChangeDayTemplateRule.prototype.toArray = function() {
     everywednesday: this.everywednesday ? 'true' : 'false',
     everythursday: this.everythursday ? 'true' : 'false',
     everyfriday: this.everyfriday ? 'true' : 'false',
-    fromdate: this.fromdate,
-    todate: this.todate,
     isfromdate: this.isfromdate ? 'true' : 'false',
     istodate: this.istodate ? 'true' : 'false',
     isnotfromdate: this.isnotfromdate ? 'true' : 'false',
@@ -30,6 +28,14 @@ ChangeDayTemplateRule.prototype.toArray = function() {
     description : this.description
   };
 
+  if (this.fromdate != '') {
+    array.fromdate = this.fromdate;
+  }
+  if (this.todate != '') {
+    array.todate = this.todate;
+  }
+
+  return array;
 };
 
 module.exports = ChangeDayTemplateRule;
