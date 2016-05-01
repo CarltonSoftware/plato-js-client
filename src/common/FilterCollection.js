@@ -9,20 +9,24 @@ var StaticCollection = require('./StaticCollection');
  */
 function FilterGroup(id) {
   this.id = id || 0;
-  this.filters = {};
+  var filters = {};
+
+  this.getFilters = function() {
+    return filters;
+  };
 
   this.addFilter = function(key, val) {
-    this.filters[key] = val;
+    filters[key] = val;
   };
 
   this.removeFilter = function(key) {
-    delete this.filters[key];
+    delete filters[key];
   };
 
   this.getFilterString = function() {
     var str = [];
-    for (var key in this.filters) {
-      str.push(key + '=' + this.filters[key]);
+    for (var key in filters) {
+      str.push(key + '=' + filters[key]);
     }
 
     return str.join(':');
@@ -36,7 +40,6 @@ function FilterGroup(id) {
  *
  */
 function FilterCollection(options) {
-
   // New properties
   var currentGroup = 0;
   var filterGroups = new StaticCollection();
@@ -46,6 +49,8 @@ function FilterCollection(options) {
    * Set the current filter group
    *
    * @param {number} id
+   *
+   * @return {FilterCollection}
    */
   this.setFilterGroup = function(id) {
     currentGroup = id;
@@ -53,6 +58,14 @@ function FilterCollection(options) {
     return this;
   };
 
+  /**
+   * Add a filter key to the current group
+   *
+   * @param {String} key
+   * @param {String} val
+   *
+   * @return {FilterCollection}
+   */
   this.addFilter = function(key, val) {
     filterGroups.forEach(function(ele) {
       if (ele.id === currentGroup) {
@@ -63,6 +76,13 @@ function FilterCollection(options) {
     return this;
   };
 
+  /**
+   * Remove a filter key from the current group
+   *
+   * @param {String} key
+   *
+   * @return {FilterCollection}
+   */
   this.removeFilter = function(key) {
     filterGroups.forEach(function(ele) {
       if (ele.id === currentGroup) {
@@ -73,21 +93,35 @@ function FilterCollection(options) {
     return this;
   };
 
+  /**
+   * Return all of the current filters
+   *
+   * @return {StaticCollection}
+   */
   this.getFilterGroups = function() {
     return filterGroups;
   };
 
+  /**
+   * Get the filter string required for the filter parameter.
+   *
+   * @return {String}
+   */
   this.getFilterString = function() {
-    if (filterGroups.collection.length === 1) {
-      return filterGroups.first().getFilterString();
-    } else {
+    if (filterGroups.collection.length === 1 
+      && Object.keys(filterGroups.first().getFilters()).length > 0
+    ) {
+      return '&filter=' + filterGroups.first().getFilterString();
+    } else if (filterGroups.collection.length > 1) {
       var ftrs = '';
 
       filterGroups.forEach(function(grp) {
         ftrs += grp.getFilterString() + '&filter[]=';
       });
 
-      return ftrs.substring(0, ftrs.length - 10);
+      return '&filter[]=' + ftrs.substring(0, ftrs.length - 10);
+    } else {
+      return '';
     }
   };
 
@@ -104,17 +138,36 @@ function FilterCollection(options) {
     return this;
   };
 
+  /**
+   * Get the filter path.
+   * 
+   * Currently using this method as the client would need an interceptor
+   * to create the array notation for the grouped filters.  
+   * 
+   * This way seemed simpler at the moment.
+   *
+   * @return {String}
+   */
+  this.getFilterPath = function() {
+    return this.getPath() + '?page=' + this.page + '&limit=' + this.limit + this.getFilterString()
+  };
+
   // Apply other Collection properties to this object
   Collection.apply(this, arguments);
 };
 
 FilterCollection.prototype = new Collection();
-FilterCollection.prototype.toArray = function() {
-  return {
-    page: this.page,
-    limit: this.limit,
-    'filter[]': this.getFilterString()
-  };
-}
+
+/**
+ * Returns a promise of the fetched resource
+ *
+ * @returns {Collection.prototype@call;promiseResult}
+ */
+FilterCollection.prototype.fetch = function() {
+  return this.okPromiseResult(
+    this.getFilterPath(),
+    {}
+  );
+};
 
 module.exports = FilterCollection;

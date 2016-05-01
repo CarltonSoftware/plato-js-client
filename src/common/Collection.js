@@ -7,6 +7,35 @@ function Collection(options) {
   this.category = null;
   this.searchterm = null;
 
+  /**
+   * Get the path from the provided options
+   *
+   * @return {String}
+   */
+  this.getPath = function() {
+    var path = '';
+
+    // Add in path if not set and parent applied
+    if (typeof this.options.parent === 'object'
+      && typeof this.options.path === 'string'
+    ) {
+      path = this.options.parent.getUpdatePath() + '/' + this.options.path;
+    } else if (typeof this.options.path === 'undefined') {
+      throw new pathNotSpecifiedError('No path specified for entity');
+    }
+
+    var parents = this.options.parents || [];
+    if (path.length === 0) {
+      for (var i = 0; i < parents.length; i++) {
+        path += parents[i].path + '/' + parents[i].id + '/';
+      }
+
+      path += this.options.path;
+    }
+
+    return path;
+  };
+
   StaticCollection.apply(this, arguments);
 }
 
@@ -80,27 +109,10 @@ Collection.prototype.previousPage = function() {
  * @returns {Collection.prototype@call;promiseResult}
  */
 Collection.prototype.fetch = function() {
-  var path = '';
-
-  // Add in path if not set and parent applied
-  if (typeof this.options.parent === 'object'
-    && typeof this.options.path === 'string'
-  ) {
-    path = this.options.parent.getUpdatePath() + '/' + this.options.path;
-  } else if (typeof this.options.path === 'undefined') {
-    throw new pathNotSpecifiedError('No path specified for entity');
-  }
-
-  var parents = this.options.parents || [];
-  if (path.length === 0) {
-    for (var i = 0; i < parents.length; i++) {
-      path += parents[i].path + '/' + parents[i].id + '/';
-    }
-
-    path += this.options.path;
-  }
-
-  return this.okPromiseResult(path, this.toArray());
+  return this.okPromiseResult(
+    this.getPath(),
+    this.toArray()
+  );
 };
 
 module.exports = Collection;
