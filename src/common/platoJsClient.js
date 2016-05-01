@@ -1,5 +1,10 @@
 var _ = require('underscore');
 
+if (typeof localStorage === "undefined" || localStorage === null) {
+  var LocalStorage = require('node-localstorage').LocalStorage;
+  localStorage = new LocalStorage('./scratch');
+}
+
 var platoJsClient = (function () {
 
     // Instance stores a reference to the Singleton
@@ -74,7 +79,7 @@ var platoJsClient = (function () {
           oAuthRedirectUrl = (!options.oAuthRedirectUrl) ? oAuthRedirectUrl : options.oAuthRedirectUrl;
           defaultToken = (options.defaultToken === true) ? 'Bearer Y2ViNDM2NTc0NTMwYjljYWMwYzExMzIxZGE0ZjdlYmE3MjgwNmMxMzRlNzVhOTcyMGU1MjE0M2I2Njc0ZjcxZQ' : false;
 
-          if (localStorage.getItem(TOKENNAME)) {
+          if (localStorage && localStorage.getItem(TOKENNAME)) {
             this.token = localStorage.getItem(TOKENNAME);
           }
 
@@ -103,7 +108,7 @@ var platoJsClient = (function () {
           if (!this.token) {
             this.token = 'Bearer ' + params.access_token;
             
-            if (!localStorage.getItem(TOKENNAME)) {
+            if (localStorage && !localStorage.getItem(TOKENNAME)) {
               localStorage.setItem(TOKENNAME, this.token);
             }
           }

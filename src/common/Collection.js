@@ -13,6 +13,21 @@ function Collection(options) {
 Collection.prototype = new StaticCollection();
 
 /**
+ * toArray method used in the okPromiseResult callback
+ *
+ * @return {object}
+ */
+Collection.prototype.toArray = function() {
+  return {
+    page: this.page,
+    limit: this.limit,
+    category: this.category,
+    searchterm: this.searchterm,
+    filter: this.filters
+  };
+};
+
+/**
  * Get the maximum pages supported by this collection
  *
  * @return {number}
@@ -85,13 +100,7 @@ Collection.prototype.fetch = function() {
     path += this.options.path;
   }
 
-  return this.okPromiseResult(path, {
-    page: this.page,
-    limit: this.limit,
-    category: this.category,
-    searchterm: this.searchterm,
-    filter: this.filters
-  });
+  return this.okPromiseResult(path, this.toArray());
 };
 
 module.exports = Collection;
