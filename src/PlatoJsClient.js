@@ -9,8 +9,7 @@ var collection = new platoJsClient.FilterCollection({
 	object: platoJsClient.common.Property
 });
 
-collection.addFilter('name', '~Angler');
-console.log(collection.getFilterString());
+collection.addFilter('name', '~Angler').createGroup().addFilter('sleeps', '10');
 
 collection.fetch().then(function(c) {
 	console.log(c.total);

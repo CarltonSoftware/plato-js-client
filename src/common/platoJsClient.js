@@ -28,6 +28,7 @@ var platoJsClient = (function () {
           mime = require('rest/interceptor/mime'),
           defaultRequest = require('rest/interceptor/defaultRequest'),
           oAuth = require('rest/interceptor/oAuth'),
+          template = require('rest/interceptor/template'),
           host = '/',
           prefix = '',
           oAuthRedirectUrl = undefined,

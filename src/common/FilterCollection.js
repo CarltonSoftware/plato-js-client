@@ -59,6 +59,8 @@ function FilterCollection(options) {
         ele.addFilter(key, val);
       }
     });
+
+    return this;
   };
 
   this.removeFilter = function(key) {
@@ -67,6 +69,8 @@ function FilterCollection(options) {
         ele.removeFilter(key);
       }
     });
+
+    return this;
   };
 
   this.getFilterGroups = function() {
@@ -77,8 +81,27 @@ function FilterCollection(options) {
     if (filterGroups.collection.length === 1) {
       return filterGroups.first().getFilterString();
     } else {
-      
+      var ftrs = '';
+
+      filterGroups.forEach(function(grp) {
+        ftrs += grp.getFilterString() + '&filter[]=';
+      });
+
+      return ftrs.substring(0, ftrs.length - 10);
     }
+  };
+
+  /**
+   * Create a new filter group
+   *
+   * @param {number} id
+   */
+  this.createGroup = function(id) {
+    var grp = new FilterGroup(id || filterGroups.collection.length + 1);
+    filterGroups.push(grp);
+    this.setFilterGroup(grp.id);
+
+    return this;
   };
 
   // Apply other Collection properties to this object
@@ -90,7 +113,7 @@ FilterCollection.prototype.toArray = function() {
   return {
     page: this.page,
     limit: this.limit,
-    filter: this.getFilterString()
+    'filter[]': this.getFilterString()
   };
 }
 
