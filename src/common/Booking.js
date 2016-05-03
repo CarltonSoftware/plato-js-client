@@ -65,6 +65,7 @@ Booking.prototype.toArray = function() {
     potentialbooking_expirydatetime: this.potentialbooking_expirydatetime,
     /* Provisional Booking */
     provisionalbooking_depositamountid: this.provisionalbooking_depositamountid,
+    provisionalbooking_deposit: this.provisionalbooking_deposit,
     provisionalbooking_depositduedate: this.provisionalbooking_depositduedate,
     provisionalbooking_balanceduedate: this.provisionalbooking_balanceduedate,
     provisionalbooking_commissionpercentage: this.provisionalbooking_commissionpercentage,
