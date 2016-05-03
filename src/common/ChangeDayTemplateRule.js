@@ -9,6 +9,7 @@ function ChangeDayTemplateRule(changedaytemplateid, id) {
 ChangeDayTemplateRule.prototype = new SingleEntity();
 
 ChangeDayTemplateRule.prototype.toArray = function() {
+  console.log('--'+this.fromdate+'--');
   var array = {
     ruleorder: this.ruleorder,
     everysaturday: this.everysaturday ? 'true' : 'false',
@@ -22,9 +23,11 @@ ChangeDayTemplateRule.prototype.toArray = function() {
     istodate: this.istodate ? 'true' : 'false',
     isnotfromdate: this.isnotfromdate ? 'true' : 'false',
     isnottodate: this.isnottodate ? 'true' : 'false',
-    unlessholidayatleast: this.unlessholidayatleast,
     showonavailability : this.showonavailability,
-    description : this.description
+    minumumholiday: this.minimumholiday,
+    daysbeforeeaster: this.daysbeforeeaster,
+    daysaftereaster: this.daysaftereaster,
+    description: this.description
   };
 
   if (this.fromdate != '') {
@@ -32,6 +35,9 @@ ChangeDayTemplateRule.prototype.toArray = function() {
   }
   if (this.todate != '') {
     array.todate = this.todate;
+  }
+  if (this.unlessholidayatleast != '') {
+    array.unlessholidayatleast = this.unlessholidayatleast;
   }
   if (this.withindays != '') {
     array.withindays = this.withindays;
