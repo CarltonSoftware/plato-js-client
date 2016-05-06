@@ -9,7 +9,6 @@ function ChangeDayTemplateRule(changedaytemplateid, id) {
 ChangeDayTemplateRule.prototype = new SingleEntity();
 
 ChangeDayTemplateRule.prototype.toArray = function() {
-  console.log('--'+this.fromdate+'--');
   var array = {
     ruleorder: this.ruleorder,
     everysaturday: this.everysaturday ? 'true' : 'false',

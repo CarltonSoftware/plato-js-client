@@ -53,6 +53,7 @@ Booking.prototype.toArray = function() {
     adults: this.adults,
     children: this.children,
     infants: this.infants,
+    pets: this.pets,
     checkinearliesttime: this.checkinearliesttime,
     checkinlatesttime: this.checkinlatesttime,
     checkouttime: this.checkouttime,
