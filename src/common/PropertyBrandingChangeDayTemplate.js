@@ -6,10 +6,17 @@ var ChangeDayTemplate = require('./ChangeDayTemplate.js');
  * @param {number} id
  */
 function PropertyBrandingChangeDayTemplate(propertyid, brandingid, id) {
-  this.path = 'property/' + propertyid + '/branding/' + brandingid + '/changedaytemplate';
-  this.createPath = this.path;
+  this.path = 'changedaytemplate';
+  this.createPath = 'property/' + propertyid + '/branding/' + brandingid + '/changedaytemplate';
   this.id = id;
   this.changedaytemplate = new ChangeDayTemplate();
+
+  this.changedaytemplate.mutateResponse = function(obj) {
+    var ele = this.mutateEntity(obj);
+    ele.parent = ele.owner;
+    return ele;
+  };
+
 }
 
 PropertyBrandingChangeDayTemplate.prototype = new SingleEntity();
