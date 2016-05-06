@@ -10,7 +10,7 @@ function SpecialOfferWebsiteSection(id) {
 SpecialOfferWebsiteSection.prototype = new SingleEntity();
 SpecialOfferWebsiteSection.prototype.toArray = function() {
   return {
-    websitesectionid: this.websitesectionid.id,
+    websitesectionid: this.websitesection.id,
   };
 };
 

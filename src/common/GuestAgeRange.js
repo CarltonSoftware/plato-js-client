@@ -9,8 +9,8 @@ GuestAgeRange.prototype = new SingleEntity();
 
 GuestAgeRange.prototype.toArray = function() {
   return {
-    'agefrom': this.agefrom,
-    'ageto': this.ageto
+    agefrom: this.agefrom,
+    ageto: this.ageto
   };
 };
 
