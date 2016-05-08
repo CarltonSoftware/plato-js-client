@@ -88,6 +88,16 @@ var platoJsClient = (function () {
         };
 
         /**
+         * Unset the oAuth token to logout
+         */
+        this.oAuthLogout = function() {
+          this.token = null;
+          if (localStorage) {
+            localStorage.removeItem(TOKENNAME);
+          }
+        };
+
+        /**
          * oAuth call back.  Sets the token which is sent back from
          * the oAuth server
          *
