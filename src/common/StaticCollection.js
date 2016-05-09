@@ -331,7 +331,7 @@ StaticCollection.prototype.sort = function(compare) {
 *
 * @returns {Collection}
 */
-StaticCollection.prototype.orderBy = function(field, order) {
+StaticCollection.prototype.sortBy = function(field, order) {
   var compareFunction = function(a, b) {
     if (a[field] === b[field]) {
       return 0;
