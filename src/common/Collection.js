@@ -51,7 +51,6 @@ Collection.prototype.toArray = function() {
     page: this.page,
     limit: this.limit,
     category: this.category,
-    searchterm: this.searchterm,
     filter: this.filters
   };
 };

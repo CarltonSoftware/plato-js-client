@@ -30,8 +30,8 @@ function FilterGroup(id) {
     }
 
     return str.join(':');
-  }
-};
+  };
+}
 
 /**
  * Filter collection object.  Extends the Collection object
@@ -140,21 +140,25 @@ function FilterCollection(options) {
 
   /**
    * Get the filter path.
-   * 
+   *
    * Currently using this method as the client would need an interceptor
-   * to create the array notation for the grouped filters.  
-   * 
+   * to create the array notation for the grouped filters.
+   *
    * This way seemed simpler at the moment.
    *
    * @return {String}
    */
   this.getFilterPath = function() {
-    return this.getPath() + '?page=' + this.page + '&limit=' + this.limit + this.getFilterString()
+    var path = this.getPath() + '?page=' + this.page + '&limit=' + this.limit + this.getFilterString();
+    if (this.orderBy) {
+      path += '&orderBy=' + this.orderBy;
+    }
+    return path;
   };
 
   // Apply other Collection properties to this object
   Collection.apply(this, arguments);
-};
+}
 
 FilterCollection.prototype = new Collection();
 
