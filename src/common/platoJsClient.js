@@ -95,6 +95,12 @@ var platoJsClient = (function () {
           if (localStorage) {
             localStorage.removeItem(TOKENNAME);
           }
+
+          var ifrm = document.createElement("IFRAME");
+          ifrm.setAttribute("src", host + '/oauth/v2/auth_logout');
+          ifrm.style.width = 1 + "px";
+          ifrm.style.height = 1 + "px";
+          document.body.appendChild(ifrm);
         };
 
         /**
