@@ -1,7 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var Currency = require('./Currency');
 
-function OnwerPaymentTerm(id) {
+function OwnerPaymentTerm(id) {
   this.path = 'ownerpaymentterms';
   this.createPath = 'ownerpaymentterms';
   this.id = id;
@@ -22,8 +22,8 @@ function OnwerPaymentTerm(id) {
   this.ownerpaid = '';
 }
 
-OnwerPaymentTerm.prototype = new SingleEntity();
-OnwerPaymentTerm.prototype.toArray = function() {
+OwnerPaymentTerm.prototype = new SingleEntity();
+OwnerPaymentTerm.prototype.toArray = function() {
   return {
     name: this.name,
     description: this.description,
@@ -38,4 +38,4 @@ OnwerPaymentTerm.prototype.toArray = function() {
   };
 };
 
-module.exports = OnwerPaymentTerm;
+module.exports = OwnerPaymentTerm;
