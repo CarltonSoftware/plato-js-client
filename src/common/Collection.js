@@ -4,6 +4,7 @@ var pathNotSpecifiedError = require('./../error/pathNotSpecified');
 function Collection(options) {
   this.page = 1;
   this.limit = 10;
+  this.orderBy = null;
   this.category = null;
   this.searchterm = null;
 
@@ -50,8 +51,9 @@ Collection.prototype.toArray = function() {
   return {
     page: this.page,
     limit: this.limit,
+    orderBy: this.orderBy,
     category: this.category,
-    filter: this.filters
+    filter: this.filters,
   };
 };
 
