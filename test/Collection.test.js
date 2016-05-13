@@ -85,9 +85,9 @@ describe('Collection', function() {
     });
   });
 
-  describe('#orderBy', function() {
+  describe('#sortBy', function() {
     it('should order the collection in ascending order by default', function() {
-      var sortedCollection = collection.orderBy('name');
+      var sortedCollection = collection.sortBy('name');
 
       assert.equal(sortedCollection.collection[0].name, 'Alice');
       assert.equal(sortedCollection.collection[1].name, 'Bob');
@@ -95,7 +95,7 @@ describe('Collection', function() {
     });
 
     it('should order the collection in descending order', function() {
-      var sortedCollection = collection.orderBy('name', 'desc');
+      var sortedCollection = collection.sortBy('name', 'desc');
 
       assert.equal(sortedCollection.collection[0].name, 'Bob');
       assert.equal(sortedCollection.collection[1].name, 'Bob');
