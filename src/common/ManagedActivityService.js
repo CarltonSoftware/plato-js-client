@@ -9,7 +9,7 @@ ManagedActivityService.prototype = new SingleEntity();
 
 ManagedActivityService.prototype.toCreateArray = function() {
   return {
-    service: this.service,
+    serviceid: this.serviceid,
     fromdate: this.fromdate,
     todate: this.todate
   };
@@ -17,7 +17,7 @@ ManagedActivityService.prototype.toCreateArray = function() {
 
 ManagedActivityService.prototype.toUpdateArray = function() {
   return {
-    service: this.service,
+    serviceid: this.serviceid,
     fromdate: this.fromdate,
     todate: this.todate
   };
