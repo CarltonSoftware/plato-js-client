@@ -26,7 +26,7 @@ Template.prototype.toArray = function() {
     daysbeforetrigger: this.daysbeforetrigger,
     showprovisional: this.showprovisional,
     showdepositpaid: this.showdepositpaid,
-    showbalancepaid: this.showbalancepa.id,
+    showbalancepaid: this.showbalancepaid,
     showcancelledprovisional: this.showcancelledprovisional,
     showcancelledconfirmed: this.showcancelledconfirmed,
     showtransferred: this.showtransferred,
