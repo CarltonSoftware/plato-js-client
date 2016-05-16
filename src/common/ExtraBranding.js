@@ -9,14 +9,12 @@ ExtraBranding.prototype = new SingleEntity();
 
 ExtraBranding.prototype.toCreateArray = function() {
   return {
-    //TODO: Add in the fields necessary to create a ExtraBranding
     brandingid: this.brandingid,
   };
 };
 
 ExtraBranding.prototype.toUpdateArray = function() {
   return {
-    //TODO: Add in the fields necessary to update a ExtraBranding
     brandingid: this.brandingid,
   };
 };
