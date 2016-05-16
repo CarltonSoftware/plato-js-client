@@ -148,6 +148,18 @@ module.exports.common.RoleReason = require('./common/RoleReason');
 // Property Pricing
 module.exports.common.PropertyBrandingPrice = require('./common/PropertyBrandingPrice');
 
+// Communications
+module.exports.common.ContactMethodElement = require('./common/ContactMethodElement');
+module.exports.common.Template = require('./common/Template');
+module.exports.common.TemplateContactMethod = require('./common/TemplateContactMethod');
+module.exports.common.TemplateElement = require('./common/TemplateElement');
+module.exports.common.TemplateSource = require('./common/TemplateSource');
+module.exports.common.TemplateTarget = require('./common/TemplateTarget');
+module.exports.common.TemplateTargetSource = require('./common/TemplateTargetSource');
+module.exports.common.TextItem = require('./common/TextItem');
+module.exports.common.TextSubstitution = require('./common/TextSubstitution');
+module.exports.common.TriggerEvent = require('./common/TriggerEvent');
+
 // ChangeDayRules
 module.exports.common.ChangeDayTemplate = require('./common/ChangeDayTemplate');
 module.exports.common.ChangeDayTemplateDay = require('./common/ChangeDayTemplateDay');
