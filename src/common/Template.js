@@ -4,6 +4,7 @@ var EntityLink = require('./EntityLink');
 function Template(id) {
   this.createPath = this.path = 'template';
   this.id = id;
+  this.templatetargetsource = new EntityLink({ entity: 'TemplateTargetSource' });
   this.triggerevent = new EntityLink({ entity: 'TriggerEvent' });
   this.bookingbrand = new EntityLink({ entity: 'BookingBrand' });
   this.branding = new EntityLink({ entity: 'Branding' });
@@ -19,6 +20,7 @@ Template.prototype.toArray = function() {
     templatedescription: this.templatedescription,
     fromdate: this.fromdate,
     todate: this.todate,
+    templatetargetsourceid: this.templatetargetsource.id,
     mandatory: this.mandatory,
     sendonce: this.sendonce,
     sendonceper: this.sendonceper,

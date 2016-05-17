@@ -2,7 +2,7 @@ var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
 
 function TemplateTargetSource(id) {
-  this.createPath = this.path = 'templatetarget';
+  this.createPath = this.path = 'templatetargetsource';
   this.id = id;
   this.templatesource = new EntityLink({ entity: 'TemplateSource' });
   this.templatetarget = new EntityLink({ entity: 'TemplateTarget' });
@@ -16,6 +16,10 @@ TemplateTargetSource.prototype.toArray = function() {
     templatesourceid: this.templatesource.id,
     templatetargetid: this.templatetarget.id,
   };
+};
+
+TemplateTargetSource.prototype.toString = function() {
+  return this.templatesource.templatesource + ' ' + this.templatetarget.templatetarget;
 };
 
 module.exports = TemplateTargetSource;
