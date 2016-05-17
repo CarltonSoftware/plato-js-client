@@ -1,5 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
+var Collection = require('./Collection');
+var TemplateContactMethod = require('./TemplateContactMethod');
 
 function Template(id) {
   this.createPath = this.path = 'template';
@@ -9,6 +11,11 @@ function Template(id) {
   this.bookingbrand = new EntityLink({ entity: 'BookingBrand' });
   this.branding = new EntityLink({ entity: 'Branding' });
   this.marketingbrand = new EntityLink({ entity: 'MarketingBrand' });
+  this.contactmethods = new Collection({
+    object: TemplateContactMethod,
+    path: 'contactmethod',
+    parent: this
+  });
 }
 
 Template.prototype = new SingleEntity();
