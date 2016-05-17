@@ -118,6 +118,8 @@ module.exports.common.Search = require('./common/Search');
 
 // Pricing
 module.exports.common.Currency = require('./common/Currency');
+module.exports.common.ExchangeRateIssue = require('./common/ExchangeRateIssue');
+module.exports.common.ExchangeRateIssueType = require('./common/ExchangeRateIssueType');
 module.exports.common.Extra = require('./common/Extra');
 module.exports.common.ExtraBranding = require('./common/ExtraBranding');
 module.exports.common.ExtraBrandingConfiguration = require('./common/ExtraBrandingConfiguration');
