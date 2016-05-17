@@ -1,6 +1,8 @@
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
 var ManagedActivity = require('./ManagedActivity');
+var Collection = require('./Collection');
+var PropertySupplierDateRange = require('./PropertySupplierDateRange');
 
 function PropertySupplier(id) {
   this.path = 'supplier';
@@ -10,6 +12,11 @@ function PropertySupplier(id) {
     entity: 'Supplier'
   });
   this.activity = new ManagedActivity();
+  this.dates = new Collection({
+    object: PropertySupplierDateRange,
+    path: 'daterange',
+    parent: this
+  });
 }
 PropertySupplier.prototype = new SingleEntity();
 

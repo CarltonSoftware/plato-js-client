@@ -60,6 +60,7 @@ module.exports.common.PropertyNote = require('./common/PropertyNote');
 module.exports.common.PropertyDescription = require('./common/PropertyDescription');
 module.exports.common.PropertySecurityDeposit = require('./common/PropertySecurityDeposit');
 module.exports.common.PropertySupplier = require('./common/PropertySupplier');
+module.exports.common.PropertySupplierDateRange = require('./common/PropertySupplierDateRange');
 module.exports.common.PropertyOffice = require('./common/PropertyOffice');
 module.exports.common.DescriptionType = require('./common/DescriptionType');
 module.exports.common.PropertySecurityFeature = require('./common/PropertySecurityFeature');
