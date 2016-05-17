@@ -1,13 +1,21 @@
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
+var Collection = require('./Collection');
+var TemplateContactMethod = require('./TemplateContactMethod');
 
 function Template(id) {
   this.createPath = this.path = 'template';
   this.id = id;
+  this.templatetargetsource = new EntityLink({ entity: 'TemplateTargetSource' });
   this.triggerevent = new EntityLink({ entity: 'TriggerEvent' });
   this.bookingbrand = new EntityLink({ entity: 'BookingBrand' });
   this.branding = new EntityLink({ entity: 'Branding' });
   this.marketingbrand = new EntityLink({ entity: 'MarketingBrand' });
+  this.contactmethods = new Collection({
+    object: TemplateContactMethod,
+    path: 'contactmethod',
+    parent: this
+  });
 }
 
 Template.prototype = new SingleEntity();
@@ -19,6 +27,7 @@ Template.prototype.toArray = function() {
     templatedescription: this.templatedescription,
     fromdate: this.fromdate,
     todate: this.todate,
+    templatetargetsourceid: this.templatetargetsource.id,
     mandatory: this.mandatory,
     sendonce: this.sendonce,
     sendonceper: this.sendonceper,
@@ -26,7 +35,7 @@ Template.prototype.toArray = function() {
     daysbeforetrigger: this.daysbeforetrigger,
     showprovisional: this.showprovisional,
     showdepositpaid: this.showdepositpaid,
-    showbalancepaid: this.showbalancepa.id,
+    showbalancepaid: this.showbalancepaid,
     showcancelledprovisional: this.showcancelledprovisional,
     showcancelledconfirmed: this.showcancelledconfirmed,
     showtransferred: this.showtransferred,

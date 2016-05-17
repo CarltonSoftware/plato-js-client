@@ -13,8 +13,8 @@ TextItem.prototype = new SingleEntity();
 
 TextItem.prototype.toArray = function() {
   return {
-    name: this.fieldname,
-    text: this.sourceexpression,
+    name: this.name,
+    text: this.text,
     brandingid: this.branding.id,
     encodingid: this.encoding.id,
     languageid: this.language.id,
