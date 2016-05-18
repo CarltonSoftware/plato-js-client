@@ -5,7 +5,6 @@ function BookingNote(bookingNoteID) {
   this.createPath = 'bookingnote';
   this.path = 'bookingnote';
   this.id = bookingNoteID;
-  this.createdby = new TabsUser();
 }
 BookingNote.prototype = new SingleEntity();
 

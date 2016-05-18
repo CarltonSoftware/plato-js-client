@@ -7,7 +7,7 @@ function Note(noteID) {
   this.createPath = 'note';
   this.path = 'note';
   this.id = noteID;
-  this.notetexts = new Collection({object: NoteText});
+  this.notetexts = new Collection({ object: NoteText });
   this.createdby = new EntityLink({
     entity: 'TabsUser'
   });
