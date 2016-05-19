@@ -1,10 +1,19 @@
 var SingleEntity = require('./SingleEntity');
+var EntityLink = require('./EntityLink');
 
-function NoteText(noteID, noteTextId) {
-    this.createPath = 'note/' + noteID + '/text';
-    this.path = 'note/' + noteID + '/text';
-    this.id = noteTextId;
+
+function NoteText(id) {
+  this.path = 'text';
+  this.createPath = 'text';
+  this.id = id;
+  this.createdby = new EntityLink({
+    entity: 'TabsUser'
+  });
+  this.actionedby = new EntityLink({
+    entity: 'TabsUser'
+  });
 }
+
 NoteText.prototype = new SingleEntity();
 
 NoteText.prototype.toArray = function() {
@@ -12,7 +21,9 @@ NoteText.prototype.toArray = function() {
         id: this.id,
         createdbyactorid: this.createdbyactorid,
         notetext: this.notetext,
-        followupdatetime: this.followupdatetime
+        followupdatetime: this.followupdatetime,
+        actioneddatetime: this.actioneddatetime,
+        actionedbytabsuser: this.actionedbytabsuser
     };
 };
 
@@ -21,6 +32,8 @@ NoteText.prototype.toCreateArray = function() {
         createdbyactorid: this.createdbyactorid,
         notetext: this.notetext,
         followupdatetime: this.followupdatetime,
+        actioneddatetime: this.actioneddatetime,
+        actionedbytabsuser: this.actionedbytabsuser
     };
 };
 
