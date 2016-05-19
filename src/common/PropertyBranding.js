@@ -49,10 +49,9 @@ PropertyBranding.prototype.setParent = function(parent) {
 PropertyBranding.prototype.toArray = function() {
   return {
     brandingid: this.branding.id,
-    brandinggroupid: this.brandinggroup.id,
-    bookingbrandid: this.bookingbrand.id,
-    marketingbrandid: this.marketingbrand.id,
-    status: this.status.name
+    primarybookingbrand: this.primarybookingbrand,
+    status: this.status.name,
+    promote: this.promote
   };
 };
 
