@@ -60,11 +60,14 @@ Actor.prototype.mutateResponse = function(entity) {
 };
 
 /**
- * Return the full name of the actor
+ * Return the full name of the actor. Optional noTitle parameter.
  *
  * @return {String}
  */
-Actor.prototype.getFullName = function() {
+Actor.prototype.getFullName = function(noTitle) {
+  if (noTitle) {
+    return [this.firstname, this.surname].join(" ");
+  }
   return [this.title, this.firstname, this.surname].join(" ");
 };
 
