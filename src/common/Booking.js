@@ -6,6 +6,7 @@ var BookingCustomer = require('./BookingCustomer');
 var BookingDocument = require('./BookingDocument');
 var BookingGuest = require('./BookingGuest');
 var BookingSecurityDeposit = require('./BookingSecurityDeposit');
+var BookingSupplier = require('./BookingSupplier');
 var Note = require('./Note');
 
 function Booking(id) {
@@ -39,6 +40,11 @@ function Booking(id) {
   this.customers = new Collection({
     object: BookingCustomer,
     path: 'customer',
+    parents: [this]
+  });
+  this.suppliers = new Collection({
+    object: BookingSupplier,
+    path: 'supplier',
     parents: [this]
   });
   this.notes = new Collection({object: Note});
