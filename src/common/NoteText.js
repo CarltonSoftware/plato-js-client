@@ -23,7 +23,7 @@ NoteText.prototype.toArray = function() {
         notetext: this.notetext,
         followupdatetime: this.followupdatetime,
         actioneddatetime: this.actioneddatetime,
-        actionedbytabsuser: this.actionedbytabsuser
+        actionedbytabsuserid: this.actionedbytabsuserid
     };
 };
 
@@ -33,7 +33,7 @@ NoteText.prototype.toCreateArray = function() {
         notetext: this.notetext,
         followupdatetime: this.followupdatetime,
         actioneddatetime: this.actioneddatetime,
-        actionedbytabsuser: this.actionedbytabsuser
+        actionedbytabsuserid: this.actionedbytabsuserid
     };
 };
 
