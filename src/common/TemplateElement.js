@@ -2,11 +2,10 @@ var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
 
 function TemplateElement(id) {
-  this.createPath = this.path = 'triggerevent';
+  this.createPath = this.path = 'element';
   this.id = id;
 
-  this.templatecontactmethodid = new EntityLink({ entity: 'TemplateContactMethod' });
-  this.contactmethodelementid = new EntityLink({ entity: 'ContactMethodElement' });
+  this.contactmethodelement = new EntityLink({ entity: 'ContactMethodElement' });
   this.textitem = new EntityLink({ entity: 'TextItem' });
 }
 
@@ -18,7 +17,6 @@ TemplateElement.prototype.toArray = function() {
     fromdate: this.fromdate,
     todate: this.todate,
     elementorder: this.elementorder,
-    templatecontactmethodid: this.templatecontactmethod.id,
     contactmethodelementid: this.contactmethodelement.id,
     textitemid: this.textitem.id,
     text: this.text,
