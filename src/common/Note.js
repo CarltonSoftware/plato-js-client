@@ -28,7 +28,7 @@ function Note(noteID) {
 }
 Note.prototype = new SingleEntity();
 
-NoteText.prototype.mutateResponse = function(entity) {
+Note.prototype.mutateResponse = function(entity) {
   var user = 'TabsUser';
   var type = entity.createdby.split('/')[2];
 
