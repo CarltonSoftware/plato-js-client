@@ -74,7 +74,7 @@ StaticCollection.prototype.mutateResponse = function(entity) {
     if (typeof element === 'string') {
       return entity.mapRouteIds(element);
     } else {
-      return entity.mutateEntity(element);
+      return entity.mutateResponse(element);
     }
   }.bind(this, parents));
 

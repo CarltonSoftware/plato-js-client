@@ -16,6 +16,27 @@ function NoteText(id) {
 
 NoteText.prototype = new SingleEntity();
 
+NoteText.prototype.mutateResponse = function(entity) {
+  var user = 'TabsUser';
+  var type = entity.createdby.split('/')[2];
+
+  switch (type) {
+    case 'owner':
+    case 'customer':
+    case 'agency':
+    case 'supplier':
+    case 'office':
+      user = type.charAt(0).toUpperCase() + type.slice(1);
+      break;
+  }
+
+  this.createdby = new EntityLink({
+    entity: user
+  });
+
+  return this.mutateEntity(entity);
+};
+
 NoteText.prototype.toArray = function() {
     return {
         id: this.id,
