@@ -23,6 +23,8 @@ ExtraBrandingConfiguration.prototype.toCreateArray = function() {
     customerselectable: this.customerselectable ? 'true' : 'false',
     maximumquantity: this.maximumquantity,
     decimalplaces: this.decimalplaces,
+    priceoverrideallowed: this.priceoverrideallowed ? 'true' : 'false',
+    quantityoverrideallowed: this.quantityoverrideallowed? 'true' : 'false',
     type: this.type,
   };
 };
@@ -41,6 +43,8 @@ ExtraBrandingConfiguration.prototype.toUpdateArray = function() {
     customerselectable: this.customerselectable,
     maximumquantity: this.maximumquantity,
     decimalplaces: this.decimalplaces,
+    priceoverrideallowed: this.priceoverrideallowed ? 'true' : 'false',
+    quantityoverrideallowed: this.quantityoverrideallowed? 'true' : 'false',
     type: this.type,
   };
 };
