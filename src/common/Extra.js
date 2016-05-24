@@ -1,6 +1,9 @@
 var SingleEntity = require('./SingleEntity');
 var StaticCollection = require('./StaticCollection');
+var Collection = require('./Collection');
 var Branding = require('./Branding');
+var ExtraBranding = require('./ExtraBranding');
+
 
 function Extra(id) {
   this.path = 'extra';
@@ -9,6 +12,12 @@ function Extra(id) {
   this.brandings = new StaticCollection({
     object: Branding
   });
+  this.extrabrandings = new Collection({
+    object: ExtraBranding,
+    path: 'branding',
+    parent: this
+  });
+
 }
 
 Extra.prototype = new SingleEntity();
