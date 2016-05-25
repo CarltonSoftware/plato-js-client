@@ -3,7 +3,7 @@ var VatBand = require('./VatBand');
 
 function ExtraBrandingConfiguration(brandingId) {
     this.path = 'configuration';
-    this.createPath = this.path;
+    this.createPath = 'configuration';
     this.id = 0;
     this.vatband = new VatBand();
 }

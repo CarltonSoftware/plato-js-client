@@ -30,7 +30,7 @@ Note.prototype = new SingleEntity();
 
 Note.prototype.mutateResponse = function(entity) {
   var user = 'TabsUser';
-  var type = entity.createdby.split('/')[2];
+  var type = entity.createdby ? entity.createdby.split('/')[2] : entity.note.createdby.split('/')[2];
 
   switch (type) {
     case 'owner':
