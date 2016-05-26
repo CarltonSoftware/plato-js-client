@@ -14,9 +14,11 @@ DescriptionType.prototype.toArray = function() {
     code: this.code,
     name: this.name,
     description: this.description,
-    encoding: this.encoding.ecoding,
+    encoding: this.encoding.encoding,
     minimumlength: this.minimumlength,
-    maximumlength: this.maximumlength
+    maximumlength: this.maximumlength,
+    donotmodify: this.donotmodify,
+    sortorder: this.order
   };
 };
 
