@@ -1,19 +1,18 @@
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
+var Note = require('./Note');
 
-function PropertyNote(propertyNoteID) {
+function PropertyNote(id) {
   this.createPath = 'propertynote';
   this.path = 'propertynote';
-  this.id = propertyNoteID;
-  this.createdby = new EntityLink({
-    entity: 'TabsUser'
-  });
+  this.id = id;
+
   this.property = new EntityLink({
     entity: 'Property'
   });
-  this.note = new EntityLink({
-    entity: 'Note'
-  });
+
+  this.note = new Note();
+
 }
 PropertyNote.prototype = new SingleEntity();
 

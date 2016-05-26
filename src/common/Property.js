@@ -1,7 +1,6 @@
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
 var Branding = require('./Branding');
-var Note = require('./Note');
 var PropertyBranding = require('./PropertyBranding');
 var PropertyDocument = require('./PropertyDocument');
 var PropertyOwner = require('./PropertyOwner');
@@ -13,12 +12,14 @@ var PropertyTarget = require('./PropertyTarget');
 var PropertyAddress = require('./PropertyAddress');
 var PropertyOwnerPaymentTerm = require('./PropertyOwnerPaymentTerm');
 var PropertyCommission = require('./PropertyCommission');
+var PropertyNote = require('./PropertyNote');
 
 function Property(id) {
   this.path = 'property';
   this.createPath = 'property';
   this.id = id;
-  this.notes = new Collection({object: Note});
+
+  this.notes = new Collection({object: PropertyNote});
   this.documents = new Collection({
     object: PropertyDocument,
     path: 'document',
