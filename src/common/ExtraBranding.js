@@ -1,10 +1,10 @@
 var SingleEntity = require('./SingleEntity');
-var ExtraBrandingConfiguration = require('./SingleEntity');
+var ExtraBrandingConfiguration = require('./ExtraBrandingConfiguration');
 var Collection = require('./Collection');
 
-function ExtraBranding(id) {
-  this.path = 'branding';
-  this.createPath = 'branding';
+function ExtraBranding(extraId,id) {
+  this.path = 'extra/' + extraId + '/branding';
+  this.createPath = 'extra/' + extraId + '/branding';
   this.id = id;
 
   this.brandingConfiguration = new Collection({
