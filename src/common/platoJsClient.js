@@ -78,11 +78,9 @@ var platoJsClient = (function () {
           host = (!options.apiRoot) ? host : options.apiRoot;
           prefix = (!options.apiPrefix) ? prefix : options.apiPrefix;
           oAuthRedirectUrl = (!options.oAuthRedirectUrl) ? oAuthRedirectUrl : options.oAuthRedirectUrl;
-          defaultToken = (options.defaultToken === true) ? 'Bearer Y2ViNDM2NTc0NTMwYjljYWMwYzExMzIxZGE0ZjdlYmE3MjgwNmMxMzRlNzVhOTcyMGU1MjE0M2I2Njc0ZjcxZQ' : false;
+          defaultToken = (options.defaultToken != false) ? options.defaultToken : false;
 
-          if (localStorage && localStorage.getItem(TOKENNAME)) {
-            this.token = localStorage.getItem(TOKENNAME);
-          }
+          this.token = defaultToken;
 
           return this;
         };
@@ -124,7 +122,7 @@ var platoJsClient = (function () {
 
           if (!this.token) {
             this.token = 'Bearer ' + params.access_token;
-            
+
             if (localStorage && !localStorage.getItem(TOKENNAME)) {
               localStorage.setItem(TOKENNAME, this.token);
             }
@@ -175,14 +173,14 @@ var platoJsClient = (function () {
                 clientId: '1_1hxi5f5x74cg4ccskc0sokw4kk8044wck4kc4scsk4cgk8ggkk',
                 authorizationUrlBase: host + '/oauth/v2/auth',
                 windowStrategy: redirect,
-                token: (defaultToken !== false) ? defaultToken : this.token,
+                token: this.token,
                 redirectUrl: oAuthRedirectUrl
             });
         };
 
         /**
          * Find out who is using this token
-         * 
+         *
          * @return {Promise}
          */
         this.whoAmi = function() {
