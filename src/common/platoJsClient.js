@@ -32,7 +32,7 @@ var platoJsClient = (function () {
           host = '/',
           prefix = '',
           oAuthRedirectUrl = undefined,
-          defaultToken = false;
+          defaultToken = null;
 
         /**
          * Function use to validate the request object passed to each verb
@@ -78,7 +78,7 @@ var platoJsClient = (function () {
           host = (!options.apiRoot) ? host : options.apiRoot;
           prefix = (!options.apiPrefix) ? prefix : options.apiPrefix;
           oAuthRedirectUrl = (!options.oAuthRedirectUrl) ? oAuthRedirectUrl : options.oAuthRedirectUrl;
-          defaultToken = (options.defaultToken != false) ? options.defaultToken : false;
+          defaultToken = (options.defaultToken != null) ? options.defaultToken : false;
 
           this.token = defaultToken;
 
@@ -121,7 +121,7 @@ var platoJsClient = (function () {
           } while (m);
 
           if (!this.token) {
-            this.token = 'Bearer ' + params.access_token;
+            this.token = params.access_token;
 
             if (localStorage && !localStorage.getItem(TOKENNAME)) {
               localStorage.setItem(TOKENNAME, this.token);
@@ -173,7 +173,7 @@ var platoJsClient = (function () {
                 clientId: '1_1hxi5f5x74cg4ccskc0sokw4kk8044wck4kc4scsk4cgk8ggkk',
                 authorizationUrlBase: host + '/oauth/v2/auth',
                 windowStrategy: redirect,
-                token: this.token,
+                token: this.token ? 'Bearer ' + this.token : false,
                 redirectUrl: oAuthRedirectUrl
             });
         };
@@ -187,10 +187,7 @@ var platoJsClient = (function () {
           var client = this.createClient();
           var req = {
             path: '/whoami',
-            method: 'get',
-            headers: {
-              'tabs2-token': this.token
-            }
+            method: 'get'
           };
           return client(req);
         };
