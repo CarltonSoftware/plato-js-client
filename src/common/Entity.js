@@ -167,11 +167,10 @@ Entity.prototype.uploadPromiseResult = function(path, data) {
  * @return {String}
  */
 Entity.prototype.replacePath = function(path) {
-    var newPath = path.replace('/app_dev.php/v2', '');//TODO: remove the need for .replace(...)
-    newPath = newPath.replace('/v2', '');
-    newPath = newPath.replace('/plato/web', '');
-
-    return newPath;
+    return path.replace('/app_dev.php', '') //TODO: remove the need for .replace(...)
+      .replace('/app.php', '')
+      .replace('/v2', '')
+      .replace('/plato/web', '');
 };
 
 /**
