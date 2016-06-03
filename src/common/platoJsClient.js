@@ -33,7 +33,7 @@ var platoJsClient = (function () {
           prefix = '',
           oAuthRedirectUrl = undefined,
           clientId = '',
-          defaultToken = null;
+          token = null;
 
         /**
          * Function use to validate the request object passed to each verb
@@ -80,9 +80,7 @@ var platoJsClient = (function () {
           prefix = (!options.apiPrefix) ? prefix : options.apiPrefix;
           oAuthRedirectUrl = (!options.oAuthRedirectUrl) ? oAuthRedirectUrl : options.oAuthRedirectUrl;
           clientId = (options.clientId != null) ? options.clientId : '';
-          defaultToken = (options.defaultToken != null) ? options.defaultToken : false;
-
-          this.token = defaultToken;
+          token = (options.token != null) ? options.token : false;
 
           return this;
         };
