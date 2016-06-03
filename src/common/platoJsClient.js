@@ -32,6 +32,7 @@ var platoJsClient = (function () {
           host = '/',
           prefix = '',
           oAuthRedirectUrl = undefined,
+          clientId = '',
           defaultToken = null;
 
         /**
@@ -78,6 +79,7 @@ var platoJsClient = (function () {
           host = (!options.apiRoot) ? host : options.apiRoot;
           prefix = (!options.apiPrefix) ? prefix : options.apiPrefix;
           oAuthRedirectUrl = (!options.oAuthRedirectUrl) ? oAuthRedirectUrl : options.oAuthRedirectUrl;
+          clientId = (options.clientId != null) ? options.clientId : '';
           defaultToken = (options.defaultToken != null) ? options.defaultToken : false;
 
           this.token = defaultToken;
@@ -170,7 +172,7 @@ var platoJsClient = (function () {
             .wrap(pathPrefix, { prefix: host + prefix })
             .wrap(defaultRequest)
             .wrap(oAuth, {
-                clientId: '1_1hxi5f5x74cg4ccskc0sokw4kk8044wck4kc4scsk4cgk8ggkk',
+                clientId: clientId,
                 authorizationUrlBase: host + '/oauth/v2/auth',
                 windowStrategy: redirect,
                 token: this.token ? 'Bearer ' + this.token : false,
