@@ -135,6 +135,7 @@ var platoJsClient = (function () {
          * @param {String} url
          */
         function redirect(url) {
+          localStorage.setItem('tabs2:previousPath', window.location.pathname);
           window.location = url;
           localStorage.removeItem(TOKENNAME);
           return function () {};
