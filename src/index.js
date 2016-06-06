@@ -194,3 +194,4 @@ module.exports.Collection = require('./common/Collection');
 module.exports.MultiCollection = require('./common/MultiCollection');
 module.exports.GroupingCollection = require('./common/GroupingCollection');
 module.exports.FilterCollection = require('./common/FilterCollection');
+module.exports.NoteFilterCollection = require('./common/NoteFilterCollection');

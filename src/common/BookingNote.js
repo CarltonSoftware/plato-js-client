@@ -1,24 +1,25 @@
 var SingleEntity = require('./SingleEntity');
-var TabsUser = require('./TabsUser');
+var Note = require('./Note');
 
-function BookingNote(bookingNoteID) {
+function BookingNote(id) {
   this.createPath = 'bookingnote';
   this.path = 'bookingnote';
-  this.id = bookingNoteID;
+  this.id = id;
+  this.note = new Note();
 }
 BookingNote.prototype = new SingleEntity();
 
 BookingNote.prototype.toArray = function() {
   return {
     bookingid: this.bookingid,
-    noteid: this.noteid
+    noteid: this.note.id
   };
 };
 
 BookingNote.prototype.toCreateArray = function() {
   return {
     bookingid: this.bookingid,
-    noteid: this.noteid
+    noteid: this.note.id
   };
 };
 
