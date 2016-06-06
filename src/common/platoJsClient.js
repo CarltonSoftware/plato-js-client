@@ -127,12 +127,10 @@ var platoJsClient = (function () {
             m = regex.exec(queryString);
           } while (m);
 
-          if (!this.token) {
-            this.token = params.access_token;
+          this.token = params.access_token;
 
-            if (localStorage && !localStorage.getItem(TOKENNAME)) {
-              localStorage.setItem(TOKENNAME, this.token);
-            }
+          if (localStorage) {
+            localStorage.setItem(TOKENNAME, this.token);
           }
         };
 
