@@ -1,9 +1,10 @@
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
+var NoteFilterCollection = require('./NoteFilterCollection');
 var StaticCollection = require('./StaticCollection');
 var CustomerDocument = require('./CustomerDocument');
-var Note = require('./Note');
 var Language = require('./Language');
+var ActorNote = require('./ActorNote');
 var Booking = require('./Booking');
 var BankAccount = require('./BankAccount');
 var ActorContactDetailOther = require('./ActorContactDetailOther');
@@ -16,7 +17,11 @@ var ActorContactDetailAddress = require('./ActorContactDetailAddress');
  */
 function Actor(id) {
   this.id = id;
-  this.notes = new Collection({ object: Note });
+  this.notes = new NoteFilterCollection({
+    noteEntity: this,
+    object: ActorNote,
+    path: 'actornote'
+  });
   this.documents = new Collection({ object: CustomerDocument });
   this.duplicates = new Collection({ object: Actor });
 
