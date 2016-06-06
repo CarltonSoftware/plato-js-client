@@ -85,7 +85,6 @@ module.exports.common.BookingEnquiry = require('./common/BookingEnquiry');
 module.exports.common.BookingExtra = require('./common/BookingExtra');
 module.exports.common.BookingDocument = require('./common/BookingDocument');
 module.exports.common.BookingGuest = require('./common/BookingGuest');
-module.exports.common.BookingHistory = require('./common/BookingHistory');
 module.exports.common.BookingNote = require('./common/BookingNote');
 module.exports.common.BookingSecurityDeposit = require('./common/BookingSecurityDeposit');
 module.exports.common.BookingSupplier = require('./common/BookingSupplier');
@@ -118,6 +117,9 @@ module.exports.common.NoteActor = require('./common/NoteActor');
 
 // Search
 module.exports.common.Search = require('./common/Search');
+
+// History
+module.exports.common.ChangeHistory = require('./common/ChangeHistory');
 
 // Pricing
 module.exports.common.Currency = require('./common/Currency');
