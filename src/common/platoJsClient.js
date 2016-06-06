@@ -31,9 +31,9 @@ var platoJsClient = (function () {
           template = require('rest/interceptor/template'),
           host = '/',
           prefix = '',
-          oAuthRedirectUrl = undefined,
+          oAuthRedirectUrl,
           clientId = '',
-          token = null;
+          token;
 
         /**
          * Function use to validate the request object passed to each verb
@@ -80,7 +80,14 @@ var platoJsClient = (function () {
           prefix = (!options.apiPrefix) ? prefix : options.apiPrefix;
           oAuthRedirectUrl = (!options.oAuthRedirectUrl) ? oAuthRedirectUrl : options.oAuthRedirectUrl;
           clientId = (options.clientId != null) ? options.clientId : '';
-          token = (options.token != null) ? options.token : false;
+
+          if (options.token) {
+            token = options.token;
+          } else if (localStorage) {
+            token = localStorage.getItem(TOKENNAME);
+          }
+
+          this.token = token;
 
           return this;
         };
