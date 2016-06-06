@@ -172,6 +172,31 @@ StaticCollection.prototype.push = function(object) {
 };
 
 /**
+* Add an element to the start of the collection
+*
+* @param {object} Item to add
+*
+* @returns {undefined}
+*/
+StaticCollection.prototype.unshift = function(object) {
+
+  // Call the set parent if it exists on the object
+  if (typeof this.options.parent === 'object') {
+    if (typeof object.setParent === 'function') {
+      object.setParent(this.options.parent);
+    }
+  }
+
+  // Add into collection
+  this.collection.unshift(object);
+
+  // Added this in so we can process the collection once its been populated
+  if (typeof this.postResponse === 'function') {
+    this.postResponse.bind(this).call();
+  }
+};
+
+/**
 * Get the first element from the collection, if any
 *
 * @returns {object} The first element in the collection
@@ -179,6 +204,22 @@ StaticCollection.prototype.push = function(object) {
 StaticCollection.prototype.first = function() {
   if (this.collection.length) {
     return this.collection[0];
+  }
+};
+
+/**
+* Perform an array slice on the collection
+*
+* @param {number} start
+* @param {number} end
+*
+* @returns {object} The sliced array
+*/
+StaticCollection.prototype.slice = function(start, end) {
+  if (this.collection.length) {
+    return this.collection.slice(start, end);
+  } else {
+    return [];
   }
 };
 
