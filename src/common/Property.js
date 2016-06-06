@@ -84,7 +84,7 @@ Property.prototype.toArray = function() {
     maximumpets: this.maximumpets,
     accomodationdescription: this.accomodationdescription,
     tabspropref: this.tabspropref,
-    status: this.status ? this.status.status : null,
+    status: this.status ? this.status.name : null,
     checkinearliesttime: this.checkinearliesttime,
     checkinlatesttime: this.checkinlatesttime,
     checkouttime: this.checkouttime,
