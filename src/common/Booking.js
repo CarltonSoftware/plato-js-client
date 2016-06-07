@@ -7,7 +7,8 @@ var BookingDocument = require('./BookingDocument');
 var BookingGuest = require('./BookingGuest');
 var BookingSecurityDeposit = require('./BookingSecurityDeposit');
 var BookingSupplier = require('./BookingSupplier');
-var Note = require('./Note');
+var BookingNote = require('./BookingNote');
+var NoteFilterCollection = require('./NoteFilterCollection');
 
 function Booking(id) {
   this.path = 'booking';
@@ -20,6 +21,12 @@ function Booking(id) {
 
   this.property = new EntityLink({
     entity: 'Property'
+  });
+
+  this.notes = new NoteFilterCollection({
+    noteEntity: this,
+    object: BookingNote,
+    path: 'bookingnote'
   });
 
   // this.saleschannel = new SalesChannel;
@@ -47,7 +54,6 @@ function Booking(id) {
     path: 'supplier',
     parents: [this]
   });
-  this.notes = new Collection({object: Note});
 }
 Booking.prototype = new SingleEntity();
 Booking.prototype.toArray = function() {

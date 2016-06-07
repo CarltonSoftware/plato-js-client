@@ -1,6 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
 var NoteText = require('./NoteText');
+var NoteType = require('./NoteType');
 var EntityLink = require('./EntityLink');
 
 function Note(noteID) {
@@ -12,6 +13,7 @@ function Note(noteID) {
     path: 'text',
     parent: this
   });
+  this.notetype = new NoteType();
   this.createdby = new EntityLink({
     entity: 'TabsUser'
   });
@@ -51,9 +53,9 @@ Note.prototype.mutateResponse = function(entity) {
 
 Note.prototype.toArray = function() {
   return {
-    notetype: this.notetype,
+    notetype: this.notetype.notetype,
     subject: this.subject,
-    createdby: this.createdby,
+    createdbyactorid: this.createdby.id,
     visibletocustomer: this.visibletocustomer,
     visibletoowner: this.visibletoowner,
     visibletocleaner: this.visibletocleaner,
@@ -65,9 +67,9 @@ Note.prototype.toArray = function() {
 
 Note.prototype.toCreateArray = function() {
   return {
-    notetype: this.notetype,
+    notetype: this.notetype.notetype,
     subject: this.subject,
-    createdbyactorid: this.createdbyactorid,
+    createdbyactorid: this.createdby.id,
     visibletocustomer: this.visibletocustomer,
     visibletoowner: this.visibletoowner,
     visibletocleaner: this.visibletocleaner,

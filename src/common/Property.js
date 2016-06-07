@@ -13,13 +13,18 @@ var PropertyAddress = require('./PropertyAddress');
 var PropertyOwnerPaymentTerm = require('./PropertyOwnerPaymentTerm');
 var PropertyCommission = require('./PropertyCommission');
 var PropertyNote = require('./PropertyNote');
+var NoteFilterCollection = require('./NoteFilterCollection');
 
 function Property(id) {
   this.path = 'property';
   this.createPath = 'property';
   this.id = id;
 
-  this.notes = new Collection({object: PropertyNote});
+  this.notes = new NoteFilterCollection({
+    noteEntity: this,
+    object: PropertyNote,
+    path: 'propertynote'
+  });
   this.documents = new Collection({
     object: PropertyDocument,
     path: 'document',
