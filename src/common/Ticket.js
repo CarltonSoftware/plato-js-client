@@ -15,12 +15,12 @@ function Ticket(ticketID) {
   this.ticket_customer = new TicketCustomer();
   this.status = new TicketStatus();
   this.priority = new TicketPriority();
-  this.ticketmessages = new Collection({
+  this.messages = new Collection({
     object: TicketMessage,
     path: 'message',
     parent: this
   });
-  this.ticketattachments = new Collection({
+  this.attachments = new Collection({
     object: TicketAttachment,
     path: 'attachement',
     parent: this
