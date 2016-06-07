@@ -1,17 +1,17 @@
 var Collection = require('./Collection');
 var HistoryEntry = require('./HistoryEntry');
 
-function BookingHistory(id, page, limit) {
-  this.path = 'booking/'+id+'/history';
+function ChangeHistory(entity, id, page, limit) {
+  this.path = entity+'/'+id+'/history';
   this.options.path = this.path;
   this.options.object = HistoryEntry;
 
   this.page = typeof page !== 'undefined' ? page : null;
   this.limit = typeof limit !== 'undefined' ? limit : null;
 }
-BookingHistory.prototype = new Collection();
+ChangeHistory.prototype = new Collection();
 
-BookingHistory.prototype.mutateResponse = function(entity) {
+ChangeHistory.prototype.mutateResponse = function(entity) {
   this.collection = entity.elements.map(function (e) {
     var entity = new (Function.prototype.bind.apply(HistoryEntry, null));
     return entity.mutateResponse(e);
@@ -25,4 +25,4 @@ BookingHistory.prototype.mutateResponse = function(entity) {
   return(this);
 };
 
-module.exports = BookingHistory;
+module.exports = ChangeHistory;

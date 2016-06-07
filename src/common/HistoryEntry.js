@@ -1,6 +1,8 @@
 var SingleEntity = require('./SingleEntity');
+var Actor = require('./Actor');
 
 function HistoryEntry() {
+  this.actor = new Actor();
 }
 
 HistoryEntry.prototype = new SingleEntity();
