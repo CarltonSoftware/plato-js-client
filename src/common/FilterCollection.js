@@ -77,6 +77,65 @@ function FilterCollection(options) {
   };
 
   /**
+   * Add all of the filters to the collection
+   *
+   * @param {object} filters
+   *
+   * @return {FilterCollection}
+   */
+  this.addFilters = function(filters) {
+    // Check if groups
+    if (Array.isArray(filters)) {
+      for (var i = 0; i < filters.length; i++) {
+        this.createGroup(i)
+          .addObjectFilters(filters[i]);
+      }
+    } else {
+      this.addObjectFilters(filters);
+    }
+  };
+
+  /**
+   * Add filters specified in an object
+   *
+   * @param {object} filters
+   *
+   * @return {FilterCollection}
+   */
+  this.addObjectFilters = function(filters) {
+    for (i in filters) {
+      this.addFilter(i, filters[i]);
+    }
+
+    return this;
+  };
+
+  /**
+   * Remove all of the filters
+   *
+   * @return {FilterCollection}
+   */
+  this.removeAllFilters = function() {
+    currentGroup = 0;
+    filterGroups = new StaticCollection();
+    filterGroups.push(new FilterGroup(currentGroup));
+
+    return this;
+  };
+
+  /**
+   * Remove a current groups filters
+   *
+   * @return {FilterCollection}
+   */
+  this.removeGroupFilters = function() {
+    filterGroups.deleteElementById(currentGroup);
+
+    return this;
+  };
+
+
+  /**
    * Remove a filter key from the current group
    *
    * @param {String} key
@@ -119,7 +178,7 @@ function FilterCollection(options) {
         ftrs += grp.getFilterString() + '&filter[]=';
       });
 
-      return '&filter[]=' + ftrs.substring(0, ftrs.length - 10);
+      return ftrs.substring(0, ftrs.length - 10);
     } else {
       return '';
     }
