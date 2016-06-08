@@ -133,6 +133,9 @@ Booking.prototype.getStatus = function() {
       item.bookingCustomer = 'Owner';
       // TBD - Check if non-standard
       item.bookingType = 'Owner Booking';
+      if (this.cancelled) {
+        item.bookingType += ' - Cancelled';
+      }
       item.showAs = 'owner';
       break;
     case 'customer':
@@ -177,7 +180,10 @@ Booking.prototype.getStatus = function() {
     default:
       // Neither customer or owner, this is normally for maintenance, photos, inspections etc.
       item.bookingCustomer = 'None';
-      item.bookingType = 'Property Unavailable';
+      item.bookingType = 'Unavailable';
+      if (this.cancelled) {
+        item.bookingType += ' - Cancelled';
+      }
       item.showAs = 'unavailable';
   }
   if (this.cancelled) {
