@@ -1,3 +1,4 @@
+var client = require('./platoJsClient').getInstance();
 var SingleEntity = require('./SingleEntity');
 var ContactMethodType = require('./ContactMethodType');
 var Language = require('./Language');
@@ -26,6 +27,10 @@ TemplateContactMethod.prototype.toArray = function() {
     contactmethodtypeid: this.contactmethodtype.id,
     languageid: this.language.id,
   };
+};
+
+TemplateContactMethod.prototype.render = function(ref) {
+  return client.get(this.parent.path + '/' + this.parent.id + '/' + this.path + '/' + this.id + '/ref/' + ref + '/render');
 };
 
 module.exports = TemplateContactMethod;
