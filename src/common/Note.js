@@ -56,12 +56,16 @@ Note.prototype.toArray = function() {
     notetype: this.notetype.notetype,
     subject: this.subject,
     createdbyactorid: this.createdby.id,
+    completedbyactorid: this.completedby.id,
+    archivedbyactorid: this.archivedby.id,
     visibletocustomer: this.visibletocustomer,
     visibletoowner: this.visibletoowner,
     visibletocleaner: this.visibletocleaner,
     visibletokeyholder: this.visibletokeyholder,
     highlight: this.highlight,
-    pin: this.pin
+    pin: this.pin,
+    private: this.private
+
   };
 };
 
@@ -70,15 +74,21 @@ Note.prototype.toCreateArray = function() {
     notetype: this.notetype.notetype,
     subject: this.subject,
     createdbyactorid: this.createdby.id,
+    completedbyactorid: this.completedby.id,
+    archivedbyactorid: this.archivedby.id,
     visibletocustomer: this.visibletocustomer,
     visibletoowner: this.visibletoowner,
     visibletocleaner: this.visibletocleaner,
     visibletokeyholder: this.visibletokeyholder,
     highlight: this.highlight,
     pin: this.pin,
+    private: this.private,
     notetext_createdbyactorid: this.notetext_createdbyactorid,
     notetext_notetext: this.notetext_notetext,
-    notetext_followupdatetime: this.notetext_followupdatetime
+    notetext_followupdatetime: this.notetext_followupdatetime,
+    notetext_actionedbyactorid: this.notetext_actionedbyactorid,
+    notetext_actioneddatetime: this.notetext_actioneddatetime,
+    bookingid: this.bookingid
   };
 };
 
