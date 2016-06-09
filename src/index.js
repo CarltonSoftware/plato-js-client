@@ -78,6 +78,11 @@ module.exports.common.PropertyBookingBrand = require('./common/PropertyBookingBr
 module.exports.common.PropertyOwnerPaymentTerm = require('./common/PropertyOwnerPaymentTerm');
 module.exports.common.PropertyCommission = require('./common/PropertyCommission');
 
+module.exports.common.WorkOrder = require('./common/WorkOrder');
+module.exports.common.WorkOrderExpense = require('./common/WorkOrderExpense');
+module.exports.common.WorkOrderOwner = require('./common/WorkOrderOwner');
+module.exports.common.WorkOrderSupplier = require('./common/WorkOrderSupplier');
+
 // Booking Related Objects
 module.exports.common.Booking = require('./common/Booking');
 module.exports.common.BookingCustomer = require('./common/BookingCustomer');
