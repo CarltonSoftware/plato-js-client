@@ -2,17 +2,17 @@ var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
 
 function WorkOrder(id) {
-    this.path = this.createPath = 'workorder';
-    this.id = id;
-    this.property = new EntityLink({
-      entity: 'Property'
-    });
-    this.workordersupplier = new EntityLink({
-      entity: 'WorkOrderSupplier'
-    });
-    this.approvedbytabsuser = new EntityLink({
-      entity: 'TabsUser'
-    });
+  this.path = this.createPath = 'workorder';
+  this.id = id;
+  this.property = new EntityLink({
+    entity: 'Property'
+  });
+  this.workordersupplier = new EntityLink({
+    entity: 'WorkOrderSupplier'
+  });
+  this.approvedbytabsuser = new EntityLink({
+    entity: 'TabsUser'
+  });
 }
 WorkOrder.prototype = new SingleEntity();
 
@@ -32,7 +32,7 @@ WorkOrder.prototype.toArray = function() {
     accesscontactdetails: this.accesscontactdetails,
     cancelleddatetime: this.cancelleddatetime,
 
-    workordertemplateid: this.workordertemplate.id,
+    workordertemplateid: this.workordertemplate ? this.workordertemplate.id : undefined,
     reporteddate: this.reporteddate,
     preferredstartdate: this.preferredstartdate,
     requiredbydate: this.requiredbydate,
