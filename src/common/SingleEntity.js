@@ -142,6 +142,15 @@ SingleEntity.prototype.toArray = function() {
 /**
  * Return the post representation
  *
+ * @returns {Joi.object}
+ */
+SingleEntity.prototype.validSchema = function() {
+  return {};
+};
+
+/**
+ * Return the post representation
+ *
  * @returns {Entity.prototype.toArray.EntityAnonym$0}
  */
 SingleEntity.prototype.toCreateArray = function() {
