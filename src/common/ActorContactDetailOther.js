@@ -9,7 +9,7 @@ function ActorContactDetailOther(contact_id) {
   this.contactpreferences = new Collection({
     object: ContactPreference,
     path: 'contactpreference',
-    parent: this.parent
+    parent: this
   });
 }
 
