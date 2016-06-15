@@ -96,7 +96,8 @@ Entity.prototype.updatePromiseResult = function(path, data) {
   var e = this;
   return new Promise(function(resolve, reject) {
     result.then(function(res) {
-      if (res.status.code === 204) {
+      // MS: Updated this to allow a 201 as in the case of bookingExtras an update results in the creation of a new bookingExtra ( with a 201 code )
+      if (res.status.code === 204 || res.status.code === 201) {
         resolve(e);
       } else {
         reject(Entity.prototype.handleError(res));

@@ -23,4 +23,9 @@ ContactPreference.prototype.toArray = function() {
   };
 };
 
+ContactPreference.prototype.setParent = function(parent) {
+  this.parent = parent.parent;
+  this.contactdetail = parent;
+};
+
 module.exports = ContactPreference;

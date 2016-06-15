@@ -70,19 +70,17 @@ Note.prototype.toArray = function() {
 };
 
 Note.prototype.toCreateArray = function() {
-  return {
+  var note = {
     notetype: this.notetype.notetype,
     subject: this.subject,
     createdbyactorid: this.createdby.id,
-    completedbyactorid: this.completedby.id,
-    archivedbyactorid: this.archivedby.id,
-    visibletocustomer: this.visibletocustomer,
-    visibletoowner: this.visibletoowner,
-    visibletocleaner: this.visibletocleaner,
-    visibletokeyholder: this.visibletokeyholder,
-    highlight: this.highlight,
-    pin: this.pin,
-    private: this.private,
+    visibletocustomer: this.visibletocustomer ? 'true' : 'false',
+    visibletoowner: this.visibletoowner ? 'true' : 'false',
+    visibletocleaner: this.visibletocleaner ? 'true' : 'false',
+    visibletokeyholder: this.visibletokeyholder ? 'true' : 'false',
+    highlight: this.highlight ? 'true' : 'false',
+    pin: this.pin ? 'true' : 'false',
+    private: this.private ? 'true' : 'false',
     notetext_createdbyactorid: this.notetext_createdbyactorid,
     notetext_notetext: this.notetext_notetext,
     notetext_followupdatetime: this.notetext_followupdatetime,
@@ -90,6 +88,13 @@ Note.prototype.toCreateArray = function() {
     notetext_actioneddatetime: this.notetext_actioneddatetime,
     bookingid: this.bookingid
   };
+  if (this.completedbyactorid) {
+    note.completedbyactorid = this.completedbyactorid;
+  }
+  if (this.archivedbyactorid) {
+    note.archivedbyactorid = this.archivedbyactorid;
+  }
+  return note;
 };
 
 module.exports = Note;
