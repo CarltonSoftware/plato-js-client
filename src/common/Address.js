@@ -1,4 +1,5 @@
 var SingleEntity = require('./SingleEntity'),
+  Joi = require('joi'),
   Country = require('./Country');
 
 function Address() {
@@ -36,6 +37,21 @@ Address.prototype.toString = function() {
   ].filter(function(line) {
     return line !== '';
   }).join(', ');
+};
+
+Address.prototype.validSchema = function() {
+  return Joi.object().keys({
+    line1: Joi.string().min(3).label('Line 1'),
+    line2: Joi.string().empty('').label('Line 2'),
+    line3: Joi.string().empty('').label('Line 3'),
+    town: Joi.string().min(3).label('Town'),
+    county: Joi.string().min(3).label('County'),
+    postcode: Joi.string().min(4).label('Postcode'),
+    country: Joi.object().required(),
+    latitude: Joi.number(),
+    longitude: Joi.number(),
+    aId: Joi.number().optional()
+  });
 };
 
 module.exports = Address;
