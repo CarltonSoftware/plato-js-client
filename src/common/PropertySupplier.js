@@ -3,6 +3,7 @@ var EntityLink = require('./EntityLink');
 var ManagedActivity = require('./ManagedActivity');
 var Collection = require('./Collection');
 var PropertySupplierDateRange = require('./PropertySupplierDateRange');
+var PropertySupplierService = require('./PropertySupplierService');
 
 function PropertySupplier(id) {
   this.path = 'supplier';
@@ -15,6 +16,11 @@ function PropertySupplier(id) {
   this.dates = new Collection({
     object: PropertySupplierDateRange,
     path: 'daterange',
+    parent: this
+  });
+  this.services = new Collection({
+    object: PropertySupplierService,
+    path: 'service',
     parent: this
   });
 }
