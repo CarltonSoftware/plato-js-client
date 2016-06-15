@@ -19,4 +19,8 @@ RoleReason.prototype.toArray = function() {
   };
 };
 
+RoleReason.prototype.toString = function() {
+  return (this.role.name || this.role) + ' ' + (this.reason.name || this.reason); // role and reason can each be a string or an object depending on context
+};
+
 module.exports = RoleReason;
