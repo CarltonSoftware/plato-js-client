@@ -3,6 +3,7 @@ var Collection = require('./Collection');
 var NoteFilterCollection = require('./NoteFilterCollection');
 var StaticCollection = require('./StaticCollection');
 var CustomerDocument = require('./CustomerDocument');
+var PotentialDuplicate = require('./PotentialDuplicate');
 var Language = require('./Language');
 var ActorNote = require('./ActorNote');
 var Booking = require('./Booking');
@@ -24,7 +25,7 @@ function Actor(id) {
     path: 'actornote'
   });
   this.documents = new Collection({ object: CustomerDocument });
-  this.duplicates = new Collection({ object: Actor });
+  this.potentialduplicates = new Collection({ object: PotentialDuplicate });
 
   this.language = new Language();
   this.language.code = 'EN';
