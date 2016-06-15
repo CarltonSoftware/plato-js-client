@@ -1,5 +1,6 @@
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
+var WorkOrderSupplier = require('./WorkOrderSupplier');
 
 function WorkOrder(id) {
   this.path = this.createPath = 'workorder';
@@ -7,9 +8,7 @@ function WorkOrder(id) {
   this.property = new EntityLink({
     entity: 'Property'
   });
-  this.workordersupplier = new EntityLink({
-    entity: 'WorkOrderSupplier'
-  });
+  this.workordersupplier = new WorkOrderSupplier();
   this.approvedbytabsuser = new EntityLink({
     entity: 'TabsUser'
   });

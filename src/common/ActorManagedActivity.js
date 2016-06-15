@@ -1,9 +1,10 @@
 var SingleEntity = require('./SingleEntity');
 var ManagedActivity = require('./ManagedActivity');
 
-function ActorManagedActivity(id) {
-    this.path = 'managedactivity';
-    this.createPath = 'managedactivity';
+function ActorManagedActivity(actorId, id) {
+    // Set the actor path explicitly to fix the route, otherwise the actor type is used.
+    this.path = 'actor/' + actorId + '/managedactivity';
+    this.createPath = this.path;
     this.id = id;
 
     this.managedactivity = new ManagedActivity();
