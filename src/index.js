@@ -25,6 +25,7 @@ module.exports.common.Setting = require('./common/Setting');
 module.exports.common.Source = require('./common/Source');
 module.exports.common.SourceCategory = require('./common/SourceCategory');
 module.exports.common.OwnerPaymentTerm = require('./common/OwnerPaymentTerm');
+module.exports.common.OwnerChargeCode = require('./common/OwnerChargeCode');
 
 // Actor Related Objects
 module.exports.common.Actor = require('./common/Actor');
