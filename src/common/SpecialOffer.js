@@ -10,6 +10,7 @@ var SpecialOfferBranding = require('./SpecialOfferBranding');
 var SpecialOfferSalesChannel = require('./SpecialOfferSalesChannel');
 var SpecialOfferWebsiteSection = require('./SpecialOfferWebsiteSection');
 var EntityLink = require('./EntityLink');
+var Joi = require('joi');
 
 function SpecialOffer(id) {
   this.path = this.createPath = 'specialoffer';
@@ -19,43 +20,43 @@ function SpecialOffer(id) {
   this.bookingperiods = new Collection({
     object: BookingPeriod,
     path: 'bookingperiod',
-    parent: this,
+    parent: this
   });
   this.holidayperiods = new Collection({
     object: HolidayPeriod,
     path: 'holidayperiod',
-    parent: this,
+    parent: this
   });
   this.propertybrandings = new Collection({
     object: SpecialOfferPropertyBranding,
     path: 'propertybranding',
-    parent: this,
+    parent: this
   });
   this.promotions = new Collection({
     object: Promotion,
     path: 'promotion',
-    parent: this,
+    parent: this
   });
   this.saleschannels = new Collection({
     object: SpecialOfferSalesChannel,
     path: 'saleschannel',
-    parent: this,
+    parent: this
   });
   this.websitesections = new Collection({
     object: SpecialOfferWebsiteSection,
     path: 'websitesection',
-    parent: this,
+    parent: this
   });
   this.brandings = new Collection({
     object: SpecialOfferBranding,
     path: 'branding',
-    parent: this,
+    parent: this
   });
   this.pricetype = new EntityLink({
-    entity: 'PriceType',
+    entity: 'PriceType'
   });
   this.forpricetype = new EntityLink({
-    entity: 'PriceType',
+    entity: 'PriceType'
   });
 }
 
@@ -82,7 +83,7 @@ SpecialOffer.prototype.toUpdateArray = function() {
     perperiod: this.perperiod,
     applytopartysizepricing: this.applytopartysizepricing,
     pricetypeid: this.pricetype.id,
-    forpricetypeid: this.forpricetype.id,
+    forpricetypeid: this.forpricetype.id
   };
 };
 
@@ -92,4 +93,30 @@ SpecialOffer.prototype.toCreateArray = function() {
   return array;
 };
 
+SpecialOffer.prototype.validSchema = function() {
+  return Joi.object().keys({
+    description: Joi.string(),
+    type: Joi.string(),
+    amount: Joi.number(),
+    fixedprice: Joi.number(),
+    percentage: Joi.number(),
+    active: Joi.boolean(),
+    additional: Joi.boolean(),
+    advertise: Joi.boolean(),
+    minimumholidaylength: Joi.number().empty(''),
+    maximumholidaylength: Joi.number().empty(''),
+    minimumoccupancy: Joi.number().empty(''),
+    maximumoccupancy: Joi.number().empty(''),
+    minimumdaysbeforeholiday: Joi.number().empty(''),
+    maximumdaysbeforeholiday: Joi.number().empty(''),
+    daysbeforeappliestowholeholiday: Joi.boolean(),
+    pricingperiod: Joi.object(),
+    changedaystartfinishonly: Joi.boolean(),
+    currency: Joi.object(),
+    perperiod: Joi.boolean(),
+    applytopartysizepricing: Joi.boolean(),
+    pricetype: Joi.object(),
+    forpricetype: Joi.object()
+  });
+};
 module.exports = SpecialOffer;

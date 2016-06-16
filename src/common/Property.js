@@ -14,6 +14,7 @@ var PropertyOwnerPaymentTerm = require('./PropertyOwnerPaymentTerm');
 var PropertyCommission = require('./PropertyCommission');
 var PropertyNote = require('./PropertyNote');
 var NoteFilterCollection = require('./NoteFilterCollection');
+var Joi = require('joi');
 
 function Property(id) {
   this.path = 'property';
@@ -102,8 +103,20 @@ Property.prototype.toArray = function() {
     address_postcode: this.address.postcode,
     address_countryalpha2code: this.address.country.alpha2,
     address_latitude: this.address.latitude,
-    address_longitude: this.address.longitude,
+    address_longitude: this.address.longitude
   };
+};
+
+Property.prototype.validSchema = function () {
+  return Joi.object().keys({
+    name: Joi.string(),
+    namequalifier: Joi.string().allow(''),
+    bedrooms: Joi.number(),
+    sleeps: Joi.number(),
+    maximumpets: Joi.number(),
+    telephonenumber: Joi.string().allow(''),
+    address: this.address.validSchema()
+  });
 };
 
 module.exports = Property;

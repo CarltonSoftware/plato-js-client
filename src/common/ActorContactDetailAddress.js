@@ -13,4 +13,8 @@ ActorContactDetailAddress.prototype.toArray = function() {
   return this.address.toArray();
 };
 
+ActorContactDetailAddress.prototype.validSchema = function() {
+  return this.address.validSchema();
+};
+
 module.exports = ActorContactDetailAddress;

@@ -10,6 +10,7 @@ var Booking = require('./Booking');
 var BankAccount = require('./BankAccount');
 var ActorContactDetailOther = require('./ActorContactDetailOther');
 var ActorContactDetailAddress = require('./ActorContactDetailAddress');
+var ActorManagedActivity = require('./ActorManagedActivity');
 
 /**
  * Actor instance
@@ -33,6 +34,11 @@ function Actor(id) {
 
   this.bankaccounts = new Collection({
     object: BankAccount,
+    parent: this
+  });
+
+  this.activities = new Collection({
+    object: ActorManagedActivity,
     parent: this
   });
 

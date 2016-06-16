@@ -1,4 +1,5 @@
 var SingleEntity = require('./SingleEntity');
+var Joi = require('joi');
 
 function Contact(contactId) {
   this.path = 'contact';
@@ -31,6 +32,13 @@ Contact.prototype.toCreateArray = function() {
     content: this.content,
     deleted: false
   };
+};
+
+Contact.prototype.validSchema = function () {
+  return Joi.object().keys({
+    details: Joi.string().min(5).label('Details'),
+    subject: Joi.string().min(5).label('Subject')
+  });
 };
 
 module.exports = Contact;

@@ -33,6 +33,7 @@ module.exports.common.Actors = require('./common/Actors');
 module.exports.common.ActorContactDetailAddress = require('./common/ActorContactDetailAddress');
 module.exports.common.ActorContactDetailOther = require('./common/ActorContactDetailOther');
 module.exports.common.ContactPreference = require('./common/ContactPreference');
+module.exports.common.ActorManagedActivity = require('./common/ActorManagedActivity');
 module.exports.common.ActorNote = require('./common/ActorNote');
 module.exports.common.ActorDocument = require('./common/ActorDocument');
 module.exports.common.BankAccount = require('./common/BankAccount');
