@@ -17,7 +17,8 @@ Brochure.prototype.toArray = function() {
     ordertodate: this.ordertodate,
     availablefromdate: this.availablefromdate,
     weight: this.weight,
-    cost: this.cost
+    cost: this.cost,
+    code: this.code
   };
 };
 
