@@ -25,6 +25,7 @@ module.exports.common.Setting = require('./common/Setting');
 module.exports.common.Source = require('./common/Source');
 module.exports.common.SourceCategory = require('./common/SourceCategory');
 module.exports.common.OwnerPaymentTerm = require('./common/OwnerPaymentTerm');
+module.exports.common.OwnerChargeCode = require('./common/OwnerChargeCode');
 
 // Actor Related Objects
 module.exports.common.Actor = require('./common/Actor');
@@ -49,6 +50,7 @@ module.exports.common.TabsUser = require('./common/TabsUser');
 module.exports.common.Owner = require('./common/Owner');
 module.exports.common.Office = require('./common/Office');
 module.exports.common.Supplier = require('./common/Supplier');
+module.exports.common.SupplierServiceCharge = require('./common/SupplierServiceCharge');
 
 // Property Related Objects
 module.exports.common.Properties = require('./common/Properties');
@@ -64,6 +66,7 @@ module.exports.common.PropertyDescription = require('./common/PropertyDescriptio
 module.exports.common.PropertySecurityDeposit = require('./common/PropertySecurityDeposit');
 module.exports.common.PropertySupplier = require('./common/PropertySupplier');
 module.exports.common.PropertySupplierDateRange = require('./common/PropertySupplierDateRange');
+module.exports.common.PropertySupplierService = require('./common/PropertySupplierService');
 module.exports.common.PropertyOffice = require('./common/PropertyOffice');
 module.exports.common.DescriptionType = require('./common/DescriptionType');
 module.exports.common.PropertySecurityFeature = require('./common/PropertySecurityFeature');
