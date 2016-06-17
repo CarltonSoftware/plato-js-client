@@ -167,7 +167,7 @@ function FilterCollection(options) {
    * @return {String}
    */
   this.getFilterString = function() {
-    if (filterGroups.collection.length === 1 
+    if (filterGroups.collection.length === 1
       && Object.keys(filterGroups.first().getFilters()).length > 0
     ) {
       return '&filter=' + filterGroups.first().getFilterString();
