@@ -15,7 +15,8 @@ PotentialDuplicate.prototype = new SingleEntity();
 PotentialDuplicate.prototype.toArray = function() {
   return {
     actorkept: this.actorkept,
-    processedbytabsuserid: this.processedby.id
+    processedbytabsuserid: this.processedby.id,
+    notduplicate: this.notduplicate
   };
 };
 
