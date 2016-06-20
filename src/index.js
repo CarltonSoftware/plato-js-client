@@ -93,7 +93,7 @@ module.exports.common.WorkOrder = require('./common/KeyTag');
 module.exports.common.WorkOrder = require('./common/KeySet');
 module.exports.common.WorkOrder = require('./common/KeyUserType');
 module.exports.common.WorkOrder = require('./common/KeyCheckReason');
-module.exports.common.WorkOrder = require('./common/KeyBookingBrand');
+module.exports.common.WorkOrder = require('./common/KeysBookingBrand');
 
 module.exports.common.WorkOrder = require('./common/WorkOrder');
 module.exports.common.WorkOrderExpense = require('./common/WorkOrderExpense');

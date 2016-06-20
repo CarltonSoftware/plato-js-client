@@ -1,14 +1,14 @@
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
 var Bookingbrand = require('./Bookingbrand');
-var Defaultkeycheckreason = require('./Defaultkeycheckreason');
+var Keycheckreason = require('./Keycheckreason');
 
 function KeysBookingBrand(id) {
   this.path = 'keysbookingbrand';
   this.createPath = 'keysbookingbrand';
   this.id = id;
   this.BookingBrand = new Bookingbrand();
-  this.defaultkeycheckreason = new Defaultkeycheckreason();
+  this.defaultkeycheckreason = new Keycheckreason();
 }
 KeysBookingBrand.prototype = new SingleEntity();
 
