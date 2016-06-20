@@ -82,18 +82,18 @@ module.exports.common.PropertyMarketingBrand = require('./common/PropertyMarketi
 module.exports.common.PropertyBookingBrand = require('./common/PropertyBookingBrand');
 module.exports.common.PropertyOwnerPaymentTerm = require('./common/PropertyOwnerPaymentTerm');
 module.exports.common.PropertyCommission = require('./common/PropertyCommission');
-module.exports.common.PropertyCommission = require('./common/Inspector');
-module.exports.common.PropertyCommission = require('./common/Inspection');
-module.exports.common.PropertyCommission = require('./common/PropertyBookingBrandInstruction');
-module.exports.common.PropertyCommission = require('./common/InstructionType');
+module.exports.common.Inspector = require('./common/Inspector');
+module.exports.common.Inspection = require('./common/Inspection');
+module.exports.common.PropertyBookingBrandInstruction = require('./common/PropertyBookingBrandInstruction');
+module.exports.common.InstructionType = require('./common/InstructionType');
 
 // Key Related Objects
-module.exports.common.WorkOrder = require('./common/Keyy');
-module.exports.common.WorkOrder = require('./common/KeyTag');
-module.exports.common.WorkOrder = require('./common/KeySet');
-module.exports.common.WorkOrder = require('./common/KeyUserType');
-module.exports.common.WorkOrder = require('./common/KeyCheckReason');
-module.exports.common.WorkOrder = require('./common/KeysBookingBrand');
+module.exports.common.Keyy = require('./common/Keyy');
+module.exports.common.KeyTag = require('./common/KeyTag');
+module.exports.common.KeySet = require('./common/KeySet');
+module.exports.common.KeyUserType = require('./common/KeyUserType');
+module.exports.common.KeyCheckReason = require('./common/KeyCheckReason');
+module.exports.common.KeysBookingBrand = require('./common/KeysBookingBrand');
 
 module.exports.common.WorkOrder = require('./common/WorkOrder');
 module.exports.common.WorkOrderExpense = require('./common/WorkOrderExpense');
