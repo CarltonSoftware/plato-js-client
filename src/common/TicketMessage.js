@@ -8,7 +8,7 @@ function TicketMessage(ticketId, id) {
 TicketMessage.prototype = new SingleEntity();
 TicketMessage.prototype.toArray = function() {
   return {
-    tabs_user: this.tabs_user,
+    tabsuser: this.tabsuser,
     message: this.message,
     createddate: this.createddate
   };

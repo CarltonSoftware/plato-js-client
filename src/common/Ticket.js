@@ -11,8 +11,8 @@ function Ticket(ticketID) {
   this.createPath = 'ticket';
   this.path = 'ticket';
   this.id = ticketID;
-  this.ticket_user = new TicketUser();
-  this.ticket_customer = new TicketCustomer();
+  this.ticketuser = new TicketUser();
+  this.ticketcustomer = new TicketCustomer();
   this.status = new TicketStatus();
   this.priority = new TicketPriority();
   this.messages = new Collection({
@@ -38,7 +38,7 @@ Ticket.prototype.toArray = function() {
     read: this.read,
     createddate: this.createddate,
     computername: this.computername,
-    tabs_user: this.tabs_user
+    tabsuser: this.tabsuser
   };
 };
 
@@ -49,8 +49,9 @@ Ticket.prototype.toCreateArray = function() {
     versionnumber: this.versionnumber,
     subject: this.subject,
     page: this.page,
+    createddate: this.createddate,
     computername: this.computername,
-    ticket_user: this.ticket_user.username,
+    tabsuser: this.tabsuser,
     ticketmessage_message: this.ticketmessage_message
   };
 };
