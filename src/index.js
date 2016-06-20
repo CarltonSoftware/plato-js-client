@@ -82,6 +82,18 @@ module.exports.common.PropertyMarketingBrand = require('./common/PropertyMarketi
 module.exports.common.PropertyBookingBrand = require('./common/PropertyBookingBrand');
 module.exports.common.PropertyOwnerPaymentTerm = require('./common/PropertyOwnerPaymentTerm');
 module.exports.common.PropertyCommission = require('./common/PropertyCommission');
+module.exports.common.PropertyCommission = require('./common/Inspector');
+module.exports.common.PropertyCommission = require('./common/Inspection');
+module.exports.common.PropertyCommission = require('./common/PropertyBookingBrandInstruction');
+module.exports.common.PropertyCommission = require('./common/InstructionType');
+
+// Key Related Objects
+module.exports.common.WorkOrder = require('./common/Keyy');
+module.exports.common.WorkOrder = require('./common/KeyTag');
+module.exports.common.WorkOrder = require('./common/KeySet');
+module.exports.common.WorkOrder = require('./common/KeyUserType');
+module.exports.common.WorkOrder = require('./common/KeyCheckReason');
+module.exports.common.WorkOrder = require('./common/KeyBookingBrand');
 
 module.exports.common.WorkOrder = require('./common/WorkOrder');
 module.exports.common.WorkOrderExpense = require('./common/WorkOrderExpense');
