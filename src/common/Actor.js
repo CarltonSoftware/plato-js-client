@@ -74,7 +74,7 @@ Actor.prototype.mutateResponse = function(entity) {
 /**
  * Return the full name of the actor. Optional noTitle parameter.
  *
- * @return {String}
+ * @returns {String}
  */
 Actor.prototype.getFullName = function(noTitle) {
   if (noTitle) {
@@ -86,7 +86,7 @@ Actor.prototype.getFullName = function(noTitle) {
 /**
  * Return the create/put array
  *
- * @return {Object}
+ * @returns {Object}
  */
 Actor.prototype.toArray = function() {
   return {
@@ -100,6 +100,15 @@ Actor.prototype.toArray = function() {
     companyname: this.companyname,
     name: this.officename
   };
+};
+
+/**
+ * Resets the actor's password
+ *
+ * @returns {Promise}
+ */
+Actor.prototype.resetPassword = function() {
+  return this.updatePromiseResult(this.getUpdatePath() + '/resetpassword', {});
 };
 
 module.exports = Actor;
