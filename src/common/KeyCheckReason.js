@@ -1,6 +1,6 @@
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
-var Keyusertype = require('./Keyusertype');
+var Keyusertype = require('./KeyUserType');
 
 function KeyCheckReason(id) {
   this.path = 'keycheckreason';

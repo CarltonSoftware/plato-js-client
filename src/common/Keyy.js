@@ -1,6 +1,6 @@
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
-var Keytag = require('./Keytag');
+var Keytag = require('./KeyTag');
 
 function Keyy(id) {
   this.path = 'keytag';

@@ -1,6 +1,6 @@
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
-var Instructiontype = require('./Instructiontype');
+var Instructiontype = require('./InstructionType');
 
 function PropertyBookingBrandInstruction(id) {
   this.path = 'property';

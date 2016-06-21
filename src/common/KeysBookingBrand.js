@@ -1,7 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
-var Bookingbrand = require('./Bookingbrand');
-var Keycheckreason = require('./Keycheckreason');
+var Bookingbrand = require('./BookingBrand');
+var Keycheckreason = require('./KeyCheckReason');
 
 function KeysBookingBrand(id) {
   this.path = 'keysbookingbrand';
