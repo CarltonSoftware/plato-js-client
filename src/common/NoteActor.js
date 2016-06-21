@@ -13,7 +13,7 @@ NoteActor.prototype = new SingleEntity();
 
 NoteActor.prototype.toArray = function() {
   return {
-    actorid: this.actor.id,
+    actorid: this.actorid,
     notifychanges: this.notifychanges,
     reminderdate: this.reminderdate,
   };

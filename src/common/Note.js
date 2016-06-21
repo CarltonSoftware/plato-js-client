@@ -3,6 +3,7 @@ var Collection = require('./Collection');
 var NoteText = require('./NoteText');
 var NoteType = require('./NoteType');
 var EntityLink = require('./EntityLink');
+var NoteActor = require('./NoteActor');
 
 function Note(noteID) {
   this.createPath = 'note';
@@ -14,14 +15,9 @@ function Note(noteID) {
     parent: this
   });
   this.notetype = new NoteType();
-  this.bookingnote = new EntityLink({
-    entity: 'BookingNote'
-  });
-  this.actornote = new EntityLink({
-    entity: 'ActorNote'
-  });
-  this.noteactor = new EntityLink({
-    entity: 'NoteActor',
+  this.noteactors = new Collection({
+    object: NoteActor,
+    path: 'actor',
     parent: this
   });
 }
