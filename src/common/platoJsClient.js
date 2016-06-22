@@ -140,10 +140,13 @@ var platoJsClient = (function () {
          * @param {String} url
          */
         function redirect(url) {
-          sessionStorage.setItem('tabs2:previousPath', window.location.pathname);
-          window.location = url;
+          if (typeof sessionStorage !== 'undefined') {
+            sessionStorage.setItem('tabs2:previousPath', window.location.pathname);
+          }
+          if (typeof window !== 'undefined') {
+            window.location = url;
+          }
           localStorage.removeItem(TOKENNAME);
-          return function () {};
         }
 
         /**

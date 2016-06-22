@@ -1,6 +1,6 @@
+var Joi = require('joi');
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
-var Collection = require('./Collection');
 var Inspector = require('./Inspector');
 
 function Inspection(id) {
