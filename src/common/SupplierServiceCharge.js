@@ -2,6 +2,7 @@ var SingleEntity = require('./SingleEntity');
 var Currency = require('./Currency');
 var VatBand = require('./VatBand');
 var OwnerChargeCode = require('./OwnerChargeCode');
+var Joi = require('joi');
 
 function SupplierServiceCharge(id) {
   this.path = 'charge';
@@ -14,7 +15,7 @@ function SupplierServiceCharge(id) {
 SupplierServiceCharge.prototype = new SingleEntity();
 
 SupplierServiceCharge.prototype.toArray = function() {
-  return {  
+  return {
     type: this.type,
     charge: this.charge,
     includesvat: this.includesvat,
@@ -28,4 +29,18 @@ SupplierServiceCharge.prototype.toArray = function() {
   };
 };
 
+SupplierServiceCharge.prototype.validSchema = function() {
+  return Joi.object().keys({
+    fromdate: Joi.string().required().label('From Date'),
+    todate: Joi.string().required().label('To Date'),
+    type: Joi.string().required().label('Type'),
+    ownerchargecode: Joi.object().required().label('Owner Charge Code'),
+    vatband: Joi.object().required().label('Vat Band'),
+    currency: Joi.object().required().label('Currency'),
+    charge: Joi.number().required().label('Charge'),
+    includesvat: Joi.boolean().required().label('Includes VAT'),
+    autoaddcustomer: Joi.boolean().required().label('Auto add to customer'),
+    autoaddowner: Joi.boolean().required().label('Auto add to owner')
+  });
+};
 module.exports = SupplierServiceCharge;
