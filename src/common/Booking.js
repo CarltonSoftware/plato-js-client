@@ -23,6 +23,9 @@ function Booking(id) {
     entity: 'Property'
   });
 
+  this.securitydeposit = new BookingSecurityDeposit();
+  this.securitydeposit.parent = this;
+
   this.notes = new NoteFilterCollection({
     noteEntity: this,
     object: BookingNote,

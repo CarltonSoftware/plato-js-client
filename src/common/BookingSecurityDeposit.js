@@ -2,9 +2,8 @@ var Joi = require('joi');
 var SingleEntity = require('./SingleEntity');
 var OwnerChargeCode = require('./OwnerChargeCode');
 
-function BookingSecurityDeposit(bookingId, id) {
-  this.path = 'booking/' + bookingId + '/securitydeposit';
-  this.createPath = 'booking/' + bookingId + '/securitydeposit';
+function BookingSecurityDeposit(id) {
+  this.path = this.createPath = 'securitydeposit';
   this.id = id;
   this.ownerchargecode = new OwnerChargeCode();
 }
