@@ -91,6 +91,7 @@ Property.prototype.toArray = function() {
     accomodationdescription: this.accomodationdescription,
     tabspropref: this.tabspropref,
     status: this.status ? this.status.name : null,
+    rating: this.rating,
     checkinearliesttime: this.checkinearliesttime,
     checkinlatesttime: this.checkinlatesttime,
     checkouttime: this.checkouttime,
