@@ -1,6 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var Mimetype = require('./Mimetype');
 var File = require('./File');
+var Joi = require('joi');
 
 function Image(id) {
   this.path = 'image';
@@ -30,8 +31,18 @@ Image.prototype.toArray = function() {
     private: this.private,
     height: this.height,
     width: this.width,
-    alt: this.alt,
+    alt: this.alt
   };
+};
+
+Image.prototype.validSchema = function() {
+  return Joi.object().keys({
+    name: Joi.string().label('Name'),
+    weight: Joi.number().empty('').label('Weight'),
+    description: Joi.string().empty('').label('Ddescription'),
+    alt: Joi.string().label('alt Text'),
+    private: Joi.boolean()
+  });
 };
 
 module.exports = Image;

@@ -2,6 +2,7 @@ var SingleEntity = require('./SingleEntity');
 var ManagedService = require('./ManagedService');
 var Collection = require('./Collection');
 var SupplierServiceCharge = require('./SupplierServiceCharge');
+var Joi = require('joi');
 
 function PropertySupplierService(id) {
   this.path = 'service';
@@ -18,11 +19,20 @@ function PropertySupplierService(id) {
 PropertySupplierService.prototype = new SingleEntity();
 
 PropertySupplierService.prototype.toArray = function() {
-  return {  
+  return {
     fromdate: this.fromdate,
     todate: this.todate,
     serviceid: this.service.id
   };
 };
+
+PropertySupplierService.prototype.validSchema = function() {
+  return Joi.object().keys({
+    fromdate: Joi.string().required().label('Srart Date'),
+    todate: Joi.string().required().label('Finish Date'),
+    service: Joi.object().required().label('Service')
+  });
+};
+
 
 module.exports = PropertySupplierService;
