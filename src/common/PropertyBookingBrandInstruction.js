@@ -1,12 +1,12 @@
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
-var Instructiontype = require('./InstructionType');
+var InstructionType = require('./InstructionType');
 
 function PropertyBookingBrandInstruction(id) {
   this.path = 'property';
   this.createPath = 'property';
   this.id = id;
-  this.InstructionType = new Instructiontype();
+  this.instructiontype = new InstructionType();
 }
 PropertyBookingBrandInstruction.prototype = new SingleEntity();
 

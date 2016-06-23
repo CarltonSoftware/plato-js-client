@@ -9,8 +9,7 @@ InstructionType.prototype = new SingleEntity();
 
 InstructionType.prototype.toArray = function() {
   return {
-    //TODO: Add in the fields necessary to create a InstructionType
-    InstructionType: this.InstructionType,
+    instructiontype: this.instructiontype,
     description: this.description,
   };
 };
