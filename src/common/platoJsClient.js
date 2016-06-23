@@ -202,6 +202,20 @@ var platoJsClient = (function () {
         };
 
         /**
+         * Get the root endpoint
+         *
+         * @return {Promise}
+         */
+        this.getRoot = function() {
+          var client = this.createClient();
+          var req = {
+            path: '/',
+            method: 'get'
+          };
+          return client(req);
+        };
+
+        /**
          * Return the Client
          *
          * @returns {Client}
