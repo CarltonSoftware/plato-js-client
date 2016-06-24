@@ -17,7 +17,7 @@ BookingSecurityDepositWithhold.prototype.toArray = function() {
     reason: this.reason,
     helddate: this.helddate,
     tabsuserid: this.tabsuser.id,
-    agency: this.agency.id,
+    agencyid: this.agency.id,
     ownerchargebookingid: this.ownerchargebooking.id,
   };
 };

@@ -2,7 +2,7 @@ var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
 
 function BookingSecurityDepositHold(id) {
-  this.path = this.createPath = 'withhold';
+  this.path = this.createPath = 'hold';
   this.id = id;
   this.tabsuser = new EntityLink({ entity: 'TabsUser' });
 }
