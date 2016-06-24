@@ -1,10 +1,11 @@
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
 var InstructionType = require('./InstructionType');
+var Joi = require('joi');
 
-function PropertyBookingBrandInstruction(id) {
-  this.path = 'property';
-  this.createPath = 'property';
+function PropertyBookingBrandInstruction(propertyId, bookingBrandId, id) {
+  this.path = '/property/' + propertyId + '/bookingbrand/' + bookingBrandId + '/instruction';
+  this.createPath = this.path;
   this.id = id;
   this.instructiontype = new InstructionType();
 }
@@ -17,7 +18,7 @@ PropertyBookingBrandInstruction.prototype.toArray = function() {
     todate: this.todate,
     instructiontext: this.instructiontext,
     html: this.html,
-    InstructionType: this.InstructionType,
+    instructiontypeid: this.instructiontypeid,
   };
 };
 
@@ -27,7 +28,7 @@ PropertyBookingBrandInstruction.prototype.validSchema = function() {
     todate: Joi.date().required().label('To Date'),
     instructiontext: Joi.string().required().label('Instruction Text'),
     html: Joi.boolean().required().label('Html Flag'),
-    instructiontype: Joi.object().required().label('Instruction Type'),
+    instructiontypeid: Joi.number().required().label('Instruction Type'),
   });
 };
 
