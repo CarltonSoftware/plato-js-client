@@ -4,13 +4,12 @@ var OwnerChargeCode = require('./OwnerChargeCode');
 var ExchangeRateIssueRate = require('./ExchangeRateIssueRate');
 
 function OwnerCharge(id) {
-  this.path = 'ownercharge';
-  this.createPath = 'ownercharge';
+  this.path = this.createPath = 'charge';
   this.id = id;
   this.ownerchargecode = new OwnerChargeCode();
   this.exchangerate = new ExchangeRateIssueRate();
   this.booking = new EntityLink({ entity: 'Booking' });
-  this.booking = new EntityLink({ entity: 'Property' });
+  this.property = new EntityLink({ entity: 'Property' });
 }
 
 OwnerCharge.prototype = new SingleEntity();

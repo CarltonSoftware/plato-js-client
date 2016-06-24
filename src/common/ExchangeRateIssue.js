@@ -1,11 +1,12 @@
 var SingleEntity = require('./SingleEntity');
-var EntityLink = require('./EntityLink');
+var ExchangeRateIssueType = require('./ExchangeRateIssueType');
+var Currency = require('./Currency');
 
 function ExchangeRateIssue(id) {
   this.path = this.createPath = 'exchangerateissue';
   this.id = id;
-  this.type = new EntityLink({ entity: 'ExchangeRateIssueType' });
-  this.currency = new EntityLink({ entity: 'Currency' });
+  this.type = new ExchangeRateIssueType();
+  this.currency = new Currency();
 }
 
 ExchangeRateIssue.prototype = new SingleEntity();
