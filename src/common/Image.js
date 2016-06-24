@@ -40,7 +40,7 @@ Image.prototype.validSchema = function() {
     name: Joi.string().label('Name'),
     weight: Joi.number().empty('').label('Weight'),
     description: Joi.string().empty('').label('Ddescription'),
-    alt: Joi.string().label('alt Text'),
+    alt: Joi.string().empty('').label('alt Text'),
     private: Joi.boolean()
   });
 };
