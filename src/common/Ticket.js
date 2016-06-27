@@ -6,6 +6,7 @@ var TicketStatus = require('./TicketStatus');
 var TicketPriority = require('./TicketPriority');
 var TicketMessage = require('./TicketMessage');
 var TicketAttachment = require('./TicketAttachment');
+var Joi = require('joi');
 
 function Ticket(ticketID) {
   this.createPath = 'ticket';
@@ -44,16 +45,24 @@ Ticket.prototype.toArray = function() {
 
 Ticket.prototype.toCreateArray = function() {
   return {
-    ip: this.ip,
-    priority: this.priority,
+    priority: this.priority.priority,
     versionnumber: this.versionnumber,
     subject: this.subject,
-    page: this.page,
-    createddate: this.createddate,
+    tabsscreen: this.page,
     computername: this.computername,
-    tabsuser: this.tabsuser,
     ticketmessage_message: this.ticketmessage_message
   };
+};
+
+Ticket.prototype.validSchema = function() {
+  return Joi.object().keys({
+    priority: Joi.object().required().label('Priority'),
+    versionnumber: Joi.string().required().label('Version Number'),
+    subject: Joi.string().required().label('Subject'),
+    tabsscreen: Joi.string().required().label('Area affected'),
+    computername: Joi.string().required().label('Computer Name'),
+    ticketmessage_message: Joi.string().required().label('Message')
+  });
 };
 
 module.exports = Ticket;
