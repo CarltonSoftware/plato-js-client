@@ -17,7 +17,7 @@ OwnerCharge.prototype.toArray = function() {
   return {
     type: this.type,
     ownerchargecodeid: this.ownerchargecode.id,
-    description: this.description.value,
+    description: this.description,
     amountnet: this.amountnet,
     amountvat: this.amountvat,
     exchangerateid: this.exchangerate.id,
