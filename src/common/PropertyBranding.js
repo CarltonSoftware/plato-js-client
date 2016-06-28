@@ -4,6 +4,7 @@ var BrandingGroup = require('./BrandingGroup');
 var PropertyBookingBrand = require('./PropertyBookingBrand');
 var PropertyMarketingBrand = require('./PropertyMarketingBrand');
 var PropertyBrandingPrice = require('./PropertyBrandingPrice');
+var PartySizePricing = require('./PartySizePricing');
 var PropertyBrandingChangeDayTemplate = require('./PropertyBrandingChangeDayTemplate');
 var Status = require('./Status');
 var Collection = require('./Collection');
@@ -16,6 +17,11 @@ function PropertyBranding(id) {
   this.brandinggroup = new BrandingGroup();
   this.bookingbrand = new PropertyBookingBrand();
   this.marketingbrand = new PropertyMarketingBrand();
+  this.partysizepricing = new Collection({
+    object: PartySizePricing,
+    path: 'partysizepricing',
+    parent: this
+  });
   this.status = new Status();
 
   this.prices = new Collection({
@@ -44,6 +50,7 @@ PropertyBranding.prototype.setParent = function(parent) {
   this.parent = parent;
   this.bookingbrand.parent = parent;
   this.marketingbrand.parent = parent;
+  this.partysizepricing.parent = parent;
 };
 
 PropertyBranding.prototype.toArray = function() {
