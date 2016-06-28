@@ -196,13 +196,11 @@ Entity.prototype.deletePromiseResult = function(path) {
 };
 
 /**
- * Get a result from a provided path
- *
- * @param {String} path
+ * Get the entity
  *
  * @returns {Promise}
  */
-Entity.prototype.get = function(path) {
+Entity.prototype.get = function() {
   if (typeof this.path === 'undefined') {
     throw new pathNotSpecifiedError('No path specified for entity');
   }

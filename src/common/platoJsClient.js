@@ -28,6 +28,7 @@ var platoJsClient = (function () {
           mime = require('rest/interceptor/mime'),
           defaultRequest = require('rest/interceptor/defaultRequest'),
           oAuth = require('rest/interceptor/oAuth'),
+          params = require('rest/interceptor/params'),
           template = require('rest/interceptor/template'),
           host = '/',
           prefix = '',
@@ -178,6 +179,7 @@ var platoJsClient = (function () {
           return rest.wrap(mime)
             .wrap(pathPrefix, { prefix: host + prefix })
             .wrap(defaultRequest)
+            .wrap(params)
             .wrap(oAuth, {
                 clientId: clientId,
                 authorizationUrlBase: host + '/oauth/v2/auth',
