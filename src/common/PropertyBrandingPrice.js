@@ -1,5 +1,6 @@
 var SingleEntity = require('./SingleEntity');
 var PriceTypeBranding = require('./PriceTypeBranding');
+var Currency = require('./Currency');
 
 /**
  * Property branding price object
@@ -11,6 +12,7 @@ function PropertyBrandingPrice(id) {
   this.createPath = this.path;
   this.id = id;
 
+  this.currency = new Currency();
   this.pricetypebranding = new PriceTypeBranding();
 
   // Override the mutate function to set the parent on pricetypebranding element
@@ -31,7 +33,7 @@ PropertyBrandingPrice.prototype.toArray = function() {
     partysizefrom: this.partysizefrom,
     partysizeto: this.partysizeto,
     price: this.price,
-    currencycode: this.currencycode,
+    currencycode: this.currency.code,
     pricetypebranding: this.pricetypebranding,
   };
 };
