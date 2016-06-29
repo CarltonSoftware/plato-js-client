@@ -5,6 +5,9 @@ function BookingNote(id) {
   this.createPath = 'bookingnote';
   this.path = 'bookingnote';
   this.id = id;
+  this.booking = new EntityLink({
+    entity: 'Booking'
+  });
   this.note = new Note();
 }
 BookingNote.prototype = new SingleEntity();
