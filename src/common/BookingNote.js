@@ -1,5 +1,6 @@
 var SingleEntity = require('./SingleEntity');
 var Note = require('./Note');
+var EntityLink = require('./EntityLink');
 
 function BookingNote(id) {
   this.createPath = 'bookingnote';
