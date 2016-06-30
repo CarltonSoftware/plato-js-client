@@ -34,7 +34,7 @@ PropertyBrandingPrice.prototype.toArray = function() {
     partysizeto: this.partysizeto,
     price: this.price,
     currencycode: this.currency.code,
-    pricetypebranding: this.pricetypebranding,
+    pricetypebrandingid: this.pricetypebranding.id,
   };
 };
 
