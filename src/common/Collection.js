@@ -121,7 +121,7 @@ Collection.prototype.fetch = function(dependencies) {
   if (dependencies && dependencies.length) {
     return new Promise(function(resolve, reject) {
       promise.then(function(collection) {
-        return Promise.all(dependencies.map(function(dependency) {
+        Promise.all(dependencies.map(function(dependency) {
           var fetched = {};
 
           return Promise.all(collection.map(function(item) {
