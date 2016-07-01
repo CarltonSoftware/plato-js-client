@@ -33,6 +33,8 @@ PropertyBrandingPrice.prototype.toArray = function() {
     partysizefrom: this.partysizefrom,
     partysizeto: this.partysizeto,
     price: this.price,
+    band: this.band,
+    description: this.description,
     currencycode: this.currency.code,
     pricetypebrandingid: this.pricetypebranding.id,
   };
