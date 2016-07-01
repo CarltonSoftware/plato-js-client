@@ -119,19 +119,23 @@ Collection.prototype.fetch = function(dependencies) {
   );
 
   if (dependencies && dependencies.length) {
-    return promise.then(function(collection) {
-      return Promise.all(dependencies.map(function(dependency) {
-        var fetched = {};
+    return new Promise(function(resolve, reject) {
+      promise.then(function(collection) {
+        return Promise.all(dependencies.map(function(dependency) {
+          var fetched = {};
 
-        return Promise.all(collection.map(function(item) {
-          if (item[dependency].id in fetched) {
-            item[dependency] = fetched[item[dependency].id];
-          } else {
-            fetched[item[dependency].id] = item[dependency];
-            return item[dependency].get()
-          }
-        }));
-      }));
+          return Promise.all(collection.map(function(item) {
+            if (item[dependency].id in fetched) {
+              item[dependency] = fetched[item[dependency].id];
+            } else {
+              fetched[item[dependency].id] = item[dependency];
+              return item[dependency].get();
+            }
+          }));
+        })).then(function() {
+          resolve(collection);
+        });
+      });
     });
   }
 
