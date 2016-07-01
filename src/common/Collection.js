@@ -1,5 +1,6 @@
 var StaticCollection = require('./StaticCollection');
 var pathNotSpecifiedError = require('./../error/pathNotSpecified');
+var Promise = require('es6-promise').Promise;
 
 function Collection(options) {
   this.page = 1;
@@ -106,14 +107,35 @@ Collection.prototype.previousPage = function() {
 
 /**
  * Returns a promise of the fetched resource
+ * 
+ * @param {Array} dependencies - keys of subentities, if any, to get for each item in the collection, e.g. 'property'
  *
  * @returns {Collection.prototype@call;promiseResult}
  */
-Collection.prototype.fetch = function() {
-  return this.okPromiseResult(
+Collection.prototype.fetch = function(dependencies) {
+  var promise = this.okPromiseResult(
     this.getPath(),
     this.toArray()
   );
+
+  if (dependencies && dependencies.length) {
+    return promise.then(function(collection) {
+      return Promise.all(dependencies.map(function(dependency) {
+        var fetched = {};
+
+        return Promise.all(collection.map(function(item) {
+          if (item[dependency].id in fetched) {
+            item[dependency] = fetched[item[dependency].id];
+          } else {
+            fetched[item[dependency].id] = item[dependency];
+            return item[dependency].get()
+          }
+        }));
+      }));
+    });
+  }
+
+  return promise;
 };
 
 module.exports = Collection;
