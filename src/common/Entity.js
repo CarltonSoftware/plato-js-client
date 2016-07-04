@@ -34,7 +34,7 @@ Entity.prototype.mutateResponse = function(entity) {
 Entity.prototype.mutateEntity = function(entity) {
   for (var prop in entity) {
     if (entity.hasOwnProperty(prop)) {
-      if (this.hasOwnProperty(prop) && typeof this[prop] === 'object') {
+      if (this.hasOwnProperty(prop) && typeof this[prop] === 'object' && this[prop] != null) {
         if (typeof entity[prop] === 'string'
           && entity[prop].indexOf('/v2') === 0
         ) {
