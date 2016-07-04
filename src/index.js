@@ -24,7 +24,9 @@ module.exports.common.SecurityFeature = require('./common/SecurityFeature');
 module.exports.common.Setting = require('./common/Setting');
 module.exports.common.Source = require('./common/Source');
 module.exports.common.SourceCategory = require('./common/SourceCategory');
+module.exports.common.OwnerPayment = require('./common/OwnerPayment');
 module.exports.common.OwnerPaymentTerm = require('./common/OwnerPaymentTerm');
+module.exports.common.OwnerPaymentType = require('./common/OwnerPaymentType');
 module.exports.common.OwnerCharge = require('./common/OwnerCharge');
 module.exports.common.OwnerChargeCode = require('./common/OwnerChargeCode');
 
