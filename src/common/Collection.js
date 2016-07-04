@@ -125,11 +125,13 @@ Collection.prototype.fetch = function(dependencies) {
           var fetched = {};
 
           return Promise.all(collection.map(function(item) {
-            if (item[dependency].id in fetched) {
-              item[dependency] = fetched[item[dependency].id];
-            } else {
-              fetched[item[dependency].id] = item[dependency];
-              return item[dependency].get();
+            if (item[dependency]) {
+              if (item[dependency].id in fetched) {
+                item[dependency] = fetched[item[dependency].id];
+              } else {
+                fetched[item[dependency].id] = item[dependency];
+                return item[dependency].get();
+              }
             }
           }));
         })).then(function() {

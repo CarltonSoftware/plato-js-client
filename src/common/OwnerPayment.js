@@ -4,7 +4,6 @@ var EntityLink = require('./EntityLink');
 
 function OwnerPayment(id) {
   this.path = this.createPath = 'payment';
-  this.path = this.createPath = 'payment';
   this.id = id;
   this.tabsuser = new EntityLink({
     entity: 'TabsUser'
@@ -28,8 +27,10 @@ OwnerPayment.prototype.toArray = function() {
     ownerreference: this.ownerreference,
     exchangerateid: this.exchangerate.id,
     ownerpaymenttypeid: this.ownerpaymenttype.id,
+    /*
     tabsuserid: this.tabsuser.id,
-    // ownerstatementid: this.ownerstatement.id,
+    ownerstatementid: this.ownerstatement.id,
+    */
   };
 };
 
@@ -43,6 +44,7 @@ OwnerPayment.prototype.validSchema = Joi.object().keys({
   ownerreference: Joi.string().empty('').label('owner reference'),
   exchangerate: Joi.object().required().label('exchange rate'),
   ownerpaymenttype: Joi.object().required().label('owner payment type'),
+  parent: Joi.object().required()
   /*
   tabsuser: Joi.object().required(),
   ownerstatement: Joi.object().required()
