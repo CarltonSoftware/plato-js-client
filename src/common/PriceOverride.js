@@ -1,32 +1,28 @@
 var SingleEntity = require('./SingleEntity');
+var Currency = require('./Currency');
+var EntityLink = require('./EntityLink');
 
-function PriceOverride(priceTypeId, brandingId, id) {
-    this.createPath = 'pricetype';
-    this.id = id;
+function PriceOverride(id) {
+  this.path = 'price';
+  this.createPath = 'price';
+  this.id = id;
+  this.currency = new Currency();
+  this.pricetypebranding = new EntityLink({
+    entity: 'PriceTypeBranding'
+  });
 }
 PriceOverride.prototype = new SingleEntity();
 
-PriceOverride.prototype.toCreateArray = function() {
+PriceOverride.prototype.toArray = function() {
   return {
-    //TODO: Add in the fields necessary to create a PriceType
-    currency: this.currency.code,
+    type: 'Override',
     fromdate: this.fromdate,
     todate: this.todate,
-    partysizefrom: 0,
-    partysizeto: 999,
-    price: 251,
-    type: 'Override'
-  };
-};
-
-PriceOverride.prototype.toUpdateArray = function() {
-  return {
-    //TODO: Add in the fields necessary to update a PriceType
-    pricetype: this.pricetype,
-    pricingperiod: this.pricingperiod,
+    price: this.price,
+    band: this.band,
     description: this.description,
-    periods: this.periods,
-    additional: this.additional,
+    currencycode: this.currency.code,
+    pricetypebrandingid: this.pricetypebranding.id
   };
 };
 
