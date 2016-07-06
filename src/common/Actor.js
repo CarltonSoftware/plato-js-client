@@ -10,6 +10,7 @@ var Booking = require('./Booking');
 var BankAccount = require('./BankAccount');
 var ActorContactDetailOther = require('./ActorContactDetailOther');
 var ActorContactDetailAddress = require('./ActorContactDetailAddress');
+var ActorContactDetailPhone = require('./ActorContactDetailPhone');
 var ActorManagedActivity = require('./ActorManagedActivity');
 
 /**
@@ -47,8 +48,9 @@ function Actor(id) {
     parent: this,
     discriminator: 'type',
     discriminatorMap: {
-      'C': ActorContactDetailOther,
-      'P': ActorContactDetailAddress
+      C: ActorContactDetailOther,
+      P: ActorContactDetailAddress,
+      F: ActorContactDetailPhone
     }
   });
 }
