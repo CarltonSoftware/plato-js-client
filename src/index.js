@@ -77,6 +77,7 @@ module.exports.common.PropertyDocument = require('./common/PropertyDocument');
 module.exports.common.PropertyRoom = require('./common/PropertyRoom');
 module.exports.common.PropertyTarget = require('./common/PropertyTarget');
 module.exports.common.PartySizePricing = require('./common/PartySizePricing');
+module.exports.common.PartySizePrice = require('./common/PartySizePrice');
 module.exports.common.RoomType = require('./common/RoomType');
 module.exports.common.Grouping = require('./common/Grouping');
 module.exports.common.GroupingValue = require('./common/GroupingValue');
