@@ -16,14 +16,14 @@ ActorContactDetailPhone.prototype = new SingleEntity();
 
 ActorContactDetailPhone.prototype.toArray = function() {
   return {
-  	contactmethodtype: this.contactmethodtype,
-  	contactmethodsubtype: this.contactmethodsubtype,
-  	countrycode: this.countrycode,
-  	subscribernumber: this.subscribernumber,
-  	comment: this.comment,
-  	invalid: this.invalid,
-  	invaliddatetime: this.invaliddatetime,
-  	invalidreason: this.invalidreason
+    contactmethodtype: this.contactmethodtype,
+    contactmethodsubtype: this.contactmethodsubtype,
+    countrycode: this.countrycode,
+    subscribernumber: this.subscribernumber,
+    comment: this.comment,
+    invalid: this.invalid,
+    invaliddatetime: this.invaliddatetime,
+    invalidreason: this.invalidreason
   };
 };
 
