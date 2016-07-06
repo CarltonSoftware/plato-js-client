@@ -42,8 +42,8 @@ Address.prototype.toString = function() {
 Address.prototype.validSchema = function() {
   return Joi.object().keys({
     line1: Joi.string().min(3).label('Line 1'),
-    line2: Joi.string().empty('').label('Line 2'),
-    line3: Joi.string().empty('').label('Line 3'),
+    line2: Joi.string().empty('').min(3).label('Line 2'),
+    line3: Joi.string().empty('').min(3).label('Line 3'),
     town: Joi.string().min(3).label('Town'),
     county: Joi.string().min(3).label('County'),
     postcode: Joi.string().min(4).label('Postcode'),
