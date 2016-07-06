@@ -110,6 +110,7 @@ Property.prototype.toArray = function() {
 
 Property.prototype.validSchema = function () {
   return Joi.object().keys({
+    tabspropref: Joi.string(),
     name: Joi.string(),
     namequalifier: Joi.string().allow(''),
     bedrooms: Joi.number(),
