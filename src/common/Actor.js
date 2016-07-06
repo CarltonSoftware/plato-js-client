@@ -8,6 +8,7 @@ var Language = require('./Language');
 var ActorNote = require('./ActorNote');
 var Booking = require('./Booking');
 var BankAccount = require('./BankAccount');
+var ActorContactDetailPhone = require('./ActorContactDetailPhone');
 var ActorContactDetailOther = require('./ActorContactDetailOther');
 var ActorContactDetailAddress = require('./ActorContactDetailAddress');
 var ActorManagedActivity = require('./ActorManagedActivity');
@@ -48,6 +49,7 @@ function Actor(id) {
     discriminator: 'type',
     discriminatorMap: {
       'C': ActorContactDetailOther,
+      'F': ActorContactDetailPhone,
       'P': ActorContactDetailAddress
     }
   });
