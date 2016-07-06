@@ -59,6 +59,9 @@ StaticCollection.prototype.mutateResponse = function(entity) {
       object = this.options.object;
     }
 
+    if (!object) {
+      return null;
+    }
     //Create a new entity, passing in an array of parents ids to the constructor
     //http://stackoverflow.com/questions/1606797/use-of-apply-with-new-operator-is-this-possible
     var entity = new (Function.prototype.bind.apply(object, params));
