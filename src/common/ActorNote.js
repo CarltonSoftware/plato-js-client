@@ -12,14 +12,14 @@ ActorNote.prototype = new SingleEntity();
 
 ActorNote.prototype.toArray = function() {
   return {
-    actorid: this.actorid,
+    actorid: this.actor.id,
     noteid: this.note.id,
   };
 };
 
 ActorNote.prototype.toCreateArray = function() {
   return {
-    actorid: this.actorid,
+    actorid: this.actor.id,
     noteid: this.note.id,
   };
 };
