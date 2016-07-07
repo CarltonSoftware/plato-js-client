@@ -20,6 +20,7 @@ ActorContactDetailPhone.prototype.toArray = function() {
     contactmethodsubtype: this.contactmethodsubtype,
     countrycode: this.countrycode,
     subscribernumber: this.subscribernumber,
+    extension: this.extension,
     comment: this.comment,
     invalid: this.invalid,
     invaliddatetime: this.invaliddatetime,

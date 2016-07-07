@@ -10,7 +10,8 @@ Country.prototype.toArray = function() {
     return {
         name: this.name,
         alpha2: this.alpha2,
-        alpha3: this.alpha3
+        alpha3: this.alpha3,
+        phonecode: this.phonecode
     };
 };
 

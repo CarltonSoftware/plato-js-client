@@ -18,7 +18,11 @@ ActorContactDetailOther.prototype.toArray = function() {
   return {
     contactmethodsubtype: this.contactmethodsubtype,
     contactmethodtype: this.contactmethodtype,
-    value: this.value
+    value: this.value,
+    comment: this.comment,
+    invalid: this.invalid,
+    invaliddatetime: this.invaliddatetime,
+    invalidreason: this.invalidreason
   };
 };
 
