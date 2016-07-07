@@ -2,6 +2,7 @@ var SingleEntity = require('./SingleEntity');
 var Branding = require('./Branding');
 var PriceType = require('./PriceType');
 var PriceOverride = require('./PriceOverride');
+var PriceMinimum = require('./PriceMinimum');
 var SalesChannel = require('./SalesChannel');
 var StaticCollection = require('./StaticCollection');
 
@@ -16,6 +17,7 @@ function PriceTypeBranding(id) {
   this.basepricetypebranding = new Branding();
   this.percentages = new StaticCollection({ object: PriceTypeBranding });
   this.overrides = new StaticCollection({ object: PriceOverride });
+  this.minimums = new StaticCollection({ object: PriceMinimum });
 }
 PriceTypeBranding.prototype = new SingleEntity();
 
