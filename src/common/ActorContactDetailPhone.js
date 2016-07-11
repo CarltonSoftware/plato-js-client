@@ -28,4 +28,15 @@ ActorContactDetailPhone.prototype.toArray = function() {
   };
 };
 
+/**
+ * Return the formatted phone number.
+ *
+ * @returns {String}
+ */
+ActorContactDetailPhone.prototype.getFormattedNnumber = function(countryPhoneCode) {
+  var prefix = (!countryPhoneCode || countryPhoneCode != this.countrycode) ? '+'+this.countrycode+' ' : '0';
+  var extension = this.extension ? ' '+this.extension : ''
+  return prefix + this.subscribernumber + this.extension;
+};
+
 module.exports = ActorContactDetailPhone;
