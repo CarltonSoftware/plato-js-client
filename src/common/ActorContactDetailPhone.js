@@ -2,6 +2,8 @@ var SingleEntity = require('./SingleEntity');
 var Address = require('./Address');
 var Collection = require('./Collection');
 var ContactPreference = require('./ContactPreference');
+var phoneUtil = require('google-libphonenumber').PhoneNumberUtil.getInstance();
+var PNF = require('google-libphonenumber').PhoneNumberFormat;
 
 function ActorContactDetailPhone(id) {
   this.id = id;
@@ -29,14 +31,18 @@ ActorContactDetailPhone.prototype.toArray = function() {
 };
 
 /**
- * Return the formatted phone number.
+ * Return the formatted phone number in national format if it matches the default country, international otherwise
  *
  * @returns {String}
  */
-ActorContactDetailPhone.prototype.getFormattedNnumber = function(countryPhoneCode) {
-  var prefix = (!countryPhoneCode || countryPhoneCode != this.countrycode) ? '+'+this.countrycode+' ' : '0';
-  var extension = this.extension ? ' '+this.extension : ''
-  return prefix + this.subscribernumber + this.extension;
+ActorContactDetailPhone.prototype.getFormattedNumber = function(countrycode) {
+  var countryCode = countrycode ? countrycode : 'GB'; // set default if not an argument
+  var regionCode = '+'+this.countrycode;
+  var number = phoneUtil.parseAndKeepRawInput(regionCode+this.subscribernumber, '+44');
+  var value =  phoneUtil.getRegionCodeForNumber(number) == countryCode ?
+    phoneUtil.format(number, PNF.NATIONAL) : phoneUtil.format(number, PNF.INTERNATIONAL);
+
+  return value;
 };
 
 module.exports = ActorContactDetailPhone;
