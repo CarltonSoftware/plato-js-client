@@ -8,17 +8,21 @@ function ContactEntity(id) {
 ContactEntity.prototype = new SingleEntity();
 
 ContactEntity.prototype.toCreateArray = function() {
-  return {
+  var ce = {
     contactentitytype: this.contactEntityType,
     entityid: this.entityid,
     function: this.function,
     contactdetailid: this.contactdetailid,
-    status_status: this.status_status,
-    status_statusdatetime: this.status_statusdatetime,
-    status_intermediary: this.status_intermediary,
-    status_reference: this.status_reference,
-    status_detail: this.status_detail
+    intermediary: this.intermediary,
+    reference: this.reference,
+    perform_send: this.perform_send
   };
+  if (!this.perform_send) {
+    ce.status_status = this.status_status;
+    ce.status_statusdatetime = this.status_statusdatetime;
+    ce.status_detail = this.status_detail;
+  }
+  return ce;
 };
 
 module.exports = ContactEntity;

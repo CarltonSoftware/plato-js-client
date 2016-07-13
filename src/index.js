@@ -66,6 +66,7 @@ module.exports.common.PropertyCleaner = require('./common/PropertyCleaner');
 module.exports.common.PropertyKeyholder = require('./common/PropertyKeyholder');
 module.exports.common.PropertyOwner = require('./common/PropertyOwner');
 module.exports.common.PropertyNote = require('./common/PropertyNote');
+module.exports.common.PropertyNoteConfirmation = require('./common/PropertyNoteConfirmation');
 module.exports.common.PropertyDescription = require('./common/PropertyDescription');
 module.exports.common.PropertySecurityDeposit = require('./common/PropertySecurityDeposit');
 module.exports.common.PropertySupplier = require('./common/PropertySupplier');

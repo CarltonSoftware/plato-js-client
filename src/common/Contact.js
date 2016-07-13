@@ -23,6 +23,8 @@ Contact.prototype.toCreateArray = function() {
     contactmethodtype: this.contactmethodtype,
     subject: this.subject,
     sender: this.sender,
+    sendercontactdetailid: this.sendercontactdetailid,
+    sourcemarketingbrandid: this.sourcemarketingbrandid,
     status_status: this.status_status,
     status_statusdatetime: this.status_statusdatetime,
     status_intermediary: this.status_intermediary,
@@ -30,7 +32,8 @@ Contact.prototype.toCreateArray = function() {
     status_detail: this.status_detail,
     contactdatetime: this.contactdatetime,
     content: this.content,
-    deleted: false
+    deleted: false,
+    document_documentid: this.document_documentid
   };
 };
 
