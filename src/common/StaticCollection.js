@@ -430,4 +430,24 @@ StaticCollection.prototype.findOneBy = function(properties) {
   return _.findWhere(this.collection, properties);
 };
 
+/**
+ * Returns the total amount in the collection
+ *
+ * @return {number}
+ */
+StaticCollection.prototype.getTotal = function() {
+  return this.total || this.collection.length;
+};
+
+/**
+ * Returns an element of the collection
+ *
+ * @param {object} pointer
+ *
+ * @return {object}
+ */
+StaticCollection.prototype.index = function(pointer) {
+  return this.collection[pointer];
+};
+
 module.exports = StaticCollection;
