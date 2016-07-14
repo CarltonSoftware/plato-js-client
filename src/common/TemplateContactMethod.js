@@ -29,8 +29,20 @@ TemplateContactMethod.prototype.toArray = function() {
   };
 };
 
+TemplateContactMethod.prototype.getRefPath = function(ref) {
+  if (typeof ref === 'object') {
+    ref = ref.id;
+  } 
+
+  return this.parent.path + '/' + this.parent.id + '/' + this.path + '/' + this.id + '/ref/' + ref;
+};
+
+TemplateContactMethod.prototype.getRef = function(ref) {
+  return client.get(this.getRefPath(ref));
+};
+
 TemplateContactMethod.prototype.render = function(ref) {
-  return client.get(this.parent.path + '/' + this.parent.id + '/' + this.path + '/' + this.id + '/ref/' + ref + '/render');
+  return client.get(this.getRefPath(ref) + '/render');
 };
 
 module.exports = TemplateContactMethod;
