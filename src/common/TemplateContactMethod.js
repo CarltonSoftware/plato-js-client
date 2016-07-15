@@ -45,4 +45,8 @@ TemplateContactMethod.prototype.render = function(ref) {
   return client.get(this.getRefPath(ref) + '/render');
 };
 
+TemplateContactMethod.prototype.save = function(ref) {
+  return client.post(this.getRefPath(ref) + '/save');
+};
+
 module.exports = TemplateContactMethod;
