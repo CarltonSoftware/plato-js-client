@@ -4,6 +4,7 @@ var Collection = require('./Collection');
 var ContactPreference = require('./ContactPreference');
 var phoneUtil = require('google-libphonenumber').PhoneNumberUtil.getInstance();
 var PNF = require('google-libphonenumber').PhoneNumberFormat;
+var PNT = require('google-libphonenumber').PhoneNumberType;
 
 function ActorContactDetailPhone(id) {
   this.id = id;
@@ -28,6 +29,19 @@ ActorContactDetailPhone.prototype.toArray = function() {
     invaliddatetime: this.invaliddatetime,
     invalidreason: this.invalidreason
   };
+};
+
+/**
+ * Check to see if the number is a mobile or not.
+ *
+ * @returns {Boolean}
+ */
+ActorContactDetailPhone.prototype.isMobileNumber = function() {
+  var regionCode = '+'+this.countrycode;
+  var number = phoneUtil.parseAndKeepRawInput(regionCode+this.subscribernumber, '+44');
+  var value = phoneUtil.getNumberType(number) == PNT.MOBILE;
+
+  return value;
 };
 
 /**
