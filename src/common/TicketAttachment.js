@@ -1,9 +1,9 @@
 var SingleEntity = require('./SingleEntity');
 var File = require('./File');
 
-function TicketAttachment(ticketId, id) {
-  this.path = 'ticket/' + ticketId + '/message';
-  this.createPath = 'ticket/' + ticketId + '/message';
+function TicketAttachment(id) {
+  this.path = 'attachment';
+  this.createPath = 'attachment';
   this.id = id;
   this.filedata = new File();
 }

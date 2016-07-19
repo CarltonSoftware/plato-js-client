@@ -31,38 +31,45 @@ Ticket.prototype = new SingleEntity();
 
 Ticket.prototype.toArray = function() {
   return {
-    ip: this.ip,
-    completiontime: this.completiontime,
+    priority: this.priority.priority,
     versionnumber: this.versionnumber,
     subject: this.subject,
-    page: this.page,
-    read: this.read,
-    createddate: this.createddate,
+    tabsscreen: this.tabsscreen,
     computername: this.computername,
-    tabsuser: this.tabsuser
+    status: this.status.status
   };
 };
 
 Ticket.prototype.toCreateArray = function() {
-  return {
-    priority: this.priority.priority,
-    versionnumber: this.versionnumber,
-    subject: this.subject,
-    tabsscreen: this.page,
-    computername: this.computername,
-    ticketmessage_message: this.ticketmessage_message
-  };
+  var data = this.toArray();
+  data.ticketmessage_message = this.ticketmessage_message;
+
+  return data;
 };
 
-Ticket.prototype.validSchema = function() {
-  return Joi.object().keys({
+Ticket.prototype.schema = function() {
+  return {
     priority: Joi.object().required().label('Priority'),
     versionnumber: Joi.string().required().label('Version Number'),
     subject: Joi.string().required().label('Subject'),
     tabsscreen: Joi.string().required().label('Area affected'),
-    computername: Joi.string().required().label('Computer Name'),
-    ticketmessage_message: Joi.string().required().label('Message')
-  });
+    computername: Joi.string().required().label('Computer Name')
+  };
+};
+
+Ticket.prototype.createSchema = function() {
+  var schema = this.schema();
+  schema.ticketmessage_message = Joi.string().required().label('Message');
+
+  return schema;
+};
+
+Ticket.prototype.validSchema = function() {
+  if (this.id) {
+    return Joi.object().keys(this.schema());
+  } else {
+    return Joi.object().keys(this.createSchema());
+  }
 };
 
 module.exports = Ticket;
