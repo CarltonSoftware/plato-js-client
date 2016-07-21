@@ -215,11 +215,12 @@ module.exports.common.DepositAmountType = require('./common/DepositAmountType');
 // Tickets
 module.exports.common.Ticket = require('./common/Ticket');
 module.exports.common.TicketAttachment = require('./common/TicketAttachment');
-module.exports.common.TicketCustomer = require('./common/TicketCustomer');
+module.exports.common.TicketBrand = require('./common/TicketBrand');
 module.exports.common.TicketMessage = require('./common/TicketMessage');
 module.exports.common.TicketPriority = require('./common/TicketPriority');
 module.exports.common.TicketStatus = require('./common/TicketStatus');
 module.exports.common.TicketUser = require('./common/TicketUser');
+module.exports.common.TicketTerm = require('./common/TicketTerm');
 
 module.exports.StaticCollection = require('./common/StaticCollection');
 module.exports.Collection = require('./common/Collection');

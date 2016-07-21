@@ -1,7 +1,8 @@
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
 var TicketUser = require('./TicketUser');
-var TicketCustomer = require('./TicketCustomer');
+var TicketBrand = require('./TicketBrand');
+var TicketTerm = require('./TicketTerm');
 var TicketStatus = require('./TicketStatus');
 var TicketPriority = require('./TicketPriority');
 var TicketMessage = require('./TicketMessage');
@@ -13,7 +14,7 @@ function Ticket(ticketID) {
   this.path = 'ticket';
   this.id = ticketID;
   this.ticketuser = new TicketUser();
-  this.ticketcustomer = new TicketCustomer();
+  this.brand = new TicketBrand();
   this.status = new TicketStatus();
   this.priority = new TicketPriority();
   this.messages = new Collection({
@@ -24,6 +25,11 @@ function Ticket(ticketID) {
   this.attachments = new Collection({
     object: TicketAttachment,
     path: 'attachement',
+    parent: this
+  });
+  this.terms = new Collection({
+    object: TicketTerm,
+    path: 'term',
     parent: this
   });
 }
@@ -42,6 +48,7 @@ Ticket.prototype.toArray = function() {
 
 Ticket.prototype.toCreateArray = function() {
   var data = this.toArray();
+  data.brandcode = this.brand.brandcode;
   data.ticketmessage_message = this.ticketmessage_message;
 
   return data;
