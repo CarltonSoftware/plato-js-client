@@ -14,6 +14,7 @@ var PropertyOwnerPaymentTerm = require('./PropertyOwnerPaymentTerm');
 var PropertyCommission = require('./PropertyCommission');
 var PropertyNote = require('./PropertyNote');
 var NoteFilterCollection = require('./NoteFilterCollection');
+var PropertyHouskeeping = require('./PropertyHouskeeping');
 var Joi = require('joi');
 
 function Property(id) {
@@ -78,6 +79,7 @@ function Property(id) {
   });
 
   this.address = new PropertyAddress(id);
+  this.houskeeping = new PropertyHouskeeping();
 }
 Property.prototype = new SingleEntity();
 Property.prototype.toArray = function() {
@@ -91,7 +93,6 @@ Property.prototype.toArray = function() {
     accomodationdescription: this.accomodationdescription,
     tabspropref: this.tabspropref,
     status: this.status ? this.status.name : null,
-    rating: this.rating,
     checkinearliesttime: this.checkinearliesttime,
     checkinlatesttime: this.checkinlatesttime,
     checkouttime: this.checkouttime,
