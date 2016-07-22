@@ -26,7 +26,14 @@ Address.prototype.toArray = function() {
   };
 };
 
-Address.prototype.toString = function() {
+/**
+ * Returns a string representation of an address
+ *
+ * @param {?string} glue - a string to place between each line instead of ', '
+ *
+ * @return {string}
+ */
+Address.prototype.toString = function(glue) {
   return [
     this.line1,
     this.line2,
@@ -36,7 +43,7 @@ Address.prototype.toString = function() {
     this.postcode
   ].filter(function(line) {
     return line !== '';
-  }).join(', ');
+  }).join(glue || ', ');
 };
 
 Address.prototype.validSchema = function() {

@@ -203,6 +203,7 @@ module.exports.common.TextSubstitution = require('./common/TextSubstitution');
 module.exports.common.TriggerEvent = require('./common/TriggerEvent');
 module.exports.common.LabelTemplate = require('./common/LabelTemplate');
 module.exports.common.LabelTemplatePaperSize = require('./common/LabelTemplatePaperSize');
+module.exports.common.LabelQueue = require('./common/LabelQueue');
 
 // ChangeDayRules
 module.exports.common.ChangeDayTemplate = require('./common/ChangeDayTemplate');
