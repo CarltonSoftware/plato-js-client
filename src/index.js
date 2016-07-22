@@ -221,6 +221,7 @@ module.exports.common.TicketPriority = require('./common/TicketPriority');
 module.exports.common.TicketStatus = require('./common/TicketStatus');
 module.exports.common.TicketUser = require('./common/TicketUser');
 module.exports.common.TicketTerm = require('./common/TicketTerm');
+module.exports.common.TicketHistory = require('./common/TicketHistory');
 
 module.exports.StaticCollection = require('./common/StaticCollection');
 module.exports.Collection = require('./common/Collection');

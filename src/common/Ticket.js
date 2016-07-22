@@ -1,11 +1,13 @@
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
+var StaticCollection = require('./StaticCollection');
 var TicketUser = require('./TicketUser');
 var TicketBrand = require('./TicketBrand');
 var TicketTerm = require('./TicketTerm');
 var TicketStatus = require('./TicketStatus');
 var TicketPriority = require('./TicketPriority');
 var TicketMessage = require('./TicketMessage');
+var TicketHistory = require('./TicketHistory');
 var TicketAttachment = require('./TicketAttachment');
 var Joi = require('joi');
 
@@ -32,7 +34,13 @@ function Ticket(ticketID) {
     path: 'term',
     parent: this
   });
+  this.history = new StaticCollection({
+    object: TicketHistory,
+    path: 'term',
+    parent: this
+  });
 }
+
 Ticket.prototype = new SingleEntity();
 
 Ticket.prototype.toArray = function() {
