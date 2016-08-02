@@ -12,6 +12,7 @@ var _ = require('underscore');
 function StaticCollection(options) {
   this.options = options || {};
   this.collection = [];
+  this.loaded = false;
 }
 
 /**
@@ -85,6 +86,8 @@ StaticCollection.prototype.mutateResponse = function(entity) {
   if (typeof this.postResponse === 'function') {
     this.postResponse.bind(this).call();
   }
+
+  this.loaded = true;
 
   return this;
 };
