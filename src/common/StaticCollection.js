@@ -100,9 +100,7 @@ StaticCollection.prototype.mutateResponse = function(entity) {
 * @returns {Entity}
 */
 StaticCollection.prototype.getEntityById = function(id) {
-  return _.find(this.collection, function(item) {
-    return item.id === id;
-  });
+  return this.findWhere({ id: id });
 };
 
 /**
@@ -400,21 +398,31 @@ StaticCollection.prototype.sortBy = function(field, order) {
 
 
 /**
- * Finds entities using a function
+ * The same as filter, but with a more misleading name
  *
- * @param  function predicate [description]
+ * @param  function predicate
  *
  * @return array An array of entities that match the given predicate
  */
 StaticCollection.prototype.find = function(predicate) {
-  return _.filter(this.collection, predicate) || [];
+  return this.filter(predicate);
 };
 
+/**
+ * Finds an entity using a function
+ *
+ * @param  function predicate
+ *
+ * @return Object The first entity for which the predicate returns true
+ */
+StaticCollection.prototype.findOne = function(predicate) {
+  return _.find(this.collection, predicate);
+};
 
 /**
  * Finds entities that match the given properties
  *
- * @param Object properties eg. { id: 6 }
+ * @param Object properties eg. { status: 'Confirmed' }
  *
  * @return array An array of entities that match the given properties
  */
