@@ -100,7 +100,7 @@ StaticCollection.prototype.mutateResponse = function(entity) {
 * @returns {Entity}
 */
 StaticCollection.prototype.getEntityById = function(id) {
-  return this.findWhere({ id: id });
+  return this.findOneBy({ id: id });
 };
 
 /**
