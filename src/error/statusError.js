@@ -1,6 +1,6 @@
 function statusError(response) {
   this.name = 'statusError';
-  this.message = 'Entity not found';
+  this.message = 'Server error';
   this.statusCode = response.status.code;
 
   if (typeof response.entity === 'object' && response.entity.hasOwnProperty('errorDescription')) {

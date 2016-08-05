@@ -12,17 +12,19 @@ ChangeDayTemplateRule.prototype = new SingleEntity();
 ChangeDayTemplateRule.prototype.toArray = function() {
   var array = {
     ruleorder: this.ruleorder,
-    everysaturday: this.everysaturday ? 'true' : 'false',
-    everysunday: this.everysunday ? 'true' : 'false',
-    everymonday: this.everymonday ? 'true' : 'false',
-    everytuesday: this.everytuesday ? 'true' : 'false',
-    everywednesday: this.everywednesday ? 'true' : 'false',
-    everythursday: this.everythursday ? 'true' : 'false',
-    everyfriday: this.everyfriday ? 'true' : 'false',
-    isfromdate: this.isfromdate ? 'true' : 'false',
-    istodate: this.istodate ? 'true' : 'false',
-    isnotfromdate: this.isnotfromdate ? 'true' : 'false',
-    isnottodate: this.isnottodate ? 'true' : 'false',
+    everysaturday: this.everysaturday,
+    everysunday: this.everysunday,
+    everymonday: this.everymonday,
+    everytuesday: this.everytuesday,
+    everywednesday: this.everywednesday,
+    everythursday: this.everythursday,
+    everyfriday: this.everyfriday,
+    isfromdate: this.isfromdate,
+    istodate: this.istodate,
+    isnotfromdate: this.isnotfromdate,
+    isnottodate: this.isnottodate,
+    ispriceanchor: this.ispriceanchor,
+    isnotpriceanchor: this.isnotpriceanchor,
     showonavailability : this.showonavailability,
     minumumholiday: this.minimumholiday,
     daysbeforeeaster: this.daysbeforeeaster,
@@ -49,26 +51,28 @@ ChangeDayTemplateRule.prototype.toArray = function() {
 
 ChangeDayTemplateRule.prototype.validSchema = function() {
     return Joi.object().keys({
-    ruleorder: Joi.number().integer().required('ruleorder'),
-    everysaturday: Joi.boolean().label('everysaturday'),
-    everysunday: Joi.boolean().label('everysunday'),
-    everymonday: Joi.boolean().label('everymonday'),
-    everytuesday: Joi.boolean().label('everytuesday'),
-    everywednesday: Joi.boolean().label('everywednesday'),
-    everythursday: Joi.boolean().label('everythursday'),
-    everyfriday: Joi.boolean().label('everyfriday'),
-    fromdate: Joi.string().allow('').optional().label('fromdate'), // TODO: If present must be within the template bounds
-    todate: Joi.string().allow('').optional().label('todate'), // TODO: If present must be within the template bounds
-    isfromdate: Joi.boolean().label('isfromdate'),
-    istodate: Joi.boolean().label('istodate'),
-    isnotfromdate: Joi.boolean().label('isnotfromdate'),
-    isnottodate: Joi.boolean().label('isnottodate'),
-    withindays: Joi.number().allow('').optional().label('withindays'),
-    unlessholidayatleast: Joi.string().allow('').optional().label('unlessholidayatleast'),
-    showonavailability: Joi.boolean().label('showonavailability'),
-    daysbeforeeaster: Joi.number().allow('').optional().label('daysbeforeeaster'),
-    daysaftereaster: Joi.number().allow('').optional().label('daysaftereaster'),
-    minimumholiday: Joi.number().allow('').optional().label('minimumholiday')
+    ruleorder: Joi.number().integer().required('rule order'),
+    everysaturday: Joi.boolean().label('every Saturday'),
+    everysunday: Joi.boolean().label('every Sunday'),
+    everymonday: Joi.boolean().label('every Monday'),
+    everytuesday: Joi.boolean().label('every Tuesday'),
+    everywednesday: Joi.boolean().label('every Wednesday'),
+    everythursday: Joi.boolean().label('every Thursday'),
+    everyfriday: Joi.boolean().label('every Friday'),
+    fromdate: Joi.string().allow('').optional().label('from date'), // TODO: If present must be within the template bounds
+    todate: Joi.string().allow('').optional().label('to date'), // TODO: If present must be within the template bounds
+    isfromdate: Joi.boolean().label('is from date'),
+    istodate: Joi.boolean().label('is to date'),
+    isnotfromdate: Joi.boolean().label('is not from date'),
+    isnottodate: Joi.boolean().label('is not to date'),
+    ispriceanchor: Joi.boolean().label('is price anchor'),
+    isnotpriceanchor: Joi.boolean().label('is not price anchor'),
+    withindays: Joi.number().allow('').optional().label('within days'),
+    unlessholidayatleast: Joi.string().allow('').optional().label('unless holiday at least'),
+    showonavailability: Joi.boolean().label('show on availability'),
+    daysbeforeeaster: Joi.number().allow('').optional().label('days before Easter'),
+    daysaftereaster: Joi.number().allow('').optional().label('days after Easter'),
+    minimumholiday: Joi.number().allow('').optional().label('minimum holiday')
   });
 };
 

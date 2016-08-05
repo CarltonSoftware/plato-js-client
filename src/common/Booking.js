@@ -94,9 +94,9 @@ Booking.prototype.toArray = function() {
     cancelledbooking_completeddate: this.cancelledbooking_completeddate,
     cancelledbooking_completedbytabsuserid: this.cancelledbooking_completedbytabsuserid,
     /* Security Deposit */
-    bookingsecuritydeposit_amount: this.bookingsecuritydeposit_amount,
-    bookingsecuritydeposit_dueindate: this.bookingsecuritydeposit_dueindate,
-    bookingsecuritydeposit_dueoutdate: this.bookingsecuritydeposit_dueoutdate
+    securitydeposit_amount: this.securitydeposit_amount,
+    securitydeposit_dueindate: this.securitydeposit_dueindate,
+    securitydeposit_dueoutdate: this.securitydeposit_dueoutdate
   };
 
   // Transferred */
