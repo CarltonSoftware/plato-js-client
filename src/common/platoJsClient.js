@@ -1,9 +1,12 @@
 var _ = require('underscore');
 
-if (typeof localStorage === "undefined" || localStorage === null) {
+if (typeof localStorage === 'undefined') {
   var LocalStorage = require('node-localstorage').LocalStorage;
   localStorage = new LocalStorage('./scratch');
 }
+if (typeof widow === 'undefined') {
+  window = {};
+};
 
 var platoJsClient = (function () {
 
