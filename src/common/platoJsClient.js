@@ -4,7 +4,7 @@ if (typeof localStorage === 'undefined') {
   var LocalStorage = require('node-localstorage').LocalStorage;
   localStorage = new LocalStorage('./scratch');
 }
-if (typeof widow === 'undefined') {
+if (typeof window === 'undefined') {
   window = {};
 };
 
