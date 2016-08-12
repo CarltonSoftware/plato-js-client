@@ -8,31 +8,8 @@ function PropertySecurityDeposit(propertyId, id) {
 }
 PropertySecurityDeposit.prototype = new SingleEntity();
 
-PropertySecurityDeposit.prototype.toCreateArray = function() {
+PropertySecurityDeposit.prototype.toArray = function() {
   return {
-    //TODO: Add in the fields necessary to create a PropertySecurityDeposit
-    bookedfromdate: this.bookedfromdate,
-    bookedtodate: this.bookedtodate,
-    holidayfromdate: this.holidayfromdate,
-    holidaytodate: this.holidaytodate,
-    amount: this.amount,
-    currencycode: this.currency.code,
-    daysdue: this.daysdue,
-    refundable: this.refundable,
-    peradult: this.peradult,
-    perchild: this.perchild,
-    perinfant: this.perinfant,
-    perperiod: this.perperiod,
-    pricingperiod: this.pricingperiod,
-    minimumdays: this.minimumdays,
-    maximumdays: this.maximumdays,
-    comments: this.comments
-  };
-};
-
-PropertySecurityDeposit.prototype.toUpdateArray = function() {
-  return {
-    //TODO: Add in the fields necessary to update a PropertySecurityDeposit
     bookedfromdate: this.bookedfromdate,
     bookedtodate: this.bookedtodate,
     holidayfromdate: this.holidayfromdate,
@@ -71,7 +48,7 @@ PropertySecurityDeposit.prototype.validSchema = function() {
     pricingperiod: Joi.string().required().label('Pricing Period'),
     minimumdays: Joi.string().required().label('Minimum Days'),
     maximumdays: Joi.string().required().label('Maximum Days'),
-    comments: Joi.string().required().label('Comments')
+    comments: Joi.string().empty('').label('Comments')
   });
 };
 
