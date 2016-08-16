@@ -7,7 +7,7 @@ var ChangeDayTemplate = require('./ChangeDayTemplate.js');
  */
 function PropertyBrandingChangeDayTemplate(propertyid, brandingid, id) {
   this.path = 'changedaytemplate';
-  this.createPath = 'property/' + propertyid + '/branding/' + brandingid + '/changedaytemplate';
+  this.createPath = this.path;
   this.id = id;
   this.changedaytemplate = new ChangeDayTemplate();
 
