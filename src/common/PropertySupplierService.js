@@ -29,7 +29,9 @@ PropertySupplierService.prototype.toArray = function() {
   return {
     fromdate: this.fromdate,
     todate: this.todate,
-    serviceid: this.service.id
+    serviceid: this.service.id,
+    customerbookings: this.customerbookings,
+    ownerbookings: this.ownerbookings
   };
 };
 
@@ -37,7 +39,9 @@ PropertySupplierService.prototype.validSchema = function() {
   return Joi.object().keys({
     fromdate: Joi.string().required().label('Srart Date'),
     todate: Joi.string().required().label('Finish Date'),
-    service: Joi.object().required().label('Service')
+    service: Joi.object().required().label('Service'),
+    customerbookings: Joi.boolean().required().label('Customer bookings'),
+    ownerbookings: Joi.boolean().required().label('Owner bookings')
   });
 };
 
