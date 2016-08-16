@@ -146,6 +146,11 @@ module.exports.common.NoteText = require('./common/NoteText');
 module.exports.common.NoteType = require('./common/NoteType');
 module.exports.common.NoteActor = require('./common/NoteActor');
 
+// Payment Related Objects
+module.exports.common.ActorPaymentRefund = require('./common/ActorPaymentRefund');
+module.exports.common.BookingRefund = require('./common/BookingRefund');
+module.exports.common.PaymentMethod = require('./common/PaymentMethod');
+
 // Search
 module.exports.common.Search = require('./common/Search');
 
