@@ -2,6 +2,7 @@ var SingleEntity = require('./SingleEntity');
 var ManagedService = require('./ManagedService');
 var Collection = require('./Collection');
 var SupplierServiceCharge = require('./SupplierServiceCharge');
+var SupplierServiceEvent = require('./SupplierServiceEvent');
 var Joi = require('joi');
 
 function PropertySupplierService(id) {
@@ -13,6 +14,12 @@ function PropertySupplierService(id) {
   this.charges = new Collection({
     object: SupplierServiceCharge,
     path: 'charge',
+    parent: this
+  });
+
+  this.events = new Collection({
+    object: SupplierServiceEvent,
+    path: 'bookingevent',
     parent: this
   });
 }
