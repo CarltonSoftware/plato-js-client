@@ -40,22 +40,22 @@ function Booking(id) {
   this.documents = new Collection({
     object: BookingDocument,
     path: 'document',
-    parents: [this]
+    parent: this
   });
   this.guests = new Collection({
     object: BookingGuest,
     path: 'guest',
-    parents: [this]
+    parent: this
   });
   this.customers = new Collection({
     object: BookingCustomer,
     path: 'customer',
-    parents: [this]
+    parent: this
   });
   this.suppliers = new Collection({
     object: BookingSupplier,
     path: 'supplier',
-    parents: [this]
+    parent: this
   });
 }
 Booking.prototype = new SingleEntity();
