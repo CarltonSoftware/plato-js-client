@@ -194,6 +194,7 @@ module.exports.common.RoleReason = require('./common/RoleReason');
 
 // Property Pricing
 module.exports.common.PropertyBrandingPrice = require('./common/PropertyBrandingPrice');
+module.exports.common.PropertyBrandingExtraPricing = require('./common/PropertyBrandingExtraPricing');
 
 // Communications
 module.exports.common.ContactMethodElement = require('./common/ContactMethodElement');

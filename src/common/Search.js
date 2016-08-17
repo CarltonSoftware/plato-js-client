@@ -1,16 +1,35 @@
 var Customer = require('./Customer');
+var Owner = require('./Owner');
+var Supplier = require('./Supplier');
+var Property = require('./Property');
 var Collection = require('./Collection');
 
-function Search(page, limit, category, searchterm) {
-    this.path = 'search';
-    this.options.path = 'search';
-    this.options.object = Customer;
-    
-    this.page = typeof page !== 'undefined' ? page : null;
-    this.limit = typeof limit !== 'undefined' ? limit : null;
-    this.category = typeof category !== 'undefined' ? category : null;
-    this.searchterm = typeof searchterm !== 'undefined' ? searchterm : null;
+function Search(searchterm, category, page, limit) {
+  this.searchterm = searchterm;
+  this.category = category;
+  this.page = page;
+  this.limit = limit;
+
+  this.options = {
+    path: 'search',
+    discriminator: 'type',
+    discriminatorMap: {
+      Customer: Customer,
+      Owner: Owner,
+      Supplier: Supplier,
+      Property: Property
+    }
+  };
 }
 Search.prototype = new Collection();
+
+Search.prototype.toArray = function() {
+  return {
+    searchterm: this.searchterm,
+    category: this.category,
+    page: this.page,
+    limit: this.limit,
+  };
+};
 
 module.exports = Search;
