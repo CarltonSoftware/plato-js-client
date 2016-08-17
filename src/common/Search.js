@@ -4,11 +4,11 @@ var Supplier = require('./Supplier');
 var Property = require('./Property');
 var Collection = require('./Collection');
 
-function Search(page, limit, category, searchterm) {
+function Search(searchterm, category, page, limit) {
+  this.searchterm = searchterm;
+  this.category = category;
   this.page = page;
   this.limit = limit;
-  this.category = category;
-  this.searchterm = searchterm;
 
   this.options = {
     path: 'search',
@@ -22,5 +22,14 @@ function Search(page, limit, category, searchterm) {
   };
 }
 Search.prototype = new Collection();
+
+Search.prototype.toArray = function() {
+  return {
+    searchterm: this.searchterm,
+    category: this.category,
+    page: this.page,
+    limit: this.limit,
+  };
+};
 
 module.exports = Search;
