@@ -55,7 +55,6 @@ module.exports.common.Owner = require('./common/Owner');
 module.exports.common.Office = require('./common/Office');
 module.exports.common.Supplier = require('./common/Supplier');
 module.exports.common.SupplierServiceCharge = require('./common/SupplierServiceCharge');
-module.exports.common.SupplierServiceEvent = require('./common/SupplierServiceEvent');
 
 // Property Related Objects
 module.exports.common.Properties = require('./common/Properties');
@@ -111,7 +110,6 @@ module.exports.common.Booking = require('./common/Booking');
 module.exports.common.BookingCustomer = require('./common/BookingCustomer');
 module.exports.common.BookingEnquiry = require('./common/BookingEnquiry');
 module.exports.common.BookingExtra = require('./common/BookingExtra');
-module.exports.common.BookingEvent = require('./common/BookingEvent');
 module.exports.common.BookingDocument = require('./common/BookingDocument');
 module.exports.common.BookingGuest = require('./common/BookingGuest');
 module.exports.common.BookingNote = require('./common/BookingNote');
@@ -147,8 +145,6 @@ module.exports.common.NoteType = require('./common/NoteType');
 module.exports.common.NoteActor = require('./common/NoteActor');
 
 // Payment Related Objects
-module.exports.common.ActorPaymentRefund = require('./common/ActorPaymentRefund');
-module.exports.common.BookingRefund = require('./common/BookingRefund');
 module.exports.common.PaymentMethod = require('./common/PaymentMethod');
 
 // Search
@@ -194,6 +190,7 @@ module.exports.common.RoleReason = require('./common/RoleReason');
 
 // Property Pricing
 module.exports.common.PropertyBrandingPrice = require('./common/PropertyBrandingPrice');
+module.exports.common.PropertyBrandingExtraPricing = require('./common/PropertyBrandingExtraPricing');
 
 // Communications
 module.exports.common.ContactMethodElement = require('./common/ContactMethodElement');
