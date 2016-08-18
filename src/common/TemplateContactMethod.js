@@ -34,7 +34,7 @@ TemplateContactMethod.prototype.getRefPath = function(ref) {
     ref = ref.id;
   } 
 
-  return this.parent.path + '/' + this.parent.id + '/' + this.path + '/' + this.id + '/ref/' + ref;
+  return [this.parent.path, this.parent.id, this.path, this.id, 'ref', ref].join('/');
 };
 
 TemplateContactMethod.prototype.getRef = function(ref) {
