@@ -20,6 +20,7 @@ TemplateElement.prototype.toArray = function() {
     contactmethodelementid: this.contactmethodelement.id,
     textitemid: this.textitem.id,
     text: this.text,
+    heightinmm: this.heightinmm
   };
 };
 
