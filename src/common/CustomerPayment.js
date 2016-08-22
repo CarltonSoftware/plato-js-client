@@ -18,7 +18,10 @@ CustomerPayment.prototype.toCreateArray = function() {
     reference: this.reference,
     paymentmethodid: this.paymentmethod.id,
     amount: this.amount,
-    currencyid: this.currency.id
+    currencyid: this.currency.id,
+    bookingid: this.booking.id,
+    bookingamount: this.bookingamount,
+    securitydepositamount: this.securitydepositamount
   };
   return array;
 };
