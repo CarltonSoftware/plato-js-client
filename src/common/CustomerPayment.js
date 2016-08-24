@@ -16,10 +16,10 @@ CustomerPayment.prototype.toCreateArray = function() {
   var array = {
     paymentdatetime: this.paymentdatetime,
     reference: this.reference,
-    paymentmethodid: this.paymentmethod.id,
+    paymentmethodid: this.paymentmethodid,
     amount: this.amount,
-    currencyid: this.currency.id,
-    bookingid: this.booking.id,
+    currencyid: this.currencyid,
+    bookingid: this.bookingid,
     bookingamount: this.bookingamount,
     securitydepositamount: this.securitydepositamount
   };
