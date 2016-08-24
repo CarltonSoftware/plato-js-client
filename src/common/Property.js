@@ -83,7 +83,7 @@ function Property(id) {
 }
 Property.prototype = new SingleEntity();
 Property.prototype.toArray = function() {
-  return {
+  var prop = {
     id: this.id,
     name: this.name,
     namequalifier: this.namequalifier,
@@ -93,9 +93,6 @@ Property.prototype.toArray = function() {
     accomodationdescription: this.accomodationdescription,
     tabspropref: this.tabspropref,
     status: this.status ? this.status.name : null,
-    checkinearliesttime: this.checkinearliesttime,
-    checkinlatesttime: this.checkinlatesttime,
-    checkouttime: this.checkouttime,
     telephonenumber: this.telephonenumber,
     address_line1: this.address.line1,
     address_line2: this.address.line2,
@@ -107,6 +104,16 @@ Property.prototype.toArray = function() {
     address_latitude: this.address.latitude,
     address_longitude: this.address.longitude
   };
+  if (this.checkinearliesttime) {
+    prop.checkinearliesttime = this.checkinearliesttime;
+  }
+  if (this.checkinlatesttime) {
+    prop.checkinlatesttime = this.checkinlatesttime;
+  }
+  if (this.checkouttime) {
+    prop.checkouttime = this.checkouttime;
+  }
+  return prop;
 };
 
 Property.prototype.validSchema = function () {
