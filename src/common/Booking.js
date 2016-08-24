@@ -1,6 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
 var Collection = require('./Collection');
+var StaticCollection = require('./StaticCollection');
 var Currency = require('./Currency');
 var BookingCustomer = require('./BookingCustomer');
 var BookingDocument = require('./BookingDocument');
@@ -52,10 +53,13 @@ function Booking(id) {
     path: 'customer',
     parent: this
   });
-  this.suppliers = new Collection({
+  this.bookingsuppliers = new Collection({
     object: BookingSupplier,
     path: 'supplier',
     parent: this
+  });
+  this.suppliers = new StaticCollection({
+    object: BookingSupplier
   });
 }
 Booking.prototype = new SingleEntity();
