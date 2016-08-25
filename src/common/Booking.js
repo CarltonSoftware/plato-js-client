@@ -10,6 +10,7 @@ var BookingSecurityDeposit = require('./BookingSecurityDeposit');
 var BookingSupplier = require('./BookingSupplier');
 var BookingNote = require('./BookingNote');
 var NoteFilterCollection = require('./NoteFilterCollection');
+var WebBooking = require('./WebBooking');
 
 function Booking(id) {
   this.path = 'booking';
@@ -61,6 +62,8 @@ function Booking(id) {
   this.suppliers = new StaticCollection({
     object: BookingSupplier
   });
+
+  this.webbooking = new WebBooking();
 }
 Booking.prototype = new SingleEntity();
 Booking.prototype.toArray = function() {
@@ -77,13 +80,17 @@ Booking.prototype.toArray = function() {
     checkinlatesttime: this.checkinlatesttime,
     checkouttime: this.checkouttime,
     promotioncode: this.promotioncode,
+
     /* Web Booking */
-    webbooking_createddatetime: this.webbooking_createddatetime,
-    webbooking_reviewstartdatetime: this.webbooking_reviewstartdatetime,
-    webbooking_reviewingtabsuserid: this.webbooking_reviewingtabsuserid,
+    webbooking_createddatetime: this.webbooking.createddatetime,
+    webbooking_reviewstartdatetime: this.webbooking.reviewstartdatetime,
+    webbooking_processeddatetime: this.webbooking.processeddatetime,
+    webbooking_reviewingtabsuserid: this.webbooking.reviewer.id,
+
     /* Potential Booking */
     potentialbooking_type: this.potentialbooking_type,
     potentialbooking_expirydatetime: this.potentialbooking_expirydatetime,
+
     /* Provisional Booking */
     provisionalbooking_depositamountid: this.provisionalbooking_depositamountid,
     provisionalbooking_deposit: this.provisionalbooking_deposit,
@@ -92,16 +99,22 @@ Booking.prototype.toArray = function() {
     provisionalbooking_commissionpercentage: this.provisionalbooking_commissionpercentage,
     provisionalbooking_ownerpaymenttermsid: this.provisionalbooking_ownerpaymenttermsid,
     provisionalbooking_tabsuserid: this.provisionalbooking_tabsuserid,
+
     /* Cancelled */
     cancelledbooking_reason: this.cancelledbooking_reason,
     cancelledbooking_adviseddate: this.cancelledbooking_adviseddate,
     cancelledbooking_completeddate: this.cancelledbooking_completeddate,
     cancelledbooking_completedbytabsuserid: this.cancelledbooking_completedbytabsuserid,
+    
     /* Security Deposit */
     securitydeposit_amount: this.securitydeposit_amount,
     securitydeposit_dueindate: this.securitydeposit_dueindate,
     securitydeposit_dueoutdate: this.securitydeposit_dueoutdate
   };
+
+  if (this.brochureprice && this.brochureprice == 'true') {
+    array.brochureprice = 'true';
+  }
 
   // Transferred */
   if (this.transferredtobooking) {
