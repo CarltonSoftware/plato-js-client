@@ -23,6 +23,7 @@ module.exports.common.Mimetype = require('./common/Mimetype');
 module.exports.common.SecurityFeature = require('./common/SecurityFeature');
 module.exports.common.Setting = require('./common/Setting');
 module.exports.common.Source = require('./common/Source');
+module.exports.common.Status = require('./common/Status');
 module.exports.common.SourceCategory = require('./common/SourceCategory');
 module.exports.common.OwnerPayment = require('./common/OwnerPayment');
 module.exports.common.OwnerPaymentTerm = require('./common/OwnerPaymentTerm');
