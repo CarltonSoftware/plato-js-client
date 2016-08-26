@@ -55,6 +55,9 @@ ActorContactDetailPhone.prototype.getFormattedNumber = function(countrycode) {
   var number = phoneUtil.parseAndKeepRawInput(regionCode+this.subscribernumber, '+44');
   var value =  phoneUtil.getRegionCodeForNumber(number) == countryCode ?
     phoneUtil.format(number, PNF.NATIONAL) : phoneUtil.format(number, PNF.INTERNATIONAL);
+  if (this.extension && this.extension != '') {
+    value = value + ' ext. ' + this.extension;
+  }
 
   return value;
 };
