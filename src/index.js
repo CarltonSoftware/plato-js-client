@@ -181,14 +181,15 @@ module.exports.common.VatBand = require('./common/VatBand');
 module.exports.common.VatRate = require('./common/VatRate');
 
 module.exports.common.SpecialOffer = require('./common/SpecialOffer');
-module.exports.common.BookingPeriod = require('./common/BookingPeriod');
-module.exports.common.HolidayPeriod = require('./common/HolidayPeriod');
+module.exports.common.SpecialOfferBookingPeriod = require('./common/SpecialOfferBookingPeriod');
+module.exports.common.SpecialOfferHolidayPeriod = require('./common/SpecialOfferHolidayPeriod');
 module.exports.common.Promotion = require('./common/Promotion');
 module.exports.common.PropertyBrochure = require('./common/PropertyBrochure');
 module.exports.common.SpecialOfferBranding = require('./common/SpecialOfferBranding');
 module.exports.common.SpecialOfferPropertyBranding = require('./common/SpecialOfferPropertyBranding');
 module.exports.common.SpecialOfferSalesChannel = require('./common/SpecialOfferSalesChannel');
 module.exports.common.SpecialOfferWebsiteSection = require('./common/SpecialOfferWebsiteSection');
+module.exports.common.SpecialOfferBookingPeriod = require('./common/SpecialOfferBookingPeriod');
 module.exports.common.WebsiteSection = require('./common/WebsiteSection');
 
 module.exports.common.Role = require('./common/Role');

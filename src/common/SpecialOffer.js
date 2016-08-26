@@ -9,6 +9,8 @@ var Promotion = require('./Promotion');
 var SpecialOfferBranding = require('./SpecialOfferBranding');
 var SpecialOfferSalesChannel = require('./SpecialOfferSalesChannel');
 var SpecialOfferWebsiteSection = require('./SpecialOfferWebsiteSection');
+var SpecialOfferHolidayPeriod = require('./SpecialOfferHolidayPeriod');
+var SpecialOfferBookingPeriod = require('./SpecialOfferBookingPeriod');
 var EntityLink = require('./EntityLink');
 var Joi = require('joi');
 
@@ -45,6 +47,16 @@ function SpecialOffer(id) {
   this.websitesections = new Collection({
     object: SpecialOfferWebsiteSection,
     path: 'websitesection',
+    parent: this
+  });
+  this.bookingperiods = new Collection({
+    object: SpecialOfferBookingPeriod,
+    path: 'bookingperiod',
+    parent: this
+  });
+  this.holidayperiods = new Collection({
+    object: SpecialOfferHolidayPeriod,
+    path: 'holidayperiod',
     parent: this
   });
   this.brandings = new Collection({
