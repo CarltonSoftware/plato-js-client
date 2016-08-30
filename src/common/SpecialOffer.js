@@ -2,8 +2,6 @@ var SingleEntity = require('./SingleEntity');
 var PricingPeriod = require('./PricingPeriod');
 var Currency = require('./Currency');
 var Collection = require('./Collection');
-/* var BookingPeriod = require('./BookingPeriod');
-var HolidayPeriod = require('./HolidayPeriod'); */
 var SpecialOfferPropertyBranding = require('./PropertyBranding');
 var Promotion = require('./Promotion');
 var SpecialOfferBranding = require('./SpecialOfferBranding');
@@ -19,16 +17,6 @@ function SpecialOffer(id) {
   this.id = id;
   this.pricingperiod = new PricingPeriod();
   this.currency = new Currency();
-/*   this.bookingperiods = new Collection({
-    object: BookingPeriod,
-    path: 'bookingperiod',
-    parent: this
-  });
-  this.holidayperiods = new Collection({
-    object: HolidayPeriod,
-    path: 'holidayperiod',
-    parent: this
-  }); */
   this.propertybrandings = new Collection({
     object: SpecialOfferPropertyBranding,
     path: 'propertybranding',

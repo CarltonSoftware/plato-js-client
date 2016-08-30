@@ -189,7 +189,6 @@ module.exports.common.SpecialOfferBranding = require('./common/SpecialOfferBrand
 module.exports.common.SpecialOfferPropertyBranding = require('./common/SpecialOfferPropertyBranding');
 module.exports.common.SpecialOfferSalesChannel = require('./common/SpecialOfferSalesChannel');
 module.exports.common.SpecialOfferWebsiteSection = require('./common/SpecialOfferWebsiteSection');
-module.exports.common.SpecialOfferBookingPeriod = require('./common/SpecialOfferBookingPeriod');
 module.exports.common.WebsiteSection = require('./common/WebsiteSection');
 
 module.exports.common.Role = require('./common/Role');
