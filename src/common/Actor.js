@@ -80,10 +80,18 @@ Actor.prototype.mutateResponse = function(entity) {
  * @returns {String}
  */
 Actor.prototype.getFullName = function(noTitle) {
+  var name = [this.title, this.firstname, this.surname];
   if (noTitle) {
-    return [this.firstname, this.surname].join(" ");
+    name.shift();
   }
-  return [this.title, this.firstname, this.surname].join(" ");
+
+  if (this.path == 'agency') {
+    name = [this.companyname];
+  } else if (this.path == 'office') {
+    name = [this.officename];
+  }
+
+  return name.join(" ");
 };
 
 /**
