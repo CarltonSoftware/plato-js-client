@@ -12,82 +12,40 @@ function ExtraBrandingPricing(extraId, brandingId, id) {
 ExtraBrandingPricing.prototype = new SingleEntity();
 
 ExtraBrandingPricing.prototype.toCreateArray = function() {
+  var array = {
+    pricingperiod: this.pricingperiod,
+    propertypricing: this.propertypricing,
+    propertyid: this.propertyid,
+    fromdate: this.fromdate,
+    todate: this.todate,
+    currencycode: this.currency.code,
+    pricingtype: this.pricingtype,
+    perperiod: this.perperiod // will be overridden to True for pricingtype = Percentage or Range
+  };
+
   if (this.pricingtype == 'Amount') {
-    return {
-      pricingperiod: this.pricingperiod,
-      propertypricing: this.propertypricing,
-      fromdate: this.fromdate,
-      todate: this.todate,
-      currencycode: this.currency.code,
-      pricingtype: this.pricingtype,
-      price: this.price,
-      perperiod: this.perperiod ? 'true' : 'false',
-      peradult: this.peradult ? 'true' : 'false',
-      perchild: this.perchild ? 'true' : 'false',
-      perinfant: this.perinfant ? 'true' : 'false',
-    };
+    array.price = this.price;
+    array.peradult = this.peradult;
+    array.perchild = this.perchild;
+    array.perinfant = this.perinfant;
   } else if (this.pricingtype == 'Percentage') {
-    return {
-      pricingperiod: this.pricingperiod,
-      propertypricing: this.propertypricing,
-      fromdate: this.fromdate,
-      todate: this.todate,
-      currencycode: this.currency.code,
-      pricingtype: this.pricingtype,
-      percentage: this.percentage,
-      basedon: this.basedon,
-    };
+    array.percentage = this.percentage;
+    array.basedon = this.basedon;
+    array.minimumprice = this.minimumprice;
+    array.maximumprice = this.maximumprice;
   } else if (this.pricingtype == 'Range') {
-    return {
-      pricingperiod: this.pricingperiod,
-      perperiod: this.perperiod,
-      propertypricing: this.propertypricing,
-      fromdate: this.fromdate,
-      todate: this.todate,
-      currencycode: this.currency.code,
-      pricingtype: this.pricingtype,
-      basedon: this.basedon,
-    };
+    // array.ranges = array, impossible
+    array.basedon = this.basedon;
   }
+
+  return array;
 };
 
 ExtraBrandingPricing.prototype.toUpdateArray = function() {
-
-  if (this.pricingtype == 'Amount') {
-    return {
-      //pricingperiod: this.pricingperiod,  //The pricingperiod field cannot be updated
-      //perperiod: this.perperiod, //The perperiod field cannot be updated
-      propertypricing: this.propertypricing,
-      fromdate: this.fromdate,
-      todate: this.todate,
-      currencycode: this.currency.code,
-      pricingtype: this.pricingtype,
-      price: this.price
-    };
-  } else if (this.pricingtype == 'Percentage') {
-    return {
-      //pricingperiod: this.pricingperiod,  //The pricingperiod field cannot be updated
-      //perperiod: this.perperiod, //The perperiod field cannot be updated
-      propertypricing: this.propertypricing,
-      fromdate: this.fromdate,
-      todate: this.todate,
-      currencycode: this.currency.code,
-      pricingtype: this.pricingtype,
-      percentage: this.percentage,
-      basedon: this.basedon,
-    };
-  } else if (this.pricingtype == 'Range') {
-    return {
-      //pricingperiod: this.pricingperiod,  //The pricingperiod field cannot be updated
-      //perperiod: this.perperiod, //The perperiod field cannot be updated
-      propertypricing: this.propertypricing,
-      fromdate: this.fromdate,
-      todate: this.todate,
-      currencycode: this.currency.code,
-      pricingtype: this.pricingtype,
-      basedon: this.basedon,
-    };
-  }
+  var array = this.toCreateArray();
+  delete array.pricingperiod; // The pricingperiod field cannot be updated
+  delete array.perperiod; // The perperiod field cannot be updated
+  return array;
 };
 
 module.exports = ExtraBrandingPricing;
