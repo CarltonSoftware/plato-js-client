@@ -1,10 +1,13 @@
 var SingleEntity = require('./SingleEntity');
+var OwnerChargeCode = require('./OwnerChargeCode');
 var Joi = require('joi');
 
 function PropertySecurityDeposit(propertyId, id) {
     this.path = 'property/' + propertyId + '/securitydeposit';
     this.createPath = this.path;
     this.id = id;
+
+    this.ownerchargecode = new OwnerChargeCode();
 }
 PropertySecurityDeposit.prototype = new SingleEntity();
 
@@ -25,7 +28,9 @@ PropertySecurityDeposit.prototype.toArray = function() {
     pricingperiod: this.pricingperiod,
     minimumdays: this.minimumdays,
     maximumdays: this.maximumdays,
-    comments: this.comments
+    comments: this.comments,
+    ownerchargecodeid: this.ownerchargecode.id,
+    ownerchargeamount: this.ownerchargeamount
   };
 };
 
@@ -48,7 +53,14 @@ PropertySecurityDeposit.prototype.validSchema = function() {
     pricingperiod: Joi.string().required().label('Pricing Period'),
     minimumdays: Joi.string().required().label('Minimum Days'),
     maximumdays: Joi.string().required().label('Maximum Days'),
-    comments: Joi.string().empty('').label('Comments')
+    comments: Joi.string().empty('').label('Comments'),
+    ownerchargeamount: Joi.number().empty('').label('Owner Charge Amount'),
+    // ownerchargecode is required if ownerchargeamount is specified
+    ownerchargecode: Joi.object().when('ownerchargeamount', {
+      is: Joi.number().required(),
+      then: Joi.object().required(),
+      otherwise: Joi.object().optional()
+    }).label('Owner Charge Code')
   });
 };
 

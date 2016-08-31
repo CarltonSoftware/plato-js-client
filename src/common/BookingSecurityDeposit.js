@@ -22,13 +22,13 @@ BookingSecurityDeposit.prototype.validSchema = Joi.object().keys({
   amount: Joi.number().required(),
   dueindate: Joi.string().required().label('due in date'),
   dueoutdate: Joi.string().required().label('due out date'),
-  ownerchargeamount: Joi.number().empty('').label('owner charge amount'),
-  // ownerchargecode is required iff ownerchargeamount is specified
+  ownerchargeamount: Joi.number().empty('').label('Owner Charge Amount'),
+  // ownerchargecode is required if ownerchargeamount is specified
   ownerchargecode: Joi.object().when('ownerchargeamount', {
     is: Joi.number().required(),
     then: Joi.object().required(),
     otherwise: Joi.object().optional()
-  }).label('owner charge code')
+  }).label('Owner Charge Code')
 });
 
 
