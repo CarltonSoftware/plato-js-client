@@ -12,6 +12,7 @@ module.exports.common.AgencyBookingType = require('./common/AgencyBookingType');
 module.exports.common.AgencyCollection = require('./common/AgencyCollection');
 module.exports.common.Country = require('./common/Country');
 module.exports.common.Language = require('./common/Language');
+module.exports.common.Postcode = require('./common/Postcode');
 module.exports.common.ContactEntity = require('./common/ContactEntity');
 module.exports.common.ContactType = require('./common/ContactType');
 module.exports.common.ContactMethodType = require('./common/ContactMethodType');

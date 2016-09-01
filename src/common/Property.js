@@ -118,13 +118,13 @@ Property.prototype.toArray = function() {
 
 Property.prototype.validSchema = function () {
   return Joi.object().keys({
-    tabspropref: Joi.string(),
-    name: Joi.string(),
-    namequalifier: Joi.string().allow(''),
+    tabspropref: Joi.string().label('Property reference'),
+    name: Joi.string().label('Property name'),
+    namequalifier: Joi.string().allow('').label('Name qualifier'),
     bedrooms: Joi.number(),
     sleeps: Joi.number(),
-    maximumpets: Joi.number(),
-    telephonenumber: Joi.string().allow(''),
+    maximumpets: Joi.number().label('Maximum pets'),
+    telephonenumber: Joi.string().allow('').label('Telephone number'),
     address: this.address.validSchema()
   });
 };
