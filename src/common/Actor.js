@@ -110,7 +110,8 @@ Actor.prototype.toArray = function() {
     tabsusername: this.tabsusername,
     companyname: this.companyname,
     name: this.officename,
-    inactive: this.inactive
+    inactive: this.inactive,
+    accountingreference: this.accountingreference
   };
 };
 
