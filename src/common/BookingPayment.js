@@ -13,7 +13,6 @@ BookingPayment.prototype.toCreateArray = function() {
     paymentdatetime: this.paymentdatetime,
     amount: this.amount,
     actorid: this.actor.id,
-    amount: this.amount,
     bookingamount: this.bookingamount,
     securitydepositamount: this.securitydepositamount
   };
