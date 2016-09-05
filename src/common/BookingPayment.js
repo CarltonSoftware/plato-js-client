@@ -12,10 +12,12 @@ BookingPayment.prototype.toCreateArray = function() {
     type: this.type,
     paymentdatetime: this.paymentdatetime,
     amount: this.amount,
-    actorid: this.actor.id,
-    bookingamount: this.bookingamount,
-    securitydepositamount: this.securitydepositamount
+    actorid: this.actor.id
   };
+  if (this.type == 'BookingAndSecurityDeposit') {
+    array.bookingamount = this.bookingamount;
+    array.securitydepositamount = this.securitydepositamoun;
+  }
   return array;
 };
 
