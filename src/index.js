@@ -38,10 +38,10 @@ module.exports.common.Account = require('./common/Account');
 module.exports.common.AccountingDateDefinition = require('./common/AccountingDateDefinition');
 module.exports.common.AccountValueType = require('./common/AccountValueType');
 module.exports.common.BrandSource = require('./common/BrandSource');
+module.exports.common.DoubleEntryDefinition = require('./common/DoubleEntryDefinition');
+module.exports.common.EntryDefinition = require('./common/EntryDefinition');
 module.exports.common.TabsEvent = require('./common/TabsEvent');
 module.exports.common.TransactionDefinition = require('./common/TransactionDefinition');
-module.exports.common.TransactionDoubleEntryDefinition = require('./common/TransactionDoubleEntryDefinition');
-module.exports.common.TransactionEntryDefinition = require('./common/TransactionEntryDefinition');
 module.exports.common.TransactionSource = require('./common/TransactionSource');
 
 // Actor Related Objects
@@ -61,7 +61,7 @@ module.exports.common.PotentialDuplicate = require('./common/PotentialDuplicate'
 // Customer Releated Objects
 module.exports.common.Customer = require('./common/Customer');
 module.exports.common.CustomerDocument = require('./common/CustomerDocument');
-module.exports.common.Customers = require('./common/Customers');
+module.exports.common.CustomerMarketingBrand = require('./common/CustomerMarketingBrand');
 
 // Other Actors
 module.exports.common.TabsUser = require('./common/TabsUser');

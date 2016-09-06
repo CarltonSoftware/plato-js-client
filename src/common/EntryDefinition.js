@@ -4,17 +4,17 @@ var Accountvaluetype = require('./AccountValueType');
 var Brandsource = require('./BrandSource');
 var Account = require('./Account');
 
-function TransactionEntryDefinition(id) {
-  this.path = 'transactiondefinition';
-  this.createPath = 'transactiondefinition';
+function EntryDefinition(id) {
+  this.path = 'entrydefinition';
+  this.createPath = 'entrydefinition';
   this.id = id;
-  this.AccountValueType = new Accountvaluetype();
-  this.BrandSource = new Brandsource();
-  this.Account = new Account();
+  this.accountvaluetype = new Accountvaluetype();
+  this.brandsource = new Brandsource();
+  this.account = new Account();
 }
-TransactionEntryDefinition.prototype = new SingleEntity();
+EntryDefinition.prototype = new SingleEntity();
 
-TransactionEntryDefinition.prototype.toArray = function() {
+EntryDefinition.prototype.toArray = function() {
   var fields = {
     debit: this.debit,
     accountvaluetypeid: this.accountvaluetype.id,
@@ -27,7 +27,7 @@ TransactionEntryDefinition.prototype.toArray = function() {
   return fields;
 };
 
-TransactionEntryDefinition.prototype.validSchema = function() {
+EntryDefinition.prototype.validSchema = function() {
   return Joi.object().keys({
     debit: Joi.boolean().label('debit'),
     accountvaluetype: Joi.object().label('AccountValueType'),
@@ -37,4 +37,4 @@ TransactionEntryDefinition.prototype.validSchema = function() {
   });
 };
 
-module.exports = TransactionEntryDefinition;
+module.exports = EntryDefinition;
