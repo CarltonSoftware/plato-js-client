@@ -18,7 +18,10 @@ function ActorContactDetailAddress(id) {
 ActorContactDetailAddress.prototype = new SingleEntity();
 
 ActorContactDetailAddress.prototype.toArray = function() {
-  return this.address.toArray();
+  var add = this.address.toArray();
+  add.invalid = this.invalid ? this.invalid : false;
+
+  return add;
 };
 
 ActorContactDetailAddress.prototype.validSchema = function() {
