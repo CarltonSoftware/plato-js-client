@@ -1,7 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
-var Accountvaluetype = require('./Accountvaluetype');
-var Brandsource = require('./Brandsource');
+var Accountvaluetype = require('./AccountValueType');
+var Brandsource = require('./BrandSource');
 var Account = require('./Account');
 
 function TransactionEntryDefinition(id) {
