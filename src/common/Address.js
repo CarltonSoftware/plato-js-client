@@ -55,8 +55,8 @@ Address.prototype.validSchema = function() {
     county: Joi.string().min(3).label('County'),
     postcode: Joi.string().min(4).label('Postcode'),
     country: Joi.object().required(),
-    latitude: Joi.number(),
-    longitude: Joi.number(),
+    latitude: Joi.number().allow(''),
+    longitude: Joi.number().allow(''),
     aId: Joi.number().optional()
   });
 };

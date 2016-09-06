@@ -60,7 +60,7 @@ module.exports.common.PotentialDuplicate = require('./common/PotentialDuplicate'
 // Customer Releated Objects
 module.exports.common.Customer = require('./common/Customer');
 module.exports.common.CustomerDocument = require('./common/CustomerDocument');
-module.exports.common.Customers = require('./common/Customers');
+module.exports.common.CustomerMarketingBrand = require('./common/CustomerMarketingBrand');
 
 // Other Actors
 module.exports.common.TabsUser = require('./common/TabsUser');
