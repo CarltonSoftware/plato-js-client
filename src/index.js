@@ -62,6 +62,8 @@ module.exports.common.PotentialDuplicate = require('./common/PotentialDuplicate'
 module.exports.common.Customer = require('./common/Customer');
 module.exports.common.CustomerDocument = require('./common/CustomerDocument');
 module.exports.common.CustomerMarketingBrand = require('./common/CustomerMarketingBrand');
+module.exports.common.CustomerSource = require('./common/CustomerSource');
+module.exports.common.CustomerEmailList = require('./common/CustomerEmailList');
 
 // Other Actors
 module.exports.common.TabsUser = require('./common/TabsUser');
@@ -140,6 +142,7 @@ module.exports.common.GuestType = require('./common/GuestType');
 // Brand Related Objects
 module.exports.common.BookingBrand = require('./common/BookingBrand');
 module.exports.common.MarketingBrand = require('./common/MarketingBrand');
+module.exports.common.MarketingBrandEmailList = require('./common/MarketingBrandEmailList');
 module.exports.common.BrandingGroup = require('./common/BrandingGroup');
 module.exports.common.Branding = require('./common/Branding');
 module.exports.common.BrandingExtra = require('./common/BrandingExtra');
