@@ -3,6 +3,7 @@ var Collection = require('./Collection');
 var Accountvaluetype = require('./AccountValueType');
 var Brandsource = require('./BrandSource');
 var Account = require('./Account');
+var Joi = require('joi');
 
 function EntryDefinition(transactionId, doubleEntryId, id) {
   this.path = 'transactiondefinition/' + transactionId + '/doubleentrydefinition/' + doubleEntryId + '/entrydefinition';
@@ -30,10 +31,10 @@ EntryDefinition.prototype.toArray = function() {
 EntryDefinition.prototype.validSchema = function() {
   return Joi.object().keys({
     debit: Joi.boolean().label('debit'),
-    accountvaluetype: Joi.object().label('AccountValueType'),
-    brandsource: Joi.object().label('BrandSource'),
-    type: Joi.string().label('type'),
-    account: Joi.object().label('Account'),
+    accountvaluetype: Joi.object().required().label('Account Value Type'),
+    brandsource: Joi.object().optional().label('Brand Source'),
+    type: Joi.string().valid('Standard', 'Extra', 'OwnerCharge', 'Payment').label('type'),
+    account: Joi.object().when('type', { is: 'Standard', then: Joi.required() }).label('Account')
   });
 };
 

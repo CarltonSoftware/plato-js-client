@@ -1,4 +1,5 @@
 var SingleEntity = require('./SingleEntity');
+var Joi = require('joi');
 
 function DoubleEntryDefinition(transactionDefinitionId, id) {
   this.path = 'transactiondefinition/' + transactionDefinitionId + '/doubleentrydefinition';
