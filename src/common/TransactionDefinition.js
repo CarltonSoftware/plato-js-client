@@ -3,6 +3,7 @@ var Collection = require('./Collection');
 var Accountingdatedefinition = require('./AccountingDateDefinition');
 var Transactionsource = require('./TransactionSource');
 var Joi = require('joi');
+var DoubleEntryDefinition = require('./DoubleEntryDefinition');
 
 function TransactionDefinition(id) {
   this.path = 'transactiondefinition';
@@ -10,6 +11,11 @@ function TransactionDefinition(id) {
   this.id = id;
   this.accountingdatedefinition = new Accountingdatedefinition();
   this.transactionsource = new Transactionsource();
+  this.doubleentrydefinitions = new Collection({
+    object: DoubleEntryDefinition,
+    path: 'doubleentrydefinition',
+    parent: this
+  });
 }
 TransactionDefinition.prototype = new SingleEntity();
 

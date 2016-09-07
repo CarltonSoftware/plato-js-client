@@ -4,9 +4,9 @@ var Accountvaluetype = require('./AccountValueType');
 var Brandsource = require('./BrandSource');
 var Account = require('./Account');
 
-function EntryDefinition(id) {
-  this.path = 'entrydefinition';
-  this.createPath = 'entrydefinition';
+function EntryDefinition(transactionId, doubleEntryId, id) {
+  this.path = 'transactiondefinition/' + transactionId + '/doubleentrydefinition/' + doubleEntryId + '/entrydefinition';
+  this.createPath = this.path;
   this.id = id;
   this.accountvaluetype = new Accountvaluetype();
   this.brandsource = new Brandsource();

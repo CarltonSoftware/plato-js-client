@@ -1,8 +1,8 @@
 var SingleEntity = require('./SingleEntity');
 
-function DoubleEntryDefinition(id) {
-  this.path = 'doubleentrydefinition';
-  this.createPath = 'doubleentrydefinition';
+function DoubleEntryDefinition(transactionDefinitionId, id) {
+  this.path = 'transactiondefinition/' + transactionDefinitionId + '/doubleentrydefinition';
+  this.createPath = this.path;
   this.id = id;
 }
 DoubleEntryDefinition.prototype = new SingleEntity();

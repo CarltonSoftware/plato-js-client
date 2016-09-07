@@ -16,7 +16,6 @@ function Collection(options) {
    */
   this.getPath = function() {
     var path = '';
-
     // Add in path if not set and parent applied
     if (typeof this.options.parent === 'object'
       && typeof this.options.path === 'string'
@@ -107,7 +106,7 @@ Collection.prototype.previousPage = function() {
 
 /**
  * Returns a promise of the fetched resource
- * 
+ *
  * @param {Array} dependencies - keys of subentities, if any, to get for each item in the collection, e.g. 'property'
  *
  * @returns {Collection.prototype@call;promiseResult}
