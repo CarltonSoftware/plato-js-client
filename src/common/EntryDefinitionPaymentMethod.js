@@ -6,7 +6,7 @@ var Joi = require('joi');
 
 function EntryDefinitionPaymentMethod(transactionId, doubleEntryId, entryId, id) {
   this.path = 'transactiondefinition/' + transactionId + '/doubleentrydefinition/' + doubleEntryId + '/entrydefinition/' + entryId + '/paymentmethod';
-  this.createPath = thit.path;
+  this.createPath = this.path;
   this.id = id;
   this.paymentmethod = new PaymentMethod();
   this.account = new Account();
