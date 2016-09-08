@@ -3,9 +3,9 @@ var Collection = require('./Collection');
 var TransactionDefinition = require('./TransactionDefinition');
 var Joi = require('joi');
 
-function TabsEventTransactionDefinition(id) {
-  this.path = 'tabsevent';
-  this.createPath = 'tabsevent';
+function TabsEventTransactionDefinition(tabsEventId, id) {
+  this.path = 'tabsevent/'+tabsEventId+'/transactiondefinition';
+  this.createPath = this.path;
   this.id = id;
   this.transactiondefinition = new TransactionDefinition();
 }
