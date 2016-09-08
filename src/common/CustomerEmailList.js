@@ -10,8 +10,8 @@ function CustomerEmailList(id) {
 CustomerEmailList.prototype = new SingleEntity();
 CustomerEmailList.prototype.toArray = function() {
   return {
-    sourceid: this.source.id,
-    sourcedate: this.sourcedate
+    marketingbrandemaillistid: this.marketingbrandemaillist.id,
+    unsubscribed: this.unsubscribed
   };
 };
 
