@@ -39,11 +39,13 @@ module.exports.common.AccountingDateDefinition = require('./common/AccountingDat
 module.exports.common.AccountValueType = require('./common/AccountValueType');
 module.exports.common.BrandSource = require('./common/BrandSource');
 module.exports.common.DoubleEntryDefinition = require('./common/DoubleEntryDefinition');
+module.exports.common.Entry = require('./common/Entry');
 module.exports.common.EntryDefinition = require('./common/EntryDefinition');
 module.exports.common.EntryDefinitionExtraBranding = require('./common/EntryDefinitionExtraBranding');
 module.exports.common.EntryDefinitionOwnerChargeCode = require('./common/EntryDefinitionOwnerChargeCode');
 module.exports.common.EntryDefinitionPaymentMethod = require('./common/EntryDefinitionPaymentMethod');
 module.exports.common.TabsEvent = require('./common/TabsEvent');
+module.exports.common.TabsEventTransactionDefinition = require('./common/TabsEventTransactionDefinition');
 module.exports.common.TransactionDefinition = require('./common/TransactionDefinition');
 module.exports.common.TransactionSource = require('./common/TransactionSource');
 
