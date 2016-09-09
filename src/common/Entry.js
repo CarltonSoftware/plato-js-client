@@ -3,6 +3,7 @@ var EntityLink = require('./EntityLink');
 var Collection = require('./Collection');
 var Account = require('./Account');
 var BookingBrand = require('./BookingBrand');
+var Transaction = require('./Transaction');
 
 function Entry(id) {
   this.path = 'entry';
@@ -15,7 +16,8 @@ function Entry(id) {
   this.entrydefinition = new EntityLink({
     entity: 'EntryDefinition'
   });
-  this.bookingbrand = new Bookingbrand();
+  this.bookingbrand = new BookingBrand();
+  this.transaction = new Transaction();
 }
 Entry.prototype = new SingleEntity();
 
