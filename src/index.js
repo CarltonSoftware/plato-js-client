@@ -46,6 +46,7 @@ module.exports.common.EntryDefinitionOwnerChargeCode = require('./common/EntryDe
 module.exports.common.EntryDefinitionPaymentMethod = require('./common/EntryDefinitionPaymentMethod');
 module.exports.common.TabsEvent = require('./common/TabsEvent');
 module.exports.common.TabsEventTransactionDefinition = require('./common/TabsEventTransactionDefinition');
+module.exports.common.Transaction = require('./common/Transaction');
 module.exports.common.TransactionDefinition = require('./common/TransactionDefinition');
 module.exports.common.TransactionSource = require('./common/TransactionSource');
 

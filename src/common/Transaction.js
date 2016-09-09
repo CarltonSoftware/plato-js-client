@@ -36,11 +36,12 @@ function Transaction(id) {
   this.property = new EntityLink({
     entity: 'Property'
   });
-  this.entries = new Collection({
+  /* Not sure why but this errors... skipping for now.
+   this.entries = new Collection({
     object: Entry,
     path: 'entry',
-    parents: [this]
-  });
+    parent: this
+  }); */
 }
 Transaction.prototype = new SingleEntity();
 
