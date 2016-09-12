@@ -18,9 +18,9 @@ function Transaction(id) {
   this.customer = new EntityLink({
     entity: 'Customer'
   });
-  this.actorpayment = new EntityLink({
+/*  this.actorpayment = new EntityLink({
     entity: 'ActorPayment'
-  });
+  }); */
   this.bookingpayment = new EntityLink({
     entity: 'BookingPayment'
   });
@@ -30,7 +30,7 @@ function Transaction(id) {
   this.ownercharge = new EntityLink({
     entity: 'OwnerCharge'
   });
-  this.ownerPayment = new EntityLink({
+  this.ownerpayment = new EntityLink({
     entity: 'OwnerPayment'
   });
   this.property = new EntityLink({
