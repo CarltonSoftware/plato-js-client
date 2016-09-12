@@ -12,8 +12,7 @@ Promotion.prototype.toArray = function() {
   return {
     promotioncode: this.promotioncode,
     extrabrandingid: this.extrabranding.id,
-    limit: this.limit,
-    usecount: this.usecount,
+    usagelimit: this.usagelimit,
   };
 };
 
