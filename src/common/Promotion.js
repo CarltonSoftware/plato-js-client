@@ -1,5 +1,6 @@
 var SingleEntity = require('./SingleEntity');
 var ExtraBranding = require('./ExtraBranding');
+var Joi = require('joi');
 
 function Promotion(id) {
   this.path = this.createPath = 'promotion';
@@ -14,6 +15,14 @@ Promotion.prototype.toArray = function() {
     extrabrandingid: this.extrabranding.id,
     usagelimit: this.usagelimit,
   };
+};
+
+Promotion.prototype.validSchema = function() {
+  return Joi.object().keys({
+    promotioncode: Joi.string().label('Promotion Code'),
+    extrabranding: Joi.object().label('Extra Branding'),
+    usagelimit: Joi.number().label('Usage Limit')
+  });
 };
 
 module.exports = Promotion;
