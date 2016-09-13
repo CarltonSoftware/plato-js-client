@@ -75,6 +75,7 @@ module.exports.common.CustomerEmailList = require('./common/CustomerEmailList');
 // Other Actors
 module.exports.common.TabsUser = require('./common/TabsUser');
 module.exports.common.Owner = require('./common/Owner');
+module.exports.common.OwnerEnquiryAction = require('./common/OwnerEnquiryAction');
 module.exports.common.Office = require('./common/Office');
 module.exports.common.Supplier = require('./common/Supplier');
 module.exports.common.SupplierServiceCharge = require('./common/SupplierServiceCharge');
