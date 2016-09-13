@@ -1,8 +1,7 @@
 var SingleEntity = require('./SingleEntity');
+var EntityLink = require('./EntityLink');
 var Branding = require('./Branding');
 var BrandingGroup = require('./BrandingGroup');
-var PropertyBookingBrand = require('./PropertyBookingBrand');
-var PropertyMarketingBrand = require('./PropertyMarketingBrand');
 var PropertyBrandingPrice = require('./PropertyBrandingPrice');
 var PartySizePricing = require('./PartySizePricing');
 var PropertyBrandingChangeDayTemplate = require('./PropertyBrandingChangeDayTemplate');
@@ -15,8 +14,14 @@ function PropertyBranding(id) {
   this.id = id;
   this.branding = new Branding();
   this.brandinggroup = new BrandingGroup();
-  this.bookingbrand = new PropertyBookingBrand();
-  this.marketingbrand = new PropertyMarketingBrand();
+  this.bookingbrand = new EntityLink({
+    entity: 'PropertyBookingBrand',
+    parent: new EntityLink({ entity: 'Property' })
+  });
+  this.marketingbrand = new EntityLink({
+    entity: 'PropertyMarketingBrand',
+    parent: new EntityLink({ entity: 'Property' })
+  });
   this.partysizepricing = new Collection({
     object: PartySizePricing,
     path: 'partysizepricing',
