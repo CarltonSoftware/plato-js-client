@@ -1,23 +1,30 @@
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
 var OwnerEnquiryActionType = require('./OwnerEnquiryActionType');
+var Actor = require('./Actor');
 var Joi = require('joi');
 
 function OwnerEnquiryAction(id) {
-  this.path = 'owner';
-  this.createPath = 'owner';
+  this.path = 'enquiryaction';
+  this.createPath = 'enquiryaction';
   this.id = id;
   this.ownerenquiryactiontype = new OwnerEnquiryActionType();
+  this.completedbytabsuser = new Actor();
 }
 OwnerEnquiryAction.prototype = new SingleEntity();
 
 OwnerEnquiryAction.prototype.toArray = function() {
-  return {
-    ownerenquiryactiontypeid: this.ownerenquiryactiontype.id,
-    duedate: this.duedate,
-    completeddate: this.completeddate,
-    completedbytabsuserid: this.completedbytabsuser.id,
-  };
+  var fields = {
+    ownerenquiryactiontypeid: this.ownerenquiryactiontype.id
+  }
+  if (this.duedate) {
+    fields.duedate = this.duedate
+  }
+  if (this.completeddate) {
+    fields.completeddate = this.completeddate;
+    fields.completedbytabsuserid = this.completedbytabsuser ? this.completedbytabsuser.id : null;
+  }
+  return fields;
 };
 
 OwnerEnquiryAction.prototype.validSchema = function() {
@@ -25,7 +32,7 @@ OwnerEnquiryAction.prototype.validSchema = function() {
     ownerenquiryactiontype: Joi.object().required().label('OwnerEnquiryActionType'),
     duedate: Joi.date().optional().label('duedate'),
     completeddate: Joi.date().optional().label('completeddate'),
-    completedbytabsuser: Joi.string().label('completedbytabsuser'),
+    completedbytabsuser: Joi.object().optional().label('completedbytabsuser'),
   });
 };
 
