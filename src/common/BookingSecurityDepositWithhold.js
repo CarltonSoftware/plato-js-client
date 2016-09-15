@@ -13,7 +13,7 @@ BookingSecurityDepositWithhold.prototype = new SingleEntity();
 BookingSecurityDepositWithhold.prototype.toArray = function() {
   return {
     type: this.type,
-    amountheld: this.amountheld,
+    amount: this.amount,
     reason: this.reason,
     helddate: this.helddate,
     tabsuserid: this.tabsuser.id,
