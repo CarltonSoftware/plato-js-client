@@ -226,6 +226,7 @@ module.exports.common.PropertyBrandingPrice = require('./common/PropertyBranding
 module.exports.common.ContactMethodElement = require('./common/ContactMethodElement');
 module.exports.common.Template = require('./common/Template');
 module.exports.common.TemplateContactMethod = require('./common/TemplateContactMethod');
+module.exports.common.TemplateContactMethodAttachment = require('./common/TemplateContactMethodAttachment');
 module.exports.common.TemplateElement = require('./common/TemplateElement');
 module.exports.common.TemplateSource = require('./common/TemplateSource');
 module.exports.common.TemplateTarget = require('./common/TemplateTarget');
