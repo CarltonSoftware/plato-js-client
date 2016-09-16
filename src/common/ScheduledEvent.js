@@ -1,5 +1,6 @@
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
+var Joi = require('Joi');
 var ScheduledEventTemplateContactMethod = require('./ScheduledEventTemplateContactMethod');
 
 function ScheduledEvent(id) {
