@@ -8,7 +8,7 @@ function MarketingBrandEmailList(id) {
 MarketingBrandEmailList.prototype = new SingleEntity();
 MarketingBrandEmailList.prototype.toArray = function() {
   return {
-    listname: this.source.id,
+    listname: this.listname,
     fromdate: this.fromdate,
     todate: this.todate
   };
