@@ -1,3 +1,4 @@
+var client = require('./platoJsClient').getInstance();
 var SingleEntity = require('./SingleEntity');
 var LabelTemplatePaperSize = require('./LabelTemplatePaperSize');
 
@@ -28,5 +29,10 @@ LabelTemplate.prototype.toArray = function() {
     marginright: this.marinright
   };
 };
+
+LabelTemplate.prototype.render = function() {
+  return client.get(this.getUpdatePath() + '/render');
+};
+
 
 module.exports = LabelTemplate;
