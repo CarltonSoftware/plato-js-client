@@ -43,6 +43,10 @@ TemplateContactMethod.prototype.getRefPath = function(ref) {
   return [this.parent.path, this.parent.id, this.path, this.id, 'ref', ref].join('/');
 };
 
+TemplateContactMethod.prototype.getLabel = function() {
+  return [this.parent.templatename, this.contactmethodtype.method].join(' - ');
+};
+
 TemplateContactMethod.prototype.getRef = function(ref) {
   return client.get(this.getRefPath(ref));
 };

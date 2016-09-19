@@ -1,11 +1,16 @@
 var SingleEntity = require('./SingleEntity');
-var TemplateContactMethod = require('./TemplateContactMethod');
+var EntityLink = require('./EntityLink');
 
 function ScheduledEventTemplateContactMethod(id) {
   this.path = 'templatecontactmethod';
   this.createPath = 'templatecontactmethod';
   this.id = id;
-  this.templatecontactmethod = new TemplateContactMethod();
+  this.templatecontactmethod = new EntityLink({
+    entity: 'TemplateContactMethod',
+    parent: new EntityLink({
+      entity: 'Template'
+    })
+  });
 }
 
 ScheduledEventTemplateContactMethod.prototype = new SingleEntity();

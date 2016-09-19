@@ -17,6 +17,7 @@ function ScheduledEvent(id) {
 ScheduledEvent.prototype = new SingleEntity();
 ScheduledEvent.prototype.toArray = function() {
   return {
+    label: this.label,
     filter: this.filter,
     filtercontext: this.filtercontext,
     frequency: this.frequency,
@@ -26,11 +27,16 @@ ScheduledEvent.prototype.toArray = function() {
 
 ScheduledEvent.prototype.validSchema = function() {
   return Joi.object().keys({
+    label: Joi.string().required().label('label'),
     filter: Joi.string().required().label('filter'),
     filtercontext: Joi.string().required().label('filtercontext'),
     frequency: Joi.string().required().label('frequency'),
     sendonce: Joi.boolean().required().label('sendonce')
   });
+};
+
+ScheduledEvent.prototype.process = function() {
+  return client.put(this.getUpdatePath() + '/process');
 };
 
 module.exports = ScheduledEvent;
