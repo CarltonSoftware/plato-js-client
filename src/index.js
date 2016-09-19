@@ -237,6 +237,8 @@ module.exports.common.TriggerEvent = require('./common/TriggerEvent');
 module.exports.common.LabelTemplate = require('./common/LabelTemplate');
 module.exports.common.LabelTemplatePaperSize = require('./common/LabelTemplatePaperSize');
 module.exports.common.LabelQueue = require('./common/LabelQueue');
+module.exports.common.ScheduledEvent = require('./common/ScheduledEvent');
+module.exports.common.ScheduledEventTemplateContactMethod = require('./common/ScheduledEventTemplateContactMethod');
 
 // ChangeDayRules
 module.exports.common.ChangeDayTemplate = require('./common/ChangeDayTemplate');
