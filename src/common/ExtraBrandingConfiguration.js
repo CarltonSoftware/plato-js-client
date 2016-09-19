@@ -26,6 +26,7 @@ ExtraBrandingConfiguration.prototype.toCreateArray = function() {
     decimalplaces: this.decimalplaces,
     priceoverrideallowed: this.priceoverrideallowed ? 'true' : 'false',
     quantityoverrideallowed: this.quantityoverrideallowed? 'true' : 'false',
+    changesbrochureprice: this.changesbrochureprice? 'true' : 'false',
     type: this.type,
     propertyid: this.propertyid
   };
@@ -47,6 +48,7 @@ ExtraBrandingConfiguration.prototype.toUpdateArray = function() {
     decimalplaces: this.decimalplaces,
     priceoverrideallowed: this.priceoverrideallowed ? 'true' : 'false',
     quantityoverrideallowed: this.quantityoverrideallowed? 'true' : 'false',
+    changesbrochureprice: this.changesbrochureprice? 'true' : 'false',
     type: this.type,
   };
 };
@@ -66,6 +68,7 @@ ExtraBrandingConfiguration.validSchema = Joi.object().keys({
   decimalplaces: Joi.string().required().label('decimal places'),
   priceoverrideallowed: Joi.boolean().required().label('price override allowed'),
   quantityoverrideallowed: Joi.boolean().required().label('quantity override allowed'),
+  changesbrochureprice: Joi.boolean().required().label('changes brochure price'),
   type: Joi.string().required(),
   propertyid: Joi.when('type', {
     is: 'PropertyBrandExtraConfiguration',
