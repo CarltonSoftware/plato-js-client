@@ -2,6 +2,7 @@ var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
 var Collection = require('./Collection');
 var TransactionDefinition = require('./TransactionDefinition');
+var AccountingPeriod = require('./AccountingPeriod');
 var Entry = require('./Entry');
 
 function Transaction(id) {
@@ -9,6 +10,7 @@ function Transaction(id) {
   this.createPath = 'transaction';
   this.id = id;
   this.transactiondefinition = new TransactionDefinition();
+  this.accountingperiod = new AccountingPeriod();
   this.booking = new EntityLink({
     entity: 'Booking'
   });
