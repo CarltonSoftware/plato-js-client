@@ -11,7 +11,10 @@ ManagedService.prototype.toCreateArray = function() {
   return {
     name: this.name,
     description: this.description,
-    donotmodify: this.donotmodify
+    donotmodify: this.donotmodify,
+    datetouse: this.datetouse,
+    customerbookings: this.customerbookings,
+    ownerbookings: this.ownerbookings
   };
 };
 
