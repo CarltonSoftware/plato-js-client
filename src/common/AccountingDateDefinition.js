@@ -1,4 +1,5 @@
 var SingleEntity = require('./SingleEntity');
+var Joi = require('joi');
 
 function AccountingDateDefinition(id) {
   this.path = 'accountingdatedefinition';
@@ -16,7 +17,7 @@ AccountingDateDefinition.prototype.toArray = function() {
 
 AccountingDateDefinition.prototype.validSchema = function() {
   return Joi.object().keys({
-    name: Joi.string().required().label('name'),
+    name: Joi.string().optional().label('name'),
     description: Joi.string().required().label('description'),
   });
 };
