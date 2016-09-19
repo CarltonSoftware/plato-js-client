@@ -1,4 +1,5 @@
 var SingleEntity = require('./SingleEntity');
+var Joi = require('joi');
 
 function Account(id) {
   this.path = 'account';
@@ -17,9 +18,9 @@ Account.prototype.toArray = function() {
 
 Account.prototype.validSchema = function() {
   return Joi.object().keys({
-    nominalcode: Joi.string().required().label('nominalcode'),
+    nominalcode: Joi.string().optional().label('nominal code'),
     description: Joi.string().required().label('description'),
-    usebranding: Joi.boolean().required().label('usebranding'),
+    usebranding: Joi.boolean().required().label('use branding'),
   });
 };
 

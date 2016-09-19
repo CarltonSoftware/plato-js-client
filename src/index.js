@@ -37,6 +37,7 @@ module.exports.common.OwnerChargeCode = require('./common/OwnerChargeCode');
 // Account Related Objects
 module.exports.common.Account = require('./common/Account');
 module.exports.common.AccountingDateDefinition = require('./common/AccountingDateDefinition');
+module.exports.common.AccountingPeriod = require('./common/AccountingPeriod');
 module.exports.common.AccountValueType = require('./common/AccountValueType');
 module.exports.common.BrandSource = require('./common/BrandSource');
 module.exports.common.DoubleEntryDefinition = require('./common/DoubleEntryDefinition');
