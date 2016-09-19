@@ -1,3 +1,4 @@
+var Joi = require('joi');
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
 var Currency = require('./Currency');
@@ -47,5 +48,21 @@ ExtraBrandingPricing.prototype.toUpdateArray = function() {
   delete array.perperiod; // The perperiod field cannot be updated
   return array;
 };
+
+ExtraBrandingPricing.validSchema = Joi.object().keys({
+  pricingtype : Joi.string().valid('Amount', 'Percentage', 'Range').label('pricing type'),
+  pricingperiod: Joi.string().required().label('pricing period'),
+  propertypricing: Joi.boolean().label('property pricing'),
+  fromdate: Joi.string().required().label('fromdate'),
+  todate: Joi.string().required().label('todate'),
+  currency: Joi.object().required().label('currency'),
+  perperiod: Joi.when('pricingtype', { is: 'Amount',then: Joi.boolean().label('per period'), otherwise: Joi.forbidden() }),
+  peradult: Joi.when('pricingtype', { is: 'Amount',then: Joi.boolean().label('per adult'), otherwise: Joi.forbidden() }),
+  perchild: Joi.when('pricingtype', { is: 'Amount',then: Joi.boolean().label('per child'), otherwise: Joi.forbidden() }),
+  perinfant: Joi.when('pricingtype', { is: 'Amount',then: Joi.boolean().label('per infant'), otherwise: Joi.forbidden() }),
+  price: Joi.when('pricingtype', { is: 'Amount',then: Joi.number().required().label('price'), otherwise: Joi.forbidden() }),
+  percentage: Joi.when('pricingtype', { is: 'Percentage',then: Joi.number().required().label('percentage'), otherwise: Joi.forbidden() }),
+  basedon: Joi.when('pricingtype', { is: 'Amount',then: Joi.forbidden(), otherwise: Joi.string().valid('Basic', 'Brochure').label('based on') })
+}),
 
 module.exports = ExtraBrandingPricing;

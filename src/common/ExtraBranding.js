@@ -1,4 +1,5 @@
 var SingleEntity = require('./SingleEntity');
+var Joi = require('joi');
 var ExtraBrandingConfiguration = require('./ExtraBrandingConfiguration');
 var Collection = require('./Collection');
 var Branding = require('./Branding');
@@ -28,5 +29,9 @@ ExtraBranding.prototype.toUpdateArray = function() {
     brandingid: this.brandingid,
   };
 };
+
+ExtraBranding.validSchema = Joi.object().keys({
+  brandingid: Joi.string().required().label('branding')
+}),
 
 module.exports = ExtraBranding;
