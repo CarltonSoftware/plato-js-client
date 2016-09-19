@@ -1,3 +1,4 @@
+var client = require('./platoJsClient').getInstance();
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
 var Joi = require('joi');
