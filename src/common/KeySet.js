@@ -1,3 +1,4 @@
+var Joi = require('joi');
 var SingleEntity = require('./SingleEntity');
 
 function KeySet(id) {
@@ -9,8 +10,7 @@ KeySet.prototype = new SingleEntity();
 
 KeySet.prototype.toArray = function() {
   return {
-    //TODO: Add in the fields necessary to create a KeySet
-    KeySet: this.KeySet,
+    keyset: this.keyset,
   };
 };
 

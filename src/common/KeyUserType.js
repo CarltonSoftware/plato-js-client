@@ -1,3 +1,4 @@
+var Joi = require('joi');
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
 var Role = require('./Role');
@@ -6,15 +7,14 @@ function KeyUserType(id) {
   this.path = 'keyusertype';
   this.createPath = 'keyusertype';
   this.id = id;
-  this.Role = new Role();
+  this.role = new Role();
 }
 KeyUserType.prototype = new SingleEntity();
 
 KeyUserType.prototype.toArray = function() {
   return {
-    //TODO: Add in the fields necessary to create a KeyUserType
-    KeyUserType: this.KeyUserType,
-    Role: this.Role,
+    keyusertype: this.keyusertype,
+    role: this.role,
     description: this.description,
   };
 };

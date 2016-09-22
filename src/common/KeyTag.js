@@ -1,26 +1,26 @@
+var Joi = require('joi');
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
 var Collection = require('./Collection');
-var Keyset = require('./KeySet');
+var KeySet = require('./KeySet');
 
 function KeyTag(id) {
   this.path = 'keytag';
   this.createPath = 'keytag';
   this.id = id;
-  this.Property = new EntityLink({
+  this.property = new EntityLink({
     entity: 'Property'
   });
-  this.KeySet = new Keyset();
+  this.keyset = new KeySet();
 }
 KeyTag.prototype = new SingleEntity();
 
 KeyTag.prototype.toArray = function() {
   return {
-    //TODO: Add in the fields necessary to create a KeyTag
-    Property: this.Property,
+    property: this.property,
     tag: this.tag,
     colour: this.colour,
-    KeySet: this.KeySet,
+    keyset: this.keyset,
     deleted: this.deleted,
   };
 };
