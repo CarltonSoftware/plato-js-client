@@ -14,7 +14,7 @@ KeyUserType.prototype = new SingleEntity();
 KeyUserType.prototype.toArray = function() {
   return {
     keyusertype: this.keyusertype,
-    role: this.role,
+    roleid: this.role && this.role.id,
     description: this.description,
   };
 };
