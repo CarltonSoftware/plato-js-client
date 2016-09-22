@@ -262,6 +262,12 @@ module.exports.common.TicketUser = require('./common/TicketUser');
 module.exports.common.TicketTerm = require('./common/TicketTerm');
 module.exports.common.TicketHistory = require('./common/TicketHistory');
 
+// Users
+module.exports.common.ActorSecurity = require('./common/ActorSecurity');
+module.exports.common.SecurityGroup = require('./common/SecurityGroup');
+module.exports.common.SecurityGroupRole = require('./common/SecurityGroupRole');
+module.exports.common.SecurityRole = require('./common/SecurityRole');
+
 module.exports.StaticCollection = require('./common/StaticCollection');
 module.exports.Collection = require('./common/Collection');
 module.exports.MultiCollection = require('./common/MultiCollection');
