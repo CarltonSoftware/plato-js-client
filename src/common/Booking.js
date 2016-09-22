@@ -105,7 +105,7 @@ Booking.prototype.toArray = function() {
     cancelledbooking_adviseddate: this.cancelledbooking_adviseddate,
     cancelledbooking_completeddate: this.cancelledbooking_completeddate,
     cancelledbooking_completedbytabsuserid: this.cancelledbooking_completedbytabsuserid,
-    
+
     /* Security Deposit */
     securitydeposit_amount: this.securitydeposit_amount,
     securitydeposit_dueindate: this.securitydeposit_dueindate,
@@ -207,7 +207,8 @@ Booking.prototype.getStatus = function() {
       }
       item.showAs = 'unavailable';
   }
-  if (this.cancelled) {
+  /* TODO: temp fix for transferred display. */
+  if (this.cancelled || this.status == 'Provisional - Transferred' || this.status == 'Confirmed - Transferred') {
     item.showAs = 'cancelled';
   }
   // TBD - Web bookings, flexilet
