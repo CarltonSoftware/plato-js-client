@@ -14,4 +14,21 @@ LabelQueue.prototype.toArray = function() {
   };
 };
 
+LabelQueue.prototype.getText = function() {
+  try {
+    return JSON.parse(this.textjson);
+  } catch (SyntaxError) {
+    return this.textjson;
+  }
+};
+
+LabelQueue.prototype.toString = function(separator) {
+  var text = this.getText();
+
+  if (text.join) {
+    return text.join(separator || '\n');
+  }
+  return text;
+};
+
 module.exports = LabelQueue;
