@@ -1,22 +1,22 @@
+var Joi = require('joi');
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
-var Bookingbrand = require('./BookingBrand');
-var Keycheckreason = require('./KeyCheckReason');
+var BookingBrand = require('./BookingBrand');
+var KeyCheckReason = require('./KeyCheckReason');
 
 function KeysBookingBrand(id) {
   this.path = 'keysbookingbrand';
   this.createPath = 'keysbookingbrand';
   this.id = id;
-  this.BookingBrand = new Bookingbrand();
-  this.defaultkeycheckreason = new Keycheckreason();
+  this.bookingbrand = new BookingBrand();
+  this.defaultkeycheckreason = new KeyCheckReason();
 }
 KeysBookingBrand.prototype = new SingleEntity();
 
 KeysBookingBrand.prototype.toArray = function() {
   return {
-    //TODO: Add in the fields necessary to create a KeysBookingBrand
-    BookingBrand: this.BookingBrand,
-    defaultkeycheckreason: this.defaultkeycheckreason,
+    bookingbrandid: this.bookingbrand.id,
+    defaultkeycheckreasonid: this.defaultkeycheckreason.id
   };
 };
 
