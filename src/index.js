@@ -29,6 +29,7 @@ module.exports.common.Status = require('./common/Status');
 module.exports.common.SourceCategory = require('./common/SourceCategory');
 module.exports.common.OwnerEnquiryActionType = require('./common/OwnerEnquiryActionType');
 module.exports.common.OwnerPayment = require('./common/OwnerPayment');
+module.exports.common.OwnerPaymentSelection = require('./common/OwnerPaymentSelection');
 module.exports.common.OwnerPaymentTerm = require('./common/OwnerPaymentTerm');
 module.exports.common.OwnerPaymentType = require('./common/OwnerPaymentType');
 module.exports.common.OwnerCharge = require('./common/OwnerCharge');
@@ -178,6 +179,7 @@ module.exports.common.BookingPayment = require('./common/BookingPayment');
 module.exports.common.BookingRefund = require('./common/BookingRefund');
 module.exports.common.CustomerPayment = require('./common/CustomerPayment');
 module.exports.common.PaymentMethod = require('./common/PaymentMethod');
+
 
 // Search
 module.exports.common.Search = require('./common/Search');
