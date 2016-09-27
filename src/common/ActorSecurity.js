@@ -17,7 +17,7 @@ ActorSecurity.prototype = new SingleEntity();
 
 ActorSecurity.prototype.toArray = function() {
   var fields = {
-    actor: this.actor.id,
+    actorid: this.actor.id,
     type: this.type
   };
   if (this.type == 'Role') {
@@ -25,6 +25,7 @@ ActorSecurity.prototype.toArray = function() {
   } else if (this.type == 'Group') {
     fields.securitygroupid = this.securitygroup.id;
   }
+  return fields;
 };
 
 ActorSecurity.validSchema = Joi.object().keys({
