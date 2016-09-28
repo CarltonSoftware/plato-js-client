@@ -34,5 +34,4 @@ LabelTemplate.prototype.render = function() {
   return client.get(this.getUpdatePath() + '/render');
 };
 
-
 module.exports = LabelTemplate;
