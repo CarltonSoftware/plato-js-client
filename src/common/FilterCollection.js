@@ -162,6 +162,20 @@ function FilterCollection(options) {
   };
 
   /**
+   * Return the filters as an object
+   *
+   * @return {object}
+   */
+  this.getFilterObject = function() {
+    var filters = [];
+    filterGroups.forEach(function(f) {
+      filters.push(f.getFilters());
+    });
+
+    return filters;
+  },
+
+  /**
    * Get the filter string required for the filter parameter.
    *
    * @return {String}

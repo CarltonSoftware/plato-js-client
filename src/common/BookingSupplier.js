@@ -16,6 +16,12 @@ function BookingSupplier(id) {
   this.cancelledbyactor = new EntityLink({
     entity: 'TabsUser'
   });
+  this.ownercharge = new EntityLink({
+    entity: 'OwnerCharge'
+  });
+  this.booking = new EntityLink({
+    entity: 'Booking'
+  });
 }
 BookingSupplier.prototype = new SingleEntity();
 
@@ -31,6 +37,10 @@ BookingSupplier.prototype.toArray = function() {
 
   if (this.cancelledbyactor.id) {
     data.cancelledbyactorid = this.cancelledbyactor.id;
+  }
+
+  if (this.ownercharge.id) {
+    data.ownerchargeid = this.ownercharge.id;
   }
 
   return data;
