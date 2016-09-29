@@ -15,4 +15,10 @@ Report.prototype.run = function(params) {
   });
 };
 
+Report.prototype.toFormData = function() {
+  var formData = new FormData();
+  formData.append('file', this.file);
+  return formData;
+};
+
 module.exports = Report;
