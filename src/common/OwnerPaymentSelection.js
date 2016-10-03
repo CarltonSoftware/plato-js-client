@@ -15,28 +15,38 @@ function OwnerPaymentSelection(id) {
 }
 OwnerPaymentSelection.prototype = new SingleEntity();
 
-OwnerPaymentSelection.prototype.toArray = function() {
+OwnerPaymentSelection.prototype.toCreateArray = function() {
   return {
     bookingbrandid: this.bookingbrand.id,
     selectbookingson: this.selectbookingson,
     paytodate: this.paytodate,
-    paidbytabsuserid: this.paidbytabsuser.id,
-    createdbytabsuserid: this.createdbytabsuser.id,
-    cancelledbytabsuserid: this.cancelledbytabsuser.id,
-    owneridlist: this.owneridlist
+    createdbytabsuserid: this.createdbytabsuser.id
   };
 };
 
-OwnerPaymentSelection.prototype.validSchema = function() {
-  return Joi.object().keys({
-    bookingbrand: Joi.object().label('booking brand'),
-    selectbookingson: Joi.string().required().label('select bookings on'),
-    paytodate: Joi.date().required().label('pay to date'),
-    paidbytabsuser: Joi.object().optional().label('Paid by'),
-    createdbytabsuser: Joi.object().optional().label('created'),
-    cancelledbytabsuser: Joi.object().optional().label('cancelled by'),
-    owneridlist: Joi.string().optional().allow('').label('owner id list')
-  });
+OwnerPaymentSelection.prototype.toUpdateArray = function() {
+  return {
+    paidbytabsuserid: this.paidbytabsuser.id,
+    cancelledbytabsuserid: this.cancelledbytabsuser.id,
+    authorise: this.authorise,
+    authorisedbytabsuserid: this.authorisedbytabsuser.id,
+    value: this.value
+  };
 };
+
+OwnerPaymentSelection.validCreateSchema = Joi.object().keys({
+  bookingbrand: Joi.object().label('booking brand'),
+  selectbookingson: Joi.string().valid('fromdate', 'todate').label('select bookings on'),
+  paytodate: Joi.date().required().label('pay to date'),
+  createdbytabsuser: Joi.object().optional().label('created by')
+});
+
+OwnerPaymentSelection.validUpdateSchema = Joi.object().keys({
+  paidbytabsuser: Joi.object().optional().label('Paid by'),
+  createdbytabsuser: Joi.object().optional().label('created by'),
+  cancelledbytabsuser: Joi.object().optional().label('cancelled by'),
+  authorise: Joi.boolean().label('authorise'),
+  value: Joi.number().label('value')
+});
 
 module.exports = OwnerPaymentSelection;
