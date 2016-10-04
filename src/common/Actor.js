@@ -108,7 +108,7 @@ Actor.prototype.getFullName = function(noTitle) {
  * @returns {Object}
  */
 Actor.prototype.toArray = function() {
-  return {
+  var arr = {
     title: this.title,
     firstname: this.firstname,
     surname: this.surname,
@@ -126,6 +126,12 @@ Actor.prototype.toArray = function() {
     inactive: this.inactive,
     accountingreference: this.accountingreference
   };
+
+  if (this.password && this.password.length > 0) {
+    arr.password = this.password;
+  }
+
+  return arr;
 };
 
 /**
