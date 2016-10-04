@@ -12,9 +12,16 @@ function SecurityGroup(id) {
   	object: SecurityRole
   });
 
+  /**
+   * Check a role
+   *
+   * @param {string|Array} role
+   */
   this.hasRole = function(role) {
   	for (var i in this.securityroles.collection) {
-  		if (this.securityroles.collection[i].name == role) {
+  		if (role instanceof Array && role.indexOf(this.securityroles.collection[i].name) >= 0) {
+  			return true;
+  		} else if (typeof role === 'string' && this.securityroles.collection[i].name === role) {
   			return true;
   		}
   	}
