@@ -33,14 +33,14 @@ PaymentItem.prototype = new SingleEntity();
 PaymentItem.prototype.toUpdateArray = function() {
   return {
     authorisedby: this.authorisedby,
-    refresh: this.refresh
+    authorised: this.authorised
   };
 };
 
 PaymentItem.prototype.validUpdateSchema = function() {
   return Joi.object().keys({
     authorisedby: Joi.object().label('authorised by'),
-    refresh: Joi.boolean().label('refresh'),
+    authorised: Joi.boolean().label('authorised'),
   });
 };
 
