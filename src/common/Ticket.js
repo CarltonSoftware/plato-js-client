@@ -8,6 +8,7 @@ var TicketStatus = require('./TicketStatus');
 var TicketPriority = require('./TicketPriority');
 var TicketMessage = require('./TicketMessage');
 var TicketHistory = require('./TicketHistory');
+var TicketNote = require('./TicketNote');
 var TicketAttachment = require('./TicketAttachment');
 var Joi = require('joi');
 
@@ -22,6 +23,11 @@ function Ticket(ticketID) {
   this.messages = new Collection({
     object: TicketMessage,
     path: 'message',
+    parent: this
+  });
+  this.notes = new Collection({
+    object: TicketNote,
+    path: 'note',
     parent: this
   });
   this.attachments = new Collection({

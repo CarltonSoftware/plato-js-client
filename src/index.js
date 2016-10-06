@@ -260,6 +260,7 @@ module.exports.common.Ticket = require('./common/Ticket');
 module.exports.common.TicketAttachment = require('./common/TicketAttachment');
 module.exports.common.TicketBrand = require('./common/TicketBrand');
 module.exports.common.TicketMessage = require('./common/TicketMessage');
+module.exports.common.TicketNote = require('./common/TicketNote');
 module.exports.common.TicketPriority = require('./common/TicketPriority');
 module.exports.common.TicketStatus = require('./common/TicketStatus');
 module.exports.common.TicketUser = require('./common/TicketUser');
