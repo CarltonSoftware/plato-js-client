@@ -25,13 +25,20 @@ OwnerPaymentSelection.prototype.toCreateArray = function() {
 };
 
 OwnerPaymentSelection.prototype.toUpdateArray = function() {
-  return {
-    paidbytabsuserid: this.paidbytabsuser.id,
-    cancelledbytabsuserid: this.cancelledbytabsuser.id,
-    authorise: this.authorise,
-    authorisedbytabsuserid: this.authorisedbytabsuser.id,
-    value: this.value
-  };
+  var fields = {};
+  if (this.paidbytabsuser) {
+    fields.paidbytabsuserid = this.paidbytabsuser.id;
+  }
+  if (this.cancelledbytabsuser) {
+    fields.cancelledbytabsuserid = this.cancelledbytabsuser.id;
+  }
+  if (this.authorisedbytabsuser) {
+    fields.authorisedbytabsuserid = this.authorisedbytabsuser.id;
+    fields.authorise = this.authorise;
+    fields.value = this.value;
+  }
+
+  return fields;
 };
 
 OwnerPaymentSelection.validCreateSchema = Joi.object().keys({
@@ -45,8 +52,8 @@ OwnerPaymentSelection.validUpdateSchema = Joi.object().keys({
   paidbytabsuser: Joi.object().optional().label('Paid by'),
   createdbytabsuser: Joi.object().optional().label('created by'),
   cancelledbytabsuser: Joi.object().optional().label('cancelled by'),
-  authorise: Joi.boolean().label('authorise'),
-  value: Joi.number().label('value')
+  authorise: Joi.boolean().optional().label('authorise'),
+  value: Joi.number().optional().label('value')
 });
 
 module.exports = OwnerPaymentSelection;
