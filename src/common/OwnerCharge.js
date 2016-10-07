@@ -14,7 +14,7 @@ function OwnerCharge(id) {
 
 OwnerCharge.prototype = new SingleEntity();
 OwnerCharge.prototype.toArray = function() {
-  return {
+  var fields = {
     type: this.type,
     ownerchargecodeid: this.ownerchargecode.id,
     description: this.description,
@@ -23,15 +23,30 @@ OwnerCharge.prototype.toArray = function() {
     exchangerateid: this.exchangerate.id,
     cancelleddatetime: this.cancelleddatetime,
     lastupdateddatetime: this.lastupdateddatetime,
-    // ownerstatementid: this.ownerstatement.id,
-    // invoiceitemid: this.invoiceitem.id,
-    bookingid: this.booking.id,
-    propertyid: this.property.id,
     workdonedate: this.workdonedate,
-    supplierpaid: this.supplierpaid,
-    invoicenumber: this.invoicenumber,
-    chequenumber: this.chequenumber,
   };
+  if (this.type == 'OwnerChargeWorkOrder') {
+    fields.invoiceitemid = this.invoiceitem.id;
+  } else if (this.type == 'OwnerChargeProperty') {
+    fields.propertyid = this.property.id;
+    if (this.booking) {
+      fields.bookingid = this.booking.id;
+    }
+    if (this.supplierpaid) {
+      fields.supplierpaid = this.supplierpaid;
+    }
+    if (this.invoicenumber) {
+      fields.invoicenumber = this.invoicenumber;
+    }
+    if (this.chequenumber) {
+      fields.chequenumber = this.chequenumber;
+    }
+
+  } else {
+    fields.bookingid = this.booking.id;
+  }
+
+  return fields;
 };
 
 module.exports = OwnerCharge;
