@@ -11,12 +11,14 @@ SecurityRole.prototype = new SingleEntity();
 SecurityRole.prototype.toArray = function() {
   return {
     name: this.name,
+    description: this.description,
     symfonyroute: this.symfonyroute,
   };
 };
 
 SecurityRole.validSchema = Joi.object().keys({
   name: Joi.string().required().label('name'),
+  description: Joi.string().required().label('description'),
   symfonyroute: Joi.string().optional().allow('').label('symfony route')
 })
 
