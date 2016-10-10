@@ -6,7 +6,7 @@ function CronTask(id) {
 }
 CronTask.prototype = new SingleEntity();
 
-CronTask.toArray = function() {
+CronTask.prototype.toArray = function() {
   return {
     schedule: this.schedule,
     type: this.type,
