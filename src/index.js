@@ -224,6 +224,7 @@ module.exports.common.Role = require('./common/Role');
 module.exports.common.Reason = require('./common/Reason');
 module.exports.common.RoleReason = require('./common/RoleReason');
 module.exports.common.Report = require('./common/Report');
+module.exports.common.ReportRun = require('./common/ReportRun');
 
 // Property Pricing
 module.exports.common.PropertyBrandingPrice = require('./common/PropertyBrandingPrice');
