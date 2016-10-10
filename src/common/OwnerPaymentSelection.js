@@ -34,7 +34,7 @@ OwnerPaymentSelection.prototype.toUpdateArray = function() {
   }
   if (this.authorisedbytabsuser) {
     fields.authorisedbytabsuserid = this.authorisedbytabsuser.id;
-    fields.authorise = this.authorise;
+    fields.authorised = this.authorised;
     fields.value = this.value;
   }
 
@@ -52,7 +52,8 @@ OwnerPaymentSelection.validUpdateSchema = Joi.object().keys({
   paidbytabsuser: Joi.object().optional().label('Paid by'),
   createdbytabsuser: Joi.object().optional().label('created by'),
   cancelledbytabsuser: Joi.object().optional().label('cancelled by'),
-  authorise: Joi.boolean().optional().label('authorise'),
+  authorisedbytabsuser: Joi.object().optional().label('authorised by'),
+  authorised: Joi.boolean().optional().label('authorised'),
   value: Joi.number().optional().label('value')
 });
 
