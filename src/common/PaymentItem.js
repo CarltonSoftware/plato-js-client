@@ -31,15 +31,21 @@ function PaymentItem(id) {
 PaymentItem.prototype = new SingleEntity();
 
 PaymentItem.prototype.toUpdateArray = function() {
-  return {
-    authorisedbytabsuserid: this.authorisedbytabsuser.id,
-    authorised: this.authorised
-  };
+  var fields = {};
+  if ( this.authorisedbytabsuser ) {
+    fields.authorisedbytabsuserid = this.authorisedbytabsuser.id;
+    fields.authorised = this.authorised;
+  }
+  if ( this.dontpayowneruntildate ) {
+    fields.dontpayowneruntildate = this.dontpayowneruntildate;
+  }
+  return fields;
 };
 
 PaymentItem.validUpdateSchema = Joi.object().keys({
-  authorisedbytabsuser: Joi.object().label('authorised by'),
-  authorised: Joi.boolean().label('authorised'),
+  dontpayowneruntildate: Joi.object().optional().label('hold date'),
+  authorisedbytabsuser: Joi.object().optional().label('authorised by'),
+  authorised: Joi.boolean().optional().label('authorised'),
 });
 
 module.exports = PaymentItem;
