@@ -115,6 +115,9 @@ Booking.prototype.toArray = function() {
   if (this.brochureprice && this.brochureprice == 'true') {
     array.brochureprice = 'true';
   }
+  if (this.dontpayowneruntildate) {
+    array.dontpayowneruntildate = this.dontpayowneruntildate;
+  }
 
   // Transferred */
   if (this.transferredtobooking) {
