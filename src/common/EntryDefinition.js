@@ -20,7 +20,8 @@ EntryDefinition.prototype.toArray = function() {
     debit: this.debit,
     accountvaluetypeid: this.accountvaluetype.id,
     brandsourceid: this.brandsource.id,
-    type: this.type
+    type: this.type,
+    donotdelete: this.donotdelete
   }
   if (this.type == 'Standard') {
     fields.accountid = this.account.id
@@ -34,7 +35,8 @@ EntryDefinition.prototype.validSchema = function() {
     accountvaluetype: Joi.object().required().label('Account Value Type'),
     brandsource: Joi.object().optional().label('Brand Source'),
     type: Joi.string().valid('Standard', 'Extra', 'OwnerCharge', 'Payment').label('type'),
-    account: Joi.object().when('type', { is: 'Standard', then: Joi.required() }).label('Account')
+    account: Joi.object().when('type', { is: 'Standard', then: Joi.required() }).label('Account'),
+    donotdelete: Joi.boolean().optional().label('do not delete')
   });
 };
 
