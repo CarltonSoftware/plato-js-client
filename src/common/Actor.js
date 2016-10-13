@@ -122,6 +122,8 @@ Actor.prototype.toArray = function() {
     assessgrade: this.assessgrade,
     tabsusername: this.tabsusername,
     companyname: this.companyname,
+    companynumber: this.companynumber,
+    vatnumber: this.vatnumber,
     name: this.officename,
     inactive: this.inactive,
     accountingreference: this.accountingreference
