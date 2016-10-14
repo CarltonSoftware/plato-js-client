@@ -122,6 +122,8 @@ Actor.prototype.toArray = function() {
     assessgrade: this.assessgrade,
     tabsusername: this.tabsusername,
     companyname: this.companyname,
+    companynumber: this.companynumber,
+    vatnumber: this.vatnumber,
     name: this.officename,
     inactive: this.inactive,
     accountingreference: this.accountingreference
@@ -129,6 +131,9 @@ Actor.prototype.toArray = function() {
 
   if (this.password && this.password.length > 0) {
     arr.password = this.password;
+  }
+  if (this.bacsbankaccount) {
+    arr.bacsbankaccountid = this.bacsbankaccount.id;
   }
 
   return arr;
