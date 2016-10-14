@@ -2,6 +2,7 @@ var SingleEntity = require('./SingleEntity');
 var Currency = require('./Currency');
 var PaymentMethod = require('./PaymentMethod');
 var SagePayPayment = require('./SagePayPayment');
+var StaticCollection = require('./StaticCollection');
 var Joi = require('joi');
 
 function CustomerPayment(id) {
@@ -12,6 +13,12 @@ function CustomerPayment(id) {
   this.currency = new Currency();
   this.method = new PaymentMethod();
   this.sagepaypayment = new SagePayPayment();
+  this.refundedpayments = new StaticCollection({
+    object: CustomerPayment
+  });
+  this.refundingpayments = new StaticCollection({
+    object: CustomerPayment
+  });
 }
 
 CustomerPayment.prototype = new SingleEntity();
