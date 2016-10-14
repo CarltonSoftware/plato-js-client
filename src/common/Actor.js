@@ -135,6 +135,9 @@ Actor.prototype.toArray = function() {
   if (this.bacsbankaccount) {
     arr.bacsbankaccountid = this.bacsbankaccount.id;
   }
+  if (this.ownerpaymenttype) {
+    arr.ownerpaymenttypeid = this.ownerpaymenttype.id;
+  }
 
   return arr;
 };
