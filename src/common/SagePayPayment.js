@@ -64,4 +64,16 @@ SagePayPayment.prototype.createIframe = function() {
   });
 };
 
+SagePayPayment.prototype.release = function() {
+  return this.uploadPromiseResult([this.getUpdatePath(), 'release'].join('/'), {});
+};
+
+SagePayPayment.prototype.void = function() {
+  return this.uploadPromiseResult([this.getUpdatePath(), 'void'].join('/'), {});
+};
+
+SagePayPayment.prototype.refund = function(amount) {
+  return this.createPromiseResult([this.getUpdatePath(), 'void'].join('/'), { amount: amount });
+};
+
 module.exports = SagePayPayment;
