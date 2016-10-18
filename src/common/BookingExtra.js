@@ -1,8 +1,8 @@
 var SingleEntity = require('./SingleEntity');
 
 function BookingExtra(bookingId, id) {
-  this.path = 'booking/' + bookingId + '/extra';
-  this.createPath = 'booking/' + bookingId + '/extra';
+  this.path = 'extra';
+  this.createPath = 'extra';
   this.id = id;
 }
 BookingExtra.prototype = new SingleEntity();

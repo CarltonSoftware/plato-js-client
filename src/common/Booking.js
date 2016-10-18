@@ -11,6 +11,7 @@ var BookingSupplier = require('./BookingSupplier');
 var BookingNote = require('./BookingNote');
 var NoteFilterCollection = require('./NoteFilterCollection');
 var WebBooking = require('./WebBooking');
+var BookingExtra = require('./BookingExtra');
 
 function Booking(id) {
   this.path = 'booking';
@@ -61,6 +62,11 @@ function Booking(id) {
   });
   this.suppliers = new StaticCollection({
     object: BookingSupplier
+  });
+  this.extras = new Collection({
+    path: 'extra',
+    object: BookingExtra,
+    parent: this
   });
 
   this.webbooking = new WebBooking();
