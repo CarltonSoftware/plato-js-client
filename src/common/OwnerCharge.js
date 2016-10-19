@@ -45,6 +45,12 @@ OwnerCharge.prototype.toArray = function() {
   } else {
     fields.bookingid = this.booking.id;
   }
+  if (this.createdbyactor) {
+    fields.createdbyactorid = this.createdbyactor.id;
+  }
+  if (this.cancelledbyactor) {
+    fields.cancelledbyactorid = this.cancelledbyactor.id;
+  }
 
   return fields;
 };
