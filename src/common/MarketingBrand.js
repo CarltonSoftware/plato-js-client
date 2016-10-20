@@ -1,6 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
 var BookingBrand = require('./BookingBrand');
+var client = require('./platoJsClient').getInstance();
 
 function MarketingBrand(id) {
   this.path = 'marketingbrand';
@@ -22,6 +23,12 @@ MarketingBrand.prototype.toArray = function() {
     agencyid: this.agency.id,
     defaultbookingbrandid: this.defaultbookingbrand.id
   };
+};
+
+MarketingBrand.prototype.getEmailtemplate = function(filterCollection) {
+  return client.get(
+    this.getUpdatePath() + '/emailtemplate?orderBy=' + filterCollection.orderBy + filterCollection.getFilterString()
+  );
 };
 
 module.exports = MarketingBrand;
