@@ -62,6 +62,8 @@ ExtraBrandingPricing.validSchema = Joi.object().keys({
   perinfant: Joi.when('pricingtype', { is: 'Amount',then: Joi.boolean().label('per infant'), otherwise: Joi.forbidden() }),
   price: Joi.when('pricingtype', { is: 'Amount',then: Joi.number().required().label('price'), otherwise: Joi.forbidden() }),
   percentage: Joi.when('pricingtype', { is: 'Percentage',then: Joi.number().required().label('percentage'), otherwise: Joi.forbidden() }),
+  minimumprice: Joi.when('pricingtype', { is: 'Percentage',then: Joi.number().optional().label('minimum price'), otherwise: Joi.forbidden() }),
+  maximumprice: Joi.when('pricingtype', { is: 'Percentage',then: Joi.number().optional().label('maximump rice'), otherwise: Joi.forbidden() }),
   basedon: Joi.when('pricingtype', { is: 'Amount',then: Joi.forbidden(), otherwise: Joi.string().valid('Basic', 'Brochure').label('based on') })
 }),
 
