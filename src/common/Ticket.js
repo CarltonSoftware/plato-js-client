@@ -73,8 +73,7 @@ Ticket.prototype.schema = function() {
     priority: Joi.object().required().label('Priority'),
     versionnumber: Joi.string().required().label('Version Number'),
     subject: Joi.string().required().label('Subject'),
-    tabsscreen: Joi.string().required().label('Area affected'),
-    computername: Joi.string().required().label('Computer Name')
+    tabsscreen: Joi.string().required().label('Area affected')
   };
 };
 
