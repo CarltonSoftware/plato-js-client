@@ -15,7 +15,7 @@ function Setting(id) {
 Setting.prototype = new SingleEntity();
 Setting.prototype.toArray = function() {
   return {
-    name: this.sourcecode,
+    name: this.name,
     description: this.description,
     type: this.type,
     minimumvalue: this.minimumvalue,
