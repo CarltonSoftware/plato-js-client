@@ -167,12 +167,9 @@ function FilterCollection(options) {
    * @return {object}
    */
   this.getFilterObject = function() {
-    var filters = [];
-    filterGroups.forEach(function(f) {
-      filters.push(f.getFilters());
+    return filterGroups.map(function(f) {
+      return f.getFilters();
     });
-
-    return filters;
   },
 
   /**

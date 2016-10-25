@@ -9,7 +9,7 @@ function statusError(response) {
       if (error) {
         this.message = error.description;
       }
-    } catch(e) {
+    } catch (e) {
       this.message = response.entity.errorDescription;
     }
   }

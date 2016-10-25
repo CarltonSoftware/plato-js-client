@@ -17,7 +17,7 @@ LabelQueue.prototype.toArray = function() {
 LabelQueue.prototype.getText = function() {
   try {
     return JSON.parse(this.textjson);
-  } catch (SyntaxError) {
+  } catch (e) {
     return this.textjson;
   }
 };
