@@ -1,3 +1,4 @@
+var Joi = require('joi');
 var client = require('./platoJsClient').getInstance();
 var SingleEntity = require('./SingleEntity');
 var StaticCollection = require('./StaticCollection');
@@ -29,6 +30,21 @@ Report.prototype.toFormData = function() {
   var formData = new FormData();
   formData.append('file', this.file);
   return formData;
+};
+
+Report.prototype.validParameters = function() {
+  var object = {
+    _recipients: Joi.string().email()
+  };
+  this.parameters.forEach(function(parameter) {
+    object[parameter.name] = Joi[parameter.type]().label(parameter.toString());
+    if (parameter.required) {
+      object[parameter.name] = object[parameter.name].required();
+    } else {
+      object[parameter.name] = object[parameter.name].empty('');
+    }
+  });
+  return Joi.object(object);
 };
 
 module.exports = Report;
