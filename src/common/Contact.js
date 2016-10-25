@@ -1,4 +1,5 @@
 var SingleEntity = require('./SingleEntity');
+var Template = require('./Template');
 var Joi = require('joi');
 
 function Contact(contactId) {
@@ -6,6 +7,7 @@ function Contact(contactId) {
   this.createPath = 'contact';
   this.id = contactId;
   this.deleted = false;
+  this.template = new Template();
 }
 Contact.prototype = new SingleEntity();
 
@@ -33,6 +35,8 @@ Contact.prototype.toCreateArray = function() {
     contactdatetime: this.contactdatetime,
     content: this.content,
     deleted: false,
+    templateentityid: this.templateentityid,
+    templateid: this.template.id,
     document_documentid: this.document_documentid
   };
 };
