@@ -16,10 +16,7 @@ function Report(id) {
 Report.prototype = new SingleEntity();
 
 Report.prototype.run = function(params) {
-  return client.post({
-    path: this.getUpdatePath() + '/run',
-    entity: params
-  }).then(function(res) {
+  return this.createPromiseResult(this.getUpdatePath() + '/run', params).then(function(res) {
     var reportRun = new ReportRun(res.id);
     reportRun.mutateResponse(res.entity);
     return reportRun;
