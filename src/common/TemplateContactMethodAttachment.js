@@ -1,6 +1,8 @@
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
 var Document = require('./Document');
+var Collection = require('./Collection');
+var TemplateContactMethodAttachmentProperty = require('./TemplateContactMethodAttachmentProperty');
 
 function TemplateContactMethodAttachment(id) {
   this.createPath = this.path = 'attachment';
@@ -11,6 +13,11 @@ function TemplateContactMethodAttachment(id) {
     parent:  new EntityLink({
       entity: 'Template'
     })
+  });
+  this.properties = new Collection({
+    object: TemplateContactMethodAttachmentProperty,
+    path: 'property',
+    parent: this
   });
 }
 
