@@ -278,6 +278,7 @@ module.exports.common.TicketHistory = require('./common/TicketHistory');
 
 // Users
 module.exports.common.ActorSecurity = require('./common/ActorSecurity');
+module.exports.common.ActorSetting = require('./common/ActorSetting');
 module.exports.common.SecurityGroup = require('./common/SecurityGroup');
 module.exports.common.SecurityGroupRole = require('./common/SecurityGroupRole');
 module.exports.common.SecurityRole = require('./common/SecurityRole');
