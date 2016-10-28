@@ -74,6 +74,7 @@ function Booking(id) {
 Booking.prototype = new SingleEntity();
 Booking.prototype.toArray = function() {
   var array = {
+    bookref: this.bookref,
     guesttype: this.guesttype,
     fromdate: this.fromdate,
     todate: this.todate,
