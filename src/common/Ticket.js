@@ -80,6 +80,7 @@ Ticket.prototype.schema = function() {
 Ticket.prototype.createSchema = function() {
   var schema = this.schema();
   schema.ticketmessage_message = Joi.string().required().label('Message');
+  schema.brand = Joi.object().optional().label('Brand');
 
   return schema;
 };
