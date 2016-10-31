@@ -56,7 +56,8 @@ Ticket.prototype.toArray = function() {
     subject: this.subject,
     tabsscreen: this.tabsscreen,
     computername: this.computername,
-    status: this.status.status
+    status: this.status.status,
+    ticketuser: this.ticketuser.username
   };
 };
 
@@ -73,7 +74,9 @@ Ticket.prototype.schema = function() {
     priority: Joi.object().required().label('Priority'),
     versionnumber: Joi.string().required().label('Version Number'),
     subject: Joi.string().required().label('Subject'),
-    tabsscreen: Joi.string().required().label('Area affected')
+    tabsscreen: Joi.string().required().label('Area affected'),
+    status: Joi.object().optional().label('Ticket Status'),
+    ticketuser: Joi.object().optional().label('Ticket User')
   };
 };
 
