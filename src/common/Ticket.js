@@ -3,7 +3,7 @@ var Collection = require('./Collection');
 var StaticCollection = require('./StaticCollection');
 var TicketUser = require('./TicketUser');
 var TicketBrand = require('./TicketBrand');
-var TicketTerm = require('./TicketTerm');
+var TicketTermValue = require('./TicketTermValue');
 var TicketStatus = require('./TicketStatus');
 var TicketPriority = require('./TicketPriority');
 var TicketMessage = require('./TicketMessage');
@@ -36,7 +36,7 @@ function Ticket(ticketID) {
     parent: this
   });
   this.terms = new Collection({
-    object: TicketTerm,
+    object: TicketTermValue,
     path: 'term',
     parent: this
   });
