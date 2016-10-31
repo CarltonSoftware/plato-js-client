@@ -275,6 +275,7 @@ module.exports.common.TicketStatus = require('./common/TicketStatus');
 module.exports.common.TicketUser = require('./common/TicketUser');
 module.exports.common.TicketTerm = require('./common/TicketTerm');
 module.exports.common.TicketTermValue = require('./common/TicketTermValue');
+module.exports.common.TicketTime = require('./common/TicketTime');
 module.exports.common.TicketHistory = require('./common/TicketHistory');
 
 // Users

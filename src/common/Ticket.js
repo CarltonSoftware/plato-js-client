@@ -10,6 +10,7 @@ var TicketMessage = require('./TicketMessage');
 var TicketHistory = require('./TicketHistory');
 var TicketNote = require('./TicketNote');
 var TicketAttachment = require('./TicketAttachment');
+var TicketTime = require('./TicketTime');
 var Joi = require('joi');
 
 function Ticket(ticketID) {
@@ -42,7 +43,12 @@ function Ticket(ticketID) {
   });
   this.history = new StaticCollection({
     object: TicketHistory,
-    path: 'term',
+    path: 'history',
+    parent: this
+  });
+  this.timespent = new StaticCollection({
+    object: TicketTime,
+    path: 'time',
     parent: this
   });
 }
@@ -94,6 +100,13 @@ Ticket.prototype.validSchema = function() {
   } else {
     return Joi.object().keys(this.createSchema());
   }
+};
+
+Ticket.prototype.addTime = function(time) {
+  return entity.updatePromiseResult(
+    this.getUpdatePath() + '/time',
+    { time: time }
+  );
 };
 
 module.exports = Ticket;
