@@ -103,7 +103,7 @@ Ticket.prototype.validSchema = function() {
 };
 
 Ticket.prototype.addTime = function(time) {
-  return entity.updatePromiseResult(
+  return this.updatePromiseResult(
     this.getUpdatePath() + '/time',
     { time: time }
   );
