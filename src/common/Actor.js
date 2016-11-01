@@ -145,6 +145,9 @@ Actor.prototype.toArray = function() {
   if (this.ownerpaymenttype) {
     arr.ownerpaymenttypeid = this.ownerpaymenttype.id;
   }
+  if (this.source) {
+    arr.sourceid = this.source.id;
+  }
 
   return arr;
 };
