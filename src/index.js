@@ -262,6 +262,7 @@ module.exports.common.PropertyBrandingChangeDayTemplate = require('./common/Prop
 
 // Bookings
 module.exports.common.DepositAmount = require('./common/DepositAmount');
+module.exports.common.DepositAmountExtra = require('./common/DepositAmountExtra');
 module.exports.common.DepositAmountType = require('./common/DepositAmountType');
 
 // Tickets
