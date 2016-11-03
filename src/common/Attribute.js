@@ -43,8 +43,11 @@ function Attribute(id) {
 
   this.toUpdateArray = function() {
     var base = {
+      name: this.name,
+      description: this.description,
       type: this.type,
       group: this.group.name,
+      donotmodify: this.donotmodify,
       usedinavailabilitysearch: this.usedinavailabilitysearch,
       baseattribute: this.baseattribute,
       important: this.important
