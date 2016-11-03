@@ -67,4 +67,8 @@ PropertyBranding.prototype.toArray = function() {
   };
 };
 
+PropertyBranding.prototype.toString = function() {
+  return this.branding.toString();
+};
+
 module.exports = PropertyBranding;
