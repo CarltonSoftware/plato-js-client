@@ -10,7 +10,8 @@ LabelQueue.prototype.toArray = function() {
   return {
     sortreference: this.sortreference,
     reference: this.reference,
-    textjson: this.textjson
+    textjson: this.textjson,
+    printed: this.printed
   };
 };
 
