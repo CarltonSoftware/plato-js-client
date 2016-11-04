@@ -87,6 +87,7 @@ Booking.prototype.toArray = function() {
     checkinlatesttime: this.checkinlatesttime,
     checkouttime: this.checkouttime,
     promotioncode: this.promotioncode,
+    overridestatus: this.overridestatus,
 
     /* Web Booking */
     webbooking_createddatetime: this.webbooking.createddatetime,
