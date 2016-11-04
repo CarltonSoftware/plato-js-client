@@ -23,6 +23,14 @@ Report.prototype.run = function(params) {
   });
 };
 
+Report.prototype.toArray = function() {
+  return {
+    name: this.name,
+    description: this.description,
+    category: this.category
+  }
+};
+
 Report.prototype.toFormData = function() {
   var formData = new FormData();
   formData.append('file', this.file);
