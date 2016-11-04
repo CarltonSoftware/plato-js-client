@@ -15,7 +15,6 @@ Inspection.prototype = new SingleEntity();
 
 Inspection.prototype.toArray = function() {
   return {
-    //TODO: Add in the fields necessary to create a Inspection
     inspectiondate: this.inspectiondate,
     grading: this.grading,
     gradingunit: this.gradingunit,

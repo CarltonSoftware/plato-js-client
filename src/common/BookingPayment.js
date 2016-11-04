@@ -1,10 +1,13 @@
 var SingleEntity = require('./SingleEntity');
+var EntityLink = require('./EntityLink');
 var Joi = require('joi');
 
 function BookingPayment(id) {
   this.path = 'payment';
   this.createPath = 'payment';
   this.id = id;
+
+  this.actor = new EntityLink({ entity: 'Actor' });
 }
 
 BookingPayment.prototype = new SingleEntity();

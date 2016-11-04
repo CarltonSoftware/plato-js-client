@@ -1,7 +1,6 @@
 var SingleEntity = require('./SingleEntity');
 
 function ExtraBrandingPricingRangeElementPriceType(extraId, brandingId, pricingId, rangeId, id) {
-  console.log(extraId, brandingId);
     this.path = 'extra/' + extraId + '/branding/' + brandingId + '/pricing/' + pricingId + '/rangeelement/' + rangeId + '/pricetype';
     this.createPath = this.path;
     this.id = id;
