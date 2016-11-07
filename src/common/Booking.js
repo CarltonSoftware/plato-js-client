@@ -220,7 +220,11 @@ Booking.prototype.getStatus = function() {
   }
   /* TODO: temp fix for transferred display. */
   if (this.cancelled || this.status == 'Provisional - Transferred' || this.status == 'Confirmed - Transferred') {
-    item.showAs = 'cancelled';
+    if (this.status == 'Confirmed - Cancelled') {
+      item.showAs = 'cancelledconfirmed';
+    } else {
+      item.showAs = 'cancelled';
+    }
   }
   // TBD - Web bookings, flexilet
 
