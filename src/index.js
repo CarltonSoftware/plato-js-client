@@ -3,6 +3,7 @@ module.exports.client = require('./common/platoJsClient');
 module.exports.common = {};
 module.exports.common.Encoding = require('./common/Encoding');
 module.exports.common.Unit = require('./common/Unit');
+module.exports.common.Title = require('./common/Title');
 module.exports.common.Attribute = require('./common/Attribute');
 module.exports.common.AttributeGroup = require('./common/AttributeGroup');
 module.exports.common.AttributeOption = require('./common/AttributeOption');
