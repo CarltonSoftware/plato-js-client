@@ -22,7 +22,8 @@ PropertyNote.prototype.toArray = function() {
     fromdate: this.fromdate,
     todate: this.todate,
     requiresconfirmation: this.requiresconfirmation,
-    showonweb: this.showonweb
+    showonweb: this.showonweb,
+    showonavailability: this.showonavailability
   };
 };
 
