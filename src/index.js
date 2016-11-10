@@ -36,6 +36,7 @@ module.exports.common.OwnerEnquiryActionType = require('./common/OwnerEnquiryAct
 module.exports.common.OwnerPayment = require('./common/OwnerPayment');
 module.exports.common.OwnerPaymentSelection = require('./common/OwnerPaymentSelection');
 module.exports.common.OwnerPaymentTerm = require('./common/OwnerPaymentTerm');
+module.exports.common.OwnerPaymentTermExtra = require('./common/OwnerPaymentTermExtra');
 module.exports.common.OwnerPaymentType = require('./common/OwnerPaymentType');
 module.exports.common.OwnerCharge = require('./common/OwnerCharge');
 module.exports.common.OwnerChargeCode = require('./common/OwnerChargeCode');

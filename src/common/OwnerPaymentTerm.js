@@ -1,5 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var Currency = require('./Currency');
+var Collection = require('./Collection');
+var OwnerPaymentTermExtra = require('./OwnerPaymentTermExtra');
 
 function OwnerPaymentTerm(id) {
   this.path = 'ownerpaymentterms';
@@ -20,6 +22,12 @@ function OwnerPaymentTerm(id) {
   // Last: Owner is paid anything left after all the commission has been taken
   // First: Owner is paid as much as possible as soon as possible
   this.ownerpaid = '';
+
+  this.extras = new Collection({
+    object: OwnerPaymentTermExtra,
+    path: 'extra',
+    parent: this
+  });
 }
 
 OwnerPaymentTerm.prototype = new SingleEntity();
