@@ -67,11 +67,7 @@ function FilterCollection(options) {
    * @return {FilterCollection}
    */
   this.addFilter = function(key, val) {
-    filterGroups.forEach(function(ele) {
-      if (ele.id === currentGroup) {
-        ele.addFilter(key, val);
-      }
-    });
+    filterGroups.first().addFilter(key, val);
 
     return this;
   };
@@ -87,24 +83,25 @@ function FilterCollection(options) {
     // Check if groups
     if (Array.isArray(filters)) {
       for (var i = 0; i < filters.length; i++) {
-        this.createGroup(i)
-          .addObjectFilters(filters[i]);
+        this.createGroup(i);
+        this.addObjectFilters(i, filters[i]);
       }
     } else {
-      this.addObjectFilters(filters);
+      this.addObjectFilters(currentGroup, filters);
     }
   };
 
   /**
    * Add filters specified in an object
    *
-   * @param {object} filters
+   * @param {integer} group
+   * @param {object}  filters
    *
    * @return {FilterCollection}
    */
-  this.addObjectFilters = function(filters) {
+  this.addObjectFilters = function(group, filters) {
     for (i in filters) {
-      this.addFilter(i, filters[i]);
+      filterGroups.collection[group].addFilter(i, filters[i]);
     }
 
     return this;
@@ -186,10 +183,10 @@ function FilterCollection(options) {
       var ftrs = '';
 
       filterGroups.forEach(function(grp) {
-        ftrs += grp.getFilterString() + '&filter[]=';
+        ftrs += '&filter[]=' + grp.getFilterString();
       });
 
-      return ftrs.substring(0, ftrs.length - 10);
+      return ftrs;
     } else {
       return '';
     }

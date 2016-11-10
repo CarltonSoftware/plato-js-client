@@ -212,6 +212,17 @@ StaticCollection.prototype.first = function() {
 };
 
 /**
+* Get the last element from the collection, if any
+*
+* @returns {object} The first element in the collection
+*/
+StaticCollection.prototype.last = function() {
+  if (this.collection.length) {
+    return this.collection[this.collection.length - 1];
+  }
+};
+
+/**
 * Perform an array slice on the collection
 *
 * @param {number} start
