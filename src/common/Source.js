@@ -19,7 +19,8 @@ Source.prototype.toArray = function() {
   return {
     sourcecode: this.sourcecode,
     description: this.description,
-    sourcecategory: this.sourcecategory.sourcecategory
+    sourcecategory: this.sourcecategory.sourcecategory,
+    showonweb: this.showonweb
   };
 };
 
