@@ -1,5 +1,7 @@
 var Joi = require('joi');
+var Promise = require('es6-promise').Promise;
 var client = require('./platoJsClient').getInstance();
+var statusError = require('./../error/statusError');
 var SingleEntity = require('./SingleEntity');
 var StaticCollection = require('./StaticCollection');
 var ReportParameter = require('./ReportParameter');
@@ -16,10 +18,18 @@ function Report(id) {
 Report.prototype = new SingleEntity();
 
 Report.prototype.run = function(params) {
-  return this.createPromiseResult(this.getUpdatePath() + '/run', params).then(function(res) {
-    var reportRun = new ReportRun(res.id);
-    reportRun.mutateResponse(res.entity);
-    return reportRun;
+  return client.post({
+    path: this.getUpdatePath() + '/run',
+    entity: params
+  }).then(function(res) {
+    return new Promise(function(resolve, reject) {
+      if (res.status.code === 200) {
+        var reportRun = new ReportRun(res.id);
+        resolve(reportRun.mutateResponse(res.entity));
+      } else {
+        reject(new statusError(res));
+      }
+    });
   });
 };
 
