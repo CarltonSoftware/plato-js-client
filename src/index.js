@@ -145,6 +145,7 @@ module.exports.common.WorkOrderSupplier = require('./common/WorkOrderSupplier');
 module.exports.common.Booking = require('./common/Booking');
 module.exports.common.BookingCustomer = require('./common/BookingCustomer');
 module.exports.common.BookingEnquiry = require('./common/BookingEnquiry');
+module.exports.common.BookingEnquiryExtra = require('./common/BookingEnquiryExtra');
 module.exports.common.BookingExtra = require('./common/BookingExtra');
 module.exports.common.BookingEvent = require('./common/BookingEvent');
 module.exports.common.BookingDocument = require('./common/BookingDocument');
