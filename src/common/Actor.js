@@ -118,25 +118,19 @@ Actor.prototype.getFullName = function(noTitle) {
  * @returns {Object}
  */
 Actor.prototype.getContactDetails = function() {
-  var phone, email, address;
+  var details = {};
 
   this.contactdetails.forEach(function(detail) {
-    if (detail.type === 'C') {
-      if (detail.contactmethodtype.toLowerCase() === 'phone' && !phone) {
-        phone = detail.value;
-      } else if (detail.contactmethodtype.toLowerCase() === 'email' && !email) {
-        email = detail.value;
-      }
-    } else if (detail.type === 'P' && !address) {
-      address = detail.address.toString();
+    if (detail.type === 'F' && !details.phone) {
+      details.phone = detail;
+    } else if (detail.type === 'C' && detail.contactmethodtype.toLowerCase() === 'email' && !details.email) {
+      details.email = detail;
+    } else if (detail.type === 'P' && !details.address) {
+      details.address = detail;
     }
   });
 
-  return {
-    phone: phone,
-    email: email,
-    address: address
-  };
+  return details;
 };
 
 /**
