@@ -120,12 +120,16 @@ Entity.prototype.createPromiseResult = function(path, data) {
   return new Promise(function(resolve, reject) {
     result.then(function(res) {
       if (res.status.code === 201) {
-        var newLocation = e.replacePath(res.headers['Content-Location']);
-        client.get({ path: newLocation}).then(function(res) {
+        if (res.headers.hasOwnProperty('Content-Location')) {
+          var newLocation = e.replacePath(res.headers['Content-Location']);
+          client.get({ path: newLocation}).then(function(res) {
+            resolve(e.mutateResponse(res.entity));
+          }, function(res) {
+            reject(new statusError(res));
+          });
+        } else {
           resolve(e.mutateResponse(res.entity));
-        }, function(res) {
-          reject(new statusError(res));
-        });
+        }
       } else {
         reject(new statusError(res));
       }
