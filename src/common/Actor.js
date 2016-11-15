@@ -109,6 +109,36 @@ Actor.prototype.getFullName = function(noTitle) {
   return name.join(" ");
 };
 
+
+/**
+ * Return up to one of each kind of contact detail (phone, email and address)
+ *
+ * Doesn't do anything clever with contact preferences (just returns the first of each kind)
+ *
+ * @returns {Object}
+ */
+Actor.prototype.getContactDetails = function() {
+  var phone, email, address;
+
+  this.contactdetails.forEach(function(detail) {
+    if (detail.type === 'C') {
+      if (detail.contactmethodtype.toLowerCase() === 'phone' && !phone) {
+        phone = detail.value;
+      } else if (detail.contactmethodtype.toLowerCase() === 'email' && !email) {
+        email = detail.value;
+      }
+    } else if (detail.type === 'P' && !address) {
+      address = detail.address.toString();
+    }
+  });
+
+  return {
+    phone: phone,
+    email: email,
+    address: address
+  };
+};
+
 /**
  * Return the create/put array
  *
