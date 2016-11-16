@@ -129,4 +129,11 @@ Property.prototype.validSchema = function () {
   });
 };
 
+/**
+ * To String Method
+ */
+Property.prototype.toString = function() {
+  return this.name;
+};
+
 module.exports = Property;

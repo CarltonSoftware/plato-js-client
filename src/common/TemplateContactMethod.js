@@ -59,6 +59,10 @@ TemplateContactMethod.prototype.getEmailContent = function(ref) {
   return client.get(this.getRefPath(ref) + '/email');
 };
 
+TemplateContactMethod.prototype.send = function(ref) {
+  return client.put(this.getRefPath(ref) + '/send');
+};
+
 TemplateContactMethod.prototype.save = function(ref, entity) {
   return entity.createPromiseResult(
     this.getRefPath(ref) + '/save',

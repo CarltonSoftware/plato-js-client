@@ -1,5 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
+var Collection = require('./Collection');
+var Booking = require('./Booking');
 
 function ScheduledEventTemplateContactMethod(id) {
   this.path = 'templatecontactmethod';
@@ -10,6 +12,19 @@ function ScheduledEventTemplateContactMethod(id) {
     parent: new EntityLink({
       entity: 'Template'
     })
+  });
+
+  this.available = new Collection({
+    path: 'available',
+    parent: this,
+    ignoreparent: true, // We only want parent for path so set this to true so that entities do not have parent set.
+    discriminator: function(element) {
+      if (element['webbooking']) {
+        return Booking;
+      } else {
+        return function() {};
+      }
+    }
   });
 }
 

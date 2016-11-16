@@ -51,7 +51,9 @@ StaticCollection.prototype.mutateResponse = function(entity) {
       params.push(parents[i].id);
     }
 
-    if (this.options.discriminator && element.hasOwnProperty(this.options.discriminator)) {
+    if (this.options.discriminator && typeof this.options.discriminator === 'function') {
+      object = this.options.discriminator(element);
+    } else if (this.options.discriminator && element.hasOwnProperty(this.options.discriminator)) {
       var discr = element[this.options.discriminator];
       if (this.options.discriminatorMap.hasOwnProperty(discr)) {
         object = this.options.discriminatorMap[discr];
@@ -67,7 +69,7 @@ StaticCollection.prototype.mutateResponse = function(entity) {
     //http://stackoverflow.com/questions/1606797/use-of-apply-with-new-operator-is-this-possible
     var entity = new (Function.prototype.bind.apply(object, params));
 
-    if (typeof this.options.parent === 'object') {
+    if (typeof this.options.parent === 'object' || !this.options.ignoreparent) {
       if (typeof entity.setParent === 'function') {
         entity.setParent(this.options.parent);
       } else {

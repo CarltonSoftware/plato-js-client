@@ -109,6 +109,13 @@ Actor.prototype.getFullName = function(noTitle) {
   return name.join(" ");
 };
 
+/**
+ * To String Method
+ */
+Actor.prototype.toString = function() {
+  return this.getFullName();
+};
+
 
 /**
  * Return up to one of each kind of contact detail (phone, email and address)
