@@ -12,6 +12,8 @@ BookingGuest.prototype.toArray = function() {
     name: this.name,
     guesttype: this.guesttype,
     guestagerangeid: this.guestagerangeid,
+    age: this.age,
+    yearofbirth: this.yearofbirth,
     petbreed: this.petbreed,
     pettype: this.pettype,
     bookingcustomerid: this.bookingcustomerid
