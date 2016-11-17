@@ -38,9 +38,12 @@ TemplateContactMethod.prototype.toArray = function() {
 TemplateContactMethod.prototype.getRefPath = function(ref) {
   if (typeof ref === 'object') {
     ref = ref.id;
-  } 
-
-  return [this.parent.path, this.parent.id, this.path, this.id, 'ref', ref].join('/');
+    return [this.parent.path, this.parent.id, this.path, this.id, 'ref', ref].join('/');
+  } else if (typeof ref === 'undefined') {
+    return [this.parent.path, this.parent.id, this.path, this.id].join('/');
+  } else {
+    return [this.parent.path, this.parent.id, this.path, this.id, 'ref', ref].join('/');
+  }
 };
 
 TemplateContactMethod.prototype.getLabel = function() {
@@ -53,6 +56,10 @@ TemplateContactMethod.prototype.getRef = function(ref) {
 
 TemplateContactMethod.prototype.render = function(ref) {
   return client.get(this.getRefPath(ref) + '/render');
+};
+
+TemplateContactMethod.prototype.preview = function() {
+  return client.get(this.getRefPath() + '/preview');
 };
 
 TemplateContactMethod.prototype.getEmailContent = function(ref) {
