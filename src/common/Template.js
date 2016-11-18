@@ -1,3 +1,4 @@
+var client = require('./platoJsClient').getInstance();
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
 var Collection = require('./Collection');
@@ -19,6 +20,10 @@ function Template(id) {
 }
 
 Template.prototype = new SingleEntity();
+
+Template.prototype.getFields = function() {
+  return client.get(this.getUpdatePath() + '/fields');
+};
 
 Template.prototype.toArray = function() {
   return {
