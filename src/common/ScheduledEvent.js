@@ -22,7 +22,8 @@ ScheduledEvent.prototype.toArray = function() {
     filter: this.filter,
     filtercontext: this.filtercontext,
     frequency: this.frequency,
-    sendonce: this.sendonce
+    sendonce: this.sendonce,
+    inactive: this.inactive
   };
 };
 
@@ -32,7 +33,8 @@ ScheduledEvent.prototype.validSchema = function() {
     filter: Joi.string().required().label('filter'),
     filtercontext: Joi.string().required().label('filtercontext'),
     frequency: Joi.string().required().label('frequency'),
-    sendonce: Joi.boolean().required().label('sendonce')
+    sendonce: Joi.boolean().required().label('sendonce'),
+    inactive: Joi.boolean().required().label('inactive')
   });
 };
 
