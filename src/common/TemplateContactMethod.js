@@ -47,7 +47,12 @@ TemplateContactMethod.prototype.getRefPath = function(ref) {
 };
 
 TemplateContactMethod.prototype.getLabel = function() {
-  return [this.parent.templatename, this.contactmethodtype.method].join(' - ');
+  var lbl = [this.contactmethodtype.method];
+  if (this.parent) {
+    lbl.unshift(this.parent.templatename);
+  }
+
+  return lbl.join('-');
 };
 
 TemplateContactMethod.prototype.getRef = function(ref) {
