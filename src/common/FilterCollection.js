@@ -186,6 +186,10 @@ function FilterCollection(options) {
         ftrs += '&filter[]=' + grp.getFilterString();
       });
 
+      if (ftrs.length > 0 && ftrs.substr(-10) == '&filter[]=') {
+        ftrs = ftrs.substr(0, ftrs.length - 10);
+      }
+
       return ftrs;
     } else {
       return '';
