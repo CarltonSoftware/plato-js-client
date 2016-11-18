@@ -2,6 +2,8 @@ var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
 var Collection = require('./Collection');
 var Booking = require('./Booking');
+var Property = require('./Property');
+var ActorInstance = require('./ActorInstance');
 
 function ScheduledEventTemplateContactMethod(id) {
   this.path = 'templatecontactmethod';
@@ -21,8 +23,10 @@ function ScheduledEventTemplateContactMethod(id) {
     discriminator: function(element) {
       if (element['webbooking']) {
         return Booking;
+      } else if (element['firstname']) {
+        return ActorInstance.call(this, element['type'].toLowerCase());
       } else {
-        return function() {};
+        return Property;
       }
     }
   });
