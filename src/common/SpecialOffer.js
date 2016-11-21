@@ -71,6 +71,7 @@ SpecialOffer.prototype.toUpdateArray = function() {
   return {
     type: this.type,
     description: this.description,
+    officedescription: this.officedescription,
     minimumholidaylength: this.minimumholidaylength,
     maximumholidaylength: this.maximumholidaylength,
     minimumoccupancy: this.minimumoccupancy,
@@ -102,6 +103,7 @@ SpecialOffer.prototype.toCreateArray = function() {
 SpecialOffer.prototype.validSchema = function() {
   return Joi.object().keys({
     description: Joi.string(),
+    officedescription: Joi.string().optional().allow(''),
     type: Joi.string(),
     amount: Joi.number(),
     fixedprice: Joi.number(),
