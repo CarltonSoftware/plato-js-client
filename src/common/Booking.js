@@ -3,6 +3,7 @@ var EntityLink = require('./EntityLink');
 var Collection = require('./Collection');
 var StaticCollection = require('./StaticCollection');
 var Currency = require('./Currency');
+var SpecialOffer = require('./SpecialOffer');
 var BookingCustomer = require('./BookingCustomer');
 var BookingDocument = require('./BookingDocument');
 var BookingGuest = require('./BookingGuest');
@@ -37,7 +38,10 @@ function Booking(id) {
 
   // this.saleschannel = new SalesChannel;
   // this.pricingperiod = new PricingPeriod;
-  // this.price = ;
+  this.price = new SingleEntity();
+  this.price.specialoffers = new Collection({
+    object: SpecialOffer
+  });
   this.currency = new Currency();
   // this.potentialbooking = new PotentialBooking;
   this.documents = new Collection({
