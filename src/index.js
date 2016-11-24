@@ -41,6 +41,7 @@ module.exports.common.OwnerPaymentType = require('./common/OwnerPaymentType');
 module.exports.common.OwnerCharge = require('./common/OwnerCharge');
 module.exports.common.OwnerChargeCode = require('./common/OwnerChargeCode');
 module.exports.common.OwnerChargeImport = require('./common/OwnerChargeImport');
+module.exports.common.OwnerStatement = require('./common/OwnerStatement');
 module.exports.common.PaymentItem = require('./common/PaymentItem');
 module.exports.common.SagePayPayment = require('./common/SagePayPayment');
 
