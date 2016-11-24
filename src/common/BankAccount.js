@@ -31,19 +31,13 @@ BankAccount.prototype.toArray = function() {
 
 BankAccount.prototype.validSchema = function() {
   return Joi.object().keys({
-    accountname: Joi.string().required().label('Account Name'),
-    accountnumber: Joi.string().required().max(10).label('Account Number'),
-    sortcode: Joi.string().required().min(6).max(6).label('Sort Code'),
-    bankname: Joi.string().required().label('Bank Name'),
-    paymentreference: Joi.string().allow('').optional().label('Payment reference'),
-    rollnumber: Joi.string().allow('').optional().label('Roll Number'),
-    line1: Joi.string().required().label('Address line 1'),
-    line2: Joi.string().allow('').optional().label('Address line 2'),
-    line3: Joi.string().allow('').optional().label('Address line 3'),
-    town: Joi.string().required().label('Town'),
-    county: Joi.string().allow('').optional().label('County'),
-    postcode: Joi.string().allow('').optional().label('Post code'),
-    country: Joi.object().required().label('Country') 
+    accountname: Joi.string().required().max(40).label('Account Name'),
+    accountnumber: Joi.string().required().min(6).max(10).label('Account Number'),
+    sortcode: Joi.string().required().length(6).label('Sort Code'),
+    bankname: Joi.string().required().max(30).label('Bank Name'),
+    paymentreference: Joi.string().allow('').optional().max(18).label('Payment reference'),
+    rollnumber: Joi.string().allow('').optional().max(18).label('Roll Number'),
+    address: this.address.validSchema()
   });
 };
 
