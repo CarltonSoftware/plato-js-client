@@ -12,7 +12,8 @@ ExtraBrandingPricingRangeElement.prototype.toCreateArray = function() {
   return {
     //TODO: Add in the fields necessary to create a ExtraBrandingPricingRangeElement
     lowvalue: this.lowvalue,
-    highvalue: this.highvalue
+    highvalue: this.highvalue,
+    price: this.price
   };
 };
 
@@ -20,7 +21,8 @@ ExtraBrandingPricingRangeElement.prototype.toUpdateArray = function() {
   return {
     //TODO: Add in the fields necessary to update a ExtraBrandingPricingRangeElement
     lowvalue: this.lowvalue,
-    highvalue: this.highvalue
+    highvalue: this.highvalue,
+    price: this.price
   };
 };
 

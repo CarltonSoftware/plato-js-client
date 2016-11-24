@@ -32,6 +32,9 @@ OwnerCharge.prototype.toArray = function() {
     if (this.booking) {
       fields.bookingid = this.booking.id;
     }
+    if (this.supplier) {
+      fields.supplierid = this.supplier.id;
+    }
     if (this.supplierpaid) {
       fields.supplierpaid = this.supplierpaid;
     }
