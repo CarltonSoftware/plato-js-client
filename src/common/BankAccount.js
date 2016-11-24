@@ -31,10 +31,10 @@ BankAccount.prototype.toArray = function() {
 
 BankAccount.prototype.validSchema = function() {
   return Joi.object().keys({
-    accountname: Joi.string().required().max(40).label('Account Name'),
+    accountname: Joi.string().empty('').max(40).label('Account Name'),
     accountnumber: Joi.string().required().min(6).max(10).label('Account Number'),
     sortcode: Joi.string().required().length(6).label('Sort Code'),
-    bankname: Joi.string().required().max(30).label('Bank Name'),
+    bankname: Joi.string().empty('').max(30).label('Bank Name'),
     paymentreference: Joi.string().allow('').optional().max(18).label('Payment reference'),
     rollnumber: Joi.string().allow('').optional().max(18).label('Roll Number'),
     address: this.address.validSchema()
