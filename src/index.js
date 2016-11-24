@@ -41,6 +41,7 @@ module.exports.common.OwnerPaymentType = require('./common/OwnerPaymentType');
 module.exports.common.OwnerCharge = require('./common/OwnerCharge');
 module.exports.common.OwnerChargeCode = require('./common/OwnerChargeCode');
 module.exports.common.OwnerChargeImport = require('./common/OwnerChargeImport');
+module.exports.common.OwnerStatement = require('./common/OwnerStatement');
 module.exports.common.PaymentItem = require('./common/PaymentItem');
 module.exports.common.SagePayPayment = require('./common/SagePayPayment');
 
@@ -235,6 +236,7 @@ module.exports.common.Reason = require('./common/Reason');
 module.exports.common.RoleReason = require('./common/RoleReason');
 module.exports.common.Report = require('./common/Report');
 module.exports.common.ReportRun = require('./common/ReportRun');
+module.exports.common.Bacs = require('./common/Bacs');
 module.exports.common.CronTask = require('./common/CronTask');
 
 // Property Pricing
