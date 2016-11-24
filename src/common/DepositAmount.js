@@ -13,9 +13,8 @@ function DepositAmount(id) {
 }
 DepositAmount.prototype = new SingleEntity();
 
-DepositAmount.prototype.toCreateArray = function() {
+DepositAmount.prototype.toArray = function() {
   var r = {
-    //TODO: Add in the fields necessary to update a DepositAmount
     type: this.type,
     name: this.name,
     description: this.description,
@@ -23,34 +22,7 @@ DepositAmount.prototype.toCreateArray = function() {
     pricingperiod: this.pricingperiod.pricingperiod,
     depositamounttype: this.depositamounttype.depositamounttype,
     amount: this.amount,
-    plusincludedextras: this.plusincludedextras,
-    plusadditionalextras: this.plusadditionalextras,
-  };
-
-  if (this.type == 'Branding') {
-    r.brandingid = this.branding.id;
-  }
-  if (this.type == 'Property') {
-    r.propertyid = this.property.id;
-  }
-  if (this.type == 'Branding' || this.type == 'Property') {
-    r.fromdate = this.fromdate;
-    r.todate = this.todate;
-  }
-
-  return r;
-};
-
-DepositAmount.prototype.toUpdateArray = function() {
-  var r = {
-    //TODO: Add in the fields necessary to update a DepositAmount
-    type: this.type,
-    name: this.name,
-    description: this.description,
-    currencyid: this.currency.id,
-    pricingperiod: this.pricingperiod.pricingperiod,
-    depositamounttype: this.depositamounttype.depositamounttype,
-    amount: this.amount,
+    decimalplaces: this.decimalplaces,
     plusincludedextras: this.plusincludedextras,
     plusadditionalextras: this.plusadditionalextras,
   };
