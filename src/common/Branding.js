@@ -29,7 +29,9 @@ Branding.prototype.toArray = function() {
     bookingbrandid: this.bookingbrand.id,
     marketingbrandid: this.marketingbrand.id,
     lettingincomevatbandid: this.lettingincomevatband.id,
-    bacsoutputtype: this.bacsoutputtype
+    bacsoutputtype: this.bacsoutputtype,
+    bacssettings: this.bacssettings,
+    bacsbankaccountid: this.bacsbankaccountid
   };
 };
 

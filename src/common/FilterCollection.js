@@ -100,8 +100,8 @@ function FilterCollection(options) {
    * @return {FilterCollection}
    */
   this.addObjectFilters = function(group, filters) {
-    for (i in filters) {
-      filterGroups.collection[group].addFilter(i, filters[i]);
+    for (var key in filters) {
+      filterGroups.collection[group].addFilter(key, filters[key]);
     }
 
     return this;
@@ -167,7 +167,7 @@ function FilterCollection(options) {
     return filterGroups.map(function(f) {
       return f.getFilters();
     });
-  },
+  };
 
   /**
    * Get the filter string required for the filter parameter.

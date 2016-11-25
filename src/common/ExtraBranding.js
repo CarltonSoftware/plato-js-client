@@ -32,6 +32,6 @@ ExtraBranding.prototype.toUpdateArray = function() {
 
 ExtraBranding.validSchema = Joi.object().keys({
   brandingid: Joi.string().required().label('branding')
-}),
+});
 
 module.exports = ExtraBranding;

@@ -27,6 +27,6 @@ Extra.validSchema = Joi.object().keys({
   extracode: Joi.string().required().label('extra code'),
   extratype: Joi.string().required().label('extra type'),
   description: Joi.string().required().label('description')
-}),
+});
 
 module.exports = Extra;

@@ -20,7 +20,7 @@ SecurityRole.validSchema = Joi.object().keys({
   name: Joi.string().required().label('name'),
   description: Joi.string().required().label('description'),
   symfonyroute: Joi.string().optional().allow('').label('symfony route')
-})
+});
 
 
 module.exports = SecurityRole;

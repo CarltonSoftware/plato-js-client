@@ -42,14 +42,14 @@ describe('BookingSecurityDeposit', function() {
         dueindate: '2016-05-05',
         dueoutdate: '2016-06-03',
         ownerchargeamount: '66',
-      }, validSchema).error.message).to.equal('child "ownerchargecode" fails because ["owner charge code" is required]');
+      }, validSchema).error.message).to.equal('child "Owner Charge Code" fails because ["ownerchargecode" is required]');
 
       expect(Joi.validate({
         amount: 50,
         dueindate: '2016-05-05',
         dueoutdate: '2016-06-03',
         ownerchargeamount: 2,
-      }, validSchema).error.message).to.equal('child "ownerchargecode" fails because ["owner charge code" is required]');
+      }, validSchema).error.message).to.equal('child "Owner Charge Code" fails because ["ownerchargecode" is required]');
 
       expect(Joi.validate({
         amount: 50,
@@ -58,7 +58,7 @@ describe('BookingSecurityDeposit', function() {
         ownerchargeamount: 2,
         ownerchargecode: {
           id: 1
-        },
+        }
       }, validSchema).error).to.be.null;
     });
   });

@@ -1,4 +1,4 @@
-var FilterCollection = require('./FilterCollection')
+var FilterCollection = require('./FilterCollection');
 
 /**
  * Note Filter collection object.  Extends the FilterCollection object.
@@ -39,7 +39,7 @@ function NoteFilterCollection(options) {
     });
 
     return notes;
-  }
+  };
 }
 
 NoteFilterCollection.prototype = new FilterCollection();

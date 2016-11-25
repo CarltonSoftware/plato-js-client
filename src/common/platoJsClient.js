@@ -6,7 +6,7 @@ if (typeof localStorage === 'undefined') {
 }
 if (typeof window === 'undefined') {
   window = {};
-};
+}
 
 var platoJsClient = (function () {
 
@@ -365,17 +365,17 @@ var platoJsClient = (function () {
             value,
             rbracket = /\[\]$/;
 
-          if(Array.isArray(obj)) {
-            for(var key in obj) {
+          if (Array.isArray(obj)) {
+            for (key in obj) {
               value = obj[key];
-              if(rbracket.test(prefix)) {
+              if (rbracket.test(prefix)) {
                 add(prefix, value);
               } else {
                 this.buildParams(prefix + "[" + (typeof v === "object"? i: "") + "]", value, add );
               }
             }
-          } else if(this.type(obj) === 'object') {
-            for(name in obj) {
+          } else if (this.type(obj) === 'object') {
+            for (name in obj) {
               this.buildParams(prefix + "[" + name + "]", obj[name], add);
             }
           } else {

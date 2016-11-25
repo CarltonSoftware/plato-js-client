@@ -16,9 +16,9 @@ OwnerEnquiryAction.prototype = new SingleEntity();
 OwnerEnquiryAction.prototype.toArray = function() {
   var fields = {
     ownerenquiryactiontypeid: this.ownerenquiryactiontype.id
-  }
+  };
   if (this.duedate) {
-    fields.duedate = this.duedate
+    fields.duedate = this.duedate;
   }
   if (this.completeddate) {
     fields.completeddate = this.completeddate;

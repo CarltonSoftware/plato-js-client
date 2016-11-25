@@ -33,7 +33,7 @@ ActorSecurity.validSchema = Joi.object().keys({
   type: Joi.string().valid('Role', 'Group').label('type'),
   securityrole: Joi.when('type', { is: 'Role',then: Joi.object().required().label('role'), otherwise: Joi.forbidden() }),
   securitygroup: Joi.when('type', { is: 'Group',then: Joi.object().required().label('group'), otherwise: Joi.forbidden() })
-})
+});
 
 
 module.exports = ActorSecurity;
