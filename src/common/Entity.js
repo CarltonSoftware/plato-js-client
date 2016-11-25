@@ -79,7 +79,7 @@ Entity.prototype.okPromiseResult = function(path, params) {
       } else {
         reject(new statusError(res));
       }
-    });
+    }, reject);
   });
 };
 
@@ -102,7 +102,7 @@ Entity.prototype.updatePromiseResult = function(path, data) {
       } else {
         reject(Entity.prototype.handleError(res));
       }
-    });
+    }, reject);
   });
 };
 
@@ -126,14 +126,14 @@ Entity.prototype.createPromiseResult = function(path, data) {
             resolve(e.mutateResponse(res.entity));
           }, function(res) {
             reject(new statusError(res));
-          });
+          }, reject);
         } else {
           resolve(e.mutateResponse(res.entity));
         }
       } else {
         reject(new statusError(res));
       }
-    });
+    }, reject);
   });
 };
 
@@ -156,11 +156,11 @@ Entity.prototype.uploadPromiseResult = function(path, data) {
           resolve(e.mutateResponse(res.entity));
         }, function(res) {
           reject(new statusError(res));
-        });
+        }, reject);
       } else {
         reject(new statusError(res));
       }
-    });
+    }, reject);
   });
 };
 
@@ -195,7 +195,7 @@ Entity.prototype.deletePromiseResult = function(path) {
       } else {
         reject(new statusError(res));
       }
-    });
+    }, reject);
   });
 };
 
