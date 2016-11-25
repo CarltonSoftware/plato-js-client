@@ -141,6 +141,60 @@ Actor.prototype.getContactDetails = function() {
 };
 
 /**
+ * Get an actor contact preference using type, 
+ *
+ * @param {string} type   The contact type
+ * @param {string} role   The role
+ * @param {string} reason The reason
+ *
+ * @return {Array}
+ */
+Actor.prototype.getContactPreference = function(type, role, reason) {
+  var preferences = [];
+  var contactDetails = this.contactdetails.filter(function(ele) {
+    return ele.type == type;
+  });
+
+  if (contactDetails && contactDetails.length > 0) {
+    // Sort the contact details into preferred order.
+    contactDetails.sort(function(ele) {
+      if (ele.contactmethodsubtype === 'Main') {
+        return 0;
+      }
+      if (ele.contactmethodsubtype === 'Home') {
+        return 1;
+      }
+      if (ele.contactmethodsubtype === 'Work') {
+        return 2;
+      }
+
+      return 3;
+    });
+
+    for (var i in contactDetails) {
+      // Check for contact preference preference
+      for (var j in contactDetails[i].contactpreferences.collection) {
+        // Ignore preference if the donotuse flag is set and is true
+        // or the role or reason do not match
+        if (contactDetails[i].contactpreferences.collection[j].donotuse === true
+        || contactDetails[i].contactpreferences.collection[j].rolereason.role != role
+        || contactDetails[i].contactpreferences.collection[j].rolereason.reason != reason
+        ) {
+          continue;
+        }
+
+        // We will add the contact detail with the preference to helpful and then return
+        var cp = contactDetails[i].contactpreferences.collection[j];
+        cp.contact = contactDetails[i];
+        preferences.push(cp);
+      }
+    }
+  }
+
+  return preferences;
+};
+
+/**
  * Return the create/put array
  *
  * @returns {Object}
