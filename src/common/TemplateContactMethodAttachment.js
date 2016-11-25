@@ -31,7 +31,7 @@ TemplateContactMethodAttachment.prototype.toArray = function() {
   } else if (this.templatecontactmethod.id) {
     return {
       templatecontactmethodid: this.templatecontactmethod.id
-    }
+    };
   }
 
   return {};

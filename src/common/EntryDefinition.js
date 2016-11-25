@@ -22,9 +22,9 @@ EntryDefinition.prototype.toArray = function() {
     brandsourceid: this.brandsource.id,
     type: this.type,
     donotdelete: this.donotdelete
-  }
+  };
   if (this.type == 'Standard') {
-    fields.accountid = this.account.id
+    fields.accountid = this.account.id;
   }
   return fields;
 };

@@ -18,7 +18,7 @@ BookingPayment.prototype.toCreateArray = function() {
     amount: this.amount
   };
   if (this.type != 'Swap' && this.type != 'Transfer') {
-    array.actorid = this.actor.id
+    array.actorid = this.actor.id;
   }
   if (this.type == 'BookingAndSecurityDeposit') {
     array.bookingamount = this.bookingamount;

@@ -1,4 +1,4 @@
-var SingleEntity = require('./SingleEntity')
+var SingleEntity = require('./SingleEntity');
 var Address = require('./Address');
 var Collection = require('./Collection');
 var ContactPreference = require('./ContactPreference');

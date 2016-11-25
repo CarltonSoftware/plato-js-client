@@ -23,7 +23,6 @@ SecurityGroupRole.prototype.toArray = function() {
 SecurityGroupRole.validSchema = Joi.object().keys({
   securitygroup: Joi.object().required().label('Security Group'),
   securityrole: Joi.object().required().label('Security Role'),
-})
-
+});
 
 module.exports = SecurityGroupRole;

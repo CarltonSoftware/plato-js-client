@@ -38,7 +38,7 @@ Report.prototype.toArray = function() {
     name: this.name,
     description: this.description,
     category: this.category
-  }
+  };
 };
 
 Report.prototype.toFormData = function() {

@@ -75,6 +75,6 @@ ExtraBrandingConfiguration.validSchema = Joi.object().keys({
     then: Joi.number().required(),
     otherwise: Joi.forbidden()
   })
-}),
+});
 
 module.exports = ExtraBrandingConfiguration;

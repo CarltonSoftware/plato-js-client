@@ -27,7 +27,7 @@ function SecurityGroup(id) {
   	}
 
   	return false;
-  }
+  };
 }
 SecurityGroup.prototype = new SingleEntity();
 
@@ -41,6 +41,6 @@ SecurityGroup.prototype.toArray = function() {
 SecurityGroup.validSchema = Joi.object().keys({
   name: Joi.string().required().label('name'),
   description: Joi.string().required().label('description'),
-})
+});
 
 module.exports = SecurityGroup;

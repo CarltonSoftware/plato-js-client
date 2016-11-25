@@ -21,10 +21,10 @@ function ScheduledEventTemplateContactMethod(id) {
     parent: this,
     ignoreparent: true, // We only want parent for path so set this to true so that entities do not have parent set.
     discriminator: function(element) {
-      if (element['webbooking']) {
+      if (element.webbooking) {
         return Booking;
-      } else if (element['firstname']) {
-        return ActorInstance.call(this, element['type'].toLowerCase());
+      } else if (element.firstname) {
+        return ActorInstance.call(this, element.type.toLowerCase());
       } else {
         return Property;
       }

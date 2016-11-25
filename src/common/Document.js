@@ -21,7 +21,7 @@ Document.prototype.toArray = function() {
 
 Document.prototype.toString = function() {
   return this.name;
-},
+};
 
 Document.prototype.toFormData = function() {
   var formData = new FormData();
