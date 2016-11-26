@@ -25,7 +25,7 @@ OwnerStatement.prototype.render = function(entity) {
   );
 };
 
-OwnerStatement.prototype.email = function(message, subject, bookingbrand) {
+OwnerStatement.prototype.email = function(subject, message, bookingbrand) {
   return this.updatePromiseResult(
     this.getUpdatePath() + '/email',
     {
