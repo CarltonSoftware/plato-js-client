@@ -23,6 +23,10 @@ function FilterGroup(id) {
     delete filters[key];
   };
 
+  this.hasFilter = function(key) {
+    return (typeof filters[key] !== 'undefined');
+  };
+
   this.getFilterString = function() {
     var str = [];
     for (var key in filters) {
