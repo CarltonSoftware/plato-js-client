@@ -6,6 +6,7 @@ module.exports.common.Unit = require('./common/Unit');
 module.exports.common.Title = require('./common/Title');
 module.exports.common.Attribute = require('./common/Attribute');
 module.exports.common.AttributeGroup = require('./common/AttributeGroup');
+module.exports.common.ActorCategory = require('./common/ActorCategory');
 module.exports.common.AttributeOption = require('./common/AttributeOption');
 module.exports.common.Contact = require('./common/Contact');
 module.exports.common.Agency = require('./common/Agency');
