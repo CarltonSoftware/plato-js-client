@@ -13,6 +13,7 @@ var BookingNote = require('./BookingNote');
 var NoteFilterCollection = require('./NoteFilterCollection');
 var WebBooking = require('./WebBooking');
 var BookingExtra = require('./BookingExtra');
+var BookingProperty = require('./BookingProperty');
 
 function Booking(id) {
   this.path = 'booking';
@@ -23,9 +24,7 @@ function Booking(id) {
     entity: 'Branding'
   });
 
-  this.property = new EntityLink({
-    entity: 'Property'
-  });
+  this.property = new BookingProperty();
 
   this.securitydeposit = new BookingSecurityDeposit();
   this.securitydeposit.parent = this;
