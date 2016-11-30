@@ -86,6 +86,7 @@ function FilterCollection(options) {
   this.addFilters = function(filters) {
     // Check if groups
     if (Array.isArray(filters)) {
+      filterGroups = new StaticCollection();
       for (var i = 0; i < filters.length; i++) {
         this.createGroup(i);
         this.addObjectFilters(i, filters[i]);
