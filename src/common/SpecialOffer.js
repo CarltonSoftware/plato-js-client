@@ -97,6 +97,8 @@ SpecialOffer.prototype.toUpdateArray = function() {
 SpecialOffer.prototype.toCreateArray = function() {
   var array = this.toUpdateArray();
   array.pricingperiod = this.pricingperiod.pricingperiod;
+  /* remove active as the API rejects on create, even if false */
+  delete array.active;
   return array;
 };
 
