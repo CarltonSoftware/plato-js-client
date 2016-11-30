@@ -15,6 +15,7 @@ var ActorContactDetailPhone = require('./ActorContactDetailPhone');
 var ActorManagedActivity = require('./ActorManagedActivity');
 var ActorSecurity = require('./ActorSecurity');
 var ActorSetting = require('./ActorSetting');
+var ActorCategory = require('./ActorCategory');
 
 /**
  * Actor instance
@@ -57,6 +58,12 @@ function Actor(id) {
     object: ActorSetting,
     parent: this,
     path: 'setting'
+  });
+
+  this.categories = new Collection({
+    object: ActorCategory,
+    parent: this,
+    path: 'category'
   });
 
   this.contactdetails = new Collection({
