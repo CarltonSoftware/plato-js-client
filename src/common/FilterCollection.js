@@ -71,6 +71,10 @@ function FilterCollection(options) {
    * @return {FilterCollection}
    */
   this.addFilter = function(key, val) {
+    if (!filterGroups.first()) {
+      this.createGroup(0);
+    }
+
     filterGroups.first().addFilter(key, val);
 
     return this;
