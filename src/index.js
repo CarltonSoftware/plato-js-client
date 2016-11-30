@@ -145,7 +145,7 @@ module.exports.common.WorkOrderOwner = require('./common/WorkOrderOwner');
 module.exports.common.WorkOrderSupplier = require('./common/WorkOrderSupplier');
 
 // Booking Related Objects
-module.exports.common.Booking = require('./common/Booking');
+module.exports.common.BookingProperty = require('./common/BookingProperty');
 module.exports.common.BookingCustomer = require('./common/BookingCustomer');
 module.exports.common.BookingEnquiry = require('./common/BookingEnquiry');
 module.exports.common.BookingEnquiryExtra = require('./common/BookingEnquiryExtra');
@@ -154,7 +154,6 @@ module.exports.common.BookingEvent = require('./common/BookingEvent');
 module.exports.common.BookingDocument = require('./common/BookingDocument');
 module.exports.common.BookingGuest = require('./common/BookingGuest');
 module.exports.common.BookingNote = require('./common/BookingNote');
-module.exports.common.BookingProperty = require('./common/BookingProperty');
 module.exports.common.BookingSecurityDeposit = require('./common/BookingSecurityDeposit');
 module.exports.common.BookingSecurityDepositWithhold = require('./common/BookingSecurityDepositWithhold');
 module.exports.common.BookingSecurityDepositHold = require('./common/BookingSecurityDepositHold');
@@ -162,6 +161,7 @@ module.exports.common.BookingSupplier = require('./common/BookingSupplier');
 module.exports.common.Bookings = require('./common/Bookings');
 module.exports.common.GuestAgeRange = require('./common/GuestAgeRange');
 module.exports.common.GuestType = require('./common/GuestType');
+module.exports.common.Booking = require('./common/Booking');
 
 // Brand Related Objects
 module.exports.common.BookingBrand = require('./common/BookingBrand');

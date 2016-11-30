@@ -8,7 +8,14 @@ function ActorCategory(id) {
 ActorCategory.prototype = new SingleEntity();
 ActorCategory.prototype.toArray = function() {
   return {
-    category: this.category
+    category: this.category,
+    description: this.description,
+    bookingsminimum: this.bookingsminimum,
+    bookingsmaximum: this.bookingsmaximum,
+    andor: this.andor,
+    bookingvalueminimum: this.bookingvalueminimum,
+    bookingvaluemaximum: this.bookingvaluemaximum,
+    period: this.period
   };
 };
 
