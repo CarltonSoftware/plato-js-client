@@ -116,6 +116,7 @@ Booking.prototype.toArray = function() {
     cancelledbooking_adviseddate: this.cancelledbooking_adviseddate,
     cancelledbooking_completeddate: this.cancelledbooking_completeddate,
     cancelledbooking_completedbytabsuserid: this.cancelledbooking_completedbytabsuserid,
+    cancelledbooking_priorityrebook: this.cancelledbooking_priorityrebook,
 
     /* Security Deposit */
     securitydeposit_amount: this.securitydeposit_amount,
@@ -223,7 +224,9 @@ Booking.prototype.getStatus = function() {
   }
   /* TODO: temp fix for transferred display. */
   if (this.cancelled || this.status == 'Provisional - Transferred' || this.status == 'Confirmed - Transferred') {
-    if (this.status == 'Confirmed - Cancelled') {
+    if (this.cancelled && this.cancelledbooking.priorityrebook) {
+      item.showAs = 'cancelledpriority';
+    } else if (this.status == 'Confirmed - Cancelled') {
       item.showAs = 'cancelledconfirmed';
     } else {
       item.showAs = 'cancelled';
