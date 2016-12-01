@@ -119,8 +119,9 @@ Actor.prototype.getFullName = function(noTitle) {
     return name && name !== 'NoName';
   });
 
-  if (!parts.length && this.companyname) {
-    return this.companyname;
+  if (!parts.length) {
+    // return companyname if present, or surname (which is almost certainly 'NoName') as a last resort
+   return this.companyname || this.surname;
   }
 
   return parts.join(' ');
