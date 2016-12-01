@@ -49,23 +49,23 @@ PropertyBrandingPrice.prototype.toArray = function() {
 };
 
 PropertyBrandingPrice.prototype.getDayPrice = function(day, date) {
-  var dayPrice = [];
+  var dayPrice;
   var price = '-';
 
   if (day < 7) {
-    dayPrice = this.pricetypebranding.percentages.find(function(percentage) {
+    dayPrice = this.pricetypebranding.percentages.findOne(function(percentage) {
       return percentage.pricetype.periods == day;
     });
-  }
 
-  if (dayPrice.length) {
-    price = dayPrice[0].price;
-    if (dayPrice[0].overrides.collection.length) {
-      var overridePrice = dayPrice[0].overrides.find(function(override) {
-        return moment(date).isBetween(override.fromdate, override.todate, null, '[]');
-      });
-      if (overridePrice.length) {
-        price = Math.round( overridePrice[0].price * dayPrice[0].percentage / 100 );
+    if (dayPrice) {
+      price = dayPrice.price;
+      if (dayPrice.overrides.collection.length) {
+        var overridePrice = dayPrice.overrides.findOne(function(override) {
+          return moment(date).isBetween(override.fromdate, override.todate, null, '[]');
+        });
+        if (overridePrice) {
+          price = Math.round( overridePrice.price * dayPrice.percentage / 100 );
+        }
       }
     }
   }

@@ -12,6 +12,7 @@ function BookingEnquiry(
   pets,
   pricingperiod,
   currencycode,
+  currentbookingid,
   calculatebrochureprice,
   calculateadditionalextras,
   calculateincludedextras,
@@ -42,6 +43,9 @@ function BookingEnquiry(
     calculatesecuritydeposit: calculatesecuritydeposit,
     calculatedeposit: calculatedeposit
   };
+  if (currentbookingid) {
+    this.params.currentbookingid = currentbookingid;
+  }
 }
 BookingEnquiry.prototype = new Entity();
 
