@@ -3,6 +3,7 @@ var PriceTypeBranding = require('./PriceTypeBranding');
 var Currency = require('./Currency');
 var Collection = require('./Collection');
 var PartySizePrice = require('./PartySizePrice');
+var moment = require('moment');
 
 /**
  * Property branding price object
@@ -47,18 +48,29 @@ PropertyBrandingPrice.prototype.toArray = function() {
   };
 };
 
-PropertyBrandingPrice.prototype.getDayPrice = function(day) {
-  var dayPrice;
+PropertyBrandingPrice.prototype.getDayPrice = function(day, date) {
+  var dayPrice = [];
+  var price = '-';
 
-  if (day == 7) {
-
-  } else {
+  if (day < 7) {
     dayPrice = this.pricetypebranding.percentages.find(function(percentage) {
       return percentage.pricetype.periods == day;
     });
   }
 
-  return dayPrice[0];
+  if (dayPrice.length) {
+    price = dayPrice[0].price;
+    if (dayPrice[0].overrides.collection.length) {
+      var overridePrice = dayPrice[0].overrides.find(function(override) {
+        return moment(date).isBetween(override.fromdate, override.todate, null, '[]');
+      });
+      if (overridePrice.length) {
+        price = Math.round( overridePrice[0].price * dayPrice[0].percentage / 100 );
+      }
+    }
+  }
+
+  return price;
 };
 
 module.exports = PropertyBrandingPrice;
