@@ -25,10 +25,16 @@ MarketingBrand.prototype.toArray = function() {
   };
 };
 
-MarketingBrand.prototype.getEmailtemplate = function(filterCollection) {
-  return client.get(
-    this.getUpdatePath() + '/emailtemplate?orderBy=' + filterCollection.orderBy + filterCollection.getFilterString()
-  );
+MarketingBrand.prototype.getEmailtemplate = function(filterCollection, actor) {
+  if (actor) {
+    return client.get(
+      this.getUpdatePath() + '/emailtemplate/' + actor.id + '?orderBy=' + filterCollection.orderBy + filterCollection.getFilterString()
+    );
+  } else {
+    return client.get(
+      this.getUpdatePath() + '/emailtemplate?orderBy=' + filterCollection.orderBy + filterCollection.getFilterString()
+    );
+  }
 };
 
 module.exports = MarketingBrand;
