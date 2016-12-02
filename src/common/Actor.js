@@ -102,18 +102,29 @@ Actor.prototype.mutateResponse = function(entity) {
  * @returns {String}
  */
 Actor.prototype.getFullName = function(noTitle) {
-  var name = [this.title, this.firstname, this.surname];
-  if (noTitle) {
-    name.shift();
+  if (this.path === 'agency') {
+    return this.companyname;
+  }
+  if (this.path === 'office') {
+    return this.officename;
   }
 
-  if (this.path == 'agency') {
-    name = [this.companyname];
-  } else if (this.path == 'office') {
-    name = [this.officename];
+  var parts = [];
+
+  if (!noTitle && this.title) {
+    parts.push(this.title);
+  };
+
+  parts = [this.firstname, this.surname].filter(function(name) {
+    return name && name !== 'NoName';
+  });
+
+  if (!parts.length) {
+    // return companyname if present, or surname (which is almost certainly 'NoName') as a last resort
+   return this.companyname || this.surname;
   }
 
-  return name.join(" ");
+  return parts.join(' ');
 };
 
 /**
