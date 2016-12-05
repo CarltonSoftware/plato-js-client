@@ -7,6 +7,7 @@ var PotentialDuplicate = require('./PotentialDuplicate');
 var Language = require('./Language');
 var ActorNote = require('./ActorNote');
 var Booking = require('./Booking');
+var Branding = require('./Branding');
 var BankAccount = require('./BankAccount');
 var ActorContactDetailPhone = require('./ActorContactDetailPhone');
 var ActorContactDetailOther = require('./ActorContactDetailOther');
@@ -32,6 +33,7 @@ function Actor(id) {
   this.documents = new Collection({ object: CustomerDocument });
   this.potentialduplicates = new Collection({ object: PotentialDuplicate });
 
+  this.branding = new Branding();
   this.language = new Language();
   this.language.code = 'EN';
   this.language.name = 'English';
@@ -76,6 +78,7 @@ function Actor(id) {
       F: ActorContactDetailPhone
     }
   });
+
 }
 
 Actor.prototype = new SingleEntity();
@@ -159,7 +162,7 @@ Actor.prototype.getContactDetails = function() {
 };
 
 /**
- * Get an actor contact preference using type, 
+ * Get an actor contact preference using type,
  *
  * @param {string} type   The contact type
  * @param {string} role   The role
@@ -250,6 +253,9 @@ Actor.prototype.toArray = function() {
   }
   if (this.source) {
     arr.sourceid = this.source.id;
+  }
+  if (this.branding) {
+    arr.brandingid = this.branding.id;
   }
 
   return arr;
