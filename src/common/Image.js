@@ -16,7 +16,7 @@ Image.prototype.toFormData = function() {
   var formData = new FormData();
   formData.append('data', this.data);
   if (this.weight) {
-    formData.append('description', this.weight);
+    formData.append('weight', this.weight);
   }
   if (this.description) {
     formData.append('description', this.description);
