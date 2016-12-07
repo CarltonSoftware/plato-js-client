@@ -24,10 +24,13 @@ SagePayPayment.prototype.toArray = function() {
   var arr = {
     customerid: this.customer.id,
     amount: this.amount,
-    contactdetailpostalid: this.contactdetailpostal.id,
     paymentmethodid: this.paymentmethod.id,
     currencyid: this.currency.id
   };
+
+  if (this.contactdetailpostal) {
+    arr.contactdetailpostalid = this.contactdetailpostal.id;
+  }
 
   if (this.booking.id) {
     arr.bookingid = this.booking.id;
