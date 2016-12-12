@@ -17,10 +17,10 @@ KeyTag.prototype = new SingleEntity();
 
 KeyTag.prototype.toArray = function() {
   return {
-    property: this.property,
+    propertyid: this.property.id,
     tag: this.tag,
     colour: this.colour,
-    keyset: this.keyset,
+    keysetid: this.keyset.id,
     deleted: this.deleted,
   };
 };

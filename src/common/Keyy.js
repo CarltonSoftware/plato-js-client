@@ -1,19 +1,18 @@
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
-var Keytag = require('./KeyTag');
+var KeyTag = require('./KeyTag');
 
 function Keyy(id) {
-  this.path = 'keytag';
-  this.createPath = 'keytag';
+  this.path = 'keyy';
+  this.createPath = 'keyy';
   this.id = id;
-  this.KeyTag = new Keytag();
+  this.keytag = new KeyTag();
 }
 Keyy.prototype = new SingleEntity();
 
 Keyy.prototype.toArray = function() {
   return {
-    //TODO: Add in the fields necessary to create a Keyy
-    KeyTag: this.KeyTag,
+    keytagid: this.keytagid,
     serialnumber: this.serialnumber,
     manufacturerortype: this.manufacturerortype,
     description: this.description,
