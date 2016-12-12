@@ -138,6 +138,7 @@ module.exports.common.KeyTag = require('./common/KeyTag');
 module.exports.common.KeySet = require('./common/KeySet');
 module.exports.common.KeyUserType = require('./common/KeyUserType');
 module.exports.common.KeyCheckReason = require('./common/KeyCheckReason');
+module.exports.common.KeyCheck = require('./common/KeyCheck');
 module.exports.common.KeysBookingBrand = require('./common/KeysBookingBrand');
 
 module.exports.common.WorkOrder = require('./common/WorkOrder');
