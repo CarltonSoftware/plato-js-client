@@ -20,7 +20,9 @@ ActorContactDetailAddress.prototype = new SingleEntity();
 ActorContactDetailAddress.prototype.toArray = function() {
   var add = this.address.toArray();
   add.invalid = this.invalid ? this.invalid : false;
-
+  if (this.invalid) {
+    add.invalidreason = this.invalidreason
+  }
   return add;
 };
 
