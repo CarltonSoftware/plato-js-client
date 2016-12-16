@@ -117,6 +117,7 @@ Booking.prototype.toArray = function() {
     cancelledbooking_completeddate: this.cancelledbooking_completeddate,
     cancelledbooking_completedbytabsuserid: this.cancelledbooking_completedbytabsuserid,
     cancelledbooking_priorityrebook: this.cancelledbooking_priorityrebook,
+    cancelledbooking_fullrefund: this.cancelledbooking_fullrefund,
 
     /* Security Deposit */
     securitydeposit_amount: this.securitydeposit_amount,
