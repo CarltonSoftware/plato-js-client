@@ -118,8 +118,8 @@ Actor.prototype.getFullName = function(noTitle) {
     parts.push(this.title);
   };
 
-  parts = [this.firstname, this.surname].filter(function(name) {
-    return name && name !== 'NoName';
+  parts = [this.title, this.firstname, this.surname].filter(function(name) {
+    return name && name !== 'NoName' && name !== '<title>';
   });
 
   if (!parts.length) {
