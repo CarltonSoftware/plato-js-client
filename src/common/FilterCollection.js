@@ -233,6 +233,9 @@ function FilterCollection(options) {
     if (this.orderBy) {
       path += '&orderBy=' + this.orderBy;
     }
+    if (this.searchId) {
+      path += '&searchId=' + this.searchId;
+    }
     return path;
   };
 
