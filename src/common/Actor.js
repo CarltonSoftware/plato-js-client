@@ -118,8 +118,8 @@ Actor.prototype.getFullName = function(noTitle) {
     parts.push(this.title);
   };
 
-  parts = [this.firstname, this.surname].filter(function(name) {
-    return name && name !== 'NoName';
+  parts = [this.title, this.firstname, this.surname].filter(function(name) {
+    return name && name !== 'NoName' && name !== '<title>';
   });
 
   if (!parts.length) {
@@ -198,8 +198,8 @@ Actor.prototype.getContactPreference = function(type, role, reason) {
         // Ignore preference if the donotuse flag is set and is true
         // or the role or reason do not match
         if (contactDetails[i].contactpreferences.collection[j].donotuse === true
-        || contactDetails[i].contactpreferences.collection[j].rolereason.role != role
-        || contactDetails[i].contactpreferences.collection[j].rolereason.reason != reason
+        || contactDetails[i].contactpreferences.collection[j].rolereason.role.name != role
+        || contactDetails[i].contactpreferences.collection[j].rolereason.reason.name != reason
         ) {
           continue;
         }
@@ -239,6 +239,8 @@ Actor.prototype.toArray = function() {
     vatnumber: this.vatnumber,
     name: this.officename,
     inactive: this.inactive,
+    tabscode: this.tabscode,
+    actorcode: this.actorcode,
     accountingreference: this.accountingreference
   };
 

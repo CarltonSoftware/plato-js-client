@@ -125,6 +125,10 @@ Booking.prototype.toArray = function() {
     securitydeposit_dueoutdate: this.securitydeposit_dueoutdate
   };
 
+  if (this.confirmedbooking_tabsuserid) {
+    array.confirmedbooking_tabsuserid = this.confirmedbooking_tabsuserid;
+  }
+
   if (this.brochureprice && this.brochureprice == 'true') {
     array.brochureprice = 'true';
   }
