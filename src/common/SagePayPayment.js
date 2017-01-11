@@ -75,6 +75,10 @@ SagePayPayment.prototype.void = function() {
   return this.createPromiseResult([this.getUpdatePath(), 'void'].join('/'), {});
 };
 
+SagePayPayment.prototype.abort = function() {
+  return this.createPromiseResult([this.getUpdatePath(), 'abort'].join('/'), {});
+};
+
 SagePayPayment.prototype.refund = function(amount) {
   return this.createPromiseResult([this.getUpdatePath(), 'refund'].join('/'), { amount: amount });
 };

@@ -75,6 +75,10 @@ TemplateContactMethod.prototype.send = function(ref) {
   return client.put(this.getRefPath(ref) + '/send');
 };
 
+TemplateContactMethod.prototype.sendIfAvailable = function(ref) {
+  return client.put(this.getRefPath(ref) + '/sendifavailable');
+};
+
 TemplateContactMethod.prototype.save = function(ref, entity) {
   return entity.createPromiseResult(
     this.getRefPath(ref) + '/save',
