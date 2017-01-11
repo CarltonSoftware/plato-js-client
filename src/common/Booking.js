@@ -243,7 +243,7 @@ Booking.prototype.getStatus = function() {
 };
 
 Booking.prototype.toString = function() {
-  if (this.bookref) {
+  if (this.bookref && (this.bookref !== (this.id + '' + this.property.id))) {
     return this.id + ' (' + this.bookref + ')';
   }
   return this.id;
