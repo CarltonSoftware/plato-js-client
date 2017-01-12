@@ -18,6 +18,7 @@ WorkOrder.prototype = new SingleEntity();
 WorkOrder.prototype.toArray = function() {
   return {
     type: this.type,
+    tabsuserid: this.tabsuserid,
     propertyid: this.property.id,
     workordersupplierid: this.workordersupplier.id,
     createddatetime: this.createddatetime,

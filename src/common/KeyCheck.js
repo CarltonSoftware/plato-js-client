@@ -11,6 +11,9 @@ function KeyCheck(id) {
     entity: 'TabsUser'
   });
   this.keycheckreason = new KeyCheckReason();
+  this.actor = new EntityLink({
+    entity: 'Actor'
+  });
 }
 KeyCheck.prototype = new SingleEntity();
 
@@ -21,7 +24,8 @@ KeyCheck.prototype.toArray = function() {
     notes: this.notes,
     tabsuserid: this.tabsuser.id,
     keycheckreasonid: this.keycheckreason.id,
-    expectedbackdatetime: this.expectedbackdatetime
+    expectedbackdatetime: this.expectedbackdatetime,
+    actorid: this.actor && this.actor.id
   };
 };
 
