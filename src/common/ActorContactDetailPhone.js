@@ -1,10 +1,8 @@
+var libphonenumber = require('libphonenumber-js');
 var SingleEntity = require('./SingleEntity');
 var Address = require('./Address');
 var Collection = require('./Collection');
 var ContactPreference = require('./ContactPreference');
-var phoneUtil = require('google-libphonenumber').PhoneNumberUtil.getInstance();
-var PNF = require('google-libphonenumber').PhoneNumberFormat;
-var PNT = require('google-libphonenumber').PhoneNumberType;
 
 function ActorContactDetailPhone(id) {
   this.id = id;
@@ -32,29 +30,20 @@ ActorContactDetailPhone.prototype.toArray = function() {
 };
 
 /**
- * Check to see if the number is a mobile or not.
- *
- * @returns {Boolean}
- */
-ActorContactDetailPhone.prototype.isMobileNumber = function() {
-  var regionCode = '+'+this.countrycode;
-  var number = phoneUtil.parseAndKeepRawInput(regionCode+this.subscribernumber, '+44');
-  var value = phoneUtil.getNumberType(number) == PNT.MOBILE;
-
-  return value;
-};
-
-/**
  * Return the formatted phone number in national format if it matches the default country, international otherwise
  *
  * @returns {String}
  */
-ActorContactDetailPhone.prototype.getFormattedNumber = function(countrycode) {
-  var countryCode = countrycode ? countrycode : 'GB'; // set default if not an argument
+ActorContactDetailPhone.prototype.getFormattedNumber = function(countryAlpha2) {
+  countryAlpha2 = countryAlpha2 || 'GB';
   var regionCode = '+'+this.countrycode;
-  var number = phoneUtil.parseAndKeepRawInput(regionCode+this.subscribernumber, '+44');
-  var value =  phoneUtil.getRegionCodeForNumber(number) == countryCode ?
-    phoneUtil.format(number, PNF.NATIONAL) : phoneUtil.format(number, PNF.INTERNATIONAL);
+  var parsedNumber = libphonenumber.parse(regionCode + this.subscribernumber, { country: { default: countryAlpha2 } });
+
+  var value = libphonenumber.format(
+    parsedNumber,
+    parsedNumber.country === countryAlpha2 ? 'National' : 'International'
+  );
+
   if (this.extension) {
     value = value + ' ext. ' + this.extension;
   }
