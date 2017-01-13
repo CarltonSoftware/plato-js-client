@@ -8,11 +8,13 @@ function OwnerPayment(id) {
   this.tabsuser = new EntityLink({
     entity: 'TabsUser'
   });
-  /*
+  this.owner = new EntityLink({
+    entity: 'Owner'
+  });
   this.ownerstatement = new EntityLink({
     entity: 'OwnerStatement'
   });
-  */
+
 }
 OwnerPayment.prototype = new SingleEntity();
 
