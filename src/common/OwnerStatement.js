@@ -9,7 +9,7 @@ function OwnerStatement(id) {
   this.tabsuser = new EntityLink({ entity: 'TabsUser' });
   this.owner = new Owner();
   this.currency = new Currency();
-};
+}
 
 OwnerStatement.prototype = new SingleEntity();
 OwnerStatement.prototype.toArray = function() {

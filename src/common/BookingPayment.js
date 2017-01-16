@@ -22,20 +22,40 @@ BookingPayment.prototype.toCreateArray = function() {
   }
   if (this.type == 'BookingAndSecurityDeposit') {
     array.bookingamount = this.bookingamount;
-    array.securitydepositamount = this.securitydepositamoun;
+    array.securitydepositamount = this.securitydepositamount;
   }
   return array;
 };
+
+var actorSchema = Joi.object().required();
 
 BookingPayment.validSchema = Joi.object().keys({
   type: Joi.string().valid('Booking', 'SecurityDeposit', 'BookingAndSecurityDeposit', 'Swap', 'Transfer').label('payment type'),
   paymentdatetime: Joi.string().optional().label('payment date time'),
   amount: Joi.number().required().label('amount'),
-  bookingamount: Joi.when('type', { is: 'BookingAndSecurityDeposit',then: Joi.number().required().label('booking amount'), otherwise: Joi.forbidden() }),
-  securitydepositamount: Joi.when('type', { is: 'BookingAndSecurityDeposit',then: Joi.number().required().label('sd amount'), otherwise: Joi.forbidden() }),
-  actor: Joi.when('type', { is: 'Booking', then: Joi.object().required().label('actor') }),
-  actor: Joi.when('type', { is: 'SecurityDeposit', then: Joi.object().required().label('actor') }),
-  actor: Joi.when('type', { is: 'BookingAndSecurityDeposit', then: Joi.object().required().label('actor') })
-}),
+  bookingamount: Joi.when('type', {
+    is: 'BookingAndSecurityDeposit',
+    then: Joi.number().required().label('booking amount'),
+    otherwise: Joi.forbidden()
+  }),
+  securitydepositamount: Joi.when('type', {
+    is: 'BookingAndSecurityDeposit',
+    then: Joi.number().required().label('sd amount'),
+    otherwise: Joi.forbidden()
+  }),
+  actor: Joi.when('type', {
+    is: 'Booking',
+    then: actorSchema,
+    otherwise: Joi.when('type', {
+      is: 'SecurityDeposit',
+      then: actorSchema,
+      otherwise: Joi.when('type', {
+        is: 'BookingAndSecurityDeposit',
+        then: actorSchema,
+        otherwise: Joi.forbidden()
+      })
+    })
+  })
+});
 
 module.exports = BookingPayment;

@@ -4,7 +4,7 @@ function Category(id) {
   this.path = 'category';
   this.createPath = 'category';
   this.id = id;
-};
+}
 
 Category.prototype = new SingleEntity();
 Category.prototype.toArray = function() {

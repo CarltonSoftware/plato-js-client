@@ -116,7 +116,7 @@ Actor.prototype.getFullName = function(noTitle) {
 
   if (!noTitle && this.title) {
     parts.push(this.title);
-  };
+  }
 
   parts = [this.title, this.firstname, this.surname].filter(function(name) {
     return name && name !== 'NoName' && name !== '<title>';
@@ -133,9 +133,7 @@ Actor.prototype.getFullName = function(noTitle) {
 /**
  * To String Method
  */
-Actor.prototype.toString = function() {
-  return this.getFullName();
-};
+Actor.prototype.toString = Actor.prototype.getFullName;
 
 
 /**
