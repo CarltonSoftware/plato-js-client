@@ -1,5 +1,6 @@
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
+var EntityLink = require('./EntityLink');
 var NoteFilterCollection = require('./NoteFilterCollection');
 var StaticCollection = require('./StaticCollection');
 var CustomerDocument = require('./CustomerDocument');
@@ -32,6 +33,7 @@ function Actor(id) {
   });
   this.documents = new Collection({ object: CustomerDocument });
   this.potentialduplicates = new Collection({ object: PotentialDuplicate });
+  this.mergedinto = new EntityLink({ entity: 'Actor' });
 
   this.branding = new Branding();
   this.language = new Language();
