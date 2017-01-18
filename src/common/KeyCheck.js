@@ -31,6 +31,17 @@ KeyCheck.prototype.toArray = function() {
 
 KeyCheck.prototype.validSchema = function() {
   return Joi.object().keys({
+    type: Joi.string().valid(['KeyCheckOut', 'KeyCheckIn']).required(),
+    checkdatetime: Joi.date().label('Date and time'),
+    notes: Joi.string().empty('').label('Notes'),
+    tabsuser: Joi.object().label('Tabs user'),
+    keycheckreason: Joi.object().label('Reason'),
+    expectedbackdatetime: Joi.when('type', {
+      is: 'KeyCheckOut',
+      then: Joi.date().empty(''),
+      otherwise: Joi.forbidden()
+    }).label('Expected back date and time'),
+    actor: Joi.object().empty('').label('Actor'),
   });
 };
 

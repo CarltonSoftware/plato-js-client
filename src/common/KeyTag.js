@@ -27,6 +27,7 @@ KeyTag.prototype.toArray = function() {
 
 KeyTag.prototype.validSchema = function() {
   return Joi.object().keys({
+    property: Joi.object().required().label('Property'),
     tag: Joi.string().required().label('Tag'),
     colour: Joi.string().optional().allow('').label('Colour'),
     keyset: Joi.object().required().label('Key Set'),

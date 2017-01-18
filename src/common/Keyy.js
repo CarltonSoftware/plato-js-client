@@ -1,3 +1,4 @@
+var Joi = require('joi');
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
 var KeyTag = require('./KeyTag');
@@ -12,7 +13,6 @@ Keyy.prototype = new SingleEntity();
 
 Keyy.prototype.toArray = function() {
   return {
-    keytagid: this.keytagid,
     serialnumber: this.serialnumber,
     manufacturerortype: this.manufacturerortype,
     description: this.description,
@@ -21,10 +21,9 @@ Keyy.prototype.toArray = function() {
 
 Keyy.prototype.validSchema = function() {
   return Joi.object().keys({
-    keytag: Joi.object().required().label('Key Tag'),
-    serialnumber: Joi.string().optional().allow('').label('Serial Number'),
-    manufacturerortype: Joi.string().optional().allow('').label('Manufacturer or Type'),
-    description: Joi.string().optional().allow('').label('Description'),
+    serialnumber: Joi.string().required().label('Serial Number'),
+    manufacturerortype: Joi.string().required().label('Manufacturer or Type'),
+    description: Joi.string().required().label('Description'),
   });
 };
 
