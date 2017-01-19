@@ -8,7 +8,7 @@ function Source(id) {
   this.createPath = 'source';
   this.id = id;
   this.sourcecategory = new SourceCategory();
-  this.marketingbrands = new Collection({
+  this.sourcemarketingbrands = new Collection({
     object: SourceMarketingBrand,
     path: 'marketingbrand',
     parent: this
