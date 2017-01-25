@@ -49,7 +49,8 @@ Report.prototype.toFormData = function() {
 
 Report.prototype.validParameters = function() {
   var object = {
-    _recipients: Joi.string().email()
+    _recipients: Joi.string().email(),
+    _format: Joi.string(),
   };
   this.parameters.forEach(function(parameter) {
     object[parameter.name] = Joi[parameter.type]().label(parameter.toString());
