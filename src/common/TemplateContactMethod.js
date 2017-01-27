@@ -75,6 +75,10 @@ TemplateContactMethod.prototype.send = function(ref) {
   return client.put(this.getRefPath(ref) + '/send');
 };
 
+TemplateContactMethod.prototype.optOut = function(ref) {
+  return client.put(this.getRefPath(ref) + '/optout');
+};
+
 TemplateContactMethod.prototype.sendIfAvailable = function(ref) {
   return client.put(this.getRefPath(ref) + '/sendifavailable');
 };
