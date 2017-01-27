@@ -3,6 +3,7 @@ var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
 var Collection = require('./Collection');
 var TemplateContactMethod = require('./TemplateContactMethod');
+var TemplateRoleReason = require('./TemplateRoleReason');
 
 function Template(id) {
   this.createPath = this.path = 'template';
@@ -15,6 +16,11 @@ function Template(id) {
   this.contactmethods = new Collection({
     object: TemplateContactMethod,
     path: 'contactmethod',
+    parent: this
+  });
+  this.rolereasons = new Collection({
+    object: TemplateRoleReason,
+    path: 'rolereason',
     parent: this
   });
 }
