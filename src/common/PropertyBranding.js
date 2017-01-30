@@ -75,12 +75,15 @@ PropertyBranding.prototype.toArray = function() {
  */
 PropertyBranding.prototype.getPrices = function(fromDate, toDate) {
   var p = this.prices;
-  p.toArray = function() {
-    return {
-      fromdate: fromDate,
-      todate: toDate
-    }
-  };
+
+  if (fromDate && toDate) {
+    p.toArray = function() {
+      return {
+        fromdate: fromDate,
+        todate: toDate
+      }
+    };
+  }
 
   return p.fetch();
 };
