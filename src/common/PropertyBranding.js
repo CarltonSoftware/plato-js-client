@@ -67,6 +67,24 @@ PropertyBranding.prototype.toArray = function() {
   };
 };
 
+/**
+ * Get the prices
+ *
+ * @param {string} fromDate
+ * @param {string} toDate
+ */
+PropertyBranding.prototype.getPrices = function(fromDate, toDate) {
+  var p = this.prices;
+  p.toArray = function() {
+    return {
+      fromdate: fromDate,
+      todate: toDate
+    }
+  };
+
+  return p.fetch();
+};
+
 PropertyBranding.prototype.toString = function() {
   return this.branding.toString();
 };
