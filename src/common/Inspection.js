@@ -21,6 +21,7 @@ Inspection.prototype.toArray = function() {
     inspectorname: this.inspectorname,
     notes: this.notes,
     inspectorid: this.inspector.id,
+    reinspectiondate: this.reinspectiondate
   };
 };
 
@@ -32,6 +33,7 @@ Inspection.prototype.validSchema = function() {
     inspectorname: Joi.string().optional().allow('').max(40).label('Inspector Name'),
     notes: Joi.string().optional().allow('').label('Notes'),
     inspector: Joi.object().required().label('Inspector'),
+    reinspectiondate: Joi.date().optional().allow('').label('Reinspection date')
   });
 };
 
