@@ -199,7 +199,6 @@ module.exports.common.PaymentMethod = require('./common/PaymentMethod');
 
 // Search
 module.exports.common.GlobalSearch = require('./common/GlobalSearch');
-module.exports.common.Search = require('./common/Search');
 
 // History
 module.exports.common.ChangeHistory = require('./common/ChangeHistory');
