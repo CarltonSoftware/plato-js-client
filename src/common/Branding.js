@@ -34,7 +34,10 @@ Branding.prototype.toArray = function() {
     bacsoutputtype: this.bacsoutputtype,
     bacssettings: this.bacssettings,
     bacsbankaccountid: this.bacsbankaccount.id,
-    petextrabrandingid: this.petextrabranding.id
+    petextrabrandingid: this.petextrabranding.id,
+    allowbookingonwebuntildate: this.allowbookingonwebuntildate,
+    showpricingonwebuntildate: this.showpricingonwebuntildate,
+    updatepropertybrandings: this.updatepropertybrandings
   };
 };
 
