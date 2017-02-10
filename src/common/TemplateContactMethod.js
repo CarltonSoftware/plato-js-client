@@ -52,7 +52,7 @@ TemplateContactMethod.prototype.getLabel = function() {
     lbl.unshift(this.parent.templatename);
   }
 
-  return lbl.join('-');
+  return lbl.join(' - ');
 };
 
 TemplateContactMethod.prototype.getRef = function(ref) {
