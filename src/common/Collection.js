@@ -7,7 +7,6 @@ function Collection(options) {
   this.limit = 10;
   this.orderBy = null;
   this.category = null;
-  this.searchterm = null;
 
   /**
    * Get the path from the provided options
@@ -52,8 +51,7 @@ Collection.prototype.toArray = function() {
     page: this.page,
     limit: this.limit,
     orderBy: this.orderBy,
-    category: this.category,
-    filter: this.filters,
+    filter: this.filters
   };
 };
 
