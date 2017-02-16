@@ -63,7 +63,9 @@ PropertyBranding.prototype.toArray = function() {
     brandingid: this.branding.id,
     primarybookingbrand: this.primarybookingbrand,
     status: this.status.name,
-    promote: this.promote
+    promote: this.promote,
+    allowbookingonwebuntildate: this.allowbookingonwebuntildate,
+    showpricingonwebuntildate: this.showpricingonwebuntildate
   };
 };
 

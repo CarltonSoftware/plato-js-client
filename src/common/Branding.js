@@ -26,7 +26,7 @@ Branding.prototype.toString = function(sep) {
   return grp.join(sep);
 };
 Branding.prototype.toArray = function() {
-  return {
+  var fields = {
     brandinggroupid: this.brandinggroup.id,
     bookingbrandid: this.bookingbrand.id,
     marketingbrandid: this.marketingbrand.id,
@@ -34,8 +34,14 @@ Branding.prototype.toArray = function() {
     bacsoutputtype: this.bacsoutputtype,
     bacssettings: this.bacssettings,
     bacsbankaccountid: this.bacsbankaccount.id,
-    petextrabrandingid: this.petextrabranding.id
+    petextrabrandingid: this.petextrabranding.id,
+    allowbookingonwebuntildate: this.allowbookingonwebuntildate,
+    showpricingonwebuntildate: this.showpricingonwebuntildate
   };
+  if (this.updatepropertybrandings) {
+    fields.updatepropertybrandings = true;
+  }
+  return fields;
 };
 
 module.exports = Branding;
