@@ -1,12 +1,10 @@
 var SingleEntity = require('./SingleEntity');
-var EntityLink = require('./EntityLink');
+var Supplier = require('./Supplier');
 
 function WorkOrderSupplier(id) {
   this.path = this.createPath = 'workordersupplier';
   this.id = id;
-  this.supplier = new EntityLink({
-    entity: 'Supplier'
-  });
+  this.supplier = new Supplier();
 }
 WorkOrderSupplier.prototype = new SingleEntity();
 

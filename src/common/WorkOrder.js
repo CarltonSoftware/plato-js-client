@@ -1,24 +1,21 @@
 var SingleEntity = require('./SingleEntity');
-var EntityLink = require('./EntityLink');
+var Property = require('./Property');
+var TabsUser = require('./TabsUser');
 var WorkOrderSupplier = require('./WorkOrderSupplier');
 
 function WorkOrder(id) {
   this.path = this.createPath = 'workorder';
   this.id = id;
-  this.property = new EntityLink({
-    entity: 'Property'
-  });
+  this.property = new Property();
   this.workordersupplier = new WorkOrderSupplier();
-  this.approvedbytabsuser = new EntityLink({
-    entity: 'TabsUser'
-  });
+  this.updatedbyactor = new TabsUser();
 }
+
 WorkOrder.prototype = new SingleEntity();
 
 WorkOrder.prototype.toArray = function() {
-  return {
+  var arr = {
     type: this.type,
-    tabsuserid: this.tabsuserid,
     propertyid: this.property.id,
     workordersupplierid: this.workordersupplier.id,
     createddatetime: this.createddatetime,
@@ -39,7 +36,6 @@ WorkOrder.prototype.toArray = function() {
     estimaterequired: this.estimaterequired,
     estimate: this.estimate,
     approveddate: this.approveddate,
-    approvedbytabsuserid: this.approvedbytabsuser.id,
     starteddate: this.starteddate,
     completeddate: this.completeddate,
 
@@ -53,7 +49,10 @@ WorkOrder.prototype.toArray = function() {
     autogenerate: this.autogenerate,
     exclusionstartdate: this.exclusionstartdate,
     exclusionenddate: this.exclusionenddate,
+    updatedbyactorid: this.updatedbyactor.id
   };
+
+  return arr;
 };
 
 module.exports = WorkOrder;

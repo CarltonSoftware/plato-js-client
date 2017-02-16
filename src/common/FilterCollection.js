@@ -248,13 +248,40 @@ FilterCollection.prototype = new Collection();
 /**
  * Returns a promise of the fetched resource
  *
+ * @param {Array} dependencies - keys of subentities, if any, to get for each item in the collection, e.g. 'property'
+ *
  * @returns {Collection.prototype@call;promiseResult}
  */
-FilterCollection.prototype.fetch = function() {
-  return this.okPromiseResult(
+FilterCollection.prototype.fetch = function(dependencies) {
+  var promise = this.okPromiseResult(
     this.getFilterPath(),
     {}
   );
+
+  if (dependencies && dependencies.length) {
+    return new Promise(function(resolve, reject) {
+      promise.then(function(collection) {
+        Promise.all(dependencies.map(function(dependency) {
+          var fetched = {};
+
+          return Promise.all(collection.map(function(item) {
+            if (item[dependency]) {
+              if (item[dependency].id in fetched) {
+                item[dependency] = fetched[item[dependency].id];
+              } else {
+                fetched[item[dependency].id] = item[dependency];
+                return item[dependency].get();
+              }
+            }
+          }));
+        })).then(function() {
+          resolve(collection);
+        });
+      });
+    });
+  }
+
+  return promise;
 };
 
 module.exports = FilterCollection;
