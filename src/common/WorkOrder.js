@@ -18,7 +18,6 @@ WorkOrder.prototype.toArray = function() {
     type: this.type,
     propertyid: this.property.id,
     workordersupplierid: this.workordersupplier.id,
-    createddatetime: this.createddatetime,
     rating: this.rating,
     shortdescription: this.shortdescription,
     fulldescription: this.fulldescription,
