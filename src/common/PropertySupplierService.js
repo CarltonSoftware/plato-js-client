@@ -37,7 +37,7 @@ PropertySupplierService.prototype.toArray = function() {
 
 PropertySupplierService.prototype.validSchema = function() {
   return Joi.object().keys({
-    fromdate: Joi.string().required().label('Srart Date'),
+    fromdate: Joi.string().required().label('Start Date'),
     todate: Joi.string().required().label('Finish Date'),
     service: Joi.object().required().label('Service'),
     customerbookings: Joi.boolean().required().label('Customer bookings'),
