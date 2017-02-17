@@ -21,4 +21,8 @@ WorkOrderSupplier.prototype.toArray = function() {
   };
 };
 
+WorkOrderSupplier.prototype.toString = function() {
+  return this.supplier.getFullName() + ' (' + this.payeename + ')';
+};
+
 module.exports = WorkOrderSupplier;
