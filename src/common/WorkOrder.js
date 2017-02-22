@@ -8,6 +8,7 @@ var Booking = require('./Booking');
 var WorkOrderDocument = require('./WorkOrderDocument');
 var WorkOrderNote = require('./WorkOrderNote');
 var NoteFilterCollection = require('./NoteFilterCollection');
+var Collection = require('./Collection');
 
 function WorkOrder(id) {
   this.path = this.createPath = 'workorder';
@@ -26,7 +27,7 @@ function WorkOrder(id) {
     object: WorkOrderNote,
     path: 'workordernote'
   });
-  
+
   this.documents = new Collection({
     object: WorkOrderDocument,
     path: 'document',
