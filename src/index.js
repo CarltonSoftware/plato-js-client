@@ -146,6 +146,8 @@ module.exports.common.WorkOrder = require('./common/WorkOrder');
 module.exports.common.WorkOrderExpense = require('./common/WorkOrderExpense');
 module.exports.common.WorkOrderOwner = require('./common/WorkOrderOwner');
 module.exports.common.WorkOrderSupplier = require('./common/WorkOrderSupplier');
+module.exports.common.WorkOrderNote = require('./common/WorkOrderNote');
+module.exports.common.WorkOrderDocument = require('./common/WorkOrderDocument');
 
 // Booking Related Objects
 module.exports.common.BookingProperty = require('./common/BookingProperty');

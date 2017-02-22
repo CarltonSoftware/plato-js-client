@@ -5,6 +5,9 @@ var TabsUser = require('./TabsUser');
 var WorkOrderSupplier = require('./WorkOrderSupplier');
 var EntityLink = require('./EntityLink');
 var Booking = require('./Booking');
+var WorkOrderDocument = require('./WorkOrderDocument');
+var WorkOrderNote = require('./WorkOrderNote');
+var NoteFilterCollection = require('./NoteFilterCollection');
 
 function WorkOrder(id) {
   this.path = this.createPath = 'workorder';
@@ -13,8 +16,21 @@ function WorkOrder(id) {
   this.workordersupplier = new WorkOrderSupplier();
   this.updatedbyactor = new TabsUser();
   this.booking = new Booking();
+
   this.workordertemplate = new EntityLink({
     entity: 'WorkOrder'
+  });
+
+  this.notes = new NoteFilterCollection({
+    noteEntity: this,
+    object: WorkOrderNote,
+    path: 'workordernote'
+  });
+  
+  this.documents = new Collection({
+    object: WorkOrderDocument,
+    path: 'document',
+    parent: this
   });
 }
 
