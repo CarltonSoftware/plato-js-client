@@ -1,14 +1,12 @@
 var SingleEntity = require('./SingleEntity');
-var EntityLink = require('./EntityLink');
+var WorkOrderSupplier = require('./WorkOrderSupplier');
 var SupplierInvoiceItem = require('./SupplierInvoiceItem');
 var Collection = require('./Collection');
 
 function SupplierInvoice(id) {
   this.path = this.createPath = 'supplierinvoice';
   this.id = id;
-  this.workordersupplier = new EntityLink({
-    entity: 'WorkOrderSupplier'
-  });
+  this.workordersupplier = new WorkOrderSupplier();
   this.invoiceitems = new Collection({
     path: 'item',
     parent: this,
