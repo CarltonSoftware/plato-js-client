@@ -1,7 +1,14 @@
+var client = require('./platoJsClient').getInstance();
 var SingleEntity = require('./SingleEntity');
 var Property = require('./Property');
 var TabsUser = require('./TabsUser');
 var WorkOrderSupplier = require('./WorkOrderSupplier');
+var EntityLink = require('./EntityLink');
+var Booking = require('./Booking');
+var WorkOrderDocument = require('./WorkOrderDocument');
+var WorkOrderNote = require('./WorkOrderNote');
+var NoteFilterCollection = require('./NoteFilterCollection');
+var Collection = require('./Collection');
 
 function WorkOrder(id) {
   this.path = this.createPath = 'workorder';
@@ -9,6 +16,23 @@ function WorkOrder(id) {
   this.property = new Property();
   this.workordersupplier = new WorkOrderSupplier();
   this.updatedbyactor = new TabsUser();
+  this.booking = new Booking();
+
+  this.workordertemplate = new EntityLink({
+    entity: 'WorkOrder'
+  });
+
+  this.notes = new NoteFilterCollection({
+    noteEntity: this,
+    object: WorkOrderNote,
+    path: 'workordernote'
+  });
+
+  this.documents = new Collection({
+    object: WorkOrderDocument,
+    path: 'document',
+    parent: this
+  });
 }
 
 WorkOrder.prototype = new SingleEntity();
@@ -27,8 +51,9 @@ WorkOrder.prototype.toArray = function() {
     accesscontacttype: this.accesscontacttype,
     accesscontactdetails: this.accesscontactdetails,
     cancelleddatetime: this.cancelleddatetime,
+    bookingid: this.booking ? this.booking.id : undefined,
 
-    workordertemplateid: this.workordertemplate ? this.workordertemplate.id : undefined,
+    workordertemplateid: (this.workordertemplate && this.workordertemplate.id) ? this.workordertemplate.id : undefined,
     reporteddate: this.reporteddate,
     preferredstartdate: this.preferredstartdate,
     requiredbydate: this.requiredbydate,
@@ -52,6 +77,10 @@ WorkOrder.prototype.toArray = function() {
   };
 
   return arr;
+};
+
+WorkOrder.prototype.recur = function() {
+  return this.createPromiseResult([this.path, this.id, 'recur'].join('/'), {});
 };
 
 module.exports = WorkOrder;

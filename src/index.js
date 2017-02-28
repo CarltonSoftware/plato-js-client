@@ -14,6 +14,7 @@ module.exports.common.Agency = require('./common/Agency');
 module.exports.common.AgencyBookingType = require('./common/AgencyBookingType');
 module.exports.common.AgencyCollection = require('./common/AgencyCollection');
 module.exports.common.Country = require('./common/Country');
+module.exports.common.ExchangeRate = require('./common/ExchangeRate');
 module.exports.common.Language = require('./common/Language');
 module.exports.common.Postcode = require('./common/Postcode');
 module.exports.common.ContactEntity = require('./common/ContactEntity');
@@ -94,6 +95,8 @@ module.exports.common.Office = require('./common/Office');
 module.exports.common.Supplier = require('./common/Supplier');
 module.exports.common.SupplierServiceCharge = require('./common/SupplierServiceCharge');
 module.exports.common.SupplierServiceEvent = require('./common/SupplierServiceEvent');
+module.exports.common.SupplierInvoice = require('./common/SupplierInvoice');
+module.exports.common.SupplierInvoiceItem = require('./common/SupplierInvoiceItem');
 
 // Property Related Objects
 module.exports.common.Properties = require('./common/Properties');
@@ -146,6 +149,8 @@ module.exports.common.WorkOrder = require('./common/WorkOrder');
 module.exports.common.WorkOrderExpense = require('./common/WorkOrderExpense');
 module.exports.common.WorkOrderOwner = require('./common/WorkOrderOwner');
 module.exports.common.WorkOrderSupplier = require('./common/WorkOrderSupplier');
+module.exports.common.WorkOrderNote = require('./common/WorkOrderNote');
+module.exports.common.WorkOrderDocument = require('./common/WorkOrderDocument');
 
 // Booking Related Objects
 module.exports.common.BookingProperty = require('./common/BookingProperty');
