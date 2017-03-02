@@ -1,5 +1,7 @@
 var SingleEntity = require('./SingleEntity');
+var Collection = require('./Collection');
 var Template = require('./Template');
+var ContactDocument = require('./ContactDocument');
 var Joi = require('joi');
 
 function Contact(contactId) {
@@ -8,6 +10,11 @@ function Contact(contactId) {
   this.id = contactId;
   this.deleted = false;
   this.template = new Template();
+  this.documents = new Collection({
+    object: ContactDocument,
+    path: 'document',
+    parent: this
+  });
 }
 Contact.prototype = new SingleEntity();
 

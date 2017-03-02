@@ -53,7 +53,7 @@ Report.prototype.validParameters = function() {
     _format: Joi.string(),
   };
   this.parameters.forEach(function(parameter) {
-    object[parameter.name] = Joi[parameter.type]().label(parameter.toString());
+    object[parameter.name] = Joi.alternatives().try(Joi[parameter.type](), Joi.string()).label(parameter.toString());
     if (parameter.required) {
       object[parameter.name] = object[parameter.name].required();
     } else {
