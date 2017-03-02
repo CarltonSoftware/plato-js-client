@@ -1,12 +1,19 @@
 var SingleEntity = require('./SingleEntity');
 var ExchangeRateIssueType = require('./ExchangeRateIssueType');
 var Currency = require('./Currency');
+var Collection = require('./Collection');
+var ExchangeRate = require('./ExchangeRate');
 
 function ExchangeRateIssue(id) {
   this.path = this.createPath = 'exchangerateissue';
   this.id = id;
   this.type = new ExchangeRateIssueType();
   this.currency = new Currency();
+  this.exchangeRates = new Collection({
+    object: ExchangeRate,
+    path: 'rate',
+    parent: this
+  });
 }
 
 ExchangeRateIssue.prototype = new SingleEntity();

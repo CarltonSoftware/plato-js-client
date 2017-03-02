@@ -1,6 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
 var ExchangeRate = require('./ExchangeRate');
+var TabsUser = require('./TabsUser');
 
 function SupplierInvoiceItem(id) {
   this.path = this.createPath = 'item';
@@ -9,6 +10,7 @@ function SupplierInvoiceItem(id) {
   this.workorder = new EntityLink({
     entity: 'WorkOrder'
   });
+  this.updatedbyactorid = new TabsUser();
 }
 
 SupplierInvoiceItem.prototype = new SingleEntity();
@@ -16,8 +18,10 @@ SupplierInvoiceItem.prototype.toArray = function() {
   return {
     exchangerateid: this.exchangerate.id,
     amountnet: this.amountnet,
-    amountvar: this.amountvar,
-    description: this.description
+    amountvat: this.amountvat,
+    description: this.description,
+    workorderinstanceid: this.workorder.id,
+    updatedbyactorid: this.updatedbyactorid.id
   };
 };
 
