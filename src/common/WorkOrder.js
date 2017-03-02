@@ -83,4 +83,8 @@ WorkOrder.prototype.recur = function() {
   return this.createPromiseResult([this.path, this.id, 'recur'].join('/'), {});
 };
 
+WorkOrder.prototype.toString = function() {
+  return [this.id, this.type, this.workordersupplier.supplier.getFullName(), this.status].join(' ');
+};
+
 module.exports = WorkOrder;
