@@ -14,7 +14,7 @@ SupplierPayment.prototype = new SingleEntity();
 SupplierPayment.prototype.toArray = function() {
   return {
     workordersupplierid: this.workordersupplier.id,
-    tabsuserid: this.tabsuserid,
+    tabsuserid: this.tabsuser.id,
     paymentdate: this.paymentdate,
     remark: this.remark,
     sortcode: this.sortcode,

@@ -97,6 +97,7 @@ module.exports.common.SupplierServiceCharge = require('./common/SupplierServiceC
 module.exports.common.SupplierServiceEvent = require('./common/SupplierServiceEvent');
 module.exports.common.SupplierInvoice = require('./common/SupplierInvoice');
 module.exports.common.SupplierInvoiceItem = require('./common/SupplierInvoiceItem');
+module.exports.common.SupplierInvoiceItemPayment = require('./common/SupplierInvoiceItemPayment');
 module.exports.common.SupplierPayment = require('./common/SupplierPayment');
 
 // Property Related Objects
