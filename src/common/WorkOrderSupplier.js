@@ -22,7 +22,13 @@ WorkOrderSupplier.prototype.toArray = function() {
 };
 
 WorkOrderSupplier.prototype.toString = function() {
-  return this.supplier.getFullName() + ' (' + this.payeename + ')';
+  var a = [this.supplier.getFullName()];
+  if (this.payeename) {
+    a.push(' (');
+    a.push(this.payeename);
+    a.push(')');
+  }
+  return a.join('');
 };
 
 module.exports = WorkOrderSupplier;
