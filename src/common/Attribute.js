@@ -28,7 +28,6 @@ function Attribute(id) {
   this.toArray = function() {
     var base = {
       type: this.type,
-      code: this.code,
       name: this.name,
       description: this.description,
       group: this.group.name,
