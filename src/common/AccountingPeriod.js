@@ -22,7 +22,7 @@ AccountingPeriod.prototype.validSchema = function() {
     name: Joi.string().required().label('name'),
     startdate: Joi.date().required().label('start date'),
     enddate: Joi.date().required().label('end date'),
-    closeddate: Joi.date().required().label('closed date'),
+    closeddate: Joi.date().label('closed date'),
   });
 };
 
