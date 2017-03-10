@@ -3,6 +3,7 @@ var EntityLink = require('./EntityLink');
 var OwnerChargeCode = require('./OwnerChargeCode');
 var ExchangeRateIssueRate = require('./ExchangeRateIssueRate');
 var Supplier = require('./Supplier');
+var SupplierInvoiceItem = require('./SupplierInvoiceItem');
 
 function OwnerCharge(id) {
   this.path = this.createPath = 'charge';
@@ -12,6 +13,7 @@ function OwnerCharge(id) {
   this.booking = new EntityLink({ entity: 'Booking' });
   this.property = new EntityLink({ entity: 'Property' });
   this.supplier = new Supplier();
+  this.invoiceitem = new SupplierInvoiceItem();
 }
 
 OwnerCharge.prototype = new SingleEntity();
