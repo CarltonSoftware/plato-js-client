@@ -38,6 +38,10 @@ TransactionDefinition.prototype.toArray = function() {
   };
 };
 
+TransactionDefinition.prototype.toString = function() {
+  return [this.transactionname, this.description].join(' ');
+};
+
 TransactionDefinition.prototype.validSchema = function() {
   return Joi.object().keys({
     transactionname: Joi.string().required().label('Transaction Name'),
