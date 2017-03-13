@@ -8,6 +8,7 @@ module.exports.common.Attribute = require('./common/Attribute');
 module.exports.common.AttributeGroup = require('./common/AttributeGroup');
 module.exports.common.Category = require('./common/Category');
 module.exports.common.ActorCategory = require('./common/ActorCategory');
+module.exports.common.AssessmentGrade = require('./common/AssessmentGrade');
 module.exports.common.AttributeOption = require('./common/AttributeOption');
 module.exports.common.Contact = require('./common/Contact');
 module.exports.common.Agency = require('./common/Agency');
