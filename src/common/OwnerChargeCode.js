@@ -13,5 +13,8 @@ OwnerChargeCode.prototype.toArray = function() {
     description: this.description
   };
 };
+OwnerChargeCode.prototype.toString = function() {
+  return [this.ownerchargecode, this.description].join(' ');
+};
 
 module.exports = OwnerChargeCode;

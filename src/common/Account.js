@@ -16,6 +16,10 @@ Account.prototype.toArray = function() {
   };
 };
 
+Account.prototype.toString = function() {
+  return [this.nominalcode, this.description].join(' ');
+};
+
 Account.prototype.validSchema = function() {
   return Joi.object().keys({
     nominalcode: Joi.string().optional().label('nominal code'),
