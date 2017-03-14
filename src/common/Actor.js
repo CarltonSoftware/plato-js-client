@@ -232,7 +232,6 @@ Actor.prototype.toArray = function() {
     enquirydate: this.enquirydate,
     ownerdate: this.ownerdate,
     otheragent: this.otheragent,
-    assessgrade: this.assessgrade,
     tabsusername: this.tabsusername,
     companyname: this.companyname,
     companynumber: this.companynumber,
@@ -255,6 +254,9 @@ Actor.prototype.toArray = function() {
   }
   if (this.source) {
     arr.sourceid = this.source.id;
+  }
+  if (this.assessgrade) {
+    arr.assessmentgradeid = this.assessgrade.id;
   }
   if (this.branding) {
     arr.brandingid = this.branding.id;
