@@ -15,4 +15,8 @@ Status.prototype.toArray = function() {
   };
 };
 
+Status.prototype.toString = function() {
+  return [this.name].join(' ');
+};
+
 module.exports = Status;

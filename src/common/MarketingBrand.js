@@ -25,6 +25,10 @@ MarketingBrand.prototype.toArray = function() {
   };
 };
 
+MarketingBrand.prototype.toString = function() {
+  return [this.name].join(' ');
+};
+
 MarketingBrand.prototype.getEmailtemplate = function(filterCollection, actor) {
   if (actor) {
     return client.get(
