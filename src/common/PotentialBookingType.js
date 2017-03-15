@@ -19,5 +19,8 @@ PotentialBookingType.prototype.toArray = function() {
     description: this.description
   };
 };
+PotentialBookingType.prototype.toString = function() {
+  return [this.name].join(' ');
+};
 
 module.exports = PotentialBookingType;
