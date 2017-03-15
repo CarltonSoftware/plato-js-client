@@ -243,6 +243,12 @@ Actor.prototype.toArray = function() {
     accountingreference: this.accountingreference
   };
 
+  if (this.defaultbrandinggroup) {
+    arr.defaultbrandinggroupid = this.defaultbrandinggroup.id;
+  }
+  if (this.defaultbookingbrand) {
+    arr.defaultbookingbrandid = this.defaultbookingbrand.id;
+  }
   if (this.password && this.password.length > 0) {
     arr.password = this.password;
   }
