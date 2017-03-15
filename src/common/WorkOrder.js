@@ -83,6 +83,13 @@ WorkOrder.prototype.recur = function() {
   return this.createPromiseResult([this.path, this.id, 'recur'].join('/'), {});
 };
 
+WorkOrder.prototype.chargeowner = function(data) {
+  return this.updatePromiseResult(
+    [this.path, this.id, 'ownercharge'].join('/'),
+    this.removeUndefineds(data)
+  );
+};
+
 WorkOrder.prototype.toString = function() {
   return [this.id, this.type, this.workordersupplier.supplier.getFullName(), this.status].join(' ');
 };
