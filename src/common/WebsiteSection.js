@@ -11,5 +11,9 @@ WebsiteSection.prototype.toArray = function() {
     section: this.section,
   };
 };
+WebsiteSection.prototype.toString = function() {
+  return this.section;
+};
+
 
 module.exports = WebsiteSection;
