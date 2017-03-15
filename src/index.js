@@ -28,6 +28,7 @@ module.exports.common.Image = require('./common/Image');
 module.exports.common.File = require('./common/File');
 module.exports.common.Mimetype = require('./common/Mimetype');
 module.exports.common.SecurityFeature = require('./common/SecurityFeature');
+module.exports.common.PotentialBookingType = require('./common/PotentialBookingType');
 module.exports.common.Source = require('./common/Source');
 module.exports.common.Status = require('./common/Status');
 module.exports.common.Setting = require('./common/Setting');
