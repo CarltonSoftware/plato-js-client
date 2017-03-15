@@ -51,4 +51,12 @@ Grouping.prototype.toArray = function() {
   }
 };
 
+Grouping.prototype.toString = function() {
+  if (this.hasParent()) {
+    return [this.name, this.parentgrouping.id].join(' ');
+  } else {
+    return [this.name].join(' ');
+  }
+};
+
 module.exports = Grouping;

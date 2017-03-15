@@ -22,4 +22,8 @@ OwnerEnquiryActionType.prototype.validSchema = function() {
   });
 };
 
+OwnerEnquiryActionType.prototype.toString = function() {
+  return [this.action, this.description].join(' ');
+};
+
 module.exports = OwnerEnquiryActionType;

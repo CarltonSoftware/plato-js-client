@@ -41,6 +41,10 @@ OwnerPaymentSelection.prototype.toUpdateArray = function() {
   return fields;
 };
 
+OwnerPaymentSelection.prototype.toString = function() {
+  return [this.bookingbrand.id, this.paytodate].join(' ');
+};
+
 OwnerPaymentSelection.validCreateSchema = Joi.object().keys({
   bookingbrand: Joi.object().label('booking brand'),
   selectbookingson: Joi.string().valid('fromdate', 'todate').label('select bookings on'),

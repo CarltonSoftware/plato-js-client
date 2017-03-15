@@ -14,5 +14,8 @@ ManagedActivity.prototype.toArray = function() {
     donotmodify: this.donotmodify
   };
 };
+ManagedActivity.prototype.toString = function() {
+  return this.name;
+};
 
 module.exports = ManagedActivity;
