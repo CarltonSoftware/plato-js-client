@@ -31,9 +31,9 @@ ScheduledEvent.prototype.validSchema = function() {
   return Joi.object().keys({
     label: Joi.string().required().label('label'),
     filter: Joi.string().required().label('filter'),
-    filtercontext: Joi.string().required().label('filtercontext'),
+    filtercontext: Joi.string().required().label('filter context'),
     frequency: Joi.string().required().label('frequency'),
-    sendonce: Joi.boolean().required().label('sendonce'),
+    sendonce: Joi.boolean().required().label('send once only'),
     inactive: Joi.boolean().required().label('inactive')
   });
 };
