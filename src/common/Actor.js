@@ -133,6 +133,28 @@ Actor.prototype.getFullName = function(noTitle) {
 };
 
 /**
+ * Return the default booking brand of the actor
+ *
+ * @returns {Object}
+ */
+Actor.prototype.getDefaultBookingBrand = function() {
+  if (this.defaultbookingbrand && this.defaultbookingbrand.id) {
+    return this.defaultbookingbrand;
+  }
+};
+
+/**
+ * Return the default branding group
+ *
+ * @returns {Object}
+ */
+Actor.prototype.getDefaultBrandingGroup = function() {
+  if (this.defaultbranding && this.defaultbranding.id) {
+    return this.defaultbranding;
+  }
+};
+
+/**
  * To String Method
  */
 Actor.prototype.toString = Actor.prototype.getFullName;
