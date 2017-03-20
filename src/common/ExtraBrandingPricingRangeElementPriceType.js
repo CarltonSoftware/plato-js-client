@@ -9,7 +9,6 @@ ExtraBrandingPricingRangeElementPriceType.prototype = new SingleEntity();
 
 ExtraBrandingPricingRangeElementPriceType.prototype.toCreateArray = function() {
   return {
-    //TODO: Add in the fields necessary to create a ExtraBrandingPricingRangeElementPriceType
     pricetypeid: this.pricetype.id,
     price: this.price,
   };
@@ -17,7 +16,6 @@ ExtraBrandingPricingRangeElementPriceType.prototype.toCreateArray = function() {
 
 ExtraBrandingPricingRangeElementPriceType.prototype.toUpdateArray = function() {
   return {
-    //TODO: Add in the fields necessary to update a ExtraBrandingPricingRangeElementPriceType
     pricetypeid: this.pricetype.id,
     price: this.price,
   };
