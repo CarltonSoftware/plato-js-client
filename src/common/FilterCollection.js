@@ -236,6 +236,9 @@ function FilterCollection(options) {
     if (this.searchId) {
       path += '&searchId=' + this.searchId;
     }
+    if (this.fields) {
+      path += '&fields=' + this.fields;
+    }
     return path;
   };
 
