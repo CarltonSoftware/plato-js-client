@@ -1,6 +1,6 @@
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
-var Pricetype = require('./Pricetype');
+var Pricetype = require('./PriceType');
 var Joi = require('joi');
 
 function ExtraBrandingPricingAmountPriceType(extraId, brandingId, pricingId, id) {
