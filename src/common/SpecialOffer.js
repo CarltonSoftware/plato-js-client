@@ -68,7 +68,7 @@ function SpecialOffer(id) {
 
 SpecialOffer.prototype = new SingleEntity();
 SpecialOffer.prototype.toUpdateArray = function() {
-  return {
+  var fields = {
     type: this.type,
     description: this.description,
     officedescription: this.officedescription,
@@ -90,8 +90,15 @@ SpecialOffer.prototype.toUpdateArray = function() {
     perperiod: this.perperiod,
     applytopartysizepricing: this.applytopartysizepricing,
     pricetypeid: this.pricetype.id,
-    forpricetypeid: this.forpricetype.id
+    forpricetypeid: this.forpricetype.id,
+    archive: this.archive,
+    archiveddatetime: this.archiveddatetime
   };
+  if (this.archivedbyactor) {
+    fields.archivedbyactorid = this.archivedbyactor.id;
+  }
+
+  return fields;
 };
 
 SpecialOffer.prototype.toCreateArray = function() {
@@ -126,7 +133,11 @@ SpecialOffer.prototype.validSchema = function() {
     perperiod: Joi.boolean().label('Per period'),
     applytopartysizepricing: Joi.boolean().label('Apply to party size pricing'),
     pricetype: Joi.object(),
-    forpricetype: Joi.object()
+    forpricetype: Joi.object(),
+    archive: Joi.boolean(),
+    archivedbyactorid: Joi.number().empty('').label('Archived by actor'),
+    archiveddatetime: Joi.string().optional().allow('').label('Archived date')
+
   });
 };
 module.exports = SpecialOffer;
