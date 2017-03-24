@@ -38,6 +38,23 @@ ScheduledEventTemplateContactMethod.prototype.toArray = function() {
     templatecontactmethodid: this.templatecontactmethod.id
   };
 };
+ScheduledEventTemplateContactMethod.prototype.hasBranding = function(branding) {
+  if (this.templatecontactmethod.id && this.templatecontactmethod.parent) {
+    if (this.templatecontactmethod.parent.type === 'BookingTemplate') {
+      return this.templatecontactmethod.parent.bookingbrand.id === branding.bookingbrand.id;
+    }
+    if (this.templatecontactmethod.parent.type === 'ActorTemplate') {
+      return this.templatecontactmethod.parent.branding.id === branding.id;
+    }
+    if (this.templatecontactmethod.parent.type === 'WorkOrderTemplate') {
+      return this.templatecontactmethod.parent.branding.id === branding.id;
+    }
+    if (this.templatecontactmethod.parent.type === 'MarketingCampaignTemplate') {
+      return this.templatecontactmethod.parent.marketingbrand.id === branding.marketingbrand.id;
+    }
+  }
+  return false;
+};
 
 ScheduledEventTemplateContactMethod.prototype.validSchema = function() {
   return Joi.object().keys({
