@@ -10,7 +10,8 @@ PartySizePricing.prototype.toArray = function() {
   return {
     description: this.description,
     partysizefrom: this.partysizefrom,
-    partysizeto: this.partysizeto
+    partysizeto: this.partysizeto,
+    partysizepricetype: this.partysizepricetype
   };
 };
 
