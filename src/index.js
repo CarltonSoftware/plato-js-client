@@ -25,6 +25,7 @@ module.exports.common.ContactMethodType = require('./common/ContactMethodType');
 module.exports.common.ContactMethodSubtype = require('./common/ContactMethodSubtype');
 module.exports.common.Document = require('./common/Document');
 module.exports.common.Image = require('./common/Image');
+module.exports.common.InspectionType = require('./common/InspectionType');
 module.exports.common.File = require('./common/File');
 module.exports.common.Mimetype = require('./common/Mimetype');
 module.exports.common.SecurityFeature = require('./common/SecurityFeature');
