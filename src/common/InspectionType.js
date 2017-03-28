@@ -17,6 +17,10 @@ InspectionType.prototype.toArray = function() {
   };
 };
 
+InspectionType.prototype.toString = function() {
+  return this.inspectiontype;
+};
+
 InspectionType.prototype.validSchema = function() {
   return Joi.object().keys({
     inspectiontype: Joi.string().label('inspection type'),
