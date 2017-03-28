@@ -3,6 +3,7 @@ var Customer = require('./Customer');
 var Booking = require('./Booking');
 var PaymentMethod = require('./PaymentMethod');
 var Currency = require('./Currency');
+var Actor = require('./Actor');
 var ActorContactDetailAddress = require('./ActorContactDetailAddress');
 var statusError = require('./../error/statusError');
 var badRequestError = require('./../error/badRequestError');
@@ -47,6 +48,21 @@ SagePayPayment.prototype.toArray = function() {
   return arr;
 };
 
+/**
+ * Add in CustomerPayment object if found.
+ *
+ * @param {object} entity JSON response from api
+ */
+SagePayPayment.prototype.mutateResponse = function(entity) {
+  if (entity.payment) {
+    var c = require('./CustomerPayment');
+    this.payment = new c();
+    this.payment.mutateEntity(entity.payment);
+  }
+
+  return this.mutateEntity(entity);
+};
+
 SagePayPayment.prototype.createIframe = function() {
 	var result = client.post({ path: this.path, entity: this.toArray() });
   var e = this;
@@ -81,6 +97,10 @@ SagePayPayment.prototype.abort = function() {
 
 SagePayPayment.prototype.refund = function(amount) {
   return this.createPromiseResult([this.getUpdatePath(), 'refund'].join('/'), { amount: amount });
+};
+
+SagePayPayment.prototype.detail = function() {
+  return client.get([this.getUpdatePath(), 'detail'].join('/'));
 };
 
 module.exports = SagePayPayment;
