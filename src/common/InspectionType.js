@@ -10,7 +10,7 @@ InspectionType.prototype = new SingleEntity();
 
 InspectionType.prototype.toArray = function() {
   return {
-    inspectionType: this.inspectionType,
+    inspectiontype: this.inspectiontype,
     schedule: this.schedule,
     gradingunit: this.gradingunit,
     defaultgrading: this.defaultgrading,
