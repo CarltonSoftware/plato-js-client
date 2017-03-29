@@ -25,7 +25,6 @@ module.exports.common.ContactMethodType = require('./common/ContactMethodType');
 module.exports.common.ContactMethodSubtype = require('./common/ContactMethodSubtype');
 module.exports.common.Document = require('./common/Document');
 module.exports.common.Image = require('./common/Image');
-module.exports.common.InspectionType = require('./common/InspectionType');
 module.exports.common.File = require('./common/File');
 module.exports.common.Mimetype = require('./common/Mimetype');
 module.exports.common.SecurityFeature = require('./common/SecurityFeature');
@@ -140,6 +139,7 @@ module.exports.common.PropertyOwnerPaymentTerm = require('./common/PropertyOwner
 module.exports.common.PropertyCommission = require('./common/PropertyCommission');
 module.exports.common.Inspection = require('./common/Inspection');
 module.exports.common.PropertyBookingBrandInstruction = require('./common/PropertyBookingBrandInstruction');
+module.exports.common.InspectionType = require('./common/InspectionType');
 module.exports.common.InstructionType = require('./common/InstructionType');
 
 // Key Related Objects
