@@ -138,7 +138,6 @@ module.exports.common.PropertyMarketingBrand = require('./common/PropertyMarketi
 module.exports.common.PropertyBookingBrand = require('./common/PropertyBookingBrand');
 module.exports.common.PropertyOwnerPaymentTerm = require('./common/PropertyOwnerPaymentTerm');
 module.exports.common.PropertyCommission = require('./common/PropertyCommission');
-module.exports.common.Inspector = require('./common/Inspector');
 module.exports.common.Inspection = require('./common/Inspection');
 module.exports.common.PropertyBookingBrandInstruction = require('./common/PropertyBookingBrandInstruction');
 module.exports.common.InstructionType = require('./common/InstructionType');
