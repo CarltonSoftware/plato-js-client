@@ -1,12 +1,12 @@
 var Joi = require('joi');
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
-var Inspector = require('./Inspector');
+var InspectionType = require('./InspectionType');
 
 function Inspection(id) {
   this.path = this.createPath = 'inspection';
   this.id = id;
-  this.inspector = new Inspector();
+  this.inspectiontype = new InspectionType();
   this.Property = new EntityLink({
     entity: 'Property'
   });
@@ -20,7 +20,7 @@ Inspection.prototype.toArray = function() {
     gradingunit: this.gradingunit,
     inspectorname: this.inspectorname,
     notes: this.notes,
-    inspectorid: this.inspector.id,
+    inspectiontypeid: this.inspectiontype.id,
     reinspectiondate: this.reinspectiondate
   };
 };
@@ -32,7 +32,7 @@ Inspection.prototype.validSchema = function() {
     gradingunit: Joi.string().optional().allow('').max(16).label('Grading Unit'),
     inspectorname: Joi.string().optional().allow('').max(40).label('Inspector Name'),
     notes: Joi.string().optional().allow('').label('Notes'),
-    inspector: Joi.object().required().label('Inspector'),
+    inspectiontype: Joi.object().required().label('Inspection Type'),
     reinspectiondate: Joi.date().optional().allow('').label('Reinspection date')
   });
 };
