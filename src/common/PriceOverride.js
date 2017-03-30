@@ -1,6 +1,8 @@
 var SingleEntity = require('./SingleEntity');
 var Currency = require('./Currency');
+var PartySizePrice = require('./PartySizePrice');
 var EntityLink = require('./EntityLink');
+var StaticCollection = require('./StaticCollection');
 
 function PriceOverride(id) {
   this.path = 'price';
@@ -10,6 +12,7 @@ function PriceOverride(id) {
   this.pricetypebranding = new EntityLink({
     entity: 'PriceTypeBranding'
   });
+  this.partysizeprices = new StaticCollection({ object: PartySizePrice, parent: this });
 }
 PriceOverride.prototype = new SingleEntity();
 
