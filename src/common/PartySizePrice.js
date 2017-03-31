@@ -14,7 +14,7 @@ PartySizePrice.prototype.toArray = function() {
   return {
     partysizepricingid: this.partysizepricing.id,
     price: this.price,
-    partysizepricetypeid: this.partysizepricetype.id,
+    partysizepricetype: this.partysizepricetype,
     usebase: this.usebase
   };
 };
