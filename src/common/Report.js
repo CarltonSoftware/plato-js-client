@@ -53,7 +53,12 @@ Report.prototype.validParameters = function() {
     _format: Joi.string(),
   };
   this.parameters.forEach(function(parameter) {
-    object[parameter.name] = Joi.alternatives().try(Joi[parameter.type](), Joi.string()).label(parameter.toString());
+    // translate a BIRT parameter type to a Joi type
+    var type = parameter.type;
+    if (type === 'integer') {
+      type = 'number';
+    }
+    object[parameter.name] = Joi.alternatives().try(Joi[type](), Joi.number(), Joi.string()).label(parameter.toString());
     if (parameter.required) {
       object[parameter.name] = object[parameter.name].required();
     } else {
