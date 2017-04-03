@@ -141,6 +141,7 @@ module.exports.common.Inspection = require('./common/Inspection');
 module.exports.common.PropertyBookingBrandInstruction = require('./common/PropertyBookingBrandInstruction');
 module.exports.common.InspectionType = require('./common/InspectionType');
 module.exports.common.InstructionType = require('./common/InstructionType');
+module.exports.common.StatusReason = require('./common/StatusReason');
 
 // Key Related Objects
 module.exports.common.Keyy = require('./common/Keyy');
