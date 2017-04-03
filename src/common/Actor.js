@@ -120,6 +120,11 @@ Actor.prototype.getFullName = function(noTitle) {
     parts.push(this.title);
   }
 
+  // Special case for system user
+  if (this.firstname == 'system' && this.surname == 'system') {
+    return this.surname;
+  }
+
   parts = [this.title, this.firstname, this.surname].filter(function(name) {
     return name && name !== 'NoName' && name !== '<title>';
   });
