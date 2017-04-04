@@ -2,8 +2,7 @@ var SingleEntity = require('./SingleEntity');
 var Joi = require('joi');
 
 function StatusReason(id) {
-  this.path = 'status';
-  this.createPath = 'status';
+  this.path = this.createPath = 'reason';
   this.id = id;
 }
 StatusReason.prototype = new SingleEntity();
