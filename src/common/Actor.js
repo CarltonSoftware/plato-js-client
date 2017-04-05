@@ -154,8 +154,8 @@ Actor.prototype.getDefaultBookingBrand = function() {
  * @returns {Object}
  */
 Actor.prototype.getDefaultBrandingGroup = function() {
-  if (this.defaultbranding && this.defaultbranding.id) {
-    return this.defaultbranding;
+  if (this.defaultbrandinggroup && this.defaultbrandinggroup.id) {
+    return this.defaultbrandinggroup;
   }
 };
 
