@@ -63,7 +63,7 @@ PropertyBranding.prototype.toArray = function() {
     brandingid: this.branding.id,
     primarybookingbrand: this.primarybookingbrand,
     status: this.status.name,
-    statusreasonid: this.statusreason.id,
+    statusreasonid: this.statusreason && this.statusreason.id,
     promote: this.promote,
     allowbookingonwebuntildate: this.allowbookingonwebuntildate,
     showpricingonwebuntildate: this.showpricingonwebuntildate
