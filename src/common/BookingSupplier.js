@@ -25,6 +25,22 @@ function BookingSupplier(id) {
 }
 BookingSupplier.prototype = new SingleEntity();
 
+/**
+ * Add in Owner object if found.
+ *
+ * @param {object} entity JSON response from api
+ */
+BookingSupplier.prototype.mutateResponse = function(entity) {
+  if (entity.actor) {
+    var s = require('./Supplier');
+    this.actor = new s();
+    this.actor.mutateResponse(entity.actor);
+  }
+
+  return this.mutateEntity(entity);
+};
+
+
 BookingSupplier.prototype.toArray = function() {
   var data = {
     serviceid: this.service.id,

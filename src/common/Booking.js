@@ -74,7 +74,31 @@ function Booking(id) {
 
   this.webbooking = new WebBooking();
 }
+
 Booking.prototype = new SingleEntity();
+
+/**
+ * Add in Owner object if found.
+ *
+ * @param {object} entity JSON response from api
+ */
+Booking.prototype.mutateResponse = function(entity) {
+  if (entity.owners) {
+    var c = require('./Owner');
+    this.owners = new StaticCollection({
+      object: c
+    });
+    this.owners.mutateResponse(entity.owners);
+  }
+
+  return this.mutateEntity(entity);
+};
+
+/**
+ * ToArray
+ * 
+ * @return array
+ */
 Booking.prototype.toArray = function() {
   var array = {
     bookref: this.bookref,
