@@ -28,7 +28,7 @@ Inspection.prototype.toArray = function() {
 Inspection.prototype.validSchema = function() {
   return Joi.object().keys({
     inspectiondate: Joi.date().optional().label('Inspection Date'),
-    grading: Joi.number().optional().label('Grading'),
+    grading: Joi.string().optional().allow('').label('Grading'),
     gradingunit: Joi.string().optional().allow('').max(16).label('Grading Unit'),
     inspectorname: Joi.string().optional().allow('').max(40).label('Inspector Name'),
     notes: Joi.string().optional().allow('').label('Notes'),
