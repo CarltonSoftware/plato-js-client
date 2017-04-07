@@ -1,3 +1,4 @@
+var client = require('./platoJsClient').getInstance();
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
 var EntityLink = require('./EntityLink');
@@ -305,6 +306,47 @@ Actor.prototype.toArray = function() {
  */
 Actor.prototype.resetPassword = function() {
   return this.updatePromiseResult(this.getUpdatePath() + '/resetpassword', {});
+};
+
+/**
+ * Generates an arrivals report
+ *
+ * @returns {Promise}
+ */
+Actor.prototype.printArrivalsReport = function(doc, values) {
+  if (values.bookingbrand) {
+    values.bookingbrandid = values.bookingbrand.id;
+    delete values.bookingbrand;
+  }
+  var result = client.post({ path: [this.path, this.id, 'arrivalsreport'].join('/'), entity: values });
+  return new Promise(function(resolve, reject) {
+    result.then(function(res) {
+      if (res.status.code === 201) {
+        var newLocation = doc.replacePath(res.headers['Content-Location']);
+        client.get({ path: newLocation}).then(function(res) {
+          resolve(doc.mutateResponse(res.entity));
+        }, function(res) {
+          reject(new statusError(res));
+        }, reject);
+      } else {
+        reject(new statusError(res));
+      }
+    }, reject);
+  });
+};
+
+/**
+ * Emails an arrivals report
+ *
+ * @returns {Promise}
+ */
+Actor.prototype.emailArrivalsReport = function(values) {
+  if (values.bookingbrand) {
+    values.bookingbrandid = values.bookingbrand.id;
+    delete values.bookingbrand;
+  }
+
+  return client.put({ path: [this.path, this.id, 'arrivalsreport'].join('/'), entity: values });
 };
 
 module.exports = Actor;
