@@ -83,7 +83,7 @@ Booking.prototype = new SingleEntity();
  * @param {object} entity JSON response from api
  */
 Booking.prototype.mutateResponse = function(entity) {
-  if (entity.owners) {
+  if (entity && entity.owners) {
     var c = require('./Owner');
     this.owners = new StaticCollection({
       object: c
