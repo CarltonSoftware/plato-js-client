@@ -255,7 +255,7 @@ Booking.prototype.getStatus = function() {
   if (this.cancelled || this.status == 'Provisional - Transferred' || this.status == 'Confirmed - Transferred') {
     if (this.cancelled && this.cancelledbooking.priorityrebook) {
       item.showAs = 'cancelledpriority';
-    } else if (this.status == 'Confirmed - Cancelled') {
+    } else if (this.status == 'Confirmed - Cancelled' || this.status == 'Confirmed - Fully Paid Cancelled') {
       item.showAs = 'cancelledconfirmed';
     } else {
       item.showAs = 'cancelled';
