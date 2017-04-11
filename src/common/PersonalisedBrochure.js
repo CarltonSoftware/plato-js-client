@@ -1,4 +1,5 @@
 var SingleEntity = require('./SingleEntity');
+var Document = require('./Document');
 
 function PersonalisedBrochure(id) {
   this.path = 'personalisedbrochure';
@@ -7,5 +8,16 @@ function PersonalisedBrochure(id) {
 }
 
 PersonalisedBrochure.prototype = new SingleEntity();
+
+PersonalisedBrochure.prototype.print = function(customer, filterCollection) {
+	var d = new Document();
+  return d.createPromiseResult(
+    [this.path, this.id, 'print'].join('/'),
+    { 
+      customerid: customer.id,
+      filter: filterCollection.getFilterString().substring(8)
+    }
+  );
+};
 
 module.exports = PersonalisedBrochure;
