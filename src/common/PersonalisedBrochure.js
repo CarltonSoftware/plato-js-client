@@ -9,13 +9,14 @@ function PersonalisedBrochure(id) {
 
 PersonalisedBrochure.prototype = new SingleEntity();
 
-PersonalisedBrochure.prototype.print = function(customer, filterCollection) {
+PersonalisedBrochure.prototype.print = function(customer, filterCollection, options) {
 	var d = new Document();
   return d.createPromiseResult(
     [this.path, this.id, 'print'].join('/'),
     { 
       customerid: customer.id,
-      filter: filterCollection.getFilterString().substring(8)
+      filter: filterCollection.getFilterString().substring(8),
+      optionids: options.join(',')
     }
   );
 };
