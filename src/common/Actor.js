@@ -37,6 +37,7 @@ function Actor(id) {
   this.mergedinto = new EntityLink({ entity: 'Actor' });
 
   this.branding = new Branding();
+  this.defaultbranding = new Branding();
   this.language = new Language();
   this.language.code = 'EN';
   this.language.name = 'English';
@@ -146,6 +147,17 @@ Actor.prototype.getFullName = function(noTitle) {
 Actor.prototype.getDefaultBookingBrand = function() {
   if (this.defaultbookingbrand && this.defaultbookingbrand.id) {
     return this.defaultbookingbrand;
+  }
+};
+
+/**
+ * Return the default branding of the actor
+ *
+ * @returns {Object}
+ */
+Actor.prototype.getDefaultBranding = function() {
+  if (this.defaultbranding && this.defaultbranding.id) {
+    return this.defaultbranding;
   }
 };
 
@@ -271,11 +283,8 @@ Actor.prototype.toArray = function() {
     accountingreference: this.accountingreference
   };
 
-  if (this.defaultbrandinggroup) {
-    arr.defaultbrandinggroupid = this.defaultbrandinggroup.id;
-  }
-  if (this.defaultbookingbrand) {
-    arr.defaultbookingbrandid = this.defaultbookingbrand.id;
+  if (this.defaultbranding) {
+    arr.defaultbrandingid = this.defaultbranding.id;
   }
   if (this.password && this.password.length > 0) {
     arr.password = this.password;
