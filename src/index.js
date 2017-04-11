@@ -49,6 +49,7 @@ module.exports.common.OwnerChargeImport = require('./common/OwnerChargeImport');
 module.exports.common.OwnerStatement = require('./common/OwnerStatement');
 module.exports.common.PaymentItem = require('./common/PaymentItem');
 module.exports.common.SagePayPayment = require('./common/SagePayPayment');
+module.exports.common.PersonalisedBrochure = require('./common/PersonalisedBrochure');
 
 // Account Related Objects
 module.exports.common.Account = require('./common/Account');
