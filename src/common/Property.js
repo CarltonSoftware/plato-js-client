@@ -80,6 +80,7 @@ function Property(id) {
 
   this.address = new PropertyAddress(id);
   this.houskeeping = new PropertyHouskeeping();
+  this.primarypropertybranding = new PropertyBranding();
 }
 Property.prototype = new SingleEntity();
 Property.prototype.toArray = function() {
@@ -104,14 +105,11 @@ Property.prototype.toArray = function() {
     address_latitude: this.address.latitude,
     address_longitude: this.address.longitude
   };
-  if (this.checkinearliesttime) {
-    prop.checkinearliesttime = this.checkinearliesttime;
+  if (this.checkintext) {
+    prop.checkintext = this.checkintext;
   }
-  if (this.checkinlatesttime) {
-    prop.checkinlatesttime = this.checkinlatesttime;
-  }
-  if (this.checkouttime) {
-    prop.checkouttime = this.checkouttime;
+  if (this.checkouttext) {
+    prop.checkouttext = this.checkouttext;
   }
   return prop;
 };

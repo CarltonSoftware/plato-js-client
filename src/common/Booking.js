@@ -96,7 +96,7 @@ Booking.prototype.mutateResponse = function(entity) {
 
 /**
  * ToArray
- * 
+ *
  * @return array
  */
 Booking.prototype.toArray = function() {
@@ -110,9 +110,9 @@ Booking.prototype.toArray = function() {
     children: this.children,
     infants: this.infants,
     pets: this.pets,
-    checkinearliesttime: this.checkinearliesttime,
-    checkinlatesttime: this.checkinlatesttime,
-    checkouttime: this.checkouttime,
+
+    checkintext: this.checkintext,
+    checkouttext: this.checkouttext,
     promotioncode: this.promotioncode,
     overridestatus: this.overridestatus,
 
