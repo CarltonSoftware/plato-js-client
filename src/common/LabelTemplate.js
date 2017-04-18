@@ -30,8 +30,13 @@ LabelTemplate.prototype.toArray = function() {
   };
 };
 
-LabelTemplate.prototype.render = function() {
-  return client.get(this.getUpdatePath() + '/render');
+LabelTemplate.prototype.render = function(filter) {
+  var filterString = [];
+  for (var i in filter) {
+    filterString.push(i + '=' + filter[i]);
+  }
+
+  return client.get(this.getUpdatePath() + '/render?filter=' + filterString.join(':'));
 };
 
 module.exports = LabelTemplate;
