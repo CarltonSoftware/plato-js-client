@@ -8,6 +8,9 @@ function BookingPayment(id) {
   this.id = id;
 
   this.actor = new EntityLink({ entity: 'Actor' });
+  this.madeby = new EntityLink({
+    entity: 'TabsUser'
+  });
 }
 
 BookingPayment.prototype = new SingleEntity();

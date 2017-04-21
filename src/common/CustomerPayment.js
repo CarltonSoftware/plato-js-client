@@ -1,4 +1,5 @@
 var SingleEntity = require('./SingleEntity');
+var EntityLink = require('./EntityLink');
 var Currency = require('./Currency');
 var PaymentMethod = require('./PaymentMethod');
 var SagePayPayment = require('./SagePayPayment');
@@ -18,6 +19,9 @@ function CustomerPayment(id) {
   });
   this.refundingpayments = new StaticCollection({
     object: CustomerPayment
+  });
+  this.madeby = new EntityLink({
+    entity: 'TabsUser'
   });
 }
 
