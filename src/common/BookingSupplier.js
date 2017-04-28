@@ -36,6 +36,18 @@ BookingSupplier.prototype.mutateResponse = function(entity) {
     this.actor = new s();
     this.actor.mutateResponse(entity.actor);
   }
+  if (entity.ownercharge) {
+    var s = require('./OwnerCharge');
+    this.ownercharge = new s();
+    this.ownercharge.mutateResponse(entity.ownercharge);
+
+    if (this.ownercharge.owner) {
+      var o = require('./Owner');
+      var owner = new o();
+      owner.id = this.ownercharge.owner.split('/').pop();
+      this.ownercharge.parent = owner;
+    }
+  }
 
   return this.mutateEntity(entity);
 };
