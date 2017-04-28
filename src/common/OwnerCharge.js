@@ -32,6 +32,12 @@ OwnerCharge.prototype.toArray = function() {
     lastupdateddatetime: this.lastupdateddatetime,
     workdonedate: this.workdonedate,
   };
+  if (this.invoicenumber) {
+    fields.invoicenumber = this.invoicenumber;
+  }
+  if (this.chequenumber) {
+    fields.chequenumber = this.chequenumber;
+  }
   if (this.type == 'OwnerChargeWorkOrder') {
     fields.invoiceitemid = this.invoiceitem.id;
   } else if (this.type == 'OwnerChargeProperty') {
@@ -44,12 +50,6 @@ OwnerCharge.prototype.toArray = function() {
     }
     if (this.supplierpaiddate) {
       fields.supplierpaiddate = this.supplierpaiddate;
-    }
-    if (this.invoicenumber) {
-      fields.invoicenumber = this.invoicenumber;
-    }
-    if (this.chequenumber) {
-      fields.chequenumber = this.chequenumber;
     }
 
   } else {
