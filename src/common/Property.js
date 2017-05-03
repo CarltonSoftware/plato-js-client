@@ -15,6 +15,7 @@ var PropertyCommission = require('./PropertyCommission');
 var PropertyNote = require('./PropertyNote');
 var NoteFilterCollection = require('./NoteFilterCollection');
 var PropertyHouskeeping = require('./PropertyHouskeeping');
+var InspectionType = require('./InspectionType');
 var Joi = require('joi');
 
 function Property(id) {
@@ -78,6 +79,8 @@ function Property(id) {
     parent: this
   });
 
+  this.ratinginspectiontype = new InspectionType();
+
   this.address = new PropertyAddress(id);
   this.houskeeping = new PropertyHouskeeping();
   this.primarypropertybranding = new PropertyBranding();
@@ -111,6 +114,11 @@ Property.prototype.toArray = function() {
   if (this.checkouttext) {
     prop.checkouttext = this.checkouttext;
   }
+
+  if (this.ratinginspectiontype && this.ratinginspectiontype.id) {
+    prop.ratinginspectiontypeid = this.ratinginspectiontype.id;
+  }
+  
   return prop;
 };
 
