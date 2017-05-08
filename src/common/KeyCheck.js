@@ -18,7 +18,7 @@ function KeyCheck(id) {
 KeyCheck.prototype = new SingleEntity();
 
 KeyCheck.prototype.toArray = function() {
-  return {
+  var arr = {
     type: this.type,
     checkdatetime: this.checkdatetime,
     notes: this.notes,
@@ -27,6 +27,10 @@ KeyCheck.prototype.toArray = function() {
     expectedbackdatetime: this.expectedbackdatetime,
     actorid: this.actor && this.actor.id
   };
+  if (this.type === 'KeyCheckIn') {
+    arr.keycheckoutid = this.parent.lastcheck.id;
+  }
+  return arr;
 };
 
 KeyCheck.prototype.validSchema = function() {
