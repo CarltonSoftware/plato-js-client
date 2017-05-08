@@ -1,4 +1,5 @@
 var Entity = require('./Entity');
+var Branding = require('./Branding');
 
 function BookingEnquiry(
   propertyid,
@@ -46,11 +47,10 @@ function BookingEnquiry(
   if (currentbookingid) {
     this.params.currentbookingid = currentbookingid;
   }
+
+  this.branding = new Branding();
+
 }
 BookingEnquiry.prototype = new Entity();
-
-BookingEnquiry.prototype.mutateEntity = function(entity) {
-  return entity;
-};
 
 module.exports = BookingEnquiry;
