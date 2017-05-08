@@ -12,23 +12,7 @@ function File(id) {
 
 File.prototype = new SingleEntity();
 File.prototype.getImage = function(style, width, height) {
-  var self = this;
-  var result = client.get({
-    path: [this.getUpdatePath(), style, width, height].join('/'),
-    mixin: { responseType: 'blob' }
-  });
-
-  return new Promise(function(resolve, reject) {
-    result.then(function(res) {
-      if (res.status.code === 200) {
-        self.data = res.entity;
-        self.url = URL.createObjectURL(res.entity);
-        resolve(self);
-      } else {
-        reject(new statusError(res));
-      }
-    });
-  });
+  return this.okPromiseResult([this.getUpdatePath(), style, width, height].join('/'));
 };
 File.prototype.okPromiseResult = function(path, params) {
   var self = this;
@@ -43,7 +27,7 @@ File.prototype.okPromiseResult = function(path, params) {
       } else {
         reject(new statusError(res));
       }
-    });
+    }, reject);
   });
 };
 
