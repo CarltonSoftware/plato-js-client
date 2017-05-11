@@ -35,6 +35,7 @@ Template.prototype.toArray = function() {
   return {
     type: this.type,
     templatename: this.templatename,
+    subject: this.subject,
     templatedescription: this.templatedescription,
     fromdate: this.fromdate,
     todate: this.todate,
