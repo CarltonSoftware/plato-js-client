@@ -26,7 +26,7 @@ ChangeDayTemplateRule.prototype.toArray = function() {
     ispriceanchor: this.ispriceanchor,
     isnotpriceanchor: this.isnotpriceanchor,
     showonavailability : this.showonavailability,
-    minumumholiday: this.minimumholiday,
+    minimumholiday: this.minimumholiday,
     daysbeforeeaster: this.daysbeforeeaster,
     daysaftereaster: this.daysaftereaster,
     description: this.description
