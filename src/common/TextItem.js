@@ -12,13 +12,20 @@ function TextItem(id) {
 TextItem.prototype = new SingleEntity();
 
 TextItem.prototype.toArray = function() {
-  return {
+  var t = {
     name: this.name,
     text: this.text,
-    brandingid: this.branding.id,
+    header: this.header,
+    footer: this.footer,
     encodingid: this.encoding.id,
-    languageid: this.language.id,
+    languageid: this.language.id
   };
+
+  if (this.branding && this.branding.id) {
+    t.brandingid = this.branding.id;
+  }
+
+  return t;
 };
 
 module.exports = TextItem;
