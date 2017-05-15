@@ -60,6 +60,7 @@ Ticket.prototype.toArray = function() {
     priority: this.priority.priority,
     versionnumber: this.versionnumber,
     subject: this.subject,
+    read: this.read,
     tabsscreen: this.tabsscreen,
     computername: this.computername,
     status: this.status.status,
@@ -80,6 +81,7 @@ Ticket.prototype.schema = function() {
     priority: Joi.object().required().label('Priority'),
     versionnumber: Joi.string().required().label('Version Number'),
     subject: Joi.string().required().label('Subject'),
+    read: Joi.string().optional().label('Read'),
     tabsscreen: Joi.string().required().label('Area affected'),
     status: Joi.object().optional().label('Ticket Status'),
     ticketuser: Joi.object().optional().label('Ticket User')
