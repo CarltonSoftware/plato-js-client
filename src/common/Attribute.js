@@ -56,28 +56,12 @@ function Attribute(id) {
   };
 
   this.mergeInAdditionalFields = function(base) {
-    if (this.type == 'boolean') {
-      base.defaultvalue = this.defaultvalue;
-    }
 
-    if (this.type == 'hybrid') {
+    if (this.type == 'hybrid' || this.type == 'number') {
       base.operator = this.operator;
-      base.defaultnumbervalue = this.defaultnumbervalue;
       base.minimumvalue = this.minimumvalue;
       base.maximumvalue = this.maximumvalue;
       base.unit = this.unit.name;
-    }
-
-    if (this.type == 'number') {
-      base.operator = this.operator;
-      base.defaultvalue = this.defaultvalue;
-      base.minimumvalue = this.minimumvalue;
-      base.maximumvalue = this.maximumvalue;
-      base.unit = this.unit.name;
-    }
-
-    if (this.type == 'string') {
-      base.defaultvalue = this.defaultvalue;
     }
 
     return base;
