@@ -10,7 +10,7 @@ function PropertySupplier(id) {
   this.createPath = 'supplier';
   this.id = id;
   this.actor = new EntityLink({
-    entity: 'Supplier'
+    entity: 'Actor'
   });
   this.activity = new ManagedActivity();
   this.dates = new Collection({
