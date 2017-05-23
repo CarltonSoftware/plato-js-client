@@ -23,5 +23,8 @@ Source.prototype.toArray = function() {
     showonweb: this.showonweb
   };
 };
+Source.prototype.toString = function() {
+  return this.sourcecode;
+};
 
 module.exports = Source;
