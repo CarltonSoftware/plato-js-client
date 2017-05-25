@@ -214,6 +214,13 @@ Booking.prototype.getStatus = function() {
         /*Invalid - this should probably?? never happen as something has gone wrong */
         'Invalid',
         /*
+          If the booking has been transferred to another property, or different dates,
+          it will have " - Transferred" after whatever status it was at the time of transfer.
+          We should probably distinguish from cancelled as I assume there won't be the same
+          financial penalty if a transferred booking isn't rebooked.
+        */
+        'Transferred',
+        /*
           "Potential - xxxx" - a potential booking of type xxxx (e.g. 'Hold'). Brands can decide what types they want to use.
           TODO: we probably don't what to display enquiries, but probably do want to display holds. User configurable?
         */
@@ -222,13 +229,6 @@ Booking.prototype.getStatus = function() {
           "Provisional" - customer has confirmed they want to book the property, but haven't yet paid the deposit
         */
         'Provisional',
-        /*
-          If the booking has been transferred to another property, or different dates,
-          it will have " - Transferred" after whatever status it was at the time of transfer.
-          We should probably distinguish from cancelled as I assume there won't be the same
-          financial penalty if a transferred booking isn't rebooked.
-        */
-        'Transferred',
         /*
           "Confirmed" - customer has paid the deposit
           "Confirmed - Fully Paid" - customer has paid the deposit
