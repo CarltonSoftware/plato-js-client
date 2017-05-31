@@ -107,6 +107,28 @@ Entity.prototype.updatePromiseResult = function(path, data) {
 };
 
 /**
+ * Return a promised result for an update
+ *
+ * @param {String} path Path to request
+ * @param {Object} data Data to update
+ *
+ * @returns {Promise}
+ */
+Entity.prototype.createSimplePromiseResult = function(path, data) {
+  var result = client.post({ path: path, entity: data });
+  var e = this;
+  return new Promise(function(resolve, reject) {
+    result.then(function(res) {
+      if (res.status.code === 201) {
+        resolve(e);
+      } else {
+        reject(Entity.prototype.handleError(res));
+      }
+    }, reject);
+  });
+};
+
+/**
  * Return a promised result for a create
  *
  * @param {String} path Path to request

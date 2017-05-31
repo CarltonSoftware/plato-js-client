@@ -44,6 +44,15 @@ CopyPricing.prototype.toArray = function() {
   return fields;
 };
 
+/**
+ * Create request method
+ *
+ * @returns {Promise}
+ */
+CopyPricing.prototype.create = function() {
+  return this.createSimplePromiseResult(this.path, this.toArray());
+};
+
 CopyPricing.prototype.validSchema = function() {
   // To be revisited
   return Joi.object().keys({
