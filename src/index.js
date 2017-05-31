@@ -219,6 +219,7 @@ module.exports.common.GlobalSearch = require('./common/GlobalSearch');
 module.exports.common.ChangeHistory = require('./common/ChangeHistory');
 
 // Pricing
+module.exports.common.CopyPricing = require('./common/CopyPricing');
 module.exports.common.Currency = require('./common/Currency');
 module.exports.common.ExchangeRateIssue = require('./common/ExchangeRateIssue');
 module.exports.common.ExchangeRateIssueRate = require('./common/ExchangeRateIssueRate');
