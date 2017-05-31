@@ -6,7 +6,7 @@ function CopyPricing(id) {
   this.id = id;
 }
 
-CopyPricing.prototype = new SingleEntity();
+CopyPricing.prototype = new Entity();
 CopyPricing.prototype.toArray = function() {
   var fields = {
     type: this.type,
