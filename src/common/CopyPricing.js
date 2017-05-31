@@ -18,10 +18,10 @@ CopyPricing.prototype.toArray = function() {
     copyminimums: this.copyminimums,
     copyoverrides: this.copyoverrides,
     copypartysizeprices: this.copypartysizeprices,
-    incrementamount1, this.incrementamount1,
-    incrementpercentage, this.incrementpercentage,
-    incrementamount2, this.incrementamount2,
-    roundtonearest, this.roundtonearest
+    incrementamount1: this.incrementamount1,
+    incrementpercentage: this.incrementpercentage,
+    incrementamount2: this.incrementamount2,
+    roundtonearest: this.roundtonearest
   };
 
   if(this.to && this.to.id) {
@@ -47,7 +47,7 @@ CopyPricing.prototype.toArray = function() {
 CopyPricing.prototype.validSchema = function() {
   // To be revisited
   return Joi.object().keys({
-    type: Joi.any().valid('Branding','Property','PropertyBranding').label('Type')
+    type: Joi.any().valid('Branding','Property','PropertyBranding').label('Type'),
     fromid: Joi.object().required().label('From ID'),
     toid: Joi.object().optional().label('To ID')
   });
