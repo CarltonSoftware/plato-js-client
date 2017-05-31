@@ -56,6 +56,15 @@ Collection.prototype.toArray = function() {
 };
 
 /**
+ * Get the full path.
+ *
+ * @return {String}
+ */
+Collection.prototype.getFullPath = function() {
+  return this.getPath() + '?page=' + this.page + '&limit=' + this.limit;
+};
+
+/**
  * Get the maximum pages supported by this collection
  *
  * @return {number}
@@ -141,4 +150,35 @@ Collection.prototype.fetch = function(dependencies) {
   return promise;
 };
 
+/**
+ * Returns a promise of the fetched resource
+ *
+ * @param {Array} dependencies - keys of subentities, if any, to get for each item in the collection, e.g. 'property'
+ *
+ * @returns {Collection.prototype@call;promiseResult}
+ */
+Collection.prototype.fetchCacheable = function(cacheTime, forceRefresh) {
+  var verbose = localStorage['cachelog'];
+  var path = this.getFullPath();
+  this.cacheKey = path;
+  if (verbose) {console.log('collection cacheable - '+path);}
+  if (cacheTime>0 && !forceRefresh && localStorage[path]) {
+    cacheEntry = JSON.parse(localStorage[path]);
+    if (verbose) {
+      console.log('Cached at '+ new Date(cacheEntry.cachedTime));
+      console.log('Expires at '+ new Date(cacheEntry.cachedTime + (cacheTime*1000)));
+      console.log('Time now '+ new Date());
+    }
+    if ((cacheEntry.cachedTime + (cacheTime*1000)) > Date.now()) {
+      if (verbose) {console.log('cacheHit');}
+      promise = this.cachedOkPromiseResult(cacheEntry.entity);
+    } else {
+      promise = this.fetch();
+    }
+  } else {
+    promise = this.fetch();
+  }
+
+  return promise;
+};
 module.exports = Collection;

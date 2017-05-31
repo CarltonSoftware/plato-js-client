@@ -2,7 +2,7 @@ var _ = require('underscore');
 
 if (typeof localStorage === 'undefined') {
   var LocalStorage = require('node-localstorage').LocalStorage;
-  localStorage = new LocalStorage('./scratch');
+  localStorage = new LocalStorage('/tmp/scratch');
 }
 if (typeof window === 'undefined') {
   window = {};
@@ -94,6 +94,30 @@ var platoJsClient = (function () {
           this.token = token;
 
           return this;
+        };
+
+        /**
+         * Authenticate using username and password
+         *
+         * Returns a promise to a response containing an entity.access_token
+         *
+         * @return {Promise}
+         */
+        this.authenticate = function(username, password, clientSecret) {
+            var paramsData = {
+                'grant_type': 'password',
+                'username': username,
+                'password': password,
+                'client_id': clientId,
+                'client_secret': clientSecret
+            };
+
+            var client = rest.wrap(mime)
+                             .wrap(pathPrefix, { prefix: host })
+                             .wrap(defaultRequest)
+                             .wrap(params);
+
+            return client({ path: '/oauth/v2/token', params: paramsData });
         };
 
         /**
@@ -192,18 +216,72 @@ var platoJsClient = (function () {
             });
         };
 
+        this.getBasicEndpoint = function(path) {
+          var client = this.createClient();
+          var req = {
+            path: path,
+            method: 'get'
+          };
+          var result = client(req);
+          return new Promise(function(resolve, reject) {
+            result.then(function(res) {
+              if (res.status.code === 200) {
+                localStorage[path] = JSON.stringify({entity: res.entity, cachedTime: Date.now()});;
+                resolve(res);
+              } else {
+                reject(new statusError(res));
+              }
+            }, reject);
+          });
+        };
+
+        /**
+         * Fetch a Basic endpoint from the cache or pass on
+         *
+         * @return {Promise}
+         */
+        this.getBasicEndpointCacheable = function(path, cacheTime, forceRefresh) {
+          var verbose = localStorage['cachelog'];
+          if (verbose) {console.log('basic endpoint cacheable - '+path);}
+          if (cacheTime>0 && !forceRefresh && localStorage[path]) {
+            cacheEntry = JSON.parse(localStorage[path]);
+            if (verbose) {
+              console.log('Cached at '+ new Date(cacheEntry.cachedTime));
+              console.log('Expires at '+ new Date(cacheEntry.cachedTime + (cacheTime*1000)));
+              console.log('Time now '+ new Date());
+            }
+            if ((cacheEntry.cachedTime + (cacheTime*1000)) > Date.now()) {
+              if (verbose) {console.log('cacheHit');}
+              promise = new Promise(function(resolve, reject) {
+                              resolve(cacheEntry);
+                            });
+            } else {
+              localStorage[path] = '';
+              promise = this.getBasicEndpoint(path);
+            }
+          } else {
+            promise = this.getBasicEndpoint(path);
+          }
+
+          return promise;
+        };
+
         /**
          * Find out who is using this token
          *
          * @return {Promise}
          */
         this.whoAmi = function() {
-          var client = this.createClient();
-          var req = {
-            path: '/whoami',
-            method: 'get'
-          };
-          return client(req);
+          return this.getBasicEndpoint('/whoami');
+        };
+
+        /**
+         * Find out who is using this token
+         *
+         * @return {Promise}
+         */
+        this.whoAmiCacheable = function(cacheTime, forceRefresh) {
+          return this.getBasicEndpointCacheable('/whoami', cacheTime, forceRefresh);
         };
 
         /**
@@ -212,12 +290,16 @@ var platoJsClient = (function () {
          * @return {Promise}
          */
         this.getRoot = function() {
-          var client = this.createClient();
-          var req = {
-            path: '/',
-            method: 'get'
-          };
-          return client(req);
+          return this.getBasicEndpoint('/');
+        };
+
+        /**
+         * Get the root endpoint
+         *
+         * @return {Promise}
+         */
+        this.getRootCacheable = function(cacheTime, forceRefresh) {
+          return this.getBasicEndpoint('/', cacheTime, forceRefresh);
         };
 
         /**

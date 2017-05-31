@@ -75,6 +75,9 @@ Entity.prototype.okPromiseResult = function(path, params) {
   return new Promise(function(resolve, reject) {
     result.then(function(res) {
       if (res.status.code === 200) {
+        if (e.cacheKey) {
+          localStorage[e.cacheKey] = JSON.stringify({entity: res.entity, cachedTime: Date.now()});
+        };
         resolve(e.mutateResponse(res.entity));
       } else {
         reject(new statusError(res));
@@ -208,8 +211,45 @@ Entity.prototype.get = function() {
   if (typeof this.path === 'undefined') {
     throw new pathNotSpecifiedError('No path specified for entity');
   }
+  console.log(this.path);
+  if (localStorage[this.path]) {
+    return this.cachedOkPromiseResult(localStorage[this.path]);
+  } else {
+    return this.okPromiseResult(this.path, this.params);
+  }
 
-  return this.okPromiseResult(this.path, this.params);
+};
+
+/**
+ * Get the full path.
+ *
+ * @return {String}
+ */
+Entity.prototype.getFullPath = function(path, params) {
+  if (params) {
+    if (params.page) {
+      path += '?page=' + params.page;
+    }
+    if (params.limit) {
+      path += '&limit=' + params.limit;
+    }
+    if (params.orderBy) {
+      path += '&orderBy=' + params.orderBy;
+    }
+  }
+  return path;
+};
+
+/**
+ *
+ * @param {type} route
+ * @returns {SingleEntity|nm$_Entity.Entity.prototype}
+ */
+Entity.prototype.cachedOkPromiseResult = function(json) {
+  var e = this;
+  return new Promise(function(resolve, reject) {
+        resolve(e.mutateResponse(json));
+  });
 };
 
 /**

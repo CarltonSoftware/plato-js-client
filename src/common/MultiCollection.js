@@ -23,6 +23,20 @@ function MultiCollection() {
   };
 
   /**
+   * Function to return all of the collections promises
+   *
+   * @return {Promise.all()}
+   */
+  this.fetchAllCacheable = function(cacheTime, forceRefresh) {
+    var promises = [];
+    for (var i = 0; i < this.collections.length; i++) {
+      promises.push(this.collections[i].fetchCacheable(cacheTime, forceRefresh));
+    }
+
+    return Promise.all(promises);
+  };
+
+  /**
    * Return all entities in the multicollection
    *
    * @return {Array}
