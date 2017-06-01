@@ -240,7 +240,7 @@ var platoJsClient = (function () {
          *
          * @return {Promise}
          */
-        this.getBasicEndpointCacheable = function(path, cacheTime, forceRefresh) {
+        this.getBasicEndpointCacheable = function(path, cacheTime = 3600, forceRefresh = false) {
           var verbose = localStorage['cachelog'];
           if (verbose) {console.log('basic endpoint cacheable - '+path);}
           if (cacheTime>0 && !forceRefresh && localStorage[path]) {
@@ -280,7 +280,7 @@ var platoJsClient = (function () {
          *
          * @return {Promise}
          */
-        this.whoAmiCacheable = function(cacheTime, forceRefresh) {
+        this.whoAmiCacheable = function(cacheTime = 3600, forceRefresh = false) {
           return this.getBasicEndpointCacheable('/whoami', cacheTime, forceRefresh);
         };
 
@@ -298,8 +298,8 @@ var platoJsClient = (function () {
          *
          * @return {Promise}
          */
-        this.getRootCacheable = function(cacheTime, forceRefresh) {
-          return this.getBasicEndpoint('/', cacheTime, forceRefresh);
+        this.getRootCacheable = function(cacheTime = 3600, forceRefresh = false) {
+          return this.getBasicEndpointCacheable('/', cacheTime, forceRefresh);
         };
 
         /**

@@ -41,6 +41,36 @@ SingleEntity.prototype.get = function() {
 };
 
 /**
+ * Get request method
+ *
+ * @returns {Promise}
+ */
+SingleEntity.prototype.getCacheable = function(cacheTime = 3600, forceRefresh = false) {
+  var verbose = localStorage['cachelog'];
+  var path = this.getUpdatePath();
+  this.cacheKey = path;
+  if (verbose) {console.log('singleentty cacheable - '+path);}
+  if (cacheTime>0 && !forceRefresh && localStorage[path]) {
+    cacheEntry = JSON.parse(localStorage[path]);
+    if (verbose) {
+      console.log('Cached at '+ new Date(cacheEntry.cachedTime));
+      console.log('Expires at '+ new Date(cacheEntry.cachedTime + (cacheTime*1000)));
+      console.log('Time now '+ new Date());
+    }
+    if ((cacheEntry.cachedTime + (cacheTime*1000)) > Date.now()) {
+      if (verbose) {console.log('cacheHit');}
+      promise = this.cachedOkPromiseResult(cacheEntry.entity);
+    } else {
+      promise = this.get();
+    }
+  } else {
+    promise = this.get();
+  }
+
+  return promise;
+};
+
+/**
  * Update request method
  *
  * @returns {Promise}

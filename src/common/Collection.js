@@ -157,7 +157,7 @@ Collection.prototype.fetch = function(dependencies) {
  *
  * @returns {Collection.prototype@call;promiseResult}
  */
-Collection.prototype.fetchCacheable = function(cacheTime, forceRefresh) {
+Collection.prototype.fetchCacheable = function(cacheTime = 3600, forceRefresh = false) {
   var verbose = localStorage['cachelog'];
   var path = this.getFullPath();
   this.cacheKey = path;
