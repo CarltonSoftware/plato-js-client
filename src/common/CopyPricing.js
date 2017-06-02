@@ -15,6 +15,8 @@ CopyPricing.prototype.toArray = function() {
     todate: this.todate,
     datemodifier: this.datemodifier,
     sameweekday: this.sameweekday,
+    checkforoverlap: this.checkforoverlap,
+    overlapaction: this.overlapaction,
     copyminimums: this.copyminimums,
     copyoverrides: this.copyoverrides,
     copypartysizeprices: this.copypartysizeprices,
