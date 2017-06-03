@@ -296,7 +296,8 @@ FilterCollection.prototype.fetch = function(dependencies) {
  *
  * @returns {Collection.prototype@call;promiseResult}
  */
-FilterCollection.prototype.fetchCacheable = function(cacheTime = 3600, forceRefresh = false) {
+FilterCollection.prototype.fetchCacheable = function(cacheTime, forceRefresh) {
+  if (!cacheTime) {cacheTime = 3600;}
   var verbose = localStorage['cachelog'];
   var path = this.getFilterPath();
   this.cacheKey = path;

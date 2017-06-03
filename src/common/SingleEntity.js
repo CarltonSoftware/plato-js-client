@@ -45,7 +45,8 @@ SingleEntity.prototype.get = function() {
  *
  * @returns {Promise}
  */
-SingleEntity.prototype.getCacheable = function(cacheTime = 3600, forceRefresh = false) {
+SingleEntity.prototype.getCacheable = function(cacheTime, forceRefresh) {
+  if (!cacheTime) {cacheTime = 3600;}
   var verbose = localStorage['cachelog'];
   var path = this.getUpdatePath();
   this.cacheKey = path;
