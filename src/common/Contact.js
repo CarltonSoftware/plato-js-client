@@ -1,6 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
 var Template = require('./Template');
+var Actor = require('./Actor');
 var ContactDocument = require('./ContactDocument');
 var Joi = require('joi');
 
@@ -15,6 +16,7 @@ function Contact(contactId) {
     path: 'document',
     parent: this
   });
+  this.createdby = new Actor();
 }
 Contact.prototype = new SingleEntity();
 
