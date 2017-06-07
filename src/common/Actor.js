@@ -1,4 +1,5 @@
 var client = require('./platoJsClient').getInstance();
+var statusError = require('../error/statusError');
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
 var EntityLink = require('./EntityLink');

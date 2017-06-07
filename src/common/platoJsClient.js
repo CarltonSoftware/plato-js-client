@@ -1,4 +1,5 @@
 var _ = require('underscore');
+var statusError = require('../error/statusError');
 
 if (typeof localStorage === 'undefined') {
   var LocalStorage = require('node-localstorage').LocalStorage;
