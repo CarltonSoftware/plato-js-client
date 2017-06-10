@@ -129,6 +129,15 @@ var platoJsClient = (function () {
           this.token = null;
           if (localStorage) {
             localStorage.removeItem(TOKENNAME);
+            var removals = [];
+            for(var i = 0; i < localStorage.length; i++) {
+              if (localStorage.key(i).startsWith('/')) {
+                removals.push(localStorage.key(i));
+              }
+            }
+            removals.forEach(function(remove) {
+              localStorage.removeItem(remove);
+            });
           }
 
           var ifrm = document.createElement("IFRAME");

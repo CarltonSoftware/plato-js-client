@@ -33,6 +33,9 @@ function Collection(options) {
       path += this.options.path;
     }
 
+    if (!path.startsWith('/')) {
+        path = '/' + path;
+    }
     return path;
   };
 
