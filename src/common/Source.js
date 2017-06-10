@@ -24,7 +24,7 @@ Source.prototype.toArray = function() {
   };
 };
 Source.prototype.toString = function() {
-  return this.sourcecode;
+  return this.sourcecode + ' (' + this.description + ')';
 };
 
 module.exports = Source;
