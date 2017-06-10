@@ -308,8 +308,11 @@ FilterCollection.prototype.fetchCacheable = function(cacheTime, forceRefresh) {
       console.log('Cached at '+ new Date(cacheEntry.cachedTime));
       console.log('Expires at '+ new Date((cacheEntry.cachedTime + (cacheTime*1000))));
       console.log('Time now '+ new Date());
+      console.log('Cached build date '+ cacheEntry.buildDate);
+      console.log('Built at '+ localStorage.buildDate);
     }
-    if ((cacheEntry.cachedTime + (cacheTime*1000)) > Date.now()) {
+    if ((cacheEntry.cachedTime + (cacheTime*1000)) > Date.now() &&
+         cacheEntry.buildDate === localStorage.buildDate) {
       if (verbose) {console.log('cacheHit');}
       promise = this.cachedOkPromiseResult(cacheEntry.entity);
     } else {
