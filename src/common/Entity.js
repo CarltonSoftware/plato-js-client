@@ -76,7 +76,9 @@ Entity.prototype.okPromiseResult = function(path, params) {
     result.then(function(res) {
       if (res.status.code === 200) {
         if (e.cacheKey) {
-          localStorage[e.cacheKey] = JSON.stringify({entity: res.entity, cachedTime: Date.now()});
+          localStorage[e.cacheKey] = JSON.stringify({entity: res.entity,
+                                                     cachedTime: Date.now(),
+                                                     buildDate: localStorage.buildDate});
         };
         resolve(e.mutateResponse(res.entity));
       } else {

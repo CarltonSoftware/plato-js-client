@@ -1,6 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var File = require('./File');
 var client = require('./platoJsClient').getInstance();
+var statusError = require('../error/statusError');
 
 function TicketAttachment(id) {
   this.path = 'attachment';

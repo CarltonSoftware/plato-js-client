@@ -1,4 +1,5 @@
 var _ = require('underscore');
+var statusError = require('../error/statusError');
 
 if (typeof localStorage === 'undefined') {
   var LocalStorage = require('node-localstorage').LocalStorage;
@@ -15,7 +16,8 @@ var platoJsClient = (function () {
       STORAGESCHEMA = 'plato-js-client',
       TOKENNAME = STORAGESCHEMA + ':token';
 
-
+    var BuildDate = new Date('2002-02-20 20:02:20');
+    localStorage.buildDate = BuildDate;
     /**
      * PlatoApi generic javascipt client
      *
@@ -127,6 +129,15 @@ var platoJsClient = (function () {
           this.token = null;
           if (localStorage) {
             localStorage.removeItem(TOKENNAME);
+            var removals = [];
+            for(var i = 0; i < localStorage.length; i++) {
+              if (localStorage.key(i).startsWith('/')) {
+                removals.push(localStorage.key(i));
+              }
+            }
+            removals.forEach(function(remove) {
+              localStorage.removeItem(remove);
+            });
           }
 
           var ifrm = document.createElement("IFRAME");
@@ -226,7 +237,7 @@ var platoJsClient = (function () {
           return new Promise(function(resolve, reject) {
             result.then(function(res) {
               if (res.status.code === 200) {
-                localStorage[path] = JSON.stringify({entity: res.entity, cachedTime: Date.now()});;
+                localStorage[path] = JSON.stringify({entity: res.entity, cachedTime: Date.now(), buildDate: localStorage.buildDate});;
                 resolve(res);
               } else {
                 reject(new statusError(res));
@@ -250,8 +261,11 @@ var platoJsClient = (function () {
               console.log('Cached at '+ new Date(cacheEntry.cachedTime));
               console.log('Expires at '+ new Date(cacheEntry.cachedTime + (cacheTime*1000)));
               console.log('Time now '+ new Date());
+              console.log('Cached build date '+ cacheEntry.buildDate);
+              console.log('Built at '+ localStorage.buildDate);
             }
-            if ((cacheEntry.cachedTime + (cacheTime*1000)) > Date.now()) {
+            if ((cacheEntry.cachedTime + (cacheTime*1000)) > Date.now() &&
+                 cacheEntry.buildDate === localStorage.buildDate) {
               if (verbose) {console.log('cacheHit');}
               promise = new Promise(function(resolve, reject) {
                               resolve(cacheEntry);
