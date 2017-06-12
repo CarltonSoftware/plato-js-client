@@ -389,11 +389,19 @@ StaticCollection.prototype.sort = function(compare) {
 *
 * @returns {Collection}
 */
-StaticCollection.prototype.sortBy = function(field, order) {
+StaticCollection.prototype.sortBy = function(field, order, caseInsensitive) {
   var compareFunction = function(a, b) {
-    if (a[field] === b[field]) {
+    var av = a[field];
+    var bv = b[field];
+
+    if (caseInsensitive === true) {
+      av = av.toLowerCase();
+      bv = bv.toLowerCase();
+    }
+
+    if (av === bv) {
       return 0;
-    } else if (a[field] > b[field]) {
+    } else if (av > bv) {
       return 1;
     } else {
       return -1;
