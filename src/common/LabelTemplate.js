@@ -30,13 +30,17 @@ LabelTemplate.prototype.toArray = function() {
   };
 };
 
-LabelTemplate.prototype.render = function(filter) {
+LabelTemplate.prototype.render = function(filter, startlabel) {
   var filterString = [];
   for (var i in filter) {
     filterString.push(i + '=' + filter[i]);
   }
 
-  return client.get(this.getUpdatePath() + '/render?filter=' + filterString.join(':'));
+  if (!startlabel) {
+    startlabel = 1;
+  }
+
+  return client.get(this.getUpdatePath() + '/render?filter=' + filterString.join(':') + '&startlabel=' + startlabel);
 };
 
 module.exports = LabelTemplate;
