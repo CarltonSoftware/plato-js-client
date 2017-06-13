@@ -17,4 +17,8 @@ BrandingGroup.prototype.toArray = function() {
   };
 };
 
+Branding.prototype.toString = function() {
+  return this.name;
+};
+
 module.exports = BrandingGroup;
