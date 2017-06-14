@@ -17,7 +17,7 @@ BrandingGroup.prototype.toArray = function() {
   };
 };
 
-Branding.prototype.toString = function() {
+BrandingGroup.prototype.toString = function() {
   return this.name;
 };
 
