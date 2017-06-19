@@ -25,6 +25,13 @@ OwnerStatement.prototype.render = function(entity) {
   );
 };
 
+OwnerStatement.prototype.rendermc = function(entity) {
+  return entity.createPromiseResult(
+    this.getUpdatePath() + '/rendermc',
+    {}
+  );
+};
+
 OwnerStatement.prototype.email = function(subject, message, bookingbrand) {
   return this.updatePromiseResult(
     this.getUpdatePath() + '/email',
