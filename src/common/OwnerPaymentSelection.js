@@ -1,6 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
 var Joi = require('joi');
+var client = require('./platoJsClient').getInstance();
 
 function OwnerPaymentSelection(id) {
   this.path = 'ownerpaymentselection';
@@ -29,6 +30,9 @@ OwnerPaymentSelection.prototype.toUpdateArray = function() {
   if (this.paidbytabsuser) {
     fields.paidbytabsuserid = this.paidbytabsuser.id;
   }
+  if (this.owner) {
+    fields.ownerid = this.owner.id;
+  }
   if (this.cancelledbytabsuser) {
     fields.cancelledbytabsuserid = this.cancelledbytabsuser.id;
   }
@@ -39,6 +43,13 @@ OwnerPaymentSelection.prototype.toUpdateArray = function() {
   }
 
   return fields;
+};
+
+OwnerPaymentSelection.prototype.payOwner = function(owner, tabsUser) {
+  return this.updatePromiseResult(
+    this.path + '/' + this.id,
+    { ownerid: owner.id, paidbytabsuserid: tabsUser.id }
+  );
 };
 
 OwnerPaymentSelection.prototype.toString = function() {
