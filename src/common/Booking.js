@@ -161,11 +161,17 @@ Booking.prototype.toArray = function() {
   }
 
   // Transferred */
-  if (this.transferredtobooking) {
+  if (this.transferredtobooking 
+    && typeof this.transferredtobooking == 'object'
+    && this.transferredtobooking.tobooking
+  ) {
     array.transferredbooking_tobookingid = this.transferredtobooking.tobooking.id;
     array.transferredbooking_tabsuserid = this.transferredtobooking.tabsuser.id || this.tabsuser.id;
   }
-  if (this.transferredfrombooking) {
+  if (this.transferredfrombooking 
+    && typeof this.transferredfrombooking == 'object'
+    && this.transferredfrombooking.frombooking
+  ) {
     array.transferredbooking_frombookingid = this.transferredfrombooking.frombooking.id;
     array.transferredbooking_tabsuserid = this.transferredfrombooking.tabsuser.id || this.tabsuser.id;
   }
