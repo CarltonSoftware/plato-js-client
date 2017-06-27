@@ -1,6 +1,6 @@
 var SingleEntity = require('./SingleEntity');
 var Status = require('./Status');
-var Reason = require('./Reason');
+var StatusReason = require('./StatusReason');
 var PropertyNote = require('./PropertyNote');
 
 function PropertyBrandingStatus(id) {
