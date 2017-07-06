@@ -125,6 +125,7 @@ Booking.prototype.toArray = function() {
     /* Potential Booking */
     potentialbooking_type: this.potentialbooking_type,
     potentialbooking_expirydatetime: this.potentialbooking_expirydatetime,
+    potentialbooking_expired: this.potentialbooking_expired,
 
     /* Provisional Booking */
     provisionalbooking_depositamountid: this.provisionalbooking_depositamountid,
@@ -161,14 +162,14 @@ Booking.prototype.toArray = function() {
   }
 
   // Transferred */
-  if (this.transferredtobooking 
+  if (this.transferredtobooking
     && typeof this.transferredtobooking == 'object'
     && this.transferredtobooking.tobooking
   ) {
     array.transferredbooking_tobookingid = this.transferredtobooking.tobooking.id;
     array.transferredbooking_tabsuserid = this.transferredtobooking.tabsuser.id || this.tabsuser.id;
   }
-  if (this.transferredfrombooking 
+  if (this.transferredfrombooking
     && typeof this.transferredfrombooking == 'object'
     && this.transferredfrombooking.frombooking
   ) {
