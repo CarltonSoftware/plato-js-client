@@ -1,6 +1,8 @@
 var SingleEntity = require('./SingleEntity');
 var Mimetype = require('./Mimetype');
 var File = require('./File');
+var StaticCollection = require('./StaticCollection');
+var DocumentBaseTag = require('./DocumentBaseTag');
 
 function Document(id) {
   this.path = 'document';
@@ -8,6 +10,9 @@ function Document(id) {
   this.id = id;
   this.file = new File();
   this.mimetype = new Mimetype();
+  this.tags = new StaticCollection({
+    object: DocumentBaseTag
+  });
 }
 Document.prototype = new SingleEntity();
 Document.prototype.toArray = function() {
