@@ -101,7 +101,8 @@ var platoJsClient = (function () {
         /**
          * Authenticate using username and password
          *
-         * Returns a promise to a response containing an entity.access_token
+         * Returns a promise to a token.
+         * The client stores the token internally ready for use as well
          *
          * @return {Promise}
          */
@@ -119,7 +120,16 @@ var platoJsClient = (function () {
                              .wrap(defaultRequest)
                              .wrap(params);
 
-            return client({ path: '/oauth/v2/token', params: paramsData });
+            return client({ path: '/oauth/v2/token', params: paramsData }).then(function(response) {
+                if (response.entity.error_description) {
+                    throw Error('Auth failure: ' + response.entity.error_description);
+                }
+                if (!response.entity.access_token) {
+                    throw Error('Auth failure: No token returned');
+                }
+                this.token = response.entity.access_token;
+                return response.entity.access_token;
+            }.bind(this));
         };
 
         /**
