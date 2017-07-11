@@ -3,15 +3,14 @@ var EntityLink = require('./EntityLink');
 var Collection = require('./Collection');
 var Extra = require('./Extra');
 var VatRate = require('./VatRate');
+var Owner = require('./Owner');
 var Joi = require('joi');
 
 function PaymentItem(id) {
   this.path = 'item';
   this.createPath = 'item';
   this.id = id;
-  this.owner = new EntityLink({
-    entity: 'Owner'
-  });
+  this.owner = new Owner();
   this.booking = new EntityLink({
     entity: 'Booking'
   });
