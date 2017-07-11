@@ -48,6 +48,10 @@ ActorContactDetailPhone.prototype.getFormattedNumber = function(countryAlpha2) {
     value = value + ' ext. ' + this.extension;
   }
 
+  if (!value) {
+    value = this.subscribernumber;
+  }
+
   return value;
 };
 
