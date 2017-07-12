@@ -36,6 +36,7 @@ function Actor(id) {
   this.documents = new Collection({ object: CustomerDocument });
   this.potentialduplicates = new Collection({ object: PotentialDuplicate });
   this.mergedinto = new EntityLink({ entity: 'Actor' });
+  this.createdby = new EntityLink({ entity: 'Actor' });
 
   this.branding = new Branding();
   this.defaultbranding = new Branding();
@@ -340,6 +341,9 @@ Actor.prototype.toArray = function() {
     accountingreference: this.accountingreference
   };
 
+  if (this.createdbyactor) {
+    arr.createdbyactorid = this.createdbyactor.id;
+  }
   if (this.defaultbranding) {
     arr.defaultbrandingid = this.defaultbranding.id;
   }
