@@ -235,7 +235,6 @@ Entity.prototype.get = function() {
   if (typeof this.path === 'undefined') {
     throw new pathNotSpecifiedError('No path specified for entity');
   }
-  console.log(this.path);
   if (localStorage[this.path]) {
     return this.cachedOkPromiseResult(localStorage[this.path]);
   } else {
