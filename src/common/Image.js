@@ -41,8 +41,8 @@ Image.prototype.toArray = function() {
 Image.prototype.validSchema = function() {
   return Joi.object().keys({
     name: Joi.string().label('Name'),
-    weight: Joi.number().empty('').label('Weight'),
-    description: Joi.string().empty('').label('Ddescription'),
+    weight: Joi.number().empty('').label('Order'),
+    description: Joi.string().empty('').label('Description'),
     alt: Joi.string().empty('').label('alt Text'),
     private: Joi.boolean()
   });

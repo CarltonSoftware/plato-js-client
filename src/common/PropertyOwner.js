@@ -13,11 +13,16 @@ function PropertyOwner(id) {
 PropertyOwner.prototype = new SingleEntity();
 
 PropertyOwner.prototype.toArray = function() {
-  return {
+  var ret = {
     ownerid: this.owner.id,
     ownerfromdate: this.ownerfromdate,
     ownertodate: this.ownertodate,
   };
+
+  if (this.bypasschecks) {
+    ret.bypasschecks = this.bypasschecks;
+  }
+  return ret;
 };
 
 module.exports = PropertyOwner;
