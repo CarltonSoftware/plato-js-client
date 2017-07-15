@@ -1,4 +1,5 @@
 var SingleEntity = require('./SingleEntity');
+var client = require('./platoJsClient').getInstance();
 
 function MarketingBrandEmailList(id) {
   this.path = this.createPath = 'emaillist';
@@ -12,6 +13,10 @@ MarketingBrandEmailList.prototype.toArray = function() {
     fromdate: this.fromdate,
     todate: this.todate
   };
+};
+
+MarketingBrandEmailList.prototype.unsubscribe = function(customer) {
+    return client.delete({path: this.getUpdatePath() + '/unsubscribe', entity: {customerid: customer.id}});
 };
 
 module.exports = MarketingBrandEmailList;

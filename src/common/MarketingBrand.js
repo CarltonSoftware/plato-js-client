@@ -1,7 +1,8 @@
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
-var BookingBrand = require('./BookingBrand');
+var MarketingBrandEmailList = require('./MarketingBrandEmailList');
 var client = require('./platoJsClient').getInstance();
+var FilterCollection = require('./FilterCollection');
 
 function MarketingBrand(id) {
   this.path = 'marketingbrand';
@@ -39,6 +40,15 @@ MarketingBrand.prototype.getEmailtemplate = function(filterCollection, actor) {
       this.getUpdatePath() + '/emailtemplate?orderBy=' + filterCollection.orderBy + filterCollection.getFilterString()
     );
   }
+};
+
+MarketingBrand.prototype.getEmailLists = function() {
+  var emailLists = new FilterCollection({
+    path: 'emaillist',
+    object: MarketingBrandEmailList,
+    parent: this
+  });
+  return emailLists.fetch();
 };
 
 module.exports = MarketingBrand;
