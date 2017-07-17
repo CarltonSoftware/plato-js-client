@@ -14,7 +14,8 @@ BookingSecurityDeposit.prototype.toArray = function() {
     dueindate: this.dueindate,
     dueoutdate: this.dueoutdate,
     ownerchargecodeid: this.ownerchargecode.id,
-    ownerchargeamount: this.ownerchargeamount
+    ownerchargeamount: this.ownerchargeamount,
+    notrefunded: this.notrefunded
   };
 };
 
@@ -28,7 +29,8 @@ BookingSecurityDeposit.prototype.validSchema = Joi.object().keys({
     is: Joi.number().required(),
     then: Joi.object().required(),
     otherwise: Joi.object().optional()
-  }).label('Owner Charge Code')
+  }).label('Owner Charge Code'),
+  notrefunded: Joi.boolean()
 });
 
 
