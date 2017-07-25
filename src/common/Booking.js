@@ -115,6 +115,7 @@ Booking.prototype.toArray = function() {
     checkouttext: this.checkouttext,
     promotioncode: this.promotioncode,
     overridestatus: this.overridestatus,
+    bypasspetchecks: this.bypasspetchecks,
 
     /* Web Booking */
     webbooking_createddatetime: this.webbooking.createddatetime,
