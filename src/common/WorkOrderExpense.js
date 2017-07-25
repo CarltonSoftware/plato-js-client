@@ -1,5 +1,4 @@
 var SingleEntity = require('./SingleEntity');
-var EntityLink = require('./EntityLink');
 
 function WorkOrderExpense(id) {
   this.path = this.createPath = 'expense';

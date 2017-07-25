@@ -1,7 +1,4 @@
 var SingleEntity = require('./SingleEntity');
-var EntityLink = require('./EntityLink');
-var OwnerChargeCode = require('./OwnerChargeCode');
-var ExchangeRateIssueRate = require('./ExchangeRateIssueRate');
 
 function OwnerChargeImport() {
   this.path = this.createPath = 'ownercharge/import';
