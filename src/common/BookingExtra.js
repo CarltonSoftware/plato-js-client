@@ -8,11 +8,15 @@ function BookingExtra(bookingId, id) {
 BookingExtra.prototype = new SingleEntity();
 
 BookingExtra.prototype.toArray = function() {
-  return {
+  var extra = {
     extraid: this.extraid,
-    quantity: this.quantity,
-    unitprice: this.unitprice,
+    quantity: this.quantity
   };
+  if (this.quantity > 0) {
+    extra.unitprice = this.unitprice;
+  }
+
+  return extra;
 };
 
 module.exports = BookingExtra;
