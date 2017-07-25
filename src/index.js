@@ -279,7 +279,6 @@ module.exports.common.TemplateSource = require('./common/TemplateSource');
 module.exports.common.TemplateTarget = require('./common/TemplateTarget');
 module.exports.common.TemplateTargetSource = require('./common/TemplateTargetSource');
 module.exports.common.TextItem = require('./common/TextItem');
-module.exports.common.TextSubstitution = require('./common/TextSubstitution');
 module.exports.common.TriggerEvent = require('./common/TriggerEvent');
 module.exports.common.LabelTemplate = require('./common/LabelTemplate');
 module.exports.common.LabelTemplatePaperSize = require('./common/LabelTemplatePaperSize');

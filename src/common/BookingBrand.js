@@ -20,7 +20,7 @@ BookingBrand.prototype.toArray = function() {
 };
 
 BookingBrand.prototype.toString = function() {
-  return [this.name].join(' ');
+  return this.name;
 };
 
 module.exports = BookingBrand;
