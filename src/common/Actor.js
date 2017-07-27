@@ -20,6 +20,7 @@ var ActorManagedActivity = require('./ActorManagedActivity');
 var ActorSecurity = require('./ActorSecurity');
 var ActorSetting = require('./ActorSetting');
 var ActorCategory = require('./ActorCategory');
+var Flag = require('./Flag');
 
 /**
  * Actor instance
@@ -85,6 +86,11 @@ function Actor(id) {
     }
   });
 
+  this.flags = new Collection({
+    object: Flag,
+    parent: this,
+    path: 'flag'
+  });
 }
 
 Actor.prototype = new SingleEntity();

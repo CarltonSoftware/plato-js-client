@@ -84,6 +84,8 @@ module.exports.common.ActorManagedActivity = require('./common/ActorManagedActiv
 module.exports.common.ActorNote = require('./common/ActorNote');
 module.exports.common.ActorDocument = require('./common/ActorDocument');
 module.exports.common.BankAccount = require('./common/BankAccount');
+module.exports.common.FlagType = require('./common/FlagType');
+module.exports.common.Flag = require('./common/Flag');
 module.exports.common.PotentialDuplicate = require('./common/PotentialDuplicate');
 
 // Customer Releated Objects

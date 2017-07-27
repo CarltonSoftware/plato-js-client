@@ -2,7 +2,6 @@ var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
 var NoteText = require('./NoteText');
 var NoteType = require('./NoteType');
-var EntityLink = require('./EntityLink');
 var NoteActor = require('./NoteActor');
 
 function Note(noteID) {
