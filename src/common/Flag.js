@@ -9,6 +9,7 @@ function Flag(id) {
   this.flagtype = new FlagType();
   this.createdBy = new EntityLink({ entity: 'TabsUser' });
   this.flaggedbybranding = new EntityLink({ entity: 'Branding' });
+  this.note = new EntityLink({ entity: 'Note' });
 }
 
 Flag.prototype = new SingleEntity();
@@ -16,8 +17,10 @@ Flag.prototype.toArray = function() {
   var flag = {
     type: this.type,
     flagtypeid: this.flagtype.id,
-    // noteid: this.note.id,
   };
+  if (this.note) {
+    flag.noteid = this.note.id;
+  }
   if (this.flaggedbybranding) {
     flag.flaggedbybrandingid = this.flaggedbybranding.id;
   }
