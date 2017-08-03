@@ -5,6 +5,12 @@ function DocumentTag(id) {
   this.path = 'documenttag';
   this.createPath = 'documenttag';
   this.id = id;
+
+  this.validSchema = function() {
+    return {
+      tag: Joi.string().required().min(1).label('tag').description('Tag name')
+    }
+  };
 }
 
 DocumentTag.prototype = new SingleEntity();
