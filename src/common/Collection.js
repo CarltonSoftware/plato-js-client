@@ -1,6 +1,5 @@
 var StaticCollection = require('./StaticCollection');
 var pathNotSpecifiedError = require('./../error/pathNotSpecified');
-var Promise = require('es6-promise').Promise;
 
 function Collection(options) {
   this.page = 1;

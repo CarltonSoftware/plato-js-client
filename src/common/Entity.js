@@ -2,7 +2,6 @@ var client = require('./platoJsClient').getInstance();
 var pathNotSpecifiedError = require('./../error/pathNotSpecified');
 var statusError = require('./../error/statusError');
 var badRequestError = require('./../error/badRequestError');
-var Promise = require('es6-promise').Promise;
 var _ = require('underscore');
 
 /**
