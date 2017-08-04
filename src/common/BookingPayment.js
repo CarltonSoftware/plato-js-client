@@ -18,7 +18,8 @@ BookingPayment.prototype.toCreateArray = function() {
   var array = {
     type: this.type,
     paymentdatetime: this.paymentdatetime,
-    amount: this.amount
+    amount: this.amount,
+    ignoresdrefundeddate: true
   };
   if (this.type != 'Swap' && this.type != 'Transfer') {
     array.actorid = this.actor.id;
