@@ -1,6 +1,5 @@
 var StaticCollection = require('./StaticCollection');
 var pathNotSpecifiedError = require('./../error/pathNotSpecified');
-var Promise = require('es6-promise').Promise;
 var lzstring = require('lz-string');
 
 function Collection(options) {

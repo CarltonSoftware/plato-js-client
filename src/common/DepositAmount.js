@@ -33,9 +33,10 @@ DepositAmount.prototype.toArray = function() {
   if (this.type == 'Property') {
     r.propertyid = this.property.id;
   }
-  if (this.type == 'Branding' || this.type == 'Property') {
+  if (this.type !== 'Booking') {
     r.fromdate = this.fromdate;
     r.todate = this.todate;
+    r.minimumamount = this.minimumamount;
   }
 
   return r;

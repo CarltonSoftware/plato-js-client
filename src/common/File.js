@@ -1,7 +1,5 @@
 var SingleEntity = require('./SingleEntity');
-var client = require('./platoJsClient').getInstance();
 var statusError = require('./../error/statusError');
-var Promise = require('es6-promise').Promise;
 var client = require('./platoJsClient').getInstance();
 
 function File(id) {
