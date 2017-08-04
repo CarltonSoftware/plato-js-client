@@ -248,7 +248,7 @@ var platoJsClient = (function () {
           return new Promise(function(resolve, reject) {
             result.then(function(res) {
               if (res.status.code === 200) {
-                localStorage[path] = lzstring.compress(JSON.stringify({entity: res.entity, cachedTime: Date.now(), buildDate: localStorage.buildDate}));;
+                localStorage[path] = lzstring.compress(JSON.stringify({entity: res.entity, cachedTime: Date.now(), buildDate: localStorage.buildDate}));
                 resolve(res);
               } else {
                 reject(new statusError(res));
@@ -275,7 +275,7 @@ var platoJsClient = (function () {
               console.log('Cached build date '+ cacheEntry.buildDate);
               console.log('Built at '+ localStorage.buildDate);
             }
-            if ((cacheEntry.cachedTime + (cacheTime*1000)) > Date.now() &&
+            if (cacheEntry && (cacheEntry.cachedTime + (cacheTime*1000)) > Date.now() &&
                  cacheEntry.buildDate === localStorage.buildDate) {
               if (verbose) {console.log('cacheHit');}
               promise = new Promise(function(resolve, reject) {

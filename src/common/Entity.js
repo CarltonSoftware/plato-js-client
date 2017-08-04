@@ -236,7 +236,12 @@ Entity.prototype.get = function() {
     throw new pathNotSpecifiedError('No path specified for entity');
   }
   if (localStorage[this.path]) {
-    return this.cachedOkPromiseResult(lzstring.decompress(localStorage[this.path]));
+    json = lzstring.decompress(localStorage[this.path]);
+    if (json) {
+        return this.cachedOkPromiseResult(json);
+    } else {
+        return this.okPromiseResult(this.path, this.params);
+    }
   } else {
     return this.okPromiseResult(this.path, this.params);
   }

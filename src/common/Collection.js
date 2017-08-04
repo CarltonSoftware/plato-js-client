@@ -175,7 +175,7 @@ Collection.prototype.fetchCacheable = function(cacheTime, forceRefresh) {
       console.log('Cached build date '+ cacheEntry.buildDate);
       console.log('Built at '+ localStorage.buildDate);
     }
-    if ((cacheEntry.cachedTime + (cacheTime*1000)) > Date.now() &&
+    if (cacheEntry && (cacheEntry.cachedTime + (cacheTime*1000)) > Date.now() &&
          cacheEntry.buildDate === localStorage.buildDate) {
       if (verbose) {console.log('cacheHit');}
       promise = this.cachedOkPromiseResult(cacheEntry.entity);
