@@ -1,5 +1,6 @@
 var _ = require('underscore');
 var statusError = require('../error/statusError');
+var lzstring = require('lz-string');
 
 if (typeof localStorage === 'undefined') {
   var LocalStorage = require('node-localstorage').LocalStorage;
@@ -247,7 +248,7 @@ var platoJsClient = (function () {
           return new Promise(function(resolve, reject) {
             result.then(function(res) {
               if (res.status.code === 200) {
-                localStorage[path] = JSON.stringify({entity: res.entity, cachedTime: Date.now(), buildDate: localStorage.buildDate});;
+                localStorage[path] = lzstring.compress(JSON.stringify({entity: res.entity, cachedTime: Date.now(), buildDate: localStorage.buildDate}));;
                 resolve(res);
               } else {
                 reject(new statusError(res));
@@ -266,7 +267,7 @@ var platoJsClient = (function () {
           var verbose = localStorage['cachelog'];
           if (verbose) {console.log('basic endpoint cacheable - '+path);}
           if (cacheTime>0 && !forceRefresh && localStorage[path]) {
-            cacheEntry = JSON.parse(localStorage[path]);
+            cacheEntry = JSON.parse(lzstring.decompress(localStorage[path]));
             if (verbose) {
               console.log('Cached at '+ new Date(cacheEntry.cachedTime));
               console.log('Expires at '+ new Date(cacheEntry.cachedTime + (cacheTime*1000)));

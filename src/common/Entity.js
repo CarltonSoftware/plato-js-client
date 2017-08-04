@@ -4,6 +4,7 @@ var statusError = require('./../error/statusError');
 var badRequestError = require('./../error/badRequestError');
 var Promise = require('es6-promise').Promise;
 var _ = require('underscore');
+var lzstring = require('lz-string');
 
 /**
  * Base object
@@ -76,9 +77,9 @@ Entity.prototype.okPromiseResult = function(path, params) {
     result.then(function(res) {
       if (res.status.code === 200) {
         if (e.cacheKey) {
-          localStorage[e.cacheKey] = JSON.stringify({entity: res.entity,
-                                                     cachedTime: Date.now(),
-                                                     buildDate: localStorage.buildDate});
+          localStorage[e.cacheKey] = lzstring.compress(JSON.stringify({entity: res.entity,
+                                                       cachedTime: Date.now(),
+                                                       buildDate: localStorage.buildDate}));
         };
         resolve(e.mutateResponse(res.entity));
       } else {
@@ -236,7 +237,7 @@ Entity.prototype.get = function() {
     throw new pathNotSpecifiedError('No path specified for entity');
   }
   if (localStorage[this.path]) {
-    return this.cachedOkPromiseResult(localStorage[this.path]);
+    return this.cachedOkPromiseResult(lzstring.decompress(localStorage[this.path]));
   } else {
     return this.okPromiseResult(this.path, this.params);
   }

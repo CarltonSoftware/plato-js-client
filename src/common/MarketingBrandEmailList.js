@@ -16,7 +16,7 @@ MarketingBrandEmailList.prototype.toArray = function() {
 };
 
 MarketingBrandEmailList.prototype.unsubscribe = function(customer) {
-    return client.delete({path: this.getUpdatePath() + '/unsubscribe', entity: {customerid: customer.id}});
+    return client.delete({path: this.getUpdatePath() + '/unsubscribe', params: {customerid: customer.id}});
 };
 
 module.exports = MarketingBrandEmailList;

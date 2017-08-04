@@ -2,6 +2,7 @@ var Entity = require('./Entity');
 var idNotFoundError = require('./../error/idNotFound');
 var pathNotSpecifiedError = require('./../error/pathNotSpecified');
 var _ = require('underscore');
+var lzstring = require('lz-string');
 
 /**
  * Base object
@@ -52,7 +53,7 @@ SingleEntity.prototype.getCacheable = function(cacheTime, forceRefresh) {
   this.cacheKey = path;
   if (verbose) {console.log('singleentty cacheable - '+path);}
   if (cacheTime>0 && !forceRefresh && localStorage[path]) {
-    cacheEntry = JSON.parse(localStorage[path]);
+    cacheEntry = JSON.parse(lzstring.decompress(localStorage[path]));
     if (verbose) {
       console.log('Cached at '+ new Date(cacheEntry.cachedTime));
       console.log('Expires at '+ new Date(cacheEntry.cachedTime + (cacheTime*1000)));

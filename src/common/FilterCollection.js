@@ -1,5 +1,6 @@
 var Collection = require('./Collection');
 var StaticCollection = require('./StaticCollection');
+var lzstring = require('lz-string');
 
 /**
  * Filter Group object.  Stores all of the 'and' filters
@@ -303,7 +304,7 @@ FilterCollection.prototype.fetchCacheable = function(cacheTime, forceRefresh) {
   this.cacheKey = path;
   if (verbose) {console.log('filtercollection cacheable - '+path);}
   if (cacheTime>0 && !forceRefresh && localStorage[path]) {
-    cacheEntry = JSON.parse(localStorage[path]);
+    cacheEntry = JSON.parse(lzstring.decompress(localStorage[path]));
     if (verbose) {
       console.log('Cached at '+ new Date(cacheEntry.cachedTime));
       console.log('Expires at '+ new Date((cacheEntry.cachedTime + (cacheTime*1000))));
