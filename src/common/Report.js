@@ -1,5 +1,4 @@
 var Joi = require('joi');
-var Promise = require('es6-promise').Promise;
 var client = require('./platoJsClient').getInstance();
 var statusError = require('./../error/statusError');
 var SingleEntity = require('./SingleEntity');

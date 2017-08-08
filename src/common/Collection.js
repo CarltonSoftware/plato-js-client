@@ -1,6 +1,6 @@
 var StaticCollection = require('./StaticCollection');
 var pathNotSpecifiedError = require('./../error/pathNotSpecified');
-var Promise = require('es6-promise').Promise;
+var lzstring = require('lz-string');
 
 function Collection(options) {
   this.page = 1;
@@ -167,7 +167,7 @@ Collection.prototype.fetchCacheable = function(cacheTime, forceRefresh) {
   this.cacheKey = path;
   if (verbose) {console.log('collection cacheable - '+path);}
   if (cacheTime>0 && !forceRefresh && localStorage[path]) {
-    cacheEntry = JSON.parse(localStorage[path]);
+    cacheEntry = JSON.parse(lzstring.decompress(localStorage[path]));
     if (verbose) {
       console.log('Cached at '+ new Date(cacheEntry.cachedTime));
       console.log('Expires at '+ new Date(cacheEntry.cachedTime + (cacheTime*1000)));
@@ -175,7 +175,7 @@ Collection.prototype.fetchCacheable = function(cacheTime, forceRefresh) {
       console.log('Cached build date '+ cacheEntry.buildDate);
       console.log('Built at '+ localStorage.buildDate);
     }
-    if ((cacheEntry.cachedTime + (cacheTime*1000)) > Date.now() &&
+    if (cacheEntry && (cacheEntry.cachedTime + (cacheTime*1000)) > Date.now() &&
          cacheEntry.buildDate === localStorage.buildDate) {
       if (verbose) {console.log('cacheHit');}
       promise = this.cachedOkPromiseResult(cacheEntry.entity);

@@ -35,7 +35,8 @@ CustomerPayment.prototype.toCreateArray = function() {
     currencyid: this.currencyid,
     bookingid: this.bookingid,
     bookingamount: this.bookingamount,
-    securitydepositamount: this.securitydepositamount
+    securitydepositamount: this.securitydepositamount,
+    ignoresdrefundeddate: true
   };
 };
 
