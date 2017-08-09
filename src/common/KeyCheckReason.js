@@ -1,6 +1,5 @@
 var Joi = require('joi');
 var SingleEntity = require('./SingleEntity');
-var Collection = require('./Collection');
 var KeyUserType = require('./KeyUserType');
 
 function KeyCheckReason(id) {

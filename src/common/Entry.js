@@ -1,6 +1,5 @@
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
-var Collection = require('./Collection');
 var Account = require('./Account');
 var BookingBrand = require('./BookingBrand');
 var Transaction = require('./Transaction');
