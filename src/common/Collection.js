@@ -156,12 +156,15 @@ Collection.prototype.fetch = function(dependencies) {
 /**
  * Returns a promise of the fetched resource
  *
- * @param {Array} dependencies - keys of subentities, if any, to get for each item in the collection, e.g. 'property'
+ * @param {Number} cacheTime
+ * @param {Boolean} forceRefresh
  *
  * @returns {Collection.prototype@call;promiseResult}
  */
 Collection.prototype.fetchCacheable = function(cacheTime, forceRefresh) {
-  if (!cacheTime) {cacheTime = 3600;}
+  if (typeof cacheTime === 'undefined') {
+    cacheTime = 3600;
+  }
   var verbose = localStorage['cachelog'];
   var path = this.getFullPath();
   this.cacheKey = path;
