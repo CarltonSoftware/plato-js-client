@@ -15,4 +15,8 @@ RoomType.prototype.toArray = function() {
   };
 };
 
+RoomType.prototype.toString = function() {
+  return this.name + ' (' + this.sleeps + ')';
+};
+
 module.exports = RoomType;
