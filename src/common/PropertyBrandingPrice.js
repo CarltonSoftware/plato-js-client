@@ -3,6 +3,7 @@ var PriceTypeBranding = require('./PriceTypeBranding');
 var Currency = require('./Currency');
 var Collection = require('./Collection');
 var PartySizePrice = require('./PartySizePrice');
+var EntityLink = require('./EntityLink');
 var moment = require('moment');
 
 /**
@@ -21,6 +22,9 @@ function PropertyBrandingPrice(id) {
     path: 'partysizeprice',
     object: PartySizePrice,
     parent: this
+  });
+  this.propertybranding = new EntityLink({
+    entity: 'PropertyBranding'
   });
 
   // Override the mutate function to set the parent on pricetypebranding element

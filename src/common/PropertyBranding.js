@@ -59,7 +59,6 @@ PropertyBranding.prototype.setParent = function(parent) {
 };
 
 PropertyBranding.prototype.toArray = function() {
-  console.log(this.primarybranding);
   return {
     brandingid: this.branding.id,
     primarybranding: this.primarybranding,

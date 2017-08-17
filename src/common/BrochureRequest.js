@@ -13,11 +13,15 @@ function BrochureRequest(id) {
 
 BrochureRequest.prototype = new SingleEntity();
 BrochureRequest.prototype.toArray = function() {
-  return {
+  var fields = {
     customerid: this.customer.id,
     emailoptin: this.emailoptin,
     processeddatetime: this.processeddatetime
   };
+  if (this.sourcemarketingbrand && this.sourcemarketingbrand.id) {
+    fields.sourcemarketingbrandid = this.sourcemarketingbrand.id;
+  }
+  return fields;
 };
 
 module.exports = BrochureRequest;
