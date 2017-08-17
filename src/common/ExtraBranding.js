@@ -3,7 +3,6 @@ var Joi = require('joi');
 var ExtraBrandingConfiguration = require('./ExtraBrandingConfiguration');
 var Collection = require('./Collection');
 var Branding = require('./Branding');
-var Extra = require('./Extra');
 
 function ExtraBranding(extraId,id) {
   this.path = 'extra/' + extraId + '/branding';

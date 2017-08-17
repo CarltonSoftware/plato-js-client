@@ -18,6 +18,7 @@ function SagePayPayment(id) {
   this.contactdetailpostal = new ActorContactDetailAddress();
   this.paymentmethod = new PaymentMethod();
   this.currency = new Currency();
+  this.bookingpayments = [];
 }
 
 SagePayPayment.prototype = new SingleEntity();
@@ -93,6 +94,10 @@ SagePayPayment.prototype.void = function() {
 
 SagePayPayment.prototype.abort = function() {
   return this.createPromiseResult([this.getUpdatePath(), 'abort'].join('/'), {});
+};
+
+SagePayPayment.prototype.invalidate = function() {
+  return this.createPromiseResult([this.getUpdatePath(), 'invalidate'].join('/'), {});
 };
 
 SagePayPayment.prototype.refund = function(amount) {

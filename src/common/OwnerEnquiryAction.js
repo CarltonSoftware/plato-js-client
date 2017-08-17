@@ -1,5 +1,4 @@
 var SingleEntity = require('./SingleEntity');
-var Collection = require('./Collection');
 var OwnerEnquiryActionType = require('./OwnerEnquiryActionType');
 var Actor = require('./Actor');
 var Joi = require('joi');

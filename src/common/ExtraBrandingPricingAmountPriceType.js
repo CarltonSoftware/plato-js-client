@@ -1,5 +1,4 @@
 var SingleEntity = require('./SingleEntity');
-var Collection = require('./Collection');
 var Pricetype = require('./PriceType');
 var Joi = require('joi');
 

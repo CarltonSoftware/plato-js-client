@@ -1,6 +1,5 @@
 var libphonenumber = require('libphonenumber-js');
 var SingleEntity = require('./SingleEntity');
-var Address = require('./Address');
 var Collection = require('./Collection');
 var ContactPreference = require('./ContactPreference');
 

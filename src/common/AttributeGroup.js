@@ -9,7 +9,7 @@ function AttributeGroup(id) {
   this.validSchema = function() {
     return {
       name: Joi.string().required().min(1).label('name').description('Attribute group name')
-    }
+    };
   };
 }
 

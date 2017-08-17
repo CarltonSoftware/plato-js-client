@@ -276,7 +276,9 @@ Entity.prototype.getFullPath = function(path, params) {
 Entity.prototype.cachedOkPromiseResult = function(json) {
   var e = this;
   return new Promise(function(resolve, reject) {
-        resolve(e.mutateResponse(json));
+    setTimeout(function() {
+      resolve(e.mutateResponse(json));
+    });
   });
 };
 

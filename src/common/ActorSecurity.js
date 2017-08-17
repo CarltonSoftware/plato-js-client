@@ -1,6 +1,5 @@
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
-var Collection = require('./Collection');
 var SecurityRole = require('./SecurityRole');
 var SecurityGroup = require('./SecurityGroup');
 var Joi = require('joi');
