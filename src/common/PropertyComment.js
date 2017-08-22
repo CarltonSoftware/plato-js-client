@@ -13,20 +13,25 @@ PropertyComment.prototype = new SingleEntity();
 PropertyComment.prototype.toArray = function() {
   return {
     comment: this.comment,
+    commenter: this.commenter,
     visibletoowner: this.visibletoowner,
     visibleonweb: this.visibleonweb,
     bookingid: this.booking && this.booking.id,
     createddate: this.createddate
   };
 };
-PropertyComment.prototype.validSchema = function() {
-  return Joi.object().keys({
+PropertyComment.prototype.schema = function() {
+  return {
     comment: Joi.string().required().label('Comment'),
+    commenter: Joi.string().optional().allow().label('Commenter'),
     visibletoowner: Joi.boolean().label('Visible to owner'),
     visibleonweb: Joi.boolean().label('Visible on web'),
     booking: Joi.object().label('Booking'),
     createddate: Joi.date().label('Date')
-  });
+  };
+};
+PropertyComment.prototype.validSchema = function() {
+  return Joi.object().keys(this.schema());
 };
 
 module.exports = PropertyComment;
