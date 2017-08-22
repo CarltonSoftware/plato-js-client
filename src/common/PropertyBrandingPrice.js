@@ -55,12 +55,10 @@ PropertyBrandingPrice.prototype.toArray = function() {
 PropertyBrandingPrice.prototype.getDayPrice = function(day, date) {
   var dayPrice;
   var price = '-';
-
   if (day < 7) {
     dayPrice = this.pricetypebranding.percentages.findOne(function(percentage) {
       return percentage.pricetype.periods == day;
     });
-
     if (dayPrice) {
       price = dayPrice.price;
       if (dayPrice.overrides.collection.length) {
@@ -68,7 +66,7 @@ PropertyBrandingPrice.prototype.getDayPrice = function(day, date) {
           return moment(date).isBetween(override.fromdate, override.todate, null, '[]');
         });
         if (overridePrice) {
-          price = Math.round( overridePrice.price * dayPrice.percentage / 100 );
+          price = overridePrice.price;
         }
       }
     }
