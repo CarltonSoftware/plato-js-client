@@ -19,7 +19,7 @@ PropertyBrandingStatus.prototype.toArray = function() {
     statusid: this.status.id,
     fromdate: this.fromdate,
     todate: this.todate,
-    reasonid: this.reason.id,
+    statusreasonid: this.reason.id,
     propertynoteid: this.propertynote.id,
   };
 };
