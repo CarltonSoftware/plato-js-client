@@ -30,7 +30,6 @@ PriceTypeBranding.prototype.toArray = function() {
     fromdate: this.fromdate,
     todate: this.todate,
     type: this.type,
-    basepricetype: this.basepricetype.id,
 
     // Hardcode to 2 at the moment
     decimalplaces: 2
@@ -38,7 +37,7 @@ PriceTypeBranding.prototype.toArray = function() {
 
   if (this.type === 'Percentage') {
     ret.percentage = this.percentage;
-    ret.pricetypebrandingfixedid = this.basepricetype.id;
+    ret.pricetypebrandingfixedid = this.pricetypebrandingfixed.id;
   }
 
   return ret;
