@@ -14,8 +14,7 @@ function PriceTypeBranding(id) {
   this.saleschannel = new SalesChannel();
   this.branding = new Branding();
   this.pricetype = new PriceType();
-  this.basepricetype = new PriceType();
-  this.basepricetypebranding = new Branding();
+  // this.basepricetypebranding = new PriceTypeBranding();
   this.percentages = new StaticCollection({ object: PriceTypeBranding });
   this.overrides = new StaticCollection({ object: PriceOverride, parent: this });
   this.minimums = new StaticCollection({ object: PriceMinimum, parent: this });
@@ -37,7 +36,7 @@ PriceTypeBranding.prototype.toArray = function() {
 
   if (this.type === 'Percentage') {
     ret.percentage = this.percentage;
-    ret.pricetypebrandingfixedid = this.pricetypebrandingfixed.id;
+    ret.pricetypebrandingfixedid = this.basepricetypebranding.id;
   }
 
   return ret;
