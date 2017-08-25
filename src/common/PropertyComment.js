@@ -23,7 +23,7 @@ PropertyComment.prototype.toArray = function() {
 PropertyComment.prototype.schema = function() {
   return {
     comment: Joi.string().required().label('Comment'),
-    commenter: Joi.string().optional().allow().label('Commenter'),
+    commenter: Joi.string().optional().allow('').label('Commenter'),
     visibletoowner: Joi.boolean().label('Visible to owner'),
     visibleonweb: Joi.boolean().label('Visible on web'),
     booking: Joi.object().label('Booking'),
