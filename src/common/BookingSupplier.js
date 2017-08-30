@@ -32,9 +32,15 @@ BookingSupplier.prototype = new SingleEntity();
  */
 BookingSupplier.prototype.mutateResponse = function(entity) {
   if (entity.actor) {
-    var s = require('./Supplier');
-    this.actor = new s();
-    this.actor.mutateResponse(entity.actor);
+    if (entity.actor.indexOf('/supplier/') != -1) {
+      var s = require('./Supplier');
+    } else if (entity.actor.indexOf('/agency/') != -1) {
+      s = require('./Agency');
+    }
+    if (s) {
+      this.actor = new s();
+      this.actor.mutateResponse(entity.actor);
+    }
   }
   if (entity.ownercharge) {
     var s = require('./OwnerCharge');
