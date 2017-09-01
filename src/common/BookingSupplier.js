@@ -31,12 +31,19 @@ BookingSupplier.prototype = new SingleEntity();
  * @param {object} entity JSON response from api
  */
 BookingSupplier.prototype.mutateResponse = function(entity) {
-  if (entity.actor) {
+  if (entity.actor && typeof entity.actor === 'string') {
     if (entity.actor.indexOf('/supplier/') != -1) {
       var s = require('./Supplier');
     } else if (entity.actor.indexOf('/agency/') != -1) {
       s = require('./Agency');
     }
+    if (s) {
+      this.actor = new s();
+      this.actor.mutateResponse(entity.actor);
+    }
+  }
+  if (entity.actor && typeof entity.actor === 'object') {
+    var s = require('./' + entity.actor.type);
     if (s) {
       this.actor = new s();
       this.actor.mutateResponse(entity.actor);
