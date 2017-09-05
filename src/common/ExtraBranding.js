@@ -21,6 +21,7 @@ ExtraBranding.prototype = new SingleEntity();
 ExtraBranding.prototype.toCreateArray = function() {
   return {
     brandingid: this.brandingid,
+    copytoallbrands: this.copytoallbrands
   };
 };
 
@@ -31,7 +32,8 @@ ExtraBranding.prototype.toUpdateArray = function() {
 };
 
 ExtraBranding.validSchema = Joi.object().keys({
-  brandingid: Joi.string().required().label('branding')
+  brandingid: Joi.string().required().label('branding'),
+  copytoallbrands: Joi.boolean().label('copy to all brands')
 });
 
 module.exports = ExtraBranding;
