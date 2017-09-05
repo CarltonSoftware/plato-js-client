@@ -21,7 +21,8 @@ ExtraBrandingPricing.prototype.toCreateArray = function() {
     todate: this.todate,
     currencycode: this.currency.code,
     pricingtype: this.pricingtype,
-    perperiod: this.perperiod // will be overridden to True for pricingtype = Percentage or Range
+    perperiod: this.perperiod, // will be overridden to True for pricingtype = Percentage or Range
+    copytoallbrands: this.copytoallbrands
   };
 
   if (this.pricingtype == 'Amount') {
