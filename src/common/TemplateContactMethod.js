@@ -47,7 +47,7 @@ TemplateContactMethod.prototype.getRefPath = function(ref) {
 };
 
 TemplateContactMethod.prototype.getLabel = function() {
-  var lbl = [this.contactmethodtype.method];
+  var lbl = [this.language.name, this.contactmethodtype.method];
   if (this.parent) {
     lbl.unshift(this.parent.templatename);
   }
