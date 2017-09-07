@@ -12,7 +12,10 @@ OwnerPaymentTermExtra.prototype = new SingleEntity();
 OwnerPaymentTermExtra.prototype.toArray = function() {
   return {
     extraid: this.extra.id,
-    takefromdeposit: this.takefromdeposit
+    addtodepositpaid: this.addtodepositpaid,
+    subtractfromdepositpaid: this.subtractfromdepositpaid,
+    payondeposit: this.payondeposit,
+    dontpayondeposit: this.dontpayondeposit
   };
 };
 
