@@ -30,7 +30,8 @@ ExtraBrandingConfiguration.prototype.toCreateArray = function() {
     changesbrochureprice: this.changesbrochureprice? 'true' : 'false',
     usepropertyprimarybranding: this.usepropertyprimarybranding ? 'true' : 'false',
     type: this.type,
-    propertyid: this.propertyid
+    propertyid: this.propertyid,
+    copytoallbrands: this.copytoallbrands
   };
 };
 
@@ -80,7 +81,8 @@ ExtraBrandingConfiguration.validSchema = Joi.object().keys({
     is: 'PropertyBrandExtraConfiguration',
     then: Joi.number().required(),
     otherwise: Joi.forbidden()
-  })
+  }),
+  copytoallbrands: Joi.boolean().label('copy to all brands')
 });
 
 module.exports = ExtraBrandingConfiguration;
