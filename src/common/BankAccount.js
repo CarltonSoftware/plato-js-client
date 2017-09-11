@@ -10,23 +10,28 @@ function BankAccount(id) {
 }
 BankAccount.prototype = new SingleEntity();
 BankAccount.prototype.toArray = function() {
-  return {
+  var ba = {
     accountnumber: this.accountnumber,
     accountname: this.accountname,
     bankname: this.bankname,
     sortcode: this.sortcode,
     paymentreference: this.paymentreference,
-    rollnumber: this.rollnumber,
-    address_line1: this.address.line1,
-    address_line2: this.address.line2,
-    address_line3: this.address.line3,
-    address_town: this.address.town,
-    address_county: this.address.county,
-    address_postcode: this.address.postcode,
-    address_countryalpha2code: this.address.country.alpha2,
-    address_latitude: this.address.latitude,
-    address_longitude: this.address.longitude
+    rollnumber: this.rollnumber
   };
+
+  if (this.address.line1) {
+    ba.address_line1 = this.address.line1;
+    ba.address_line2 = this.address.line2;
+    ba.address_line3 = this.address.line3;
+    ba.address_town = this.address.town;
+    ba.address_county = this.address.county;
+    ba.address_postcode = this.address.postcode;
+    ba.address_countryalpha2code = this.address.country.alpha2;
+    ba.address_latitude = this.address.latitude;
+    ba.address_longitude = this.address.longitude;
+  }
+
+  return ba;
 };
 
 BankAccount.prototype.validSchema = function() {
@@ -37,7 +42,7 @@ BankAccount.prototype.validSchema = function() {
     bankname: Joi.string().empty('').max(30).label('Bank Name'),
     paymentreference: Joi.string().allow('').optional().max(18).label('Payment reference'),
     rollnumber: Joi.string().allow('').optional().max(18).label('Roll Number'),
-    address: this.address.validSchema()
+    address: Joi.object().optional()
   });
 };
 
