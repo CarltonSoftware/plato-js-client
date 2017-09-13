@@ -57,7 +57,7 @@ ExtraBrandingPricing.validSchema = Joi.object().keys({
   fromdate: Joi.string().required().label('fromdate'),
   todate: Joi.string().required().label('todate'),
   currency: Joi.object().required().label('currency'),
-  perperiod: Joi.when('pricingtype', { is: 'Amount',then: Joi.boolean().label('per period'), otherwise: Joi.forbidden() }),
+  perperiod: Joi.boolean().label('per period'),
   peradult: Joi.when('pricingtype', { is: 'Amount',then: Joi.boolean().label('per adult'), otherwise: Joi.forbidden() }),
   perchild: Joi.when('pricingtype', { is: 'Amount',then: Joi.boolean().label('per child'), otherwise: Joi.forbidden() }),
   perinfant: Joi.when('pricingtype', { is: 'Amount',then: Joi.boolean().label('per infant'), otherwise: Joi.forbidden() }),
