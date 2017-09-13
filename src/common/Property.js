@@ -14,7 +14,7 @@ var PropertyOwnerPaymentTerm = require('./PropertyOwnerPaymentTerm');
 var PropertyCommission = require('./PropertyCommission');
 var PropertyNote = require('./PropertyNote');
 var NoteFilterCollection = require('./NoteFilterCollection');
-var PropertyHouskeeping = require('./PropertyHouskeeping');
+var PropertyHousekeeping = require('./PropertyHousekeeping');
 var InspectionType = require('./InspectionType');
 var Joi = require('joi');
 
@@ -82,7 +82,7 @@ function Property(id) {
   this.ratinginspectiontype = new InspectionType();
 
   this.address = new PropertyAddress(id);
-  this.houskeeping = new PropertyHouskeeping();
+  this.housekeeping = new PropertyHousekeeping();
   this.primarypropertybranding = new PropertyBranding();
 }
 Property.prototype = new SingleEntity();
@@ -118,7 +118,7 @@ Property.prototype.toArray = function() {
   if (this.ratinginspectiontype && this.ratinginspectiontype.id) {
     prop.ratinginspectiontypeid = this.ratinginspectiontype.id;
   }
-  
+
   return prop;
 };
 
