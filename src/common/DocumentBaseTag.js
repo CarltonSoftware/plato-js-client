@@ -11,7 +11,7 @@ DocumentBaseTag.prototype = new SingleEntity();
 
 DocumentBaseTag.prototype.toArray = function() {
   return {
-    documenttagid: this.tag.id
+    tagid: this.tag.id
   };
 };
 
