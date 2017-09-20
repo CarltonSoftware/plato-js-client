@@ -119,8 +119,6 @@ Booking.prototype.toArray = function() {
     infants: this.infants,
     pets: this.pets,
 
-    autobalanceactorpaymentid: (this.autobalanceactorpayment && this.autobalanceactorpayment.id) ? this.autobalanceactorpayment.id : false,
-
     checkintext: this.checkintext,
     checkouttext: this.checkouttext,
     promotioncode: this.promotioncode,
@@ -170,6 +168,10 @@ Booking.prototype.toArray = function() {
   }
   if (this.dontpayowneruntildate) {
     array.dontpayowneruntildate = this.dontpayowneruntildate;
+  }
+
+  if (this.autobalanceactorpayment) {
+    array.autobalanceactorpaymentid = (this.autobalanceactorpayment && this.autobalanceactorpayment.id) ? this.autobalanceactorpayment.id : false;
   }
 
   // Transferred */
