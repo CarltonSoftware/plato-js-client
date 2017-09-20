@@ -104,6 +104,13 @@ SagePayPayment.prototype.refund = function(amount) {
   return this.createPromiseResult([this.getUpdatePath(), 'refund'].join('/'), { amount: amount });
 };
 
+SagePayPayment.prototype.repeat = function(bookingamount, securitydepositamount) {
+  return this.createPromiseResult([this.getUpdatePath(), 'repeat'].join('/'), { 
+    bookingamount: bookingamount,
+    securitydepositamount: securitydepositamount
+  });
+};
+
 SagePayPayment.prototype.detail = function() {
   return client.get([this.getUpdatePath(), 'detail'].join('/'));
 };
