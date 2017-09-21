@@ -66,6 +66,10 @@ function Attribute(id) {
 
     return base;
   };
+
+  this.toString = function() {
+    return this.code + ' - ' + this.name;
+  };
 }
 
 Attribute.prototype = new SingleEntity();
