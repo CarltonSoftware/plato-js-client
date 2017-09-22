@@ -68,7 +68,7 @@ function Attribute(id) {
   };
 
   this.toString = function() {
-    return this.code + ' - ' + this.name;
+    return this.name + ' (' + this.code + ')';
   };
 }
 
