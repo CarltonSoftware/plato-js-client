@@ -91,6 +91,14 @@ Booking.prototype.mutateResponse = function(entity) {
     this.owners.mutateResponse(entity.owners);
   }
 
+  if (entity && entity.autobalanceactorpayment && entity.autobalanceactorpayment.id) {
+    var CustomerPayment = require('./CustomerPayment');
+    this.autobalanceactorpayment = new CustomerPayment();
+    this.autobalanceactorpayment.mutateEntity(entity.autobalanceactorpayment);
+  } else if (entity && entity.autobalanceactorpayment) {
+    delete entity['autobalanceactorpayment'];
+  }
+
   return this.mutateEntity(entity);
 };
 
@@ -160,6 +168,10 @@ Booking.prototype.toArray = function() {
   }
   if (this.dontpayowneruntildate) {
     array.dontpayowneruntildate = this.dontpayowneruntildate;
+  }
+
+  if (this.autobalanceactorpayment) {
+    array.autobalanceactorpaymentid = (this.autobalanceactorpayment && this.autobalanceactorpayment.id) ? this.autobalanceactorpayment.id : false;
   }
 
   // Transferred */

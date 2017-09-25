@@ -11,7 +11,9 @@ function Document(id) {
   this.file = new File();
   this.mimetype = new Mimetype();
   this.tags = new StaticCollection({
-    object: DocumentBaseTag
+    object: DocumentBaseTag,
+    parent: this,
+    path: 'tag'
   });
 }
 Document.prototype = new SingleEntity();
