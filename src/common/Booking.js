@@ -99,6 +99,13 @@ Booking.prototype.mutateResponse = function(entity) {
     delete entity['autobalanceactorpayment'];
   }
 
+  if (entity && entity.sagepaypayments) {
+    this.sagepaypayments = new StaticCollection({
+      object: require('./SagePayPayment')
+    });
+    this.sagepaypayments.mutateResponse(entity.sagepaypayments);
+  }
+
   return this.mutateEntity(entity);
 };
 
