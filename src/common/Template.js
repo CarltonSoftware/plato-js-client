@@ -31,6 +31,13 @@ Template.prototype.getFields = function() {
   return client.get(this.getUpdatePath() + '/fields');
 };
 
+Template.prototype.copy = function() {
+  return this.createPromiseResult(
+    [this.path, this.id, 'copy'].join('/'),
+    {}
+  );
+};
+
 Template.prototype.toArray = function() {
   return {
     type: this.type,
