@@ -11,7 +11,7 @@ function ExtraBrandingConfiguration(extraId, brandingId, id) {
 ExtraBrandingConfiguration.prototype = new SingleEntity();
 
 ExtraBrandingConfiguration.prototype.toCreateArray = function() {
-  return {
+  var fields = {
     fromdate: this.fromdate,
     todate: this.todate,
     bookingbookedfromdate: this.bookingbookedfromdate,
@@ -35,10 +35,14 @@ ExtraBrandingConfiguration.prototype.toCreateArray = function() {
     propertyid: this.propertyid,
     copytoallbrands: this.copytoallbrands
   };
+  if (this.accountingdatedefinition && this.accountingdatedefinition.id) {
+    fields.accountingdatedefinitionid = this.accountingdatedefinition.id;
+  }
+  return fields;
 };
 
 ExtraBrandingConfiguration.prototype.toUpdateArray = function() {
-  return {
+  var fields = {
     fromdate: this.fromdate,
     todate: this.todate,
     bookingbookedfromdate: this.bookingbookedfromdate,
@@ -60,6 +64,10 @@ ExtraBrandingConfiguration.prototype.toUpdateArray = function() {
     usepropertyprimarybranding: this.usepropertyprimarybranding ? 'true' : 'false',
     type: this.type,
   };
+  if (this.accountingdatedefinition && this.accountingdatedefinition.id) {
+    fields.accountingdatedefinitionid = this.accountingdatedefinition.id;
+  }
+  return fields;
 };
 
 ExtraBrandingConfiguration.validSchema = Joi.object().keys({
@@ -88,6 +96,7 @@ ExtraBrandingConfiguration.validSchema = Joi.object().keys({
     then: Joi.number().required(),
     otherwise: Joi.forbidden()
   }),
+  accountingdatedefinition: Joi.object().optional().label('Accounting Date Definition'),
   copytoallbrands: Joi.boolean().label('copy to all brands')
 });
 
