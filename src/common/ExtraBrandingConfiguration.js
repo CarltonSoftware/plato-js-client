@@ -14,6 +14,8 @@ ExtraBrandingConfiguration.prototype.toCreateArray = function() {
   return {
     fromdate: this.fromdate,
     todate: this.todate,
+    bookingbookedfromdate: this.bookingbookedfromdate,
+    bookingbookedtodate: this.bookingbookedtodate,
     compulsory: this.compulsory ? 'true' : 'false',
     included: this.included ? 'true' : 'false',
     payagency: this.payagency ? 'true' : 'false',
@@ -39,6 +41,8 @@ ExtraBrandingConfiguration.prototype.toUpdateArray = function() {
   return {
     fromdate: this.fromdate,
     todate: this.todate,
+    bookingbookedfromdate: this.bookingbookedfromdate,
+    bookingbookedtodate: this.bookingbookedtodate,
     compulsory: this.compulsory,
     included: this.included,
     payagency: this.payagency,
@@ -61,6 +65,8 @@ ExtraBrandingConfiguration.prototype.toUpdateArray = function() {
 ExtraBrandingConfiguration.validSchema = Joi.object().keys({
   fromdate: Joi.string().required().label('from date'),
   todate: Joi.string().required().label('to date'),
+  bookingbookedfromdate: Joi.string().required().label('booking booked from date'),
+  bookingbookedtodate: Joi.string().required().label('booking booked to date'),
   compulsory: Joi.boolean().required(),
   included: Joi.boolean().required(),
   payagency: Joi.boolean().required().label('pay agency'),
