@@ -42,10 +42,9 @@ ChangeDayTemplateRule.prototype.toArray = function() {
     array.unlessholidayatleast = this.unlessholidayatleast;
   }
 
-  // Set withindays to a v large value by default if one not provided
-  array.withindays = this.withindays != '' ? this.withindays : 9999;
-
-
+  if (this.isfromdate || this.istodate) {
+    array.withindays = this.withindays != '' ? this.withindays : 0;
+  }
 
   return array;
 };
