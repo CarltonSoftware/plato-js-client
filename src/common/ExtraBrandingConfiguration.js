@@ -11,9 +11,11 @@ function ExtraBrandingConfiguration(extraId, brandingId, id) {
 ExtraBrandingConfiguration.prototype = new SingleEntity();
 
 ExtraBrandingConfiguration.prototype.toCreateArray = function() {
-  return {
+  var fields = {
     fromdate: this.fromdate,
     todate: this.todate,
+    bookingbookedfromdate: this.bookingbookedfromdate,
+    bookingbookedtodate: this.bookingbookedtodate,
     compulsory: this.compulsory ? 'true' : 'false',
     included: this.included ? 'true' : 'false',
     payagency: this.payagency ? 'true' : 'false',
@@ -33,12 +35,18 @@ ExtraBrandingConfiguration.prototype.toCreateArray = function() {
     propertyid: this.propertyid,
     copytoallbrands: this.copytoallbrands
   };
+  if (this.accountingdatedefinition && this.accountingdatedefinition.id) {
+    fields.accountingdatedefinitionid = this.accountingdatedefinition.id;
+  }
+  return fields;
 };
 
 ExtraBrandingConfiguration.prototype.toUpdateArray = function() {
-  return {
+  var fields = {
     fromdate: this.fromdate,
     todate: this.todate,
+    bookingbookedfromdate: this.bookingbookedfromdate,
+    bookingbookedtodate: this.bookingbookedtodate,
     compulsory: this.compulsory,
     included: this.included,
     payagency: this.payagency,
@@ -56,11 +64,17 @@ ExtraBrandingConfiguration.prototype.toUpdateArray = function() {
     usepropertyprimarybranding: this.usepropertyprimarybranding ? 'true' : 'false',
     type: this.type,
   };
+  if (this.accountingdatedefinition && this.accountingdatedefinition.id) {
+    fields.accountingdatedefinitionid = this.accountingdatedefinition.id;
+  }
+  return fields;
 };
 
 ExtraBrandingConfiguration.validSchema = Joi.object().keys({
   fromdate: Joi.string().required().label('from date'),
   todate: Joi.string().required().label('to date'),
+  bookingbookedfromdate: Joi.string().required().label('booking booked from date'),
+  bookingbookedtodate: Joi.string().required().label('booking booked to date'),
   compulsory: Joi.boolean().required(),
   included: Joi.boolean().required(),
   payagency: Joi.boolean().required().label('pay agency'),
@@ -82,6 +96,7 @@ ExtraBrandingConfiguration.validSchema = Joi.object().keys({
     then: Joi.number().required(),
     otherwise: Joi.forbidden()
   }),
+  accountingdatedefinition: Joi.object().optional().label('Accounting Date Definition'),
   copytoallbrands: Joi.boolean().label('copy to all brands')
 });
 
