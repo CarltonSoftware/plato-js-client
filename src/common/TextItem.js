@@ -17,6 +17,7 @@ TextItem.prototype.toArray = function() {
     text: this.text,
     header: this.header,
     footer: this.footer,
+    donotdelete: this.donotdelete,
     encodingid: this.encoding.id,
     languageid: this.language.id
   };
