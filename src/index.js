@@ -241,6 +241,7 @@ module.exports.common.ExtraGroup = require('./common/ExtraGroup');
 module.exports.common.PricingMethod = require('./common/PricingMethod');
 module.exports.common.PricingMethodBranding = require('./common/PricingMethodBranding');
 module.exports.common.PricingPeriod = require('./common/PricingPeriod');
+module.exports.common.PriceBand = require('./common/PriceBand');
 module.exports.common.PriceType = require('./common/PriceType');
 module.exports.common.PriceTypeBranding = require('./common/PriceTypeBranding');
 module.exports.common.SalesChannel = require('./common/SalesChannel');
