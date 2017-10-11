@@ -13,7 +13,8 @@ PropertyOwnerPaymentTerm.prototype.toArray = function() {
   return {
     fromdate: this.fromdate,
     todate: this.todate,
-    ownerpaymenttermsid: this.ownerpaymentterms.id
+    ownerpaymenttermsid: this.ownerpaymentterms.id,
+    updateexistingbookings: this.updateexistingbookings
   };
 };
 
