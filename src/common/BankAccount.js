@@ -31,6 +31,10 @@ BankAccount.prototype.toArray = function() {
     ba.address_longitude = this.address.longitude;
   }
 
+  if (this.currency && this.currency.id) {
+    ba.currencyid = this.currency.id;
+  }
+
   return ba;
 };
 
@@ -42,7 +46,8 @@ BankAccount.prototype.validSchema = function() {
     bankname: Joi.string().empty('').max(30).label('Bank Name'),
     paymentreference: Joi.string().allow('').optional().max(18).label('Payment reference'),
     rollnumber: Joi.string().allow('').optional().max(18).label('Roll Number'),
-    address: Joi.object().optional()
+    address: Joi.object().optional(),
+    currency: Joi.object().optional()
   });
 };
 
