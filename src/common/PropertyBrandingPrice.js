@@ -4,6 +4,7 @@ var Currency = require('./Currency');
 var Collection = require('./Collection');
 var PartySizePrice = require('./PartySizePrice');
 var EntityLink = require('./EntityLink');
+var PriceBand = require('./PriceBand');
 var moment = require('moment');
 
 /**
@@ -27,6 +28,8 @@ function PropertyBrandingPrice(id) {
     entity: 'PropertyBranding'
   });
 
+  this.priceband = new PriceBand();
+
   // Override the mutate function to set the parent on pricetypebranding element
   // This will make sure the path is correct
   this.pricetypebranding.mutateResponse = function(obj) {
@@ -45,6 +48,7 @@ PropertyBrandingPrice.prototype.toArray = function() {
     partysizefrom: this.partysizefrom,
     partysizeto: this.partysizeto,
     price: this.price,
+    pricebandid: this.priceband && this.priceband.id,
     band: this.band,
     description: this.description,
     currencycode: this.currency.code,
