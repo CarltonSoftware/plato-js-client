@@ -34,7 +34,11 @@ function Actor(id) {
     object: ActorNote,
     path: 'actornote'
   });
-  this.documents = new Collection({ object: CustomerDocument });
+  this.documents = new Collection({ 
+    object: CustomerDocument,
+    path: 'document',
+    parent: this
+  });
   this.potentialduplicates = new Collection({ object: PotentialDuplicate });
   this.mergedinto = new EntityLink({ entity: 'Actor' });
   this.createdby = new EntityLink({ entity: 'Actor' });
