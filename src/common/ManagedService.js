@@ -18,4 +18,8 @@ ManagedService.prototype.toCreateArray = function() {
   };
 };
 
+ManagedService.prototype.toString = function() {
+  return this.name;
+};
+
 module.exports = ManagedService;
