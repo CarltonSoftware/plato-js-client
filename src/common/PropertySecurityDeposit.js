@@ -31,7 +31,8 @@ PropertySecurityDeposit.prototype.toArray = function() {
     maximumdays: this.maximumdays,
     comments: this.comments,
     ownerchargecodeid: this.ownerchargecode.id,
-    ownerchargeamount: this.ownerchargeamount
+    ownerchargeamount: this.ownerchargeamount,
+    defaultforperiod: this.defaultforperiod
   };
 };
 
@@ -61,7 +62,8 @@ PropertySecurityDeposit.prototype.validSchema = function() {
       is: Joi.number().required(),
       then: Joi.object().required(),
       otherwise: Joi.object().optional()
-    }).label('Owner Charge Code')
+    }).label('Owner Charge Code'),
+    defaultforperiod: Joi.boolean().optional().label('Default For Period')
   });
 };
 
