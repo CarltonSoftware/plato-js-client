@@ -63,6 +63,7 @@ ExtraBrandingConfiguration.prototype.toUpdateArray = function() {
     changesbrochureprice: this.changesbrochureprice? 'true' : 'false',
     usepropertyprimarybranding: this.usepropertyprimarybranding ? 'true' : 'false',
     type: this.type,
+    updateallbrands: this.updateallbrands
   };
   if (this.accountingdatedefinition && this.accountingdatedefinition.id) {
     fields.accountingdatedefinitionid = this.accountingdatedefinition.id;
@@ -97,7 +98,8 @@ ExtraBrandingConfiguration.validSchema = Joi.object().keys({
     otherwise: Joi.forbidden()
   }),
   accountingdatedefinition: Joi.object().optional().label('Accounting Date Definition'),
-  copytoallbrands: Joi.boolean().label('copy to all brands')
+  copytoallbrands: Joi.boolean().label('copy to all brands'),
+  updateallbrands: Joi.boolean().label('update all brands')
 });
 
 module.exports = ExtraBrandingConfiguration;

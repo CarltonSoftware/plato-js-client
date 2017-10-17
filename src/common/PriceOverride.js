@@ -25,7 +25,9 @@ PriceOverride.prototype.toArray = function() {
     band: this.band,
     description: this.description,
     currencycode: this.currency.code,
-    pricetypebrandingid: this.pricetypebranding.id
+    pricetypebrandingid: this.pricetypebranding.id,
+    updateallbrands: this.updateallbrands,
+    updatematchingbands: this.updatematchingbands
   };
 };
 
