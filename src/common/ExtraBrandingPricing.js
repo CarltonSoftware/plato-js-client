@@ -22,7 +22,7 @@ ExtraBrandingPricing.prototype.toCreateArray = function() {
     currencycode: this.currency.code,
     pricingtype: this.pricingtype,
     perperiod: this.perperiod, // will be overridden to True for pricingtype = Percentage or Range
-    copytoallbrands: this.copytoallbrands
+    copytoallbrands: this.copytoallbrands,
   };
 
   if (this.pricingtype == 'Amount') {
@@ -45,6 +45,7 @@ ExtraBrandingPricing.prototype.toCreateArray = function() {
 
 ExtraBrandingPricing.prototype.toUpdateArray = function() {
   var array = this.toCreateArray();
+  array.updateallbrands = this.updateallbrands;
   delete array.pricingperiod; // The pricingperiod field cannot be updated
   delete array.perperiod; // The perperiod field cannot be updated
   return array;
@@ -66,7 +67,8 @@ ExtraBrandingPricing.validSchema = Joi.object().keys({
   minimumprice: Joi.when('pricingtype', { is: 'Percentage',then: Joi.number().optional().label('minimum price'), otherwise: Joi.forbidden() }),
   maximumprice: Joi.when('pricingtype', { is: 'Percentage',then: Joi.number().optional().label('maximum price'), otherwise: Joi.forbidden() }),
   basedon: Joi.when('pricingtype', { is: 'Amount',then: Joi.forbidden(), otherwise: Joi.string().valid('Basic', 'Brochure').label('based on') }),
-  copytoallbrands: Joi.boolean().label('copy to all brands')
+  copytoallbrands: Joi.boolean().label('copy to all brands'),
+  updateallbrands: Joi.boolean().label('update all brands')
 });
 
 module.exports = ExtraBrandingPricing;

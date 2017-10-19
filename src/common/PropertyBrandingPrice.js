@@ -53,6 +53,8 @@ PropertyBrandingPrice.prototype.toArray = function() {
     description: this.description,
     currencycode: this.currency.code,
     pricetypebrandingid: this.pricetypebranding.id,
+    updateallbrands: this.updateallbrands,
+    updatematchingbands: this.updatematchingbands
   };
 };
 
