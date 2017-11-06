@@ -218,6 +218,7 @@ module.exports.common.BookingPaymentitem = require('./common/BookingPaymentitem'
 module.exports.common.BookingRefund = require('./common/BookingRefund');
 module.exports.common.CustomerPayment = require('./common/CustomerPayment');
 module.exports.common.PaymentMethod = require('./common/PaymentMethod');
+module.exports.common.PaymentMethodType = require('./common/PaymentMethodType');
 
 // Search
 module.exports.common.GlobalSearch = require('./common/GlobalSearch');
