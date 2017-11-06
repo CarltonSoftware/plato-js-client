@@ -4,6 +4,7 @@ var Branding = require('./Branding');
 var BrandingGroup = require('./BrandingGroup');
 var PropertyBrandingPrice = require('./PropertyBrandingPrice');
 var PartySizePricing = require('./PartySizePricing');
+var AvailableDay = require('./AvailableDay');
 var PropertyBrandingChangeDayTemplate = require('./PropertyBrandingChangeDayTemplate');
 var Status = require('./Status');
 var Collection = require('./Collection');
@@ -32,6 +33,12 @@ function PropertyBranding(id) {
   this.prices = new Collection({
     object: PropertyBrandingPrice,
     path: 'price',
+    parent: this
+  });
+
+  this.availability = new Collection({
+    object: AvailableDay,
+    path: 'availability',
     parent: this
   });
 
@@ -91,6 +98,35 @@ PropertyBranding.prototype.getPrices = function(fromDate, toDate) {
 
   return p.fetch();
 };
+
+/**
+ * Get the availability
+ *
+ * @param {string}  fromDate
+ * @param {string}  toDate
+ * @param {boolean} includechangedays
+ */
+PropertyBranding.prototype.getAvailability = function(fromDate, toDate, includechangedays) {
+  var p = this.availability;
+
+  var params = {};
+  if (fromDate) {
+    params['fromdate'] = fromDate;
+  }
+  if (toDate) {
+    params['todate'] = toDate;
+  }
+  if (includechangedays === true) {
+    params['includechangedays'] = 'true';
+  }
+
+  p.toArray = function() {
+    return params;
+  };
+
+  return p.fetch();
+};
+
 
 PropertyBranding.prototype.toString = function() {
   return this.branding.toString();
