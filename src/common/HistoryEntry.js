@@ -4,6 +4,7 @@ var EntityLink = require('./EntityLink');
 
 function HistoryEntry() {
   this.actor = new Actor();
+  this.path = 'history';
 }
 
 HistoryEntry.prototype = new SingleEntity();

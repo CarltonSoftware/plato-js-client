@@ -225,6 +225,7 @@ module.exports.common.GlobalSearch = require('./common/GlobalSearch');
 
 // History
 module.exports.common.ChangeHistory = require('./common/ChangeHistory');
+module.exports.common.History = require('./common/HistoryEntry');
 
 // Pricing
 module.exports.common.CopyPricing = require('./common/CopyPricing');
