@@ -296,6 +296,13 @@ Booking.prototype.getStatus = function() {
   return item;
 };
 
+Booking.prototype.getPartySizeString = function() {
+  return [['adults', 'adult'], ['children', 'child'], ['infants', 'infant'], ['pets', 'pet']].map(function(pair) {
+    var quantity = this[pair[0]];
+    return quantity + ' ' + (quantity == 1 ? pair[1] : pair[0]);
+  },this).join(', ');
+};
+
 Booking.prototype.toString = function() {
   if (this.bookref && (this.bookref !== (this.id + '' + this.property.id))) {
     return this.id + ' (' + this.bookref + ')';
