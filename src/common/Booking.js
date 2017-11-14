@@ -297,7 +297,9 @@ Booking.prototype.getStatus = function() {
 };
 
 Booking.prototype.getPartySizeString = function() {
-  return [['adults', 'adult'], ['children', 'child'], ['infants', 'infant'], ['pets', 'pet']].map(function(pair) {
+  return [['adults', 'adult'], ['children', 'child'], ['infants', 'infant'], ['pets', 'pet']].filter(function(pair) {
+    return this[pair[0]];
+  }, this).map(function(pair) {
     var quantity = this[pair[0]];
     return quantity + ' ' + (quantity == 1 ? pair[1] : pair[0]);
   },this).join(', ');
