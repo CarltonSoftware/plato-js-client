@@ -128,8 +128,8 @@ Property.prototype.toArray = function() {
   return prop;
 };
 
-Property.prototype.validSchema = function () {
-  return Joi.object().keys({
+Property.prototype.getSchema = function () {
+  return {
     tabspropref: Joi.string().label('Property reference'),
     name: Joi.string().label('Property name'),
     namequalifier: Joi.string().allow('').label('Name qualifier'),
@@ -138,7 +138,11 @@ Property.prototype.validSchema = function () {
     maximumpets: Joi.number().label('Maximum pets'),
     telephonenumber: Joi.string().allow('').label('Telephone number'),
     address: this.address.validSchema()
-  });
+  };
+};
+
+Property.prototype.validSchema = function () {
+  return Joi.object().keys(this.getSchema());
 };
 
 /**
