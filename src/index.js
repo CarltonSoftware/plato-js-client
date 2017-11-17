@@ -43,6 +43,7 @@ module.exports.common.SettingValue = require('./common/SettingValue');
 module.exports.common.SettingValueType = require('./common/SettingValueType');
 module.exports.common.SourceCategory = require('./common/SourceCategory');
 module.exports.common.OwnerEnquiryActionType = require('./common/OwnerEnquiryActionType');
+module.exports.common.OwnerBookingType = require('./common/OwnerBookingType');
 module.exports.common.OwnerPayment = require('./common/OwnerPayment');
 module.exports.common.OwnerPaymentSelection = require('./common/OwnerPaymentSelection');
 module.exports.common.OwnerPaymentTerm = require('./common/OwnerPaymentTerm');
