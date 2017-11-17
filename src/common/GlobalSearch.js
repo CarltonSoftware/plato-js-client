@@ -1,6 +1,6 @@
 var Entity = require('./Entity');
 
-function GlobalSearch(searchterm, category, start, size) {
+function GlobalSearch(searchterm, category, includeInactive, start, size) {
   this.searchterm = searchterm;
   this.category = category;
 
@@ -10,6 +10,11 @@ function GlobalSearch(searchterm, category, start, size) {
   var query = searchterm;
   if (category != null) {
     query += ' AND type:' + category;
+  }
+
+  if (!includeInactive) {
+    //Active only
+    query += ' AND active:1';
   }
 
 
