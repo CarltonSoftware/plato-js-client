@@ -14,7 +14,8 @@ OwnerChargeCode.prototype.toArray = function() {
     ownerchargecode: this.ownerchargecode,
     description: this.description,
     vatbandid: this.vatband.id,
-    recharge: this.recharge
+    recharge: this.recharge,
+    inactive: this.inactive
   };
 };
 OwnerChargeCode.prototype.toString = function() {

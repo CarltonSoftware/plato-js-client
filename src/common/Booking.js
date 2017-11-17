@@ -125,6 +125,7 @@ Booking.prototype.toArray = function() {
     children: this.children,
     infants: this.infants,
     pets: this.pets,
+    sourceid: this.sourceid,
 
     checkintext: this.checkintext,
     checkouttext: this.checkouttext,
