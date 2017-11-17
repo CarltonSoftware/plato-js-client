@@ -9,14 +9,27 @@ function BookingSecurityDeposit(id) {
 }
 BookingSecurityDeposit.prototype = new SingleEntity();
 BookingSecurityDeposit.prototype.toArray = function() {
-  return {
+  var arr = {
     amount: this.amount,
     dueindate: this.dueindate,
     dueoutdate: this.dueoutdate,
     ownerchargecodeid: this.ownerchargecode.id,
     ownerchargeamount: this.ownerchargeamount,
-    notrefunded: this.notrefunded
+    notrefunded: this.notrefunded,
+    note: this.note,
+    refundingpaymentmethodid: false,
+    refundingpaymentbankaccountid: false
   };
+
+  if (this.refundingpaymentmethod) {
+    arr.refundingpaymentmethodid = this.refundingpaymentmethod.id;
+  }
+
+  if (this.refundingbankaccount) {
+    arr.refundingbankaccountid = this.refundingbankaccount.id;
+  }
+
+  return arr;
 };
 
 BookingSecurityDeposit.prototype.validSchema = Joi.object().keys({

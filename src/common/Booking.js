@@ -214,6 +214,10 @@ Booking.prototype.toArray = function() {
     }
   }
 
+  if (this.propertysecuritydeposit) {
+    array.securitydeposit_propertysecuritydepositid = this.propertysecuritydeposit.id;
+  }
+
   return array;
 };
 
