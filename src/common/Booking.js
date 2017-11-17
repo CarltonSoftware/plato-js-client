@@ -125,6 +125,7 @@ Booking.prototype.toArray = function() {
     children: this.children,
     infants: this.infants,
     pets: this.pets,
+    sourceid: this.sourceid,
 
     checkintext: this.checkintext,
     checkouttext: this.checkouttext,
@@ -294,6 +295,15 @@ Booking.prototype.getStatus = function() {
   // TBD - Web bookings, flexilet
 
   return item;
+};
+
+Booking.prototype.getPartySizeString = function() {
+  return [['adults', 'adult'], ['children', 'child'], ['infants', 'infant'], ['pets', 'pet']].filter(function(pair) {
+    return this[pair[0]];
+  }, this).map(function(pair) {
+    var quantity = this[pair[0]];
+    return quantity + ' ' + (quantity == 1 ? pair[1] : pair[0]);
+  },this).join(', ');
 };
 
 Booking.prototype.toString = function() {

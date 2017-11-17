@@ -3,6 +3,7 @@ module.exports.client = require('./common/platoJsClient');
 module.exports.common = {};
 module.exports.common.Encoding = require('./common/Encoding');
 module.exports.common.Feature = require('./common/Feature');
+module.exports.common.AvailableDay = require('./common/AvailableDay');
 module.exports.common.Unit = require('./common/Unit');
 module.exports.common.Title = require('./common/Title');
 module.exports.common.Address = require('./common/Address');
@@ -217,12 +218,14 @@ module.exports.common.BookingPaymentitem = require('./common/BookingPaymentitem'
 module.exports.common.BookingRefund = require('./common/BookingRefund');
 module.exports.common.CustomerPayment = require('./common/CustomerPayment');
 module.exports.common.PaymentMethod = require('./common/PaymentMethod');
+module.exports.common.PaymentMethodType = require('./common/PaymentMethodType');
 
 // Search
 module.exports.common.GlobalSearch = require('./common/GlobalSearch');
 
 // History
 module.exports.common.ChangeHistory = require('./common/ChangeHistory');
+module.exports.common.History = require('./common/HistoryEntry');
 
 // Pricing
 module.exports.common.CopyPricing = require('./common/CopyPricing');

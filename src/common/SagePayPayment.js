@@ -38,11 +38,11 @@ SagePayPayment.prototype.toArray = function() {
     arr.bookingid = this.booking.id;
   }
 
-  if (this.bookingamount) {
+  if (this.bookingamount && this.booking.id) {
     arr.bookingamount = this.bookingamount;
   }
 
-  if (this.securitydepositamount) {
+  if (this.securitydepositamount && this.booking.id) {
     arr.securitydepositamount = this.securitydepositamount;
   }
 
@@ -86,6 +86,14 @@ SagePayPayment.prototype.createIframe = function() {
 
 SagePayPayment.prototype.release = function() {
   return this.updatePromiseResult([this.getUpdatePath(), 'release'].join('/'), {});
+};
+
+SagePayPayment.prototype.addMissing = function(booking) {
+  return this.updatePromiseResult([this.getUpdatePath(), 'missingtransaction'].join('/'), {
+    bookingid: booking.id,
+    bookingamount: this.bookingamount,
+    securitydepositamount: this.securitydepositamount
+  });
 };
 
 SagePayPayment.prototype.void = function() {

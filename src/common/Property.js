@@ -16,6 +16,7 @@ var PropertyNote = require('./PropertyNote');
 var NoteFilterCollection = require('./NoteFilterCollection');
 var PropertyHousekeeping = require('./PropertyHousekeeping');
 var InspectionType = require('./InspectionType');
+var AvailableBreak = require('./AvailableBreak');
 var Joi = require('joi');
 
 function Property(id) {
@@ -78,6 +79,11 @@ function Property(id) {
     path: 'commission',
     parent: this
   });
+  this.availablebreaks = new Collection({
+    object: AvailableBreak,
+    path: 'availablebreak',
+    parent: this
+  });
 
   this.ratinginspectiontype = new InspectionType();
 
@@ -122,8 +128,8 @@ Property.prototype.toArray = function() {
   return prop;
 };
 
-Property.prototype.validSchema = function () {
-  return Joi.object().keys({
+Property.prototype.getSchema = function () {
+  return {
     tabspropref: Joi.string().label('Property reference'),
     name: Joi.string().label('Property name'),
     namequalifier: Joi.string().allow('').label('Name qualifier'),
@@ -132,7 +138,39 @@ Property.prototype.validSchema = function () {
     maximumpets: Joi.number().label('Maximum pets'),
     telephonenumber: Joi.string().allow('').label('Telephone number'),
     address: this.address.validSchema()
-  });
+  };
+};
+
+Property.prototype.validSchema = function () {
+  return Joi.object().keys(this.getSchema());
+};
+
+/**
+ * Get the availability
+ *
+ * @param {string} fromdate
+ * @param {string} todate
+ * @param {string} nights
+ */
+Property.prototype.getAvailablebreaks = function(fromdate, todate, nights) {
+  var p = this.availablebreaks;
+
+  var params = {};
+  if (fromdate) {
+    params['fromdate'] = fromdate;
+  }
+  if (todate) {
+    params['todate'] = todate;
+  }
+  if (nights) {
+    params['nights'] = nights;
+  }
+
+  p.toArray = function() {
+    return params;
+  };
+
+  return p.fetch();
 };
 
 /**

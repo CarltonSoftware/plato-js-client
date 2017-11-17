@@ -1,4 +1,4 @@
-var SingleEntity = require('./SingleEntity');
+var DocumentAssociation = require('./DocumentAssociation');
 var Document = require('./Document');
 
 function CustomerDocument(customerId, id) {
@@ -7,16 +7,6 @@ function CustomerDocument(customerId, id) {
   this.document = new Document();
   this.id = id;
 }
-CustomerDocument.prototype = new SingleEntity();
-CustomerDocument.prototype.toArray = function() {
-  return {
-    documentid: this.document.id
-  };
-};
-CustomerDocument.prototype.toCreateArray = function() {
-  return {
-    documentid: this.document.id
-  };
-};
+CustomerDocument.prototype = new DocumentAssociation();
 
 module.exports = CustomerDocument;
