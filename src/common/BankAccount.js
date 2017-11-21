@@ -38,17 +38,23 @@ BankAccount.prototype.toArray = function() {
   return ba;
 };
 
-BankAccount.prototype.validSchema = function() {
-  return Joi.object().keys({
+BankAccount.prototype.getSchema = function() {
+  return {
     accountname: Joi.string().empty('').max(40).label('Account Name'),
     accountnumber: Joi.string().required().min(6).max(10).label('Account Number'),
     sortcode: Joi.string().required().length(6).label('Sort Code'),
     bankname: Joi.string().empty('').max(30).label('Bank Name'),
     paymentreference: Joi.string().allow('').optional().max(18).label('Payment reference'),
-    rollnumber: Joi.string().allow('').optional().max(18).label('Roll Number'),
-    address: Joi.object().optional(),
-    currency: Joi.object().optional()
-  });
+    rollnumber: Joi.string().allow('').optional().max(18).label('Roll Number')
+  };
+};
+
+BankAccount.prototype.validSchema = function() {
+  var s = this.getSchema();
+  s.address = Joi.object().optional();
+  s.currency = Joi.object().optional();
+
+  return Joi.object().keys(s);
 };
 
 module.exports = BankAccount;
