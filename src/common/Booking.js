@@ -212,6 +212,8 @@ Booking.prototype.toArray = function() {
     array.propertyid = this.propertyid;
     if (this.guesttype !== 'Owner') {
       array.agencybookingtypeid = this.agencybookingtypeid;
+    } else {
+      array.ownerbookingtypeid = this.ownerbookingtypeid;
     }
   }
 

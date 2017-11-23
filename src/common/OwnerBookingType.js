@@ -1,8 +1,8 @@
 var SingleEntity = require('./SingleEntity');
 
 function OwnerBookingType(id) {
-    this.path = 'agencybookingtype';
-    this.createPath = 'agencybookingtype';
+    this.path = 'ownerbookingtype';
+    this.createPath = 'ownerbookingtype';
     this.id = id;
 }
 OwnerBookingType.prototype = new SingleEntity();
