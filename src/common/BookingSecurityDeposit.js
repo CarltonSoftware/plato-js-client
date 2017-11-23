@@ -29,6 +29,10 @@ BookingSecurityDeposit.prototype.toArray = function() {
     arr.refundingbankaccountid = this.refundingbankaccount.id;
   }
 
+  if (this.propertysecuritydeposit) {
+    arr.propertysecuritydepositid = this.propertysecuritydeposit.id;
+  }
+
   return arr;
 };
 
