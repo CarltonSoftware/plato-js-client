@@ -37,7 +37,9 @@ Image.prototype.toArray = function() {
     alt: this.alt
   };
 };
-
+Image.prototype.getUrl = function(type, width, height) {
+  return this.getUpdatePath() + '/resize/' + type + '/' + width + '/' + height + '/' + this.filename;
+};
 Image.prototype.validSchema = function() {
   return Joi.object().keys({
     name: Joi.string().label('Name'),
