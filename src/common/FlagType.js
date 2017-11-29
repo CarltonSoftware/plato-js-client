@@ -14,5 +14,8 @@ FlagType.prototype.toArray = function() {
     allowbooking: this.allowbooking,
   };
 };
+FlagType.prototype.toString = function() {
+  return [this.flagtype, this.description].join(' ');
+};
 
 module.exports = FlagType;
