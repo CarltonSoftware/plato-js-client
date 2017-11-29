@@ -10,7 +10,7 @@ function File(id) {
 
 File.prototype = new SingleEntity();
 File.prototype.getImage = function(style, width, height) {
-  return this.okPromiseResult([this.getUpdatePath(), style, width, height].join('/'));
+  return this.okPromiseResult([this.getUpdatePath().replace('file', 'image'), 'resize', style, width, height].join('/'));
 };
 File.prototype.okPromiseResult = function(path, params) {
   var self = this;
