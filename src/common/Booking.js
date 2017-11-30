@@ -106,6 +106,13 @@ Booking.prototype.mutateResponse = function(entity) {
     this.sagepaypayments.mutateResponse(entity.sagepaypayments);
   }
 
+  if (entity && entity.customerpayments) {
+    this.customerpayments = new StaticCollection({
+      object: require('./CustomerPayment')
+    });
+    this.customerpayments.mutateResponse(entity.customerpayments);
+  }
+
   return this.mutateEntity(entity);
 };
 
