@@ -34,7 +34,8 @@ function Attribute(id) {
       usedinavailabilitysearch: this.usedinavailabilitysearch,
       baseattribute: this.baseattribute,
       donotmodify: this.donotmodify,
-      important: this.important
+      important: this.important,
+      defaultvalue: this.defaultvalue
     };
 
     return this.mergeInAdditionalFields(base);
@@ -49,7 +50,8 @@ function Attribute(id) {
       donotmodify: this.donotmodify,
       usedinavailabilitysearch: this.usedinavailabilitysearch,
       baseattribute: this.baseattribute,
-      important: this.important
+      important: this.important,
+      defaultvalue: this.defaultvalue
     };
 
     return this.mergeInAdditionalFields(base);
@@ -62,6 +64,12 @@ function Attribute(id) {
       base.minimumvalue = this.minimumvalue;
       base.maximumvalue = this.maximumvalue;
       base.unit = this.unit.name;
+    }
+
+    if (this.type == 'hybrid' ) {
+      base.limitvalue = this.limitvalue;
+      base.defaultbooleanvalue = this.defaultbooleanvalue;
+      base.defaultnumbervalue = this.defaultnumbervalue;
     }
 
     return base;
