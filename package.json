@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "src/index.js",
   "devDependencies": {
-    "browserify": "^13.0",
+    "browserify": "^14.5.0",
     "chai": "^3.4.1",
     "chai-as-promised": "^6.0.0",
     "gulp": "^3.9.0",
@@ -17,11 +17,11 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
-    "joi": "^10.0.1",
-    "joi-browser": "^10.0.6",
-    "libphonenumber-js": "^0.4.32",
+    "joi": "^13.0.2",
+    "joi-browser": "^13.0.1",
+    "libphonenumber-js": "^0.4.43",
     "lz-string": "^1.4.4",
-    "moment": "^2.13.0",
+    "moment": "^2.19.3",
     "node-localstorage": "^1.3.0",
     "rest": "github:jclgoodwin/rest",
     "underscore": "^1.8.3"
