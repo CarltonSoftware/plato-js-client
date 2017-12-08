@@ -1,9 +1,16 @@
 var SingleEntity = require('./SingleEntity');
+var Joi = require('joi');
 
 function DepositAmountType(id) {
     this.path = 'depositamounttype';
     this.createPath = 'depositamounttype';
     this.id = id;
+
+    this.validSchema = function() {
+      return {
+        depositamounttype: Joi.string().required().label('deposit amount type')
+      };
+    }
 }
 DepositAmountType.prototype = new SingleEntity();
 
