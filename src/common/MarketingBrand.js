@@ -3,6 +3,7 @@ var EntityLink = require('./EntityLink');
 var MarketingBrandEmailList = require('./MarketingBrandEmailList');
 var client = require('./platoJsClient').getInstance();
 var FilterCollection = require('./FilterCollection');
+var Joi = require('joi');
 
 function MarketingBrand(id) {
   this.path = 'marketingbrand';
@@ -12,6 +13,17 @@ function MarketingBrand(id) {
     entity: 'Agency'
   });
   this.defaultbookingbrand = new EntityLink({ entity: 'BookingBrand' });
+
+  this.validSchema = function() {
+    return {
+      code: Joi.string().required().min(2).max(4).uppercase().label('Code'),
+      name: Joi.string().required().label('Name'),
+      email: Joi.string().empty('').label('Email'),
+      website: Joi.string().empty('').label('Website'),
+      agency: Joi.object().required().label('Agency'),
+      defaultbookingbrand: Joi.object().required().label('Default Booking Brand')
+    };
+  };
 }
 MarketingBrand.prototype = new SingleEntity();
 

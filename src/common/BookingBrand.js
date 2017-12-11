@@ -1,5 +1,6 @@
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
+var Joi = require('joi');
 
 function BookingBrand(id) {
   this.path = 'bookingbrand';
@@ -8,6 +9,14 @@ function BookingBrand(id) {
   this.agency = new EntityLink({
     entity: 'Agency'
   });
+
+  this.validSchema = function() {
+    return {
+      code: Joi.string().required().min(2).max(4).uppercase().label('Code'),
+      name: Joi.string().min(1).required().label('Name'),
+      agency: Joi.object().required().label('Agency')
+    };
+  };
 }
 BookingBrand.prototype = new SingleEntity();
 
