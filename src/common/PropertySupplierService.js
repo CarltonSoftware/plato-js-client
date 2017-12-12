@@ -25,15 +25,19 @@ function PropertySupplierService(id) {
 }
 PropertySupplierService.prototype = new SingleEntity();
 
-PropertySupplierService.prototype.toArray = function() {
+PropertySupplierService.prototype.toUpdateArray = function() {
   return {
     fromdate: this.fromdate,
     todate: this.todate,
-    serviceid: this.service.id,
     customerbookings: this.customerbookings,
     ownerbookings: this.ownerbookings,
     datetouse: this.datetouse
   };
+};
+PropertySupplierService.prototype.toCreateArray = function() {
+  var array = this.toUpdateArray();
+  array.serviceid = this.service.id;
+  return array;
 };
 
 PropertySupplierService.prototype.validSchema = function() {
