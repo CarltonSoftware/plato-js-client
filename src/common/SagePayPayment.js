@@ -91,8 +91,8 @@ SagePayPayment.prototype.release = function() {
 SagePayPayment.prototype.addMissing = function(booking) {
   return this.updatePromiseResult([this.getUpdatePath(), 'missingtransaction'].join('/'), {
     bookingid: booking.id,
-    bookingamount: this.bookingamount,
-    securitydepositamount: this.securitydepositamount
+    bookingamount: this.bookingamount || 0,
+    securitydepositamount: this.securitydepositamount || 0
   });
 };
 
