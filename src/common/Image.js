@@ -2,6 +2,7 @@ var SingleEntity = require('./SingleEntity');
 var Mimetype = require('./Mimetype');
 var File = require('./File');
 var Joi = require('joi');
+var client = require('plato-js-client').client.getInstance();
 
 function Image(id) {
   this.path = 'image';
@@ -38,7 +39,7 @@ Image.prototype.toArray = function() {
   };
 };
 Image.prototype.getUrl = function(type, width, height) {
-  return this.getUpdatePath() + '/resize/' + type + '/' + width + '/' + height + '/' + this.filename;
+  return client.getHost() + '/v2/' + this.path + '/' + this.id + '/resize/' + type + '/' + width + '/' + height + '/' + this.filename;
 };
 Image.prototype.validSchema = function() {
   return Joi.object().keys({
