@@ -97,6 +97,9 @@ SpecialOffer.prototype.toUpdateArray = function() {
   if (this.archivedbyactor) {
     fields.archivedbyactorid = this.archivedbyactor.id;
   }
+  if (this.depositamount) {
+    fields.depositamountid = this.depositamount.id;
+  }
 
   return fields;
 };
@@ -136,8 +139,8 @@ SpecialOffer.prototype.validSchema = function() {
     forpricetype: Joi.object(),
     archive: Joi.boolean(),
     archivedbyactorid: Joi.number().empty('').label('Archived by actor'),
-    archiveddatetime: Joi.string().optional().allow('').label('Archived date')
-
+    archiveddatetime: Joi.string().optional().allow('').label('Archived date'),
+    depositamount: Joi.object().optional().label('Deposit Amount')
   });
 };
 module.exports = SpecialOffer;

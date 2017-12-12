@@ -25,6 +25,7 @@ DepositAmount.prototype.toArray = function() {
     decimalplaces: this.decimalplaces,
     plusincludedextras: this.plusincludedextras,
     plusadditionalextras: this.plusadditionalextras,
+    usebrochureprice: this.usebrochureprice
   };
 
   if (this.type == 'Branding') {

@@ -14,7 +14,7 @@ function SupplierServiceCharge(id) {
 }
 SupplierServiceCharge.prototype = new SingleEntity();
 
-SupplierServiceCharge.prototype.toArray = function() {
+SupplierServiceCharge.prototype.toUpdateArray = function() {
   return {
     type: this.type,
     charge: this.charge,
@@ -23,10 +23,14 @@ SupplierServiceCharge.prototype.toArray = function() {
     autoaddowner: this.autoaddowner,
     fromdate: this.fromdate,
     todate: this.todate,
-    currencyid: this.currency.id,
-    vatbandid: this.vatband && this.vatband.id,
     ownerchargecodeid: this.ownerchargecode.id
   };
+};
+SupplierServiceCharge.prototype.toCreateArray = function() {
+  var array = this.toUpdateArray();
+  array.currencyid = this.currency.id;
+  array.vatbandid = this.vatband && this.vatband.id;
+  return array;
 };
 
 SupplierServiceCharge.prototype.validSchema = function() {
