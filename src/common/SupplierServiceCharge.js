@@ -24,7 +24,7 @@ SupplierServiceCharge.prototype.toArray = function() {
     fromdate: this.fromdate,
     todate: this.todate,
     currencyid: this.currency.id,
-    vatbandid: this.vatband.id,
+    vatbandid: this.vatband && this.vatband.id,
     ownerchargecodeid: this.ownerchargecode.id
   };
 };
@@ -34,8 +34,12 @@ SupplierServiceCharge.prototype.validSchema = function() {
     fromdate: Joi.string().required().label('From Date'),
     todate: Joi.string().required().label('To Date'),
     type: Joi.string().required().label('Type'),
-    ownerchargecode: Joi.object().required().label('Owner Charge Code'),
-    vatband: Joi.object().required().label('Vat Band'),
+    ownerchargecode: Joi.when('type', {
+      is: 'OwnerCharge',
+      then: Joi.object().required().label('Owner Charge Code'),
+      otherwise: Joi.forbidden()
+    }),
+    vatband: Joi.object().optional().label('Vat Band'),
     currency: Joi.object().required().label('Currency'),
     charge: Joi.number().required().label('Charge'),
     includesvat: Joi.boolean().required().label('Includes VAT'),

@@ -1,4 +1,5 @@
 var SingleEntity = require('./SingleEntity');
+var Joi = require('joi');
 
 function Unit(id) {
   this.path = 'unit';
@@ -10,6 +11,14 @@ function Unit(id) {
       name: this.name,
       description: this.description,
       decimalplaces: this.decimalplaces
+    };
+  };
+
+  this.validSchema = function() {
+    return {
+      name: Joi.string().required().label('name'),
+      description: Joi.string().required().label('description'),
+      decimalplaces: Joi.number().required().label('decimalplaces'),
     };
   };
 }
