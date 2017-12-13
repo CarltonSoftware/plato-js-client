@@ -2,7 +2,7 @@ var SingleEntity = require('./SingleEntity');
 var Mimetype = require('./Mimetype');
 var File = require('./File');
 var Joi = require('joi');
-var client = require('./platoJsClient').getInstance();
+var client = require('plato-js-client').client.getInstance();
 
 function Image(id) {
   this.path = 'image';
