@@ -76,6 +76,32 @@ SingleEntity.prototype.getCacheable = function(cacheTime, forceRefresh) {
 };
 
 /**
+ * Remove from localStorage any items with a matching key
+ *
+ * @param {string} path
+ */
+function clearCache(path) {
+  // work backwards, so indexes remain valid even as items are deleted
+  for (var i = localStorage.length; i-- > 0;) {
+    var key = localStorage.key(i);
+    if (key[0] === '/' && key.indexOf(path) !== -1) {
+      localStorage.removeItem(key);
+    }
+  }
+}
+
+SingleEntity.prototype.clearCache = function() {
+  if (this.parent) {
+    this.parent.clearCache();
+  }
+  clearCache(this.path.split('/')[0]);
+
+  if (this.path === 'tabsuser') {
+    clearCache('whoami');
+  }
+};
+
+/**
  * Update request method
  *
  * @returns {Promise}
@@ -93,6 +119,8 @@ SingleEntity.prototype.update = function(fields) {
   if (typeof this.path === 'undefined') {
     throw new pathNotSpecifiedError('No path specified for entity');
   }
+
+  this.clearCache();
 
   return this.updatePromiseResult(
     this.getUpdatePath(),
@@ -125,6 +153,8 @@ SingleEntity.prototype.create = function(fields) {
   if (typeof this.createPath === 'undefined') {
     throw new pathNotSpecifiedError('No createPath specified for entity');
   }
+
+  this.clearCache();
 
   return this.createPromiseResult(
     this.getCreatePath(),
@@ -161,6 +191,8 @@ SingleEntity.prototype.delete = function() {
   if (typeof this.path === 'undefined') {
     throw new pathNotSpecifiedError('No deletePath specified for entity');
   }
+
+  this.clearCache();
 
   return this.deletePromiseResult(this.getUpdatePath());
 };
