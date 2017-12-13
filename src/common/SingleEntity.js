@@ -80,7 +80,7 @@ SingleEntity.prototype.getCacheable = function(cacheTime, forceRefresh) {
  *
  * @param {string} path
  */
-function clearCache(path) {
+function invalidateCache(path) {
   // work backwards, so indexes remain valid even as items are deleted
   for (var i = localStorage.length; i-- > 0;) {
     var key = localStorage.key(i);
@@ -90,14 +90,14 @@ function clearCache(path) {
   }
 }
 
-SingleEntity.prototype.clearCache = function() {
+SingleEntity.prototype.invalidateCache = function() {
   if (this.parent) {
-    this.parent.clearCache();
+    this.parent.invalidateCache();
   }
-  clearCache(this.path.split('/')[0]);
+  invalidateCache(this.path.split('/')[0]);
 
   if (this.path === 'tabsuser') {
-    clearCache('whoami');
+    invalidateCache('whoami');
   }
 };
 
@@ -120,7 +120,7 @@ SingleEntity.prototype.update = function(fields) {
     throw new pathNotSpecifiedError('No path specified for entity');
   }
 
-  this.clearCache();
+  this.invalidateCache();
 
   return this.updatePromiseResult(
     this.getUpdatePath(),
@@ -154,7 +154,7 @@ SingleEntity.prototype.create = function(fields) {
     throw new pathNotSpecifiedError('No createPath specified for entity');
   }
 
-  this.clearCache();
+  this.invalidateCache();
 
   return this.createPromiseResult(
     this.getCreatePath(),
@@ -192,7 +192,7 @@ SingleEntity.prototype.delete = function() {
     throw new pathNotSpecifiedError('No deletePath specified for entity');
   }
 
-  this.clearCache();
+  this.invalidateCache();
 
   return this.deletePromiseResult(this.getUpdatePath());
 };
