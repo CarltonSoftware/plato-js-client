@@ -91,7 +91,7 @@ function invalidateCache(path) {
 }
 
 SingleEntity.prototype.invalidateCache = function() {
-  if (this.parent) {
+  if (this.parent && this.parent.invalidateCache) {
     this.parent.invalidateCache();
   }
   invalidateCache(this.path.split('/')[0]);
