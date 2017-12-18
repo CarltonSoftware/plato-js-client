@@ -110,6 +110,7 @@ module.exports.common.SupplierInvoice = require('./common/SupplierInvoice');
 module.exports.common.SupplierInvoiceItem = require('./common/SupplierInvoiceItem');
 module.exports.common.SupplierInvoiceItemPayment = require('./common/SupplierInvoiceItemPayment');
 module.exports.common.SupplierPayment = require('./common/SupplierPayment');
+module.exports.common.Affiliate = require('./common/Affiliate');
 
 // Property Related Objects
 module.exports.common.Properties = require('./common/Properties');

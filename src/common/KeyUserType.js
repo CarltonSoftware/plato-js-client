@@ -1,6 +1,5 @@
 var Joi = require('joi');
 var SingleEntity = require('./SingleEntity');
-var Collection = require('./Collection');
 var Role = require('./Role');
 
 function KeyUserType(id) {
