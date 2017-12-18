@@ -130,9 +130,9 @@ Property.prototype.toArray = function() {
 
 Property.prototype.getSchema = function () {
   return {
-    tabspropref: Joi.string().label('Property reference'),
-    name: Joi.string().label('Property name'),
-    namequalifier: Joi.string().allow('').label('Name qualifier'),
+    tabspropref: Joi.string().label('Property reference').max(6),
+    name: Joi.string().label('Property name').min(1).max(40),
+    namequalifier: Joi.string().allow('').label('Name qualifier').max(60),
     bedrooms: Joi.number(),
     sleeps: Joi.number(),
     maximumpets: Joi.number().label('Maximum pets'),
