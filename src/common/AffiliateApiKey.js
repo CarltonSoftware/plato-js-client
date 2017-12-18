@@ -13,4 +13,10 @@ AffiliateApiKey.prototype.validSchema = function() {
   });
 };
 
+AffiliateApiKey.prototype.toArray = function() {
+  return {
+    apikey: this.apikey
+  };
+};
+
 module.exports = AffiliateApiKey;
