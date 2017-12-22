@@ -88,6 +88,10 @@ SagePayPayment.prototype.release = function() {
   return this.updatePromiseResult([this.getUpdatePath(), 'release'].join('/'), {});
 };
 
+SagePayPayment.prototype.forcerelease = function() {
+  return this.updatePromiseResult([this.getUpdatePath(), 'forcerelease'].join('/'), {});
+};
+
 SagePayPayment.prototype.addMissing = function(booking) {
   return this.updatePromiseResult([this.getUpdatePath(), 'missingtransaction'].join('/'), {
     bookingid: booking.id,
