@@ -111,6 +111,8 @@ module.exports.common.SupplierInvoiceItem = require('./common/SupplierInvoiceIte
 module.exports.common.SupplierInvoiceItemPayment = require('./common/SupplierInvoiceItemPayment');
 module.exports.common.SupplierPayment = require('./common/SupplierPayment');
 module.exports.common.Affiliate = require('./common/Affiliate');
+module.exports.common.AffiliateApiKey = require('./common/AffiliateApiKey');
+module.exports.common.AffiliateBlockPeriod = require('./common/AffiliateBlockPeriod');
 
 // Property Related Objects
 module.exports.common.Properties = require('./common/Properties');
