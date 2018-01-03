@@ -20,7 +20,8 @@ Extra.prototype.toArray = function() {
     extracode: this.extracode,
     extratype: this.extratype,
     description: this.description,
-    extragroupid: this.extragroup.id
+    extragroupid: this.extragroup.id,
+    petextra: this.petextra
   };
 };
 
@@ -28,7 +29,8 @@ Extra.validSchema = Joi.object().keys({
   extracode: Joi.string().required().label('extra code'),
   extratype: Joi.string().required().label('extra type'),
   description: Joi.string().required().label('description'),
-  extragroup: Joi.object().label('extra group')
+  extragroup: Joi.object().label('extra group'),
+  petextra: Joi.boolean().label('is a pet extra')
 });
 
 module.exports = Extra;
