@@ -18,6 +18,7 @@ var PropertyHousekeeping = require('./PropertyHousekeeping');
 var InspectionType = require('./InspectionType');
 var AvailableBreak = require('./AvailableBreak');
 var Joi = require('joi');
+var client = require('./platoJsClient').getInstance();
 
 function Property(id) {
   this.path = 'property';
@@ -171,6 +172,10 @@ Property.prototype.getAvailablebreaks = function(fromdate, todate, nights) {
   };
 
   return p.fetch();
+};
+
+Property.prototype.updateAvailablebreaks = function() {
+  return this.updatePromiseResult([this.path, this.id, 'availablebreaks'].join('/'), { force: true });
 };
 
 /**
