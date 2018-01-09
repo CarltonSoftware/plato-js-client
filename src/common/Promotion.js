@@ -20,7 +20,7 @@ Promotion.prototype.toArray = function() {
 Promotion.prototype.validSchema = function() {
   return Joi.object().keys({
     promotioncode: Joi.string().label('Promotion Code'),
-    extra: Joi.object().required().label('Extra'),
+    extra: Joi.object().label('Extra'),
     usagelimit: Joi.number().label('Usage Limit')
   });
 };
