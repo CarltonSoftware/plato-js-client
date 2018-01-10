@@ -158,13 +158,13 @@ Property.prototype.getAvailablebreaks = function(fromdate, todate, nights) {
 
   var params = {};
   if (fromdate) {
-    params['fromdate'] = fromdate;
+    params.fromdate = fromdate;
   }
   if (todate) {
-    params['todate'] = todate;
+    params.todate = todate;
   }
   if (nights) {
-    params['nights'] = nights;
+    params.nights = nights;
   }
 
   p.toArray = function() {

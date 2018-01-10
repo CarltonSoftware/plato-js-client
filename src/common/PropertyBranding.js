@@ -1,10 +1,9 @@
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
-var Branding = require('./Branding');
-var BrandingGroup = require('./BrandingGroup');
 var PropertyBrandingPrice = require('./PropertyBrandingPrice');
 var PartySizePricing = require('./PartySizePricing');
 var AvailableDay = require('./AvailableDay');
+var ExtraBranding = require('./ExtraBranding');
 var PropertyBrandingChangeDayTemplate = require('./PropertyBrandingChangeDayTemplate');
 var Status = require('./Status');
 var Collection = require('./Collection');
@@ -13,8 +12,8 @@ function PropertyBranding(id) {
   this.path = 'branding';
   this.createPath = this.path;
   this.id = id;
-  this.branding = new Branding();
-  this.brandinggroup = new BrandingGroup();
+  this.branding = new EntityLink({ entity: 'Branding' })
+  this.brandinggroup = new EntityLink({ entity: 'BrandingGroup' })
   this.bookingbrand = new EntityLink({
     entity: 'PropertyBookingBrand',
     parent: new EntityLink({ entity: 'Property' })
@@ -28,6 +27,7 @@ function PropertyBranding(id) {
     path: 'partysizepricing',
     parent: this
   });
+  this.petextrabranding = new ExtraBranding();
   this.status = new Status();
 
   this.prices = new Collection({
@@ -74,7 +74,8 @@ PropertyBranding.prototype.toArray = function() {
     propertynoteid: this.propertynote && this.propertynote.id,
     promote: this.promote,
     allowbookingonwebuntildate: this.allowbookingonwebuntildate,
-    showpricingonwebuntildate: this.showpricingonwebuntildate
+    showpricingonwebuntildate: this.showpricingonwebuntildate,
+    petextrabrandingid: this.petextrabranding.id
   };
 };
 
