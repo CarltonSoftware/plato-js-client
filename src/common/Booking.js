@@ -139,6 +139,7 @@ Booking.prototype.toArray = function() {
     promotioncode: this.promotioncode,
     overridestatus: this.overridestatus,
     bypasspetchecks: this.bypasspetchecks,
+    ignorechangedayrules: this.ignorechangedayrules,
 
     /* Web Booking */
     webbooking_createddatetime: this.webbooking.createddatetime,
@@ -212,7 +213,6 @@ Booking.prototype.toArray = function() {
     array.currencycode = this.currencycode;
     array.saleschannel = this.saleschannel.saleschannel ? this.saleschannel.saleschannel : this.saleschannel;
     array.pricingperiod = this.pricingperiod.pricingperiod ? this.pricingperiod.pricingperiod : this.pricingperiod;
-    array.ignorechangedayrules = this.ignorechangedayrules;
     array.sourcemarketingbrandid = this.sourcemarketingbrandid;
     array.estimatedarrivaltime = this.estimatedarrivaltime;
   } else {
