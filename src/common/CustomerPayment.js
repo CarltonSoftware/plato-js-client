@@ -27,7 +27,7 @@ function CustomerPayment(id) {
 
 CustomerPayment.prototype = new SingleEntity();
 CustomerPayment.prototype.toCreateArray = function() {
-  return {
+  var fields = {
     paymentdatetime: this.paymentdatetime,
     reference: this.reference,
     paymentmethodid: this.paymentmethodid,
@@ -38,6 +38,11 @@ CustomerPayment.prototype.toCreateArray = function() {
     securitydepositamount: this.securitydepositamount,
     ignoresdrefundeddate: true
   };
+  if (this.bookingbrand && this.bookingbrand.id) {
+    fields.bookingbrandid = this.bookingbrand.id;
+  }
+
+  return fields;
 };
 
 CustomerPayment.validSchema = Joi.object().keys({
@@ -48,7 +53,8 @@ CustomerPayment.validSchema = Joi.object().keys({
   bookingid: Joi.number().optional().label('booking id'),
   amount: Joi.number().required().label('amount'),
   bookingamount: Joi.number().optional().label('booking amount'),
-  securitydepositamount: Joi.number().optional().label('security deposit amount')
+  securitydepositamount: Joi.number().optional().label('security deposit amount'),
+  bookingbrand: Joi.object().optional().label('booking brand')
 });
 
 module.exports = CustomerPayment;

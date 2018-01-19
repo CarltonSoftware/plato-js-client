@@ -4,8 +4,8 @@ var Currency = require('./Currency');
 var Collection = require('./Collection');
 var PartySizePrice = require('./PartySizePrice');
 var EntityLink = require('./EntityLink');
-var PriceBand = require('./PriceBand');
 var moment = require('moment');
+var PropertyBrandingYearPriceband = require('./PropertyBrandingYearPriceband');
 
 /**
  * Property branding price object
@@ -28,7 +28,7 @@ function PropertyBrandingPrice(id) {
     entity: 'PropertyBranding'
   });
 
-  this.priceband = new PriceBand();
+  this.yearpriceband = new PropertyBrandingYearPriceband();
 
   // Override the mutate function to set the parent on pricetypebranding element
   // This will make sure the path is correct
