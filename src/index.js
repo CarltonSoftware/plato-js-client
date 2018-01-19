@@ -41,6 +41,7 @@ module.exports.common.SettingType = require('./common/SettingType');
 module.exports.common.SettingEntity = require('./common/SettingEntity');
 module.exports.common.SettingValue = require('./common/SettingValue');
 module.exports.common.SettingValueType = require('./common/SettingValueType');
+module.exports.common.SettingValueOption = require('./common/SettingValueOption');
 module.exports.common.SourceCategory = require('./common/SourceCategory');
 module.exports.common.OwnerEnquiryActionType = require('./common/OwnerEnquiryActionType');
 module.exports.common.OwnerBookingType = require('./common/OwnerBookingType');
