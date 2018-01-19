@@ -75,7 +75,7 @@ PropertyBranding.prototype.toArray = function() {
     promote: this.promote,
     allowbookingonwebuntildate: this.allowbookingonwebuntildate,
     showpricingonwebuntildate: this.showpricingonwebuntildate,
-    petextrabrandingid: this.petextrabranding.id
+    petextrabrandingid: this.petextrabranding && this.petextrabranding.id
   };
 };
 
