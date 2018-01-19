@@ -69,7 +69,7 @@ PropertyBrandingPrice.prototype.getDayPrice = function(day, date) {
       price = dayPrice.price;
       if (dayPrice.overrides.collection.length) {
         var overridePrice = dayPrice.overrides.findOne(function(override) {
-          return moment(date).isBetween(override.fromdate, override.todate, null, '[]');
+          return moment(date).isBetween(override.fromdate, override.todate, null, '[)');
         });
         if (overridePrice) {
           price = overridePrice.price;
