@@ -1,6 +1,8 @@
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
 var MarketingBrand = require('./MarketingBrand');
+var BrandExtra = require('./BrandExtra');
+var Collection = require('./Collection');
 
 function Branding(id) {
   this.path = 'branding';
@@ -12,6 +14,11 @@ function Branding(id) {
   this.lettingincomevatband = new EntityLink({ entity: 'VatBand' });
   this.bacsbankaccount = new EntityLink({ entity: 'BankAccount' });
   this.petextrabranding = new EntityLink({ entity: 'ExtraBranding' });
+  this.extras = new Collection({
+    object: BrandExtra,
+    path: 'extra',
+    parent: this
+  });
 }
 
 Branding.prototype = new SingleEntity();
