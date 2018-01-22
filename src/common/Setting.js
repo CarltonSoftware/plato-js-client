@@ -21,7 +21,8 @@ Setting.prototype.toArray = function() {
     minimumvalue: this.minimumvalue,
     maximumvalue: this.maximumvalue,
     decimalplaces: this.decimalplaces,
-    defaultvalue: this.defaultvalue
+    defaultvalue: this.defaultvalue,
+    restrictvalue: this.restrictvalue
   };
 };
 
