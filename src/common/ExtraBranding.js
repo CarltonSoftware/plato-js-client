@@ -1,6 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var Joi = require('joi');
 var ExtraBrandingConfiguration = require('./ExtraBrandingConfiguration');
+var ExtraBrandingPricing = require('./ExtraBrandingPricing');
 var Collection = require('./Collection');
 var Branding = require('./Branding');
 
@@ -13,6 +14,11 @@ function ExtraBranding(extraId,id) {
   this.brandingConfiguration = new Collection({
     object: ExtraBrandingConfiguration,
     path: 'configuration',
+    parent: this
+  });
+  this.pricing = new Collection({
+    object: ExtraBrandingPricing,
+    path: 'pricing',
     parent: this
   });
 }
