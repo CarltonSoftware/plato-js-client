@@ -9,7 +9,7 @@ function ExchangeRateIssue(id) {
   this.id = id;
   this.type = new ExchangeRateIssueType();
   this.currency = new Currency();
-  this.exchangeRates = new Collection({
+  this.exchangerates = new Collection({
     object: ExchangeRate,
     path: 'rate',
     parent: this
