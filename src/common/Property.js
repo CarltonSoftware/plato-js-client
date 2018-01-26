@@ -9,6 +9,7 @@ var PropertyOffice = require('./PropertyOffice');
 var PropertySecurityFeature = require('./PropertySecurityFeature');
 var PropertyRoom = require('./PropertyRoom');
 var PropertyTarget = require('./PropertyTarget');
+var PropertyTabsUser = require('./PropertyTabsUser');
 var PropertyAddress = require('./PropertyAddress');
 var PropertyOwnerPaymentTerm = require('./PropertyOwnerPaymentTerm');
 var PropertyCommission = require('./PropertyCommission');
@@ -63,6 +64,11 @@ function Property(id) {
   this.targets = new Collection({
     object: PropertyTarget,
     path: 'target',
+    parent: this
+  });
+  this.tabsuser = new Collection({
+    object: PropertyTabsUser,
+    path: 'tabsuser',
     parent: this
   });
   this.brandings = new Collection({

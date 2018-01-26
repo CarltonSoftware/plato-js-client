@@ -17,4 +17,12 @@ PropertyTabsUser.prototype.toArray = function() {
   };
 };
 
+PropertyTabsUser.prototype.validSchema = function() {
+    return Joi.object().keys({
+      tabsuser: Joi.object().label('Tabs User'),
+      fromdate: Joi.string().optional().label('fromdate'),
+      todate: Joi.string().optional().label('todate')
+    });
+  };
+
 module.exports = PropertyTabsUser;
