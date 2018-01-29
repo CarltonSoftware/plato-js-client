@@ -1,5 +1,5 @@
 var SingleEntity = require('./SingleEntity');
-var TabsUser = require('./Tabsuser');
+var TabsUser = require('./TabsUser');
 
 function PropertyTabsUser(id) {
   this.path = 'target';
