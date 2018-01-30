@@ -1,9 +1,10 @@
 var SingleEntity = require('./SingleEntity');
-var TabsUser = require('./Tabsuser');
+var TabsUser = require('./TabsUser');
+var Joi = require('joi');
 
 function PropertyTabsUser(id) {
-  this.path = 'target';
-  this.createPath = this.path;
+  this.path = 'tabsuser';
+  this.createPath = 'tabsuser';
   this.id = id;
 
   this.tabsuser = new TabsUser();
@@ -19,7 +20,7 @@ PropertyTabsUser.prototype.toArray = function() {
 
 PropertyTabsUser.prototype.validSchema = function() {
     return Joi.object().keys({
-      tabsuser: Joi.object().label('Tabs User'),
+      tabsuser: Joi.object().required().label('Tabs User'),
       fromdate: Joi.string().optional().label('fromdate'),
       todate: Joi.string().optional().label('todate')
     });
