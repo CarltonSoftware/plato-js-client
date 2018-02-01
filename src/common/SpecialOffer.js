@@ -92,7 +92,8 @@ SpecialOffer.prototype.toUpdateArray = function() {
     pricetypeid: this.pricetype.id,
     forpricetypeid: this.forpricetype.id,
     archive: this.archive,
-    archiveddatetime: this.archiveddatetime
+    archiveddatetime: this.archiveddatetime,
+    percentagepaidbyowner: this.percentagepaidbyowner
   };
   if (this.archivedbyactor) {
     fields.archivedbyactorid = this.archivedbyactor.id;
@@ -140,7 +141,8 @@ SpecialOffer.prototype.validSchema = function() {
     archive: Joi.boolean(),
     archivedbyactorid: Joi.number().empty('').label('Archived by actor'),
     archiveddatetime: Joi.string().optional().allow('').label('Archived date'),
-    depositamount: Joi.object().optional().label('Deposit Amount')
+    depositamount: Joi.object().optional().label('Deposit Amount'),
+    percentagepaidbyowner: Joi.number().min(0).max(100).allow(null).label('Percentage paid by owner')
   });
 };
 module.exports = SpecialOffer;
