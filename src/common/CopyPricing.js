@@ -11,9 +11,8 @@ CopyPricing.prototype.toArray = function() {
   var fields = {
     type: this.type,
     fromid: this.from.id,
-    fromdate: this.fromdate,
-    todate: this.todate,
-    datemodifier: this.datemodifier,
+    fromyear: this.fromyear,
+    toyear: this.toyear,
     sameweekday: this.sameweekday,
     checkforoverlap: this.checkforoverlap,
     overlapaction: this.overlapaction,
@@ -28,6 +27,10 @@ CopyPricing.prototype.toArray = function() {
 
   if(this.to && this.to.id) {
     fields.toid = this.to.id;
+  }
+
+  if (this.toyear == this.fromyear) {
+    fields.datemodifier = this.datemodifier + ' days'
   }
 
   if (this.copypartysizeprices) {
