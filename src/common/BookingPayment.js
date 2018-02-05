@@ -19,7 +19,8 @@ BookingPayment.prototype.toCreateArray = function() {
     type: this.type,
     paymentdatetime: this.paymentdatetime,
     amount: this.amount,
-    ignoresdrefundeddate: true
+    ignoresdrefundeddate: true,
+    ignorerefundableflag: this.ignorerefundableflag
   };
   if (this.type != 'Swap' && this.type != 'Transfer') {
     array.actorid = this.actor.id;
@@ -37,6 +38,7 @@ BookingPayment.validSchema = Joi.object().keys({
   type: Joi.string().valid('Booking', 'SecurityDeposit', 'BookingAndSecurityDeposit', 'Swap', 'Transfer').label('payment type'),
   paymentdatetime: Joi.string().optional().label('payment date time'),
   amount: Joi.number().required().label('amount'),
+  ignorerefundableflag: Joi.boolean().optional().label('ignore refundable flag'),
   bookingamount: Joi.when('type', {
     is: 'BookingAndSecurityDeposit',
     then: Joi.number().required().label('booking amount'),
