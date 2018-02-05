@@ -13,7 +13,7 @@ CopyPricing.prototype.toArray = function() {
     fromid: this.from.id,
     fromyear: this.fromyear,
     toyear: this.toyear,
-    sameweekday: this.sameweekday,
+    adjustforchangeday: this.adjustforchangeday,
     checkforoverlap: this.checkforoverlap,
     overlapaction: this.overlapaction,
     copyminimums: this.copyminimums,
