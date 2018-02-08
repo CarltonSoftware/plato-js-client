@@ -13,7 +13,6 @@ CopyPricing.prototype.toArray = function() {
     fromid: this.from.id,
     fromyear: this.fromyear,
     toyear: this.toyear,
-    adjustforchangeday: this.adjustforchangeday,
     checkforoverlap: this.checkforoverlap,
     overlapaction: this.overlapaction,
     copyminimums: this.copyminimums,
@@ -24,6 +23,12 @@ CopyPricing.prototype.toArray = function() {
     incrementamount2: this.incrementamount2,
     roundtonearest: this.roundtonearest
   };
+
+  if (this.adjustforchangeday) {
+    fields.adjustforchangeday = this.adjustforchangeday;
+  } else {
+    fields.adjustforchangeday = false;
+  }
 
   if(this.to && this.to.id) {
     fields.toid = this.to.id;
