@@ -92,9 +92,13 @@ SpecialOffer.prototype.toUpdateArray = function() {
     pricetypeid: this.pricetype.id,
     forpricetypeid: this.forpricetype.id,
     archive: this.archive,
-    archiveddatetime: this.archiveddatetime,
-    percentagepaidbyowner: this.percentagepaidbyowner
+    archiveddatetime: this.archiveddatetime
   };
+  if (this.percentagepaidbyowner === null) {
+    fields.percentagepaidbyowner = 'null';
+  } else {
+    fields.percentagepaidbyowner = this.percentagepaidbyowner;
+  }
   if (this.archivedbyactor) {
     fields.archivedbyactorid = this.archivedbyactor.id;
   }
