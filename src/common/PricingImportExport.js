@@ -18,10 +18,13 @@ function PricingImportExport(id) {
 PricingImportExport.prototype = new SingleEntity();
 PricingImportExport.prototype.toArray = function() {
   var s = {
-    brandingid: this.branding.id,
     createdtabsuserid: this.createdtabsuser.id,
     year: this.year
   };
+
+  if (this.branding && this.branding.id) {
+    s['brandingid'] = this.branding.id;
+  }
 
   if (this.propertyids.length > 0) {
     s['propertyids'] = this.propertyids.join(',');
