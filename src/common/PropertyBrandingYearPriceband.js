@@ -1,5 +1,7 @@
 var SingleEntity = require('./SingleEntity');
+var Collection = require('./Collection');
 var PriceBand = require('./PriceBand');
+var PropertyBrandingYearPriceBandReducedOccupancyPrice = require('./PropertyBrandingYearPriceBandReducedOccupancyPrice');
 var Joi = require('joi');
 
 function PropertyBrandingYearPriceband(propertyid, propertybrandingid, year, id) {
@@ -8,6 +10,11 @@ function PropertyBrandingYearPriceband(propertyid, propertybrandingid, year, id)
   this.id = id;
   this.priceband = new PriceBand();
   this.parent = this.parent;
+  this.reducedoccupancyprices = new Collection({
+    object: PropertyBrandingYearPriceBandReducedOccupancyPrice,
+    path: 'reducedoccupancyprice',
+    parent: this
+  });
 }
 
 PropertyBrandingYearPriceband.prototype = new SingleEntity();
