@@ -23,6 +23,9 @@ function Booking(id) {
   this.branding = new EntityLink({
     entity: 'Branding'
   });
+  this.pricedusingbranding = new EntityLink({
+    entity: 'Branding'
+  });
 
   this.property = new BookingProperty();
 
