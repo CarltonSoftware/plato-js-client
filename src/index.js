@@ -144,6 +144,7 @@ module.exports.common.PropertyTarget = require('./common/PropertyTarget');
 module.exports.common.PartySizePricing = require('./common/PartySizePricing');
 module.exports.common.PartySizePrice = require('./common/PartySizePrice');
 module.exports.common.PartySizePriceType = require('./common/PartySizePriceType');
+module.exports.common.PricingImportExport = require('./common/PricingImportExport');
 module.exports.common.RoomType = require('./common/RoomType');
 module.exports.common.BedTypeRoomType = require('./common/BedTypeRoomType');
 module.exports.common.BedType = require('./common/BedType');
