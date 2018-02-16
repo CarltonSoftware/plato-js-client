@@ -285,6 +285,7 @@ module.exports.common.CronTask = require('./common/CronTask');
 // Property Pricing
 module.exports.common.PropertyBrandingPrice = require('./common/PropertyBrandingPrice');
 module.exports.common.PriceOverride = require('./common/PriceOverride');
+module.exports.common.ReducedOccupancyPrice = require('./common/ReducedOccupancyPrice');
 
 // Communications
 module.exports.common.ContactMethodElement = require('./common/ContactMethodElement');
