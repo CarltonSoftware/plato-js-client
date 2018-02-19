@@ -107,7 +107,7 @@ PropertyBranding.prototype.getPrices = function(fromDate, toDate) {
  * @param {string}  toDate
  * @param {boolean} includechangedays
  */
-PropertyBranding.prototype.getAvailability = function(fromDate, toDate, includechangedays) {
+PropertyBranding.prototype.getAvailability = function(fromDate, toDate, includechangedays, affiliateid) {
   var p = this.availability;
 
   var params = {};
@@ -119,6 +119,9 @@ PropertyBranding.prototype.getAvailability = function(fromDate, toDate, includec
   }
   if (includechangedays === true) {
     params['includechangedays'] = 'true';
+  }
+  if (affiliateid) {
+    params['affiliateid'] = affiliateid;
   }
 
   p.toArray = function() {
