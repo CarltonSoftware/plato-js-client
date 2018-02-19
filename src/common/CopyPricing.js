@@ -34,7 +34,7 @@ CopyPricing.prototype.toArray = function() {
     fields.toid = this.to.id;
   }
 
-  if (this.toyear == this.fromyear) {
+  if (this.toyear == this.fromyear && !this.adjustforchangeday) {
     fields.datemodifier = this.datemodifier + ' days'
   }
 
