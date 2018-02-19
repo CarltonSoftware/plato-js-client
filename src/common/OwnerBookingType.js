@@ -9,7 +9,8 @@ function OwnerBookingType(id) {
   this.validSchema = function() {
     return {
       name: Joi.string().required().label('name'),
-      description: Joi.string().required().label('description')
+      description: Joi.string().required().label('description'),
+      inactive: Joi.boolean().optional().label('inactive')
     }
   };
 }
@@ -19,6 +20,7 @@ OwnerBookingType.prototype.toArray = function() {
   return {
     name: this.name,
     description: this.description,
+    inactive: this.inactive
   };
 };
 

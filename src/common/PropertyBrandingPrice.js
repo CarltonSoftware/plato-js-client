@@ -2,7 +2,7 @@ var SingleEntity = require('./SingleEntity');
 var PriceTypeBranding = require('./PriceTypeBranding');
 var Currency = require('./Currency');
 var Collection = require('./Collection');
-var PartySizePrice = require('./PartySizePrice');
+var ReducedOccupancyPrice = require('./ReducedOccupancyPrice');
 var EntityLink = require('./EntityLink');
 var moment = require('moment');
 var PropertyBrandingYearPriceband = require('./PropertyBrandingYearPriceband');
@@ -19,11 +19,7 @@ function PropertyBrandingPrice(id) {
 
   this.currency = new Currency();
   this.pricetypebranding = new PriceTypeBranding();
-  this.partysizeprices = new Collection({
-    path: 'partysizeprice',
-    object: PartySizePrice,
-    parent: this
-  });
+  this.partysizeprices = new Collection({ object: ReducedOccupancyPrice, parent: this });
   this.propertybranding = new EntityLink({
     entity: 'PropertyBranding'
   });

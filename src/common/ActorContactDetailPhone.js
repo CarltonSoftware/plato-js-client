@@ -28,16 +28,21 @@ ActorContactDetailPhone.prototype.toArray = function() {
   };
 };
 
+ActorContactDetailPhone.prototype.parse = function(countryAlpha2) {
+  if (!countryAlpha2 && this.countrycode == '44') {
+    countryAlpha2 = 'GB';
+  }
+  return libphonenumber.parse('+' + this.countrycode + this.subscribernumber, countryAlpha2);
+};
+
 /**
  * Return the formatted phone number in national format if it matches the default country, international otherwise
  *
  * @returns {String}
  */
 ActorContactDetailPhone.prototype.getFormattedNumber = function(countryAlpha2) {
+  var parsedNumber = this.parse(countryAlpha2);
   countryAlpha2 = countryAlpha2 || 'GB';
-  var regionCode = '+'+this.countrycode;
-  var parsedNumber = libphonenumber.parse(regionCode + this.subscribernumber, { country: { default: countryAlpha2 } });
-
   var value = libphonenumber.format(
     parsedNumber,
     parsedNumber.country === countryAlpha2 ? 'National' : 'International'

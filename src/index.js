@@ -125,7 +125,6 @@ module.exports.common.PropertyBrandingPricing = require('./common/PropertyBrandi
 module.exports.common.PropertyBrandingSpecialoffer = require('./common/PropertyBrandingSpecialoffer');
 module.exports.common.PropertyBrandingStatus = require('./common/PropertyBrandingStatus');
 module.exports.common.PropertyBrandingYearPriceband = require('./common/PropertyBrandingYearPriceband');
-module.exports.common.PropertyBrandingYearPriceBandReducedOccupancyPrice = require('./common/PropertyBrandingYearPriceBandReducedOccupancyPrice');
 module.exports.common.PropertyComment = require('./common/PropertyComment');
 module.exports.common.PropertyOwner = require('./common/PropertyOwner');
 module.exports.common.PropertyNote = require('./common/PropertyNote');
@@ -285,6 +284,7 @@ module.exports.common.CronTask = require('./common/CronTask');
 // Property Pricing
 module.exports.common.PropertyBrandingPrice = require('./common/PropertyBrandingPrice');
 module.exports.common.PriceOverride = require('./common/PriceOverride');
+module.exports.common.ReducedOccupancyPrice = require('./common/ReducedOccupancyPrice');
 
 // Communications
 module.exports.common.ContactMethodElement = require('./common/ContactMethodElement');
