@@ -12,7 +12,8 @@ SpecialOfferAttribute.prototype.toArray = function() {
   return {
     attributeid: this.attribute.id,
     value: this.value,
-    type: this.attribute.type
+    type: this.attribute.type,
+    operator: this.operator
   };
 };
 
