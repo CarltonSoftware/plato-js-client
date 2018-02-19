@@ -125,7 +125,6 @@ module.exports.common.PropertyBrandingPricing = require('./common/PropertyBrandi
 module.exports.common.PropertyBrandingSpecialoffer = require('./common/PropertyBrandingSpecialoffer');
 module.exports.common.PropertyBrandingStatus = require('./common/PropertyBrandingStatus');
 module.exports.common.PropertyBrandingYearPriceband = require('./common/PropertyBrandingYearPriceband');
-module.exports.common.PropertyBrandingYearPriceBandReducedOccupancyPrice = require('./common/PropertyBrandingYearPriceBandReducedOccupancyPrice');
 module.exports.common.PropertyComment = require('./common/PropertyComment');
 module.exports.common.PropertyOwner = require('./common/PropertyOwner');
 module.exports.common.PropertyNote = require('./common/PropertyNote');
