@@ -16,7 +16,7 @@ PropertyBrandingStatus.prototype = new SingleEntity();
 
 PropertyBrandingStatus.prototype.toArray = function() {
   return {
-    statusid: this.status.id,
+    status: this.status.name,
     fromdate: this.fromdate,
     todate: this.todate,
     statusreasonid: this.reason.id,
