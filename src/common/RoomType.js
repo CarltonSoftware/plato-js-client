@@ -12,16 +12,16 @@ function RoomType(id) {
     path: 'bedtype',
     parent: this
   });
-
-  this.validSchema = function() {
-    return {
-      name: Joi.string().required().label('name'),
-      sleeps: Joi.string().required().label('sleeps'),
-      description: Joi.string().required().label('description')
-    };
-  }
 }
 RoomType.prototype = new SingleEntity();
+
+RoomType.prototype.validSchema = function() {
+  return {
+    name: Joi.string().required().label('name'),
+    sleeps: Joi.string().required().label('sleeps'),
+    description: Joi.string().required().label('description')
+  };
+};
 
 RoomType.prototype.toArray = function() {
   return {

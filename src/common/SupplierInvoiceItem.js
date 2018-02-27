@@ -28,7 +28,7 @@ SupplierInvoiceItem.prototype.getSummaryTotal = function(prop) {
     for (var i in this.itempayments.collection) {
       t += parseFloat(this.itempayments.collection[i][prop]);
     }
-  };
+  }
 
   return t;
 };

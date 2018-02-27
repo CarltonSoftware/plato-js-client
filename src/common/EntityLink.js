@@ -9,7 +9,7 @@ function EntityLink(options) {
     var id = parseInt(routeParts.pop());
 
     // Remove last path from route
-    var path = routeParts.pop();
+    path = routeParts.pop();
 
     // Create new entity
     var e = new this.entity(id);

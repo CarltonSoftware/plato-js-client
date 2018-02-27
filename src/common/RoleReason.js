@@ -8,17 +8,17 @@ function RoleReason(id) {
   this.id = id;
   this.role = new EntityLink({ entity: 'Role' });
   this.reason = new EntityLink({ entity: 'Reason' });
-
-  this.validSchema = function() {
-    return {
-      role: Joi.object().required().label('Role'),
-      reason: Joi.object().required().label('Reason'),
-      required: Joi.boolean().required().label('Required?'),
-      donotdelete: Joi.boolean().required().label('Do not delete').description('This removes the delete option')
-    }
-  };
 }
 RoleReason.prototype = new SingleEntity();
+
+RoleReason.prototype.validSchema = function() {
+  return {
+    role: Joi.object().required().label('Role'),
+    reason: Joi.object().required().label('Reason'),
+    required: Joi.boolean().required().label('Required?'),
+    donotdelete: Joi.boolean().required().label('Do not delete').description('This removes the delete option')
+  };
+};
 
 RoleReason.prototype.toArray = function() {
   return {

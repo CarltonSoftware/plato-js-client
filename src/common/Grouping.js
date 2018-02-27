@@ -18,8 +18,8 @@ function Grouping(id) {
   }.bind(this);
 
   this.hasChildren = function() {
-    return Object.prototype.toString.call(this.children) === '[object Array]'
-      && this.children.length > 0;
+    return Object.prototype.toString.call(this.children) === '[object Array]' &&
+          this.children.length > 0;
   };
 
   this.hasChildGroup = function(id) {
@@ -55,7 +55,7 @@ Grouping.prototype.toString = function() {
   if (this.hasParent()) {
     return [this.name, this.parentgrouping.id].join(' ');
   } else {
-    return [this.name].join(' ');
+    return this.name;
   }
 };
 

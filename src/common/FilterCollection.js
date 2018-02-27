@@ -185,8 +185,8 @@ function FilterCollection(options) {
    * @return {String}
    */
   this.getFilterString = function() {
-    if (filterGroups.collection.length === 1
-      && Object.keys(filterGroups.first().getFilters()).length > 0
+    if (filterGroups.collection.length === 1 &&
+        Object.keys(filterGroups.first().getFilters()).length > 0
     ) {
       return '&filter=' + filterGroups.first().getFilterString();
     } else if (filterGroups.collection.length > 1) {
@@ -302,7 +302,7 @@ FilterCollection.prototype.fetchCacheable = function(cacheTime, forceRefresh) {
   if (typeof cacheTime === 'undefined') {
     cacheTime = 3600;
   }
-  var verbose = localStorage['cachelog'];
+  var verbose = localStorage.cachelog;
   var path = this.getFilterPath();
   this.cacheKey = path;
   if (verbose) {console.log('filtercollection cacheable - '+path);}

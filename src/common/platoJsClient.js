@@ -264,7 +264,7 @@ var platoJsClient = (function () {
          */
         this.getBasicEndpointCacheable = function(path, cacheTime, forceRefresh) {
           if (!cacheTime) {cacheTime = 3600;}
-          var verbose = localStorage['cachelog'];
+          var verbose = localStorage.cachelog;
           if (verbose) {console.log('basic endpoint cacheable - '+path);}
           if (cacheTime>0 && !forceRefresh && localStorage[path]) {
             cacheEntry = JSON.parse(lzstring.decompress(localStorage[path]));

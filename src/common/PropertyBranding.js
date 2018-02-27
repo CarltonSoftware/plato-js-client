@@ -12,8 +12,8 @@ function PropertyBranding(id) {
   this.path = 'branding';
   this.createPath = this.path;
   this.id = id;
-  this.branding = new EntityLink({ entity: 'Branding' })
-  this.brandinggroup = new EntityLink({ entity: 'BrandingGroup' })
+  this.branding = new EntityLink({ entity: 'Branding' });
+  this.brandinggroup = new EntityLink({ entity: 'BrandingGroup' });
   this.bookingbrand = new EntityLink({
     entity: 'PropertyBookingBrand',
     parent: new EntityLink({ entity: 'Property' })
@@ -93,7 +93,7 @@ PropertyBranding.prototype.getPrices = function(fromDate, toDate) {
       return {
         fromdate: fromDate,
         todate: toDate
-      }
+      };
     };
   }
 
@@ -112,13 +112,13 @@ PropertyBranding.prototype.getAvailability = function(fromDate, toDate, includec
 
   var params = {};
   if (fromDate) {
-    params['fromdate'] = fromDate;
+    params.fromdate = fromDate;
   }
   if (toDate) {
-    params['todate'] = toDate;
+    params.todate = toDate;
   }
   if (includechangedays === true) {
-    params['includechangedays'] = 'true';
+    params.includechangedays = 'true';
   }
   if (affiliateid) {
     params['affiliateid'] = affiliateid;

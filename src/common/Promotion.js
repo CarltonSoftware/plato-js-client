@@ -12,7 +12,7 @@ Promotion.prototype = new SingleEntity();
 Promotion.prototype.toArray = function() {
   return {
     promotioncode: this.promotioncode,
-    extraid: this.extra.id,
+    extraid: this.extra ? this.extra.id : 'null',
     usagelimit: this.usagelimit,
   };
 };

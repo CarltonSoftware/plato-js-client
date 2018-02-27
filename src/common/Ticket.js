@@ -55,6 +55,10 @@ function Ticket(ticketID) {
 
 Ticket.prototype = new SingleEntity();
 
+Ticket.prototype.toString = function() {
+  return this.id + ' - ' + this.subject;
+};
+
 Ticket.prototype.toArray = function() {
   return {
     priority: this.priority.priority,

@@ -62,8 +62,7 @@ GroupingCollection.prototype.postResponse = function() {
 
     // Find any nodes which have a parent in the current id array
     nodes = this.collection.filter(function(item) {
-      return typeof item.parentgrouping === 'object'
-        && ids.indexOf(item.parentgrouping.id) > -1;
+      return typeof item.parentgrouping === 'object' && ids.indexOf(item.parentgrouping.id) > -1;
     });
 
     // Update total so we can use the breakout clause

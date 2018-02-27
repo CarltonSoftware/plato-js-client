@@ -23,11 +23,11 @@ PricingImportExport.prototype.toArray = function() {
   };
 
   if (this.branding && this.branding.id) {
-    s['brandingid'] = this.branding.id;
+    s.brandingid = this.branding.id;
   }
 
   if (this.propertyids.length > 0) {
-    s['propertyids'] = this.propertyids.join(',');
+    s.propertyids = this.propertyids.join(',');
   }
 
   return s;

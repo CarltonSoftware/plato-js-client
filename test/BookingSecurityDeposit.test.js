@@ -59,7 +59,7 @@ describe('BookingSecurityDeposit', function() {
         ownerchargecode: {
           id: 1
         }
-      }, validSchema).error).to.be.null;
+      }, validSchema).error).to.be.null();
     });
   });
 });
