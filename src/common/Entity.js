@@ -35,9 +35,7 @@ Entity.prototype.mutateEntity = function(entity) {
   for (var prop in entity) {
     if (entity.hasOwnProperty(prop)) {
       if (this.hasOwnProperty(prop) && typeof this[prop] === 'object' && this[prop] !== null) {
-        if (typeof entity[prop] === 'string' &&
-          entity[prop].indexOf('/v2') === 0
-        ) {
+        if (typeof entity[prop] === 'string' && entity[prop].indexOf('/v2') === 0) {
           // See if EntityLink function is being used
           if (typeof this[prop].factory === 'function') {
             this[prop] = this[prop].factory(entity[prop]);
@@ -48,6 +46,10 @@ Entity.prototype.mutateEntity = function(entity) {
           }
         } else if (typeof this[prop].mutateResponse === 'function') {
           // Recursive call
+          this[prop].mutateResponse(entity[prop]);
+        } else if (this[prop].entity && this[prop].factory) {
+          // EntityLink being used, even though we have an object in the response (for BookingSuppliers fields)
+          this[prop] = new this[prop].entity();
           this[prop].mutateResponse(entity[prop]);
         } else {
           this[prop] = entity[prop];
