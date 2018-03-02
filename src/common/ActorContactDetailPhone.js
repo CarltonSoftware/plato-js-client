@@ -43,17 +43,19 @@ ActorContactDetailPhone.prototype.parse = function(countryAlpha2) {
 ActorContactDetailPhone.prototype.getFormattedNumber = function(countryAlpha2) {
   var parsedNumber = this.parse(countryAlpha2);
   countryAlpha2 = countryAlpha2 || 'GB';
-  var value = libphonenumber.format(
-    parsedNumber,
-    parsedNumber.country === countryAlpha2 ? 'National' : 'International'
-  );
-
-  if (this.extension) {
-    value = value + ' ext. ' + this.extension;
+  if (parsedNumber.country) {
+    var value = libphonenumber.format(
+      parsedNumber,
+      parsedNumber.country === countryAlpha2 ? 'National' : 'International'
+    );
   }
 
   if (!value) {
-    value = this.subscribernumber;
+    value = '+' + this.countrycode + ' ' + this.subscribernumber;
+  }
+
+  if (this.extension) {
+    value = value + ' ext. ' + this.extension;
   }
 
   return value;
