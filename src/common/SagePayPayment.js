@@ -1,6 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var Customer = require('./Customer');
 var Booking = require('./Booking');
+var Branding = require('./Branding');
 var PaymentMethod = require('./PaymentMethod');
 var Currency = require('./Currency');
 var Actor = require('./Actor');
@@ -15,6 +16,7 @@ function SagePayPayment(id) {
   this.id = id;
   this.customer = new Customer();
   this.booking = new Booking();
+  this.branding = new Branding();
   this.contactdetailpostal = new ActorContactDetailAddress();
   this.paymentmethod = new PaymentMethod();
   this.currency = new Currency();
@@ -36,6 +38,10 @@ SagePayPayment.prototype.toArray = function() {
 
   if (this.booking.id) {
     arr.bookingid = this.booking.id;
+  }
+
+  if (this.branding.id) {
+    arr.brandingid = this.branding.id;
   }
 
   if (this.bookingamount && this.booking.id) {
