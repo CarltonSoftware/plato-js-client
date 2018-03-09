@@ -9,7 +9,7 @@ function SecurityGroup(id) {
   this.id = id;
 
   this.securityroles = new StaticCollection({
-  	object: SecurityRole
+    object: SecurityRole
   });
 
   /**
@@ -18,15 +18,15 @@ function SecurityGroup(id) {
    * @param {string|Array} role
    */
   this.hasRole = function(role) {
-  	for (var i in this.securityroles.collection) {
-  		if (role instanceof Array && role.indexOf(this.securityroles.collection[i].name) >= 0) {
-  			return true;
-  		} else if (typeof role === 'string' && this.securityroles.collection[i].name === role) {
-  			return true;
-  		}
-  	}
+    for (var i in this.securityroles.collection) {
+      if (role instanceof Array && role.indexOf(this.securityroles.collection[i].name) >= 0) {
+        return true;
+      } else if (typeof role === 'string' && this.securityroles.collection[i].name === role) {
+        return true;
+      }
+    }
 
-  	return false;
+    return false;
   };
 }
 SecurityGroup.prototype = new SingleEntity();

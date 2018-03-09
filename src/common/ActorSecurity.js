@@ -1,5 +1,5 @@
 var SingleEntity = require('./SingleEntity');
-var EntityLink = require('./EntityLink');
+// var EntityLink = require('./EntityLink');
 var SecurityRole = require('./SecurityRole');
 var SecurityGroup = require('./SecurityGroup');
 var Joi = require('joi');
@@ -8,7 +8,7 @@ function ActorSecurity(id) {
   this.path = 'actorsecurity';
   this.createPath = 'actorsecurity';
   this.id = id;
-  this.actor = new EntityLink({ entity: 'Actor' });
+  // this.actor = new Actor(); // causes an infinite loop
   this.securityrole = new SecurityRole();
   this.securitygroup = new SecurityGroup();
 }
