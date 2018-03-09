@@ -8,7 +8,7 @@ function ActorSecurity(id) {
   this.path = 'actorsecurity';
   this.createPath = 'actorsecurity';
   this.id = id;
-  // this.actor = new Actor(); // causes an infinite loop
+  // this.actor = new EntityLink({ entity: 'Actor' }); // causes an infinite loop
   this.securityrole = new SecurityRole();
   this.securitygroup = new SecurityGroup();
 }
