@@ -134,7 +134,7 @@ Collection.prototype.fetch = function(dependencies) {
           var fetched = {};
 
           return Promise.all(collection.map(function(item) {
-            if (item[dependency]) {
+            if (item[dependency] && item[dependency].id) {
               if (item[dependency].id in fetched) {
                 item[dependency] = fetched[item[dependency].id];
               } else {

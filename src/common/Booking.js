@@ -14,6 +14,7 @@ var NoteFilterCollection = require('./NoteFilterCollection');
 var WebBooking = require('./WebBooking');
 var BookingExtra = require('./BookingExtra');
 var BookingProperty = require('./BookingProperty');
+var Promotion = require('./Promotion');
 
 function Booking(id) {
   this.path = 'booking';
@@ -72,6 +73,11 @@ function Booking(id) {
   this.extras = new Collection({
     path: 'extra',
     object: BookingExtra,
+    parent: this
+  });
+  this.promotions = new Collection({
+    path: 'promotion',
+    object: Promotion,
     parent: this
   });
 

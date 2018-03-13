@@ -1,6 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
 var ManagedService = require('./ManagedService');
+var SupplierServiceCharge = require('./SupplierServiceCharge');
 
 function BookingSupplier(id) {
   this.path = 'supplier';
@@ -22,6 +23,7 @@ function BookingSupplier(id) {
   this.booking = new EntityLink({
     entity: 'Booking'
   });
+  this.servicecharge = new SupplierServiceCharge();
 }
 BookingSupplier.prototype = new SingleEntity();
 
