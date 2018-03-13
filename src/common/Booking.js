@@ -193,6 +193,8 @@ Booking.prototype.toArray = function() {
 
   if (this.autobalanceactorpayment) {
     array.autobalanceactorpaymentid = (this.autobalanceactorpayment && this.autobalanceactorpayment.id) ? this.autobalanceactorpayment.id : false;
+  } else if (this.autobalanceactorpayment === false) {
+    array.autobalanceactorpaymentid = false;
   }
 
   // Transferred */
