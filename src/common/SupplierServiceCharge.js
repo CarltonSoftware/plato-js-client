@@ -23,7 +23,8 @@ SupplierServiceCharge.prototype.toUpdateArray = function() {
     autoaddowner: this.autoaddowner,
     fromdate: this.fromdate,
     todate: this.todate,
-    ownerchargecodeid: this.ownerchargecode.id
+    ownerchargecodeid: this.ownerchargecode.id,
+    workordertemplateid: this.workordertemplate.id,
   };
 };
 SupplierServiceCharge.prototype.toCreateArray = function() {
@@ -41,6 +42,11 @@ SupplierServiceCharge.prototype.validSchema = function() {
     ownerchargecode: Joi.when('type', {
       is: 'OwnerCharge',
       then: Joi.object().required().label('Owner Charge Code'),
+      otherwise: Joi.forbidden()
+    }),
+    workordertemplate: Joi.when('type', {
+      is: 'WorkOrder',
+      then: Joi.object().required().label('Work Order Template'),
       otherwise: Joi.forbidden()
     }),
     vatband: Joi.object().optional().label('Vat Band'),
