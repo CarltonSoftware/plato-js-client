@@ -1,7 +1,9 @@
 var SingleEntity = require('./SingleEntity');
+var EntityLink = require('./EntityLink');
 var Currency = require('./Currency');
 var VatBand = require('./VatBand');
 var OwnerChargeCode = require('./OwnerChargeCode');
+
 var Joi = require('joi');
 
 function SupplierServiceCharge(id) {
@@ -11,6 +13,7 @@ function SupplierServiceCharge(id) {
   this.currency = new Currency();
   this.vatband = new VatBand();
   this.ownerchargecode = new OwnerChargeCode();
+  this.workordertemplate = new EntityLink({ entity: 'WorkOrder' });
 }
 SupplierServiceCharge.prototype = new SingleEntity();
 
