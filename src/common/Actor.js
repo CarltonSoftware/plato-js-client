@@ -429,4 +429,13 @@ Actor.prototype.emailArrivalsReport = function(values) {
   return client.put({ path: [this.path, this.id, 'arrivalsreport'].join('/'), entity: values });
 };
 
+/**
+ * Emails a ran report
+ *
+ * @returns {Promise}
+ */
+Actor.prototype.emailReport = function(reportrun) {
+  return client.put({ path: [this.path, this.id, 'report'].join('/'), entity: { reportrunid: reportrun.id } });
+};
+
 module.exports = Actor;
