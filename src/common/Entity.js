@@ -71,16 +71,19 @@ Entity.prototype.mutateEntity = function(entity) {
  *
  * @returns {Promise}
  */
-Entity.prototype.okPromiseResult = function(path, params) {
+Entity.prototype.okPromiseResult = function(path, params, cache) {
   var result = client.get({ path: path, params: _.pick(params, _.identity) });
   var e = this;
   return new Promise(function(resolve, reject) {
     result.then(function(res) {
       if (res.status.code === 200) {
-        if (e.cacheKey) {
-          localStorage[e.cacheKey] = lzstring.compress(JSON.stringify({entity: res.entity,
-                                                       cachedTime: Date.now(),
-                                                       buildDate: localStorage.buildDate}));
+        if (cache && e.cacheKey) {
+          try {
+            localStorage[e.cacheKey] = lzstring.compress(JSON.stringify({entity: res.entity,
+                                                         cachedTime: Date.now(),
+                                                         buildDate: localStorage.buildDate}));
+          } catch (ex) {
+          }
         };
         resolve(e.mutateResponse(res.entity));
       } else {

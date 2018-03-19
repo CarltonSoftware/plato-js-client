@@ -256,12 +256,13 @@ FilterCollection.prototype = new Collection();
  *
  * @returns {Collection.prototype@call;promiseResult}
  */
-FilterCollection.prototype.fetch = function(dependencies) {
+FilterCollection.prototype.fetch = function(dependencies, cache) {
   var path = this.getFilterPath();
 
   var promise = this.okPromiseResult(
     path,
-    {}
+    {},
+    cache
   );
 
   if (dependencies && dependencies.length) {
@@ -320,10 +321,10 @@ FilterCollection.prototype.fetchCacheable = function(cacheTime, forceRefresh) {
       if (verbose) {console.log('cacheHit');}
       promise = this.cachedOkPromiseResult(cacheEntry.entity);
     } else {
-      promise = this.fetch();
+      promise = this.fetch(null, true);
     }
   } else {
-    promise = this.fetch();
+    promise = this.fetch(null, (cacheTime!==0));
   }
 
   return promise;

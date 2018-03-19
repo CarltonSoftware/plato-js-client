@@ -248,7 +248,10 @@ var platoJsClient = (function () {
           return new Promise(function(resolve, reject) {
             result.then(function(res) {
               if (res.status.code === 200) {
-                localStorage[path] = lzstring.compress(JSON.stringify({entity: res.entity, cachedTime: Date.now(), buildDate: localStorage.buildDate}));
+                try {
+                  localStorage[path] = lzstring.compress(JSON.stringify({entity: res.entity, cachedTime: Date.now(), buildDate: localStorage.buildDate}));
+                } catch (e) {
+                }
                 resolve(res);
               } else {
                 reject(new statusError(res));
