@@ -1,7 +1,9 @@
 var SingleEntity = require('./SingleEntity');
+var EntityLink = require('./EntityLink');
 var Currency = require('./Currency');
 var VatBand = require('./VatBand');
 var OwnerChargeCode = require('./OwnerChargeCode');
+
 var Joi = require('joi');
 
 function SupplierServiceCharge(id) {
@@ -11,6 +13,7 @@ function SupplierServiceCharge(id) {
   this.currency = new Currency();
   this.vatband = new VatBand();
   this.ownerchargecode = new OwnerChargeCode();
+  this.workordertemplate = new EntityLink({ entity: 'WorkOrder' });
 }
 SupplierServiceCharge.prototype = new SingleEntity();
 
@@ -23,7 +26,8 @@ SupplierServiceCharge.prototype.toUpdateArray = function() {
     autoaddowner: this.autoaddowner,
     fromdate: this.fromdate,
     todate: this.todate,
-    ownerchargecodeid: this.ownerchargecode.id
+    ownerchargecodeid: this.ownerchargecode.id,
+    workordertemplateid: this.workordertemplate.id,
   };
 };
 SupplierServiceCharge.prototype.toCreateArray = function() {
@@ -41,6 +45,11 @@ SupplierServiceCharge.prototype.validSchema = function() {
     ownerchargecode: Joi.when('type', {
       is: 'OwnerCharge',
       then: Joi.object().required().label('Owner Charge Code'),
+      otherwise: Joi.forbidden()
+    }),
+    workordertemplate: Joi.when('type', {
+      is: 'WorkOrder',
+      then: Joi.object().required().label('Work Order Template'),
       otherwise: Joi.forbidden()
     }),
     vatband: Joi.object().optional().label('Vat Band'),

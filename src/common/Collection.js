@@ -121,10 +121,11 @@ Collection.prototype.previousPage = function() {
  *
  * @returns {Collection.prototype@call;promiseResult}
  */
-Collection.prototype.fetch = function(dependencies) {
+Collection.prototype.fetch = function(dependencies, cache) {
   var promise = this.okPromiseResult(
     this.getPath(),
-    this.toArray()
+    this.toArray(),
+    cache
   );
 
   if (dependencies && dependencies.length) {
@@ -183,10 +184,10 @@ Collection.prototype.fetchCacheable = function(cacheTime, forceRefresh) {
       if (verbose) {console.log('cacheHit');}
       promise = this.cachedOkPromiseResult(cacheEntry.entity);
     } else {
-      promise = this.fetch();
+      promise = this.fetch(null, true);
     }
   } else {
-    promise = this.fetch();
+    promise = this.fetch(null, (cacheTime!==0));
   }
 
   return promise;
