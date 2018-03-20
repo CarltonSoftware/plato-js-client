@@ -443,7 +443,7 @@ Actor.prototype.emailReport = function(reportrun) {
  *
  * @returns {Promise}
  */
-Actor.prototype.emailReport = function(documentbase) {
+Actor.prototype.emailDocument = function(documentbase) {
   return client.put({ path: [this.path, this.id, 'senddocument'].join('/'), entity: { documentbase: documentbase.id } });
 };
 
