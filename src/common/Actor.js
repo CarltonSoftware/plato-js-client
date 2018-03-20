@@ -435,7 +435,16 @@ Actor.prototype.emailArrivalsReport = function(values) {
  * @returns {Promise}
  */
 Actor.prototype.emailReport = function(reportrun) {
-  return client.put({ path: [this.path, this.id, 'report'].join('/'), entity: { reportrunid: reportrun.id } });
+  return client.put({ path: [this.path, this.id, 'sendreport'].join('/'), entity: { reportrunid: reportrun.id } });
+};
+
+/**
+ * Emails a documentbase
+ *
+ * @returns {Promise}
+ */
+Actor.prototype.emailReport = function(documentbase) {
+  return client.put({ path: [this.path, this.id, 'senddocument'].join('/'), entity: { documentbase: documentbase.id } });
 };
 
 module.exports = Actor;
