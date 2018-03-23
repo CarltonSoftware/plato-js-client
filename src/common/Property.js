@@ -19,6 +19,7 @@ var PropertyHousekeeping = require('./PropertyHousekeeping');
 var InspectionType = require('./InspectionType');
 var AvailableBreak = require('./AvailableBreak');
 var Joi = require('joi');
+var moment = require('moment');
 var client = require('./platoJsClient').getInstance();
 
 function Property(id) {
@@ -182,6 +183,77 @@ Property.prototype.getAvailablebreaks = function(fromdate, todate, nights) {
 
 Property.prototype.updateAvailablebreaks = function() {
   return this.updatePromiseResult([this.path, this.id, 'availablebreaks'].join('/'), { force: true });
+};
+
+
+
+Property.prototype.getAvailableBreaksPrice = function(fromDate, days) {
+  let prices = this.availablebreaks.filter(function(p) {
+    return moment(fromDate).isSame(p.fromdate);
+  });
+  
+  if (prices.length > 0) {
+    let price = prices.filter(
+      function(p) {
+        return p.days === days;
+      }
+    );
+    
+    if (days <= 7) {
+      if (price.length === 1) {
+        return price.pop().price;
+      }
+    }
+
+    if (days > 7) {
+      let getPrice = function(prices, availablebreakprices, fromDate, days = 7) {
+        let price = availablebreakprices.filter(
+          function(p) {
+            return p.days == days && moment(p.fromdate).isSame(fromDate);
+          }
+        );
+        
+        if (price.length === 1) {
+          prices.push(price.shift().price);
+        } else {
+          prices.push(-1);
+        }
+      };
+      
+      let prices = [],
+        add = days % 7,
+        weeks = (days - add) / 7;
+
+        if (days < 14) {
+          add = days;
+        } else if (add > 0) {
+          add = add + 7;
+        }
+        
+        let to = moment(fromDate).add(i * 7, 'd');
+        for (var i = 0; i < weeks; i++) {
+          to = moment(fromDate).add(i * 7, 'd');
+          getPrice(prices, this.availablebreaks, to, 7);
+        }
+
+        if (to && add > 0) {
+          getPrice(prices, this.availablebreaks, to, add);
+        }
+
+        if (prices.indexOf(-1) < 0) {
+          let total = 0;
+          prices.forEach(function(p) {
+            total += p;
+          });
+
+          return total;
+        } else {
+          return 0;
+        }
+    }
+    
+    return 0;
+  }
 };
 
 /**
