@@ -206,7 +206,8 @@ Property.prototype.getAvailableBreaksPrice = function(fromDate, days) {
     }
 
     if (days > 7) {
-      var getPrice = function(prices, availablebreakprices, fromDate, days = 7) {
+      var getPrice = function(prices, availablebreakprices, fromDate, days) {
+        days = days || 7;
         var price = availablebreakprices.filter(
           function(p) {
             return p.days == days && moment(p.fromdate).isSame(fromDate);
