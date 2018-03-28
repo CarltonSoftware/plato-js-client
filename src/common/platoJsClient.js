@@ -1,13 +1,12 @@
-var _ = require('underscore');
 var statusError = require('../error/statusError');
 var lzstring = require('lz-string');
 
 if (typeof localStorage === 'undefined') {
   var LocalStorage = require('node-localstorage').LocalStorage;
-  localStorage = new LocalStorage('/tmp/scratch');
+  localStorage = new LocalStorage('/tmp/scratch'); // eslint-disable-line no-global-assign
 }
 if (typeof window === 'undefined') {
-  window = {};
+  window = {}; // eslint-disable-line no-global-assign
 }
 
 var platoJsClient = (function () {
@@ -483,7 +482,7 @@ var platoJsClient = (function () {
               if (rbracket.test(prefix)) {
                 add(prefix, value);
               } else {
-                this.buildParams(prefix + "[" + (typeof v === "object"? i: "") + "]", value, add );
+                this.buildParams(prefix + "[" + (typeof v === "object"? i: "") + "]", value, add ); // eslint-disable-line no-undef
               }
             }
           } else if (this.type(obj) === 'object') {
