@@ -16,7 +16,7 @@ PriceBand.prototype.toArray = function() {
 PriceBand.prototype.toString = function() {
   var string = this.priceband;
   if (this.description && this.description != 'Band '+string) {
-  	string += '  (' + this.description + ' )';
+    string += '  (' + this.description + ' )';
   }
   return string;
 };

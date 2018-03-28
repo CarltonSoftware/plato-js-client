@@ -1,5 +1,4 @@
 var SingleEntity = require('./SingleEntity');
-var Collection = require('./Collection');
 var OwnerChargeCode = require('./OwnerChargeCode');
 var Account = require('./Account');
 var Joi = require('joi');

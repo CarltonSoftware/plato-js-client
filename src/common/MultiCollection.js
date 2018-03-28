@@ -1,4 +1,3 @@
-var Collection = require('./Collection');
 
 function MultiCollection() {
   /**

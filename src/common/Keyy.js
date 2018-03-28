@@ -1,6 +1,5 @@
 var Joi = require('joi');
 var SingleEntity = require('./SingleEntity');
-var Collection = require('./Collection');
 var KeyTag = require('./KeyTag');
 
 function Keyy(id) {

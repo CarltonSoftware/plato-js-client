@@ -1,5 +1,4 @@
 var SingleEntity = require('./SingleEntity'),
-  MarketingBrand = require('./MarketingBrand'),
   EntityLink = require('./EntityLink');
 
 function GroupingValue(id) {

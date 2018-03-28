@@ -12,7 +12,7 @@ File.prototype = new SingleEntity();
 File.prototype.getImage = function(style, width, height) {
   return this.okPromiseResult([this.getUpdatePath().replace('file', 'image'), 'resize', style, width, height].join('/'));
 };
-File.prototype.okPromiseResult = function(path, params) {
+File.prototype.okPromiseResult = function(path) {
   var self = this;
   var result = client.get({ path: path, mixin: { responseType: 'blob' } });
 

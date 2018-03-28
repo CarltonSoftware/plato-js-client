@@ -1,5 +1,4 @@
 var Entity = require('./Entity');
-var discriminatorError = require('./../error/discriminatorError');
 var _ = require('underscore');
 
 /**

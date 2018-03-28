@@ -1,6 +1,6 @@
 var SingleEntity = require('./SingleEntity');
 
-function AvailableDay(id) {
+function AvailableDay() {
   this.path = 'availability';
   this.createPath = this.path;
 }

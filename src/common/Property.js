@@ -1,6 +1,5 @@
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
-var Branding = require('./Branding');
 var PropertyBranding = require('./PropertyBranding');
 var PropertyDocument = require('./PropertyDocument');
 var PropertyOwner = require('./PropertyOwner');
@@ -20,7 +19,6 @@ var InspectionType = require('./InspectionType');
 var AvailableBreak = require('./AvailableBreak');
 var Joi = require('joi');
 var moment = require('moment');
-var client = require('./platoJsClient').getInstance();
 
 function Property(id) {
   this.path = 'property';
@@ -221,7 +219,7 @@ Property.prototype.getAvailableBreaksPrice = function(fromDate, days) {
         }
       };
       
-      var prices = [];
+      var _prices = [];
       var add = days % 7;
       var weeks = (days - add) / 7;
 
@@ -234,16 +232,16 @@ Property.prototype.getAvailableBreaksPrice = function(fromDate, days) {
       var to = moment(fromDate).add(i * 7, 'd');
       for (var i = 0; i < weeks; i++) {
         to = moment(fromDate).add(i * 7, 'd');
-        getPrice(prices, this.availablebreaks, to, 7);
+        getPrice(_prices, this.availablebreaks, to, 7);
       }
 
       if (to && add > 0) {
-        getPrice(prices, this.availablebreaks, to, add);
+        getPrice(_prices, this.availablebreaks, to, add);
       }
 
-      if (prices.indexOf(-1) < 0) {
+      if (_prices.indexOf(-1) < 0) {
         var total = 0;
-        prices.forEach(function(p) {
+        _prices.forEach(function(p) {
           total += p;
         });
 

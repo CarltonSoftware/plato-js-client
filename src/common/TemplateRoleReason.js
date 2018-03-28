@@ -1,4 +1,3 @@
-var client = require('./platoJsClient').getInstance();
 var SingleEntity = require('./SingleEntity');
 var RoleReason = require('./RoleReason');
 

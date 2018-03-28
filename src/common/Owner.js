@@ -1,6 +1,6 @@
 var Actor = require('./Actor');
 
-function Owner(id) {
+function Owner() {
   this.path = 'owner';
   this.createPath = 'owner';
 

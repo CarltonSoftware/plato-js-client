@@ -1,5 +1,4 @@
 var SingleEntity = require('./SingleEntity');
-var Collection = require('./Collection');
 var InstructionType = require('./InstructionType');
 var Joi = require('joi');
 

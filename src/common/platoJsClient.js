@@ -35,7 +35,6 @@ var platoJsClient = (function () {
           defaultRequest = require('rest/interceptor/defaultRequest'),
           oAuth = require('rest/interceptor/oAuth'),
           params = require('rest/interceptor/params'),
-          template = require('rest/interceptor/template'),
           host = '/',
           prefix = '',
           oAuthRedirectUrl,
@@ -270,7 +269,7 @@ var platoJsClient = (function () {
           var verbose = localStorage.cachelog;
           if (verbose) {console.log('basic endpoint cacheable - '+path);}
           if (cacheTime>0 && !forceRefresh && localStorage[path]) {
-            cacheEntry = JSON.parse(lzstring.decompress(localStorage[path]));
+            var cacheEntry = JSON.parse(lzstring.decompress(localStorage[path]));
             if (verbose) {
               console.log('Cached at '+ new Date(cacheEntry.cachedTime));
               console.log('Expires at '+ new Date(cacheEntry.cachedTime + (cacheTime*1000)));
@@ -281,7 +280,7 @@ var platoJsClient = (function () {
             if (cacheEntry && (cacheEntry.cachedTime + (cacheTime*1000)) > Date.now() &&
                  cacheEntry.buildDate === localStorage.buildDate) {
               if (verbose) {console.log('cacheHit');}
-              promise = new Promise(function(resolve, reject) {
+              var promise = new Promise(function(resolve) {
                               resolve(cacheEntry);
                             });
             } else {

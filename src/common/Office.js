@@ -1,6 +1,6 @@
 var Actor = require('./Actor');
 
-function Office(id) {
+function Office() {
   this.path = 'office';
   this.createPath = 'office';
 

@@ -45,14 +45,14 @@ BookingSupplier.prototype.mutateResponse = function(entity) {
     }
   }
   if (entity.actor && typeof entity.actor === 'object') {
-    var s = require('./' + entity.actor.type);
+    s = require('./' + entity.actor.type);
     if (s) {
       this.actor = new s();
       this.actor.mutateResponse(entity.actor);
     }
   }
   if (entity.ownercharge) {
-    var s = require('./OwnerCharge');
+    s = require('./OwnerCharge');
     this.ownercharge = new s();
     this.ownercharge.mutateResponse(entity.ownercharge);
 

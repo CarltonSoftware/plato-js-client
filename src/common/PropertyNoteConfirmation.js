@@ -1,5 +1,4 @@
 var SingleEntity = require('./SingleEntity');
-var EntityLink = require('./EntityLink');
 
 function PropertyNoteConfirmation(id) {
   this.createPath = 'confirmation';

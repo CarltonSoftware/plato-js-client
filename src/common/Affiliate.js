@@ -4,7 +4,7 @@ var Actor = require('./Actor');
 var AffiliateApiKey = require('./AffiliateApiKey');
 var AffiliateBlockPeriod = require('./AffiliateBlockPeriod');
 
-function Affiliate(id) {
+function Affiliate() {
   this.path = 'affiliate';
   this.createPath = 'affiliate';
 

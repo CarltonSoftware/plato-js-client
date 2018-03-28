@@ -1,9 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
-var Collection = require('./Collection');
 var TransactionDefinition = require('./TransactionDefinition');
 var AccountingPeriod = require('./AccountingPeriod');
-var Entry = require('./Entry');
 
 function Transaction(id) {
   this.path = 'transaction';

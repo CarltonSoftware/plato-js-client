@@ -1,7 +1,6 @@
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
 var Joi = require('joi');
-var client = require('./platoJsClient').getInstance();
 
 function OwnerPaymentSelection(id) {
   this.path = 'ownerpaymentselection';

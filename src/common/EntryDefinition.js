@@ -1,5 +1,4 @@
 var SingleEntity = require('./SingleEntity');
-var Collection = require('./Collection');
 var Accountvaluetype = require('./AccountValueType');
 var Brandsource = require('./BrandSource');
 var Account = require('./Account');
