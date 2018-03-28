@@ -349,6 +349,9 @@ Actor.prototype.toArray = function() {
     accountingreference: this.accountingreference
   };
 
+  if (this.affiliate) {
+    arr.affiliateid = this.affiliate.id;
+  }
   if (this.createdbyactor) {
     arr.createdbyactorid = this.createdbyactor.id;
   }
