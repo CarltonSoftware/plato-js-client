@@ -341,4 +341,25 @@ Entity.prototype.getAsUriParameters = function(data) {
 };
 
 
+Entity.prototype.checkRootEntities = function(path) {
+  var rootEntity = false;
+  if (localStorage['/'] && !localStorage['staticRootEntities']) {
+      rootEntry = JSON.parse(lzstring.decompress(localStorage['/']));
+      var staticRootEntities = [];
+      for (var i in rootEntry.entity.static) {
+          staticRootEntities.push('/'+i.toLowerCase()+'/');
+      }
+      localStorage['staticRootEntities'] = JSON.stringify(staticRootEntities);
+  }
+  if (localStorage['staticRootEntities']) {
+      var staticRootEntities = JSON.parse(localStorage['staticRootEntities']);
+      staticRootEntities.forEach(function (entity) {
+        if (path.startsWith(entity)) {
+            rootEntity = path.replace(/^\/+/g, '').split('/');
+        }
+      });
+  }
+  return rootEntity;
+};
+
 module.exports = Entity;

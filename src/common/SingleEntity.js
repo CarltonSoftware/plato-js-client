@@ -27,7 +27,7 @@ SingleEntity.prototype = new Entity();
  *
  * @returns {Promise}
  */
-SingleEntity.prototype.get = function() {
+SingleEntity.prototype.get = function(cache) {
   if (typeof this.id === 'undefined') {
     throw new idNotFoundError('Id not specified.');
   }
@@ -37,7 +37,9 @@ SingleEntity.prototype.get = function() {
   }
 
   return this.okPromiseResult(
-    this.getUpdatePath()
+    this.getUpdatePath(),
+    null,
+    cache
   );
 };
 
@@ -54,6 +56,8 @@ SingleEntity.prototype.getCacheable = function(cacheTime, forceRefresh) {
   var path = this.getUpdatePath();
   this.cacheKey = path;
   if (verbose) {console.log('singleentty cacheable - '+path);}
+  var getFromRoot = this.checkRootEntities(path);
+  if (getFromRoot) { path = '/';};
   if (cacheTime>0 && !forceRefresh && localStorage[path]) {
     cacheEntry = JSON.parse(lzstring.decompress(localStorage[path]));
     if (verbose) {
@@ -64,14 +68,32 @@ SingleEntity.prototype.getCacheable = function(cacheTime, forceRefresh) {
       console.log('Built at '+ localStorage.buildDate);
     }
     if (cacheEntry && (cacheEntry.cachedTime + (cacheTime*1000)) > Date.now() &&
-         cacheEntry.buildDate === localStorage.buildDate) {
-      if (verbose) {console.log('cacheHit');}
-      promise = this.cachedOkPromiseResult(cacheEntry.entity);
-    } else {
-      promise = this.get();
+      cacheEntry.buildDate === localStorage.buildDate) {
+      if (getFromRoot) {
+        var foundEntity;
+        for (var i in cacheEntry.entity.static) {
+          if (i.toLowerCase() === getFromRoot[0]) {
+              cacheEntry.entity.static[i].forEach( function (entity)
+              {
+                if (entity.id == getFromRoot[1]) {
+                    foundEntity = entity;
+                }
+              });
+          }
+        }
+        if (foundEntity) {
+          if (verbose) {console.log('cacheHit Root');}
+          promise = this.cachedOkPromiseResult(foundEntity);
+        }
+      } else {
+        if (verbose) {console.log('cacheHit');}
+        promise = this.cachedOkPromiseResult(cacheEntry.entity);
+      }
     }
-  } else {
-    promise = this.get();
+  }
+
+  if (!promise) {
+    promise = this.get((cacheTime!==0));
   }
 
   return promise;
