@@ -1,6 +1,5 @@
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
-var Branding = require('./Branding');
 var PropertyBranding = require('./PropertyBranding');
 var PropertyDocument = require('./PropertyDocument');
 var PropertyOwner = require('./PropertyOwner');
@@ -20,7 +19,6 @@ var InspectionType = require('./InspectionType');
 var AvailableBreak = require('./AvailableBreak');
 var Joi = require('joi');
 var moment = require('moment');
-var client = require('./platoJsClient').getInstance();
 
 function Property(id) {
   this.path = 'property';
@@ -188,12 +186,12 @@ Property.prototype.updateAvailablebreaks = function() {
 
 
 Property.prototype.getAvailableBreaksPrice = function(fromDate, days) {
-  let prices = this.availablebreaks.filter(function(p) {
+  var prices = this.availablebreaks.filter(function(p) {
     return moment(fromDate).isSame(p.fromdate);
   });
   
   if (prices.length > 0) {
-    let price = prices.filter(
+    var price = prices.filter(
       function(p) {
         return p.days === days;
       }
@@ -206,8 +204,9 @@ Property.prototype.getAvailableBreaksPrice = function(fromDate, days) {
     }
 
     if (days > 7) {
-      let getPrice = function(prices, availablebreakprices, fromDate, days = 7) {
-        let price = availablebreakprices.filter(
+      var getPrice = function(prices, availablebreakprices, fromDate, days) {
+        days = days || 7;
+        var price = availablebreakprices.filter(
           function(p) {
             return p.days == days && moment(p.fromdate).isSame(fromDate);
           }
@@ -220,36 +219,36 @@ Property.prototype.getAvailableBreaksPrice = function(fromDate, days) {
         }
       };
       
-      let prices = [],
-        add = days % 7,
-        weeks = (days - add) / 7;
+      var _prices = [];
+      var add = days % 7;
+      var weeks = (days - add) / 7;
 
-        if (days < 14) {
-          add = days;
-        } else if (add > 0) {
-          add = add + 7;
-        }
-        
-        let to = moment(fromDate).add(i * 7, 'd');
-        for (var i = 0; i < weeks; i++) {
-          to = moment(fromDate).add(i * 7, 'd');
-          getPrice(prices, this.availablebreaks, to, 7);
-        }
+      if (days < 14) {
+        add = days;
+      } else if (add > 0) {
+        add = add + 7;
+      }
+      
+      var to = moment(fromDate).add(i * 7, 'd');
+      for (var i = 0; i < weeks; i++) {
+        to = moment(fromDate).add(i * 7, 'd');
+        getPrice(_prices, this.availablebreaks, to, 7);
+      }
 
-        if (to && add > 0) {
-          getPrice(prices, this.availablebreaks, to, add);
-        }
+      if (to && add > 0) {
+        getPrice(_prices, this.availablebreaks, to, add);
+      }
 
-        if (prices.indexOf(-1) < 0) {
-          let total = 0;
-          prices.forEach(function(p) {
-            total += p;
-          });
+      if (_prices.indexOf(-1) < 0) {
+        var total = 0;
+        _prices.forEach(function(p) {
+          total += p;
+        });
 
-          return total;
-        } else {
-          return 0;
-        }
+        return total;
+      } else {
+        return 0;
+      }
     }
     
     return 0;

@@ -1,6 +1,6 @@
 var Actor = require('./Actor');
 
-function TabsUser(id) {
+function TabsUser() {
   this.path = 'tabsuser';
   this.createPath = 'tabsuser';
 

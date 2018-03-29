@@ -2,6 +2,7 @@ var Joi = require('joi');
 var SingleEntity = require('./SingleEntity');
 
 function AffiliateApiKey(id) {
+  this.id = id;
   this.path = 'apikey';
   this.createPath = 'apikey';
 }

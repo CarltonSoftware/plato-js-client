@@ -2,7 +2,7 @@ var StaticCollection = require('./StaticCollection');
 var pathNotSpecifiedError = require('./../error/pathNotSpecified');
 var lzstring = require('lz-string');
 
-function Collection(options) {
+function Collection() {
   this.page = 1;
   this.limit = 10;
   this.orderBy = null;
@@ -129,7 +129,7 @@ Collection.prototype.fetch = function(dependencies, cache) {
   );
 
   if (dependencies && dependencies.length) {
-    return new Promise(function(resolve, reject) {
+    return new Promise(function(resolve) {
       promise.then(function(collection) {
         Promise.all(dependencies.map(function(dependency) {
           var fetched = {};
@@ -171,7 +171,7 @@ Collection.prototype.fetchCacheable = function(cacheTime, forceRefresh) {
   this.cacheKey = path;
   if (verbose) {console.log('collection cacheable - '+path);}
   if (cacheTime>0 && !forceRefresh && localStorage[path]) {
-    cacheEntry = JSON.parse(lzstring.decompress(localStorage[path]));
+    var cacheEntry = JSON.parse(lzstring.decompress(localStorage[path]));
     if (verbose) {
       console.log('Cached at '+ new Date(cacheEntry.cachedTime));
       console.log('Expires at '+ new Date(cacheEntry.cachedTime + (cacheTime*1000)));
@@ -182,7 +182,7 @@ Collection.prototype.fetchCacheable = function(cacheTime, forceRefresh) {
     if (cacheEntry && (cacheEntry.cachedTime + (cacheTime*1000)) > Date.now() &&
          cacheEntry.buildDate === localStorage.buildDate) {
       if (verbose) {console.log('cacheHit');}
-      promise = this.cachedOkPromiseResult(cacheEntry.entity);
+      var promise = this.cachedOkPromiseResult(cacheEntry.entity);
     } else {
       promise = this.fetch(null, true);
     }

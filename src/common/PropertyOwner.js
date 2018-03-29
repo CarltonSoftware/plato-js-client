@@ -22,6 +22,9 @@ PropertyOwner.prototype.toArray = function() {
   if (this.bypasschecks) {
     ret.bypasschecks = this.bypasschecks;
   }
+  if (this.forceoverwrite) {
+    ret.forceoverwrite = this.forceoverwrite;
+  }
   return ret;
 };
 

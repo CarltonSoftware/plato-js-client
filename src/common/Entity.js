@@ -84,7 +84,7 @@ Entity.prototype.okPromiseResult = function(path, params, cache) {
                                                          buildDate: localStorage.buildDate}));
           } catch (ex) {
           }
-        };
+        }
         resolve(e.mutateResponse(res.entity));
       } else {
         reject(new statusError(res));
@@ -241,7 +241,7 @@ Entity.prototype.get = function() {
     throw new pathNotSpecifiedError('No path specified for entity');
   }
   if (localStorage[this.path]) {
-    json = lzstring.decompress(localStorage[this.path]);
+    var json = lzstring.decompress(localStorage[this.path]);
     if (json) {
         return this.cachedOkPromiseResult(json);
     } else {
@@ -280,7 +280,7 @@ Entity.prototype.getFullPath = function(path, params) {
  */
 Entity.prototype.cachedOkPromiseResult = function(json) {
   var e = this;
-  return new Promise(function(resolve, reject) {
+  return new Promise(function(resolve) {
     setTimeout(function() {
       resolve(e.mutateResponse(json));
     });

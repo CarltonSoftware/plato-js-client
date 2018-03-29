@@ -1,5 +1,4 @@
 var SingleEntity = require('./SingleEntity');
-var EntityLink = require('./EntityLink');
 var Joi = require('joi');
 
 function BookingPaymentitem(id) {

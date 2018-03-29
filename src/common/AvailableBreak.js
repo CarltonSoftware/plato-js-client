@@ -1,6 +1,6 @@
 var SingleEntity = require('./SingleEntity');
 
-function AvailableBreak(id) {
+function AvailableBreak() {
   this.path = 'availablebreak';
   this.createPath = this.path;
 }

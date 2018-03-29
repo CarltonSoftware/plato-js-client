@@ -4,7 +4,6 @@ var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
 var EntityLink = require('./EntityLink');
 var NoteFilterCollection = require('./NoteFilterCollection');
-var StaticCollection = require('./StaticCollection');
 var CustomerDocument = require('./CustomerDocument');
 var PotentialDuplicate = require('./PotentialDuplicate');
 var Language = require('./Language');
@@ -12,10 +11,9 @@ var ActorNote = require('./ActorNote');
 var Booking = require('./Booking');
 var Branding = require('./Branding');
 var BankAccount = require('./BankAccount');
-var ActorContactDetailPhone = require('./ActorContactDetailPhone');
-var ActorContactDetailOther = require('./ActorContactDetailOther');
 var ActorContactDetailAddress = require('./ActorContactDetailAddress');
 var ActorContactDetailPhone = require('./ActorContactDetailPhone');
+var ActorContactDetailOther = require('./ActorContactDetailOther');
 var ActorManagedActivity = require('./ActorManagedActivity');
 var ActorSecurity = require('./ActorSecurity');
 var ActorSetting = require('./ActorSetting');
@@ -351,6 +349,9 @@ Actor.prototype.toArray = function() {
     accountingreference: this.accountingreference
   };
 
+  if (this.affiliate) {
+    arr.affiliateid = this.affiliate.id;
+  }
   if (this.createdbyactor) {
     arr.createdbyactorid = this.createdbyactor.id;
   }

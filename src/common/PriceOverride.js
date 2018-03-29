@@ -1,6 +1,5 @@
 var SingleEntity = require('./SingleEntity');
 var Currency = require('./Currency');
-var PartySizePrice = require('./PartySizePrice');
 var EntityLink = require('./EntityLink');
 var Collection = require('./Collection');
 var ReducedOccupancyPrice = require('./ReducedOccupancyPrice');

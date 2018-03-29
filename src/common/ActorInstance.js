@@ -6,7 +6,7 @@ var Actor = require('./Actor'),
   Agency = require('./Agency'),
   Office = require('./Office');
 
-module.exports = function(actorType, id) {
+module.exports = function(actorType) {
   if (actorType === 'customer') {
     return Customer.bind(undefined);
   } else if (actorType === 'owner') {

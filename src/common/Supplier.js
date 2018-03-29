@@ -1,6 +1,6 @@
 var Actor = require('./Actor');
 
-function Supplier(id) {
+function Supplier() {
   this.path = 'supplier';
   this.createPath = 'supplier';
 

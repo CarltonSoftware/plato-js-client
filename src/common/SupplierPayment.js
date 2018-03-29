@@ -1,6 +1,5 @@
 var SingleEntity = require('./SingleEntity');
 var WorkOrderSupplier = require('./WorkOrderSupplier');
-var Collection = require('./Collection');
 var EntityLink = require('./EntityLink');
 
 function SupplierPayment(id) {

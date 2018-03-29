@@ -2,7 +2,7 @@ var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
 var PropertyHousekeepingSupplier = require('./PropertyHousekeepingSupplier');
 
-function PropertyHousekeeping(id) {
+function PropertyHousekeeping() {
   this.suppliers = new Collection({
     object: PropertyHousekeepingSupplier,
   });

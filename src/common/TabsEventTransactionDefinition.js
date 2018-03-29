@@ -1,5 +1,4 @@
 var SingleEntity = require('./SingleEntity');
-var Collection = require('./Collection');
 var TransactionDefinition = require('./TransactionDefinition');
 var Joi = require('joi');
 

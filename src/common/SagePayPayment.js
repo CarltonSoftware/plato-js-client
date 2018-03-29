@@ -4,10 +4,8 @@ var Booking = require('./Booking');
 var Branding = require('./Branding');
 var PaymentMethod = require('./PaymentMethod');
 var Currency = require('./Currency');
-var Actor = require('./Actor');
 var ActorContactDetailAddress = require('./ActorContactDetailAddress');
 var statusError = require('../error/statusError');
-var badRequestError = require('../error/badRequestError');
 var client = require('./platoJsClient').getInstance();
 
 function SagePayPayment(id) {

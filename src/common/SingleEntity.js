@@ -54,12 +54,13 @@ SingleEntity.prototype.getCacheable = function(cacheTime, forceRefresh) {
   }
   var verbose = localStorage.cachelog;
   var path = this.getUpdatePath();
+  var promise;
   this.cacheKey = path;
   if (verbose) {console.log('singleentty cacheable - '+path);}
   var getFromRoot = this.checkRootEntities(path);
   if (getFromRoot) { path = '/';};
   if (cacheTime>0 && !forceRefresh && localStorage[path]) {
-    cacheEntry = JSON.parse(lzstring.decompress(localStorage[path]));
+    var cacheEntry = JSON.parse(lzstring.decompress(localStorage[path]));
     if (verbose) {
       console.log('Cached at '+ new Date(cacheEntry.cachedTime));
       console.log('Expires at '+ new Date(cacheEntry.cachedTime + (cacheTime*1000)));

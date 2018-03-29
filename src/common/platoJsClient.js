@@ -1,13 +1,12 @@
-var _ = require('underscore');
 var statusError = require('../error/statusError');
 var lzstring = require('lz-string');
 
 if (typeof localStorage === 'undefined') {
   var LocalStorage = require('node-localstorage').LocalStorage;
-  localStorage = new LocalStorage('/tmp/scratch');
+  localStorage = new LocalStorage('/tmp/scratch'); // eslint-disable-line no-global-assign
 }
 if (typeof window === 'undefined') {
-  window = {};
+  window = {}; // eslint-disable-line no-global-assign
 }
 
 var platoJsClient = (function () {
@@ -35,7 +34,6 @@ var platoJsClient = (function () {
           defaultRequest = require('rest/interceptor/defaultRequest'),
           oAuth = require('rest/interceptor/oAuth'),
           params = require('rest/interceptor/params'),
-          template = require('rest/interceptor/template'),
           host = '/',
           prefix = '',
           oAuthRedirectUrl,
@@ -270,7 +268,7 @@ var platoJsClient = (function () {
           var verbose = localStorage.cachelog;
           if (verbose) {console.log('basic endpoint cacheable - '+path);}
           if (cacheTime>0 && !forceRefresh && localStorage[path]) {
-            cacheEntry = JSON.parse(lzstring.decompress(localStorage[path]));
+            var cacheEntry = JSON.parse(lzstring.decompress(localStorage[path]));
             if (verbose) {
               console.log('Cached at '+ new Date(cacheEntry.cachedTime));
               console.log('Expires at '+ new Date(cacheEntry.cachedTime + (cacheTime*1000)));
@@ -281,7 +279,7 @@ var platoJsClient = (function () {
             if (cacheEntry && (cacheEntry.cachedTime + (cacheTime*1000)) > Date.now() &&
                  cacheEntry.buildDate === localStorage.buildDate) {
               if (verbose) {console.log('cacheHit');}
-              promise = new Promise(function(resolve, reject) {
+              var promise = new Promise(function(resolve) {
                               resolve(cacheEntry);
                             });
             } else {
@@ -484,7 +482,7 @@ var platoJsClient = (function () {
               if (rbracket.test(prefix)) {
                 add(prefix, value);
               } else {
-                this.buildParams(prefix + "[" + (typeof v === "object"? i: "") + "]", value, add );
+                this.buildParams(prefix + "[" + (typeof v === "object"? i: "") + "]", value, add ); // eslint-disable-line no-undef
               }
             }
           } else if (this.type(obj) === 'object') {

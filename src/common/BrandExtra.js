@@ -1,7 +1,7 @@
 var Entity = require('./Entity');
-var Extra = require('./Extra');
 
 function BrandExtra(brandId, id) {
+  this.id = id;
   this.path = 'extra';
 }
 

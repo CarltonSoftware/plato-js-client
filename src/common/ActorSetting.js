@@ -7,14 +7,14 @@ function ActorSetting(id) {
   this.id = id;
 
   this.getDecodedValue = function() {
-  	if (this.value) {
-  		if (typeof this.value === 'string') {
+    if (this.value) {
+      if (typeof this.value === 'string') {
         if (this.value.slice(0, 1) === '{' || this.value.slice(0, 1) === '[') {
           return JSON.parse(this.value);
         }
       }
       return this.value;
-  	}
+    }
   };
 }
 

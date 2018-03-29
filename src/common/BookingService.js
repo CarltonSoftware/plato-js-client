@@ -1,6 +1,6 @@
 var BookingSupplier = require('./BookingSupplier');
 
-function BookingService(id) {
+function BookingService() {
   BookingSupplier.apply(this, arguments);
 
   this.path = 'service';

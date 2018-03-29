@@ -1,3 +1,4 @@
+var Joi = require('joi');
 var SingleEntity = require('./SingleEntity');
 
 function InstructionType(id) {

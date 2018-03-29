@@ -1,3 +1,4 @@
+var Joi = require('joi');
 var Entity = require('./Entity');
 
 function CopyPricing(id) {
