@@ -58,7 +58,9 @@ SingleEntity.prototype.getCacheable = function(cacheTime, forceRefresh) {
   this.cacheKey = path;
   if (verbose) {console.log('singleentty cacheable - '+path);}
   var getFromRoot = this.checkRootEntities(path);
-  if (getFromRoot) { path = '/';};
+  if (getFromRoot) {
+    path = '/';
+  }
   if (cacheTime>0 && !forceRefresh && localStorage[path]) {
     var cacheEntry = JSON.parse(lzstring.decompress(localStorage[path]));
     if (verbose) {
@@ -74,10 +76,9 @@ SingleEntity.prototype.getCacheable = function(cacheTime, forceRefresh) {
         var foundEntity;
         for (var i in cacheEntry.entity.static) {
           if (i.toLowerCase() === getFromRoot[0]) {
-              cacheEntry.entity.static[i].forEach( function (entity)
-              {
+              cacheEntry.entity.static[i].forEach(function (entity) {
                 if (entity.id == getFromRoot[1]) {
-                    foundEntity = entity;
+                  foundEntity = entity;
                 }
               });
           }
