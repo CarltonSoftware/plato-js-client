@@ -146,6 +146,7 @@ SpecialOffer.prototype.validSchema = function() {
     archive: Joi.boolean(),
     archivedbyactorid: Joi.number().empty('').label('Archived by actor'),
     archiveddatetime: Joi.string().optional().allow('').label('Archived date'),
+    brandingids: Joi.string().optional().allow('').label('Brandings'),
     depositamount: Joi.object().optional().label('Deposit Amount'),
     percentagepaidbyowner: Joi.number().min(0).max(100).allow(null).label('Percentage paid by owner')
   });
