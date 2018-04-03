@@ -92,7 +92,7 @@ SpecialOffer.prototype.toUpdateArray = function() {
     pricetypeid: this.pricetype.id,
     forpricetypeid: this.forpricetype.id,
     archive: this.archive,
-    archiveddatetime: this.archiveddatetime
+    archiveddatetime: this.archiveddatetime,
   };
   if (this.percentagepaidbyowner === null) {
     fields.percentagepaidbyowner = 'null';
@@ -112,6 +112,7 @@ SpecialOffer.prototype.toUpdateArray = function() {
 SpecialOffer.prototype.toCreateArray = function() {
   var array = this.toUpdateArray();
   array.pricingperiod = this.pricingperiod.pricingperiod;
+  array.brandingids = this.brandingids;
   /* remove active as the API rejects on create, even if false */
   delete array.active;
   return array;
