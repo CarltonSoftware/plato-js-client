@@ -1,7 +1,6 @@
 var Entity = require('./Entity');
 
-function BrandingExtra(brandId, id) {
-  this.id = id;
+function BrandingExtra(brandId) {
   this.path = 'branding/'+brandId+'/extra';
 }
 
