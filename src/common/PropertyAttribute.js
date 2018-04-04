@@ -15,7 +15,8 @@ PropertyAttribute.prototype.toArray = function() {
     attributeid: this.attribute.id,
     value: this.value,
     unit: this.attribute.unit.name,
-    optionid: this.optionid
+    optionid: this.optionid,
+    comments: this.comments
   };
 };
 
