@@ -41,6 +41,27 @@ var platoJsClient = (function () {
           token;
 
         /**
+         * Get the instance token
+         *
+         * @return {String}
+         */
+        this.getToken = () => {
+          return this.token;
+        };
+
+        /**
+         * Set the instance token
+         *
+         * @param {String} t
+         *
+         * @return {String}
+         */
+        this.setToken = (t) => {
+          this.token = t;
+          return this;
+        };
+
+        /**
          * Function use to validate the request object passed to each verb
          * function (get, post etc)
          *
