@@ -17,11 +17,9 @@ module.exports = {
             url.split('/property/').pop().split('/')[0]
           );
         } else {
-          if (typeof message.entity.olddata === 'object') {
-            return module.exports.SNS.Message.getProperty(message.olddata.property.id);
-          } else {
-            return module.exports.SNS.Message.getProperty(message.newdata.property.id);
-          }
+          return module.exports.SNS.Message.getProperty(
+            (typeof message.entity.olddata === 'object') ? message.olddata.property.id : message.newdata.property.id
+          );
         }
       },
       getRoot: function(message) {
