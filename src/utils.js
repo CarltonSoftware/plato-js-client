@@ -1,16 +1,16 @@
-let platoClient = require('./index');
+const platoClient = require('./index');
 
 module.exports = {
   SNS: {
     Message: {
-      getUrl: (message) => {
+      getUrl: function(message) {
         if (message.url.slice(0, 5) !== 'https') {
           message.url = ['https://', message.url].join('');
         }
 
         return message.url;
       },
-      getProperty: (message) => {
+      getPropertyFromMessage: function(message) {
         var url = module.exports.SNS.Message.getUrl(message);
         if (message.entity.slice(0, 8) === 'Property') {
           var parts = url.split('/property/');
@@ -25,13 +25,13 @@ module.exports = {
           }
         }
       },
-      getRoot: (message) => {
+      getRoot: function(message) {
         return [
           'https://',
           module.exports.SNS.Message.getUrl(message).split('/')[2]
         ].join('');
       },
-      _property: (id) => {
+      getProperty: function(id) {
         return new platoClient.common.Property(
           parseInt(id)
         );
