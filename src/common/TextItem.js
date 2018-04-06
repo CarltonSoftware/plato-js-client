@@ -24,6 +24,8 @@ TextItem.prototype.toArray = function() {
 
   if (this.branding && this.branding.id) {
     t.brandingid = this.branding.id;
+  } else {
+    t.brandingid = 0;
   }
 
   return t;
