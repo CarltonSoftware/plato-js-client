@@ -13,15 +13,14 @@ module.exports = {
       getPropertyFromMessage: function(message) {
         var url = module.exports.SNS.Message.getUrl(message);
         if (message.entity.slice(0, 8) === 'Property') {
-          var parts = url.split('/property/');
-          if (parts.length === 2) {
-            return module.exports.SNS.Message._property(parts.pop().split('/')[0]);
-          }
+          return module.exports.SNS.Message.getProperty(
+            url.split('/property/').pop().split('/')[0]
+          );
         } else {
           if (typeof message.entity.olddata === 'object') {
-            return module.exports.SNS.Message._property(message.olddata.property.id);
+            return module.exports.SNS.Message.getProperty(message.olddata.property.id);
           } else {
-            return module.exports.SNS.Message._property(message.newdata.property.id);
+            return module.exports.SNS.Message.getProperty(message.newdata.property.id);
           }
         }
       },
