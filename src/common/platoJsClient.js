@@ -45,7 +45,7 @@ var platoJsClient = (function () {
          *
          * @return {String}
          */
-        this.getToken = () => {
+        this.getToken = function() {
           return this.token;
         };
 
@@ -56,7 +56,7 @@ var platoJsClient = (function () {
          *
          * @return {String}
          */
-        this.setToken = (t) => {
+        this.setToken = function(t) {
           this.token = t;
           return this;
         };
