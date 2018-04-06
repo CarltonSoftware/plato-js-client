@@ -5,6 +5,9 @@
   "author": "Tabs Software",
   "license": "MIT",
   "main": "src/index.js",
+  "scripts": {
+    "test": "mocha -R spec test/utils.test.js"
+  },
   "devDependencies": {
     "browserify": "^16.1.1",
     "chai": "^4.1.2",
