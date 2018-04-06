@@ -87,7 +87,13 @@ describe('Utilities test', function() {
         console.assert(utils.SNS.Message.getRoot(data[i]) === 'https://toccl.api.tabs-software.co.uk');
       });
       it('utils.SNS.Message.getProperty should return a property', function() {
-        console.assert(utils.SNS.Message.getProperty(data[i]) instanceof new require('../src/common/Property.js'));
+        console.assert(utils.SNS.Message.getPropertyFromMessage(data[i]) instanceof new require('../src/common/Property.js'));
+      });
+      it('utils.SNS.Message.getProperty.id should be a number', function() {
+        console.assert(typeof utils.SNS.Message.getPropertyFromMessage(data[i]).id === 'number');
+      });
+      it('utils.SNS.Message.getProperty.id number should be greater than zero', function() {
+        console.assert(utils.SNS.Message.getPropertyFromMessage(data[i]).id > 0);
       });
     }
   });
