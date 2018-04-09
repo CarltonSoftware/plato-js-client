@@ -31,6 +31,7 @@ PropertySecurityDeposit.prototype.toArray = function() {
     pricingperiod: this.pricingperiod,
     minimumdays: this.minimumdays,
     maximumdays: this.maximumdays,
+    maximumdaysbeforeholiday: this.maximumdaysbeforeholiday,
     comments: this.comments,
     ownerchargecodeid: this.ownerchargecode.id,
     ownerchargeamount: this.ownerchargeamount,
@@ -59,6 +60,7 @@ PropertySecurityDeposit.prototype.validSchema = function() {
     pricingperiod: Joi.string().required().label('Pricing Period'),
     minimumdays: Joi.string().required().label('Minimum Days'),
     maximumdays: Joi.string().required().label('Maximum Days'),
+    maximumdaysbeforeholiday: Joi.string().required().label('Maximum Days Before Holiday'),
     comments: Joi.string().empty('').label('Comments'),
     ownerchargeamount: Joi.number().empty('').label('Owner Charge Amount'),
     // ownerchargecode is required if ownerchargeamount is specified
