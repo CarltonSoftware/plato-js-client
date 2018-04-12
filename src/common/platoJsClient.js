@@ -41,6 +41,15 @@ var platoJsClient = (function () {
           token;
 
         /**
+         * Get the domain
+         *
+         * @return {String}
+         */
+        this.getDomain = function() {
+          return host;
+        };
+
+        /**
          * Get the instance token
          *
          * @return {String}

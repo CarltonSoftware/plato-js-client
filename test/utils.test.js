@@ -1,4 +1,5 @@
 var utils = require('../src/utils.js');
+var client = require('../').client.getInstance();
 var data = [{ 
     entity: 'PropertyAttributeString',
     id: 2115651,
@@ -78,6 +79,14 @@ var data = [{
 ];
 
 describe('Utilities test', function() {
+  describe('Client', function() {
+    it('utils.Client.connect is a function', function() {
+      console.assert(typeof utils.Client.connect === 'function');
+    });
+    it('utils.Client.client returns a client instance object', function() {
+      console.assert(utils.Client.client().getDomain() === client.getDomain());
+    });
+  });
   describe('SNS', function() {
     for (var i in data) {
       it('utils.SNS.Message.getUrl should return a url', function() {
