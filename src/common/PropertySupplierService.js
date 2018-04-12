@@ -31,6 +31,7 @@ PropertySupplierService.prototype.toUpdateArray = function() {
     todate: this.todate,
     customerbookings: this.customerbookings,
     ownerbookings: this.ownerbookings,
+    agencybookings: this.agencybookings,
     datetouse: this.datetouse
   };
 };
@@ -47,6 +48,7 @@ PropertySupplierService.prototype.validSchema = function() {
     service: Joi.object().required().label('Service'),
     customerbookings: Joi.boolean().required().label('Customer bookings'),
     ownerbookings: Joi.boolean().required().label('Owner bookings'),
+    agencybookings: Joi.boolean().required().label('Agency bookings'),
     datetouse: Joi.string().required().label('Date to Use')
   });
 };

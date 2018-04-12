@@ -24,6 +24,7 @@ SupplierServiceCharge.prototype.toUpdateArray = function() {
     includesvat: this.includesvat,
     autoaddcustomer: this.autoaddcustomer,
     autoaddowner: this.autoaddowner,
+    autoaddagency: this.autoaddagency,
     fromdate: this.fromdate,
     todate: this.todate,
     ownerchargecodeid: this.ownerchargecode.id,
@@ -57,7 +58,8 @@ SupplierServiceCharge.prototype.validSchema = function() {
     charge: Joi.number().required().label('Charge'),
     includesvat: Joi.boolean().required().label('Includes VAT'),
     autoaddcustomer: Joi.boolean().required().label('Auto add to customer'),
-    autoaddowner: Joi.boolean().required().label('Auto add to owner')
+    autoaddowner: Joi.boolean().required().label('Auto add to owner'),
+    autoaddagency: Joi.boolean().required().label('Auto add to agency'),
   });
 };
 module.exports = SupplierServiceCharge;
