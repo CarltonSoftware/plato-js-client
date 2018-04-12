@@ -14,7 +14,7 @@ module.exports = {
      *
      * @return {platoJsClient.client}
      */
-    connect: (host, username, password, clientId, clientSecret) => {
+    connect: function(host, username, password, clientId, clientSecret) {
       return client.setInstance({
         apiRoot: host,
         clientId: clientId,
@@ -27,7 +27,7 @@ module.exports = {
      *
      * @return {boolean}
      */
-    check: () => {
+    check: function() {
       return typeof client.getToken() === 'string';
     },
 
@@ -36,7 +36,7 @@ module.exports = {
      *
      * @return {platoJsClient.client}
      */
-    client: () => {
+    client: function() {
       return client;
     }
   },
