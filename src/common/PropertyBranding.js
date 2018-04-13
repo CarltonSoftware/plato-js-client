@@ -131,6 +131,39 @@ PropertyBranding.prototype.getAvailability = function(fromDate, toDate, includec
   return p.fetch();
 };
 
+PropertyBranding.prototype.getPropertyBookedRanges = function() {
+  var pb = this;
+  return new Promise(function(resolve, reject) {
+    pb.getAvailability().then(function(collection) {
+      var bookingPeriods = [],
+        start = null,
+        end = null;
+
+      collection.forEach(function(a) {
+        if (a.daysavailable === 0) {
+          if (start === null) {
+            start = a.date;
+          }
+          end = a.date;
+        } else {
+          if (start) {
+            bookingPeriods.push({
+              start: start,
+              end: end
+            });
+          }
+
+          start = null;
+          end = null;
+        }
+      });
+      
+      resolve(bookingPeriods);
+    }, function(err) {
+      reject(err);
+    });
+  });
+};
 
 PropertyBranding.prototype.toString = function() {
   return this.branding.toString();
