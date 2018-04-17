@@ -13,6 +13,7 @@ PropertyCommission.prototype.toArray = function() {
     todate: this.todate,
     commissionpercentage: this.commissionpercentage,
     updateexistingbookings: this.updateexistingbookings,
+    overrideuserset: this.overrideuserset,
     forceoverwrite: this.forceoverwrite
   };
 };
