@@ -17,11 +17,14 @@ function TabsUserGroup(id) {
 
 TabsUserGroup.prototype = new SingleEntity();
 TabsUserGroup.prototype.toArray = function() {
-  return {
+  var f = {
     tabsusergroupname: this.tabsusergroupname,
     description: this.description,
-    parenttabsusergroupid: this.parenttabsusergroup.id
   };
+  if (this.parenttabsusergroup) {
+    f.parenttabsusergroupid = this.parenttabsusergroup.id
+  }
+  return f;
 };
 
 module.exports = TabsUserGroup;
