@@ -7,6 +7,7 @@ var ExtraBranding = require('./ExtraBranding');
 var PropertyBrandingChangeDayTemplate = require('./PropertyBrandingChangeDayTemplate');
 var Status = require('./Status');
 var Collection = require('./Collection');
+var moment = require('moment');
 
 function PropertyBranding(id) {
   this.path = 'branding';
@@ -134,7 +135,7 @@ PropertyBranding.prototype.getAvailability = function(fromDate, toDate, includec
 PropertyBranding.prototype.getPropertyBookedRanges = function() {
   var pb = this;
   return new Promise(function(resolve, reject) {
-    pb.getAvailability().then(function(collection) {
+    pb.getAvailability(moment().format('YYYY-MM-DD'), moment().add(2, 'year').format('YYYY-MM-DD')).then(function(collection) {
       var bookingPeriods = [],
         start = null,
         end = null;
