@@ -1,7 +1,6 @@
 var assert = require('assert');
 var expect = require('chai').expect;
 var Collection = require('../src/').Collection;
-var Entity = require('../src/').Entity;
 var PropertyOwner = require('../src/').common.PropertyOwner;
 
 describe('Collection', function() {

@@ -1,7 +1,6 @@
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
 var expect = chai.expect;
-var idNotFoundError = require('../src/error/idNotFound');
 var Customer = require('../src/').common.Customer;
 
 chai.use(chaiAsPromised);
@@ -9,8 +8,7 @@ chai.use(chaiAsPromised);
 describe('Customer', function() {
   it('should throw an id not specified error', function() {
     var c = new Customer();
-    expect(c.get).to.throw(idNotFoundError);
-    expect(c.get).to.throw(/Id not specified/);
+    expect(c.get).to.throw('Id not specified.');
   });
 
   it('should reject promise if customer doesn\'t exist', function() {

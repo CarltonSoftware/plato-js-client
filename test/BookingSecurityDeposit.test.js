@@ -10,14 +10,7 @@ describe('BookingSecurityDeposit', function() {
         amount: 50,
         dueindate: '2016-05-05',
         dueoutdate: '2016-06-03',
-      })).to.deep.equal({
-        error: null,
-        value: {
-          amount: 50,
-          dueindate: '2016-05-05',
-          dueoutdate: '2016-06-03',
-        }
-      });
+      }, validSchema).error).to.be.a('null');
     });
 
     it('should allow ownerchargecode to be missing if ownerchargeamount is blank', function() {
@@ -26,14 +19,7 @@ describe('BookingSecurityDeposit', function() {
         dueindate: '2016-05-05',
         dueoutdate: '2016-06-03',
         ownerchargeamount: '',
-      }, validSchema)).to.deep.equal({
-        error: null,
-        value: {
-          amount: 50,
-          dueindate: '2016-05-05',
-          dueoutdate: '2016-06-03',
-        }
-      });
+      }, validSchema).error).to.be.a('null');
     });
 
     it('should require ownerchargecode if ownerchargeamount is set', function() {
@@ -59,7 +45,7 @@ describe('BookingSecurityDeposit', function() {
         ownerchargecode: {
           id: 1
         }
-      }, validSchema).error).to.be.null();
+      }, validSchema).error).to.be.a('null');
     });
   });
 });

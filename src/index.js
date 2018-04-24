@@ -101,6 +101,7 @@ module.exports.common.CustomerEmailList = require('./common/CustomerEmailList');
 
 // Other Actors
 module.exports.common.TabsUser = require('./common/TabsUser');
+module.exports.common.TabsUserGroup = require('./common/TabsUserGroup');
 module.exports.common.Owner = require('./common/Owner');
 module.exports.common.OwnerEnquiryAction = require('./common/OwnerEnquiryAction');
 module.exports.common.Office = require('./common/Office');

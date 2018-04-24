@@ -1,16 +1,14 @@
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
 var expect = chai.expect;
-var idNotFoundError = require('../src/error/idNotFound');
 var Document = require('../src/').common.Document;
 
 chai.use(chaiAsPromised);
 
 describe('Document', function() {
   it('should throw an id not specified error', function() {
-    var document = new Document();
-    expect(document.get).to.throw(idNotFoundError);
-    expect(document.get).to.throw(/Id not specified/);
+    var doc = new Document();
+    expect(doc.get).to.throw('Id not specified.');
   });
 
   it('should be fulfil promise', function() {
