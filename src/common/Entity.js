@@ -89,7 +89,9 @@ Entity.prototype.okPromiseResult = function(path, params, cache) {
       } else {
         reject(new statusError(res));
       }
-    }, reject);
+    }, function(res) {
+      reject(new statusError(res));
+    });
   });
 };
 
