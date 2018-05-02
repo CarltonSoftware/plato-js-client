@@ -20,16 +20,29 @@ function PropertyBrandingYearPriceband(propertyid, propertybrandingid, year, id)
 PropertyBrandingYearPriceband.prototype = new SingleEntity();
 
 PropertyBrandingYearPriceband.prototype.toArray = function() {
-  return {
+  var f = {
     pricebandid: this.priceband.id,
     price: this.price
   };
+  if (this.saleschannel) {
+    f.saleschannelid = this.saleschannel.id
+  }
+  if (this.pricetype) {
+    f.pricetypeid = this.pricetype.id
+  }
+  if (this.currency) {
+    f.currencyid = this.currency.id
+  }
+  return f;
 };
 
 PropertyBrandingYearPriceband.prototype.validSchema = function() {
   return Joi.object().keys({
     priceband: Joi.object().label('Price band'),
     price: Joi.number().required().label('price'),
+    saleschannel: Joi.object().optional().label('sales channel'),
+    pricetype: Joi.object().optional().label('pricetype'),
+    currency: Joi.object().optional().label('currency')
   });
 };
 
