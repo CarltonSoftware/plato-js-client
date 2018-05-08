@@ -33,7 +33,8 @@ ExtraBrandingConfiguration.prototype.toCreateArray = function() {
     usepropertyprimarybranding: this.usepropertyprimarybranding ? 'true' : 'false',
     type: this.type,
     propertyid: this.propertyid,
-    copytoallbrands: this.copytoallbrands
+    copytoallbrands: this.copytoallbrands,
+    commissionpercentage: this.commissionpercentage
   };
   if (this.accountingdatedefinition && this.accountingdatedefinition.id) {
     fields.accountingdatedefinitionid = this.accountingdatedefinition.id;
@@ -42,6 +43,7 @@ ExtraBrandingConfiguration.prototype.toCreateArray = function() {
 };
 
 ExtraBrandingConfiguration.prototype.toUpdateArray = function() {
+  console.log(this.commissionpercentage);
   var fields = {
     fromdate: this.fromdate,
     todate: this.todate,
@@ -63,7 +65,8 @@ ExtraBrandingConfiguration.prototype.toUpdateArray = function() {
     changesbrochureprice: this.changesbrochureprice? 'true' : 'false',
     usepropertyprimarybranding: this.usepropertyprimarybranding ? 'true' : 'false',
     type: this.type,
-    updateallbrands: this.updateallbrands
+    updateallbrands: this.updateallbrands,
+    commissionpercentage: this.commissionpercentage
   };
   if (this.accountingdatedefinition && this.accountingdatedefinition.id) {
     fields.accountingdatedefinitionid = this.accountingdatedefinition.id;
@@ -99,7 +102,8 @@ ExtraBrandingConfiguration.validSchema = Joi.object().keys({
   }),
   accountingdatedefinition: Joi.object().optional().label('Accounting Date Definition'),
   copytoallbrands: Joi.boolean().label('copy to all brands'),
-  updateallbrands: Joi.boolean().label('update all brands')
+  updateallbrands: Joi.boolean().label('update all brands'),
+  commissionpercentage: Joi.any().optional().label('commission percentage')
 });
 
 module.exports = ExtraBrandingConfiguration;
