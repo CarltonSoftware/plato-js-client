@@ -43,7 +43,6 @@ ExtraBrandingConfiguration.prototype.toCreateArray = function() {
 };
 
 ExtraBrandingConfiguration.prototype.toUpdateArray = function() {
-  console.log(this.commissionpercentage);
   var fields = {
     fromdate: this.fromdate,
     todate: this.todate,
