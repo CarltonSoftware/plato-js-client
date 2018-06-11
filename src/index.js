@@ -21,6 +21,7 @@ module.exports.common.Country = require('./common/Country');
 module.exports.common.ExchangeRate = require('./common/ExchangeRate');
 module.exports.common.Language = require('./common/Language');
 module.exports.common.Postcode = require('./common/Postcode');
+module.exports.common.CancellationReason = require('./common/CancellationReason');
 module.exports.common.ContactEntity = require('./common/ContactEntity');
 module.exports.common.ContactDocument = require('./common/ContactDocument');
 module.exports.common.ContactType = require('./common/ContactType');
