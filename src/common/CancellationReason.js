@@ -2,8 +2,8 @@ var SingleEntity = require('./SingleEntity');
 var Joi = require('joi');
 
 function CancellationReason(id) {
-  this.path = 'ownerbookingtype';
-  this.createPath = 'ownerbookingtype';
+  this.path = 'cancellationreason';
+  this.createPath = 'cancellationreason';
   this.id = id;
 }
 CancellationReason.prototype = new SingleEntity();
