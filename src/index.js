@@ -27,6 +27,7 @@ module.exports.common.ContactDocument = require('./common/ContactDocument');
 module.exports.common.ContactType = require('./common/ContactType');
 module.exports.common.ContactMethodType = require('./common/ContactMethodType');
 module.exports.common.ContactMethodSubtype = require('./common/ContactMethodSubtype');
+module.exports.common.CostItemCode = require('./common/CostItemCode');
 module.exports.common.Document = require('./common/Document');
 module.exports.common.DocumentTag = require('./common/DocumentTag');
 module.exports.common.DocumentBaseTag = require('./common/DocumentBaseTag');
