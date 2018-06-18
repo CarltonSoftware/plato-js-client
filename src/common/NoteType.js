@@ -11,7 +11,8 @@ NoteType.prototype.toArray = function() {
   return {
     notetype: this.notetype,
     description: this.description,
-    donotdelete: this.donotdelete
+    donotdelete: this.donotdelete,
+    usercreatable: this.usercreatable
   };
 };
 

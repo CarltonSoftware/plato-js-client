@@ -15,7 +15,7 @@ CostItemCode.prototype.validSchema = function() {
   return {
     costitemcode: Joi.string().required().label('Cost Item Code'),
     description: Joi.string().optional().allow('').label('Description'),
-    vatbandid: Joi.number().allow('').label('Vat Band'),
+    vatband: Joi.object().optional().label('Vat Band'),
     inactive: Joi.boolean().optional().label('Inactive')
   };
 };
