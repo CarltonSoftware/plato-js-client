@@ -32,7 +32,8 @@ PropertySupplierService.prototype.toUpdateArray = function() {
     customerbookings: this.customerbookings,
     ownerbookings: this.ownerbookings,
     agencybookings: this.agencybookings,
-    datetouse: this.datetouse
+    datetouse: this.datetouse,
+    forceupdateservices: this.forceupdateservices
   };
 };
 PropertySupplierService.prototype.toCreateArray = function() {
@@ -49,7 +50,8 @@ PropertySupplierService.prototype.validSchema = function() {
     customerbookings: Joi.boolean().required().label('Customer bookings'),
     ownerbookings: Joi.boolean().required().label('Owner bookings'),
     agencybookings: Joi.boolean().required().label('Agency bookings'),
-    datetouse: Joi.string().required().label('Date to Use')
+    datetouse: Joi.string().required().label('Date to Use'),
+    forceupdateservices: Joi.boolean().required().label('Force update services')
   });
 };
 
