@@ -34,6 +34,7 @@ TransactionDefinition.prototype.toArray = function() {
     requiresownercharge: this.requiresownercharge,
     requiresownerpayment: this.requiresownerpayment,
     requiresproperty: this.requiresproperty,
+    requiressecuritydeposit: this.requiressecuritydeposit,
     requiressupplierpayment: this.requiressupplierpayment,
     donotmodify: this.donotmodify
   };
@@ -59,6 +60,7 @@ TransactionDefinition.prototype.validSchema = function() {
     requiresownerpayment: Joi.boolean().optional().label('Requires Owner Payment'),
     requiresproperty: Joi.boolean().optional().label('Requires Property'),
     requiressupplierpayment: Joi.boolean().optional().label('Requires Supplier Payment'),
+    requiressecuritydeposit: Joi.boolean().optional().label('Requires Security Deposit'),
     donotmodify: Joi.boolean().optional().label('Do not modify')
   });
 };
