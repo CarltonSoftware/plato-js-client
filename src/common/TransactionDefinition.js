@@ -34,6 +34,7 @@ TransactionDefinition.prototype.toArray = function() {
     requiresownercharge: this.requiresownercharge,
     requiresownerpayment: this.requiresownerpayment,
     requiresproperty: this.requiresproperty,
+    requiressupplierpayment: this.requiressupplierpayment,
     donotmodify: this.donotmodify
   };
 };
@@ -57,6 +58,7 @@ TransactionDefinition.prototype.validSchema = function() {
     requiresownercharge: Joi.boolean().optional().label('Requires Owner Charge'),
     requiresownerpayment: Joi.boolean().optional().label('Requires Owner Payment'),
     requiresproperty: Joi.boolean().optional().label('Requires Property'),
+    requiressupplierpayment: Joi.boolean().optional().label('Requires Supplier Payment'),
     donotmodify: Joi.boolean().optional().label('Do not modify')
   });
 };
