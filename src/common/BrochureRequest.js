@@ -1,6 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var Customer = require('./Customer');
 var EntityLink = require('./EntityLink');
+var SourceMarketingBrand = require('./SourceMarketingBrand');
 
 function BrochureRequest(id) {
   this.path = this.createPath = 'request';
@@ -9,6 +10,7 @@ function BrochureRequest(id) {
   this.brochure = new EntityLink({
     entity: 'Brochure'
   });
+  this.sourcemarketingbrand = new SourceMarketingBrand();
 }
 
 BrochureRequest.prototype = new SingleEntity();
