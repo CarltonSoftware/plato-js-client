@@ -12,17 +12,22 @@ function PropertyQuestion(id) {
 PropertyQuestion.prototype = new SingleEntity();
 
 PropertyQuestion.prototype.toArray = function() {
-  return {
+  var fields = {
     propertyquestioncategoryid: this.propertyquestioncategory.id,
     question: this.question,
     booleananswerallowed: this.booleananswerallowed,
     booleananswerrequired: this.booleananswerrequired,
     textanswerallowed: this.textanswerallowed,
     textanswerrequired: this.textanswerrequired,
-    answeroptiongroupid: this.answeroptiongroup.id,
-    optionanswerrequired: this.optionanswerrequired,
-    defaultansweroptionid: this.defaultansweroption.id
+    optionanswerrequired: this.optionanswerrequired
   };
+  if (this.answeroptiongroup) {
+    fields.answeroptiongroupid = this.answeroptiongroup.id;
+  }
+  if (this.defaultansweroption) {
+    fields.defaultansweroptionid = this.defaultansweroption.id;
+  }
+  return fields;
 };
 
 PropertyQuestion.prototype.validSchema = function() {
@@ -34,7 +39,7 @@ PropertyQuestion.prototype.validSchema = function() {
     textanswerallowed: Joi.boolean().required().label('Text answer allowed'),
     textanswerrequired: Joi.boolean().required().label('Text answer required'),
     answeroptiongroupid: Joi.object().optional().label('Answer Option group'),
-    optionanswerrequired: Joi.boolean().required().label('Text answer required'),
+    optionanswerrequired: Joi.boolean().required().label('Option answer required'),
     defaultansweroptionid: Joi.object().optional().label('Default Answer')
   });
 };

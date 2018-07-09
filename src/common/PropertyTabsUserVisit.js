@@ -1,10 +1,13 @@
 var SingleEntity = require('./SingleEntity');
 var Joi = require('joi');
+var EntityLink = require('./EntityLink');
 
 function PropertyTabsUserVisit(id) {
-    this.path = 'propertytabsuservisit';
-    this.createPath = 'propertytabsuservisit';
+    this.path = 'tabsuservisit';
+    this.createPath = 'tabsuservisit';
     this.id = id;
+
+    this.tabsuser = new EntityLink({ entity: 'TabsUser' });
 }
 PropertyTabsUserVisit.prototype = new SingleEntity();
 
@@ -19,10 +22,10 @@ PropertyTabsUserVisit.prototype.toArray = function() {
 
 PropertyTabsUserVisit.prototype.validSchema = function() {
     return Joi.object().keys({
-        tabsuser: Joi.object().required().label('Tabsuser'),
-        visitdatetime: Joi.string().optional().label('Visit Datetime'),
-        reason: Joi.string().optional().label('Reason'),
-        comments: Joi.string().optional().label('Comments')
+        tabsuser: Joi.object().required().label('tabsuser'),
+        visitdatetime: Joi.string().optional().allow('').label('Visit Datetime'),
+        reason: Joi.string().optional().allow('').label('Reason'),
+        comments: Joi.string().optional().allow('').label('Comments')
     });
   };
 
