@@ -3,8 +3,8 @@ var PropertyQuestionCategory = require('./PropertyQuestionCategory');
 var Joi = require('joi');
 
 function PropertyAnswer(id) {
-    this.path = 'propertyquestioncategory';
-    this.createPath = 'propertyquestioncategory';
+    this.path = 'answer';
+    this.createPath = 'answer';
     this.id = id;
 
     this.propertyquestioncategory = new PropertyQuestionCategory();
@@ -12,14 +12,19 @@ function PropertyAnswer(id) {
 PropertyAnswer.prototype = new SingleEntity();
 
 PropertyAnswer.prototype.toArray = function() {
-  return {
+  var fields = {
     propertyquestionid: this.propertyquestion.id,
-    booleananswer: this.booleananswer,
-    textanswer: this.textanswer,
-    answeroptionid: this.answeroption.id,
-    lastupdatedatetime: this.lastupdatedatetime,
-    lastupdatedbyactorid: this.lastupdatedbyactor.id
+    // answeroptionid: this.answeroption.id,
+    // lastupdatedatetime: this.lastupdatedatetime,
+    //lastupdatedbyactorid: this.lastupdatedbyactor.id
   };
+  if (this.booleananswer != null) {
+    fields.booleananswer = this.booleananswer;
+  }
+  if (this.textanswer != null) {
+    fields.textanswer = this.textanswer;
+  }
+  return fields;
 };
 
 PropertyAnswer.prototype.validSchema = function() {
