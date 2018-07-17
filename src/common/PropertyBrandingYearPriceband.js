@@ -28,7 +28,7 @@ PropertyBrandingYearPriceband.prototype.toArray = function() {
     f.saleschannelid = this.saleschannel.id
   }
   if (this.pricetype) {
-    f.pricetypeid = this.pricetype.pricetype.id
+    f.pricetypeid = this.pricetype.id
   }
   if (this.currency) {
     f.currencyid = this.currency.id
