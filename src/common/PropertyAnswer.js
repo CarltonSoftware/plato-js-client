@@ -12,6 +12,7 @@ function PropertyAnswer(id) {
 PropertyAnswer.prototype = new SingleEntity();
 
 PropertyAnswer.prototype.toArray = function() {
+
   var fields = {
     propertyquestionid: this.propertyquestion.id,
     // answeroptionid: this.answeroption.id,
