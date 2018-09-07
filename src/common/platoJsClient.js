@@ -135,30 +135,58 @@ var platoJsClient = (function () {
          *
          * @return {Promise}
          */
+        this._authenticate = function(username, password, clientSecret) {
+          var paramsData = {
+              'grant_type': 'password',
+              'username': username,
+              'password': password,
+              'client_id': clientId,
+              'client_secret': clientSecret
+          };
+
+          var client = rest.wrap(
+            mime
+          ).wrap(
+            pathPrefix,
+            { prefix: host }
+          ).wrap(
+            defaultRequest
+          ).wrap(params);
+
+          return client({ path: '/oauth/v2/token', params: paramsData });
+        };
+
+        /**
+         * Authenticate using username and password
+         *
+         * Returns a promise to a token.
+         * The client stores the token internally ready for use as well
+         *
+         * @return {Promise}
+         */
+        this.handleAuthResponse = function(response) {
+          if (response.entity.error_description) {
+              throw Error('Auth failure: ' + response.entity.error_description);
+          }
+          if (!response.entity.access_token) {
+              throw Error('Auth failure: No token returned');
+          }
+          this.token = response.entity.access_token;
+          return response.entity.access_token;
+        };
+
+        /**
+         * Authenticate using username and password
+         *
+         * Returns a promise to a token.
+         * The client stores the token internally ready for use as well
+         *
+         * @return {Promise}
+         */
         this.authenticate = function(username, password, clientSecret) {
-            var paramsData = {
-                'grant_type': 'password',
-                'username': username,
-                'password': password,
-                'client_id': clientId,
-                'client_secret': clientSecret
-            };
-
-            var client = rest.wrap(mime)
-                             .wrap(pathPrefix, { prefix: host })
-                             .wrap(defaultRequest)
-                             .wrap(params);
-
-            return client({ path: '/oauth/v2/token', params: paramsData }).then(function(response) {
-                if (response.entity.error_description) {
-                    throw Error('Auth failure: ' + response.entity.error_description);
-                }
-                if (!response.entity.access_token) {
-                    throw Error('Auth failure: No token returned');
-                }
-                this.token = response.entity.access_token;
-                return response.entity.access_token;
-            }.bind(this));
+          return this._authenticate(username, password, clientSecret).then(function(response) {
+            return this.handleAuthResponse(response);
+          }.bind(this));
         };
 
         /**
