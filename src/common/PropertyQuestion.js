@@ -19,7 +19,8 @@ PropertyQuestion.prototype.toArray = function() {
     booleananswerrequired: this.booleananswerrequired,
     textanswerallowed: this.textanswerallowed,
     textanswerrequired: this.textanswerrequired,
-    optionanswerrequired: this.optionanswerrequired
+    optionanswerrequired: this.optionanswerrequired,
+    displayorder: this.displayorder
   };
   if (this.answeroptiongroup) {
     fields.answeroptiongroupid = this.answeroptiongroup.id;
@@ -40,7 +41,8 @@ PropertyQuestion.prototype.validSchema = function() {
     textanswerrequired: Joi.boolean().required().label('Text answer required'),
     answeroptiongroupid: Joi.object().optional().label('Answer Option group'),
     optionanswerrequired: Joi.boolean().required().label('Option answer required'),
-    defaultansweroptionid: Joi.object().optional().label('Default Answer')
+    defaultansweroptionid: Joi.object().optional().label('Default Answer'),
+    displayorder: Joi.number().optional().label('display order')
   });
 };
 
