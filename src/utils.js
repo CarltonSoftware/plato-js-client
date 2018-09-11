@@ -43,7 +43,7 @@ module.exports = {
   Common: {
     getCollection: function(entityName, parent, page, limit, order, filters, fields) {
       var obj = new platoClient.common[entityName];
-      let collection = new platoClient.FilterCollection({
+      var collection = new platoClient.FilterCollection({
         path: obj.path,
         object: platoClient.common[entityName],
         parent: parent
