@@ -40,6 +40,26 @@ module.exports = {
       return client;
     }
   },
+  Common: {
+    getCollection: function(entityName, parent, page, limit, order, filters, fields) {
+      var obj = new platoClient.common[entityName];
+      let collection = new platoClient.FilterCollection({
+        path: obj.path,
+        object: platoClient.common[entityName],
+        parent: parent
+      });
+      collection.page = page || 1;
+      collection.limit = limit || 10;
+      collection.orderBy = order || '';
+      collection.removeAllFilters();
+      collection.addFilters(filters || {});
+      if (fields) {
+        collection.fields = fields;
+      }
+
+      return collection;
+    }
+  },
   SNS: {
     Message: {
       /**
