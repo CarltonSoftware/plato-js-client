@@ -597,6 +597,12 @@ var platoJsClient = (function () {
           return this.init.apply(this, arguments);
         }
         return INSTANCE;
+      },
+      newInstance: function () {
+        var c = new platoJsClient();
+        c.setInstance(arguments);
+
+        return c;
       }
     };
 }());
