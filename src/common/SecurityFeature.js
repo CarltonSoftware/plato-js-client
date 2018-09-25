@@ -24,4 +24,8 @@ SecurityFeature.prototype.validSchema = function() {
   });
 };
 
+SecurityFeature.prototype.toString = function() {
+  return this.name;
+};
+
 module.exports = SecurityFeature;
