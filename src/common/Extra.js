@@ -33,4 +33,8 @@ Extra.validSchema = Joi.object().keys({
   petextra: Joi.boolean().label('is a pet extra')
 });
 
+Extra.prototype.toString = function() {
+  return this.extracode + ' - ' + this.description;
+};
+
 module.exports = Extra;
