@@ -26,4 +26,8 @@ AccountingPeriod.prototype.validSchema = function() {
   });
 };
 
+AccountingPeriod.prototype.toString = function() {
+  return this.name;
+};
+
 module.exports = AccountingPeriod;
