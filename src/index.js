@@ -214,7 +214,9 @@ module.exports.common.MarketingBrandEmailList = require('./common/MarketingBrand
 module.exports.common.BrandingGroup = require('./common/BrandingGroup');
 module.exports.common.Branding = require('./common/Branding');
 module.exports.common.BrandingExtra = require('./common/BrandingExtra');
+module.exports.common.BrandingLeadTimePeriod = require('./common/BrandingLeadTimePeriod');
 module.exports.common.SourceMarketingBrand = require('./common/SourceMarketingBrand');
+module.exports.common.VatRegistrationPeriod = require('./common/VatRegistrationPeriod');
 
 // Brochure Related Objects
 module.exports.common.Brochure = require('./common/Brochure');
