@@ -187,7 +187,8 @@ Booking.prototype.toArray = function() {
     securitydeposit_dueindate: this.securitydeposit_dueindate,
     securitydeposit_dueoutdate: this.securitydeposit_dueoutdate,
 
-    bypasschecks: this.bypasschecks
+    bypasschecks: this.bypasschecks,
+    removepromotioncode: this.removepromotioncode
   };
 
   if (this.confirmedbooking_tabsuserid) {
