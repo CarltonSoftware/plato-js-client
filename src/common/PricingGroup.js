@@ -1,10 +1,17 @@
 var SingleEntity = require('./SingleEntity');
+var Collection = require('./Collection');
+var PricingGroupYear = require('./PricingGroupYear');
 var Joi = require('joi');
 
 function PricingGroup(id) {
   this.path = 'pricinggroup';
   this.createPath = 'pricinggroup';
   this.id = id;
+  this.years = new Collection({
+    object: PricingGroupYear,
+    path: 'year',
+    parent: this
+  });
 }
 
 PricingGroup.prototype = new SingleEntity();
