@@ -6,7 +6,7 @@ function BedTypeRoomType(id) {
   this.path = 'bedtype';
   this.createPath = this.path;
   this.id = id;
-  this.bedtypes = new BedType();
+  this.bedtype = new BedType();
 
   this.validSchema = function() {
     return {
