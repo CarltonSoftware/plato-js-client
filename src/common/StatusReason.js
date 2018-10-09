@@ -9,13 +9,15 @@ StatusReason.prototype = new SingleEntity();
 
 StatusReason.prototype.toArray = function() {
   return {
-    reason: this.reason
+    reason: this.reason,
+    inactive: this.inactive
   };
 };
 
 StatusReason.prototype.validSchema = function() {
   return Joi.object().keys({
     reason: Joi.string().label('Reason'),
+    inactive: Joi.boolean()
   });
 };
 
