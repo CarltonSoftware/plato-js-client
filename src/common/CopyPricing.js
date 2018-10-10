@@ -12,6 +12,7 @@ CopyPricing.prototype.toArray = function() {
   var fields = {
     type: this.type,
     fromid: this.from.id,
+    ignorepricingagreed: this.ignorepricingagreed,
     fromyear: this.fromyear,
     toyear: this.toyear,
     checkforoverlap: this.checkforoverlap,
