@@ -12,7 +12,8 @@ NoteType.prototype.toArray = function() {
     notetype: this.notetype,
     description: this.description,
     donotdelete: this.donotdelete,
-    usercreatable: this.usercreatable
+    usercreatable: this.usercreatable,
+    displaynotetype: this.displaynotetype
   };
 };
 
