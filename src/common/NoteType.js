@@ -13,7 +13,7 @@ NoteType.prototype.toArray = function() {
     description: this.description,
     donotdelete: this.donotdelete,
     usercreatable: this.usercreatable,
-    displaynotetype: this.displaynotetype
+    notetypedisplay: this.notetypedisplay
   };
 };
 
