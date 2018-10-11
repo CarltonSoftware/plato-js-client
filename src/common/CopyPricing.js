@@ -24,7 +24,7 @@ CopyPricing.prototype.toArray = function() {
     incrementpercentage: this.incrementpercentage,
     incrementamount2: this.incrementamount2,
     roundtonearest: this.roundtonearest,
-    usepricingyear: this.usepricingyear
+    usepricinggroupyear: this.usepricinggroupyear
   };
 
   if (this.adjustforchangeday) {
