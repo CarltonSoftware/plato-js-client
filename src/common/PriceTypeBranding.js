@@ -35,7 +35,11 @@ PriceTypeBranding.prototype.toArray = function() {
   };
 
   if (this.type === 'Percentage') {
-    ret.percentage = this.percentage;
+    if (this.prorata) {
+      ret.prorata = this.prorata;
+    } else {
+      ret.percentage = this.percentage;
+    }
     ret.pricetypebrandingfixedid = this.basepricetypebranding.id;
   }
 
