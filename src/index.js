@@ -288,6 +288,8 @@ module.exports.common.SpecialOfferPropertyBranding = require('./common/SpecialOf
 module.exports.common.SpecialOfferSalesChannel = require('./common/SpecialOfferSalesChannel');
 module.exports.common.SpecialOfferWebsiteSection = require('./common/SpecialOfferWebsiteSection');
 module.exports.common.WebsiteSection = require('./common/WebsiteSection');
+module.exports.common.SpecialOfferLeadTimePeriod = require('./common/SpecialOfferLeadTimePeriod');
+module.exports.common.SpecialOfferTemplateType = require('./common/SpecialOfferTemplateType');
 
 module.exports.common.Role = require('./common/Role');
 module.exports.common.Reason = require('./common/Reason');
