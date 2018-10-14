@@ -105,6 +105,9 @@ SpecialOffer.prototype.toUpdateArray = function() {
   if (this.depositamount) {
     fields.depositamountid = this.depositamount.id;
   }
+  if (this.specialoffertemplatetype) {
+    fields.specialoffertemplatetypeid = this.specialoffertemplatetype.id;
+  }
 
   return fields;
 };
