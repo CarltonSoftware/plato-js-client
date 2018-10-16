@@ -195,6 +195,10 @@ Booking.prototype.toArray = function() {
     array.confirmedbooking_tabsuserid = this.confirmedbooking_tabsuserid;
   }
 
+  if (this.cancelledbooking_templateoffer && this.cancelledbooking_templateoffer.id) {
+    array.cancelledbooking_templateofferid = this.cancelledbooking_templateoffer.id;
+  }
+
   if (this.brochureprice && this.brochureprice == 'true') {
     array.brochureprice = 'true';
   }
