@@ -10,7 +10,7 @@ function PropertyBrandingSpecialoffer(propertyId, brandId, fromdate, todate, boo
   if (bookingdate && templatetypeid) {
     this.params.bookingdate = bookingdate;
     this.params.templatetypeid = templatetypeid;
-  };
+  }
   this.options = {
     object: SpecialOffer
   };
