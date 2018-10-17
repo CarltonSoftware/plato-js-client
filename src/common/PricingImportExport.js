@@ -26,6 +26,10 @@ PricingImportExport.prototype.toArray = function() {
     s.brandingid = this.branding.id;
   }
 
+  if (this.pricinggroup) {
+    s.pricinggroupid = this.pricinggroup.id;
+  }
+
   if (this.propertyids.length > 0) {
     s.propertyids = this.propertyids.join(',');
   }
