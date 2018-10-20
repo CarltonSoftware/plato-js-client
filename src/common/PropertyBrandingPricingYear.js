@@ -18,7 +18,7 @@ PropertyBrandingPricingYear.prototype.toArray = function() {
   return {
     pricingyear: this.pricingyear,
     pricinggroupyearid: this.pricinggroupyear.id,
-    pricingagreed: this.daysofweek,
+    pricingagreed: this.pricingagreed,
   };
 };
 
