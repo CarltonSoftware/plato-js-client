@@ -50,7 +50,7 @@ ChangeDayTemplateRule.prototype.toArray = function() {
 };
 
 ChangeDayTemplateRule.prototype.validSchema = function() {
-    return Joi.object().keys({
+  return Joi.object().keys({
     ruleorder: Joi.number().integer().required('rule order'),
     everysaturday: Joi.boolean().label('every Saturday'),
     everysunday: Joi.boolean().label('every Sunday'),
