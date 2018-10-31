@@ -1,11 +1,13 @@
 var Joi = require('joi');
 var SingleEntity = require('./SingleEntity');
+var PricingPeriod = require('./PricingPeriod');
 var VatBand = require('./VatBand');
 
 function ExtraBrandingConfiguration(extraId, brandingId, id) {
   this.path = 'extra/' + extraId + '/branding/' + brandingId + '/configuration';
   this.createPath = this.path;
   this.id = id;
+  this.pricingperiod = new PricingPeriod();
   this.vatband = new VatBand();
 }
 ExtraBrandingConfiguration.prototype = new SingleEntity();
@@ -16,6 +18,7 @@ ExtraBrandingConfiguration.prototype.toCreateArray = function() {
     todate: this.todate,
     bookingbookedfromdate: this.bookingbookedfromdate,
     bookingbookedtodate: this.bookingbookedtodate,
+    pricingperiodid: this.pricingperiod && this.pricingperiod.id,
     compulsory: this.compulsory ? 'true' : 'false',
     included: this.included ? 'true' : 'false',
     payagency: this.payagency ? 'true' : 'false',
@@ -48,6 +51,7 @@ ExtraBrandingConfiguration.prototype.toUpdateArray = function() {
     todate: this.todate,
     bookingbookedfromdate: this.bookingbookedfromdate,
     bookingbookedtodate: this.bookingbookedtodate,
+    pricingperiodid: this.pricingperiod && this.pricingperiod.id,
     compulsory: this.compulsory,
     included: this.included,
     payagency: this.payagency,
@@ -78,6 +82,7 @@ ExtraBrandingConfiguration.validSchema = Joi.object().keys({
   todate: Joi.string().required().label('to date'),
   bookingbookedfromdate: Joi.string().required().label('booking booked from date'),
   bookingbookedtodate: Joi.string().required().label('booking booked to date'),
+  pricingperiod: Joi.object().optional().label('Pricing period'),
   compulsory: Joi.boolean().required(),
   included: Joi.boolean().required(),
   payagency: Joi.boolean().required().label('pay agency'),
