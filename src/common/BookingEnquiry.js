@@ -14,6 +14,7 @@ function BookingEnquiry(
   pricingperiod,
   currencycode,
   currentbookingid,
+  customerid,
   calculatebrochureprice,
   calculateadditionalextras,
   calculateincludedextras,
@@ -46,6 +47,9 @@ function BookingEnquiry(
   };
   if (currentbookingid) {
     this.params.currentbookingid = currentbookingid;
+  }
+  if (customerid) {
+    this.params.customerid = customerid;
   }
 
   this.branding = new Branding();
