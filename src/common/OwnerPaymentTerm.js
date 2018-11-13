@@ -42,6 +42,7 @@ OwnerPaymentTerm.prototype.toArray = function() {
     percentageofbasic: this.percentageofbasic,
     percentageofpayment: this.percentageofpayment,
     ownerpaid: this.ownerpaid,
+    excludeallextrasexcept: this.excludeallextrasexcept,
     currencyid: this.currency.id
   };
 };
