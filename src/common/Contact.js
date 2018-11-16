@@ -4,6 +4,7 @@ var Template = require('./Template');
 var Actor = require('./Actor');
 var ContactDocument = require('./ContactDocument');
 var ContactEntity = require('./ContactEntity');
+var ContactReason = require('./ContactReason');
 var Joi = require('joi');
 
 function Contact(contactId) {
@@ -24,6 +25,7 @@ function Contact(contactId) {
   });
 
   this.createdby = new Actor();
+  this.contactreason = new ContactReason();
 }
 Contact.prototype = new SingleEntity();
 
@@ -36,7 +38,7 @@ Contact.prototype.toArray = function() {
 };
 
 Contact.prototype.toCreateArray = function() {
-  return {
+  var c = {
     contacttype: this.contacttype,
     contactmethodtype: this.contactmethodtype,
     subject: this.subject,
@@ -53,8 +55,14 @@ Contact.prototype.toCreateArray = function() {
     deleted: false,
     templateentityid: this.templateentityid,
     templateid: this.template.id,
-    document_documentid: this.document_documentid
+    document_documentid: this.document_documentid,
+    comments: this.comments
   };
+  if (this.contactreason && this.contactreason.id) {
+    c.contactreasonid = this.contactreason.id;
+  }
+
+  return c;
 };
 
 Contact.prototype.validSchema = function () {
