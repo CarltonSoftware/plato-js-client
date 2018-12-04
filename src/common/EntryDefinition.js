@@ -33,7 +33,7 @@ EntryDefinition.prototype.validSchema = function() {
     debit: Joi.boolean().label('debit'),
     accountvaluetype: Joi.object().required().label('Account Value Type'),
     brandsource: Joi.object().optional().label('Brand Source'),
-    type: Joi.string().valid('Standard', 'Extra', 'OwnerCharge', 'Payment').label('type'),
+    type: Joi.string().valid('Standard', 'Extra', 'OwnerCharge', 'Payment', 'CostItem').label('type'),
     account: Joi.object().when('type', { is: 'Standard', then: Joi.required() }).label('Account'),
     donotdelete: Joi.boolean().optional().label('do not delete')
   });

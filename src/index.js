@@ -72,6 +72,7 @@ module.exports.common.BrandSource = require('./common/BrandSource');
 module.exports.common.DoubleEntryDefinition = require('./common/DoubleEntryDefinition');
 module.exports.common.Entry = require('./common/Entry');
 module.exports.common.EntryDefinition = require('./common/EntryDefinition');
+module.exports.common.EntryDefinitionCostItemCode = require('./common/EntryDefinitionCostItemCode');
 module.exports.common.EntryDefinitionExtraBranding = require('./common/EntryDefinitionExtraBranding');
 module.exports.common.EntryDefinitionOwnerChargeCode = require('./common/EntryDefinitionOwnerChargeCode');
 module.exports.common.EntryDefinitionPaymentMethod = require('./common/EntryDefinitionPaymentMethod');
