@@ -55,6 +55,7 @@ module.exports.common.OwnerPaymentTerm = require('./common/OwnerPaymentTerm');
 module.exports.common.OwnerPaymentTermExtra = require('./common/OwnerPaymentTermExtra');
 module.exports.common.OwnerPaymentType = require('./common/OwnerPaymentType');
 module.exports.common.OwnerCharge = require('./common/OwnerCharge');
+module.exports.common.OwnerChargeAmountType = require('./common/OwnerChargeAmountType');
 module.exports.common.OwnerChargeCode = require('./common/OwnerChargeCode');
 module.exports.common.OwnerChargeImport = require('./common/OwnerChargeImport');
 module.exports.common.OwnerStatement = require('./common/OwnerStatement');
@@ -183,6 +184,7 @@ module.exports.common.KeyCheckReason = require('./common/KeyCheckReason');
 module.exports.common.KeyCheck = require('./common/KeyCheck');
 module.exports.common.KeysBookingBrand = require('./common/KeysBookingBrand');
 
+module.exports.common.AmountLimitType = require('./common/AmountLimitType');
 module.exports.common.WorkOrder = require('./common/WorkOrder');
 module.exports.common.WorkOrderExpense = require('./common/WorkOrderExpense');
 module.exports.common.WorkOrderOwner = require('./common/WorkOrderOwner');
