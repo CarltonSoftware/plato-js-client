@@ -28,7 +28,14 @@ function SecurityGroup(id) {
 
     return false;
   };
+
+  this.canAccessRoute = function(route) {
+    for (let securityrole of this.securityroles.collection) {
+      return securityrole.canAccessRoute(route);
+    }
+  }
 }
+
 SecurityGroup.prototype = new SingleEntity();
 
 SecurityGroup.prototype.toArray = function() {

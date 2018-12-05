@@ -16,11 +16,14 @@ SecurityRole.prototype.toArray = function() {
   };
 };
 
+SecurityRole.prototype.canAccessRoute = function(route) {
+  return this.symfonyroute.includes(route);
+}
+
 SecurityRole.validSchema = Joi.object().keys({
   name: Joi.string().required().label('name'),
   description: Joi.string().required().label('description'),
   symfonyroute: Joi.string().optional().allow('').label('symfony route')
 });
-
 
 module.exports = SecurityRole;
