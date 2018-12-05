@@ -30,7 +30,7 @@ function SecurityGroup(id) {
   };
 
   this.canAccessRoute = function(route) {
-    for (const securityrole of this.securityroles.collection) {
+    for (var securityrole of this.securityroles.collection) {
       return securityrole.canAccessRoute(route);
     }
   }
