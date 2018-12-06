@@ -31,8 +31,12 @@ function SecurityGroup(id) {
 
   this.canAccessRoute = function(route) {
     for (var i in this.securityroles.collection) {
-      return this.securityroles.collection[i].canAccessRoute(route);
+      if (this.securityroles.collection[i].canAccessRoute(route)) {
+        return true;
+      };
     }
+
+    return false;
   }
 }
 

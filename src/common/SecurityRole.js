@@ -17,6 +17,7 @@ SecurityRole.prototype.toArray = function() {
 };
 
 SecurityRole.prototype.canAccessRoute = function(route) {
+  console.log(this.symfonyroute, route, this.symfonyroute.includes(route));
   return this.symfonyroute.includes(route);
 }
 
