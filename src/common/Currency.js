@@ -1,4 +1,5 @@
 var SingleEntity = require('./SingleEntity');
+var Joi = require('joi');
 
 function Currency(id) {
     this.path = 'currency';
@@ -7,21 +8,19 @@ function Currency(id) {
 }
 Currency.prototype = new SingleEntity();
 
-Currency.prototype.toCreateArray = function() {
+Currency.prototype.validSchema = function() {
   return {
-    //TODO: Add in the fields necessary to create a Currency
-    currencycode: this.code,
-    currencyname: this.name,
-    decimalplaces: this.decimalplaces,
+    currencycode: Joi.string().required().label('currencycode'),
+    currencyname: Joi.string().required().label('currencyname'),
+    decimalplaces: Joi.string().required().label('decimalplaces')
   };
 };
 
-Currency.prototype.toUpdateArray = function() {
+Currency.prototype.toArray = function() {
   return {
-    //TODO: Add in the fields necessary to update a Currency
     currencycode: this.code,
     currencyname: this.name,
-    decimalplaces: this.decimalplaces,
+    decimalplaces: this.decimalplaces
   };
 };
 

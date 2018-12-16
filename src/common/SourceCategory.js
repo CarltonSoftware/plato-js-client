@@ -1,4 +1,5 @@
 var SingleEntity = require('./SingleEntity');
+var Joi = require('joi');
 
 function SourceCategory(id) {
   this.path = 'sourcecategory';
@@ -11,5 +12,12 @@ SourceCategory.prototype.toArray = function() {
     sourcecategory: this.sourcecategory
   };
 };
+
+SourceCategory.prototype.validSchema = function() {
+  return Joi.object().keys({
+    sourcecategory: Joi.string().required().label('Source Category')
+  });
+};
+
 
 module.exports = SourceCategory;

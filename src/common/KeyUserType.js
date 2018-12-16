@@ -20,7 +20,7 @@ KeyUserType.prototype.toArray = function() {
 
 KeyUserType.prototype.validSchema = function() {
   return Joi.object().keys({
-    keyusertype: Joi.string().label('Key User Type'),
+    keyusertype: Joi.string().required().label('Key User Type'),
     role: Joi.object().optional().label('Role'),
     description: Joi.string().optional().allow('').label('Description'),
   });

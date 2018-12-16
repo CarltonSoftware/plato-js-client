@@ -14,6 +14,7 @@ module.exports.common.ActorCategory = require('./common/ActorCategory');
 module.exports.common.AssessmentGrade = require('./common/AssessmentGrade');
 module.exports.common.AttributeOption = require('./common/AttributeOption');
 module.exports.common.Contact = require('./common/Contact');
+module.exports.common.DateToUse = require('./common/DateToUse');
 module.exports.common.Agency = require('./common/Agency');
 module.exports.common.AgencyBookingType = require('./common/AgencyBookingType');
 module.exports.common.AgencyCollection = require('./common/AgencyCollection');

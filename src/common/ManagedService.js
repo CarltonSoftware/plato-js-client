@@ -1,4 +1,5 @@
 var SingleEntity = require('./SingleEntity');
+var Joi = require('joi');
 
 function ManagedService(id) {
   this.path = 'service';
@@ -12,7 +13,7 @@ ManagedService.prototype.toCreateArray = function() {
     name: this.name,
     description: this.description,
     donotmodify: this.donotmodify,
-    datetouse: this.datetouse,
+    datetouse: typeof this.datetouse === 'object' ? this.datetouse.datetouse : this.datetouse,
     customerbookings: this.customerbookings,
     ownerbookings: this.ownerbookings
   };
@@ -20,6 +21,18 @@ ManagedService.prototype.toCreateArray = function() {
 
 ManagedService.prototype.toString = function() {
   return this.name;
+};
+
+ManagedService.prototype.validSchema = function() {
+  return Joi.object().keys({
+    name: Joi.string().required().label('name'),
+    description: Joi.string().required().label('description'),
+    donotmodify: Joi.boolean().label('do not modify'),
+    vatband: Joi.object().required().label('VAT band'),
+    datetouse: Joi.object().required().label('date to use'),
+    customerbookings: Joi.boolean().label('applies to customer bookings'),
+    ownerbookings: Joi.boolean().label('applies to owner bookings')
+  });
 };
 
 module.exports = ManagedService;

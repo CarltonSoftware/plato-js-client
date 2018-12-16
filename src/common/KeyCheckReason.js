@@ -23,7 +23,7 @@ KeyCheckReason.prototype.toArray = function() {
 KeyCheckReason.prototype.validSchema = function() {
   return Joi.object().keys({
     keyusertype: Joi.object().required().label('Key User Type'),
-    keycheckreason: Joi.string().label('Key Check Reason'),
+    keycheckreason: Joi.string().required().label('Key Check Reason'),
     description: Joi.string().optional().allow('').label('Description'),
     checkoutperioddays: Joi.number().integer().optional().label('Checkout Period Days'),
     checkoutperiodhours: Joi.number().integer().optional().label('Checkout Period Hours')

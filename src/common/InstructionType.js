@@ -17,7 +17,7 @@ InstructionType.prototype.toArray = function() {
 
 InstructionType.prototype.validSchema = function() {
   return Joi.object().keys({
-    instructiontype: Joi.string().label('Instruction Type'),
+    instructiontype: Joi.string().required().label('Instruction Type'),
     description: Joi.string().required().label('Description'),
   });
 };
