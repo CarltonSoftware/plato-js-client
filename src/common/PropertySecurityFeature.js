@@ -1,5 +1,6 @@
 var SingleEntity = require('./SingleEntity');
 var SecurityFeature = require('./SecurityFeature');
+var Joi = require('joi');
 
 function PropertySecurityFeature(id) {
   this.path = 'securityfeature';
@@ -17,6 +18,16 @@ PropertySecurityFeature.prototype.toArray = function() {
     fromdate: this.fromdate,
     todate: this.todate
   };
+};
+
+PropertySecurityFeature.prototype.validSchema = function() {
+  return Joi.object().keys({
+    securityfeature: Joi.object().label('Security Feature'),
+    code: Joi.string().label('Code'),
+    todate: Joi.allow('').optional().label('To Date'),
+    fromdate: Joi.allow('').optional().label('From Date'),
+    notes: Joi.allow('').optional().label('Notes')
+  });
 };
 
 module.exports = PropertySecurityFeature;
