@@ -6,6 +6,7 @@ module.exports.common.Feature = require('./common/Feature');
 module.exports.common.AvailableDay = require('./common/AvailableDay');
 module.exports.common.Unit = require('./common/Unit');
 module.exports.common.Title = require('./common/Title');
+module.exports.common.SymfonyRoute = require('./common/SymfonyRoute');
 module.exports.common.Address = require('./common/Address');
 module.exports.common.Attribute = require('./common/Attribute');
 module.exports.common.AttributeGroup = require('./common/AttributeGroup');
