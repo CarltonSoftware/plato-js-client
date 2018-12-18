@@ -12,6 +12,13 @@ function SecurityGroup(id) {
     object: SecurityRole
   });
 
+  this.validSchema = function() {
+    return {
+      name: Joi.string().required().label('name'),
+      description: Joi.string().required().label('description'),
+    };
+  };
+
   /**
    * Check a role
    *
@@ -48,10 +55,5 @@ SecurityGroup.prototype.toArray = function() {
     description: this.description,
   };
 };
-
-SecurityGroup.validSchema = Joi.object().keys({
-  name: Joi.string().required().label('name'),
-  description: Joi.string().required().label('description'),
-});
 
 module.exports = SecurityGroup;
