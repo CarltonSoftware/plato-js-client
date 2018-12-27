@@ -370,3 +370,7 @@ module.exports.MultiCollection = require('./common/MultiCollection');
 module.exports.GroupingCollection = require('./common/GroupingCollection');
 module.exports.FilterCollection = require('./common/FilterCollection');
 module.exports.NoteFilterCollection = require('./common/NoteFilterCollection');
+
+
+//Work Orders
+module.exports.common.ChargingPeriod = require('./common/ChargingPeriod');
