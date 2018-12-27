@@ -2,16 +2,16 @@ var SingleEntity = require('./SingleEntity');
 var Joi = require('joi');
 
 
-function ChargingPeriod(id){
+function ChargingPeriod(id) {
       this.path = 'chargingperiod';
       this.createPath = 'chargingperiod';
       this.id = id;
 
-      this.prototype.validSchema = function(){
+      this.validSchema = function() {
             return {
-                chargingperiod: Joi.string().required().label('Charging Period'),
-                description: Joi.string().label('Time interval')
-            }
+                chargingperiod: Joi.string().required().label('chargingperiod'),
+                description: Joi.string().label('description')
+            };
       };
 }
 
