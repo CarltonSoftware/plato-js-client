@@ -14,6 +14,7 @@ InspectionType.prototype.toArray = function() {
     schedule: this.schedule,
     gradingunit: this.gradingunit,
     defaultgrading: this.defaultgrading,
+    inactive: this.inactive
   };
 };
 
@@ -27,6 +28,7 @@ InspectionType.prototype.validSchema = function() {
     schedule: Joi.string().optional().allow('').label('schedule'),
     gradingunit: Joi.string().required().label('grading unit'),
     defaultgrading: Joi.string().optional().allow('').label('default grading'),
+    inactive: Joi.boolean().required().label('inactive'),
   });
 };
 
