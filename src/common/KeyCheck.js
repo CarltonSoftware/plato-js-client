@@ -33,6 +33,7 @@ KeyCheck.prototype.toArray = function() {
   return arr;
 };
 
+/* set dates to strings - TASB2-4135 */
 KeyCheck.prototype.validSchema = function() {
   return Joi.object().keys({
     type: Joi.string().valid(['KeyCheckOut', 'KeyCheckIn']).required(),
