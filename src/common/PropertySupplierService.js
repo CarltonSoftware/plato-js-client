@@ -26,15 +26,18 @@ function PropertySupplierService(id) {
 PropertySupplierService.prototype = new SingleEntity();
 
 PropertySupplierService.prototype.toUpdateArray = function() {
-  return {
+  var pss = {
     fromdate: this.fromdate,
     todate: this.todate,
     customerbookings: this.customerbookings,
     ownerbookings: this.ownerbookings,
     agencybookings: this.agencybookings,
-    datetouse: this.datetouse,
     forceupdateservices: this.forceupdateservices
   };
+  if (this.datetouse) {
+    pss.datetouse = this.datetouse;
+  }
+  return pss;
 };
 PropertySupplierService.prototype.toCreateArray = function() {
   var array = this.toUpdateArray();
@@ -50,7 +53,7 @@ PropertySupplierService.prototype.validSchema = function() {
     customerbookings: Joi.boolean().required().label('Customer bookings'),
     ownerbookings: Joi.boolean().required().label('Owner bookings'),
     agencybookings: Joi.boolean().required().label('Agency bookings'),
-    datetouse: Joi.string().required().label('Date to Use'),
+    datetouse: Joi.string().optional().allow('').label('Date to Use'),
     forceupdateservices: Joi.boolean().required().label('Force update services')
   });
 };
