@@ -12,6 +12,16 @@ function Extra(id) {
   this.brandings = new StaticCollection({
     object: Branding
   });
+
+  this.validSchema = function() {
+    return {
+      extracode: Joi.string().required().label('extra code'),
+      extratype: Joi.string().required().allow(['Booking', 'Marketing']).label('extra type'),
+      description: Joi.string().required().label('description'),
+      extragroup: Joi.object().label('extra group'),
+      petextra: Joi.boolean().label('is a pet extra')
+    }
+  };
 }
 
 Extra.prototype = new SingleEntity();
@@ -24,14 +34,6 @@ Extra.prototype.toArray = function() {
     petextra: this.petextra
   };
 };
-
-Extra.validSchema = Joi.object().keys({
-  extracode: Joi.string().required().label('extra code'),
-  extratype: Joi.string().required().label('extra type'),
-  description: Joi.string().required().label('description'),
-  extragroup: Joi.object().label('extra group'),
-  petextra: Joi.boolean().label('is a pet extra')
-});
 
 Extra.prototype.toString = function() {
   return this.extracode + ' - ' + this.description;
