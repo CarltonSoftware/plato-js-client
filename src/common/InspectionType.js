@@ -14,6 +14,7 @@ InspectionType.prototype.toArray = function() {
     schedule: this.schedule,
     gradingunit: this.gradingunit,
     defaultgrading: this.defaultgrading,
+    inactive: this.inactive
   };
 };
 
@@ -22,11 +23,20 @@ InspectionType.prototype.toString = function() {
 };
 
 InspectionType.prototype.validSchema = function() {
+  var schedules = [];
+  var periods = ['Week', 'Month', 'Year'];
+  for (var p in periods) {
+    for (var j=1; j<12; j++) {
+      schedules.push([j, ' ', periods[p], j > 1 ? 's' : ''].join(''));
+    }
+  }
+
   return Joi.object().keys({
     inspectiontype: Joi.string().label('inspection type'),
-    schedule: Joi.string().optional().allow('').label('schedule'),
+    schedule: Joi.string().required().allow(schedules).label('schedule'),
     gradingunit: Joi.string().required().label('grading unit'),
     defaultgrading: Joi.string().optional().allow('').label('default grading'),
+    inactive: Joi.boolean().optional().label('inactive')
   });
 };
 
