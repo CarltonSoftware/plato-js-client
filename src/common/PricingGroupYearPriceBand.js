@@ -22,7 +22,7 @@ PricingGroupYearPriceBand.prototype.validSchema = function() {
   return {
     priceband: Joi.object().required().label('price band'),
     amount1: Joi.number().empty('').label('amount to add before adding percentage (optional)'),
-    percentage: Joi.number().empty('').label('percentage to add (optional'),
+    percentage: Joi.number().empty('').label('percentage to add (optional)'),
     amount2: Joi.number().empty('').label('amount to add after adding percentage (optional)'),
   };
 };
