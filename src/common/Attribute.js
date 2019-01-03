@@ -4,6 +4,7 @@ var Collection = require('./StaticCollection');
 var Option = require('./AttributeOption');
 var Extra = require('./Extra');
 var Unit = require('./Unit');
+var Joi = require('joi');
 
 function Attribute(id) {
   this.path = 'attribute';
@@ -39,6 +40,44 @@ function Attribute(id) {
     };
 
     return this.mergeInAdditionalFields(base);
+  };
+
+  this.validSchema = function() {
+    var schema = {
+      type: Joi.string().required().label('Type').allow(['Boolean', 'String', 'Number', 'Hybrid']),
+      name: Joi.string().required().label('Name'),
+      description: Joi.string().required().label('Description'),
+      group: Joi.object().required().label('Group'),
+      usedinavailabilitysearch: Joi.boolean().label('Used in availability search?'),
+      baseattribute: Joi.boolean().optional().label('Base Attribute'),
+      donotmodify: Joi.boolean().optional().label('Do not modify'),
+      important: Joi.boolean().optional().label('Important')
+    };
+
+    if (this.type === 'Number' || this.type === 'Hybrid') {
+      schema.operator = Joi.string().allow(['=', '>', '>=', '<', '<=', '!=']).label('Operator').description(
+        'Equals (=), Greater than (>), Less than (<), Greater than or equal to (>=), Less than or equal to (<=), Not equal to (!=).'
+      );
+      schema.minimumvalue = Joi.string().required().label('Minimum value');
+      schema.maximumvalue = Joi.string().required().label('Maximum value');
+      schema.unit = Joi.object().required().label('Unit');
+    }
+
+    var explainer = 'Will apply to newly created properties. Use Bulk Update Attributes to update existing properties.'; 
+    var booldef = Joi.string().optional().label('Default Boolean value').allow(['', 'true', 'false']).description(explainer);
+    var stringdef = Joi.string().optional().label('Default value').description(explainer);
+    
+    if (this.type === 'Hybrid') {
+      schema.defaultnumbervalue = Joi.number().optional().label('Default Number value').description(explainer);
+      schema.defaultbooleanvalue = booldef;
+      schema.limitvalue = Joi.string().required().label('Limit value');
+    } else if (this.type === 'Boolean') {
+      schema.defaultvalue = booldef;
+    } else {
+      schema.defaultvalue = stringdef;
+    }
+
+    return schema;
   };
 
   this.toUpdateArray = function() {
