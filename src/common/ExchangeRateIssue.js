@@ -3,6 +3,7 @@ var ExchangeRateIssueType = require('./ExchangeRateIssueType');
 var Currency = require('./Currency');
 var Collection = require('./Collection');
 var ExchangeRate = require('./ExchangeRate');
+var Joi = require('joi');
 
 function ExchangeRateIssue(id) {
   this.path = this.createPath = 'exchangerateissue';
@@ -14,6 +15,17 @@ function ExchangeRateIssue(id) {
     path: 'rate',
     parent: this
   });
+
+  this.validSchema = function() {
+    return {
+      type: Joi.object().required().label('Type'),
+      currency: Joi.object().required().label('Currency'),
+      issuenumber: Joi.number().label('issue number'),
+      fromdate: Joi.date().label('from date'),
+      todate: Joi.date().label('to date'),
+      description: Joi.string().required().label('Description')
+    }
+  };
 }
 
 ExchangeRateIssue.prototype = new SingleEntity();
