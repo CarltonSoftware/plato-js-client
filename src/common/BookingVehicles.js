@@ -1,8 +1,9 @@
 var SingleEntity = require('./SingleEntity');
 
-function BookingVehicles() {
+function BookingVehicles(id) {
   this.path = 'vehicle';
   this.createPath = this.path;
+  this.id = id;
 }
 
 BookingVehicles.prototype.toArray = function() {
