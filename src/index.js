@@ -378,4 +378,4 @@ module.exports.common.ChargingPeriod = require('./common/ChargingPeriod');
 
 //Vehicle
 module.exports.common.Vehicle = require('./common/Vehicle');
-module.exports.common.BookingVehicles = require('./common/BookingVehicles');
+module.exports.common.BookingVehicle = require('./common/BookingVehicle');
