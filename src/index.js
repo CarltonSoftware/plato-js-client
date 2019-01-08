@@ -49,6 +49,8 @@ module.exports.common.SettingValue = require('./common/SettingValue');
 module.exports.common.SettingValueType = require('./common/SettingValueType');
 module.exports.common.SettingValueOption = require('./common/SettingValueOption');
 module.exports.common.SourceCategory = require('./common/SourceCategory');
+
+//Owner
 module.exports.common.OwnerEnquiryActionType = require('./common/OwnerEnquiryActionType');
 module.exports.common.OwnerBookingType = require('./common/OwnerBookingType');
 module.exports.common.OwnerPayment = require('./common/OwnerPayment');
@@ -64,6 +66,7 @@ module.exports.common.OwnerStatement = require('./common/OwnerStatement');
 module.exports.common.PaymentItem = require('./common/PaymentItem');
 module.exports.common.SagePayPayment = require('./common/SagePayPayment');
 module.exports.common.PersonalisedBrochure = require('./common/PersonalisedBrochure');
+module.exports.common.OwnerEnquiryInactiveReason = require('./common/OwnerEnquiryInactiveReason');
 
 // Account Related Objects
 module.exports.common.Account = require('./common/Account');
