@@ -12,9 +12,9 @@ function Vehicle(id) {
       return {
         make:  Joi.string().label('make'),
         model: Joi.string().label('model'),
-        registration: Joi.string().min(5).label('registration'),
-        colour: Joi.string().label('colour'),
-        comments: Joi.string().label('comments'),
+        registration: Joi.string().min(4).label('registration'),
+        colour: Joi.string().allow("").label('colour'),
+        comments: Joi.string().allow("").label('comments'),
     } 
   }
 }
