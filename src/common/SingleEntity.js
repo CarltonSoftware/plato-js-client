@@ -166,7 +166,7 @@ SingleEntity.prototype.removeUndefineds = function(array) {
 };
 
 /**
- * Create request method
+ * Create request method  
  *
  * @returns {Promise}
  */
