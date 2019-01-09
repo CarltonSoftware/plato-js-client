@@ -1,7 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var Joi = require('joi');
 
-function OwnerEnquiryInactiveReason(id){
+function OwnerEnquiryInactiveReason(id) {
     this.id = id;
     this.path = 'ownerenquiryinactivereason';
     this.createPath = this.path;
