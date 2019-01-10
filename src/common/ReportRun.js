@@ -5,6 +5,7 @@ function ReportRun(id) {
   var Report = require('./Report');
 
   this.path = 'reportrun';
+  this.createPath = 'reportrun';
   this.id = id;
   this.report = new Report();
   this.result = new Document();
