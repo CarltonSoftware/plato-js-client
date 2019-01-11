@@ -353,6 +353,10 @@ Actor.prototype.toArray = function() {
     arr.location = this.location;
   }
 
+  if (this.ownerenquiryinactivereason) {
+    arr.ownerenquiryinactivereason = this.ownerenquiryinactivereason;
+  }
+
   if (this.ownerenquiryinactivedatetime) {
     arr.ownerenquiryinactivedatetime = this.ownerenquiryinactivedatetime;
   }
