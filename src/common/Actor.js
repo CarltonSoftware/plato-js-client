@@ -354,7 +354,7 @@ Actor.prototype.toArray = function() {
   }
 
   if (this.ownerenquiryinactivereason) {
-    arr.ownerenquiryinactivereason = this.ownerenquiryinactivereason;
+    arr.ownerenquiryinactivereasonid = this.ownerenquiryinactivereason.id;
   }
 
   if (this.ownerenquiryinactivedatetime) {
