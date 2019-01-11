@@ -349,6 +349,18 @@ Actor.prototype.toArray = function() {
     accountingreference: this.accountingreference
   };
 
+  if (this.location) {
+    arr.location = this.location;
+  }
+
+  if (this.ownerenquiryinactivereason) {
+    arr.ownerenquiryinactivereason = this.ownerenquiryinactivereason;
+  }
+
+  if (this.ownerenquiryinactivedatetime) {
+    arr.ownerenquiryinactivedatetime = this.ownerenquiryinactivedatetime;
+  }
+
   if (this.affiliate) {
     arr.affiliateid = this.affiliate.id;
   }
