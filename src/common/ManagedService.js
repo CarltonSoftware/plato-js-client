@@ -15,7 +15,8 @@ ManagedService.prototype.toCreateArray = function() {
     donotmodify: this.donotmodify,
     datetouse: typeof this.datetouse === 'object' ? this.datetouse.datetouse : this.datetouse,
     customerbookings: this.customerbookings,
-    ownerbookings: this.ownerbookings
+    ownerbookings: this.ownerbookings,
+    agencybookings: this.agencybookings
   };
 };
 
@@ -31,7 +32,8 @@ ManagedService.prototype.validSchema = function() {
     vatband: Joi.object().required().label('VAT band'),
     datetouse: Joi.object().required().label('date to use'),
     customerbookings: Joi.boolean().label('applies to customer bookings'),
-    ownerbookings: Joi.boolean().label('applies to owner bookings')
+    ownerbookings: Joi.boolean().label('applies to owner bookings'),
+    agencybookings: Joi.boolean().label('applies to agency bookings')
   });
 };
 
