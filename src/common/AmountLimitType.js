@@ -22,4 +22,8 @@ AmountLimitType.prototype.toArray = function() {
   };
 };
 
+AmountLimitType.prototype.toString = function() {
+  return this.amountlimittype + ' (' + this.description + ')';
+};
+
 module.exports = AmountLimitType;

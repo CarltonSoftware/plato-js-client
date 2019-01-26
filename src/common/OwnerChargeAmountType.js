@@ -22,4 +22,8 @@ OwnerChargeAmountType.prototype.toArray = function() {
   };
 };
 
+OwnerChargeAmountType.prototype.toString = function() {
+  return this.ownerchargeamounttype + ' (' + this.description + ')';
+};
+
 module.exports = OwnerChargeAmountType;

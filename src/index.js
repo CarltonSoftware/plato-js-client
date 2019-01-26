@@ -194,6 +194,7 @@ module.exports.common.AmountLimitType = require('./common/AmountLimitType');
 module.exports.common.WorkOrder = require('./common/WorkOrder');
 module.exports.common.WorkOrderExpense = require('./common/WorkOrderExpense');
 module.exports.common.WorkOrderOwner = require('./common/WorkOrderOwner');
+module.exports.common.WorkOrderOwnerCharge = require('./common/WorkOrderOwnerCharge');
 module.exports.common.WorkOrderSupplier = require('./common/WorkOrderSupplier');
 module.exports.common.WorkOrderNote = require('./common/WorkOrderNote');
 module.exports.common.WorkOrderDocument = require('./common/WorkOrderDocument');
@@ -377,6 +378,7 @@ module.exports.NoteFilterCollection = require('./common/NoteFilterCollection');
 
 //Work Orders
 module.exports.common.ChargingPeriod = require('./common/ChargingPeriod');
+module.exports.common.CostItemCodeOwnerChargeCode = require('./common/CostItemCodeOwnerChargeCode');
 
 
 //Vehicle

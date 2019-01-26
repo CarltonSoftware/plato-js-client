@@ -23,7 +23,7 @@ WorkOrderSupplier.prototype.toArray = function() {
 
 WorkOrderSupplier.prototype.toString = function() {
   var a = [this.supplier.getFullName()];
-  if (this.payeename) {
+  if (this.payeename && this.payeename !== this.supplier.getFullName()) {
     a.push(' (');
     a.push(this.payeename);
     a.push(')');

@@ -2,6 +2,7 @@ var SingleEntity = require('./SingleEntity');
 var Property = require('./Property');
 var TabsUser = require('./TabsUser');
 var WorkOrderSupplier = require('./WorkOrderSupplier');
+var WorkOrderExpense = require('./WorkOrderExpense');
 var EntityLink = require('./EntityLink');
 var Booking = require('./Booking');
 var WorkOrderDocument = require('./WorkOrderDocument');
@@ -32,6 +33,12 @@ function WorkOrder(id) {
     path: 'document',
     parent: this
   });
+
+  this.expenses = new Collection({
+    object: WorkOrderExpense,
+    path: 'expense',
+    parent: this
+  });  
 }
 
 WorkOrder.prototype = new SingleEntity();
@@ -45,6 +52,8 @@ WorkOrder.prototype.toArray = function() {
     shortdescription: this.shortdescription,
     fulldescription: this.fulldescription,
     invoiceto: this.invoiceto,
+    invoiceapproveddatetime: this.invoiceapproveddatetime,
+    invoicerejecteddatetime: this.invoicerejecteddatetime,
     labourhours: this.labourhours,
     labourrate: this.labourrate,
     accesscontacttype: this.accesscontacttype,
@@ -74,6 +83,12 @@ WorkOrder.prototype.toArray = function() {
     exclusionenddate: this.exclusionenddate,
     updatedbyactorid: this.updatedbyactor.id
   };
+
+  if (this.workordersupplier && this.workordersupplier.id) {
+    arr.workordersupplierid = this.workordersupplier.id;
+  } else {
+    arr.supplierid = this.supplier.id
+  }
 
   return arr;
 };
