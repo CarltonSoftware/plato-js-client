@@ -31,6 +31,7 @@ module.exports.common.ContactType = require('./common/ContactType');
 module.exports.common.ContactMethodType = require('./common/ContactMethodType');
 module.exports.common.ContactMethodSubtype = require('./common/ContactMethodSubtype');
 module.exports.common.ContactReason = require('./common/ContactReason');
+module.exports.common.ContactSend = require('./common/ContactSend');
 module.exports.common.CostItemCode = require('./common/CostItemCode');
 module.exports.common.Document = require('./common/Document');
 module.exports.common.DocumentTag = require('./common/DocumentTag');
