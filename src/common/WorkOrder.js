@@ -47,7 +47,6 @@ WorkOrder.prototype.toArray = function() {
   var arr = {
     type: this.type,
     propertyid: this.property.id,
-    workordersupplierid: this.workordersupplier.id,
     rating: this.rating,
     shortdescription: this.shortdescription,
     fulldescription: this.fulldescription,
@@ -86,7 +85,7 @@ WorkOrder.prototype.toArray = function() {
 
   if (this.workordersupplier && this.workordersupplier.id) {
     arr.workordersupplierid = this.workordersupplier.id;
-  } else {
+  } else if (this.supplier && this.supplier.id) {
     arr.supplierid = this.supplier.id
   }
 
