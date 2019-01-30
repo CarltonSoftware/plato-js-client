@@ -17,7 +17,8 @@ ExtraBrandingConfigurationAffiliateOverride.prototype = new SingleEntity();
 
 ExtraBrandingConfigurationAffiliateOverride.prototype.toArray = function() {
   return {
-    "compulsory": this.compulsory
+    "compulsory": this.compulsory,
+    "affiliateid": this.affiliate.id
     //add more config options later
   };
 };
