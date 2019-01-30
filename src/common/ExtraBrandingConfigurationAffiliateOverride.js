@@ -3,7 +3,7 @@ var Joi = require('joi');
 
 function ExtraBrandingConfigurationAffiliateOverride(id) {
   this.path = 'affiliateoverride';
-  this.createPath = 'affiliateoverride';
+  this.createPath = this.path;
   this.id = id;
 
   this.validSchema = function() {

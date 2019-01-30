@@ -272,6 +272,7 @@ module.exports.common.ExchangeRateIssueType = require('./common/ExchangeRateIssu
 module.exports.common.Extra = require('./common/Extra');
 module.exports.common.ExtraBranding = require('./common/ExtraBranding');
 module.exports.common.ExtraBrandingConfiguration = require('./common/ExtraBrandingConfiguration');
+module.exports.common.ExtraBrandingConfigurationAffiliateOverride = require('./common/ExtraBrandingConfigurationAffiliateOverride');
 module.exports.common.ExtraBrandingPricing = require('./common/ExtraBrandingPricing');
 module.exports.common.ExtraBrandingPricingAmountPriceType = require('./common/ExtraBrandingPricingAmountPriceType');
 module.exports.common.ExtraBrandingPricingRangeElement = require('./common/ExtraBrandingPricingRangeElement');
