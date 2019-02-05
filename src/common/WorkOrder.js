@@ -55,7 +55,6 @@ WorkOrder.prototype.toArray = function() {
     labourrate: this.labourrate,
     accesscontacttype: this.accesscontacttype,
     accesscontactdetails: this.accesscontactdetails,
-    cancelleddatetime: this.cancelleddatetime,
 
     workordertemplateid: (this.workordertemplate && this.workordertemplate.id) ? this.workordertemplate.id : undefined,
     estimaterequired: this.estimaterequired,
