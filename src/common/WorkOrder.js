@@ -51,24 +51,15 @@ WorkOrder.prototype.toArray = function() {
     shortdescription: this.shortdescription,
     fulldescription: this.fulldescription,
     invoiceto: this.invoiceto,
-    invoiceapproveddatetime: this.invoiceapproveddatetime,
-    invoicerejecteddatetime: this.invoicerejecteddatetime,
     labourhours: this.labourhours,
     labourrate: this.labourrate,
     accesscontacttype: this.accesscontacttype,
     accesscontactdetails: this.accesscontactdetails,
     cancelleddatetime: this.cancelleddatetime,
-    bookingid: this.booking ? this.booking.id : undefined,
 
     workordertemplateid: (this.workordertemplate && this.workordertemplate.id) ? this.workordertemplate.id : undefined,
-    reporteddate: this.reporteddate,
-    preferredstartdate: this.preferredstartdate,
-    requiredbydate: this.requiredbydate,
     estimaterequired: this.estimaterequired,
     estimate: this.estimate,
-    approveddate: this.approveddate,
-    starteddate: this.starteddate,
-    completeddate: this.completeddate,
 
     period: this.period,
     frequency: this.frequency,
@@ -82,6 +73,38 @@ WorkOrder.prototype.toArray = function() {
     exclusionenddate: this.exclusionenddate,
     updatedbyactorid: this.updatedbyactor.id
   };
+
+  if (this.booking && this.booking.id) {
+    arr.bookingid = this.booking.id
+  }
+
+  if (this.reporteddate) {
+    arr.reporteddate = this.reporteddate
+  }
+  if (this.preferredstartdate) {
+    arr.preferredstartdate = this.preferredstartdate
+  }
+  if (this.requiredbydate) {
+    arr.requiredbydate = this.requiredbydate
+  }
+  if (this.approveddate) {
+    arr.approveddate = this.approveddate
+  }
+  if (this.starteddate) {
+    arr.starteddate = this.starteddate
+  }
+  if (this.cancelleddatetime) {
+    arr.cancelleddatetime = this.cancelleddatetime
+  }
+  if (this.completeddate) {
+    arr.completeddate = this.completeddate
+  }
+  if (this.invoiceapproveddatetime) {
+    arr.invoiceapproveddatetime = this.invoiceapproveddatetime
+  }
+  if (this.invoicerejecteddatetime) {
+    arr.invoicerejecteddatetime = this.invoicerejecteddatetime
+  }
 
   if (this.workordersupplier && this.workordersupplier.id) {
     arr.workordersupplierid = this.workordersupplier.id;

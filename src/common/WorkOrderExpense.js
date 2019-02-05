@@ -52,6 +52,7 @@ WorkOrderExpense.prototype.toArray = function() {
     obj.amountnet = this.amountnet;
     obj.amountvat = this.amountvat;
     obj.supplierinvoiceitemid = this.supplierinvoiceitem.id ? this.supplierinvoiceitem.id : 0;
+    obj.notes = this.notes;
   }
   
   return obj;
