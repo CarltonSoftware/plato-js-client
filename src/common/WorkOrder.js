@@ -71,7 +71,8 @@ WorkOrder.prototype.toArray = function() {
     autogenerate: this.autogenerate,
     exclusionstartdate: this.exclusionstartdate,
     exclusionenddate: this.exclusionenddate,
-    updatedbyactorid: this.updatedbyactor.id
+    updatedbyactorid: this.updatedbyactor.id,
+    setapproved: this.setapproved
   };
 
   if (this.booking && this.booking.id) {
