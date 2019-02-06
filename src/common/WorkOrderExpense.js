@@ -36,23 +36,24 @@ WorkOrderExpense.prototype.toArray = function() {
     description: this.description,
     currencyid: this.currency.id,
     vatbandid: this.vatband.id,
-    costitemcodeid: this.costitemcode.id ? this.costitemcode.id : 0,    
-    ownerchargecodeid: this.ownerchargecode.id ? this.ownerchargecode.id : 0,
-    ownerchargeamounttypeid: this.ownerchargeamounttype.id ? this.ownerchargeamounttype.id : 0,
     ownerchargeamount: this.ownerchargeamount,
-    chargingperiodid: this.chargingperiod.id ? this.chargingperiod.id : 0,
   };
+
+  if (this.costitemcode.id) { obj.costitemcodeid = this.costitemcode.id; }
+  if (this.ownerchargecode.id) { obj.ownerchargecodeid = this.ownerchargecode.id; }
+  if (this.ownerchargeamounttype.id) { obj.ownerchargeamounttypeid = this.ownerchargeamounttype.id; }
+  if (this.chargingperiod.id) { obj.chargingperiodid = this.chargingperiod.id; }
 
   if (this.parent.type === 'Template') {
     obj.amountnetestimate = this.amountnetestimate;
-    obj.amountlimittypeid = this.amountlimittype.id ? this.amountlimittype.id : 0;
     obj.amountnetlimit = this.amountnetlimit;
     obj.chargingperiodsestimate = this.chargingperiodsestimate;
+    if (this.amountlimittype.id) { obj.amountlimittypeid = this.amountlimittype.id; }
   } else {
     obj.amountnet = this.amountnet;
     obj.amountvat = this.amountvat;
-    obj.supplierinvoiceitemid = this.supplierinvoiceitem.id ? this.supplierinvoiceitem.id : 0;
     obj.notes = this.notes;
+    if (this.supplierinvoiceitem.id) { obj.supplierinvoiceitemid = this.supplierinvoiceitem.id; }
   }
   
   return obj;
