@@ -39,10 +39,6 @@ WorkOrderExpense.prototype.toArray = function() {
     ownerchargeamount: this.ownerchargeamount,
   };
 
-  // if (!this.amountlimittype) {
-  //   obj.amountlimittypeid = 0;
-  // }  
-
   if (this.costitemcode.id) {obj.costitemcodeid = this.costitemcode.id;}
   if (this.ownerchargecode.id >= 0) {obj.ownerchargecodeid = this.ownerchargecode.id;}
   if (this.ownerchargeamounttype.id >= 0) {obj.ownerchargeamounttypeid = this.ownerchargeamounttype.id;}
@@ -58,11 +54,9 @@ WorkOrderExpense.prototype.toArray = function() {
     obj.amountvat = this.amountvat;
     obj.notes = this.notes;
     if (this.supplierinvoiceitem.id >= 0) {obj.supplierinvoiceitemid = this.supplierinvoiceitem.id;}
+    obj.chargingperiodsactual = this.chargingperiodsactual;
   }
 
-  console.log(obj);
-  console.log(this.amountlimittype);
-  
   return obj;
 
 };
