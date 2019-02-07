@@ -389,8 +389,8 @@ Actor.prototype.toArray = function() {
     arr.brandingid = this.branding.id;
   }
 
-  //TABS2-3925 
-  if(this.addaccidentaldamagedeposit){
+  //TABS2-3927 
+  if(this.addaccidentaldamagedeposit) {
     arr.addaccidentaldamagedeposit = this.addaccidentaldamagedeposit;
   }
 
