@@ -398,8 +398,8 @@ Actor.prototype.toArray = function() {
     arr.accidentaldamagedepositnotetext = this.accidentaldamagedepositnotetext;
   }
 
-  if(this.bookingprocessnotetext) {
-    arr.bookingprocessnotetext = this.bookingprocessnotetext;
+  if(this.processbookingnotetext) {
+    arr.processbookingnotetext = this.processbookingnotetext;
   }
 
   return arr;
