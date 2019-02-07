@@ -389,6 +389,19 @@ Actor.prototype.toArray = function() {
     arr.brandingid = this.branding.id;
   }
 
+  //TABS2-3925 
+  if(this.addaccidentaldamagedeposit){
+    arr.addaccidentaldamagedeposit = this.addaccidentaldamagedeposit;
+  }
+
+  if(this.accidentaldamagedepositnotetext) {
+    arr.accidentaldamagedepositnotetext = this.accidentaldamagedepositnotetext;
+  }
+
+  if(this.bookingprocessnotetext) {
+    arr.bookingprocessnotetext = this.bookingprocessnotetext;
+  }
+
   return arr;
 };
 
