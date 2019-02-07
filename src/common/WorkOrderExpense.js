@@ -53,6 +53,7 @@ WorkOrderExpense.prototype.toArray = function() {
     obj.amountnet = this.amountnet;
     obj.amountvat = this.amountvat;
     obj.notes = this.notes;
+    obj.chargingperiodsactual = this.chargingperiodsactual;
     if (this.supplierinvoiceitem.id) {obj.supplierinvoiceitemid = this.supplierinvoiceitem.id;}
   }
   
