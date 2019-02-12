@@ -338,6 +338,9 @@ module.exports.common.LabelTemplatePaperSize = require('./common/LabelTemplatePa
 module.exports.common.LabelQueue = require('./common/LabelQueue');
 module.exports.common.ScheduledEvent = require('./common/ScheduledEvent');
 module.exports.common.ScheduledEventTemplateContactMethod = require('./common/ScheduledEventTemplateContactMethod');
+module.exports.common.Job = require('./common/Job');
+module.exports.common.JobItem = require('./common/JobItem');
+module.exports.common.JobType = require('./common/JobType');
 
 // ChangeDayRules
 module.exports.common.ChangeDayTemplate = require('./common/ChangeDayTemplate');
