@@ -17,7 +17,7 @@ CostItemCode.prototype.validSchema = function() {
     description: Joi.string().optional().allow('').label('Description'),
     vatband: Joi.object().optional().label('Vat Band'),
     inactive: Joi.boolean().optional().label('Inactive'),
-    recharge: Joi.boolean().optional().label('Rechager'),
+    recharge: Joi.boolean().optional().label('Recharge'),
     externaldescription: Joi.string().optional().allow("").label('External Description')
   };
 };
