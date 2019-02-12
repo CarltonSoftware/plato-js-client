@@ -16,7 +16,9 @@ CostItemCode.prototype.validSchema = function() {
     costitemcode: Joi.string().required().label('Cost Item Code'),
     description: Joi.string().optional().allow('').label('Description'),
     vatband: Joi.object().optional().label('Vat Band'),
-    inactive: Joi.boolean().optional().label('Inactive')
+    inactive: Joi.boolean().optional().label('Inactive'),
+    recharge: Joi.boolean().optional().label('Recharge'),
+    externaldescription: Joi.string().optional().allow("").label('External Description')
   };
 };
 
@@ -25,7 +27,9 @@ CostItemCode.prototype.toArray = function() {
     costitemcode: this.costitemcode,
     description: this.description,
     vatbandid: this.vatband.id,
-    inactive: this.inactive
+    inactive: this.inactive,
+    recharge: this.recharge,
+    externaldescription: this.externaldescription
   };
 };
 

@@ -221,6 +221,9 @@ module.exports.common.GuestAgeRange = require('./common/GuestAgeRange');
 module.exports.common.GuestType = require('./common/GuestType');
 module.exports.common.Booking = require('./common/Booking');
 module.exports.common.BookingCancellationAction = require('./common/BookingCancellationAction');
+module.exports.common.ServiceContract = require('./common/ServiceContract');
+module.exports.common.ServiceContractType = require('./common/ServiceContractType');
+
 
 // Brand Related Objects
 module.exports.common.BookingBrand = require('./common/BookingBrand');

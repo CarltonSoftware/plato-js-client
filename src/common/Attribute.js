@@ -98,14 +98,14 @@ function Attribute(id) {
 
   this.mergeInAdditionalFields = function(base) {
 
-    if (this.type == 'hybrid' || this.type == 'number') {
+    if (this.type == 'Hybrid' || this.type == 'Number') {
       base.operator = this.operator;
       base.minimumvalue = this.minimumvalue;
       base.maximumvalue = this.maximumvalue;
       base.unit = this.unit.name;
     }
 
-    if (this.type == 'hybrid' ) {
+    if (this.type == 'Hybrid' ) {
       base.limitvalue = this.limitvalue;
       base.defaultbooleanvalue = this.defaultbooleanvalue;
       base.defaultnumbervalue = this.defaultnumbervalue;
