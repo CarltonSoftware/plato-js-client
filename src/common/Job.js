@@ -17,8 +17,8 @@ Job.prototype.toArray = function() {
     reference: this.reference,
   };
 
-  if (this.cancelledbyactor) {obj.cancelledbyactorid = this.cancelledbyactor.id};
-  if (this.ids) { obj.ids = this.ids; }
+  if (this.cancelledbyactor) {obj.cancelledbyactorid = this.cancelledbyactor.id;}
+  if (this.ids) {obj.ids = this.ids;}
 
   return obj;
 };
