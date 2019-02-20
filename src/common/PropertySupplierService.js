@@ -37,6 +37,9 @@ PropertySupplierService.prototype.toUpdateArray = function() {
   if (this.datetouse) {
     pss.datetouse = this.datetouse;
   }
+  if (this.chargetype) {
+    pss.chargetype = this.chargetype;
+  }
   return pss;
 };
 PropertySupplierService.prototype.toCreateArray = function() {
@@ -54,6 +57,7 @@ PropertySupplierService.prototype.validSchema = function() {
     ownerbookings: Joi.boolean().required().label('Owner bookings'),
     agencybookings: Joi.boolean().required().label('Agency bookings'),
     datetouse: Joi.string().optional().allow('').label('Date to Use'),
+    chargetype: Joi.string().optional().allow('').label('Charge Type'),
     forceupdateservices: Joi.boolean().required().label('Force update services')
   });
 };
