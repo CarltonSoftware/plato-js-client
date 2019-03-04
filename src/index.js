@@ -393,3 +393,7 @@ module.exports.common.CostItemCodeOwnerChargeCode = require('./common/CostItemCo
 //Vehicle
 module.exports.common.Vehicle = require('./common/Vehicle');
 module.exports.common.BookingVehicle = require('./common/BookingVehicle');
+
+
+//Accidental Damage Deposit
+module.exports.common.AccidentalDamageDeposit = require('./common/AccidentalDamageDeposit');
