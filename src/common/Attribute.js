@@ -65,7 +65,7 @@ function Attribute(id) {
 
     var explainer = 'Will apply to newly created properties. Use Bulk Update Attributes to update existing properties.'; 
     var booldef = Joi.string().optional().label('Default Boolean value').allow(['', 'true', 'false']).description(explainer);
-    var stringdef = Joi.string().optional().label('Default value').description(explainer);
+    var stringdef = Joi.string().optional().allow('').label('Default value').description(explainer);
     
     if (this.type === 'Hybrid') {
       schema.defaultnumbervalue = Joi.number().optional().label('Default Number value').description(explainer);
