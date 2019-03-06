@@ -402,6 +402,10 @@ Actor.prototype.toArray = function() {
     arr.processbookingnotetext = this.processbookingnotetext;
   }
 
+  if (this.hasOwnProperty('sageaccountname')) {
+    arr.sageaccountname = this.sageaccountname;
+  }
+
   return arr;
 };
 
