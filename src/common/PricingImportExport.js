@@ -21,6 +21,7 @@ PricingImportExport.prototype.toArray = function() {
     createdtabsuserid: this.createdtabsuser.id,
     year: this.year
   };
+console.log(this);
 
   if (this.branding && this.branding.id) {
     s.brandingid = this.branding.id;
@@ -28,6 +29,10 @@ PricingImportExport.prototype.toArray = function() {
 
   if (this.pricinggroup) {
     s.pricinggroupid = this.pricinggroup.id;
+  }
+
+  if (this.importall) {
+    s.importall = this.importall;
   }
 
   if (this.propertyids.length > 0) {
