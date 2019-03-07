@@ -21,7 +21,6 @@ PricingImportExport.prototype.toArray = function() {
     createdtabsuserid: this.createdtabsuser.id,
     year: this.year
   };
-console.log(this);
 
   if (this.branding && this.branding.id) {
     s.brandingid = this.branding.id;
