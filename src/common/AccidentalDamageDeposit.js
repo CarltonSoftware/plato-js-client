@@ -14,7 +14,7 @@ function AccidentalDamageDeposit(id) {
 AccidentalDamageDeposit.prototype = new SingleEntity();
 
 AccidentalDamageDeposit.prototype.toArray = function () {
-  return {
+  let toArrayObject = {
     bookedfromdate: this.bookedfromdate,
     bookedtodate: this.bookedtodate,
     holidayfromdate: this.holidayfromdate,
@@ -39,6 +39,16 @@ AccidentalDamageDeposit.prototype.toArray = function () {
     ownerchargeamount: this.ownerchargeamount,
     defaultforperiod: this.defaultforperiod
   };
+
+  if(this.propertyid) {
+    toArrayObject.propertyid = this.propertyid;
+  }
+
+  if(this.bookingid) {
+    toArrayObject.propertyid = this.bookingid;
+  }
+
+  return toArrayObject;
 }
 
 AccidentalDamageDeposit.prototype.validSchema = function () {
