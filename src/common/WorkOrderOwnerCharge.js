@@ -15,6 +15,7 @@ WorkOrderOwnerCharge.prototype.toArray = function() {
   return {
     ownerchargecodeid: this.ownerchargecode.id,
     ownerchargeamounttypeid: this.ownerchargeamounttype.id,
+    description: this.description,
     amount: this.amount,
   };
 };
