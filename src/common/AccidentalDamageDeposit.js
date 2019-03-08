@@ -14,7 +14,7 @@ function AccidentalDamageDeposit(id) {
 AccidentalDamageDeposit.prototype = new SingleEntity();
 
 AccidentalDamageDeposit.prototype.toArray = function () {
-  let toArrayObject = {
+  var toArrayObject = {
     bookedfromdate: this.bookedfromdate,
     bookedtodate: this.bookedtodate,
     holidayfromdate: this.holidayfromdate,
