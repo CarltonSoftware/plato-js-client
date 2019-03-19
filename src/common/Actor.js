@@ -373,8 +373,8 @@ Actor.prototype.toArray = function() {
   if (this.password && this.password.length > 0) {
     arr.password = this.password;
   }
-  if (this.bacsbankaccount) {
-    arr.bacsbankaccountid = this.bacsbankaccount.id;
+  if (this.paymentbankaccount) {
+    arr.paymentbankaccountid = this.paymentbankaccount.id;
   }
   if (this.ownerpaymenttype) {
     arr.ownerpaymenttypeid = this.ownerpaymenttype.id;
