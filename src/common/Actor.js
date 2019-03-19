@@ -376,8 +376,8 @@ Actor.prototype.toArray = function() {
   if (this.paymentbankaccount) {
     arr.paymentbankaccountid = this.paymentbankaccount.id;
   }
-  if (this.ownerpaymenttype) {
-    arr.ownerpaymenttypeid = this.ownerpaymenttype.id;
+  if (this.creditorpaymentmethod) {
+    arr.creditorpaymentmethodid = this.creditorpaymentmethod.id;
   }
   if (this.source) {
     arr.sourceid = this.source.id;
