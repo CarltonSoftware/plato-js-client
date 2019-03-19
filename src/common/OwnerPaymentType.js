@@ -1,14 +1,14 @@
 var SingleEntity = require('./SingleEntity');
 
 function OwnerPaymentType(id) {
-  this.path = this.createPath = 'ownerpaymenttype';
+  this.path = this.createPath = 'creditorpaymentmethod';
   this.id = id;
 }
 
 OwnerPaymentType.prototype = new SingleEntity();
 OwnerPaymentType.prototype.toArray = function() {
   return {
-    ownerpaymenttype: this.ownerpaymenttype,
+    creditorpaymentmethod: this.creditorpaymentmethod,
   };
 };
 
