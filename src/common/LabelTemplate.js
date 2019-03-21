@@ -26,7 +26,7 @@ LabelTemplate.prototype.toArray = function() {
     margintop: this.margintop,
     marginbottom: this.marginbottom,
     marginleft: this.marginleft,
-    marginright: this.marinright
+    marginright: this.marginright
   };
 };
 
