@@ -150,6 +150,8 @@ Booking.prototype.toArray = function() {
     overridestatus: this.overridestatus,
     bypasspetchecks: this.bypasspetchecks,
     ignorechangedayrules: this.ignorechangedayrules,
+    
+    
 
     /* Web Booking */
     webbooking_createddatetime: this.webbooking.createddatetime,
@@ -193,6 +195,10 @@ Booking.prototype.toArray = function() {
 
   if (this.confirmedbooking_tabsuserid) {
     array.confirmedbooking_tabsuserid = this.confirmedbooking_tabsuserid;
+  }
+
+  if(this.allowoveroccupancy) {
+    array.allowoveroccupancy = this.allowoveroccupancy;
   }
 
   if (this.cancelledbooking_templateoffer && this.cancelledbooking_templateoffer.id) {

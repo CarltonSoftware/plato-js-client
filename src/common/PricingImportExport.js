@@ -38,7 +38,7 @@ PricingImportExport.prototype.toArray = function() {
     s.propertyids = this.propertyids.join(',');
   }
 
-  if (this.statusids.length > 0) {
+  if (this.statusids && this.statusids.length > 0) {
     s.statusids = this.statusids.join(',');
   }
 
