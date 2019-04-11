@@ -22,6 +22,10 @@ PropertyOwner.prototype.toArray = function() {
   if (this.bypasschecks) {
     ret.bypasschecks = this.bypasschecks;
   }
+
+  if(this.recruitedbytabsuserid) {
+    ret.recruitedbytabsuserid = this.recruitedbytabsuserid.id;
+  }
   if (this.forceoverwrite) {
     ret.forceoverwrite = this.forceoverwrite;
   }
