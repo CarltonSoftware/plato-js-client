@@ -126,7 +126,9 @@ Property.prototype.toArray = function() {
   if (this.checkouttext) {
     prop.checkouttext = this.checkouttext;
   }
-
+  if (this.adddefaultattributes) {
+    prop.adddefaultattributes = this.adddefaultattributes;
+  }
   if (this.ratinginspectiontype && this.ratinginspectiontype.id) {
     prop.ratinginspectiontypeid = this.ratinginspectiontype.id;
   }
@@ -143,7 +145,8 @@ Property.prototype.getSchema = function () {
     sleeps: Joi.number(),
     maximumpets: Joi.number().label('Maximum pets'),
     telephonenumber: Joi.string().allow('').label('Telephone number'),
-    address: this.address.validSchema()
+    address: this.address.validSchema(),
+    adddefaultattributes: Joi.boolean().optional().label('Add default attributes')
   };
 };
 
