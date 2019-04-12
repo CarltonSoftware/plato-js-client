@@ -37,7 +37,8 @@ AccidentalDamageDeposit.prototype.toArray = function () {
     comments: this.comments,
     ownerchargecodeid: this.ownerchargecode.id,
     ownerchargeamount: this.ownerchargeamount,
-    defaultforperiod: this.defaultforperiod
+    defaultforperiod: this.defaultforperiod,
+    type: this.type
   };
 
   if(this.propertyid) {
@@ -72,6 +73,7 @@ AccidentalDamageDeposit.prototype.validSchema = function () {
     pricingperiod: Joi.string().required().label('Pricing Period'),
     minimumdays: Joi.string().required().label('Minimum Days'),
     maximumdays: Joi.string().required().label('Maximum Days'),
+    type: Joi.string().required().label('Type'),
     maximumdaysbeforeholiday: Joi.string().required().label('Maximum Days Before Holiday'),
     comments: Joi.string().empty('').label('Comments'),
     ownerchargeamount: Joi.number().empty('').label('Owner Charge Amount'),
