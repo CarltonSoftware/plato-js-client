@@ -181,6 +181,7 @@ module.exports.common.PropertyAnswer = require('./common/PropertyAnswer');
 module.exports.common.PropertyTabsUserVisit = require('./common/PropertyTabsUserVisit');
 module.exports.common.AnswerOptionGroup = require('./common/AnswerOptionGroup');
 module.exports.common.AnswerOption = require('./common/AnswerOption');
+module.exports.common.PromotePeriod = require('./common/PromotePeriod');
 
 // Key Related Objects
 module.exports.common.Keyy = require('./common/Keyy');

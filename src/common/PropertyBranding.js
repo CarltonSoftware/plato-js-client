@@ -5,6 +5,7 @@ var PartySizePricing = require('./PartySizePricing');
 var AvailableDay = require('./AvailableDay');
 var ExtraBranding = require('./ExtraBranding');
 var PropertyBrandingChangeDayTemplate = require('./PropertyBrandingChangeDayTemplate');
+var PromotePeriod = require('./PromotePeriod');
 var Status = require('./Status');
 var Collection = require('./Collection');
 var moment = require('moment');
@@ -30,6 +31,8 @@ function PropertyBranding(id) {
   });
   this.petextrabranding = new ExtraBranding();
   this.status = new Status();
+
+  this.promotionperiod = new PromotePeriod();
 
   this.prices = new Collection({
     object: PropertyBrandingPrice,
