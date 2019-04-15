@@ -49,15 +49,15 @@ WorkOrderExpense.prototype.toArray = function() {
     if (this.chargingperiodsestimate) {obj.chargingperiodsestimate = this.chargingperiodsestimate;}
     if (this.amountlimittype.id >= 0) {obj.amountlimittypeid = this.amountlimittype.id;}
     if (this.amountnetlimit) {obj.amountnetlimit = this.amountnetlimit;}
-  } else {
+  } 
+  
+  if (this.parent.type !== 'Template') {
     obj.amountnet = this.amountnet;
     obj.amountvat = this.amountvat;
     obj.notes = this.notes;
     obj.chargingperiodsactual = this.chargingperiodsactual;
     if (this.supplierinvoiceitem.id >= 0) {obj.supplierinvoiceitemid = this.supplierinvoiceitem.id;}
   }
-
-  console.log(obj);
 
   return obj;
 
