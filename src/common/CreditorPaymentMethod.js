@@ -1,5 +1,4 @@
 var SingleEntity = require('./SingleEntity');
-var Joi = require('joi');
 
 function CreditorPaymentMethod(id) {
   this.path = 'creditorpaymentmethod';
