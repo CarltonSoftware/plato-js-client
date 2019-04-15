@@ -1,7 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var Joi = require('joi');
 
-function PromotePeriod(id){
+function PromotePeriod(id) {
     this.path = 'promotionperiod';
     this.createPath = this.path;
     this.id = id;
