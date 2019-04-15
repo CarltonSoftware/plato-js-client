@@ -33,6 +33,7 @@ module.exports.common.ContactMethodSubtype = require('./common/ContactMethodSubt
 module.exports.common.ContactReason = require('./common/ContactReason');
 module.exports.common.ContactSend = require('./common/ContactSend');
 module.exports.common.CostItemCode = require('./common/CostItemCode');
+module.exports.common.CreditorPaymentMethod = require('./common/CreditorPaymentMethod');
 module.exports.common.Document = require('./common/Document');
 module.exports.common.DocumentTag = require('./common/DocumentTag');
 module.exports.common.DocumentBaseTag = require('./common/DocumentBaseTag');
