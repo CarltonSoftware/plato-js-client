@@ -12,7 +12,8 @@ function NoteType(id) {
       notetypedisplay: Joi.string().required().label('note type display'),
       description: Joi.string().required().label('description'),
       donotdelete: Joi.boolean().required().label('do not delete'),
-      usercreatable: Joi.boolean().required().label('user createable')
+      usercreatable: Joi.boolean().required().label('user createable'),
+      autoarchive: Joi.boolean().optional().label('auto archive')
     }
   }
 }
@@ -24,7 +25,8 @@ NoteType.prototype.toArray = function() {
     description: this.description,
     donotdelete: this.donotdelete,
     usercreatable: this.usercreatable,
-    notetypedisplay: this.notetypedisplay
+    notetypedisplay: this.notetypedisplay,
+    autoarchive: this.autoarchive
   };
 };
 
