@@ -1,8 +1,13 @@
 var SingleEntity = require('./SingleEntity');
+var EntityLink = require('./EntityLink');
 
 function JobItem(id) {
   this.path = this.createPath = 'item';
   this.id = id;
+
+  this.lastjobitemresponse = new EntityLink({
+    entity: 'JobItemResponse'
+  });  
 }
 JobItem.prototype = new SingleEntity();
 

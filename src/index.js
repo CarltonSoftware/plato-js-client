@@ -345,6 +345,7 @@ module.exports.common.ScheduledEvent = require('./common/ScheduledEvent');
 module.exports.common.ScheduledEventTemplateContactMethod = require('./common/ScheduledEventTemplateContactMethod');
 module.exports.common.Job = require('./common/Job');
 module.exports.common.JobItem = require('./common/JobItem');
+module.exports.common.JobItemResponse = require('./common/JobItemResponse');
 module.exports.common.JobType = require('./common/JobType');
 
 // ChangeDayRules
