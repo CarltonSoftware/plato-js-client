@@ -55,9 +55,13 @@ AccidentalDamageDeposit.prototype.toArray = function () {
   
   if(this.noaccidentaldamagedeposit) {
     toArrayObject.noaccidentaldamagedeposit = this.noaccidentaldamagedeposit;
+  } else if (this.noaccidentaldamagedeposit === false) {
+    toArrayObject.noaccidentaldamagedeposit = this.noaccidentaldamagedeposit;
   }
 
   if(this.noaccidentaldamagedepositglobal) {
+    toArrayObject.noaccidentaldamagedepositglobal = this.noaccidentaldamagedepositglobal;
+  } else if (this.noaccidentaldamagedepositglobal === false) {
     toArrayObject.noaccidentaldamagedepositglobal = this.noaccidentaldamagedepositglobal;
   }
   
