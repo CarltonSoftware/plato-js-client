@@ -96,8 +96,6 @@ AccidentalDamageDeposit.prototype.validSchema = function () {
       otherwise: Joi.object().optional()
     }).label('Owner Charge Code'),
     defaultforperiod: Joi.boolean().optional().label('Default For Period'),
-    noaccidentaldamagedeposit: Joi.boolean().optional().label('No accidental damage deposit'),
-    noaccidentaldamagedepositglobal: Joi.boolean().optional().label('No accidental damage deposit global')
   });
 };
 
