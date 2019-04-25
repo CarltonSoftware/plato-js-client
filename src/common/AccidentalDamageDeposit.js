@@ -45,10 +45,22 @@ AccidentalDamageDeposit.prototype.toArray = function () {
     toArrayObject.propertyid = this.propertyid;
   }
 
-  if(this.bookingid) {
+  /* if(this.bookingid) {
     toArrayObject.propertyid = this.bookingid;
+  } */
+
+  if(this.brandingid) {
+    toArrayObject.brandingid = this.brandingid;
+  }
+  
+  if(this.noaccidentaldamagedeposit) {
+    toArrayObject.noaccidentaldamagedeposit = this.noaccidentaldamagedeposit;
   }
 
+  if(this.noaccidentaldamagedepositglobal) {
+    toArrayOBject.noaccidentaldamagedepositglobal = this.noaccidentaldamagedepositglobal;
+  }
+  
   return toArrayObject;
 }
 
@@ -83,7 +95,9 @@ AccidentalDamageDeposit.prototype.validSchema = function () {
       then: Joi.object().required(),
       otherwise: Joi.object().optional()
     }).label('Owner Charge Code'),
-    defaultforperiod: Joi.boolean().optional().label('Default For Period')
+    defaultforperiod: Joi.boolean().optional().label('Default For Period'),
+    noaccidentaldamagedeposit: Joi.boolean().optional().label('No accidental damage deposit'),
+    noaccidentaldamagedepositglobal: Joi.boolean().optional().label('No accidental damage deposit global')
   });
 };
 
