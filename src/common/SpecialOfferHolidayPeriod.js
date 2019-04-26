@@ -8,12 +8,18 @@ function SpecialOfferHolidayPeriod(id) {
 
 SpecialOfferHolidayPeriod.prototype = new SingleEntity();
 SpecialOfferHolidayPeriod.prototype.toArray = function() {
-  return {
+  var objTR = {
     id: this.id,
     fromdate: this.fromdate,
     todate: this.todate,
     donotsplit: this.donotsplit
   };
+
+  if(this.fixedprice) {
+    objTR.fixedprice = this.fixedprice;
+  }
+
+  return objTR;
 };
 
 SpecialOfferHolidayPeriod.prototype.validSchema = function() {
