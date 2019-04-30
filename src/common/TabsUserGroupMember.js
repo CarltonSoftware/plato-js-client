@@ -19,7 +19,7 @@ TabsUserGroupMember.prototype = new SingleEntity();
 
 TabsUserGroupMember.prototype.toArray = function() {
     return {
-        userid: this.userid.id,
+        tabsuserid: this.userid,
         inactive: this.inactive
     }
 }
