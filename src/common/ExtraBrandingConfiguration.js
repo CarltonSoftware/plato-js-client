@@ -39,6 +39,17 @@ ExtraBrandingConfiguration.prototype.toCreateArray = function() {
     copytoallbrands: this.copytoallbrands,
     commissionpercentage: this.commissionpercentage
   };
+
+  // Start TABS2-3772
+  if(this.customerpaymentfirstperiod) {
+    fields.customerpaymentfirstperiod = this.customerpaymentfirstperiod ? 'true' : 'false';
+  }
+
+  if(this.customerpaymentlastperiod) {
+    fields.customerpaymentlastperiod = this.customerpaymentlastperiod ? 'true' : 'false';
+  }
+  // End TABS2-3772
+
   if (this.accountingdatedefinition && this.accountingdatedefinition.id) {
     fields.accountingdatedefinitionid = this.accountingdatedefinition.id;
   }
@@ -71,6 +82,17 @@ ExtraBrandingConfiguration.prototype.toUpdateArray = function() {
     updateallbrands: this.updateallbrands,
     commissionpercentage: this.commissionpercentage
   };
+
+  // Start TABS2-3772
+  if(this.customerpaymentfirstperiod) {
+    fields.customerpaymentfirstperiod = this.customerpaymentfirstperiod ? 'true' : 'false';
+  }
+
+  if(this.customerpaymentlastperiod) {
+    fields.customerpaymentlastperiod = this.customerpaymentlastperiod ? 'true' : 'false';
+  }
+  // End TABS2-3772
+
   if (this.accountingdatedefinition && this.accountingdatedefinition.id) {
     fields.accountingdatedefinitionid = this.accountingdatedefinition.id;
   }
@@ -107,7 +129,12 @@ ExtraBrandingConfiguration.validSchema = Joi.object().keys({
   accountingdatedefinition: Joi.object().optional().label('Accounting Date Definition'),
   copytoallbrands: Joi.boolean().label('copy to all brands'),
   updateallbrands: Joi.boolean().label('update all brands'),
-  commissionpercentage: Joi.any().optional().label('commission percentage')
+  commissionpercentage: Joi.any().optional().label('commission percentage'),
+  // Start TABS2-3772
+  customerpaymentfirstperiod: Joi.boolean().optional().label('customer payment first period'),
+  customerpaymentlastperiod: Joi.boolean().optional().label('customer payment last period')
+  // End TABS2-3772
+
 });
 
 module.exports = ExtraBrandingConfiguration;
