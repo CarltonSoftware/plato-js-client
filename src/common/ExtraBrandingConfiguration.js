@@ -85,11 +85,15 @@ ExtraBrandingConfiguration.prototype.toUpdateArray = function() {
 
   // Start TABS2-3772
   if(this.customerpaymentfirstperiod) {
-    fields.customerpaymentfirstperiod = this.customerpaymentfirstperiod ? 'true' : 'false';
+    fields.customerpaymentfirstperiod = this.customerpaymentfirstperiod;
+  } else if (this.customerpaymentfirstperiod === false) {
+    fields.customerpaymentfirstperiod = false;
   }
 
   if(this.customerpaymentlastperiod) {
-    fields.customerpaymentlastperiod = this.customerpaymentlastperiod ? 'true' : 'false';
+    fields.customerpaymentlastperiod = this.customerpaymentlastperiod;
+  } else if (this.customerpaymentlastperiod === false ) {
+    fields.customerpaymentlastperiod = false;
   }
   // End TABS2-3772
 
