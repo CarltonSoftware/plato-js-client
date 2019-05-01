@@ -193,6 +193,18 @@ Booking.prototype.toArray = function() {
     removepromotioncode: this.removepromotioncode
   };
 
+  //Extend for TABS2-3772 with the following 3 fields
+  if (this.provisionalbooking_interimcustomerpayments) {
+    array.provisionalbooking_interimcustomerpayments = this.provisionalbooking_interimcustomerpayments;
+  }
+  if (this.provisionalbooking_interimcustomerpaymentsleaddays) {
+    array.provisionalbooking_interimcustomerpaymentsleaddays = this.provisionalbooking_interimcustomerpaymentsleaddays;
+  }
+
+  if (this.provisionalbooking_interimcustomerpaymentsfrequency) {
+    array.provisionalbooking_interimcustomerpaymentsfrequency = this.provisionalbooking_interimcustomerpaymentsfrequency;
+  }
+
   if (this.confirmedbooking_tabsuserid) {
     array.confirmedbooking_tabsuserid = this.confirmedbooking_tabsuserid;
   }
