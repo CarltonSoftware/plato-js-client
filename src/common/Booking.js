@@ -196,9 +196,12 @@ Booking.prototype.toArray = function() {
   //Extend for TABS2-3772 with the following 3 fields
   if (this.provisionalbooking_interimcustomerpayments) {
     array.provisionalbooking_interimcustomerpayments = this.provisionalbooking_interimcustomerpayments;
+  } else if(this.provisionalbooking_interimcustomerpayments === false) {
+    array.provisionalbooking_interimcustomerpayments = false;
   }
-  if (this.provisionalbooking_interimcustomerpaymentsleaddays) {
-    array.provisionalbooking_interimcustomerpaymentsleaddays = this.provisionalbooking_interimcustomerpaymentsleaddays;
+
+  if (this.provisionalbooking_interimcustomerpaymentleaddays) {
+    array.provisionalbooking_interimcustomerpaymentleaddays = this.provisionalbooking_interimcustomerpaymentleaddays;
   }
 
   if (this.provisionalbooking_interimcustomerpaymentsfrequency) {
