@@ -29,6 +29,7 @@ SupplierServiceCharge.prototype.toUpdateArray = function() {
     todate: this.todate,
     ownerchargecodeid: this.ownerchargecode.id,
     workordertemplateid: this.workordertemplate.id,
+    description: this.description,
   };
 };
 SupplierServiceCharge.prototype.toCreateArray = function() {
@@ -60,6 +61,7 @@ SupplierServiceCharge.prototype.validSchema = function() {
     autoaddcustomer: Joi.boolean().required().label('Auto add to customer'),
     autoaddowner: Joi.boolean().required().label('Auto add to owner'),
     autoaddagency: Joi.boolean().required().label('Auto add to agency'),
+    description: Joi.object().optional().label('Description'),
   });
 };
 module.exports = SupplierServiceCharge;
