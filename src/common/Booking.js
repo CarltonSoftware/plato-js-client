@@ -196,7 +196,7 @@ Booking.prototype.toArray = function() {
   //Extend for TABS2-4581 field donotautocontact
   if(this.donotautocontact) {
     array.donotautocontact = this.donotautocontact;
-  } else if (this.donotautocontact === false){
+  } else if (this.donotautocontact === false) {
     array.donotautocontact = false;
   }
 
