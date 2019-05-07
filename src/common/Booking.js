@@ -193,6 +193,13 @@ Booking.prototype.toArray = function() {
     removepromotioncode: this.removepromotioncode
   };
 
+  //Extend for TABS2-4581 field donotautocontact
+  if(this.donotautocontact) {
+    array.donotautocontact = this.donotautocontact;
+  } else if (this.donotautocontact === false){
+    array.donotautocontact = false;
+  }
+
   //Extend for TABS2-3772 with the following 3 fields
   if (this.provisionalbooking_interimcustomerpayments) {
     array.provisionalbooking_interimcustomerpayments = this.provisionalbooking_interimcustomerpayments;

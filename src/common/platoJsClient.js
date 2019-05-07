@@ -115,7 +115,7 @@ var platoJsClient = (function () {
           prefix = (!options.apiPrefix) ? prefix : options.apiPrefix;
           oAuthRedirectUrl = (!options.oAuthRedirectUrl) ? oAuthRedirectUrl : options.oAuthRedirectUrl;
           clientId = (options.clientId != null) ? options.clientId : '';
-
+          console.log(token, 'what is token');
           if (options.token) {
             token = options.token;
           } else if (localStorage) {
