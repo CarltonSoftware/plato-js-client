@@ -3,8 +3,8 @@ var Joi = require('joi');
 
 
 function ContactSchedule(id) {
-  this.path = 'contactreason';
-  this.createPath = 'contactreason';
+  this.path = 'contactschedule';
+  this.createPath = 'contactschedule';
   this.id = id;
 }
 
