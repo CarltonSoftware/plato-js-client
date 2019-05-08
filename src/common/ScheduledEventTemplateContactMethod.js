@@ -35,9 +35,17 @@ function ScheduledEventTemplateContactMethod(id) {
 
 ScheduledEventTemplateContactMethod.prototype = new SingleEntity();
 ScheduledEventTemplateContactMethod.prototype.toArray = function() {
-  return {
-    templatecontactmethodid: this.templatecontactmethod.id
+  var toArrObj = {
+    templatecontactmethodid: this.templatecontactmethod.id,
   };
+  
+  if(this.paused) {
+    toArrObj.paused = this.paused;
+  } else if (this.paused === false) {
+    toArrObj.paused = false;
+  }
+
+  return toArrObj;
 };
 ScheduledEventTemplateContactMethod.prototype.hasBranding = function(branding) {
   if (this.templatecontactmethod.id && this.templatecontactmethod.parent) {
