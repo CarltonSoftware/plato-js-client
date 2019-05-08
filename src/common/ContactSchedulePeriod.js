@@ -2,7 +2,7 @@ var SingleEntity = require('./SingleEntity');
 var Joi = require('joi');
 
 
-function ContactSchedulesPeriod(id) {
+function ContactSchedulePeriod(id) {
   this.path = 'period';
   this.createPath = this.path;
   this.id = id;
