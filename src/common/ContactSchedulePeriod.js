@@ -8,9 +8,9 @@ function ContactSchedulePeriod(id) {
   this.id = id;
 }
 
-ContactSchedulesPeriod.prototype = new SingleEntity();
+ContactSchedulePeriod.prototype = new SingleEntity();
 
-ContactSchedulesPeriod.prototype.validSchema = function () {
+ContactSchedulePeriod.prototype.validSchema = function () {
   return {
     fromdate: Joi.date().required().label('from date'),
     todate: Joi.date().required().label('to date'),
@@ -23,7 +23,7 @@ ContactSchedulesPeriod.prototype.validSchema = function () {
   };
 };
 
-ContactSchedulesPeriod.prototype.toArray = function () {
+ContactSchedulePeriod.prototype.toArray = function () {
   return {
     fromdate: this.fromdate,
     todate: this.todate,
