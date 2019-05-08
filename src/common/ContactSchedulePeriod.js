@@ -11,29 +11,46 @@ function ContactSchedulePeriod(id) {
 ContactSchedulePeriod.prototype = new SingleEntity();
 
 ContactSchedulePeriod.prototype.validSchema = function () {
-  return {
+  return Joi.object().keys({
     fromdate: Joi.date().required().label('from date'),
     todate: Joi.date().required().label('to date'),
-    propertyid: Joi.number().optional().label('property id'),
-    bookingbrandid: Joi.number().optional().label('branding id'),
-    dayofweek: Joi.number().optional().label('day of week'),
+    propertyid: Joi.string().optional().allow("").label('property id'),
+    bookingbrandid: Joi.string().optional().allow("").label('branding id'),
+    dayofweek: Joi.number().optional().allow("").label('day of week'),
     fromtime: Joi.string().optional().label('from time'),
     totime: Joi.string().optional().label('to time'),
-    exclude: Joi.boolean().optional().label('branding id'),
-  };
+    exclude: Joi.boolean().optional().label('exclude'),
+  });
 };
 
 ContactSchedulePeriod.prototype.toArray = function () {
-  return {
+  var arrObj =  {
     fromdate: this.fromdate,
-    todate: this.todate,
-    propertyid: this.property.id,
-    bookingbrandid: this.bookingbrandid.id,
-    dayofweek: this.dayofweek,
-    fromtime: this.fromtime,
-    totime: this.totime,
-    exclude: this.exclude
+    todate: this.todate
+  };
+
+  if(this.exclude) {
+    arrObj.exclude = this.exclude;
+  } else if (this.exclude === false) {
+    arrObj.exclude = false;
   }
+
+  if(this.propertyid) {
+    arrObj.propertyid = this.propertyid;
+  }
+
+  if(this.bookingbrandid) {
+    arrObj.bookingbrandid = this.bookingbrandid;
+  }
+  
+  if(this.dayofweek) {
+    arrObj.dayofweek = this.dayofweek;
+    arrObj.fromtime = this.fromtime;
+    arrObj.totime = this.totime;
+  }
+    
+
+  return arrObj;
 };
 
 
