@@ -350,6 +350,7 @@ module.exports.common.JobItemResponse = require('./common/JobItemResponse');
 module.exports.common.JobType = require('./common/JobType');
 module.exports.common.ContactSchedule = require('./common/ContactSchedule');
 module.exports.common.ContactSchedulePeriod = require('./common/ContactSchedulePeriod');
+module.exports.common.TemplateContactMethodContactSchedule = require('./common/TemplateContactMethodContactSchedule');
 
 // ChangeDayRules
 module.exports.common.ChangeDayTemplate = require('./common/ChangeDayTemplate');
