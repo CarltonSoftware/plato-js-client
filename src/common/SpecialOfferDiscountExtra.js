@@ -14,7 +14,7 @@ SpecialOfferDiscountExtra.prototype.toArray = function() {
 
   qwe.extraid = this.extraid;
 
-  if(this.price){
+  if(this.price) {
     qwe.price = this.price;
   }
 
