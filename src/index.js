@@ -185,6 +185,7 @@ module.exports.common.AnswerOptionGroup = require('./common/AnswerOptionGroup');
 module.exports.common.AnswerOption = require('./common/AnswerOption');
 module.exports.common.PromotePeriod = require('./common/PromotePeriod');
 module.exports.common.SpecialOfferDiscountExtra = require('./common/SpecialOfferDiscountExtra');
+module.exports.common.SpecialOfferDiscountedExtra = require('./common/SpecialOfferDiscountedExtra');
 
 // Key Related Objects
 module.exports.common.Keyy = require('./common/Keyy');

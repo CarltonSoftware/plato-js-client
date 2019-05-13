@@ -24,7 +24,7 @@ SpecialOfferDiscountExtra.prototype.toArray = function() {
 SpecialOfferDiscountExtra.prototype.validSchema = function() {
   return Joi.object().keys({
       extraid: Joi.string().required().label('extra id'),
-      price: Joi.string().optional().label('Price'),
+      price: Joi.string().optional().allow("").label('Price'),
   });
 };
 
