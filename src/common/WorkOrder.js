@@ -105,6 +105,13 @@ WorkOrder.prototype.toArray = function() {
   if (this.invoicerejecteddatetime) {
     arr.invoicerejecteddatetime = this.invoicerejecteddatetime
   }
+  if (this.durationminutes) {
+    arr.durationminutes = this.durationminutes
+  }
+  if (this.preferredstartdatetime) {
+    arr.preferredstartdatetime = this.preferredstartdatetime
+  }  
+
 
   if (this.workordersupplier && this.workordersupplier.id) {
     arr.workordersupplierid = this.workordersupplier.id;
