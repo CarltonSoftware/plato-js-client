@@ -112,7 +112,6 @@ WorkOrder.prototype.toArray = function() {
     arr.preferredstartdatetime = this.preferredstartdatetime
   }  
 
-
   if (this.workordersupplier && this.workordersupplier.id) {
     arr.workordersupplierid = this.workordersupplier.id;
   } else if (this.supplier && this.supplier.id) {
