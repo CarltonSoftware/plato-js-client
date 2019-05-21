@@ -3,6 +3,7 @@ var Property = require('./Property');
 var TabsUser = require('./TabsUser');
 var WorkOrderSupplier = require('./WorkOrderSupplier');
 var WorkOrderExpense = require('./WorkOrderExpense');
+var WorkType = require('./WorkType');
 var EntityLink = require('./EntityLink');
 var Booking = require('./Booking');
 var WorkOrderDocument = require('./WorkOrderDocument');
@@ -10,13 +11,17 @@ var WorkOrderNote = require('./WorkOrderNote');
 var NoteFilterCollection = require('./NoteFilterCollection');
 var Collection = require('./Collection');
 
+WorkOrder.prototype = new SingleEntity();
+
 function WorkOrder(id) {
-  this.path = this.createPath = 'workorder';
+  this.path = 'workorder';
+  this.createPath = this.path;
   this.id = id;
   this.property = new Property();
   this.workordersupplier = new WorkOrderSupplier();
   this.updatedbyactor = new TabsUser();
   this.booking = new Booking();
+  this.worktype = new WorkType();
 
   this.workordertemplate = new EntityLink({
     entity: 'WorkOrder'
@@ -40,8 +45,6 @@ function WorkOrder(id) {
     parent: this
   });  
 }
-
-WorkOrder.prototype = new SingleEntity();
 
 WorkOrder.prototype.toArray = function() {
   var arr = {
@@ -110,12 +113,14 @@ WorkOrder.prototype.toArray = function() {
   }
   if (this.preferredstartdatetime) {
     arr.preferredstartdatetime = this.preferredstartdatetime
-  }  
-
+  }
   if (this.workordersupplier && this.workordersupplier.id) {
-    arr.workordersupplierid = this.workordersupplier.id;
+    arr.workordersupplierid = this.workordersupplier.id
   } else if (this.supplier && this.supplier.id) {
     arr.supplierid = this.supplier.id
+  }
+  if (this.worktype && this.worktype.id) {
+    arr.worktypeid = this.worktype.id
   }
 
   return arr;
