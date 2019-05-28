@@ -12,7 +12,7 @@ function Branding(id) {
   this.bookingbrand = new EntityLink({ entity: 'BookingBrand' });
   this.marketingbrand = new MarketingBrand();
   this.lettingincomevatband = new EntityLink({ entity: 'VatBand' });
-  this.paymentbankaccount = new EntityLink({ entity: 'BankAccount' });
+  this.bacsbankaccount = new EntityLink({ entity: 'BankAccount' });
   this.petextrabranding = new EntityLink({ entity: 'ExtraBranding' });
   this.extras = new Collection({
     object: BrandExtra,
@@ -41,7 +41,7 @@ Branding.prototype.toArray = function() {
     lettingincomevatbandid: this.lettingincomevatband.id,
     bacsoutputtype: this.bacsoutputtype,
     bacssettings: this.bacssettings,
-    paymentbankaccountid: this.paymentbankaccount.id,
+    bacsbankaccountid: this.bacsbankaccountid.id,
     petextrabrandingid: this.petextrabranding.id,
     allowbookingonwebuntildate: this.allowbookingonwebuntildate,
     showpricingonwebuntildate: this.showpricingonwebuntildate
