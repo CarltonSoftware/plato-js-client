@@ -61,7 +61,7 @@ SupplierServiceCharge.prototype.validSchema = function() {
     autoaddcustomer: Joi.boolean().required().label('Auto add to customer'),
     autoaddowner: Joi.boolean().required().label('Auto add to owner'),
     autoaddagency: Joi.boolean().required().label('Auto add to agency'),
-    description: Joi.object().optional().label('Description'),
+    description: Joi.string().optional().label('Description'),
   });
 };
 module.exports = SupplierServiceCharge;
