@@ -41,13 +41,16 @@ Branding.prototype.toArray = function() {
     lettingincomevatbandid: this.lettingincomevatband.id,
     bacsoutputtype: this.bacsoutputtype,
     bacssettings: this.bacssettings,
-    bacsbankaccountid: this.bacsbankaccountid.id,
     petextrabrandingid: this.petextrabranding.id,
     allowbookingonwebuntildate: this.allowbookingonwebuntildate,
     showpricingonwebuntildate: this.showpricingonwebuntildate
   };
   if (this.updatepropertybrandings) {
     fields.updatepropertybrandings = true;
+  }
+
+  if(this.bacsbankaccountid) {
+    this.bacsbankaccountid = this.bacsbankaccountid.id;
   }
   return fields;
 };
