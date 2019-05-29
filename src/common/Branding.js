@@ -49,8 +49,8 @@ Branding.prototype.toArray = function() {
     fields.updatepropertybrandings = true;
   }
 
-  if(this.bacsbankaccountid) {
-    this.bacsbankaccountid = this.bacsbankaccountid.id;
+  if(this.bacsbankaccount) {
+    this.bacsbankaccountid = this.bacsbankaccount.id;
   }
   return fields;
 };
