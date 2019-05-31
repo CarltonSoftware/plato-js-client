@@ -39,7 +39,7 @@ GroupingValue.prototype.toArray = function() {
     marketingbrandid: this.marketingbrand.id
   };
 
-  if(this.weight){
+  if(this.weight) {
     d.weight = this.weight;
   }
 
