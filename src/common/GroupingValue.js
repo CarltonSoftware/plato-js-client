@@ -39,6 +39,10 @@ GroupingValue.prototype.toArray = function() {
     marketingbrandid: this.marketingbrand.id
   };
 
+  if(this.weight){
+    d.weight = this.weight;
+  }
+
   if (this.hasParent()) {
     d.parentgroupingvalueid = this.parentgroupingvalue.id;
   }
