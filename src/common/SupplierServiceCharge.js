@@ -18,7 +18,7 @@ function SupplierServiceCharge(id) {
 SupplierServiceCharge.prototype = new SingleEntity();
 
 SupplierServiceCharge.prototype.toUpdateArray = function() {
-  return {
+  var objectToSend = {
     type: this.type,
     charge: this.charge,
     includesvat: this.includesvat,
@@ -31,6 +31,14 @@ SupplierServiceCharge.prototype.toUpdateArray = function() {
     workordertemplateid: this.workordertemplate.id,
     description: this.description,
   };
+
+  if(this.perperiod) {
+    objectToSend.perperiod = this.perperiod;
+  } else if (this.perperiod === false) {
+    objectToSend.perperiod = false;
+  }
+  
+  return objectToSend;
 };
 SupplierServiceCharge.prototype.toCreateArray = function() {
   var array = this.toUpdateArray();
