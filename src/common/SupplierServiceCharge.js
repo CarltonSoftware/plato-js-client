@@ -37,7 +37,7 @@ SupplierServiceCharge.prototype.toUpdateArray = function() {
   } else if (this.perperiod === false) {
     objectToSend.perperiod = false;
   }
-  
+
   return objectToSend;
 };
 SupplierServiceCharge.prototype.toCreateArray = function() {
@@ -70,6 +70,7 @@ SupplierServiceCharge.prototype.validSchema = function() {
     autoaddowner: Joi.boolean().required().label('Auto add to owner'),
     autoaddagency: Joi.boolean().required().label('Auto add to agency'),
     description: Joi.string().optional().label('Description'),
+    perperiod: Joi.boolean().optional().allow("").label('Per Period')
   });
 };
 module.exports = SupplierServiceCharge;
