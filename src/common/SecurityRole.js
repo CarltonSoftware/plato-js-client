@@ -33,7 +33,10 @@ SecurityRole.prototype.toArray = function() {
 };
 
 SecurityRole.prototype.canAccessRoute = function(route) {
-  return this.symfonyroute.includes(route);
+  return typeof this.symfonyroute === 'object' 
+    && this.symfonyroute 
+    && this.symfonyroute.includes 
+    && this.symfonyroute.includes(route);
 }
 
 module.exports = SecurityRole;
