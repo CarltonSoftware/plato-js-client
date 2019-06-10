@@ -54,11 +54,13 @@ Note.prototype.toCreateArray = function() {
     private: this.private ? 'true' : 'false',
     notetext_createdbyactorid: this.notetext_createdbyactorid,
     notetext_notetext: this.notetext_notetext,
-    notetext_followupdatetime: this.notetext_followupdatetime,
     notetext_actionedbyactorid: this.notetext_actionedbyactorid,
     notetext_actioneddatetime: this.notetext_actioneddatetime,
     bookingid: this.bookingid
   };
+  if (this.notetext_followupdatetime) {
+    note.notetext_followupdatetime = this.notetext_followupdatetime;
+  }
   if (this.completedbyactorid) {
     note.completedbyactorid = this.completedbyactorid;
   }

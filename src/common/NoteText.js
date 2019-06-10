@@ -20,13 +20,16 @@ NoteText.prototype.toArray = function() {
 };
 
 NoteText.prototype.toCreateArray = function() {
-    return {
+    var nt = {
         createdbyactorid: this.createdbyactorid,
         notetext: this.notetext,
-        followupdatetime: this.followupdatetime,
         actioneddatetime: this.actioneddatetime,
         actionedbytabsuserid: this.actionedbytabsuserid
     };
+    if (this.followupdatetime) {
+        nt.followupdatetime = this.followupdatetime
+    }
+    return nt;
 };
 
 module.exports = NoteText;
