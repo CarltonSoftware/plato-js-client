@@ -12,7 +12,7 @@ ChangeDayTemplateRule.prototype = new SingleEntity();
 ChangeDayTemplateRule.prototype.toArray = function() {
   var array = {
     ruleorder: this.ruleorder,
-    everysaturday: this.everysaturday,
+    everysaturday: this.everysaturday, 
     everysunday: this.everysunday,
     everymonday: this.everymonday,
     everytuesday: this.everytuesday,
@@ -38,14 +38,57 @@ ChangeDayTemplateRule.prototype.toArray = function() {
   if (this.todate != '') {
     array.todate = this.todate;
   }
-  if (this.unlessholidayatleast != '') {
+  
+  if (this.unlessholidayatleast != '' && typeof this.unlessholidayatleast != 'object' && typeof this.withinday != 'undefined') {
     array.unlessholidayatleast = this.unlessholidayatleast;
+  } else {
+    delete array.unlessholidayatleast;
   }
 
   if (this.isfromdate || this.istodate) {
-    array.withindays = this.withindays != '' ? this.withindays : 0;
+    array.withindays = this.withindays != '' && typeof this.withinday != 'object' && typeof this.withinday != 'undefined' ? this.withindays : 0;
+  }
+  return array;
+};
+
+ChangeDayTemplateRule.prototype.toUpdateArray = function() {
+  var array = {
+    ruleorder: this.ruleorder,
+    everysaturday: this.everysaturday, 
+    everysunday: this.everysunday,
+    everymonday: this.everymonday,
+    everytuesday: this.everytuesday,
+    everywednesday: this.everywednesday,
+    everythursday: this.everythursday,
+    everyfriday: this.everyfriday,
+    isfromdate: this.isfromdate,
+    istodate: this.istodate,
+    isnotfromdate: this.isnotfromdate,
+    isnottodate: this.isnottodate,
+    ispriceanchor: this.ispriceanchor,
+    isnotpriceanchor: this.isnotpriceanchor,
+    showonavailability : this.showonavailability,
+    minimumholiday: this.minimumholiday,
+    daysbeforeeaster: this.daysbeforeeaster,
+    daysaftereaster: this.daysaftereaster,
+    description: this.description
+  };
+
+  if (this.fromdate != '') {
+    array.fromdate = this.fromdate;
+  }
+  if (this.todate != '') {
+    array.todate = this.todate;
+  }
+  if (this.unlessholidayatleast != '' && typeof this.unlessholidayatleast != 'object' && typeof this.withinday != 'undefined') {
+    array.unlessholidayatleast = this.unlessholidayatleast;
+  } else {
+    delete array.unlessholidayatleast;
   }
 
+  if (this.isfromdate || this.istodate) {
+    array.withindays = this.withindays != '' && typeof this.withinday != 'object' && typeof this.withinday != 'undefined' ? this.withindays : 0;
+  } 
   return array;
 };
 
