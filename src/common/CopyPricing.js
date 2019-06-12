@@ -4,7 +4,7 @@ var Entity = require('./Entity');
 function CopyPricing(id) {
   this.path = 'copypricing';
   this.createPath = 'copypricing';
-  this.id = id;
+  this.id = id;   
 }
 
 CopyPricing.prototype = new Entity();
@@ -52,6 +52,11 @@ CopyPricing.prototype.toArray = function() {
       fields.partysizeprice_useasbase = this.partysizeprice_useasbase;
       fields.partysizeprice_decimalplaces = this.partysizeprice_decimalplaces;
     }
+  }
+
+  //TABS2-3588
+  if(this.usepricinggroupyear === true) {
+    fields.toyear = String(Number(fields.fromyear) + 1);
   }
 
   return fields;
