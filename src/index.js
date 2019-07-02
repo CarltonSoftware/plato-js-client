@@ -232,6 +232,10 @@ module.exports.common.BookingCancellationAction = require('./common/BookingCance
 module.exports.common.ServiceContract = require('./common/ServiceContract');
 module.exports.common.ServiceContractType = require('./common/ServiceContractType');
 
+// Complaints
+module.exports.common.ComplaintReason = require('./common/ComplaintReason');
+module.exports.common.ComplaintSource = require('./common/ComplaintSource');
+module.exports.common.ComplaintStatus = require('./common/ComplaintStatus');
 
 // Brand Related Objects
 module.exports.common.BookingBrand = require('./common/BookingBrand');
