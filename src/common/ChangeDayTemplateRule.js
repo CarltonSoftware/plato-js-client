@@ -54,6 +54,7 @@ ChangeDayTemplateRule.prototype.toArray = function() {
 };
 
 ChangeDayTemplateRule.prototype.toUpdateArray = function() {
+
   var array = {
     ruleorder: this.ruleorder,
     everysaturday: this.everysaturday, 
@@ -94,6 +95,13 @@ ChangeDayTemplateRule.prototype.toUpdateArray = function() {
   } else {
     array.unlessholidayatleast = 0;
   }
+
+  if(typeof this.ruleorder === 'object') {
+    if(this.ruleorder.hasOwnProperty('updateOrderOnly')) {
+      return { ruleorder: this.ruleorder.value };
+    }
+  } 
+
   return array;
 };
 
