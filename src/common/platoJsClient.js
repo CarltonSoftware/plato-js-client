@@ -37,6 +37,7 @@ var platoJsClient = (function () {
           host = '/',
           prefix = '',
           oAuthRedirectUrl,
+          authPath = '/oauth/v2/auth',
           clientId = '',
           token;
 
@@ -114,6 +115,7 @@ var platoJsClient = (function () {
           host = (!options.apiRoot) ? host : options.apiRoot;
           prefix = (!options.apiPrefix) ? prefix : options.apiPrefix;
           oAuthRedirectUrl = (!options.oAuthRedirectUrl) ? oAuthRedirectUrl : options.oAuthRedirectUrl;
+          authPath = (!options.authPath) ? authPath : options.authPath;
           clientId = (options.clientId != null) ? options.clientId : '';
           if (options.token) {
             token = options.token;
@@ -286,7 +288,7 @@ var platoJsClient = (function () {
             .wrap(params)
             .wrap(oAuth, {
                 clientId: clientId,
-                authorizationUrlBase: host + '/oauth/v2/auth',
+                authorizationUrlBase: host + authPath,
                 windowStrategy: redirect,
                 token: this.token ? 'Bearer ' + this.token : false,
                 redirectUrl: oAuthRedirectUrl

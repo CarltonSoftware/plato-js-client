@@ -17,7 +17,8 @@ PropertyCommission.prototype.toArray = function() {
     updateexistingbookings: this.updateexistingbookings,
     overrideuserset: this.overrideuserset,
     forceoverwrite: this.forceoverwrite,
-    pricingperiodid: this.pricingperiod.id
+    pricingperiodid: this.pricingperiod.id,
+    updatefullyownerpaid: this.updatefullyownerpaid
   };
 };
 

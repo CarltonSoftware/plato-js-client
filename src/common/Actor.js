@@ -336,7 +336,6 @@ Actor.prototype.toArray = function() {
     abroad: this.abroad,
     enquirer: this.enquirer,
     enquirydate: this.enquirydate,
-    ownerdate: this.ownerdate,
     otheragent: this.otheragent,
     tabsusername: this.tabsusername,
     companyname: this.companyname,
@@ -351,6 +350,10 @@ Actor.prototype.toArray = function() {
 
   if (this.location) {
     arr.location = this.location;
+  }
+
+  if (this.ownerdate) {
+    arr.ownerdate = this.ownerdate;
   }
 
   if (this.ownerenquiryinactivereason) {

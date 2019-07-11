@@ -1,4 +1,5 @@
 var SingleEntity = require('./SingleEntity');
+var Joi = require('joi');
 
 function Title(id) {
   this.path = 'title';
@@ -10,7 +11,14 @@ function Title(id) {
       title: this.title
     };
   };
+
+  this.validSchema = function() {
+    return {
+      title: Joi.string().required().label('title')
+    };
+  };
 }
+
 Title.prototype = new SingleEntity();
 
 module.exports = Title;

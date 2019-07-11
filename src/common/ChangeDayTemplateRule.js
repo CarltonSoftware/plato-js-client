@@ -39,19 +39,22 @@ ChangeDayTemplateRule.prototype.toArray = function() {
     array.todate = this.todate;
   }
   
-  if (this.unlessholidayatleast != '' && typeof this.unlessholidayatleast != 'object' && typeof this.withinday != 'undefined') {
-    array.unlessholidayatleast = this.unlessholidayatleast;
+  if (this.isfromdate || this.istodate) {
+    array.withindays = this.withindays != '' ? this.withindays : 0;
   } else {
-    delete array.unlessholidayatleast;
+    array.withindays = 0;
   }
 
-  if (this.isfromdate || this.istodate) {
-    array.withindays = this.withindays != '' && typeof this.withinday != 'object' && typeof this.withinday != 'undefined' ? this.withindays : 0;
+  if (this.unlessholidayatleast != '' && ((this.isfromdate || this.istodate) || array.withindays < 9999))  {
+    array.unlessholidayatleast = this.unlessholidayatleast;
+  } else {
+    array.unlessholidayatleast = 0;
   }
   return array;
 };
 
 ChangeDayTemplateRule.prototype.toUpdateArray = function() {
+
   var array = {
     ruleorder: this.ruleorder,
     everysaturday: this.everysaturday, 
@@ -80,15 +83,25 @@ ChangeDayTemplateRule.prototype.toUpdateArray = function() {
   if (this.todate != '') {
     array.todate = this.todate;
   }
-  if (this.unlessholidayatleast != '' && typeof this.unlessholidayatleast != 'object' && typeof this.withinday != 'undefined') {
-    array.unlessholidayatleast = this.unlessholidayatleast;
-  } else {
-    delete array.unlessholidayatleast;
-  }
 
   if (this.isfromdate || this.istodate) {
-    array.withindays = this.withindays != '' && typeof this.withinday != 'object' && typeof this.withinday != 'undefined' ? this.withindays : 0;
+    array.withindays = this.withindays != '' ? this.withindays : 0;
+  } else {
+    array.withindays = 0;
+  }
+
+  if (this.unlessholidayatleast != '' && ((this.isfromdate || this.istodate) || array.withindays < 9999))  {
+    array.unlessholidayatleast = this.unlessholidayatleast;
+  } else {
+    array.unlessholidayatleast = 0;
+  }
+
+  if(typeof this.ruleorder === 'object') {
+    if(this.ruleorder.hasOwnProperty('updateOrderOnly')) {
+      return { ruleorder: this.ruleorder.value };
+    }
   } 
+
   return array;
 };
 

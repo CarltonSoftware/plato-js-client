@@ -50,7 +50,7 @@ Branding.prototype.toArray = function() {
   }
 
   if(this.bacsbankaccount) {
-    this.bacsbankaccountid = this.bacsbankaccount.id;
+    fields.bacsbankaccountid = this.bacsbankaccount.id;
   }
   return fields;
 };
