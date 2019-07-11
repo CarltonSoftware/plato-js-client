@@ -40,7 +40,11 @@ GroupingValue.prototype.toArray = function() {
   };
 
   if(this.weight) {
-    d.weight = this.weight;
+    if(this.weight === '0') {
+      d.weight = 0;
+    } else if (this.weight === '1') {
+      d.weight = 1;
+    }
   }
 
   if (this.hasParent()) {
