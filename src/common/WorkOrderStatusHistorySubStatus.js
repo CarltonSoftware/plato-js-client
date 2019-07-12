@@ -21,7 +21,7 @@ WorkOrderStatusHistorySubStatus.prototype.toArray = function() {
 
   if (this.expire) {
     arr.expire = true;
-  };
+  }
 
   return arr;
 }
