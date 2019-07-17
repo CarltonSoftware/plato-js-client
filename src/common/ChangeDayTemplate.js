@@ -36,6 +36,13 @@ ChangeDayTemplate.prototype.toArray = function() {
     fields.propertybrandingid = this.propertybrandingid;
     fields.parentid = this.parentid;
   }
+
+  if(this.ruleorders) {
+    return {
+      ruleorders: this.ruleorders
+     }
+  }
+
   return fields;
 };
 
