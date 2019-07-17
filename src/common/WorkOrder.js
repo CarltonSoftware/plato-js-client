@@ -1,6 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var Property = require('./Property');
 var TabsUser = require('./TabsUser');
+var WorkOrderStatusHistory = require('./WorkOrderStatusHistory');
 var WorkOrderSupplier = require('./WorkOrderSupplier');
 var WorkOrderExpense = require('./WorkOrderExpense');
 var WorkType = require('./WorkType');
@@ -44,6 +45,12 @@ function WorkOrder(id) {
     path: 'expense',
     parent: this
   });  
+  
+  this.statushistory = new Collection({
+    object: WorkOrderStatusHistory,
+    path: 'statushistory',
+    parent: this
+  });
 }
 
 WorkOrder.prototype.toArray = function() {
