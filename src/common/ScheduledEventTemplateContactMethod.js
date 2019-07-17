@@ -58,6 +58,9 @@ ScheduledEventTemplateContactMethod.prototype.hasBranding = function(branding) {
     if (this.templatecontactmethod.parent.type === 'WorkOrderTemplate') {
       return this.templatecontactmethod.parent.branding.id === branding.id;
     }
+    if (this.templatecontactmethod.parent.type === 'WorkOrderInstanceTemplate') {
+      return this.templatecontactmethod.parent.branding.id === branding.id;
+    }    
     if (this.templatecontactmethod.parent.type === 'MarketingCampaignTemplate') {
       return this.templatecontactmethod.parent.marketingbrand.id === branding.marketingbrand.id;
     }
