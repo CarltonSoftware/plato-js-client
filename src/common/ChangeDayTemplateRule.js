@@ -95,13 +95,7 @@ ChangeDayTemplateRule.prototype.toUpdateArray = function() {
   } else {
     array.unlessholidayatleast = 0;
   }
-
-  if(typeof this.ruleorder === 'object') {
-    if(this.ruleorder.hasOwnProperty('updateOrderOnly')) {
-      return { ruleorder: this.ruleorder.value };
-    }
-  } 
-
+  
   return array;
 };
 

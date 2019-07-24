@@ -136,9 +136,9 @@ var platoJsClient = (function () {
          *
          * @return {Promise}
          */
-        this._authenticate = function(username, password, clientSecret) {
+        this._authenticate = function(username, password, clientSecret, grant_type) {
           var paramsData = {
-              'grant_type': 'password',
+              'grant_type': grant_type || 'password',
               'username': username,
               'password': password,
               'client_id': clientId,

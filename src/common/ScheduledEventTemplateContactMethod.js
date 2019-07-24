@@ -4,6 +4,7 @@ var EntityLink = require('./EntityLink');
 var Collection = require('./Collection');
 var Booking = require('./Booking');
 var Property = require('./Property');
+var WorkOrder = require('./WorkOrder');
 var ActorInstance = require('./ActorInstance');
 
 function ScheduledEventTemplateContactMethod(id) {
@@ -22,10 +23,13 @@ function ScheduledEventTemplateContactMethod(id) {
     parent: this,
     ignoreparent: true, // We only want parent for path so set this to true so that entities do not have parent set.
     discriminator: function(element) {
+
       if (element.guesttype) {
         return Booking;
       } else if (element.type == 'property') {
         return Property;
+      } else if (element.type == 'Instance') {
+        return WorkOrder;
       } else {
         return ActorInstance.call(this, element.type.toLowerCase());
       }
@@ -58,6 +62,9 @@ ScheduledEventTemplateContactMethod.prototype.hasBranding = function(branding) {
     if (this.templatecontactmethod.parent.type === 'WorkOrderTemplate') {
       return this.templatecontactmethod.parent.branding.id === branding.id;
     }
+    if (this.templatecontactmethod.parent.type === 'WorkOrderInstanceTemplate') {
+      return this.templatecontactmethod.parent.branding.id === branding.id;
+    }    
     if (this.templatecontactmethod.parent.type === 'MarketingCampaignTemplate') {
       return this.templatecontactmethod.parent.marketingbrand.id === branding.marketingbrand.id;
     }
