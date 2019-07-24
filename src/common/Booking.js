@@ -16,6 +16,7 @@ var WebBooking = require('./WebBooking');
 var BookingExtra = require('./BookingExtra');
 var BookingProperty = require('./BookingProperty');
 var Promotion = require('./Promotion');
+var Complaint = require('./Complaint');
 
 function Booking(id) {
   this.path = 'booking';
@@ -80,6 +81,10 @@ function Booking(id) {
     path: 'promotion',
     object: Promotion,
     parent: this
+  });
+  this.complaints = new Collection({
+    object: Complaint,
+    path: 'complaint'
   });
 
   this.webbooking = new WebBooking();

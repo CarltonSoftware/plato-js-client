@@ -236,6 +236,8 @@ module.exports.common.ServiceContractType = require('./common/ServiceContractTyp
 module.exports.common.ComplaintReason = require('./common/ComplaintReason');
 module.exports.common.ComplaintSource = require('./common/ComplaintSource');
 module.exports.common.ComplaintStatus = require('./common/ComplaintStatus');
+module.exports.common.Complaint = require('./common/Complaint');
+module.exports.common.ComplaintAssignment = require('./common/ComplaintAssignment');
 
 // Brand Related Objects
 module.exports.common.BookingBrand = require('./common/BookingBrand');

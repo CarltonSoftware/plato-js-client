@@ -28,8 +28,8 @@ Affiliate.prototype.validSchema = function() {
   return Joi.object().keys({
     companyname: Joi.string().label('Company name'),
     addaccidentaldamagedeposit: Joi.boolean().label('Add accidental damage deposit'),
-    accidentaldamagedepositnotetext: Joi.string().min(2).label('Accidental damage deposit note text'),
-    processbookingnotetext: Joi.string().min(2).label('Booking process note text')
+    accidentaldamagedepositnotetext: Joi.string().optional().allow('').label('Accidental damage deposit note text'),
+    processbookingnotetext: Joi.string().optional().allow('').label('Booking process note text')
 
   });
 };
