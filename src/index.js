@@ -241,6 +241,7 @@ module.exports.common.ComplaintSource = require('./common/ComplaintSource');
 module.exports.common.ComplaintStatus = require('./common/ComplaintStatus');
 module.exports.common.Complaint = require('./common/Complaint');
 module.exports.common.ComplaintAssignment = require('./common/ComplaintAssignment');
+module.exports.common.ComplaintDiscountExtra = require('./common/ComplaintDiscountExtra');
 
 // Brand Related Objects
 module.exports.common.BookingBrand = require('./common/BookingBrand');
