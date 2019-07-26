@@ -1,11 +1,13 @@
 var SingleEntity = require('./SingleEntity');
 var Joi = require('joi');
+var Actor = require('./Actor.js');
 
 function ComplaintAssignment(id) {
   this.path = 'assignment';
   this.createPath = 'assignment';
   this.id = id;
 
+  this.actor = new Actor();
 }
 ComplaintAssignment.prototype = new SingleEntity();
 
