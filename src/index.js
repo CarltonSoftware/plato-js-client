@@ -182,6 +182,7 @@ module.exports.common.StatusReason = require('./common/StatusReason');
 module.exports.common.PropertyQuestionCategory = require('./common/PropertyQuestionCategory');
 module.exports.common.PropertyQuestion = require('./common/PropertyQuestion');
 module.exports.common.PropertyAnswer = require('./common/PropertyAnswer');
+module.exports.common.PropertyAnswerDocument = require('./common/PropertyAnswerDocument');
 module.exports.common.PropertyTabsUserVisit = require('./common/PropertyTabsUserVisit');
 module.exports.common.AnswerOptionGroup = require('./common/AnswerOptionGroup');
 module.exports.common.AnswerOption = require('./common/AnswerOption');
