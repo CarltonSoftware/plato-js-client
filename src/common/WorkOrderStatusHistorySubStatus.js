@@ -10,6 +10,7 @@ function WorkOrderStatusHistorySubStatus(id) {
   this.id = id;
   this.workordersubstatus = new WorkOrderSubStatus();
   this.setbyactor = new Actor();
+  this.assignedtoactor = new Actor();
 }
 
 WorkOrderStatusHistorySubStatus.prototype.toArray = function() {
@@ -21,6 +22,10 @@ WorkOrderStatusHistorySubStatus.prototype.toArray = function() {
 
   if (this.expire) {
     arr.expire = true;
+  }
+
+  if (this.assignedtoactor && this.assignedtoactor.id) {
+    arr.assignedtoactorid = this.assignedtoactor.id;
   }
 
   return arr;
