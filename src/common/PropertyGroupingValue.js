@@ -13,12 +13,12 @@ function PropertyGroupingValue(id) {
 
 PropertyGroupingValue.prototype = new SingleEntity();
 PropertyGroupingValue.prototype.toArray = function() {
-  let toReturn =  {
+  const toReturn =  {
     groupingid: this.grouping.id,
     groupingvalueid: this.groupingvalue.id
   };
   
-  if(this.weight && this.weight === "1" || this.weight === "0") {
+  if(this.weight === "1" || this.weight === "0") {
     toReturn.weight = this.weight;
   }
 
