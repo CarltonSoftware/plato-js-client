@@ -13,7 +13,7 @@ function PropertyGroupingValue(id) {
 
 PropertyGroupingValue.prototype = new SingleEntity();
 PropertyGroupingValue.prototype.toArray = function() {
-  const toReturn =  {
+  var toReturn =  {
     groupingid: this.grouping.id,
     groupingvalueid: this.groupingvalue.id
   };
