@@ -340,7 +340,8 @@ Actor.prototype.toArray = function() {
     tabsusername: this.tabsusername,
     companyname: this.companyname,
     companynumber: this.companynumber,
-    vatnumber: this.vatnumber,
+    // vat number removed as from TABS2-4729
+    //vatnumber: this.vatnumber,
     name: this.officename,
     inactive: this.inactive,
     tabscode: this.tabscode,

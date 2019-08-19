@@ -104,6 +104,7 @@ module.exports.common.BankAccount = require('./common/BankAccount');
 module.exports.common.FlagType = require('./common/FlagType');
 module.exports.common.Flag = require('./common/Flag');
 module.exports.common.PotentialDuplicate = require('./common/PotentialDuplicate');
+module.exports.common.ActorVatRegistrationPeriod = require('./common/ActorVatRegistrationPeriod');
 
 // Customer Releated Objects
 module.exports.common.Customer = require('./common/Customer');
