@@ -39,7 +39,8 @@ var platoJsClient = (function () {
           oAuthRedirectUrl,
           authPath = '/oauth/v2/auth',
           clientId = '',
-          token;
+          token,
+          windowStrategy = redirect;
 
         /**
          * Get the domain
@@ -117,6 +118,7 @@ var platoJsClient = (function () {
           oAuthRedirectUrl = (!options.oAuthRedirectUrl) ? oAuthRedirectUrl : options.oAuthRedirectUrl;
           authPath = (!options.authPath) ? authPath : options.authPath;
           clientId = (options.clientId != null) ? options.clientId : '';
+          windowStrategy = (!options.windowStrategy) ? windowStrategy : options.windowStrategy;
           if (options.token) {
             token = options.token;
           } else if (localStorage) {
@@ -289,7 +291,7 @@ var platoJsClient = (function () {
             .wrap(oAuth, {
                 clientId: clientId,
                 authorizationUrlBase: host + authPath,
-                windowStrategy: redirect,
+                windowStrategy: windowStrategy,
                 token: this.token ? 'Bearer ' + this.token : false,
                 redirectUrl: oAuthRedirectUrl
             });
