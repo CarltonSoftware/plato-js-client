@@ -121,6 +121,7 @@ module.exports.common.Owner = require('./common/Owner');
 module.exports.common.OwnerEnquiryAction = require('./common/OwnerEnquiryAction');
 module.exports.common.Office = require('./common/Office');
 module.exports.common.Supplier = require('./common/Supplier');
+module.exports.common.SupplierDayPlan = require('./common/SupplierDayPlan');
 module.exports.common.SupplierHoliday = require('./common/SupplierHoliday');
 module.exports.common.SupplierServiceCharge = require('./common/SupplierServiceCharge');
 module.exports.common.SupplierServiceEvent = require('./common/SupplierServiceEvent');
@@ -203,6 +204,7 @@ module.exports.common.KeysBookingBrand = require('./common/KeysBookingBrand');
 
 module.exports.common.AmountLimitType = require('./common/AmountLimitType');
 module.exports.common.WorkOrder = require('./common/WorkOrder');
+module.exports.common.WorkOrderAssociation = require('./common/WorkOrderAssociation');
 module.exports.common.WorkOrderExpense = require('./common/WorkOrderExpense');
 module.exports.common.WorkOrderOwner = require('./common/WorkOrderOwner');
 module.exports.common.WorkOrderOwnerCharge = require('./common/WorkOrderOwnerCharge');
