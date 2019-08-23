@@ -1,4 +1,5 @@
 var SingleEntity = require('./SingleEntity');
+var EntityLink = require('./EntityLink');
 
 function WorkOrderAssociation(id) {
   this.path = this.createPath = 'association';

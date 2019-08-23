@@ -204,6 +204,7 @@ module.exports.common.KeysBookingBrand = require('./common/KeysBookingBrand');
 
 module.exports.common.AmountLimitType = require('./common/AmountLimitType');
 module.exports.common.WorkOrder = require('./common/WorkOrder');
+module.exports.common.WorkOrderActor = require('./common/WorkOrderActor');
 module.exports.common.WorkOrderAssociation = require('./common/WorkOrderAssociation');
 module.exports.common.WorkOrderExpense = require('./common/WorkOrderExpense');
 module.exports.common.WorkOrderOwner = require('./common/WorkOrderOwner');
