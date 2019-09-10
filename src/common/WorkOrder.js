@@ -11,6 +11,7 @@ var WorkOrderActor = require('./WorkOrderActor');
 var WorkOrderAssociation = require('./WorkOrderAssociation');
 var WorkOrderDocument = require('./WorkOrderDocument');
 var WorkOrderNote = require('./WorkOrderNote');
+var WorkOrderStatusHistorySubStatus = require('./WorkOrderStatusHistorySubStatus');
 var NoteFilterCollection = require('./NoteFilterCollection');
 var Collection = require('./Collection');
 
@@ -25,6 +26,7 @@ function WorkOrder(id) {
   this.updatedbyactor = new TabsUser();
   this.booking = new Booking();
   this.worktype = new WorkType();
+  this.substatus = new WorkOrderStatusHistorySubStatus();
 
   this.workordertemplate = new EntityLink({
     entity: 'WorkOrder'
