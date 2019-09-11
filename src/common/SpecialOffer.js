@@ -5,6 +5,7 @@ var Collection = require('./Collection');
 var SpecialOfferPropertyBranding = require('./SpecialOfferPropertyBranding');
 var Promotion = require('./Promotion');
 var SpecialOfferBranding = require('./SpecialOfferBranding');
+var SpecialOfferMarketingBranding = require('./SpecialOfferMarketingBranding');
 var SpecialOfferSalesChannel = require('./SpecialOfferSalesChannel');
 var SpecialOfferWebsiteSection = require('./SpecialOfferWebsiteSection');
 var SpecialOfferHolidayPeriod = require('./SpecialOfferHolidayPeriod');
@@ -53,6 +54,13 @@ function SpecialOffer(id) {
     path: 'branding',
     parent: this
   });
+
+  this.marketingbrandings = new Collection({
+    object: SpecialOfferMarketingBranding,
+    path: 'marketingbrand',
+    parent: this
+  });
+
   this.attributes = new Collection({
     object: SpecialOfferAttribute,
     path: 'attribute',
