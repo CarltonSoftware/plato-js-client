@@ -16,11 +16,17 @@ function ExtraBrandingConfigurationAffiliateOverride(id) {
 ExtraBrandingConfigurationAffiliateOverride.prototype = new SingleEntity();
 
 ExtraBrandingConfigurationAffiliateOverride.prototype.toArray = function() {
-  return {
+  
+  var objToArray = {
     "compulsory": this.compulsory,
     "affiliateid": this.affiliate.id
-    //add more config options later
   };
+  
+  if(this.vatband && this.vatband.id) {
+    objToArray.vatbandid = this.vatband.id;
+  }
+
+  return objToArray;
 };
 
 module.exports = ExtraBrandingConfigurationAffiliateOverride;

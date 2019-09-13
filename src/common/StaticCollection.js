@@ -12,6 +12,8 @@ function StaticCollection(options) {
   this.options = options || {};
   this.collection = [];
   this.loaded = false;
+  this.previous = undefined;
+  this.next = undefined;
 }
 
 /**
@@ -38,6 +40,8 @@ StaticCollection.prototype.mutateResponse = function(entity) {
     this.page = entity.page;
     this.limit = entity.limit;
     this.time = entity.time;
+    this.previous = entity.previous;
+    this.next = entity.next;
   } else {
     elements = entity;
   }

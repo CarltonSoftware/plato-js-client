@@ -7,8 +7,11 @@ var WorkOrderExpense = require('./WorkOrderExpense');
 var WorkType = require('./WorkType');
 var EntityLink = require('./EntityLink');
 var Booking = require('./Booking');
+var WorkOrderActor = require('./WorkOrderActor');
+var WorkOrderAssociation = require('./WorkOrderAssociation');
 var WorkOrderDocument = require('./WorkOrderDocument');
 var WorkOrderNote = require('./WorkOrderNote');
+var WorkOrderStatusHistorySubStatus = require('./WorkOrderStatusHistorySubStatus');
 var NoteFilterCollection = require('./NoteFilterCollection');
 var Collection = require('./Collection');
 
@@ -23,6 +26,7 @@ function WorkOrder(id) {
   this.updatedbyactor = new TabsUser();
   this.booking = new Booking();
   this.worktype = new WorkType();
+  this.substatus = new WorkOrderStatusHistorySubStatus();
 
   this.workordertemplate = new EntityLink({
     entity: 'WorkOrder'
@@ -49,6 +53,24 @@ function WorkOrder(id) {
   this.statushistory = new Collection({
     object: WorkOrderStatusHistory,
     path: 'statushistory',
+    parent: this
+  });
+
+  this.childassociations = new Collection({
+    object: WorkOrderAssociation,
+    path: 'childassociation',
+    parent: this
+  });  
+
+  this.parentassociations = new Collection({
+    object: WorkOrderAssociation,
+    path: 'parentassociation',
+    parent: this
+  });
+
+  this.actors = new Collection({
+    object: WorkOrderActor,
+    path: 'actor',
     parent: this
   });
 }

@@ -177,6 +177,8 @@ Booking.prototype.toArray = function() {
     provisionalbooking_commissionpercentage: this.provisionalbooking_commissionpercentage,
     provisionalbooking_ownerpaymenttermsid: this.provisionalbooking_ownerpaymenttermsid,
     provisionalbooking_tabsuserid: this.provisionalbooking_tabsuserid,
+    provisionalbooking_accepteddatetime: this.provisionalbooking_accepteddatetime,
+    provisionalbooking_acceptedactorid: this.provisionalbooking_acceptedactorid,
 
     /* Cancelled */
     cancelledbooking_reason: this.cancelledbooking_reason,
