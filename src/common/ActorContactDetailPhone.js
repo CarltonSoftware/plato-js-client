@@ -72,4 +72,16 @@ ActorContactDetailPhone.prototype.getE164Number = function() {
   return libphonenumber.format(parsedNumber, 'E.164');
 }
 
+
+/**
+ * Return the phone number as a RFC3966 link (eg. tel:+12133734253;ext=123)
+ *
+ * @returns {String}
+ */
+ActorContactDetailPhone.prototype.getRfc3966Uri = function() {
+  var parsedNumber = libphonenumber.parse('+' + this.countrycode + this.subscribernumber);
+
+  return libphonenumber.format(parsedNumber, 'RFC3966');
+}
+
 module.exports = ActorContactDetailPhone;
