@@ -61,4 +61,15 @@ ActorContactDetailPhone.prototype.getFormattedNumber = function(countryAlpha2) {
   return value;
 };
 
+/**
+ * Return the formatted phone number in E.164 format
+ *
+ * @returns {String}
+ */
+ActorContactDetailPhone.prototype.getE164Number = function() {
+  var parsedNumber = libphonenumber.parse('+' + this.countrycode + this.subscribernumber);
+
+  return libphonenumber.format(parsedNumber, 'E.164');
+}
+
 module.exports = ActorContactDetailPhone;
