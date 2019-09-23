@@ -333,6 +333,7 @@ module.exports.common.SpecialOfferHolidayPeriod = require('./common/SpecialOffer
 module.exports.common.Promotion = require('./common/Promotion');
 module.exports.common.PropertyBrochure = require('./common/PropertyBrochure');
 module.exports.common.SpecialOfferBranding = require('./common/SpecialOfferBranding');
+module.exports.common.SpecialOfferMarketingBranding = require('./common/SpecialOfferMarketingBranding');
 module.exports.common.SpecialOfferAttribute = require('./common/SpecialOfferAttribute');
 module.exports.common.SpecialOfferPropertyBranding = require('./common/SpecialOfferPropertyBranding');
 module.exports.common.SpecialOfferSalesChannel = require('./common/SpecialOfferSalesChannel');
