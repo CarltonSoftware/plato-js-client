@@ -15,7 +15,7 @@ function WorkOrderSubStatusTemplate(id) {
 WorkOrderSubStatusTemplate.prototype.toArray = function() {
   return {
     workordersubstatustemplateassigneeid: this.assignee.id,
-    workorderinstancetemplate: this.template.id,
+    workorderinstancetemplateid: this.template.id,
   };
 }
 
