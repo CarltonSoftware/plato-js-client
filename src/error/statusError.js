@@ -7,15 +7,7 @@ function statusError(response) {
     try {
       var error = JSON.parse(response.entity.errorDescription);
       if (error) {
-        if (Array.isArray(error)) {
-          error = error[0];
-        }
-
-        if (error.description) {
-          this.message = error.description;
-        } else if (error.message) {
-          this.message = error.message;
-        }
+        this.message = error.description;
       }
     } catch (e) {
       this.message = response.entity.errorDescription;
