@@ -28,6 +28,10 @@ WorkOrderStatusHistorySubStatus.prototype.toArray = function() {
     arr.assignedtoactorid = this.assignedtoactor.id;
   }
 
+  if (this.workordernote && this.workordernote.id) {
+    arr.workordernoteid = this.workordernote.id;
+  }
+
   return arr;
 }
 
