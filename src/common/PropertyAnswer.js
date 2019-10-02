@@ -1,5 +1,7 @@
 var SingleEntity = require('./SingleEntity');
+var Collection = require('./Collection');
 var PropertyQuestionCategory = require('./PropertyQuestionCategory');
+var PropertyAnswerDocument = require('./PropertyAnswerDocument');
 var Joi = require('joi');
 
 function PropertyAnswer(id) {
@@ -8,6 +10,12 @@ function PropertyAnswer(id) {
     this.id = id;
 
     this.propertyquestioncategory = new PropertyQuestionCategory();
+
+    this.documents = new Collection({
+      object: PropertyAnswerDocument,
+      path: 'document',
+      parent: this
+    }); 
 }
 PropertyAnswer.prototype = new SingleEntity();
 
