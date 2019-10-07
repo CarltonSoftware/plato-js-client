@@ -32,6 +32,12 @@ ChangeDayTemplateRule.prototype.toArray = function() {
     description: this.description
   };
 
+  if(!this.maximumholiday) {
+    array.maximumholiday = 999;
+  } else if (this.maximumholiday && this.maximumholiday > 0) {
+    array.maximumholiday = this.maximumholiday;
+  } 
+
   if (this.fromdate != '') {
     array.fromdate = this.fromdate;
   }
@@ -76,6 +82,12 @@ ChangeDayTemplateRule.prototype.toUpdateArray = function() {
     daysaftereaster: this.daysaftereaster,
     description: this.description
   };
+
+  if(!this.maximumholiday) {
+    array.maximumholiday = 999;
+  } else if (this.maximumholiday && this.maximumholiday > 0) {
+    array.maximumholiday = this.maximumholiday;
+  } 
 
   if (this.fromdate != '') {
     array.fromdate = this.fromdate;
@@ -122,7 +134,8 @@ ChangeDayTemplateRule.prototype.validSchema = function() {
     showonavailability: Joi.boolean().label('show on availability'),
     daysbeforeeaster: Joi.number().allow('').optional().label('days before Easter'),
     daysaftereaster: Joi.number().allow('').optional().label('days after Easter'),
-    minimumholiday: Joi.number().allow('').optional().label('minimum holiday')
+    minimumholiday: Joi.number().allow('').optional().label('minimum holiday'),
+    maximumholiday: Joi.number().allow('').optional().label('maximum holiday')
   });
 };
 
