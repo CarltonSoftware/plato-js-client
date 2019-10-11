@@ -1,6 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 
-function BookingServiceCharge() {
+function BookingServiceCharge(id) {
+    this.id = id;
     this.path = 'charge';
     this.createPath = this.path;
 }
