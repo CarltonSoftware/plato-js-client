@@ -11,11 +11,11 @@ BookingServiceCharge.prototype = new SingleEntity();
 BookingServiceCharge.prototype.toArray = function() {
     return {
       charge: this.charge,
-      currencyid: this.currency.id,
+      currencyid: this.currencyid,
       perperiod: this.perperiod,
       includesvat: this.includesvat,
-      vatbandid: this.vatband.id,
-      ownerchargecodeid: this.ownerchargecode.id
+      vatbandid: this.vatbandid,
+      ownerchargecodeid: this.ownerchargecodeid
     };
   };
 
