@@ -19,7 +19,9 @@ TextItem.prototype.toArray = function() {
     footer: this.footer,
     donotdelete: this.donotdelete,
     encodingid: this.encoding.id,
-    languageid: this.language.id
+    languageid: this.language.id,
+    standardheader: this.standardheader,
+    standardfooter: this.standardfooter
   };
 
   if (this.branding && this.branding.id) {

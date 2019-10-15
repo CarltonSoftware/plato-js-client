@@ -380,6 +380,8 @@ module.exports.common.JobType = require('./common/JobType');
 module.exports.common.ContactSchedule = require('./common/ContactSchedule');
 module.exports.common.ContactSchedulePeriod = require('./common/ContactSchedulePeriod');
 module.exports.common.TemplateContactMethodContactSchedule = require('./common/TemplateContactMethodContactSchedule');
+module.exports.common.MultiBrandTemplateBookingBrand = require('./common/MultiBrandTemplateBookingBrand');
+module.exports.common.MultiBrandTemplateMarketingBrand = require('./common/MultiBrandTemplateMarketingBrand');
 
 // ChangeDayRules
 module.exports.common.ChangeDayTemplate = require('./common/ChangeDayTemplate');
