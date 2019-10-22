@@ -73,7 +73,6 @@ PropertyBranding.prototype.toArray = function() {
     status: this.status.name,
     statusreasonid: this.statusreason && this.statusreason.id,
     propertynoteid: this.propertynote && this.propertynote.id,
-    promote: this.promote,
     allowbookingonwebuntildate: this.allowbookingonwebuntildate,
     showpricingonwebuntildate: this.showpricingonwebuntildate,
     petextrabrandingid: this.petextrabranding && this.petextrabranding.id
