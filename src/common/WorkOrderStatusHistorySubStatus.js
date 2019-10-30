@@ -1,3 +1,4 @@
+var client = require('./platoJsClient').getInstance();
 var SingleEntity = require('./SingleEntity');
 var WorkOrderSubStatus = require('./WorkOrderSubStatus');
 var Actor = require('./Actor');
@@ -34,5 +35,17 @@ WorkOrderStatusHistorySubStatus.prototype.toArray = function() {
 
   return arr;
 }
+
+WorkOrderStatusHistorySubStatus.prototype.contact = function(values) {
+  return client.put({ path: [
+    this.parent.parent.path,
+    this.parent.parent.id,
+    this.parent.path, 
+    this.parent.id, 
+    this.path, 
+    this.id, 
+    'contact'
+  ].join('/'), entity: values });
+};
 
 module.exports = WorkOrderStatusHistorySubStatus;

@@ -213,7 +213,6 @@ module.exports.common.WorkOrderOwnerCharge = require('./common/WorkOrderOwnerCha
 module.exports.common.WorkOrderOwnerChargeTemplate = require('./common/WorkOrderOwnerChargeTemplate');
 module.exports.common.WorkOrderStatusHistory = require('./common/WorkOrderStatusHistory');
 module.exports.common.WorkOrderStatusHistorySubStatus = require('./common/WorkOrderStatusHistorySubStatus');
-module.exports.common.WorkOrderStatusHistorySubStatusContact = require('./common/WorkOrderStatusHistorySubStatusContact');
 module.exports.common.WorkOrderSubStatus = require('./common/WorkOrderSubStatus');
 module.exports.common.WorkOrderSubStatusNext = require('./common/WorkOrderSubStatusNext');
 module.exports.common.WorkOrderSubStatusTemplate = require('./common/WorkOrderSubStatusTemplate');
