@@ -49,7 +49,7 @@ WorkOrderExpense.prototype.toArray = function() {
     if (this.chargingperiodsestimate) {obj.chargingperiodsestimate = this.chargingperiodsestimate;}
     if (this.amountlimittype.id >= 0) {obj.amountlimittypeid = this.amountlimittype.id;}
     if (this.amountnetlimit) {obj.amountnetlimit = this.amountnetlimit;}
-  } 
+  }
   
   if (this.parent.type !== 'Template') {
     obj.amountnet = this.amountnet;
@@ -58,6 +58,8 @@ WorkOrderExpense.prototype.toArray = function() {
     obj.chargingperiodsactual = this.chargingperiodsactual;
     if (this.supplierinvoiceitem.id >= 0) {obj.supplierinvoiceitemid = this.supplierinvoiceitem.id;}
   }
+
+  if (this.agencycostnet) {obj.agencycostnet = this.agencycostnet;}
 
   return obj;
 

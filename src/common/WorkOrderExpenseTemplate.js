@@ -55,6 +55,8 @@ WorkOrderExpenseTemplate.prototype.toArray = function() {
   if (this.chargingperiodsactual) {obj.chargingperiodsactual = this.chargingperiodsactual;}
   if (this.supplierinvoiceitem.id >= 0) {obj.supplierinvoiceitemid = this.supplierinvoiceitem.id;}
 
+  if (this.agencycostnet) {obj.agencycostnet = this.agencycostnet;}
+
   return obj;
 
 };
