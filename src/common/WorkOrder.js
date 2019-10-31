@@ -106,6 +106,7 @@ WorkOrder.prototype.toArray = function() {
     setapproved: this.setapproved,
     blockavailability: this.blockavailability,
     addpropertywarning: this.addpropertywarning,
+    autogeneratebufferdays: this.autogeneratebufferdays,
   };
 
   if (this.booking && this.booking.id) {

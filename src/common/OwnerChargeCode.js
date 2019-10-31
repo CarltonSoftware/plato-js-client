@@ -30,7 +30,7 @@ OwnerChargeCode.prototype.toArray = function() {
   };
 };
 OwnerChargeCode.prototype.toString = function() {
-  return [this.ownerchargecode, this.description].join(' ');
+  return this.description + ' (' + this.ownerchargecode + ')'; //[this.ownerchargecode, this.description].join(' ');
 };
 
 module.exports = OwnerChargeCode;
