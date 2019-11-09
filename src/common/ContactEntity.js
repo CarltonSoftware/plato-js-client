@@ -22,6 +22,9 @@ ContactEntity.prototype.toCreateArray = function() {
     ce.status_statusdatetime = this.status_statusdatetime;
     ce.status_detail = this.status_detail;
   }
+  if (this.createdbyactorid) {
+    ce.createdbyactorid = this.createdbyactorid;
+  }
   return ce;
 };
 
