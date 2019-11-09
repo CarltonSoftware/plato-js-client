@@ -34,7 +34,7 @@ CostItemCode.prototype.toArray = function() {
 };
 
 CostItemCode.prototype.toString = function() {
-  return this.costitemcode + ' - ' + this.description;
+  return this.description + ' (' + this.costitemcode + ')'; //this.costitemcode + ' - ' + this.description;
 };
 
 module.exports = CostItemCode;

@@ -35,6 +35,7 @@ var platoJsClient = (function () {
           oAuth = require('rest/interceptor/oAuth'),
           params = require('rest/interceptor/params'),
           host = '/',
+          oAuthWithoutHost = false,
           prefix = '',
           oAuthRedirectUrl,
           authPath = '/oauth/v2/auth',
@@ -109,10 +110,12 @@ var platoJsClient = (function () {
          * @return {platoJsClient}
          */
         this.setInstance = function(options) {
+
           if (!options) {
             options = {};
           }
 
+          oAuthWithoutHost = (!options.oAuthWithoutHost) ? oAuthWithoutHost : options.oAuthWithoutHost;
           host = (!options.apiRoot) ? host : options.apiRoot;
           prefix = (!options.apiPrefix) ? prefix : options.apiPrefix;
           oAuthRedirectUrl = (!options.oAuthRedirectUrl) ? oAuthRedirectUrl : options.oAuthRedirectUrl;
@@ -284,13 +287,20 @@ var platoJsClient = (function () {
          * @returns {Object}
          */
         this.createClient = function() {
+
+          var newAuthPath = host + authPath;
+
+          if(oAuthWithoutHost) {
+            newAuthPath = authPath;
+          }
+
           return rest.wrap(mime)
             .wrap(pathPrefix, { prefix: host + prefix })
             .wrap(defaultRequest)
             .wrap(params)
             .wrap(oAuth, {
                 clientId: clientId,
-                authorizationUrlBase: host + authPath,
+                authorizationUrlBase: newAuthPath,
                 windowStrategy: windowStrategy,
                 token: this.token ? 'Bearer ' + this.token : false,
                 redirectUrl: oAuthRedirectUrl
