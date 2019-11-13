@@ -22,7 +22,8 @@ PropertyBrandingYearPriceband.prototype = new SingleEntity();
 PropertyBrandingYearPriceband.prototype.toArray = function() {
   var f = {
     pricebandid: this.priceband.id,
-    price: this.price
+    price: this.price,
+    updatebandswithsameprice: false
   };
   if (this.saleschannel) {
     f.saleschannelid = this.saleschannel.id
@@ -33,6 +34,10 @@ PropertyBrandingYearPriceband.prototype.toArray = function() {
   if (this.currency) {
     f.currencyid = this.currency.id
   }
+
+  if (this.updatebandswithsameprice) {
+    f.updatebandswithsameprice = this.updatebandswithsameprice;
+  }
   return f;
 };
 
@@ -42,7 +47,8 @@ PropertyBrandingYearPriceband.prototype.validSchema = function() {
     price: Joi.number().required().label('price'),
     saleschannel: Joi.object().optional().label('sales channel'),
     pricetype: Joi.object().optional().label('pricetype'),
-    currency: Joi.object().optional().label('currency')
+    currency: Joi.object().optional().label('currency'),
+    updatebandswithsameprice: Joi.bool().optional().label('update bands with same price')
   });
 };
 
