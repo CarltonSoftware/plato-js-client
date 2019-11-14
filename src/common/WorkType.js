@@ -15,7 +15,6 @@ WorkType.prototype.toArray = function () {
     inactive: this.inactive,
     icon: this.icon,
     blockavailability: this.blockavailability,
-    inactive: this.inactive,
     addpropertywarning: this.addpropertywarning,
   };
 
