@@ -13,6 +13,10 @@ WorkType.prototype.toArray = function () {
     worktype: this.worktype,
     description: this.description,
     inactive: this.inactive,
+    icon: this.icon,
+    blockavailability: this.blockavailability,
+    inactive: this.inactive,
+    addpropertywarning: this.addpropertywarning,
   };
 
   if (this.parentworktype) {
