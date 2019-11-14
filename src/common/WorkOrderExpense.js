@@ -37,7 +37,7 @@ WorkOrderExpense.prototype.toArray = function() {
     currencyid: this.currency.id,
     vatbandid: this.vatband.id,
     ownerchargeamount: this.ownerchargeamount,
-    donotpaysupplier: this.donotpaysupplier === true ? true : false,
+    donotpaysupplier: this.donotpaysupplier,
     invoiceto: this.invoiceto,
   };
 
