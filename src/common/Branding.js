@@ -43,7 +43,8 @@ Branding.prototype.toArray = function() {
     bacssettings: this.bacssettings,
     petextrabrandingid: this.petextrabranding.id,
     allowbookingonwebuntildate: this.allowbookingonwebuntildate,
-    showpricingonwebuntildate: this.showpricingonwebuntildate
+    showpricingonwebuntildate: this.showpricingonwebuntildate,
+    lettingbranding: this.lettingbranding || false,
   };
   if (this.updatepropertybrandings) {
     fields.updatepropertybrandings = true;
@@ -52,6 +53,7 @@ Branding.prototype.toArray = function() {
   if(this.bacsbankaccount) {
     fields.bacsbankaccountid = this.bacsbankaccount.id;
   }
+
   return fields;
 };
 
