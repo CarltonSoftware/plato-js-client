@@ -277,6 +277,7 @@ module.exports.common.BrochureRequest = require('./common/BrochureRequest');
 module.exports.common.ManagedActivity = require('./common/ManagedActivity');
 module.exports.common.ManagedService = require('./common/ManagedService');
 module.exports.common.ManagedActivityService = require('./common/ManagedActivityService');
+module.exports.common.PmsInvoice = require('./common/PmsInvoice');
 
 // Note Related Objects
 module.exports.common.Note = require('./common/Note');
