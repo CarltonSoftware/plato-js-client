@@ -18,7 +18,7 @@ PmsInvoice.prototype.toArray = function() {
 
 PmsInvoice.prototype.preview = function(ownerId, chargeIds, addendum, $workDoneDate) {
   return client.get(
-    `${this.path}preview?ownerid=${ownerId}&chargeids=${chargeIds}&addendum=${encodeURIComponent(addendum)}&workdonedate=${$workDoneDate}`
+    this.path + 'preview?ownerid=' + ownerId + '&chargeids=' + chargeIds + '&addendum=' + encodeURIComponent(addendum) + '&workdonedate=' + $workDoneDate
   );
 };
 
