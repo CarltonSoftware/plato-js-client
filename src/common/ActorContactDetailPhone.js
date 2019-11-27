@@ -79,9 +79,14 @@ ActorContactDetailPhone.prototype.getE164Number = function() {
  * @returns {String}
  */
 ActorContactDetailPhone.prototype.getRfc3966Uri = function() {
-  var parsedNumber = libphonenumber.parse('+' + this.countrycode + this.subscribernumber);
+  try {
+     var parsedNumber = libphonenumber.parse('+' + this.countrycode + this.subscribernumber);
 
-  return libphonenumber.format(parsedNumber, 'RFC3966');
+     return libphonenumber.format(parsedNumber, 'RFC3966');
+    } catch (error) {
+     return '+' + this.countrycode + this.subscribernumber;
+  }
+
 }
 
 module.exports = ActorContactDetailPhone;
