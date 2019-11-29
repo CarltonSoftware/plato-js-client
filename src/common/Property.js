@@ -132,6 +132,9 @@ Property.prototype.toArray = function() {
   if (this.ratinginspectiontype && this.ratinginspectiontype.id) {
     prop.ratinginspectiontypeid = this.ratinginspectiontype.id;
   }
+  if (typeof this.bookingdatesarechangedays !== 'undefined') {
+    prop.bookingdatesarechangedays = this.bookingdatesarechangedays;
+  }
 
   return prop;
 };
@@ -192,14 +195,14 @@ Property.prototype.getAvailableBreaksPrice = function(fromDate, days) {
   var prices = this.availablebreaks.filter(function(p) {
     return moment(fromDate).isSame(p.fromdate);
   });
-  
+
   if (prices.length > 0) {
     var price = prices.filter(
       function(p) {
         return p.days === days;
       }
     );
-    
+
     if (days <= 7) {
       if (price.length === 1) {
         return price.pop().price;
@@ -214,14 +217,14 @@ Property.prototype.getAvailableBreaksPrice = function(fromDate, days) {
             return p.days == days && moment(p.fromdate).isSame(fromDate);
           }
         );
-        
+
         if (price.length === 1) {
           prices.push(price.shift().price);
         } else {
           prices.push(-1);
         }
       };
-      
+
       var _prices = [];
       var add = days % 7;
       var weeks = (days - add) / 7;
@@ -231,7 +234,7 @@ Property.prototype.getAvailableBreaksPrice = function(fromDate, days) {
       } else if (add > 0) {
         add = add + 7;
       }
-      
+
       var to = moment(fromDate).add(i * 7, 'd');
       for (var i = 0; i < weeks; i++) {
         to = moment(fromDate).add(i * 7, 'd');
@@ -253,7 +256,7 @@ Property.prototype.getAvailableBreaksPrice = function(fromDate, days) {
         return 0;
       }
     }
-    
+
     return 0;
   }
 };
