@@ -48,8 +48,8 @@ function WorkOrder(id) {
     object: WorkOrderExpense,
     path: 'expense',
     parent: this
-  });  
-  
+  });
+
   this.statushistory = new Collection({
     object: WorkOrderStatusHistory,
     path: 'statushistory',
@@ -60,7 +60,7 @@ function WorkOrder(id) {
     object: WorkOrderAssociation,
     path: 'childassociation',
     parent: this
-  });  
+  });
 
   this.parentassociations = new Collection({
     object: WorkOrderAssociation,
@@ -153,6 +153,9 @@ WorkOrder.prototype.toArray = function() {
   }
   if (this.worktype && this.worktype.id) {
     arr.worktypeid = this.worktype.id
+  }
+  if (this.closeddatetime) {
+    arr.closeddatetime = this.closeddatetime;
   }
 
   return arr;
