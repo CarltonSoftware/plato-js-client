@@ -19,6 +19,10 @@ Job.prototype.toArray = function() {
 
   if (this.cancelledbyactor) {obj.cancelledbyactorid = this.cancelledbyactor.id;}
   if (this.ids) {obj.ids = this.ids;}
+  if (this.workdonedate) {obj.workdonedate = this.workdonedate;}
+  if (this.addendum) {obj.addendum = this.addendum;}
+  if (this.subject) {obj.subject = this.subject;}
+  if (this.message) {obj.message = this.message;}
 
   return obj;
 };

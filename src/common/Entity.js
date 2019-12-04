@@ -208,8 +208,10 @@ Entity.prototype.uploadPromiseResult = function(path, data) {
 Entity.prototype.replacePath = function(path) {
     return path.replace('/app_dev.php', '') //TODO: remove the need for .replace(...)
       .replace('/app.php', '')
+      .replace('/public.php', '')
       .replace('/v2', '')
       .replace('/plato/web', '')
+      .replace('/plato/public', '')
       .replace('/plato', '');
 };
 
