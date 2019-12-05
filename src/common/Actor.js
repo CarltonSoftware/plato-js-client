@@ -19,6 +19,7 @@ var ActorSecurity = require('./ActorSecurity');
 var ActorSetting = require('./ActorSetting');
 var ActorCategory = require('./ActorCategory');
 var Flag = require('./Flag');
+var _ = require('underscore');
 
 /**
  * Actor instance
@@ -32,7 +33,7 @@ function Actor(id) {
     object: ActorNote,
     path: 'actornote'
   });
-  this.documents = new Collection({ 
+  this.documents = new Collection({
     object: CustomerDocument,
     path: 'document',
     parent: this
@@ -193,12 +194,20 @@ Actor.prototype.toString = Actor.prototype.getFullName;
  *
  * Doesn't do anything clever with contact preferences (just returns the first of each kind)
  *
+ * @param {object} config Configuration options
+ *
  * @returns {Object}
  */
-Actor.prototype.getContactDetails = function() {
+Actor.prototype.getContactDetails = function(config) {
+  var settings = _.extend({
+    excludeInvalid: false, // Skips details marked as invalid
+  }, config);
   var details = {};
 
   this.contactdetails.forEach(function(detail) {
+    if (settings.excludeInvalid && detail.invalid) {
+      return;
+    }
     if (detail.type === 'F' && !details.phone) {
       details.phone = detail;
     } else if (detail.type === 'C' && detail.contactmethodtype.toLowerCase() === 'email' && !details.email) {
@@ -393,7 +402,7 @@ Actor.prototype.toArray = function() {
     arr.brandingid = this.branding.id;
   }
 
-  //TABS2-3927 
+  //TABS2-3927
   if(this.addaccidentaldamagedeposit) {
     arr.addaccidentaldamagedeposit = this.addaccidentaldamagedeposit;
   }
