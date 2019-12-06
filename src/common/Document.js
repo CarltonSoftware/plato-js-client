@@ -1,3 +1,4 @@
+var client = require('./platoJsClient').getInstance();
 var SingleEntity = require('./SingleEntity');
 var Mimetype = require('./Mimetype');
 var File = require('./File');
@@ -36,6 +37,12 @@ Document.prototype.toFormData = function() {
   formData.append('name', this.name);
   formData.append('description', this.description);
   return formData;
+};
+
+Document.prototype.stitch = function(documentIds) {
+  return client.get(
+    'stitch' + this.path + '?documents=' + documentIds.join(",")
+  );
 };
 
 module.exports = Document;
