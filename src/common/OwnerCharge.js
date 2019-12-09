@@ -31,6 +31,7 @@ OwnerCharge.prototype.toArray = function() {
     cancelleddatetime: this.cancelleddatetime,
     lastupdateddatetime: this.lastupdateddatetime,
     workdonedate: this.workdonedate,
+    paidforby: this.paidforby || null,
   };
   if (this.invoicenumber) {
     fields.invoicenumber = this.invoicenumber;
@@ -60,9 +61,6 @@ OwnerCharge.prototype.toArray = function() {
   }
   if (this.cancelledbyactor) {
     fields.cancelledbyactorid = this.cancelledbyactor.id;
-  }
-  if (this.paidforby) {
-    fields.paidforby = this.paidforby;
   }
 
   return fields;
