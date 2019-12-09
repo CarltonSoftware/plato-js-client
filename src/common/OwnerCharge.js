@@ -63,7 +63,7 @@ OwnerCharge.prototype.toArray = function() {
   }
   if (this.type == 'OwnerChargeWorkOrder') {
     fields.invoiceitemid = this.invoiceitem.id;
-  } else if (this.type == 'OwnerChargeProperty') {
+  } else if (this.type == 'OwnerChargeProperty' || this.type == 'OwnerChargeTemplate') {
     fields.propertyid = this.property.id;
     if (this.booking) {
       fields.bookingid = this.booking.id;
