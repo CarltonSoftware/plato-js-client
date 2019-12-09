@@ -13,7 +13,7 @@ function PropertyDocument(propertyId, id) {
 PropertyDocument.prototype = new SingleEntity();
 PropertyDocument.prototype.toCreateArray = function() {
 
-  let fileds = {
+  var fileds = {
     documentid: this.image.id || this.document.id
   };
 
