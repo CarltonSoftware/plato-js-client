@@ -61,6 +61,9 @@ OwnerCharge.prototype.toArray = function() {
   if (this.cancelledbyactor) {
     fields.cancelledbyactorid = this.cancelledbyactor.id;
   }
+  if (this.paidforby) {
+    fields.paidforby = this.paidforby;
+  }
 
   return fields;
 };
