@@ -7,7 +7,7 @@ function MultiBrandTemplateBookingBrand(templateid,id) {
   this.createPath = 'multibrandtemplate/' + templateid + '/bookingbrand';
   this.id = id;
 
-  //this.bookingbrand = new BookingBrand();
+  this.bookingbrand = new BookingBrand();
 }
 MultiBrandTemplateBookingBrand.prototype = new SingleEntity();
 
