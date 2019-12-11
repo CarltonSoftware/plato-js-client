@@ -13,15 +13,15 @@ function PropertyDocument(propertyId, id) {
 PropertyDocument.prototype = new SingleEntity();
 PropertyDocument.prototype.toCreateArray = function() {
 
-  var fileds = {
+  var fields = {
     documentid: this.image.id || this.document.id
   };
 
   if(this.inspectionId) {
-    fileds.inspectionid = this.inspectionId;
+    fields.inspectionid = this.inspectionId;
   }
 
-  return fileds;
+  return fields;
 };
 
 module.exports = PropertyDocument;
