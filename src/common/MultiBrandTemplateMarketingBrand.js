@@ -1,10 +1,10 @@
 var SingleEntity = require('./SingleEntity');
 var Joi = require('joi');
-var MarketingBrand = require('./BookingBrand');
+var MarketingBrand = require('./MarketingBrand');
 
 function MultiBrandTemplateMarketingBrand(templateid,id) {
-  this.path = 'multibrandtemplate/' + templateid + '/bookingbrand';
-  this.createPath = 'multibrandtemplate/' + templateid + '/bookingbrand';
+  this.path = 'multibrandtemplate/' + templateid + '/marketingbrand';
+  this.createPath = 'multibrandtemplate/' + templateid + '/marketingbrand';
   this.id = id;
 
   this.marketingbrand = new MarketingBrand();
@@ -14,7 +14,7 @@ MultiBrandTemplateMarketingBrand.prototype = new SingleEntity();
 MultiBrandTemplateMarketingBrand.prototype.toCreateArray = function() {
   return {
     marketingbrandid: this.marketingbrandid,
-    inactive: this.inactive
+    inactive: false
   };
 };
 

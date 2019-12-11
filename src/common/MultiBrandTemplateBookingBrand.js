@@ -7,20 +7,14 @@ function MultiBrandTemplateBookingBrand(templateid,id) {
   this.createPath = 'multibrandtemplate/' + templateid + '/bookingbrand';
   this.id = id;
 
-  this.bookingbrand = new BookingBrand();
+  //this.bookingbrand = new BookingBrand();
 }
 MultiBrandTemplateBookingBrand.prototype = new SingleEntity();
 
 MultiBrandTemplateBookingBrand.prototype.toCreateArray = function() {
   return {
     bookingbrandid: this.bookingbrandid,
-    inactive: this.inactive
-  };
-};
-
-MultiBrandTemplateBookingBrand.prototype.toUpdateArray = function() {
-  return {
-    inactive: this.inactive,
+    inactive: false
   };
 };
 
