@@ -154,6 +154,9 @@ WorkOrder.prototype.toArray = function() {
   if (this.worktype && this.worktype.id) {
     arr.worktypeid = this.worktype.id
   }
+  if (this.workordersource && this.workordersource.id) {
+    arr.workordersourceid = this.workordersource.id;
+  }
 
   return arr;
 };
