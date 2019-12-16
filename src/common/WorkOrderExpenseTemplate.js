@@ -46,7 +46,7 @@ WorkOrderExpenseTemplate.prototype.toArray = function() {
 
   if (this.amountnetestimate) {obj.amountnetestimate = this.amountnetestimate;}
   if (this.chargingperiodsestimate) {obj.chargingperiodsestimate = this.chargingperiodsestimate;}
-  if (this.amountlimittype.id >= 0) {obj.amountlimittypeid = this.amountlimittype.id;}
+  if (this.amountlimittype !== undefined && this.amountlimittype.id >= 0) {obj.amountlimittypeid = this.amountlimittype.id;}
   if (this.amountnetlimit) {obj.amountnetlimit = this.amountnetlimit;}
 
   if (this.amountnet) {obj.amountnet = this.amountnet;}
