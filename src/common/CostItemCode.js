@@ -1,6 +1,8 @@
 var SingleEntity = require('./SingleEntity');
 var Joi = require('joi');
 var VatBand = require('./VatBand');
+var OwnerChargeCode = require('./OwnerChargeCode');
+var Collection = require('./Collection');
 
 function CostItemCode(id) {
   this.path = 'costitemcode';
@@ -8,6 +10,12 @@ function CostItemCode(id) {
   this.id = id;
 
   this.vatband = new VatBand();
+
+  this.ownerchargecodes = new Collection({
+    object: OwnerChargeCode,
+    path: 'ownerchargecode',
+    parent: this
+  });
 }
 CostItemCode.prototype = new SingleEntity();
 
