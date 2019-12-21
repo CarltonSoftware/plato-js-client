@@ -27,6 +27,7 @@ function WorkOrder(id) {
   this.booking = new Booking();
   this.worktype = new WorkType();
   this.substatus = new WorkOrderStatusHistorySubStatus();
+  this.availabilityblockingbooking = new Booking();
 
   this.workordertemplate = new EntityLink({
     entity: 'WorkOrder'
@@ -112,6 +113,10 @@ WorkOrder.prototype.toArray = function() {
 
   if (this.booking && this.booking.id) {
     arr.bookingid = this.booking.id
+  }
+
+  if (this.availabilityblockingbooking && this.availabilityblockingbooking.id) {
+    arr.availabilityblockingbookingid = this.availabilityblockingbooking.id;
   }
 
   if (this.reporteddate) {
