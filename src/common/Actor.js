@@ -419,6 +419,10 @@ Actor.prototype.toArray = function() {
     arr.sageaccountname = this.sageaccountname;
   }
 
+  if (this.hasOwnProperty('agencyemployed')) {
+    arr.agencyemployed = this.agencyemployed;
+  }  
+
   return arr;
 };
 
