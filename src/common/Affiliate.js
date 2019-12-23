@@ -3,6 +3,7 @@ var Collection = require('./Collection');
 var Actor = require('./Actor');
 var AffiliateApiKey = require('./AffiliateApiKey');
 var AffiliateBlockPeriod = require('./AffiliateBlockPeriod');
+var Customer = require('./Customer');
 
 function Affiliate() {
   this.path = 'affiliate';
@@ -20,6 +21,12 @@ function Affiliate() {
     object: AffiliateBlockPeriod,
     parent: this,
     path: 'blockperiod'
+  });
+
+  this.customers = new Collection({
+    object: Customer,
+    parent: this,
+    path: 'actor'
   });
 }
 Affiliate.prototype = new Actor();
