@@ -34,4 +34,18 @@ Affiliate.prototype.validSchema = function() {
   });
 };
 
+Affiliate.prototype.toArray = function() {
+  // TABS2-5192 - We don't want to post abroad & enquirer fields on create/update,
+  // they are initialised in Actor constructor with a value though so get passed automatically.
+  // If found let's remove them...
+  var arr = Actor.prototype.toArray.call(this);
+  var removeFields = ['abroad', 'enquirer'];
+  removeFields.forEach(function (field) {
+    if (typeof arr[field] !== 'undefined') {
+      delete arr[field];
+    }
+  });
+  return arr;
+};
+
 module.exports = Affiliate;
