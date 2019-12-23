@@ -374,8 +374,8 @@ Actor.prototype.toArray = function() {
     arr.ownerenquiryinactivedatetime = this.ownerenquiryinactivedatetime;
   }
 
-  if (this.affiliate) {
-    arr.affiliateid = this.affiliate.id;
+  if (this.hasOwnProperty('affiliate')) {
+    arr.affiliateid = (typeof this.affiliate.id !== 'undefined' && this.affiliate.id)? this.affiliate.id : 'null';
   }
   if (this.createdbyactor) {
     arr.createdbyactorid = this.createdbyactor.id;
