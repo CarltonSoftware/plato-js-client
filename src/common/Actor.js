@@ -403,15 +403,15 @@ Actor.prototype.toArray = function() {
   }
 
   //TABS2-3927
-  if(this.addaccidentaldamagedeposit) {
-    arr.addaccidentaldamagedeposit = this.addaccidentaldamagedeposit;
+  if(this.hasOwnProperty('addaccidentaldamagedeposit')) {
+    arr.addaccidentaldamagedeposit = this.addaccidentaldamagedeposit || false;
   }
 
-  if(this.accidentaldamagedepositnotetext) {
+  if(this.hasOwnProperty('accidentaldamagedepositnotetext')) {
     arr.accidentaldamagedepositnotetext = this.accidentaldamagedepositnotetext;
   }
 
-  if(this.processbookingnotetext) {
+  if(this.hasOwnProperty('processbookingnotetext')) {
     arr.processbookingnotetext = this.processbookingnotetext;
   }
 
@@ -421,7 +421,7 @@ Actor.prototype.toArray = function() {
 
   if (this.hasOwnProperty('agencyemployed')) {
     arr.agencyemployed = this.agencyemployed;
-  }  
+  }
 
   return arr;
 };
