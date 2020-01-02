@@ -45,6 +45,7 @@ Branding.prototype.toArray = function() {
     allowbookingonwebuntildate: this.allowbookingonwebuntildate,
     showpricingonwebuntildate: this.showpricingonwebuntildate,
     lettingbranding: this.lettingbranding || false,
+    bookingdatesarechangedays: this.bookingdatesarechangedays || false,
   };
   if (this.updatepropertybrandings) {
     fields.updatepropertybrandings = true;
