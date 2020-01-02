@@ -67,6 +67,12 @@ function SpecialOffer(id) {
   this.forpricetype = new EntityLink({
     entity: 'PriceType'
   });
+  this.priceband = new EntityLink({
+    entity: 'PriceBand'
+  });
+  this.forpriceband = new EntityLink({
+    entity: 'PriceBand'
+  });
 }
 
 SpecialOffer.prototype = new SingleEntity();
@@ -94,6 +100,8 @@ SpecialOffer.prototype.toUpdateArray = function() {
     applytopartysizepricing: this.applytopartysizepricing,
     pricetypeid: this.pricetype.id,
     forpricetypeid: this.forpricetype.id,
+    pricebandid: this.priceband.id,
+    forpricebandid: this.forpriceband.id,
     archive: this.archive,
     archiveddatetime: this.archiveddatetime,
   };
@@ -157,6 +165,8 @@ SpecialOffer.prototype.validSchema = function() {
     applytopartysizepricing: Joi.boolean().label('Apply to party size pricing'),
     pricetype: Joi.object(),
     forpricetype: Joi.object(),
+    priceband: Joi.object(),
+    forpriceband: Joi.object(),
     archive: Joi.boolean(),
     archivedbyactorid: Joi.number().empty('').label('Archived by actor'),
     archiveddatetime: Joi.string().optional().allow('').label('Archived date'),

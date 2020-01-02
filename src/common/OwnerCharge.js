@@ -39,6 +39,29 @@ OwnerCharge.prototype.toArray = function() {
   if (this.chequenumber) {
     fields.chequenumber = this.chequenumber;
   }
+  if (this.type === 'OwnerChargeTemplate') {
+    if (this.period) {
+      fields.period = this.period;
+    }
+    if (this.frequency) {
+      fields.frequency = this.frequency;
+    }
+    if (this.inactive) {
+      fields.inactive = this.inactive;
+    }
+    if (this.dayofweek) {
+      fields.dayofweek = this.dayofweek;
+    }
+    if (this.weekofmonth) {
+      fields.weekofmonth = this.weekofmonth;
+    }
+    if (this.dayofmonth) {
+      fields.dayofmonth = this.dayofmonth;
+    }
+    if (this.month) {
+      fields.month = this.month;
+    }
+  }
   if (this.type == 'OwnerChargeWorkOrder') {
     fields.invoiceitemid = this.invoiceitem.id;
   } else if (this.type == 'OwnerChargeProperty') {
