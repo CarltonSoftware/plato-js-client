@@ -1,6 +1,7 @@
 var SingleEntity = require('./SingleEntity');
-var Encoding = require('./Encoding');
 var Joi = require('joi');
+//var Encoding = require('./Encoding');
+
 
 function DescriptionType(id) {
   this.path = 'descriptiontype';
