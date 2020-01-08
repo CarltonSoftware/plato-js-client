@@ -6,7 +6,6 @@ function DescriptionType(id) {
   this.path = 'descriptiontype';
   this.createPath = this.path;
   this.id = id;
-  this.encoding = new Encoding();
 }
 
 DescriptionType.prototype = new SingleEntity();
