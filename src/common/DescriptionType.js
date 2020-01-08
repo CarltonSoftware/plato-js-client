@@ -25,7 +25,7 @@ DescriptionType.prototype.toArray = function() {
 
   if(typeof this.encoding === 'object') {
     data.encoding = this.encoding.encoding;
-  } else if (typeof this.encoding === 'string' && this.encoding.length > 3) {
+  } else if (typeof this.encoding === 'string' && this.encoding.length > 2) {
     data.encoding = this.encoding;
   }
 
