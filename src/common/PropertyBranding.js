@@ -84,16 +84,22 @@ PropertyBranding.prototype.toArray = function() {
  *
  * @param {string} fromDate
  * @param {string} toDate
+ * @param {string} type
  */
-PropertyBranding.prototype.getPrices = function(fromDate, toDate) {
+PropertyBranding.prototype.getPrices = function(fromDate, toDate, type = '') {
   var p = this.prices;
 
-  if (fromDate && toDate) {
+  if ((fromDate && toDate) || type) {
+    var data = {};
+    if (type) {
+      data.type = type;
+    }
+    if (fromDate && toDate) {
+      data.fromdate = fromDate;
+      data.todate = toDate;
+    }
     p.toArray = function() {
-      return {
-        fromdate: fromDate,
-        todate: toDate
-      };
+      return data;
     };
   }
 
@@ -157,7 +163,7 @@ PropertyBranding.prototype.getPropertyBookedRanges = function() {
           end = null;
         }
       });
-      
+
       resolve(bookingPeriods);
     }, function(err) {
       reject(err);
