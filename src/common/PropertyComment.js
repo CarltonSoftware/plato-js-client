@@ -26,7 +26,7 @@ PropertyComment.prototype.schema = function() {
     commenter: Joi.string().optional().allow('').label('Commenter'),
     visibletoowner: Joi.boolean().label('Visible to owner'),
     visibleonweb: Joi.boolean().label('Visible on web'),
-    booking: Joi.object().label('Booking'),
+    booking: Joi.object().optional().label('Booking'),
     createddate: Joi.date().label('Date')
   };
 };
