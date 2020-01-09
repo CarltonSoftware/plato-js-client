@@ -205,6 +205,7 @@ module.exports.common.KeyCheck = require('./common/KeyCheck');
 module.exports.common.KeysBookingBrand = require('./common/KeysBookingBrand');
 
 module.exports.common.AmountLimitType = require('./common/AmountLimitType');
+module.exports.common.PmsChecklist = require('./common/PmsChecklist');
 module.exports.common.WorkOrder = require('./common/WorkOrder');
 module.exports.common.WorkOrderActor = require('./common/WorkOrderActor');
 module.exports.common.WorkOrderAssociation = require('./common/WorkOrderAssociation');
@@ -213,6 +214,7 @@ module.exports.common.WorkOrderExpenseTemplate = require('./common/WorkOrderExpe
 module.exports.common.WorkOrderOwner = require('./common/WorkOrderOwner');
 module.exports.common.WorkOrderOwnerCharge = require('./common/WorkOrderOwnerCharge');
 module.exports.common.WorkOrderOwnerChargeTemplate = require('./common/WorkOrderOwnerChargeTemplate');
+module.exports.common.WorkOrderPmsChecklist = require('./common/WorkOrderPmsChecklist');
 module.exports.common.WorkOrderStatusHistory = require('./common/WorkOrderStatusHistory');
 module.exports.common.WorkOrderStatusHistorySubStatus = require('./common/WorkOrderStatusHistorySubStatus');
 module.exports.common.WorkOrderSubStatus = require('./common/WorkOrderSubStatus');

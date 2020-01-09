@@ -111,11 +111,11 @@ WorkOrder.prototype.toArray = function() {
     noworkrequired: this.noworkrequired,
   };
 
-  if (this.booking && this.booking.id) {
+  if (this.booking && this.booking.id >= 0) {
     arr.bookingid = this.booking.id
   }
 
-  if (this.availabilityblockingbooking && this.availabilityblockingbooking.id) {
+  if (this.availabilityblockingbooking && this.availabilityblockingbooking.id >= 0) {
     arr.availabilityblockingbookingid = this.availabilityblockingbooking.id;
   }
 
