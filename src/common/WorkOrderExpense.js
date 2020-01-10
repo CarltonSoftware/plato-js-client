@@ -32,8 +32,6 @@ WorkOrderExpense.prototype = new SingleEntity();
 
 WorkOrderExpense.prototype.toArray = function() {
 
-  console.log('TOARRAYBABY', this);
-
   var obj = {
     description: this.description,
     currencyid: this.currency.id,
