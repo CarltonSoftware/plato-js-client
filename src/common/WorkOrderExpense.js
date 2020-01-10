@@ -32,6 +32,8 @@ WorkOrderExpense.prototype = new SingleEntity();
 
 WorkOrderExpense.prototype.toArray = function() {
 
+  console.log('TOARRAYBABY', this);
+
   var obj = {
     description: this.description,
     currencyid: this.currency.id,
@@ -46,7 +48,7 @@ WorkOrderExpense.prototype.toArray = function() {
   if (this.ownerchargeamounttype.id >= 0) {obj.ownerchargeamounttypeid = this.ownerchargeamounttype.id;}
   if (this.chargingperiod.id >= 0) {obj.chargingperiodid = this.chargingperiod.id;}
 
-  if (this.amountnetestimate) {obj.amountnetestimate = this.amountnetestimate;}
+  if (parseFloat(this.amountnetestimate) >= 0) {obj.amountnetestimate = this.amountnetestimate;}
   if (this.chargingperiodsestimate) {obj.chargingperiodsestimate = this.chargingperiodsestimate;}
   if (this.amountlimittype !== undefined && this.amountlimittype.id >= 0) {obj.amountlimittypeid = this.amountlimittype.id;}
   if (this.amountnetlimit) {obj.amountnetlimit = this.amountnetlimit;}
