@@ -86,7 +86,11 @@ PropertyBranding.prototype.toArray = function() {
  * @param {string} toDate
  * @param {string} type
  */
-PropertyBranding.prototype.getPrices = function(fromDate, toDate, type = '') {
+PropertyBranding.prototype.getPrices = function(fromDate, toDate, type) {
+  if (typeof type === 'undefined') {
+    type = '';
+  }
+
   var p = this.prices;
 
   if ((fromDate && toDate) || type) {
