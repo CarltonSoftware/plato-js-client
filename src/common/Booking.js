@@ -155,8 +155,8 @@ Booking.prototype.toArray = function() {
     overridestatus: this.overridestatus,
     bypasspetchecks: this.bypasspetchecks,
     ignorechangedayrules: this.ignorechangedayrules,
-    
-    
+
+
 
     /* Web Booking */
     webbooking_createddatetime: this.webbooking.createddatetime,
@@ -281,6 +281,10 @@ Booking.prototype.toArray = function() {
 
   if (this.propertysecuritydeposit) {
     array.securitydeposit_propertysecuritydepositid = this.propertysecuritydeposit.id;
+  }
+
+  if (this.customerid) {
+    array.customerid = this.customerid;
   }
 
   return array;
