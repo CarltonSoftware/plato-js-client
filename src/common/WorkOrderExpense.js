@@ -45,13 +45,13 @@ WorkOrderExpense.prototype.toArray = function() {
   if (this.ownerchargecode.id >= 0) {obj.ownerchargecodeid = this.ownerchargecode.id;}
   if (this.ownerchargeamounttype.id >= 0) {obj.ownerchargeamounttypeid = this.ownerchargeamounttype.id;}
   if (this.chargingperiod.id >= 0) {obj.chargingperiodid = this.chargingperiod.id;}
-  if (this.agencyownerchargecode.id >= 0) {obj.agencyownerchargecodeid = this.agencyownerchargecodeid;}
+  if (typeof this.agencyownerchargecode !== 'undefined' && this.agencyownerchargecode.id >= 0) {obj.agencyownerchargecodeid = this.agencyownerchargecodeid;}
 
   if (parseFloat(this.amountnetestimate) >= 0) {obj.amountnetestimate = this.amountnetestimate;}
   if (this.chargingperiodsestimate) {obj.chargingperiodsestimate = this.chargingperiodsestimate;}
   if (this.amountlimittype !== undefined && this.amountlimittype.id >= 0) {obj.amountlimittypeid = this.amountlimittype.id;}
   if (this.amountnetlimit) {obj.amountnetlimit = this.amountnetlimit;}
-  
+
   if (this.parent.type !== 'Template') {
     obj.amountnet = this.amountnet;
     obj.amountvat = this.amountvat;
