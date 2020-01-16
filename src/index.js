@@ -69,6 +69,7 @@ module.exports.common.PaymentItem = require('./common/PaymentItem');
 module.exports.common.SagePayPayment = require('./common/SagePayPayment');
 module.exports.common.PersonalisedBrochure = require('./common/PersonalisedBrochure');
 module.exports.common.OwnerEnquiryInactiveReason = require('./common/OwnerEnquiryInactiveReason');
+module.exports.common.OwnerDocument = require('./common/OwnerDocument');
 
 // Account Related Objects
 module.exports.common.Account = require('./common/Account');
@@ -133,6 +134,7 @@ module.exports.common.SupplierInvoiceItemPayment = require('./common/SupplierInv
 module.exports.common.SupplierPayment = require('./common/SupplierPayment');
 module.exports.common.SupplierWorkingDay = require('./common/SupplierWorkingDay');
 module.exports.common.SupplierWorkType = require('./common/SupplierWorkType');
+module.exports.common.SupplierDocument = require('./common/SupplierDocument');
 module.exports.common.Affiliate = require('./common/Affiliate');
 module.exports.common.AffiliateApiKey = require('./common/AffiliateApiKey');
 module.exports.common.AffiliateBlockPeriod = require('./common/AffiliateBlockPeriod');
