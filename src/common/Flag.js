@@ -9,6 +9,7 @@ function Flag(id) {
   this.flagtype = new FlagType();
   this.createdBy = new EntityLink({ entity: 'TabsUser' });
   this.flaggedbybranding = new EntityLink({ entity: 'Branding' });
+  this.flaggedbyactor = new EntityLink({ entity: 'Actor' });
   this.note = new EntityLink({ entity: 'Note' });
 }
 
