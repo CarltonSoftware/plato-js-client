@@ -4,7 +4,7 @@ var OwnerCharge = require('./OwnerCharge');
 PmsInvoiceOwnerCharge.prototype = new SingleEntity();
 
 function PmsInvoiceOwnerCharge(id) {
-  this.path = 'pmsinvoice';
+  this.path = 'ownercharge';
   this.createPath = this.path;
   this.ownercharge = new OwnerCharge();
   this.id = id;
