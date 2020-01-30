@@ -265,7 +265,10 @@ FilterCollection.prototype.fetch = function(dependencies, cache) {
     cache
   );
 
-  var setNested = function(obj, path, value, separator = '.') {
+  var setNested = function(obj, path, value, separator) {
+    if (typeof separator === 'undefined') {
+      separator = '.';
+    }
     var schema = obj;
     var pList = path.split(separator);
     var len = pList.length;
@@ -279,7 +282,10 @@ FilterCollection.prototype.fetch = function(dependencies, cache) {
     schema[pList[len-1]] = value;
   }
 
-  var getNested = function(obj, path, separator = '.') {
+  var getNested = function(obj, path, separator) {
+    if (typeof separator === 'undefined') {
+      separator = '.';
+    }
     var properties = Array.isArray(path) ? path : path.split(separator)
     return properties.reduce((prev, curr) => prev && prev[curr], obj)
   }
