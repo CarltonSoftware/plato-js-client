@@ -364,6 +364,10 @@ Booking.prototype.getStatus = function() {
       item.showAs = 'cancelled';
     }
   }
+  // TABS2-5266
+  if (this.status === 'Provisional Accepted') {
+    item.showAs = 'provisionalaccepted';
+  }
   // TBD - Web bookings, flexilet
 
   return item;
