@@ -287,7 +287,9 @@ FilterCollection.prototype.fetch = function(dependencies, cache) {
       separator = '.';
     }
     var properties = Array.isArray(path) ? path : path.split(separator)
-    return properties.reduce((prev, curr) => prev && prev[curr], obj)
+    return properties.reduce(function(prev, curr) {
+      return prev && prev[curr];
+    }, obj)
   }
 
   if (dependencies && dependencies.length) {
