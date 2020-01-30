@@ -18,4 +18,10 @@ WorkOrderPmsChecklist.prototype.toArray = function() {
   };
 };
 
+WorkOrderPmsChecklist.prototype.render = function() {
+  return client.get(
+    'workorder/' + this.parent.id + '/' + this.path + '/' + this.id + '/render'
+  );
+};
+
 module.exports = WorkOrderPmsChecklist;
