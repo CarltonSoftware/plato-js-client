@@ -265,19 +265,49 @@ FilterCollection.prototype.fetch = function(dependencies, cache) {
     cache
   );
 
+  var setNested = function(obj, path, value, separator = '.') {
+    var schema = obj;
+    var pList = path.split(separator);
+    var len = pList.length;
+    for (var i = 0; i < len-1; i++) {
+        var elem = pList[i];
+        if (!schema[elem]) {
+          schema[elem] = {};
+        }
+        schema = schema[elem];
+    }
+    schema[pList[len-1]] = value;
+  }
+
+  var getNested = function(obj, path, separator = '.') {
+    var properties = Array.isArray(path) ? path : path.split(separator)
+    return properties.reduce((prev, curr) => prev && prev[curr], obj)
+  }
+
   if (dependencies && dependencies.length) {
     return new Promise(function(resolve) {
       promise.then(function(collection) {
         Promise.all(dependencies.map(function(dependency) {
           var fetched = {};
+          var isNestedDependency = (dependency.indexOf('.') !== -1);
 
           return Promise.all(collection.map(function(item) {
-            if (item[dependency]) {
-              if (item[dependency].id in fetched) {
-                item[dependency] = fetched[item[dependency].id];
+            var itemValue;
+            if (isNestedDependency) {
+              itemValue = getNested(item, dependency);
+            } else {
+              itemValue = item[dependency];
+            }
+            if (itemValue && itemValue.id) {
+              if (itemValue.id in fetched) {
+                if (isNestedDependency) {
+                  setNested(item, dependency, fetched[itemValue.id]);
+                } else {
+                  itemValue = fetched[itemValue.id];
+                }
               } else {
-                fetched[item[dependency].id] = item[dependency];
-                return item[dependency].get();
+                fetched[itemValue.id] = itemValue;
+                return itemValue.get();
               }
             }
           }));
