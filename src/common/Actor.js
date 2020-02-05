@@ -427,6 +427,10 @@ Actor.prototype.toArray = function() {
     arr.donotpay = this.donotpay;
   }
 
+  if (this.hasOwnProperty('usemanagedservicesbookingbrand')) {
+    arr.usemanagedservicesbookingbrand = this.usemanagedservicesbookingbrand;
+  }
+
   return arr;
 };
 
