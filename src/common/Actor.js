@@ -426,11 +426,7 @@ Actor.prototype.toArray = function() {
   if (this.hasOwnProperty('donotpay')) {
     arr.donotpay = this.donotpay;
   }
-
-  if (this.hasOwnProperty('usemanagedservicesbookingbrand')) {
-    arr.usemanagedservicesbookingbrand = this.usemanagedservicesbookingbrand;
-  }
-
+  
   return arr;
 };
 

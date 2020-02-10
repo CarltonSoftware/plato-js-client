@@ -94,6 +94,7 @@ WorkOrder.prototype.toArray = function() {
     estimate: this.estimate,
 
     period: this.period,
+    startdate: this.startdate,
     frequency: this.frequency,
     dayofweek: this.dayofweek,
     weekofmonth: this.weekofmonth,
