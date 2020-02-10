@@ -135,6 +135,9 @@ Property.prototype.toArray = function() {
   if (typeof this.bookingdatesarechangedays !== 'undefined') {
     prop.bookingdatesarechangedays = this.bookingdatesarechangedays;
   }
+  if (typeof this.usemanagedservicesbookingbrand !== 'undefined') {
+    prop.usemanagedservicesbookingbrand = this.usemanagedservicesbookingbrand;
+  }
 
   return prop;
 };
