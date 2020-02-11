@@ -4,7 +4,7 @@ var Entity = require('./Entity');
 function CopyPricing(id) {
   this.path = 'copypricing';
   this.createPath = 'copypricing';
-  this.id = id;   
+  this.id = id;
 }
 
 CopyPricing.prototype = new Entity();
@@ -57,6 +57,11 @@ CopyPricing.prototype.toArray = function() {
   //TABS2-3588
   if(this.usepricinggroupyear === true) {
     fields.toyear = String(Number(fields.fromyear) + 1);
+  }
+
+  // TABS2-4849
+  if (this.deleteexistingpricing) {
+    fields.deleteexistingpricing = this.deleteexistingpricing;
   }
 
   return fields;
