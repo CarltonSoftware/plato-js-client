@@ -43,6 +43,7 @@ WorkOrderExpenseTemplate.prototype.toArray = function() {
   if (this.ownerchargecode.id >= 0) {obj.ownerchargecodeid = this.ownerchargecode.id;}
   if (this.ownerchargeamounttype.id >= 0) {obj.ownerchargeamounttypeid = this.ownerchargeamounttype.id;}
   if (this.chargingperiod.id >= 0) {obj.chargingperiodid = this.chargingperiod.id;}
+  if (parseFloat(this.chargingperiodpriceperunit) >= 0) {obj.chargingperiodpriceperunit = this.chargingperiodpriceperunit;}
 
   if (this.amountnetestimate) {obj.amountnetestimate = this.amountnetestimate;}
   if (this.chargingperiodsestimate) {obj.chargingperiodsestimate = this.chargingperiodsestimate;}
