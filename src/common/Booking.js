@@ -353,6 +353,12 @@ Booking.prototype.getStatus = function() {
         item.bookingType += ' - Cancelled';
       }
       item.showAs = 'unavailable';
+      if (typeof this.agencybookingtype !== 'undefined'
+        && typeof this.agencybookingtype.name !== 'undefined'
+        && this.agencybookingtype.name === 'non-let property booking'
+      ) {
+        item.showAs = 'unavailablenonlet';
+      }
   }
   /* TODO: temp fix for transferred display. */
   if (this.cancelled || this.status == 'Provisional - Transferred' || this.status == 'Confirmed - Transferred') {
