@@ -164,6 +164,9 @@ WorkOrder.prototype.toArray = function() {
   if (this.workordersource && this.workordersource.id) {
     arr.workordersourceid = this.workordersource.id;
   }
+  if (this.fromdatetime) {
+    arr.fromdatetime = this.fromdatetime
+  }
 
   return arr;
 };
