@@ -444,3 +444,7 @@ module.exports.common.BookingVehicle = require('./common/BookingVehicle');
 
 //Accidental Damage Deposit
 module.exports.common.AccidentalDamageDeposit = require('./common/AccidentalDamageDeposit');
+
+// Programs
+module.exports.common.Program = require('./common/Program');
+module.exports.common.ActorProgram = require('./common/ActorProgram');
