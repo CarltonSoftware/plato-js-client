@@ -290,7 +290,7 @@ SingleEntity.prototype.getCreatePath = function(prefix) {
  * @returns {String}
  */
 SingleEntity.prototype.getUpdatePath = function(prefix) {
-  return this.getCreatePath() + '/' + this.id;
+  return this.getCreatePath(prefix) + '/' + this.id;
 };
 
 module.exports = SingleEntity;
