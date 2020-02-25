@@ -4,6 +4,8 @@ var EntityLink = require('./EntityLink');
 var Collection = require('./Collection');
 var TemplateContactMethod = require('./TemplateContactMethod');
 var TemplateRoleReason = require('./TemplateRoleReason');
+var MultiBrandTemplateMarketingBrand = require('./MultiBrandTemplateMarketingBrand');
+var MultiBrandTemplateBookingBrand = require('./MultiBrandTemplateBookingBrand');
 
 function Template(id) {
   this.createPath = this.path = 'template';
@@ -23,6 +25,22 @@ function Template(id) {
     path: 'rolereason',
     parent: this
   });
+  this.marketingbrands = new Collection({
+    path: 'marketingbrand',
+    object: MultiBrandTemplateMarketingBrand,
+    parent: this
+  });
+  this.marketingbrands.getPath = function() {
+    return this.options.parent.getUpdatePath().replace('template/', 'multibrandtemplate/') + '/marketingbrand';
+  };
+  this.bookingbrands = new Collection({
+    path: 'bookingbrand',
+    object: MultiBrandTemplateBookingBrand,
+    parent: this
+  });
+  this.bookingbrands.getPath = function() {
+    return this.options.parent.getUpdatePath().replace('template/', 'multibrandtemplate/') + '/bookingbrand';
+  };
 }
 
 Template.prototype = new SingleEntity();

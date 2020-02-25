@@ -2,15 +2,16 @@ var SingleEntity = require('./SingleEntity');
 var Joi = require('joi');
 var MarketingBrand = require('./MarketingBrand');
 
-function MultiBrandTemplateMarketingBrand(templateid,id) {
-  this.path = 'multibrandtemplate/' + templateid + '/marketingbrand';
-  this.createPath = 'multibrandtemplate/' + templateid + '/marketingbrand';
+function MultiBrandTemplateMarketingBrand(id) {
+  this.path = this.createPath = 'marketingbrand';
   this.id = id;
-
   this.marketingbrand = new MarketingBrand();
 }
-MultiBrandTemplateMarketingBrand.prototype = new SingleEntity();
 
+MultiBrandTemplateMarketingBrand.prototype = new SingleEntity();
+MultiBrandTemplateMarketingBrand.prototype.getCreatePath = function() {
+  return '/multibrandtemplate/' + this.parent.id + '/' + this.path;
+};
 MultiBrandTemplateMarketingBrand.prototype.toCreateArray = function() {
   return {
     marketingbrandid: this.marketingbrandid,
@@ -18,14 +19,8 @@ MultiBrandTemplateMarketingBrand.prototype.toCreateArray = function() {
   };
 };
 
-MultiBrandTemplateMarketingBrand.prototype.toUpdateArray = function() {
-  return {
-    inactive: this.inactive,
-  };
-};
-
 MultiBrandTemplateMarketingBrand.validSchema = Joi.object().keys({
-    marketingbrandid: Joi.string().required().label('marketingbrand'),
+  marketingbrandid: Joi.string().required().label('marketingbrand'),
   inactive: Joi.boolean().optional().label('inactive')
 });
 
