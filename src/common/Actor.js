@@ -426,6 +426,10 @@ Actor.prototype.toArray = function() {
   if (this.hasOwnProperty('donotpay')) {
     arr.donotpay = this.donotpay;
   }
+
+  if (this.hasOwnProperty('updateworkorders')) {
+    arr.updateworkorders = this.updateworkorders;
+  }
   
   return arr;
 };
