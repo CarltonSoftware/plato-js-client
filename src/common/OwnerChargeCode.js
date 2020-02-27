@@ -14,7 +14,8 @@ function OwnerChargeCode(id) {
       description: Joi.string().required().label('description'),
       vatband: Joi.object().required().label('VAT band'),
       recharge: Joi.boolean().label('recharge (doesn\'t apply vat)'),
-      inactive: Joi.boolean().label('inactive (Doesn\'t appear on select lists)')
+      inactive: Joi.boolean().label('inactive (Doesn\'t appear on select lists)'),
+      showonallownerpaymentruns: Joi.boolean().label('Show on all owner payment runs?')
     };
   }
 }
@@ -26,7 +27,8 @@ OwnerChargeCode.prototype.toArray = function() {
     description: this.description,
     vatbandid: this.vatband.id,
     recharge: this.recharge,
-    inactive: this.inactive
+    inactive: this.inactive,
+    showonallownerpaymentruns: this.showonallownerpaymentruns
   };
 };
 OwnerChargeCode.prototype.toString = function() {
