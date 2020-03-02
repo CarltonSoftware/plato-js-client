@@ -332,6 +332,7 @@ module.exports.common.PriceType = require('./common/PriceType');
 module.exports.common.PriceTypeBranding = require('./common/PriceTypeBranding');
 module.exports.common.PriceTypeStartDay = require('./common/PriceTypeStartDay');
 module.exports.common.SalesChannel = require('./common/SalesChannel');
+module.exports.common.UpdatePricing = require('./common/UpdatePricing');
 module.exports.common.VatBand = require('./common/VatBand');
 module.exports.common.VatRate = require('./common/VatRate');
 
