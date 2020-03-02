@@ -13,6 +13,7 @@ Account.prototype.toArray = function() {
     nominalcode: this.nominalcode,
     description: this.description,
     usebranding: this.usebranding,
+    usesagecostcentremanagedservices: this.usesagecostcentremanagedservices
   };
 };
 
@@ -25,6 +26,7 @@ Account.prototype.validSchema = function() {
     nominalcode: Joi.string().optional().label('nominal code'),
     description: Joi.string().required().label('description'),
     usebranding: Joi.boolean().required().label('use branding'),
+    usesagecostcentremanagedservices: Joi.boolean().required().label('use sage cost centre managed services')
   });
 };
 
