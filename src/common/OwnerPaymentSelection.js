@@ -61,7 +61,7 @@ OwnerPaymentSelection.validCreateSchema = Joi.object().keys({
   selectbookingson: Joi.string().valid('fromdate', 'todate').label('select bookings on'),
   paytodate: Joi.date().required().label('pay to date'),
   createdbytabsuser: Joi.object().optional().label('created by'),
-  ownerids: Joi.string().optional().label('owner ids')
+  ownerids: Joi.string().allow("").optional().label('owner ids')
 });
 
 OwnerPaymentSelection.validUpdateSchema = Joi.object().keys({
