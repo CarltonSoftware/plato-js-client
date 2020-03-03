@@ -20,7 +20,8 @@ OwnerPaymentSelection.prototype.toCreateArray = function() {
     bookingbrandid: this.bookingbrand.id,
     selectbookingson: this.selectbookingson,
     paytodate: this.paytodate,
-    createdbytabsuserid: this.createdbytabsuser.id
+    createdbytabsuserid: this.createdbytabsuser.id,
+    ownerids: this.ownerids
   };
 };
 
@@ -59,7 +60,8 @@ OwnerPaymentSelection.validCreateSchema = Joi.object().keys({
   bookingbrand: Joi.object().label('booking brand'),
   selectbookingson: Joi.string().valid('fromdate', 'todate').label('select bookings on'),
   paytodate: Joi.date().required().label('pay to date'),
-  createdbytabsuser: Joi.object().optional().label('created by')
+  createdbytabsuser: Joi.object().optional().label('created by'),
+  ownerids: Joi.string().allow("").optional().label('owner ids')
 });
 
 OwnerPaymentSelection.validUpdateSchema = Joi.object().keys({
