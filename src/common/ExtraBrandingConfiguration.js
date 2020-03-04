@@ -37,7 +37,8 @@ ExtraBrandingConfiguration.prototype.toCreateArray = function() {
     type: this.type,
     propertyid: this.propertyid,
     copytoallbrands: this.copytoallbrands,
-    commissionpercentage: this.commissionpercentage
+    commissionpercentage: this.commissionpercentage,
+    copyaction: this.copyaction
   };
 
   // Start TABS2-3772
@@ -84,7 +85,8 @@ ExtraBrandingConfiguration.prototype.toUpdateArray = function() {
     usepropertyprimarybranding: this.usepropertyprimarybranding ? 'true' : 'false',
     type: this.type,
     updateallbrands: this.updateallbrands,
-    commissionpercentage: this.commissionpercentage
+    commissionpercentage: this.commissionpercentage,
+    copyaction: this.copyaction
   };
 
   // Start TABS2-3772
@@ -137,6 +139,7 @@ ExtraBrandingConfiguration.validSchema = Joi.object().keys({
   accountingdatedefinition: Joi.object().optional().label('Accounting Date Definition'),
   copytoallbrands: Joi.boolean().label('copy to all brands'),
   updateallbrands: Joi.boolean().label('update all brands'),
+  copyaction: Joi.string().label('update all brands'),
   commissionpercentage: Joi.any().optional().label('commission percentage'),
   // Start TABS2-3772
   customerpaymentfirstperiod: Joi.boolean().optional().label('customer payment first period'),
