@@ -17,7 +17,8 @@ PropertyComment.prototype.toArray = function() {
     visibletoowner: this.visibletoowner,
     visibleonweb: this.visibleonweb,
     bookingid: this.booking && this.booking.id,
-    createddate: this.createddate
+    createddate: this.createddate,
+    commentdate: this.commentdate
   };
 };
 PropertyComment.prototype.schema = function() {
@@ -27,7 +28,8 @@ PropertyComment.prototype.schema = function() {
     visibletoowner: Joi.boolean().label('Visible to owner'),
     visibleonweb: Joi.boolean().label('Visible on web'),
     booking: Joi.object().optional().label('Booking'),
-    createddate: Joi.date().label('Date')
+    createddate: Joi.date().label('Date'),
+    commentdate: Joi.date().label('Date')
   };
 };
 PropertyComment.prototype.validSchema = function() {
