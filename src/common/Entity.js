@@ -33,29 +33,38 @@ Entity.prototype.mutateResponse = function(entity) {
  */
 Entity.prototype.mutateEntity = function(entity) {
   for (var prop in entity) {
+
+    let propProper = prop;
+    if (this.fieldsOverrides && Object.keys(this.fieldsOverrides).includes(prop)) {
+      // converts minified 'fields' objects to their rightful names, 
+      // e.g. 'propertynano' in WorkOrderFilterService will get changed to 'property'
+      // (requires WorkOrder obj to have 'fieldsOverrides' object)
+      propProper = this.fieldsOverrides[prop];
+    }
+
     if (entity.hasOwnProperty(prop)) {
-      if (this.hasOwnProperty(prop) && typeof this[prop] === 'object' && this[prop] !== null) {
+      if (this.hasOwnProperty(prop) && typeof this[propProper] === 'object' && this[propProper] !== null) {
         if (typeof entity[prop] === 'string' && entity[prop].indexOf('/v2') === 0) {
           // See if EntityLink function is being used
-          if (typeof this[prop].factory === 'function') {
-            this[prop] = this[prop].factory(entity[prop]);
+          if (typeof this[propProper].factory === 'function') {
+            this[propProper] = this[propProper].factory(entity[prop]);
           } else {
             // Map id's of route string to entity object so the get() request will
             // know of the correct path.
-            this[prop].mapRouteIds(entity[prop]);
+            this[propProper].mapRouteIds(entity[prop]);
           }
-        } else if (typeof this[prop].mutateResponse === 'function') {
+        } else if (typeof this[propProper].mutateResponse === 'function') {
           // Recursive call
-          this[prop].mutateResponse(entity[prop]);
-        } else if (entity[prop] && !(entity[prop] instanceof Entity) && entity[prop].id && this[prop].entity && this[prop].factory) {
+          this[propProper].mutateResponse(entity[prop]);
+        } else if (entity[prop] && !(entity[prop] instanceof Entity) && entity[prop].id && this[propProper].entity && this[propProper].factory) {
           // EntityLink being used, even though we have an object in the response (for BookingSuppliers fields)
-          this[prop] = new this[prop].entity();
-          this[prop].mutateResponse(entity[prop]);
+          this[propProper] = new this[propProper].entity();
+          this[propProper].mutateResponse(entity[prop]);
         } else {
-          this[prop] = entity[prop];
+          this[propProper] = entity[prop];
         }
       } else {
-        this[prop] = entity[prop];
+        this[propProper] = entity[prop];
       }
     }
   }

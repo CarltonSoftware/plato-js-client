@@ -74,6 +74,13 @@ function WorkOrder(id) {
     path: 'actor',
     parent: this
   });
+
+  this.fieldsOverrides = {
+    substatusmini: 'substatus',
+    worktypemini: 'worktype',
+    workordersuppliermini: 'workordersupplier',
+    propertynano: 'property'
+  };
 }
 
 WorkOrder.prototype.toArray = function() {
