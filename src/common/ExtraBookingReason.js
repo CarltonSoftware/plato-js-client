@@ -2,7 +2,7 @@ var SingleEntity = require('./SingleEntity');
 var Joi = require('joi');
 var BookingReason = require('./BookingReason');
 
-function ExtraBookingReason(extraId,id) {
+function ExtraBookingReason(id) {
   this.path = 'bookingreason';
   this.createPath = 'bookingreason';
   this.id = id;
