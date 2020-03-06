@@ -252,6 +252,7 @@ module.exports.common.Booking = require('./common/Booking');
 module.exports.common.BookingCancellationAction = require('./common/BookingCancellationAction');
 module.exports.common.ServiceContract = require('./common/ServiceContract');
 module.exports.common.ServiceContractType = require('./common/ServiceContractType');
+module.exports.common.BookingReason = require('./common/BookingReason');
 
 // Complaints
 module.exports.common.ComplaintReason = require('./common/ComplaintReason');
