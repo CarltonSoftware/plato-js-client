@@ -16,6 +16,9 @@ BookingExtra.prototype.toArray = function() {
   if (this.quantity != 0) {
     extra.unitprice = this.unitprice;
   }
+  if (this.extrabookingreasonid) {
+    extra.extrabookingreasonid = this.extrabookingreasonid;
+  }
   return extra;
 };
 

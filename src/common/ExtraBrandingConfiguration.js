@@ -38,6 +38,7 @@ ExtraBrandingConfiguration.prototype.toCreateArray = function() {
     propertyid: this.propertyid,
     copytoallbrands: this.copytoallbrands,
     commissionpercentage: this.commissionpercentage,
+    bookingreasonrequired: this.bookingreasonrequired? 'true' : 'false',
     copyaction: this.copyaction
   };
 
@@ -86,6 +87,7 @@ ExtraBrandingConfiguration.prototype.toUpdateArray = function() {
     type: this.type,
     updateallbrands: this.updateallbrands,
     commissionpercentage: this.commissionpercentage,
+    bookingreasonrequired: this.bookingreasonrequired? 'true' : 'false',
     copyaction: this.copyaction
   };
 
@@ -143,9 +145,9 @@ ExtraBrandingConfiguration.validSchema = Joi.object().keys({
   commissionpercentage: Joi.any().optional().label('commission percentage'),
   // Start TABS2-3772
   customerpaymentfirstperiod: Joi.boolean().optional().label('customer payment first period'),
-  customerpaymentlastperiod: Joi.boolean().optional().label('customer payment last period')
+  customerpaymentlastperiod: Joi.boolean().optional().label('customer payment last period'),
   // End TABS2-3772
-
+  bookingreasonrequired: Joi.boolean().label('booking reason required'),
 });
 
 module.exports = ExtraBrandingConfiguration;

@@ -252,6 +252,7 @@ module.exports.common.Booking = require('./common/Booking');
 module.exports.common.BookingCancellationAction = require('./common/BookingCancellationAction');
 module.exports.common.ServiceContract = require('./common/ServiceContract');
 module.exports.common.ServiceContractType = require('./common/ServiceContractType');
+module.exports.common.BookingReason = require('./common/BookingReason');
 
 // Complaints
 module.exports.common.ComplaintReason = require('./common/ComplaintReason');
@@ -321,6 +322,7 @@ module.exports.common.ExtraBrandingPricingAmountPriceType = require('./common/Ex
 module.exports.common.ExtraBrandingPricingRangeElement = require('./common/ExtraBrandingPricingRangeElement');
 module.exports.common.ExtraBrandingPricingRangeElementPriceType = require('./common/ExtraBrandingPricingRangeElementPriceType');
 module.exports.common.ExtraGroup = require('./common/ExtraGroup');
+module.exports.common.ExtraBookingReason = require('./common/ExtraBookingReason');
 module.exports.common.PricingGroup = require('./common/PricingGroup');
 module.exports.common.PricingGroupYear = require('./common/PricingGroupYear');
 module.exports.common.PricingGroupYearPriceBand = require('./common/PricingGroupYearPriceBand');
