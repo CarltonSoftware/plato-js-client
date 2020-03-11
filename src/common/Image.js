@@ -3,6 +3,8 @@ var Mimetype = require('./Mimetype');
 var File = require('./File');
 var Joi = require('joi');
 var client = require('./platoJsClient').getInstance();
+var StaticCollection = require('./StaticCollection');
+var DocumentBaseTag = require('./DocumentBaseTag');
 
 function Image(id) {
   this.path = 'image';
@@ -10,6 +12,11 @@ function Image(id) {
   this.id = id;
   this.mimetype = new Mimetype();
   this.file = new File();
+  this.tags = new StaticCollection({
+    object: DocumentBaseTag,
+    parent: this,
+    path: 'tag'
+  });
 }
 Image.prototype = new SingleEntity();
 
