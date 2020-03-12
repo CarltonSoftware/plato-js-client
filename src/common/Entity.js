@@ -34,7 +34,7 @@ Entity.prototype.mutateResponse = function(entity) {
 Entity.prototype.mutateEntity = function(entity) {
   for (var prop in entity) {
 
-    let propProper = prop;
+    var propProper = prop;
     if (this.fieldsOverrides && Object.keys(this.fieldsOverrides).includes(prop)) {
       // converts minified 'fields' objects to their rightful names, 
       // e.g. 'propertynano' in WorkOrderFilterService will get changed to 'property'
