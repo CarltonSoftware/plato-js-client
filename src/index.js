@@ -138,6 +138,7 @@ module.exports.common.SupplierDocument = require('./common/SupplierDocument');
 module.exports.common.Affiliate = require('./common/Affiliate');
 module.exports.common.AffiliateApiKey = require('./common/AffiliateApiKey');
 module.exports.common.AffiliateBlockPeriod = require('./common/AffiliateBlockPeriod');
+module.exports.common.AffiliatePropertyBlockPeriod = require('./common/AffiliatePropertyBlockPeriod');
 
 // Property Related Objects
 module.exports.common.Properties = require('./common/Properties');
