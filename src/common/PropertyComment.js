@@ -28,8 +28,8 @@ PropertyComment.prototype.schema = function() {
     visibletoowner: Joi.boolean().label('Visible to owner'),
     visibleonweb: Joi.boolean().label('Visible on web'),
     booking: Joi.object().optional().label('Booking'),
-    createddate: Joi.optional().date().label('Date'),
-    commentdate: Joi.date().label('Date')
+    createddate: Joi.date().optional().label('Date'),
+    commentdate: Joi.date().optional().label('Comment Date')
   };
 };
 PropertyComment.prototype.validSchema = function() {
