@@ -312,6 +312,7 @@ FilterCollection.prototype.fetch = function(dependencies, cache) {
                   setNested(item, dependency, fetched[itemValue.id]);
                 } else {
                   itemValue = fetched[itemValue.id];
+                  item[dependency] = itemValue;
                 }
               } else {
                 fetched[itemValue.id] = itemValue;
