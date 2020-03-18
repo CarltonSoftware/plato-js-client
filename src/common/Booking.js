@@ -247,6 +247,28 @@ Booking.prototype.toArray = function() {
     array.autobalanceactorpaymentid = false;
   }
 
+  /* Potential Cancellation */
+  if(this.potentialcancellation_potentialtransfer) {
+    array.potentialcancellation_potentialtransfer = this.potentialcancellation_potentialtransfer;
+  } else if (this.potentialcancellation_potentialtransfer === false) {
+    array.potentialcancellation_potentialtransfer = false;
+  }
+
+  if(this.potentialcancellation_noaction) {
+    array.potentialcancellation_noaction = this.potentialcancellation_noaction;
+  } else if (this.potentialcancellation_noaction === false){
+    array.potentialcancellation_noaction = false;
+  }
+
+  if(this.potentialcancellation_createdbyactorid) {
+    array.potentialcancellation_createdbyactorid = this.potentialcancellation_createdbyactorid;
+  }
+
+  if(this.potentialcancellation_createddatetime) {
+    array.potentialcancellation_createddatetime = this.potentialcancellation_createddatetime;
+  }
+
+
   // Transferred */
   if (this.transferredtobooking
     && typeof this.transferredtobooking == 'object'
