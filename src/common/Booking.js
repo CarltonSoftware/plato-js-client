@@ -256,7 +256,7 @@ Booking.prototype.toArray = function() {
 
   if(this.potentialcancellation_noaction) {
     array.potentialcancellation_noaction = this.potentialcancellation_noaction;
-  } else if (this.potentialcancellation_noaction === false){
+  } else if (this.potentialcancellation_noaction === false) {
     array.potentialcancellation_noaction = false;
   }
 
