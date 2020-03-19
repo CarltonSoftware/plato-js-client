@@ -260,6 +260,12 @@ Booking.prototype.toArray = function() {
     array.potentialcancellation_noaction = false;
   }
 
+  if (this.potentialcancellation_cpsclaim) {
+    array.potentialcancellation_cpsclaim = this.potentialcancellation_cpsclaim;
+  } else if (this.potentialcancellation_cpsclaim === false) {
+    array.potentialcancellation_cpsclaim = false;
+  }
+
   if(this.potentialcancellation_createdbyactorid) {
     array.potentialcancellation_createdbyactorid = this.potentialcancellation_createdbyactorid;
   }
