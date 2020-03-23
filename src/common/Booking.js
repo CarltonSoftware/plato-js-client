@@ -260,7 +260,13 @@ Booking.prototype.toArray = function() {
     array.potentialcancellation_noaction = false;
   }
 
-  if (this.potentialcancellation_cpsclaim) {
+  if(this.potentialcancellation_addtocustomeraccountbalance) {
+    array.potentialcancellation_addtocustomeraccountbalance = this.potentialcancellation_addtocustomeraccountbalance;
+  } else if (this.potentialcancellation_addtocustomeraccountbalance === false) {
+    array.potentialcancellation_addtocustomeraccountbalance = false;
+  }
+
+  if(this.potentialcancellation_cpsclaim) {
     array.potentialcancellation_cpsclaim = this.potentialcancellation_cpsclaim;
   } else if (this.potentialcancellation_cpsclaim === false) {
     array.potentialcancellation_cpsclaim = false;
@@ -272,6 +278,18 @@ Booking.prototype.toArray = function() {
 
   if(this.potentialcancellation_createddatetime) {
     array.potentialcancellation_createddatetime = this.potentialcancellation_createddatetime;
+  }
+
+  if(this.potentialcancellation_requestedfromdate) {
+    array.potentialcancellation_requestedfromdate = this.potentialcancellation_requestedfromdate;
+  }
+
+  if(this.potentialcancellation_requestedtodate) {
+    array.potentialcancellation_requestedtodate = this.potentialcancellation_requestedtodate;
+  }
+
+  if(this.potentialcancellation_assignedtoactorid) {
+    array.potentialcancellation_assignedtoactorid = this.potentialcancellation_assignedtoactorid;
   }
 
 
