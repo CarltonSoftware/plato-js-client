@@ -268,7 +268,7 @@ Booking.prototype.toArray = function() {
 
   if(this.potentialcancellation_cancellationrequested) {
     array.potentialcancellation_cancellationrequested = this.potentialcancellation_cancellationrequested;
-  } else if (potentialcancellation_cancellationrequested === false) {
+  } else if (this.potentialcancellation_cancellationrequested === false) {
     array.potentialcancellation_cancellationrequested = false;
   }
 
