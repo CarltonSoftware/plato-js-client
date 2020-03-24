@@ -266,6 +266,12 @@ Booking.prototype.toArray = function() {
     array.potentialcancellation_addtocustomeraccountbalance = false;
   }
 
+  if(this.potentialcancellation_cancellationrequested) {
+    array.potentialcancellation_cancellationrequested = this.potentialcancellation_cancellationrequested;
+  } else if (potentialcancellation_cancellationrequested === false) {
+    array.potentialcancellation_cancellationrequested = false;
+  }
+
   if(this.potentialcancellation_cpsclaim) {
     array.potentialcancellation_cpsclaim = this.potentialcancellation_cpsclaim;
   } else if (this.potentialcancellation_cpsclaim === false) {
