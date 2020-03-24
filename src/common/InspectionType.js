@@ -14,7 +14,9 @@ InspectionType.prototype.toArray = function() {
     schedule: this.schedule,
     gradingunit: this.gradingunit,
     defaultgrading: this.defaultgrading,
-    inactive: this.inactive
+    inactive: this.inactive,
+    description: this.description,
+    weight: this.weight
   };
 };
 
@@ -35,8 +37,10 @@ InspectionType.prototype.validSchema = function() {
     inspectiontype: Joi.string().label('inspection type'),
     schedule: Joi.string().required().allow(schedules).label('schedule'),
     gradingunit: Joi.string().required().label('grading unit'),
+    description: Joi.string().required().label('description'),
     defaultgrading: Joi.string().optional().allow('').label('default grading'),
-    inactive: Joi.boolean().optional().label('inactive')
+    inactive: Joi.boolean().optional().label('inactive'),
+    weight: Joi.number().optional().label('weight')
   });
 };
 
