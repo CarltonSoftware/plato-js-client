@@ -18,19 +18,34 @@ PropertyComment.prototype.toArray = function() {
     visibleonweb: this.visibleonweb,
     bookingid: this.booking && this.booking.id,
     createddate: this.createddate,
-    commentdate: this.commentdate
+    commentdate: this.commentdate,
+    firstname: this.firstname,
+    surname: this.surname,
+    salutation: this.salutation
   };
 };
 PropertyComment.prototype.schema = function() {
   return {
     comment: Joi.string().required().label('Comment'),
     commenter: Joi.string().optional().allow('').label('Commenter'),
+    firstname: Joi.string().optional().allow('').label('First name'),
+    surname: Joi.string().optional().allow('').label('Surname'),
+    salutation: Joi.string().optional().allow('').label('Salutation'),
     visibletoowner: Joi.boolean().label('Visible to owner'),
     visibleonweb: Joi.boolean().label('Visible on web'),
     booking: Joi.object().optional().label('Booking'),
     createddate: Joi.date().optional().label('Date'),
     commentdate: Joi.date().optional().label('Comment Date')
   };
+};
+PropertyComment.prototype.toString = function() {
+  if (this.salutation) {
+    return this.salutation;
+  } else if (this.firstname && this.surname) {
+    return this.firstname + ' ' + this.surname;
+  } else {
+    return this.commenter;
+  }
 };
 PropertyComment.prototype.validSchema = function() {
   return Joi.object().keys(this.schema());
