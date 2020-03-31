@@ -79,6 +79,13 @@ TemplateContactMethod.prototype.optOut = function(ref) {
   return client.put(this.getRefPath(ref) + '/optout');
 };
 
+TemplateContactMethod.prototype.schedule = function(ref, job) {
+  return entity.updatePromiseResult(
+    this.getRefPath(ref) + '/schedule',
+    { job: job }
+  );
+};
+
 TemplateContactMethod.prototype.sendIfAvailable = function(ref) {
   return client.put(this.getRefPath(ref) + '/sendifavailable');
 };
