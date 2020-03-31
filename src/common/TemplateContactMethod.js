@@ -80,10 +80,7 @@ TemplateContactMethod.prototype.optOut = function(ref) {
 };
 
 TemplateContactMethod.prototype.schedule = function(ref, job) {
-  return entity.updatePromiseResult(
-    this.getRefPath(ref) + '/schedule',
-    { job: job }
-  );
+  return client.put({ path: this.getRefPath(ref) + '/schedule', entity: { job: job } });
 };
 
 TemplateContactMethod.prototype.sendIfAvailable = function(ref) {
