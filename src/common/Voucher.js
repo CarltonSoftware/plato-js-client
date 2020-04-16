@@ -44,7 +44,6 @@ function Voucher(id) {
       useddatetime: Joi.date().optional().label('used date'),
       usedbyactor: Joi.object().optional().label('used by'),
       cancelleddatetime: Joi.date().optional().label('cancelled at time'),
-      expirydate: Joi.date().optional().label('expiry date'),
       cancelledbyactor: Joi.object().optional().label('cancellled by')
     };
   }
@@ -59,8 +58,7 @@ Voucher.prototype.toArray = function() {
   var arr = {
     value: this.value,
     useddatetime: this.useddatetime,
-    cancelleddatetime: this.cancelleddatetime,
-    expirydate: this.expirydate
+    cancelleddatetime: this.cancelleddatetime
   };
 
   ['paidforbyactor', 'forusebyactor', 'usedbyactor', 'createdbyactor', 'cancelledbyactor'].forEach(function(key) {
