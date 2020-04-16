@@ -108,6 +108,11 @@ module.exports.common.FlagType = require('./common/FlagType');
 module.exports.common.Flag = require('./common/Flag');
 module.exports.common.PotentialDuplicate = require('./common/PotentialDuplicate');
 module.exports.common.ActorVatRegistrationPeriod = require('./common/ActorVatRegistrationPeriod');
+module.exports.common.Voucher = require('./common/Voucher');
+module.exports.common.VoucherRestriction = require('./common/VoucherRestriction');
+module.exports.common.VoucherHolidayPeriod = require('./common/VoucherHolidayPeriod');
+module.exports.common.VoucherBookingPeriod = require('./common/VoucherBookingPeriod');
+module.exports.common.BookingVoucher = require('./common/BookingVoucher');
 
 // Customer Releated Objects
 module.exports.common.Customer = require('./common/Customer');
