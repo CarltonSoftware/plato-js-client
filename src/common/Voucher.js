@@ -4,7 +4,6 @@ var EntityLink = require('./EntityLink');
 var VoucherBookingPeriod = require('./VoucherBookingPeriod');
 var VoucherHolidayPeriod = require('./VoucherHolidayPeriod');
 var VoucherRestriction = require('./VoucherRestriction');
-var Property = require('./Property');
 var Joi = require('joi');
 
 /**
