@@ -59,7 +59,8 @@ Voucher.prototype.toArray = function() {
   var arr = {
     value: this.value,
     useddatetime: this.useddatetime,
-    cancelleddatetime: this.cancelleddatetime
+    cancelleddatetime: this.cancelleddatetime,
+    expirydate: this.expirydate
   };
 
   ['paidforbyactor', 'forusebyactor', 'usedbyactor', 'createdbyactor', 'cancelledbyactor'].forEach(function(key) {
