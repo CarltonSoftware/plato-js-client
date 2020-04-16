@@ -18,7 +18,7 @@ VoucherBookingPeriod.prototype = new SingleEntity();
 VoucherBookingPeriod.prototype.toArray = function() {
   return {
     fromdate: this.fromdate,
-    fromdate: this.fromdate
+    todate: this.todate
   };
 };
 
