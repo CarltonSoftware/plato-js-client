@@ -4,6 +4,7 @@ var EntityLink = require('./EntityLink');
 var VoucherBookingPeriod = require('./VoucherBookingPeriod');
 var VoucherHolidayPeriod = require('./VoucherHolidayPeriod');
 var VoucherRestriction = require('./VoucherRestriction');
+var Property = require('./Property');
 var Joi = require('joi');
 
 /**
@@ -37,7 +38,7 @@ function Voucher(id) {
   this.booking = new EntityLink({ entity: 'Booking' });
 
   this.validSchema = function() {
-    return {
+    var s = {
       value: Joi.number().required().label('value'),
       paidforbyactor: Joi.object().required().label('paid for by'),
       forusebyactor: Joi.object().optional().label('for use by'),
@@ -46,6 +47,22 @@ function Voucher(id) {
       cancelleddatetime: Joi.date().optional().label('cancelled at time'),
       cancelledbyactor: Joi.object().optional().label('cancellled by')
     };
+
+    if (!this.id) {
+      s.bookingperiod_fromdate = Joi.date().optional().label('booking period from date');
+      s.bookingperiod_todate = Joi.date().optional().label('booking period to date');
+      s.holidayperiod_fromdate = Joi.date().optional().label('holiday period from date');
+      s.holidayperiod_todate = Joi.date().optional().label('holiday period to date');
+      s.restriction_type = Joi.any().allow(['Property', 'BookingBrand']).label('restriction type');
+
+      if (this.restriction_type === 'BookingBrand') {
+        s.restriction_bookingbrand = Joi.object().required().label('booking brand');
+      } else {
+        s.restriction_property = Joi.object().required().label('property');
+      }
+    }
+
+    return s;
   }
 }
 
@@ -66,6 +83,20 @@ Voucher.prototype.toArray = function() {
       arr[key + 'id'] = this[key].id;
     }
   }.bind(this));
+
+  if (!this.id) {
+    arr.bookingperiod_fromdate = this.bookingperiod_fromdate;
+    arr.bookingperiod_todate = this.bookingperiod_todate;
+    arr.holidayperiod_fromdate = this.holidayperiod_fromdate;
+    arr.holidayperiod_todate = this.holidayperiod_todate;
+    arr.restriction_type = this.restriction_type;
+    if (this.restriction_bookingbrand) {
+      arr.restriction_bookingbrandid = this.restriction_bookingbrand.id;
+    }
+    if (this.restriction_property) {
+      arr.restriction_propertyid = this.restriction_property.id;
+    }
+  }
 
   return arr;
 };
