@@ -62,7 +62,7 @@ function Voucher(id) {
     }
 
     return s;
-  }
+  }.bind(this)
 }
 
 Voucher.prototype = new SingleEntity();
@@ -73,7 +73,6 @@ Voucher.prototype = new SingleEntity();
 Voucher.prototype.toArray = function() {
   var arr = {
     value: this.value,
-    useddatetime: this.useddatetime,
     cancelleddatetime: this.cancelleddatetime
   };
 
