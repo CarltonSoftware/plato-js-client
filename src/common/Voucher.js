@@ -41,17 +41,14 @@ function Voucher(id) {
       value: Joi.number().required().label('value'),
       paidforbyactor: Joi.object().required().label('paid for by'),
       forusebyactor: Joi.object().optional().label('for use by'),
-      useddatetime: Joi.date().optional().label('used date'),
-      usedbyactor: Joi.object().optional().label('used by'),
-      cancelleddatetime: Joi.date().optional().label('cancelled at time'),
       cancelledbyactor: Joi.object().optional().label('cancellled by')
     };
 
     if (!this.id) {
-      s.bookingperiod_fromdate = Joi.date().optional().label('booking period from date');
-      s.bookingperiod_todate = Joi.date().optional().label('booking period to date');
-      s.holidayperiod_fromdate = Joi.date().optional().label('holiday period from date');
-      s.holidayperiod_todate = Joi.date().optional().label('holiday period to date');
+      s.bookingperiod_fromdate = Joi.date().required().label('booking period from date');
+      s.bookingperiod_todate = Joi.date().required().label('booking period to date');
+      s.holidayperiod_fromdate = Joi.date().required().label('holiday period from date');
+      s.holidayperiod_todate = Joi.date().required().label('holiday period to date');
       s.restriction_type = Joi.any().allow(['Property', 'BookingBrand']).label('restriction type');
 
       if (this.restriction_type === 'BookingBrand') {
