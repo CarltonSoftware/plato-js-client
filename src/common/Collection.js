@@ -54,8 +54,22 @@ Collection.prototype.toArray = function() {
     page: this.page,
     limit: this.limit,
     orderBy: this.orderBy,
-    filter: this.filters
+    filter: this.filters,
+    loaded: this.loaded
   };
+};
+
+/**
+ * @return {string}
+ */
+Collection.prototype.getHash = function() {
+  if (window && window.btoa) {
+    return btoa(JSON.stringify(this.toArray()));
+  } else if (Buffer && Buffer.from) {
+    return Buffer.from(JSON.stringify(this.toArray()), 'binary').toString('base64');
+  }
+
+  return '';
 };
 
 /**

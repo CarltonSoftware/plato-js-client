@@ -331,6 +331,21 @@ FilterCollection.prototype.fetch = function(dependencies, cache) {
 };
 
 /**
+ * toArray method used in the okPromiseResult callback
+ *
+ * @return {object}
+ */
+FilterCollection.prototype.toArray = function() {
+  return {
+    page: this.page,
+    limit: this.limit,
+    orderBy: this.orderBy,
+    filter: this.getFilterString(),
+    loaded: this.loaded
+  };
+};
+
+/**
  * Returns a promise of the cachable fetched resource
  *
  * @param {Number} cacheTime
