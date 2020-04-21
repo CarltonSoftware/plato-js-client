@@ -295,6 +295,7 @@ FilterCollection.prototype.fetch = function(dependencies, cache) {
   if (dependencies && dependencies.length) {
     return new Promise(function(resolve) {
       promise.then(function(collection) {
+        collection.fetchedTime = new Date();
         Promise.all(dependencies.map(function(dependency) {
           var fetched = {};
           var isNestedDependency = (dependency.indexOf('.') !== -1);
@@ -341,7 +342,7 @@ FilterCollection.prototype.toArray = function() {
     limit: this.limit,
     orderBy: this.orderBy,
     filter: this.getFilterString(),
-    loaded: this.loaded
+    fetchedTime: this.fetchedTime
   };
 };
 

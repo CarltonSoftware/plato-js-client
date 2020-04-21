@@ -55,7 +55,7 @@ Collection.prototype.toArray = function() {
     limit: this.limit,
     orderBy: this.orderBy,
     filter: this.filters,
-    loaded: this.loaded
+    fetchedTime: this.fetchedTime
   };
 };
 
@@ -145,6 +145,7 @@ Collection.prototype.fetch = function(dependencies, cache) {
   if (dependencies && dependencies.length) {
     return new Promise(function(resolve) {
       promise.then(function(collection) {
+        collection.fetchedTime = new Date();
         Promise.all(dependencies.map(function(dependency) {
           var fetched = {};
 
