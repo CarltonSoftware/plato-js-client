@@ -8,15 +8,18 @@ function VoucherRestriction(id) {
   this.id = id;
   this.property = new EntityLink({ entity: 'Property' });
   this.bookingbrand = new EntityLink({ entity: 'BookingBrand' });
+  this.type = 'Property';
 
   this.validSchema = function() {
-    var s = {
-      type: Joi.string().required().label('type')
+    var s = {};
+
+    if (!this.id) {
+      s.type = Joi.string().required().label('type');
     }
 
-    if (this.type === 'property') {
+    if (this.type.toLowerCase() === 'property') {
       s.property = Joi.object().required().label('property');
-    } else if (this.type === 'bookingbrand') {
+    } else if (this.type.toLowerCase() === 'bookingbrand') {
       s.bookingbrand = Joi.object().required().label('booking brand');
     }
 
