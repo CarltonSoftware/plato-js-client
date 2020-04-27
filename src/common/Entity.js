@@ -36,7 +36,7 @@ Entity.prototype.mutateEntity = function(entity) {
 
     var propProper = prop;
     if (this.fieldsOverrides && Object.keys(this.fieldsOverrides).includes(prop)) {
-      // converts minified 'fields' objects to their rightful names, 
+      // converts minified 'fields' objects to their rightful names,
       // e.g. 'propertynano' in WorkOrderFilterService will get changed to 'property'
       // (requires WorkOrder obj to have 'fieldsOverrides' object)
       propProper = this.fieldsOverrides[prop];
@@ -51,7 +51,9 @@ Entity.prototype.mutateEntity = function(entity) {
           } else {
             // Map id's of route string to entity object so the get() request will
             // know of the correct path.
-            this[propProper].mapRouteIds(entity[prop]);
+            if (typeof this[propProper].mapRouteIds === 'function') {
+              this[propProper].mapRouteIds(entity[prop]);
+            }
           }
         } else if (typeof this[propProper].mutateResponse === 'function') {
           // Recursive call
