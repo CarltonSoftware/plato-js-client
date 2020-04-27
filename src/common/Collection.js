@@ -54,8 +54,7 @@ Collection.prototype.toArray = function() {
     page: this.page,
     limit: this.limit,
     orderBy: this.orderBy,
-    filter: this.filters,
-    fetchedTime: this.fetchedTime
+    filter: this.filters
   };
 };
 
@@ -63,10 +62,12 @@ Collection.prototype.toArray = function() {
  * @return {string}
  */
 Collection.prototype.getHash = function() {
+  var a = this.toArray();
+  a.fetchedTime = this.fetchedTime;
   if (window && window.btoa) {
-    return btoa(JSON.stringify(this.toArray()));
+    return btoa(JSON.stringify(a));
   } else if (Buffer && Buffer.from) {
-    return Buffer.from(JSON.stringify(this.toArray()), 'binary').toString('base64');
+    return Buffer.from(JSON.stringify(a), 'binary').toString('base64');
   }
 
   return '';

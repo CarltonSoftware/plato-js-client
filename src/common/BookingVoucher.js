@@ -10,10 +10,12 @@ function BookingVoucher(id) {
 
   this.validSchema = function() {
     return {
-      bookingamount: Joi.number().required().label('booking amount'),
-      securitydepositamount: Joi.number().required().label('security deposit amount'),
-      voucher_useddatetime: Joi.date().optional().label('voucher used date time'),
-      voucher_usedbyactorid: Joi.number().optional().label('voucher used by actor id'),
+      bookingamount: Joi.number().optional().label('booking amount').description(
+        'Optional booking amount.  Leave blank if you want tabs to use the full '
+        + 'amount on the booking and any remainder allocated to a damage deposit.'
+        + 'Any further remaining voucher balance will be used in creating a new voucher for the customer.'
+      ),
+      securitydepositamount: Joi.number().optional().label('security deposit amount').description('Optional booking damage deposit amount.'),
       voucher: Joi.object().required().label('voucher')
     };
   }

@@ -341,8 +341,7 @@ FilterCollection.prototype.toArray = function() {
     page: this.page,
     limit: this.limit,
     orderBy: this.orderBy,
-    filter: this.getFilterString(),
-    fetchedTime: this.fetchedTime
+    filter: this.getFilterString()
   };
 };
 

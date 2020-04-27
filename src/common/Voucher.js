@@ -105,4 +105,11 @@ Voucher.prototype.toArray = function() {
   return arr;
 };
 
+/**
+ * @returns {String}
+ */
+Voucher.prototype.toString = function() {
+  return 'Unique code: ' + this.guid;
+};
+
 module.exports = Voucher;

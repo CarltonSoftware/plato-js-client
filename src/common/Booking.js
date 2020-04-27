@@ -89,7 +89,8 @@ function Booking(id) {
   });
   this.vouchers = new Collection({
     object: BookingVoucher,
-    path: 'voucher'
+    path: 'voucher',
+    parent: this
   });
 
   this.webbooking = new WebBooking();
