@@ -48,12 +48,10 @@ Entity.prototype.mutateEntity = function(entity) {
           // See if EntityLink function is being used
           if (typeof this[propProper].factory === 'function') {
             this[propProper] = this[propProper].factory(entity[prop]);
-          } else {
+          } else if (typeof this[propProper].mapRouteIds === 'function') {
             // Map id's of route string to entity object so the get() request will
             // know of the correct path.
-            if (typeof this[propProper].mapRouteIds === 'function') {
-              this[propProper].mapRouteIds(entity[prop]);
-            }
+            this[propProper].mapRouteIds(entity[prop]);
           }
         } else if (typeof this[propProper].mutateResponse === 'function') {
           // Recursive call
