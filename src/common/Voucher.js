@@ -45,21 +45,17 @@ function Voucher(id) {
     };
 
     if (!this.id) {
-      s.bookingperiod_fromdate = Joi.date().optional().label('booking period from date');
-
+      s.bookingperiod_fromdate = Joi.date().required().label('booking period from date');
       if (this.bookingperiod_fromdate) {
-        s.bookingperiod_fromdate = Joi.date().required().label('booking period from date');
         s.bookingperiod_todate = Joi.date().required().label('booking period to date');
       }
 
-      s.holidayperiod_fromdate = Joi.date().optional().label('holiday period from date');
-
+      s.holidayperiod_fromdate = Joi.date().required().label('holiday period from date');
       if (this.holidayperiod_fromdate) {
-        s.holidayperiod_fromdate = Joi.date().required().label('holiday period from date');
         s.holidayperiod_todate = Joi.date().required().label('holiday period to date');
       }
-      s.restriction_type = Joi.any().allow(['Property', 'BookingBrand']).label('restriction type');
 
+      s.restriction_type = Joi.any().allow(['Property', 'BookingBrand']).label('restriction type');
       if (this.restriction_type === 'BookingBrand') {
         s.restriction_bookingbrand = Joi.object().required().label('booking brand');
       } else {
