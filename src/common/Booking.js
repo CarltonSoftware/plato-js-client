@@ -453,4 +453,17 @@ Booking.prototype.toString = function() {
   return this.id;
 };
 
+/**
+ * Check if the booking is fully paid
+ *
+ * @return {Boolean}
+ */
+Booking.prototype.isFullyPaid = function() {
+  var sd = this.securitydeposit;
+  var deposit = this.paymentsummary.deposit;
+  var balance = this.paymentsummary.booking;
+  return (balance.outstanding == 0 && (!sd.id || (sd.amount - sd.balance == 0)));
+};
+
+
 module.exports = Booking;
