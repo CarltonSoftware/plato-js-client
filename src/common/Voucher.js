@@ -109,12 +109,14 @@ Voucher.prototype.toArray = function() {
     arr.bookingperiod_todate = this.bookingperiod_todate;
     arr.holidayperiod_fromdate = this.holidayperiod_fromdate;
     arr.holidayperiod_todate = this.holidayperiod_todate;
-    arr.restriction_type = this.restriction_type;
-    if (this.restriction_bookingbrand) {
-      arr.restriction_bookingbrandid = this.restriction_bookingbrand.id;
-    }
-    if (this.restriction_property) {
-      arr.restriction_propertyid = this.restriction_property.id;
+    if (['Property', 'BookingBrand'].indexOf(this.restriction_type) >= 0) {
+      arr.restriction_type = this.restriction_type;
+      if (this.restriction_bookingbrand) {
+        arr.restriction_bookingbrandid = this.restriction_bookingbrand.id;
+      }
+      if (this.restriction_property) {
+        arr.restriction_propertyid = this.restriction_property.id;
+      }
     }
   }
 
