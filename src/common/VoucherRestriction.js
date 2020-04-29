@@ -14,7 +14,7 @@ function VoucherRestriction(id) {
     var s = {};
 
     if (!this.id) {
-      s.type = Joi.string().required().label('type');
+      s.type = Joi.any().allow(['Property', 'BookingBrand']).label('restriction type');
     }
 
     if (this.type.toLowerCase() === 'property') {

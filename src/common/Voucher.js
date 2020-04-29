@@ -55,10 +55,10 @@ function Voucher(id) {
         s.holidayperiod_todate = Joi.date().required().label('holiday period to date');
       }
 
-      s.restriction_type = Joi.any().allow(['Property', 'BookingBrand']).label('restriction type');
+      s.restriction_type = Joi.any().allow(['No restriction', 'Property', 'BookingBrand']).label('restriction type');
       if (this.restriction_type === 'BookingBrand') {
         s.restriction_bookingbrand = Joi.object().required().label('booking brand');
-      } else {
+      } else if (this.restriction_type === 'Property') {
         s.restriction_property = Joi.object().required().label('property');
       }
     }
