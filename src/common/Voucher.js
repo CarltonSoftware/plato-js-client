@@ -38,24 +38,44 @@ function Voucher(id) {
 
   this.validSchema = function() {
     var s = {
-      value: Joi.number().required().label('value'),
-      paidforbyactor: Joi.object().required().label('paid for by'),
-      forusebyactor: Joi.object().optional().label('for use by'),
-      cancelledbyactor: Joi.object().optional().label('cancellled by')
+      value: Joi.number().required().label('voucher value'),
+      paidforbyactor: Joi.object().required().label(
+        'paid for by'
+      ).description(
+        'Who the voucher is paid for by.  Normally this will be the current customer.'
+      ),
+      forusebyactor: Joi.object().optional().label('for use by').description(
+        'Who the voucher is to be used by.  Normally this will be the current customer.'
+      )
     };
 
     if (!this.id) {
-      s.bookingperiod_fromdate = Joi.date().required().label('booking period from date');
+      s.bookingperiod_fromdate = Joi.date().required().label(
+        'booking period from date'
+      ).description('The start of the period which this voucher can be used in.');
       if (this.bookingperiod_fromdate) {
-        s.bookingperiod_todate = Joi.date().required().label('booking period to date');
+        s.bookingperiod_todate = Joi.date().required().label(
+          'booking period to date'
+        ).description('The end of the period which this voucher can be used in.');
       }
 
-      s.holidayperiod_fromdate = Joi.date().required().label('holiday period from date');
+      s.holidayperiod_fromdate = Joi.date().required().label(
+        'holiday period from date'
+      ).description('The start of the holiday period which this voucher is applicable to.');
       if (this.holidayperiod_fromdate) {
-        s.holidayperiod_todate = Joi.date().required().label('holiday period to date');
+        s.holidayperiod_todate = Joi.date().required().label(
+          'holiday period to date'
+        ).description('The end of the holiday period which this voucher is applicable to.');
       }
 
-      s.restriction_type = Joi.any().allow(['No restriction', 'Property', 'BookingBrand']).label('restriction type');
+      s.restriction_type = Joi.any().allow(
+        ['No restriction', 'Property', 'BookingBrand']
+      ).label(
+        'restriction type'
+      ).description(
+        'Choose either No Restriction, Property or Booking Brand restrictions. '
+        + 'No restriction will mean the voucher will be applicable to any booking.'
+      );
       if (this.restriction_type === 'BookingBrand') {
         s.restriction_bookingbrand = Joi.object().required().label('booking brand');
       } else if (this.restriction_type === 'Property') {
