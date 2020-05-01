@@ -117,8 +117,12 @@ SagePayPayment.prototype.invalidate = function() {
 };
 
 SagePayPayment.prototype.refund = function(amount, expirydate) {
-  obj = { amount: amount };
-  if (expirydate) { obj.expirydate = expirydate; }
+  obj = {
+    amount: amount
+  };
+  if (expirydate) {
+    obj.expirydate = expirydate;
+  }
   return this.createPromiseResult([this.getUpdatePath(), 'refund'].join('/'), obj);
 };
 
