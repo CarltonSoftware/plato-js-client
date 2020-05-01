@@ -116,8 +116,10 @@ SagePayPayment.prototype.invalidate = function() {
   return this.createPromiseResult([this.getUpdatePath(), 'invalidate'].join('/'), {});
 };
 
-SagePayPayment.prototype.refund = function(amount) {
-  return this.createPromiseResult([this.getUpdatePath(), 'refund'].join('/'), { amount: amount });
+SagePayPayment.prototype.refund = function(amount, expirydate) {
+  obj = { amount: amount };
+  if (expirydate) { obj.expirydate = expirydate; }
+  return this.createPromiseResult([this.getUpdatePath(), 'refund'].join('/'), obj);
 };
 
 SagePayPayment.prototype.repeat = function(bookingamount, securitydepositamount) {
