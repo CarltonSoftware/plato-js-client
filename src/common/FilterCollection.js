@@ -231,15 +231,12 @@ function FilterCollection() {
    */
   this.getFilterPath = function() {
     var path = this.getPath() + '?page=' + this.page + '&limit=' + this.limit + this.getFilterString();
-    if (this.orderBy) {
-      path += '&orderBy=' + this.orderBy;
-    }
-    if (this.searchId) {
-      path += '&searchId=' + this.searchId;
-    }
-    if (this.fields) {
-      path += '&fields=' + this.fields;
-    }
+
+    ['orderBy', 'searchId', 'fields', 'view'].forEach(function(k) {
+      if (this[k]) {
+        path += '&' + k + '=' + this[k];
+      }
+    }.bind(this));
     return path;
   };
 
@@ -341,6 +338,7 @@ FilterCollection.prototype.toArray = function() {
     page: this.page,
     limit: this.limit,
     orderBy: this.orderBy,
+    view: this.view,
     filter: this.getFilterString()
   };
 };
