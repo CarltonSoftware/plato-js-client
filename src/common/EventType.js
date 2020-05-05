@@ -6,12 +6,17 @@ function EventType(id) {
   this.id = id;
 
   this.validSchema = function() {
-    return {
-      eventtype: Joi.string().required().label('Event name').description('The name of your event you want to define'),
-      appliestobooking: Joi.boolean().required().label('Applies to booking'),
-      appliestoactor: Joi.boolean().required().label('Applies to actor'),
-      appliestoproperty: Joi.boolean().required().label('Applies to property')
+    var s = {
+      eventtype: Joi.string().required().label('Event name').description('The name of your event you want to define')
     };
+
+    if (!this.id) {
+      s.appliestobooking = Joi.boolean().required().label('Applies to booking');
+      s.appliestoactor = Joi.boolean().required().label('Applies to actor');
+      s.appliestoproperty = Joi.boolean().required().label('Applies to property');
+    }
+
+    return s;
   };
 }
 
