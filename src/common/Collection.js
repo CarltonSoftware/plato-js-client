@@ -54,9 +54,17 @@ Collection.prototype.toArray = function() {
     page: this.page,
     limit: this.limit,
     orderBy: this.orderBy,
+    view: this.view,
     filter: this.filters
   };
 };
+
+/**
+ * @return {object}
+ */
+Collection.prototype.getFilterObject = function() {
+  return this.filters;
+}
 
 /**
  * @return {string}
