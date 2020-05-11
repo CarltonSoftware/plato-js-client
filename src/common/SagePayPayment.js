@@ -121,7 +121,7 @@ SagePayPayment.prototype.refund = function(amount) {
 };
 
 SagePayPayment.prototype.repeat = function(bookingamount, securitydepositamount) {
-  return this.createPromiseResult([this.getUpdatePath(), 'repeat'].join('/'), { 
+  return this.createPromiseResult([this.getUpdatePath(), 'repeat'].join('/'), {
     bookingamount: bookingamount,
     securitydepositamount: securitydepositamount
   });
@@ -129,6 +129,11 @@ SagePayPayment.prototype.repeat = function(bookingamount, securitydepositamount)
 
 SagePayPayment.prototype.detail = function() {
   return client.get([this.getUpdatePath(), 'detail'].join('/'));
+};
+
+SagePayPayment.prototype.import = function(bookingId, doNotConfirm) {
+  doNotConfirm = (typeof doNotConfirm !== 'undefined') ?  doNotConfirm : false
+  return this.updatePromiseResult([this.getUpdatePath(), 'import', bookingId, doNotConfirm].join('/'), {});
 };
 
 module.exports = SagePayPayment;
