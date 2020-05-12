@@ -491,7 +491,7 @@ StaticCollection.prototype.index = function(pointer) {
  * @return {string}
  */
 StaticCollection.prototype.getObjectName = function() {
-  if (typeof this.options.object) {
+  if (typeof this.options.object !== 'undefined') {
     return this.options.object.toString().split('function ').pop().split('(').shift();
   }
 };
