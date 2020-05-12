@@ -5,6 +5,7 @@ var Language = require('./Language');
 var Collection = require('./Collection');
 var TemplateElement = require('./TemplateElement');
 var TemplateContactMethodAttachment = require('./TemplateContactMethodAttachment');
+var TemplateContactMethodBranding = require('./TemplateContactMethodBranding');
 
 function TemplateContactMethod(id) {
   this.createPath = this.path = 'contactmethod';
@@ -19,6 +20,11 @@ function TemplateContactMethod(id) {
   this.attachments = new Collection({
     object: TemplateContactMethodAttachment,
     path: 'attachment',
+    parent: this
+  });
+  this.brandings = new Collection({
+    object: TemplateContactMethodBranding,
+    path: 'branding',
     parent: this
   });
 }

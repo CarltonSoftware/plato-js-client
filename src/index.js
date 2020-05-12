@@ -381,6 +381,7 @@ module.exports.common.Template = require('./common/Template');
 module.exports.common.TemplateContactMethod = require('./common/TemplateContactMethod');
 module.exports.common.TemplateRoleReason = require('./common/TemplateRoleReason');
 module.exports.common.TemplateContactMethodAttachment = require('./common/TemplateContactMethodAttachment');
+module.exports.common.TemplateContactMethodBranding = require('./common/TemplateContactMethodBranding');
 module.exports.common.TemplateContactMethodAttachmentProperty = require('./common/TemplateContactMethodAttachmentProperty');
 module.exports.common.TemplateElement = require('./common/TemplateElement');
 module.exports.common.TemplateSource = require('./common/TemplateSource');
