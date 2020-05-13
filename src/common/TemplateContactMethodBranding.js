@@ -16,7 +16,7 @@ TemplateContactMethodBranding.prototype = new SingleEntity();
 TemplateContactMethodBranding.prototype.validSchema = function () {
   return Joi.object().keys({
     branding: Joi.object().required().label('Branding'),
-    replycontactdetail: Joi.object().required().label('Replay Contact Detail')
+    replycontactdetail: Joi.object().required().label('Reply Contact Detail')
   });
 };
 
