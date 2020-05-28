@@ -73,10 +73,7 @@ ScheduledEventTemplateContactMethod.prototype.hasBranding = function(branding) {
 };
 
 ScheduledEventTemplateContactMethod.prototype.shouldLoadAvailable = function(branding, ignorepausedflag) {
-  var brandingTypeCheck = (
-    this.hasBranding(branding)
-    || this.templatecontactmethod.parent.type === 'MultiBrandTemplate'
-  );
+  var brandingTypeCheck = this.hasBranding(branding);
   if (typeof ignorepausedflag === 'boolean') {
     return brandingTypeCheck && (!ignorepausedflag || !this.paused);
   }
