@@ -115,6 +115,7 @@ module.exports.common.Voucher = require('./common/Voucher');
 module.exports.common.VoucherRestriction = require('./common/VoucherRestriction');
 module.exports.common.VoucherHolidayPeriod = require('./common/VoucherHolidayPeriod');
 module.exports.common.VoucherBookingPeriod = require('./common/VoucherBookingPeriod');
+module.exports.common.VoucherSource = require('./common/VoucherSource');
 module.exports.common.BookingVoucher = require('./common/BookingVoucher');
 
 // Customer Releated Objects

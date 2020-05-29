@@ -34,7 +34,8 @@ function Voucher(id) {
   this.usedbyactor = new EntityLink({ entity: 'Customer' });
   this.createdbyactor = new EntityLink({ entity: 'Actor' });
   this.cancelledbyactor = new EntityLink({ entity: 'Actor' });
-  this.booking = new EntityLink({ entity: 'Booking' });
+  this.frombooking = new EntityLink({ entity: 'Booking' });
+  this.vouchersource = new EntityLink({ entity: 'VoucherSource' });
 
   this.validSchema = function() {
     var s = {
@@ -95,10 +96,10 @@ Voucher.prototype = new SingleEntity();
 Voucher.prototype.toArray = function() {
   var arr = {
     value: this.value,
-    cancelleddatetime: this.cancelleddatetime
+    cancelleddatetime: this.cancelleddatetime,
   };
 
-  ['paidforbyactor', 'forusebyactor', 'usedbyactor', 'createdbyactor', 'cancelledbyactor'].forEach(function(key) {
+  ['paidforbyactor', 'forusebyactor', 'usedbyactor', 'createdbyactor', 'cancelledbyactor', 'frombooking'].forEach(function(key) {
     if (this[key].id) {
       arr[key + 'id'] = this[key].id;
     }
@@ -118,6 +119,7 @@ Voucher.prototype.toArray = function() {
         arr.restriction_propertyid = this.restriction_property.id;
       }
     }
+    arr.vouchersourceid = this.vouchersource.id || 3; // TODO: 3 = 'manual', vouchersourceid field is not null!
   }
 
   return arr;
