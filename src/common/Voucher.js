@@ -34,6 +34,7 @@ function Voucher(id) {
   this.usedbyactor = new EntityLink({ entity: 'Customer' });
   this.createdbyactor = new EntityLink({ entity: 'Actor' });
   this.cancelledbyactor = new EntityLink({ entity: 'Actor' });
+  this.booking = new EntityLink({ entity: 'Booking' });
   this.frombooking = new EntityLink({ entity: 'Booking' });
   this.vouchersource = new EntityLink({ entity: 'VoucherSource' });
 
