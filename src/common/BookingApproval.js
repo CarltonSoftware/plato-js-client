@@ -1,6 +1,5 @@
 var SingleEntity = require('./SingleEntity');
 var Joi = require('joi');
-var Owner = require('./Owner');
 var moment = require('moment');
 
 function BookingApproval(id) {
