@@ -1,21 +1,20 @@
 var SingleEntity = require('./SingleEntity');
 var Joi = require('joi');
+var Owner = require('./Owner');
+var moment = require('moment');
 
 function BookingApproval(id) {
   this.path = 'approval';
   this.createPath = this.path;
   this.id = id;
-  
+
   this.validSchema = function() {
     return {
-      createddatetime: Joi.date().required().label('Created Date'), 
-      approvingactortype: Joi.string().required().label('Approving Actor Type'), 
-      approvingactorid: Joi.number().required().label('Approving Actor'), 
-      approved: Joi.boolean().optional().label('Approved'), 
-      approveddatetime: Joi.date().optional().label(' Approved Date Time'),
-      actioneddatetime: Joi.date().optional().label('Actioned Date Time'), 
-      actionedbyactorid: Joi.number().optional().empty('').label('Actioned by Actor'),
-      comment: Joi.string().optional().label('Comment')
+      approvingactor: Joi.object().required().label('Approving Actor'),
+      approved: Joi.boolean().required().label('Approved'),
+      approveddatetime: Joi.date().optional().label('Approved Date Time'),
+      actioneddatetime: Joi.date().optional().label('Actioned Date Time'),
+      comment: Joi.string().optional().allow('').label('Comment')
     };
   }
 }
@@ -24,13 +23,12 @@ BookingApproval.prototype = new SingleEntity();
 BookingApproval.prototype.toArray = function() {
   return {
     bookingid: this.bookingid,
-    createddatetime: this.createddatetime, 
-    approvingactortype: this.approvingactortype, 
-    approvingactorid: this.approvingactorid, 
-    approved: this.approved, 
-    approveddatetime: this.approveddatetime, 
-    actioneddatetime: this.actioneddatetime, 
-    actionedbyactorid: this.actionedbyactorid,
+    approvingactortype: this.approvingactor.type,
+    approvingactorid: this.approvingactor.id,
+    approved: this.approved,
+    createddatetime: moment().format('YYYY-MM-DD HH:mm:ss'),
+    approveddatetime: this.approveddatetime,
+    actioneddatetime: this.actioneddatetime,
     comment: this.comment
   };
 };
