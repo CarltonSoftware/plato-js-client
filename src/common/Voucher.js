@@ -48,6 +48,9 @@ function Voucher(id) {
       ),
       forusebyactor: Joi.object().optional().label('for use by').description(
         'Who the voucher is to be used by.  Normally this will be the current customer.'
+      ),
+      vouchersource: Joi.object().required().label('voucher source').description(
+        'Where the voucher was used.'
       )
     };
 
