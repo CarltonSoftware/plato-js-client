@@ -1,4 +1,5 @@
 var SingleEntity = require('./SingleEntity');
+var Joi = require('joi');
 
 function BookingApproval(id) {
   this.path = 'approval';
