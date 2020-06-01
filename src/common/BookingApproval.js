@@ -1,11 +1,14 @@
 var SingleEntity = require('./SingleEntity');
 var Joi = require('joi');
 var moment = require('moment');
+var EntityLink = require('./EntityLink');
 
 function BookingApproval(id) {
   this.path = 'approval';
   this.createPath = this.path;
   this.id = id;
+  this.approvingactor = new EntityLink({ entity: 'Actor' });
+  this.actionedbyactor = new EntityLink({ entity: 'Actor' });
 
   this.validSchema = function() {
     return {
