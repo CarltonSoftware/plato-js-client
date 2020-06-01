@@ -4,6 +4,7 @@ var EntityLink = require('./EntityLink');
 var VoucherBookingPeriod = require('./VoucherBookingPeriod');
 var VoucherHolidayPeriod = require('./VoucherHolidayPeriod');
 var VoucherRestriction = require('./VoucherRestriction');
+var VoucherSource = require('./VoucherSource');
 var Joi = require('joi');
 
 /**
@@ -13,6 +14,7 @@ function Voucher(id) {
   this.id = id;
   this.path = 'voucher';
   this.createPath = 'voucher';
+  this.vouchersource = new VoucherSource(3); // TODO: 3 = 'manual', vouchersourceid field is not null!
 
   this.bookingperiods = new Collection({
     object: VoucherBookingPeriod,
@@ -123,7 +125,7 @@ Voucher.prototype.toArray = function() {
         arr.restriction_propertyid = this.restriction_property.id;
       }
     }
-    arr.vouchersourceid = this.vouchersource.id || 3; // TODO: 3 = 'manual', vouchersourceid field is not null!
+    arr.vouchersourceid = this.vouchersource.id;
   }
 
   return arr;
