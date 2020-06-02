@@ -1,16 +1,21 @@
 var SingleEntity = require('./SingleEntity');
 var Joi = require('joi');
+var EntityLink = require('./EntityLink');
+var moment = require('moment');
 
 function BookingApproval(id) {
   this.path = 'approval';
   this.createPath = this.path;
   this.id = id;
   
+  this.approvingactor = new EntityLink({
+    entity: 'Owner'
+  });
+  
   this.validSchema = function() {
     return {
-      createddatetime: Joi.date().required().label('Created Date'), 
-      approvingactortype: Joi.string().required().label('Approving Actor Type'), 
-      approvingactorid: Joi.number().required().label('Approving Actor'), 
+      createddatetime: Joi.date().required().label('Created Date'),
+      approvingactor: Joi.object().required().label('Approving Actor'), 
       approved: Joi.boolean().optional().label('Approved'), 
       approveddatetime: Joi.date().optional().label(' Approved Date Time'),
       actioneddatetime: Joi.date().optional().label('Actioned Date Time'), 
@@ -24,9 +29,9 @@ BookingApproval.prototype = new SingleEntity();
 BookingApproval.prototype.toArray = function() {
   return {
     bookingid: this.bookingid,
-    createddatetime: this.createddatetime, 
-    approvingactortype: this.approvingactortype, 
-    approvingactorid: this.approvingactorid, 
+    createddatetime: !this.createddatetime ? moment().format('YYYY-MM-DD HH:mm:ss') : this.createddatetime, 
+    approvingactortype: this.approvingactor.type, 
+    approvingactorid: this.approvingactor.id, 
     approved: this.approved, 
     approveddatetime: this.approveddatetime, 
     actioneddatetime: this.actioneddatetime, 
