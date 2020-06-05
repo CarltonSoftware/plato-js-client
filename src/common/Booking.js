@@ -161,8 +161,7 @@ Booking.prototype.toArray = function() {
     overridestatus: this.overridestatus,
     bypasspetchecks: this.bypasspetchecks,
     ignorechangedayrules: this.ignorechangedayrules,
-
-
+    donotrecalculateprice: this.donotrecalculateprice,
 
     /* Web Booking */
     webbooking_createddatetime: this.webbooking.createddatetime,
