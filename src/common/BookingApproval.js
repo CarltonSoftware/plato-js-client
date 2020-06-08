@@ -14,7 +14,7 @@ function BookingApproval(id) {
   this.validSchema = function() {
     return {
       approvingactor: Joi.object().required().label('Approving Actor'),
-      approved: Joi.boolean().required().label('Approved'),
+      approved: Joi.boolean().optional().label('Approved'),
       approveddatetime: Joi.date().optional().label('Approved Date Time'),
       actioneddatetime: Joi.date().optional().label('Actioned Date Time'),
       comment: Joi.string().optional().allow('').label('Comment')
