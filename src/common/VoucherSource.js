@@ -16,6 +16,10 @@ VoucherSource.prototype.toArray = function() {
   };
 };
 
+VoucherSource.prototype.toString = function() {
+  return this.vouchersource;
+};
+
 VoucherSource.prototype.validSchema = function() {
   return Joi.object().keys({
     vouchersource: Joi.string().required().label('vouchersource'),
