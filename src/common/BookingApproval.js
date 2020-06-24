@@ -12,13 +12,18 @@ function BookingApproval(id) {
   this.actionedbyactor = new EntityLink({ entity: 'Actor' });
 
   this.validSchema = function() {
-    return {
+    var s = {
       approvingactor: Joi.object().required().label('Approving Actor'),
-      approved: Joi.boolean().optional().label('Approved'),
       approveddatetime: Joi.date().optional().label('Approved Date Time'),
       actioneddatetime: Joi.date().optional().label('Actioned Date Time'),
       comment: Joi.string().optional().allow('').label('Comment')
     };
+
+    if (this.id) {
+      s.approved = Joi.boolean().optional().label('Approved');
+    }
+
+    return s;
   }
 }
 
