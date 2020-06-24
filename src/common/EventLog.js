@@ -12,16 +12,17 @@ function EventLog(id) {
 
   this.validSchema = function() {
     var s = {
-      eventtype: Joi.object().required().label('Event type'),
-      type: Joi.string().required().label('Type').allow(['Booking', 'Property', 'Actor'])
+      eventtype: Joi.object().required().label('Event type')
     };
 
-    if (s.type === 'Booking') {
+    if (this.type === 'Booking') {
       s.booking = Joi.object().required().label('Booking');
-    } else if (s.type === 'Property') {
+    } else if (this.type === 'Property') {
       s.property = Joi.object().required().label('Property');
-    } else if (s.type === 'Actor') {
+    } else if (this.type === 'Actor') {
       s.actor = Joi.object().required().label('Actor');
+    } else {
+      s.type = Joi.any().required().label('Type').allow(['Booking', 'Property', 'Actor']);
     }
 
     return s;
