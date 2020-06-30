@@ -56,6 +56,10 @@ Template.prototype.copy = function() {
   );
 };
 
+Template.prototype.toString = function() {
+  return this.templatename;
+};
+
 Template.prototype.toArray = function() {
   return {
     type: this.type,

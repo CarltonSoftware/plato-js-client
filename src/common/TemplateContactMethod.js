@@ -53,14 +53,17 @@ TemplateContactMethod.prototype.getRefPath = function(ref) {
 };
 
 TemplateContactMethod.prototype.getLabel = function() {
+  return this.toString();
+};
+
+TemplateContactMethod.prototype.toString = function() {
   var lbl = [this.language.name, this.contactmethodtype.method];
-  if (this.parent) {
+  if (this.parent && this.parent.templatename) {
     lbl.unshift(this.parent.templatename);
   }
 
   return lbl.join(' - ');
 };
-
 TemplateContactMethod.prototype.getRef = function(ref) {
   return client.get(this.getRefPath(ref));
 };
