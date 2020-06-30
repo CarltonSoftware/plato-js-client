@@ -16,7 +16,9 @@ function BookingApproval(id) {
       approvingactor: Joi.object().required().label('Approving Actor'),
       approveddatetime: Joi.date().optional().label('Approved Date Time'),
       actioneddatetime: Joi.date().optional().label('Actioned Date Time'),
-      comment: Joi.string().optional().allow('').label('Comment')
+      comment: Joi.string().optional().allow('').label('Comment'),
+      approverquestion: Joi.string().optional().allow('').label('Question'),
+      pending: Joi.boolean().optional().label('Approval Pending')
     };
 
     if (this.id) {
@@ -36,7 +38,9 @@ BookingApproval.prototype.toArray = function() {
     createddatetime: moment().format('YYYY-MM-DD HH:mm:ss'),
     approveddatetime: this.approveddatetime,
     actioneddatetime: this.actioneddatetime,
-    comment: this.comment
+    comment: this.comment,
+    approverquestion: this.approverquestion,
+    pending: this.pending
   };
 
   if (typeof this.approved === 'boolean') {
