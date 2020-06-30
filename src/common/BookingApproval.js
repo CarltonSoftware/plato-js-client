@@ -20,7 +20,7 @@ function BookingApproval(id) {
     };
 
     if (this.id) {
-      s.approved = Joi.boolean().optional().label('Approved');
+      s.approved = Joi.boolean().optional().allow(null).label('Approved');
     }
 
     return s;
@@ -29,16 +29,21 @@ function BookingApproval(id) {
 
 BookingApproval.prototype = new SingleEntity();
 BookingApproval.prototype.toArray = function() {
-  return {
+  var s = {
     bookingid: this.bookingid,
     approvingactortype: this.approvingactor.type,
     approvingactorid: this.approvingactor.id,
-    approved: this.approved,
     createddatetime: moment().format('YYYY-MM-DD HH:mm:ss'),
     approveddatetime: this.approveddatetime,
     actioneddatetime: this.actioneddatetime,
     comment: this.comment
   };
+
+  if (typeof this.approved === 'boolean') {
+    s.approved = this.approved;
+  }
+
+  return s;
 };
 
 module.exports = BookingApproval;
