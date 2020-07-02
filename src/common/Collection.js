@@ -54,8 +54,31 @@ Collection.prototype.toArray = function() {
     page: this.page,
     limit: this.limit,
     orderBy: this.orderBy,
+    view: this.view,
     filter: this.filters
   };
+};
+
+/**
+ * @return {object}
+ */
+Collection.prototype.getFilterObject = function() {
+  return this.filters;
+}
+
+/**
+ * @return {string}
+ */
+Collection.prototype.getHash = function() {
+  var a = this.toArray();
+  a.fetchedTime = this.fetchedTime;
+  if (window && window.btoa) {
+    return btoa(JSON.stringify(a));
+  } else if (Buffer && Buffer.from) {
+    return Buffer.from(JSON.stringify(a), 'binary').toString('base64');
+  }
+
+  return '';
 };
 
 /**
@@ -131,6 +154,7 @@ Collection.prototype.fetch = function(dependencies, cache) {
   if (dependencies && dependencies.length) {
     return new Promise(function(resolve) {
       promise.then(function(collection) {
+        collection.fetchedTime = new Date();
         Promise.all(dependencies.map(function(dependency) {
           var fetched = {};
 

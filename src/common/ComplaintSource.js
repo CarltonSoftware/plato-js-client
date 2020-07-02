@@ -22,4 +22,8 @@ ComplaintSource.prototype.toArray = function() {
   };
 };
 
+ComplaintSource.prototype.toString = function() {
+  return this.complaintsource;
+};
+
 module.exports = ComplaintSource;

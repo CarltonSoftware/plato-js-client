@@ -3,6 +3,7 @@ module.exports.client = require('./common/platoJsClient');
 module.exports.common = {};
 module.exports.common.Encoding = require('./common/Encoding');
 module.exports.common.Feature = require('./common/Feature');
+module.exports.common.ApprovalType = require('./common/ApprovalType');
 module.exports.common.AvailableDay = require('./common/AvailableDay');
 module.exports.common.Unit = require('./common/Unit');
 module.exports.common.Title = require('./common/Title');
@@ -25,6 +26,7 @@ module.exports.common.Language = require('./common/Language');
 module.exports.common.Postcode = require('./common/Postcode');
 module.exports.common.CancellationAction = require('./common/CancellationAction');
 module.exports.common.CancellationReason = require('./common/CancellationReason');
+module.exports.common.CancellationReasonGroup = require('./common/CancellationReasonGroup');
 module.exports.common.ContactEntity = require('./common/ContactEntity');
 module.exports.common.ContactDocument = require('./common/ContactDocument');
 module.exports.common.ContactType = require('./common/ContactType');
@@ -51,6 +53,8 @@ module.exports.common.SettingValue = require('./common/SettingValue');
 module.exports.common.SettingValueType = require('./common/SettingValueType');
 module.exports.common.SettingValueOption = require('./common/SettingValueOption');
 module.exports.common.SourceCategory = require('./common/SourceCategory');
+module.exports.common.EventType = require('./common/EventType');
+module.exports.common.EventLog = require('./common/EventLog');
 
 //Owner
 module.exports.common.OwnerEnquiryActionType = require('./common/OwnerEnquiryActionType');
@@ -108,6 +112,12 @@ module.exports.common.FlagType = require('./common/FlagType');
 module.exports.common.Flag = require('./common/Flag');
 module.exports.common.PotentialDuplicate = require('./common/PotentialDuplicate');
 module.exports.common.ActorVatRegistrationPeriod = require('./common/ActorVatRegistrationPeriod');
+module.exports.common.Voucher = require('./common/Voucher');
+module.exports.common.VoucherRestriction = require('./common/VoucherRestriction');
+module.exports.common.VoucherHolidayPeriod = require('./common/VoucherHolidayPeriod');
+module.exports.common.VoucherBookingPeriod = require('./common/VoucherBookingPeriod');
+module.exports.common.VoucherSource = require('./common/VoucherSource');
+module.exports.common.BookingVoucher = require('./common/BookingVoucher');
 
 // Customer Releated Objects
 module.exports.common.Customer = require('./common/Customer');
@@ -255,6 +265,7 @@ module.exports.common.BookingCancellationAction = require('./common/BookingCance
 module.exports.common.ServiceContract = require('./common/ServiceContract');
 module.exports.common.ServiceContractType = require('./common/ServiceContractType');
 module.exports.common.BookingReason = require('./common/BookingReason');
+module.exports.common.BookingApproval = require('./common/BookingApproval');
 
 // Complaints
 module.exports.common.ComplaintReason = require('./common/ComplaintReason');
@@ -375,6 +386,7 @@ module.exports.common.Template = require('./common/Template');
 module.exports.common.TemplateContactMethod = require('./common/TemplateContactMethod');
 module.exports.common.TemplateRoleReason = require('./common/TemplateRoleReason');
 module.exports.common.TemplateContactMethodAttachment = require('./common/TemplateContactMethodAttachment');
+module.exports.common.TemplateContactMethodBranding = require('./common/TemplateContactMethodBranding');
 module.exports.common.TemplateContactMethodAttachmentProperty = require('./common/TemplateContactMethodAttachmentProperty');
 module.exports.common.TemplateElement = require('./common/TemplateElement');
 module.exports.common.TemplateSource = require('./common/TemplateSource');

@@ -22,4 +22,8 @@ ComplaintReason.prototype.toArray = function() {
   };
 };
 
+ComplaintReason.prototype.toString = function() {
+  return this.complaintreason;
+};
+
 module.exports = ComplaintReason;

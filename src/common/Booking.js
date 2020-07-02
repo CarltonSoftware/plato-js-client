@@ -17,6 +17,7 @@ var BookingExtra = require('./BookingExtra');
 var BookingProperty = require('./BookingProperty');
 var Promotion = require('./Promotion');
 var Complaint = require('./Complaint');
+var BookingVoucher = require('./BookingVoucher');
 
 function Booking(id) {
   this.path = 'booking';
@@ -85,6 +86,11 @@ function Booking(id) {
   this.complaints = new Collection({
     object: Complaint,
     path: 'complaint'
+  });
+  this.vouchers = new Collection({
+    object: BookingVoucher,
+    path: 'voucher',
+    parent: this
   });
 
   this.webbooking = new WebBooking();
@@ -155,8 +161,7 @@ Booking.prototype.toArray = function() {
     overridestatus: this.overridestatus,
     bypasspetchecks: this.bypasspetchecks,
     ignorechangedayrules: this.ignorechangedayrules,
-
-
+    donotrecalculateprice: this.donotrecalculateprice,
 
     /* Web Booking */
     webbooking_createddatetime: this.webbooking.createddatetime,
@@ -446,5 +451,17 @@ Booking.prototype.toString = function() {
   }
   return this.id;
 };
+
+/**
+ * Check if the booking is fully paid
+ *
+ * @return {Boolean}
+ */
+Booking.prototype.isFullyPaid = function() {
+  var sd = this.securitydeposit;
+  var balance = this.paymentsummary.booking;
+  return (balance.outstanding == 0 && (!sd.id || (sd.amount - sd.balance == 0)));
+};
+
 
 module.exports = Booking;

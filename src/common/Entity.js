@@ -36,7 +36,7 @@ Entity.prototype.mutateEntity = function(entity) {
 
     var propProper = prop;
     if (this.fieldsOverrides && Object.keys(this.fieldsOverrides).includes(prop)) {
-      // converts minified 'fields' objects to their rightful names, 
+      // converts minified 'fields' objects to their rightful names,
       // e.g. 'propertynano' in WorkOrderFilterService will get changed to 'property'
       // (requires WorkOrder obj to have 'fieldsOverrides' object)
       propProper = this.fieldsOverrides[prop];
@@ -48,7 +48,7 @@ Entity.prototype.mutateEntity = function(entity) {
           // See if EntityLink function is being used
           if (typeof this[propProper].factory === 'function') {
             this[propProper] = this[propProper].factory(entity[prop]);
-          } else {
+          } else if (typeof this[propProper].mapRouteIds === 'function') {
             // Map id's of route string to entity object so the get() request will
             // know of the correct path.
             this[propProper].mapRouteIds(entity[prop]);

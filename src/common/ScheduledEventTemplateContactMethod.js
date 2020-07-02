@@ -42,7 +42,7 @@ ScheduledEventTemplateContactMethod.prototype.toArray = function() {
   var toArrObj = {
     templatecontactmethodid: this.templatecontactmethod.id,
   };
-  
+
   if(this.paused) {
     toArrObj.paused = this.paused;
   } else if (this.paused === false) {
@@ -64,12 +64,26 @@ ScheduledEventTemplateContactMethod.prototype.hasBranding = function(branding) {
     }
     if (this.templatecontactmethod.parent.type === 'WorkOrderInstanceTemplate') {
       return this.templatecontactmethod.parent.branding.id === branding.id;
-    }    
+    }
     if (this.templatecontactmethod.parent.type === 'MarketingCampaignTemplate') {
       return this.templatecontactmethod.parent.marketingbrand.id === branding.marketingbrand.id;
     }
   }
   return false;
+};
+
+ScheduledEventTemplateContactMethod.prototype.shouldLoadAvailable = function(branding, ignorepausedflag, includeMultiBrand) {
+  var brandingTypeCheck = this.hasBranding(branding);
+
+  if (includeMultiBrand === true && !brandingTypeCheck) {
+    brandingTypeCheck = (this.templatecontactmethod.parent.type === 'MultiBrandTemplate');
+  }
+
+  if (typeof ignorepausedflag === 'boolean') {
+    return brandingTypeCheck && (!ignorepausedflag || !this.paused);
+  }
+
+  return brandingTypeCheck && !this.paused;
 };
 
 ScheduledEventTemplateContactMethod.prototype.validSchema = function() {

@@ -1,5 +1,6 @@
 var SingleEntity = require('./SingleEntity');
 var Customer = require('./Customer');
+var Owner = require('./Owner');
 var Booking = require('./Booking');
 var Branding = require('./Branding');
 var PaymentMethod = require('./PaymentMethod');
@@ -13,6 +14,7 @@ function SagePayPayment(id) {
   this.createPath = 'sagepaypayment';
   this.id = id;
   this.customer = new Customer();
+  this.owner = new Owner();
   this.booking = new Booking();
   this.branding = new Branding();
   this.contactdetailpostal = new ActorContactDetailAddress();
@@ -23,12 +25,20 @@ function SagePayPayment(id) {
 
 SagePayPayment.prototype = new SingleEntity();
 SagePayPayment.prototype.toArray = function() {
+  
   var arr = {
-    customerid: this.customer.id,
     amount: this.amount,
     paymentmethodid: this.paymentmethod.id,
     currencyid: this.currency.id
   };
+  
+  if (this.customer && this.customer.id) {
+    arr.customerid = this.customer.id
+  }  
+  
+  if (this.owner && this.owner.id) {
+    arr.ownerid = this.owner.id
+  }
 
   if (this.contactdetailpostal) {
     arr.contactdetailpostalid = this.contactdetailpostal.id;
@@ -116,12 +126,18 @@ SagePayPayment.prototype.invalidate = function() {
   return this.createPromiseResult([this.getUpdatePath(), 'invalidate'].join('/'), {});
 };
 
-SagePayPayment.prototype.refund = function(amount) {
-  return this.createPromiseResult([this.getUpdatePath(), 'refund'].join('/'), { amount: amount });
+SagePayPayment.prototype.refund = function(amount, expirydate) {
+  var obj = {
+    amount: amount
+  };
+  if (expirydate) {
+    obj.expirydate = expirydate;
+  }
+  return this.createPromiseResult([this.getUpdatePath(), 'refund'].join('/'), obj);
 };
 
 SagePayPayment.prototype.repeat = function(bookingamount, securitydepositamount) {
-  return this.createPromiseResult([this.getUpdatePath(), 'repeat'].join('/'), { 
+  return this.createPromiseResult([this.getUpdatePath(), 'repeat'].join('/'), {
     bookingamount: bookingamount,
     securitydepositamount: securitydepositamount
   });
@@ -129,6 +145,11 @@ SagePayPayment.prototype.repeat = function(bookingamount, securitydepositamount)
 
 SagePayPayment.prototype.detail = function() {
   return client.get([this.getUpdatePath(), 'detail'].join('/'));
+};
+
+SagePayPayment.prototype.import = function(bookingId, doNotConfirm) {
+  doNotConfirm = (typeof doNotConfirm !== 'undefined') ?  doNotConfirm : false
+  return this.updatePromiseResult([this.getUpdatePath(), 'import', bookingId, doNotConfirm].join('/'), {});
 };
 
 module.exports = SagePayPayment;

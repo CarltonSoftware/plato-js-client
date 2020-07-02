@@ -231,15 +231,12 @@ function FilterCollection() {
    */
   this.getFilterPath = function() {
     var path = this.getPath() + '?page=' + this.page + '&limit=' + this.limit + this.getFilterString();
-    if (this.orderBy) {
-      path += '&orderBy=' + this.orderBy;
-    }
-    if (this.searchId) {
-      path += '&searchId=' + this.searchId;
-    }
-    if (this.fields) {
-      path += '&fields=' + this.fields;
-    }
+
+    ['orderBy', 'searchId', 'fields', 'view'].forEach(function(k) {
+      if (this[k]) {
+        path += '&' + k + '=' + this[k];
+      }
+    }.bind(this));
     return path;
   };
 
@@ -295,6 +292,7 @@ FilterCollection.prototype.fetch = function(dependencies, cache) {
   if (dependencies && dependencies.length) {
     return new Promise(function(resolve) {
       promise.then(function(collection) {
+        collection.fetchedTime = new Date();
         Promise.all(dependencies.map(function(dependency) {
           var fetched = {};
           var isNestedDependency = (dependency.indexOf('.') !== -1);
@@ -328,6 +326,21 @@ FilterCollection.prototype.fetch = function(dependencies, cache) {
   }
 
   return promise;
+};
+
+/**
+ * toArray method used in the okPromiseResult callback
+ *
+ * @return {object}
+ */
+FilterCollection.prototype.toArray = function() {
+  return {
+    page: this.page,
+    limit: this.limit,
+    orderBy: this.orderBy,
+    view: this.view,
+    filter: this.getFilterString()
+  };
 };
 
 /**
