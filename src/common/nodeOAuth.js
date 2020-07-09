@@ -101,8 +101,7 @@ module.exports = interceptor({
     if (config.token) {
       request.headers.Authorization = config.token;
       return request;
-    }
-    else {
+    } else {
       return authorize(config).then(function (authorization) {
         request.headers.Authorization = config.token = authorization;
         return request;
