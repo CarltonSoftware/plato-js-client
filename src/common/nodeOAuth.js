@@ -1,12 +1,3 @@
-/*
- * Copyright 2012-2016 the original author or authors
- * @license MIT, see LICENSE.txt for details
- *
- * @author Scott Andrews
- */
-
-'use strict';
-
 var interceptor, UrlBuilder, pubsub;
 
 interceptor = require('rest/interceptor');
@@ -118,7 +109,7 @@ module.exports = interceptor({
       });
     }
   },
-  response: function (response, config, meta) {
+  response: function (response) {
     if (response.status.code === 403 || response.status.code === 401) {
       return Promise.reject(response);
     }
