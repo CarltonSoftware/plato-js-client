@@ -38,6 +38,7 @@ var platoJsClient = (function () {
           params = require('rest/interceptor/params'),
           host = '/',
           oAuthWithoutHost = false,
+          storeResponse = false,
           prefix = '',
           oAuthRedirectUrl,
           authPath = '/oauth/v2/auth',
@@ -130,6 +131,8 @@ var platoJsClient = (function () {
             token = localStorage.getItem(TOKENNAME);
           }
 
+          storeResponse = (!options.storeResponse) ? false : options.storeResponse;
+          this.storeResponse =storeResponse;
           this.token = token;
 
           return this;
