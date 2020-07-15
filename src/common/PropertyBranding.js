@@ -8,6 +8,7 @@ var PropertyBrandingChangeDayTemplate = require('./PropertyBrandingChangeDayTemp
 var Status = require('./Status');
 var Collection = require('./Collection');
 var moment = require('moment');
+const FilterCollection = require('./FilterCollection');
 
 function PropertyBranding(id) {
   this.path = 'branding';
@@ -31,10 +32,9 @@ function PropertyBranding(id) {
   this.petextrabranding = new ExtraBranding();
   this.status = new Status();
 
-  this.prices = new Collection({
+  this.prices = new FilterCollection({
     object: PropertyBrandingPrice,
-    path: 'price',
-    parent: this
+    path: 'priceperiod',
   });
 
   this.availability = new Collection({
@@ -86,25 +86,16 @@ PropertyBranding.prototype.toArray = function() {
  * @param {string} toDate
  * @param {string} type
  */
-PropertyBranding.prototype.getPrices = function(fromDate, toDate, type) {
-  if (typeof type === 'undefined') {
-    type = '';
-  }
+PropertyBranding.prototype.getPrices = function(fromDate, toDate) {
 
   var p = this.prices;
 
-  if ((fromDate && toDate) || type) {
-    var data = {};
-    if (type) {
-      data.type = type;
-    }
-    if (fromDate && toDate) {
-      data.fromdate = fromDate;
-      data.todate = toDate;
-    }
-    p.toArray = function() {
-      return data;
-    };
+  p.addFilter('propertybrandingid', this.id);
+
+  if(fromDate && toDate) {
+    p.addFilter('fromdate', '>' + fromDate);
+    p.addFilter('todate', '<' + toDate);
+    p.limit = 100;
   }
 
   return p.fetch();

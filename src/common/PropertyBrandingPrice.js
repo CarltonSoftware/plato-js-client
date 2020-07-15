@@ -25,6 +25,7 @@ function PropertyBrandingPrice(id) {
   });
 
   this.yearpriceband = new PropertyBrandingYearPriceband();
+  this.yearpriceband.parent = this.parent;
 
   // Override the mutate function to set the parent on pricetypebranding element
   // This will make sure the path is correct
