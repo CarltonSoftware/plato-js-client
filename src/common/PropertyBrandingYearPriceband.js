@@ -5,7 +5,6 @@ var ReducedOccupancyPrice = require('./ReducedOccupancyPrice');
 var Joi = require('joi');
 
 function PropertyBrandingYearPriceband(propertyid, propertybrandingid, year, id) {
-  console.log('this parent !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1', this.parent);
   this.path = 'property/' + propertyid + '/branding/' + propertybrandingid + '/year/' + year + '/priceband';
   this.createPath = this.path;
   this.id = id;

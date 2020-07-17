@@ -13,7 +13,7 @@ var PropertyBrandingYearPriceband = require('./PropertyBrandingYearPriceband');
  * @param {number} id
  */
 function PropertyBrandingPrice(id) {
-  this.path = 'price';
+  this.path = 'priceperiod';
   this.createPath = this.path;
   this.id = id;
 
@@ -38,6 +38,7 @@ function PropertyBrandingPrice(id) {
 
 PropertyBrandingPrice.prototype = new SingleEntity();
 PropertyBrandingPrice.prototype.toArray = function() {
+ 
   return {
     type: this.type,
     fromdate: this.fromdate,
