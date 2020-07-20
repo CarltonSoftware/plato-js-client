@@ -101,6 +101,7 @@ module.exports.common.Actors = require('./common/Actors');
 module.exports.common.ActorContactDetailAddress = require('./common/ActorContactDetailAddress');
 module.exports.common.ActorContactDetailOther = require('./common/ActorContactDetailOther');
 module.exports.common.ActorContactDetailPhone = require('./common/ActorContactDetailPhone');
+module.exports.common.ActorContactDetailPermission = require('./common/ActorContactDetailPermission');
 module.exports.common.ContactPreference = require('./common/ContactPreference');
 module.exports.common.ActorManagedActivity = require('./common/ActorManagedActivity');
 module.exports.common.ActorLocation = require('./common/ActorLocation');

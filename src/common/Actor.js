@@ -18,6 +18,7 @@ var ActorManagedActivity = require('./ActorManagedActivity');
 var ActorSecurity = require('./ActorSecurity');
 var ActorSetting = require('./ActorSetting');
 var ActorCategory = require('./ActorCategory');
+var ActorContactDetailPermission = require('./ActorContactDetailPermission');
 var Flag = require('./Flag');
 var _ = require('underscore');
 
@@ -87,6 +88,12 @@ function Actor(id) {
       P: ActorContactDetailAddress,
       F: ActorContactDetailPhone
     }
+  });
+
+  this.contactdetailpermissions = new Collection({
+    object: ActorContactDetailPermission,
+    parent: this,
+    path: 'contactdetailpermission'
   });
 
   this.flags = new Collection({
@@ -430,7 +437,7 @@ Actor.prototype.toArray = function() {
   if (this.hasOwnProperty('updateworkorders')) {
     arr.updateworkorders = this.updateworkorders;
   }
-  
+
   return arr;
 };
 
