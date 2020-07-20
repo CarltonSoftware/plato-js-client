@@ -20,10 +20,10 @@ function TemplateContactMethodAttachment(id) {
     path: 'property',
     parent: this
   });
-  this.branding = new Collection({
+  this.brandings = new Collection({
     object: TemplateContactMethodAttachmentBranding,
     path: 'branding',
-    parent: this 
+    parent: this
   });
 }
 
