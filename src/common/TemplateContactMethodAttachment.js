@@ -3,6 +3,7 @@ var EntityLink = require('./EntityLink');
 var Document = require('./Document');
 var Collection = require('./Collection');
 var TemplateContactMethodAttachmentProperty = require('./TemplateContactMethodAttachmentProperty');
+var TemplateContactMethodAttachmentBranding = require('./TemplateContactMethodAttachmentBranding');
 
 function TemplateContactMethodAttachment(id) {
   this.createPath = this.path = 'attachment';
@@ -18,6 +19,11 @@ function TemplateContactMethodAttachment(id) {
     object: TemplateContactMethodAttachmentProperty,
     path: 'property',
     parent: this
+  });
+  this.branding = new Collection({
+    object: TemplateContactMethodAttachmentBranding,
+    path: 'branding',
+    parent: this 
   });
 }
 
