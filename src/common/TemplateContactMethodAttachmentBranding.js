@@ -1,6 +1,5 @@
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
-var Branding = require('./Branding');
 
 function TemplateContactMethodAttachmentBranding(id) {
   this.createPath = this.path = 'branding';
