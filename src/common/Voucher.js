@@ -4,6 +4,7 @@ var EntityLink = require('./EntityLink');
 var VoucherBookingPeriod = require('./VoucherBookingPeriod');
 var VoucherHolidayPeriod = require('./VoucherHolidayPeriod');
 var VoucherRestriction = require('./VoucherRestriction');
+var VoucherSource = require('./VoucherSource');
 var Joi = require('joi');
 
 /**
@@ -13,6 +14,7 @@ function Voucher(id) {
   this.id = id;
   this.path = 'voucher';
   this.createPath = 'voucher';
+  this.vouchersource = new VoucherSource(3); // TODO: 3 = 'manual', vouchersourceid field is not null!
 
   this.bookingperiods = new Collection({
     object: VoucherBookingPeriod,
@@ -35,6 +37,8 @@ function Voucher(id) {
   this.createdbyactor = new EntityLink({ entity: 'Actor' });
   this.cancelledbyactor = new EntityLink({ entity: 'Actor' });
   this.booking = new EntityLink({ entity: 'Booking' });
+  this.frombooking = new EntityLink({ entity: 'Booking' });
+  this.vouchersource = new EntityLink({ entity: 'VoucherSource' });
 
   this.validSchema = function() {
     var s = {
@@ -46,6 +50,9 @@ function Voucher(id) {
       ),
       forusebyactor: Joi.object().optional().label('for use by').description(
         'Who the voucher is to be used by.  Normally this will be the current customer.'
+      ),
+      vouchersource: Joi.object().required().label('voucher source').description(
+        'Where the voucher was used.'
       )
     };
 
@@ -95,10 +102,10 @@ Voucher.prototype = new SingleEntity();
 Voucher.prototype.toArray = function() {
   var arr = {
     value: this.value,
-    cancelleddatetime: this.cancelleddatetime
+    cancelleddatetime: this.cancelleddatetime,
   };
 
-  ['paidforbyactor', 'forusebyactor', 'usedbyactor', 'createdbyactor', 'cancelledbyactor'].forEach(function(key) {
+  ['paidforbyactor', 'forusebyactor', 'usedbyactor', 'createdbyactor', 'cancelledbyactor', 'frombooking'].forEach(function(key) {
     if (this[key].id) {
       arr[key + 'id'] = this[key].id;
     }
@@ -118,6 +125,7 @@ Voucher.prototype.toArray = function() {
         arr.restriction_propertyid = this.restriction_property.id;
       }
     }
+    arr.vouchersourceid = this.vouchersource.id;
   }
 
   return arr;

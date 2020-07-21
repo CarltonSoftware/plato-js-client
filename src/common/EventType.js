@@ -31,4 +31,8 @@ EventType.prototype.toArray = function() {
   };
 };
 
+EventType.prototype.toString = function() {
+  return this.eventtype;
+};
+
 module.exports = EventType;

@@ -1,5 +1,6 @@
 var statusError = require('../error/statusError');
 var lzstring = require('lz-string');
+var isBrowser = true;
 
 if (typeof localStorage === 'undefined') {
   var LocalStorage = require('node-localstorage').LocalStorage;
@@ -7,6 +8,7 @@ if (typeof localStorage === 'undefined') {
 }
 if (typeof window === 'undefined') {
   window = {}; // eslint-disable-line no-global-assign
+  isBrowser = false;
 }
 
 var platoJsClient = (function () {
@@ -36,6 +38,7 @@ var platoJsClient = (function () {
           params = require('rest/interceptor/params'),
           host = '/',
           oAuthWithoutHost = false,
+          storeResponse = false,
           prefix = '',
           oAuthRedirectUrl,
           authPath = '/oauth/v2/auth',
@@ -128,6 +131,8 @@ var platoJsClient = (function () {
             token = localStorage.getItem(TOKENNAME);
           }
 
+          storeResponse = (!options.storeResponse) ? false : options.storeResponse;
+          this.storeResponse =storeResponse;
           this.token = token;
 
           return this;
@@ -294,17 +299,24 @@ var platoJsClient = (function () {
             newAuthPath = authPath;
           }
 
+          var o = {
+            clientId: clientId,
+            authorizationUrlBase: newAuthPath,
+            token: this.token ? 'Bearer ' + this.token : false,
+            redirectUrl: oAuthRedirectUrl,
+            windowStrategy: windowStrategy
+          };
+
+          if (!isBrowser) {
+            oAuth = require('./nodeOAuth');
+          }
+
+
           return rest.wrap(mime)
             .wrap(pathPrefix, { prefix: host + prefix })
             .wrap(defaultRequest)
             .wrap(params)
-            .wrap(oAuth, {
-                clientId: clientId,
-                authorizationUrlBase: newAuthPath,
-                windowStrategy: windowStrategy,
-                token: this.token ? 'Bearer ' + this.token : false,
-                redirectUrl: oAuthRedirectUrl
-            });
+            .wrap(oAuth, o);
         };
 
         this.getBasicEndpoint = function(path) {

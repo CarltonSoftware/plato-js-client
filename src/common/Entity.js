@@ -21,6 +21,10 @@ function Entity() {}
  * @returns {Entity.prototype}
  */
 Entity.prototype.mutateResponse = function(entity) {
+  if (client.storeResponse) {
+    this.jsonResponse = entity;
+  }
+
   return this.mutateEntity(entity);
 };
 

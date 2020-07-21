@@ -15,7 +15,7 @@ function OwnerCharge(id) {
   this.supplier = new Supplier();
   this.invoiceitem = new SupplierInvoiceItem();
   this.createdby = new EntityLink({
-    entity: 'TabsUser'
+    entity: 'Actor'
   });
 }
 

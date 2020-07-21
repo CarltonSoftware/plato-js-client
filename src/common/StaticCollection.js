@@ -485,4 +485,15 @@ StaticCollection.prototype.index = function(pointer) {
   return this.collection[pointer];
 };
 
+/**
+ * Returns the name of the mutator target object if defined
+ *
+ * @return {string}
+ */
+StaticCollection.prototype.getObjectName = function() {
+  if (typeof this.options.object !== 'undefined') {
+    return this.options.object.toString().split('function ').pop().split('(').shift();
+  }
+};
+
 module.exports = StaticCollection;

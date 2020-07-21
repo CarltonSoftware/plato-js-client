@@ -22,4 +22,8 @@ ComplaintStatus.prototype.toArray = function() {
   };
 };
 
+ComplaintStatus.prototype.toString = function() {
+  return this.complaintstatus;
+};
+
 module.exports = ComplaintStatus;
