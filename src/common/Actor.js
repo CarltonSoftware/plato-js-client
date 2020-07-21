@@ -20,6 +20,7 @@ var ActorSetting = require('./ActorSetting');
 var ActorCategory = require('./ActorCategory');
 var ActorContactDetailPermission = require('./ActorContactDetailPermission');
 var Flag = require('./Flag');
+var ZendeskTicket = require('./ZendeskTicket');
 var _ = require('underscore');
 
 /**
@@ -100,6 +101,12 @@ function Actor(id) {
     object: Flag,
     parent: this,
     path: 'flag'
+  });
+  
+  this.zendesktickets = new Collection({
+    object: ZendeskTicket,
+    path: 'zendeskticket',
+    parent: this
   });
 }
 

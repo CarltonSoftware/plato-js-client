@@ -466,3 +466,4 @@ module.exports.common.AccidentalDamageDeposit = require('./common/AccidentalDama
 // Programs
 module.exports.common.Program = require('./common/Program');
 module.exports.common.ActorProgram = require('./common/ActorProgram');
+module.exports.common.ZendeskTicket = require('./common/ZendeskTicket');
