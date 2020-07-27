@@ -1,6 +1,5 @@
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
-var EntityLink = require('./EntityLink');
 
 function TextItem(id) {
   this.createPath = this.path = 'textitem';
