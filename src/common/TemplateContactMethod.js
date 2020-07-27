@@ -36,6 +36,8 @@ TemplateContactMethod.prototype.toArray = function() {
     fromdate: this.fromdate,
     todate: this.todate,
     description: this.description,
+    excludestandardheader: this.excludestandardheader,
+    excludestandardfooter: this.excludestandardfooter,
     contactmethodtypeid: this.contactmethodtype.id,
     languageid: this.language.id,
   };
