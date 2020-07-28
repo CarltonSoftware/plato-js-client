@@ -15,6 +15,7 @@ var PropertyCommission = require('./PropertyCommission');
 var PropertyNote = require('./PropertyNote');
 var NoteFilterCollection = require('./NoteFilterCollection');
 var PropertyHousekeeping = require('./PropertyHousekeeping');
+var PropertyApproval = require('./PropertyApproval');
 var InspectionType = require('./InspectionType');
 var AvailableBreak = require('./AvailableBreak');
 var Joi = require('joi');
@@ -88,6 +89,11 @@ function Property(id) {
   this.availablebreaks = new Collection({
     object: AvailableBreak,
     path: 'availablebreak',
+    parent: this
+  });
+  this.approvals = new Collection({
+    object: PropertyApproval,
+    path: 'approval',
     parent: this
   });
 
