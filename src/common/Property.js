@@ -120,6 +120,7 @@ Property.prototype.toArray = function() {
     maximumpets: this.maximumpets,
     accomodationdescription: this.accomodationdescription,
     tabspropref: this.tabspropref,
+    virtualproperty: this.virtualproperty || false,
     status: this.status ? this.status.name : null,
     telephonenumber: this.telephonenumber,
     address_line1: this.address.line1,
