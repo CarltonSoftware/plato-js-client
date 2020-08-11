@@ -16,10 +16,6 @@ PropertyLink.prototype.toArray = function() {
   };
 };
 
-PropertyLink.prototype.toString = function() {
-  return [this.nominalcode, this.description].join(' ');
-};
-
 PropertyLink.prototype.validSchema = function() {
   return Joi.object().keys({
     virtualproperty: Joi.object().optional().label('Linked Property')
