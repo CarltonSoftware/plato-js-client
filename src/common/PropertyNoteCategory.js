@@ -20,9 +20,9 @@ PropertyNoteCategory.prototype.toArray = function() {
 
 PropertyNoteCategory.prototype.validSchema = function() {
   return Joi.object().keys({
-    notetype: Joi.object().required().label('note type'),
     name: Joi.string().required().label('Name'),
-    description: Joi.string().optional().allow('').label('Description')
+    description: Joi.string().required().label('Description'),
+    notetype: Joi.object().required().label('note type')
   });
 };
 
