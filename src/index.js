@@ -305,6 +305,7 @@ module.exports.common.Note = require('./common/Note');
 module.exports.common.NoteText = require('./common/NoteText');
 module.exports.common.NoteType = require('./common/NoteType');
 module.exports.common.NoteActor = require('./common/NoteActor');
+module.exports.common.PropertyNoteCategory = require('./common/PropertyNoteCategory');
 
 // Payment Related Objects
 module.exports.common.ActorPaymentRefund = require('./common/ActorPaymentRefund');
