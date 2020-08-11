@@ -13,6 +13,7 @@ function PropertyNote(id) {
   });
 
   this.note = new Note();
+  this.propertynotecategory = new PropertyNoteCategory();
 }
 PropertyNote.prototype = new SingleEntity();
 
