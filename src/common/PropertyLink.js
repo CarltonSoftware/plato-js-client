@@ -12,7 +12,7 @@ PropertyLink.prototype = new SingleEntity();
 
 PropertyLink.prototype.toArray = function() {
   return {
-    virtualpropertyid: this.virtualproperty.id
+    childpropertyid: this.virtualproperty.id
   };
 };
 
