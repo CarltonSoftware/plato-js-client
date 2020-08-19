@@ -210,6 +210,8 @@ module.exports.common.SpecialOfferDiscountExtra = require('./common/SpecialOffer
 module.exports.common.SpecialOfferDiscountedExtra = require('./common/SpecialOfferDiscountedExtra');
 module.exports.common.PropertyApproval = require('./common/PropertyApproval');
 module.exports.common.PropertyLink = require('./common/PropertyLink');
+module.exports.common.ParkingPermit = require('./common/ParkingPermit');
+module.exports.common.ParkingPermitHolidayPeriod = require('./common/ParkingPermitHolidayPeriod');
 
 // Key Related Objects
 module.exports.common.Keyy = require('./common/Keyy');
