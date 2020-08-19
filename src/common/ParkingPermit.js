@@ -16,8 +16,8 @@ function ParkingPermit(id) {
 
   this.validSchema = function() {
     return {
-      location: Joi.string().required().min(1).label('location').description('Parking permit location')
-      owneroragencyrequirement: Joi.string().required().min(1).label('owner or agency requirement')
+      location: Joi.string().required().min(1).label('location').description('Parking permit location'),
+      owneroragencyrequirement: Joi.string().required().min(1).label('owner or agency requirement'),
       maximumvehicles: Joi.number().required().label('maximum vehicles'),
       comments: Joi.string().optional().allow('').label('comments')
     };

@@ -19,6 +19,7 @@ var PropertyApproval = require('./PropertyApproval');
 var PropertyLink = require('./PropertyLink');
 var InspectionType = require('./InspectionType');
 var AvailableBreak = require('./AvailableBreak');
+var ParkingPermit = require('./ParkingPermit');
 var Joi = require('joi');
 var moment = require('moment');
 
@@ -100,6 +101,11 @@ function Property(id) {
   this.links = new Collection({
     object: PropertyLink,
     path: 'link',
+    parent: this
+  });
+  this.parkingpermits = new Collection({
+    object: ParkingPermit,
+    path: 'parkingpermit',
     parent: this
   });
 
