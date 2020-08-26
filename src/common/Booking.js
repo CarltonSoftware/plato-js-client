@@ -163,6 +163,8 @@ Booking.prototype.toArray = function() {
     ignorechangedayrules: this.ignorechangedayrules,
     donotrecalculateprice: this.donotrecalculateprice,
 
+    parkingpermitsrequired: this.parkingpermitsrequired,
+
     /* Web Booking */
     webbooking_createddatetime: this.webbooking.createddatetime,
     webbooking_reviewstartdatetime: this.webbooking.reviewstartdatetime,
