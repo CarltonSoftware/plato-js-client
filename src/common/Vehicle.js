@@ -8,11 +8,11 @@ function Vehicle(id) {
 
   this.validSchema = function() {
     return {
-      make:  Joi.string().label('make'),
-      model: Joi.string().label('model'),
-      registration: Joi.string().min(4).label('registration'),
-      colour: Joi.string().allow("").label('colour'),
-      comments: Joi.string().allow("").label('comments'),
+      registration: Joi.string().min(4).label('registration').required(),
+      make:  Joi.string().label('make').allow('').optional(),
+      model: Joi.string().label('model').allow('').optional(),
+      colour: Joi.string().allow('').label('colour'),
+      comments: Joi.string().allow('').label('comments'),
     }
   };
 }
