@@ -364,6 +364,10 @@ Booking.prototype.getStatus = function() {
         item.bookingType += ' - Cancelled';
       }
       item.showAs = 'owner';
+
+      if (this.ownerbookingtype && this.ownerbookingtype.name.substring(0, 6).toLowerCase() === 'buffer') {
+        item.showAs = 'bookingbuffer';
+      }
       break;
     case 'customer':
       // Customer Booking
