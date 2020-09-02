@@ -19,6 +19,7 @@ function ParkingPermit(id) {
       location: Joi.string().required().min(1).label('location').description('Parking permit location'),
       owneroragencyrequirement: Joi.any().allow(['Owner', 'Agency']).required().label('owner or agency requirement'),
       maximumvehicles: Joi.number().required().label('maximum vehicles'),
+      locationofpermit: Joi.string().optional().allow('').label('location of permit'),
       comments: Joi.string().optional().allow('').label('comments')
     };
   };
@@ -30,6 +31,7 @@ ParkingPermit.prototype.toArray = function() {
     location: this.location,
     owneroragencyrequirement: this.owneroragencyrequirement,
     maximumvehicles: this.maximumvehicles,
+    locationofpermit: this.locationofpermit,
     comments: this.comments
   };
 };
