@@ -7,6 +7,7 @@ function TextItem(id) {
   this.branding = new EntityLink({ entity: 'Branding' });
   this.encoding = new EntityLink({ entity: 'Encoding' });
   this.language = new EntityLink({ entity: 'Language' });
+  this.contactmethodtype = new EntityLink({ entity: 'ContactMethodType' });
 }
 
 TextItem.prototype = new SingleEntity();
@@ -20,6 +21,7 @@ TextItem.prototype.toArray = function() {
     donotdelete: this.donotdelete,
     encodingid: this.encoding.id,
     languageid: this.language.id,
+    contactmethodtypeid: this.contactmethodtype.id,
     standardheader: this.standardheader,
     standardfooter: this.standardfooter
   };

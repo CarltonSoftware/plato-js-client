@@ -10,6 +10,7 @@ function AgencyBookingType(id) {
     return {
       name: Joi.string().required().label('name'),
       description: Joi.string().required().label('description'),
+      donotaddservices: Joi.boolean().required().label('do not add services?')
     };
   }
 }
@@ -19,6 +20,7 @@ AgencyBookingType.prototype.toArray = function() {
   return {
     name: this.name,
     description: this.description,
+    donotaddservices: this.donotaddservices
   };
 };
 

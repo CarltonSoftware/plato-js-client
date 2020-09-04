@@ -18,6 +18,7 @@ var BookingProperty = require('./BookingProperty');
 var Promotion = require('./Promotion');
 var Complaint = require('./Complaint');
 var BookingVoucher = require('./BookingVoucher');
+var BookingVehicle = require('./BookingVehicle');
 
 function Booking(id) {
   this.path = 'booking';
@@ -92,6 +93,11 @@ function Booking(id) {
     path: 'voucher',
     parent: this
   });
+  this.vehicles = new Collection({
+    object: BookingVehicle,
+    path: 'vehicle',
+    parent: this
+  });
 
   this.webbooking = new WebBooking();
 }
@@ -162,6 +168,8 @@ Booking.prototype.toArray = function() {
     bypasspetchecks: this.bypasspetchecks,
     ignorechangedayrules: this.ignorechangedayrules,
     donotrecalculateprice: this.donotrecalculateprice,
+
+    parkingpermitsrequired: this.parkingpermitsrequired,
 
     /* Web Booking */
     webbooking_createddatetime: this.webbooking.createddatetime,
@@ -362,6 +370,10 @@ Booking.prototype.getStatus = function() {
         item.bookingType += ' - Cancelled';
       }
       item.showAs = 'owner';
+
+      if (this.ownerbookingtype && this.ownerbookingtype.name.substring(0, 6).toLowerCase() === 'buffer') {
+        item.showAs = 'bookingbuffer';
+      }
       break;
     case 'customer':
       // Customer Booking

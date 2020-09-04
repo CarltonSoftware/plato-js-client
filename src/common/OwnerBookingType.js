@@ -13,6 +13,7 @@ OwnerBookingType.prototype.validSchema = function() {
     name: Joi.string().required().label('name'),
     description: Joi.string().required().label('description'),
     longdescription: Joi.string().required().label('long description'),
+    donotaddservices: Joi.boolean().required().label('donotaddservices'),
     inactive: Joi.boolean().optional().label('inactive')
   };
 };
@@ -22,6 +23,7 @@ OwnerBookingType.prototype.toArray = function() {
     name: this.name,
     description: this.description,
     longdescription: this.longdescription,
+    donotaddservices: this.donotaddservices,
     inactive: this.inactive
   };
 };

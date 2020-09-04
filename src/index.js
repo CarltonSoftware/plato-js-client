@@ -101,6 +101,7 @@ module.exports.common.Actors = require('./common/Actors');
 module.exports.common.ActorContactDetailAddress = require('./common/ActorContactDetailAddress');
 module.exports.common.ActorContactDetailOther = require('./common/ActorContactDetailOther');
 module.exports.common.ActorContactDetailPhone = require('./common/ActorContactDetailPhone');
+module.exports.common.ActorContactDetailPermission = require('./common/ActorContactDetailPermission');
 module.exports.common.ContactPreference = require('./common/ContactPreference');
 module.exports.common.ActorManagedActivity = require('./common/ActorManagedActivity');
 module.exports.common.ActorLocation = require('./common/ActorLocation');
@@ -207,6 +208,10 @@ module.exports.common.AnswerOption = require('./common/AnswerOption');
 module.exports.common.PromotePeriod = require('./common/PromotePeriod');
 module.exports.common.SpecialOfferDiscountExtra = require('./common/SpecialOfferDiscountExtra');
 module.exports.common.SpecialOfferDiscountedExtra = require('./common/SpecialOfferDiscountedExtra');
+module.exports.common.PropertyApproval = require('./common/PropertyApproval');
+module.exports.common.PropertyLink = require('./common/PropertyLink');
+module.exports.common.ParkingPermit = require('./common/ParkingPermit');
+module.exports.common.ParkingPermitHolidayPeriod = require('./common/ParkingPermitHolidayPeriod');
 
 // Key Related Objects
 module.exports.common.Keyy = require('./common/Keyy');
@@ -302,6 +307,7 @@ module.exports.common.Note = require('./common/Note');
 module.exports.common.NoteText = require('./common/NoteText');
 module.exports.common.NoteType = require('./common/NoteType');
 module.exports.common.NoteActor = require('./common/NoteActor');
+module.exports.common.PropertyNoteCategory = require('./common/PropertyNoteCategory');
 
 // Payment Related Objects
 module.exports.common.ActorPaymentRefund = require('./common/ActorPaymentRefund');
@@ -387,6 +393,7 @@ module.exports.common.TemplateRoleReason = require('./common/TemplateRoleReason'
 module.exports.common.TemplateContactMethodAttachment = require('./common/TemplateContactMethodAttachment');
 module.exports.common.TemplateContactMethodBranding = require('./common/TemplateContactMethodBranding');
 module.exports.common.TemplateContactMethodAttachmentProperty = require('./common/TemplateContactMethodAttachmentProperty');
+module.exports.common.TemplateContactMethodAttachmentBranding = require('./common/TemplateContactMethodAttachmentBranding');
 module.exports.common.TemplateElement = require('./common/TemplateElement');
 module.exports.common.TemplateSource = require('./common/TemplateSource');
 module.exports.common.TemplateTarget = require('./common/TemplateTarget');
@@ -464,3 +471,4 @@ module.exports.common.AccidentalDamageDeposit = require('./common/AccidentalDama
 // Programs
 module.exports.common.Program = require('./common/Program');
 module.exports.common.ActorProgram = require('./common/ActorProgram');
+module.exports.common.ZendeskTicket = require('./common/ZendeskTicket');

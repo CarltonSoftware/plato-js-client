@@ -19,7 +19,12 @@ function Extra(id) {
       extratype: Joi.string().required().allow(['Booking', 'Marketing']).label('extra type'),
       description: Joi.string().required().label('description'),
       extragroup: Joi.object().label('extra group'),
-      petextra: Joi.boolean().label('is a pet extra')
+      petextra: Joi.boolean().required().label('is a pet extra'),
+      priceasattransferdate: Joi.boolean().required().label('Price at transfer date?').description(
+        'When a booking is transferred, the "booking booked date" used to determine the '
+        + 'relevant configuration and pricing for the new extra can be set to either the '
+        + 'booked date of the original booking, or the date of the transfer.'
+      )
     }
   };
 }
@@ -31,7 +36,8 @@ Extra.prototype.toArray = function() {
     extratype: this.extratype,
     description: this.description,
     extragroupid: this.extragroup.id,
-    petextra: this.petextra
+    petextra: this.petextra,
+    priceasattransferdate: this.priceasattransferdate
   };
 };
 

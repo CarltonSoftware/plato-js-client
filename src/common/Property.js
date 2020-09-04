@@ -15,8 +15,11 @@ var PropertyCommission = require('./PropertyCommission');
 var PropertyNote = require('./PropertyNote');
 var NoteFilterCollection = require('./NoteFilterCollection');
 var PropertyHousekeeping = require('./PropertyHousekeeping');
+var PropertyApproval = require('./PropertyApproval');
+var PropertyLink = require('./PropertyLink');
 var InspectionType = require('./InspectionType');
 var AvailableBreak = require('./AvailableBreak');
+var ParkingPermit = require('./ParkingPermit');
 var Joi = require('joi');
 var moment = require('moment');
 
@@ -90,6 +93,21 @@ function Property(id) {
     path: 'availablebreak',
     parent: this
   });
+  this.approvals = new Collection({
+    object: PropertyApproval,
+    path: 'approval',
+    parent: this
+  });
+  this.links = new Collection({
+    object: PropertyLink,
+    path: 'link',
+    parent: this
+  });
+  this.parkingpermits = new Collection({
+    object: ParkingPermit,
+    path: 'parkingpermit',
+    parent: this
+  });
 
   this.ratinginspectiontype = new InspectionType();
 
@@ -108,6 +126,7 @@ Property.prototype.toArray = function() {
     maximumpets: this.maximumpets,
     accomodationdescription: this.accomodationdescription,
     tabspropref: this.tabspropref,
+    virtualproperty: this.virtualproperty || false,
     status: this.status ? this.status.name : null,
     telephonenumber: this.telephonenumber,
     address_line1: this.address.line1,
@@ -118,7 +137,9 @@ Property.prototype.toArray = function() {
     address_postcode: this.address.postcode,
     address_countryalpha2code: this.address.country.alpha2,
     address_latitude: this.address.latitude,
-    address_longitude: this.address.longitude
+    address_longitude: this.address.longitude,
+    noinfants: this.noinfants,
+    nochildren: this.nochildren
   };
   if (this.checkintext) {
     prop.checkintext = this.checkintext;
