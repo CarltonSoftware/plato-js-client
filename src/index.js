@@ -382,7 +382,7 @@ module.exports.common.CronTask = require('./common/CronTask');
 
 // Property Pricing
 module.exports.common.PropertyBrandingPrice = require('./common/PropertyBrandingPrice');
-module.exports.common.PropertyBrandingPriceFixed = require('./common/PropertyBrandingPriceFixed');
+module.exports.common.PricePeriod = require('./common/PricePeriod');
 module.exports.common.PriceOverride = require('./common/PriceOverride');
 module.exports.common.ReducedOccupancyPrice = require('./common/ReducedOccupancyPrice');
 

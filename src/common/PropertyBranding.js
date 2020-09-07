@@ -9,7 +9,7 @@ var Status = require('./Status');
 var Collection = require('./Collection');
 var moment = require('moment');
 var FilterCollection = require('./FilterCollection');
-const PropertyBrandingPriceFixed = require('./PropertyBrandingPriceFixed');
+var PricePeriod = require('./PricePeriod');
 
 function PropertyBranding(id) {
   this.path = 'branding';
@@ -123,7 +123,7 @@ PropertyBranding.prototype.getPrices = function(fromDate, toDate, type) {
 PropertyBranding.prototype.getPricesFixed = function(fromDate, toDate, type) {
 
   var p = new FilterCollection({
-    object: PropertyBrandingPriceFixed,
+    object: PricePeriod,
     path: 'priceperiod'
   });
 
