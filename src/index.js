@@ -472,3 +472,12 @@ module.exports.common.AccidentalDamageDeposit = require('./common/AccidentalDama
 module.exports.common.Program = require('./common/Program');
 module.exports.common.ActorProgram = require('./common/ActorProgram');
 module.exports.common.ZendeskTicket = require('./common/ZendeskTicket');
+
+//ChannelManager
+module.exports.common.Channel = require('./common/Channel');
+module.exports.common.ChannelInformationCategory = require('./common/ChannelInformationCategory');
+module.exports.common.ChannelPropertyBranding = require('./common/ChannelPropertyBranding');
+module.exports.common.ChannelPropertyBrandingInformationCategory = require('./common/ChannelPropertyBrandingInformationCategory');
+module.exports.common.ChannelSetting = require('./common/ChannelSetting');
+module.exports.common.ChannelSettingType = require('./common/ChannelSettingType');
+module.exports.common.ChannelSettingValue = require('./common/ChannelSettingValue');
