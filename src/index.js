@@ -481,3 +481,4 @@ module.exports.common.ChannelPropertyBrandingInformationCategory = require('./co
 module.exports.common.ChannelSetting = require('./common/ChannelSetting');
 module.exports.common.ChannelSettingType = require('./common/ChannelSettingType');
 module.exports.common.ChannelSettingValue = require('./common/ChannelSettingValue');
+module.exports.common.InformationCategory = require('./common/InformationCategory');
