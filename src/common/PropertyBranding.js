@@ -120,7 +120,7 @@ PropertyBranding.prototype.getPrices = function(fromDate, toDate, type) {
  * @param {string} type
  */
 
-PropertyBranding.prototype.getPricesFixed = function(fromDate, toDate, type) {
+PropertyBranding.prototype.getPricesFixed = function(fromDate, toDate) {
 
   var p = new FilterCollection({
     object: PricePeriod,
