@@ -8,6 +8,8 @@ var PropertyBrandingChangeDayTemplate = require('./PropertyBrandingChangeDayTemp
 var Status = require('./Status');
 var Collection = require('./Collection');
 var moment = require('moment');
+var FilterCollection = require('./FilterCollection');
+var PricePeriod = require('./PricePeriod');
 
 function PropertyBranding(id) {
   this.path = 'branding';
@@ -105,6 +107,32 @@ PropertyBranding.prototype.getPrices = function(fromDate, toDate, type) {
     p.toArray = function() {
       return data;
     };
+  }
+
+  return p.fetch();
+};
+
+/**
+ * Get the prices Fixed
+ *
+ * @param {string} fromDate
+ * @param {string} toDate
+ * @param {string} type
+ */
+
+PropertyBranding.prototype.getPricesFixed = function(fromDate, toDate, type) {
+
+  var p = new FilterCollection({
+    object: PricePeriod,
+    path: 'priceperiod'
+  });
+
+  p.addFilter('propertybrandingid', this.id);
+
+  if(fromDate && toDate) {
+    p.addFilter('fromdate', '>' + fromDate);
+    p.addFilter('todate', '<' + toDate);
+    p.limit = 100;
   }
 
   return p.fetch();
