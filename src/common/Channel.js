@@ -4,6 +4,7 @@ var Joi = require('joi');
 
 function Channel(id) {
   this.path = 'channel';
+  this.createPath = this.path;
   this.id = id;
   this.affiliate = new EntityLink({
     entity: 'Affiliate'
@@ -20,8 +21,8 @@ Channel.prototype.toArray = function() {
 
 Channel.prototype.validSchema = function() {
   return Joi.object().keys({
-    channelreference: Joi.string().label('channelsettingtype'),
-    channelname: Joi.string().label('description'),
+    channelreference: Joi.string().label('channelreference'),
+    channelname: Joi.string().label('channelname'),
   });
 };
 

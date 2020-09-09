@@ -4,6 +4,7 @@ var Joi = require('joi');
 
 function ChannelSetting(id) {
   this.path = 'setting';
+  this.createPath = this.path;
   this.id = id;
   this.channelsettingtype = new ChannelSettingType();
 }

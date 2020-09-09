@@ -1,10 +1,13 @@
 var SingleEntity = require('./SingleEntity');
+var Channel = require('./Channel');
 var PropertyBranding = require('./PropertyBranding');
 var Joi = require('joi');
 
 function ChannelPropertyBranding(id) {
   this.path = 'propertybranding';
+  this.createPath = this.path;
   this.id = id;
+  this.channel = new Channel();
   this.propertybranding = new PropertyBranding();
 }
 ChannelPropertyBranding.prototype = new SingleEntity();

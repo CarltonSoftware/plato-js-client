@@ -4,6 +4,7 @@ var Joi = require('joi');
 
 function ChannelInformationCategory(id) {
   this.path = 'informationcategory';
+  this.createPath = this.path;
   this.id = id;
   this.informationcategory = new InformationCategory();
 }

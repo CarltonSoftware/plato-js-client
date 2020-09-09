@@ -4,18 +4,27 @@ var Joi = require('joi');
 
 function ChannelSettingValue(id) {
   this.path = 'settingvalue';
+  this.createPath = this.path;
   this.id = id;
-  this.agency = new EntityLink({
-    entity: 'Agency'
-  });
 }
 ChannelSettingValue.prototype = new SingleEntity();
 
 ChannelSettingValue.prototype.toArray = function() {
-  return {
-    value: this.value,
-    agencyid: this.agency.id,
+    
+  var csv = {
+    value: this.value
   };
+  
+  if (this.agency) {
+      csv.agencyid = this.agency.id
+  }  
+  if (this.branding) {
+      csv.brandingid = this.branding.id
+  }  
+  if (this.propertybranding) {
+      csv.propertybrandingid = this.propertybranding.id
+  }
+  return csv;
 };
 
 ChannelSettingValue.prototype.validSchema = function() {
