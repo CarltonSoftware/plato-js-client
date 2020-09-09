@@ -1,5 +1,5 @@
 var SingleEntity = require('./SingleEntity');
-var EntityLink = require('./EntityLink');
+//var EntityLink = require('./EntityLink');
 var Joi = require('joi');
 
 function ChannelSettingValue(id) {
@@ -10,17 +10,17 @@ function ChannelSettingValue(id) {
 ChannelSettingValue.prototype = new SingleEntity();
 
 ChannelSettingValue.prototype.toArray = function() {
-    
+
   var csv = {
     value: this.value
   };
-  
+
   if (this.agency) {
       csv.agencyid = this.agency.id
-  }  
+  }
   if (this.branding) {
       csv.brandingid = this.branding.id
-  }  
+  }
   if (this.propertybranding) {
       csv.propertybrandingid = this.propertybranding.id
   }
