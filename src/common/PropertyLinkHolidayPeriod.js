@@ -16,8 +16,8 @@ PropertyLinkHolidayPeriod.prototype.toArray = function() {
 
 PropertyLinkHolidayPeriod.prototype.validSchema = function() {
   return Joi.object().keys({
-    fromdate: Joi.date().required(),
-    todate: Joi.date().required()
+    fromdate: Joi.date().required().label('From date'),
+    todate: Joi.date().required().label('To date')
   });
 };
 
