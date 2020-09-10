@@ -1,5 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
+var Collection = require('./Collection');
+var PropertyLinkHolidayPeriod = require('./PropertyLinkHolidayPeriod');
 var Joi = require('joi');
 
 function PropertyLink(id) {
@@ -8,9 +10,15 @@ function PropertyLink(id) {
   this.id = id;
   this.childproperty = new EntityLink({ entity: 'Property' });
   this.parentproperty = new EntityLink({ entity: 'Property' });
-}
-PropertyLink.prototype = new SingleEntity();
 
+  this.holidayperiods = new Collection({
+    object: PropertyLinkHolidayPeriod,
+    path: 'holidayperiod',
+    parent: this
+  })
+}
+
+PropertyLink.prototype = new SingleEntity();
 PropertyLink.prototype.toArray = function() {
   return {
     childpropertyid: this.childproperty.id
