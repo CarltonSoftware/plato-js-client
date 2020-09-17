@@ -23,7 +23,8 @@ ScheduledEvent.prototype.toArray = function() {
     filtercontext: this.filtercontext,
     frequency: this.frequency,
     sendonce: this.sendonce,
-    inactive: this.inactive
+    inactive: this.inactive,
+    timespacedsending: this.timespacedsending
   };
 };
 
@@ -34,7 +35,8 @@ ScheduledEvent.prototype.validSchema = function() {
     filtercontext: Joi.string().required().label('filter context'),
     frequency: Joi.string().required().label('frequency'),
     sendonce: Joi.boolean().required().label('send once only'),
-    inactive: Joi.boolean().required().label('inactive')
+    inactive: Joi.boolean().required().label('inactive'),
+    timespacedsending: Joi.boolean().required().label('time spaced sending')
   });
 };
 
