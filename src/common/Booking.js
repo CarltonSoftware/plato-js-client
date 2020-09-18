@@ -371,7 +371,7 @@ Booking.prototype.getStatus = function() {
       }
       item.showAs = 'owner';
 
-      if (this.ownerbookingtype && this.ownerbookingtype.name.substring(0, 6).toLowerCase() === 'buffer') {
+      if (this.ownerbookingtype && this.ownerbookingtype.name && this.ownerbookingtype.name.substring(0, 6).toLowerCase() === 'buffer') {
         item.showAs = 'bookingbuffer';
       }
       break;
