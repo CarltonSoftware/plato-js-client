@@ -12,7 +12,8 @@ PropertyRoom.prototype.toArray = function() {
   return {
     roomtypeid: this.roomtype.id,
     quantity: this.quantity,
-    description: this.description
+    description: this.description,
+    name: this.name
   };
 };
 
