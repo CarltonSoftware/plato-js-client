@@ -130,8 +130,11 @@ PropertyBranding.prototype.getPricesFixed = function(fromDate, toDate) {
   p.addFilter('propertybrandingid', this.id);
 
   if(fromDate && toDate) {
-    p.addFilter('fromdate', '>' + fromDate);
-    p.addFilter('todate', '<' + toDate);
+    // property pricing panel was missing off the last periods of the year,
+    // hence the change to a fromdate range below
+    p.addFilter('fromdate', fromDate + '/' + toDate);
+    // p.addFilter('fromdate', '>' + fromDate);
+    // p.addFilter('todate', '<' + toDate);
     p.limit = 100;
   }
 

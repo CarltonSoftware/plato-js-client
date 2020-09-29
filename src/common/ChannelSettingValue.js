@@ -1,16 +1,17 @@
 var SingleEntity = require('./SingleEntity');
 //var EntityLink = require('./EntityLink');
+var ChannelSetting = require('./ChannelSetting');
 var Joi = require('joi');
 
-function ChannelSettingValue(id) {
-  this.path = 'settingvalue';
+function ChannelSettingValue(channelId, channelSettingId, id) {
+  this.path = 'channel/' + channelId + '/setting/' + channelSettingId + '/value';
   this.createPath = this.path;
   this.id = id;
+  this.channelsetting = new ChannelSetting();
 }
 ChannelSettingValue.prototype = new SingleEntity();
 
 ChannelSettingValue.prototype.toArray = function() {
-
   var csv = {
     value: this.value
   };
@@ -21,8 +22,8 @@ ChannelSettingValue.prototype.toArray = function() {
   if (this.branding) {
       csv.brandingid = this.branding.id
   }
-  if (this.propertybranding) {
-      csv.propertybrandingid = this.propertybranding.id
+  if (this.channelpropertybranding) {
+      csv.channelpropertybrandingid = this.channelpropertybranding.id
   }
   return csv;
 };
