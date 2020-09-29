@@ -21,7 +21,8 @@ PropertyApproval.prototype.toArray = function() {
 PropertyApproval.prototype.validSchema = function() {
   return Joi.object().keys({
     actorprogram: Joi.object().required().label('Actor Program'),
-    approved: Joi.boolean().required().label('Approved')
+    approved: Joi.boolean().optional().label('Approved'),
+    approverquestion: Joi.string().optional().allow('').label('Approver Question')
   });
 }
 
