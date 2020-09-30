@@ -132,6 +132,20 @@ Actor.prototype.mutateResponse = function(entity) {
     parent: this
   });
 
+  var CustomerPayment = require('./CustomerPayment');
+  var BookingPayment = require('./BookingPayment');
+  this.accounts = new Collection({
+    path: 'account',
+    object: CustomerPayment,
+    parent: this,
+    discriminator: 'type',
+    discriminatorMap: {
+      Actor: CustomerPayment,
+      Booking: BookingPayment,
+      SecurityDeposit: BookingPayment
+    }
+  });
+
   return this.mutateEntity(entity);
 };
 
