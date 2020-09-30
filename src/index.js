@@ -176,6 +176,7 @@ module.exports.common.DescriptionType = require('./common/DescriptionType');
 module.exports.common.PropertySecurityFeature = require('./common/PropertySecurityFeature');
 module.exports.common.PropertyDocument = require('./common/PropertyDocument');
 module.exports.common.PropertyRoom = require('./common/PropertyRoom');
+module.exports.common.PropertyRoomType = require('./common/PropertyRoomType');
 module.exports.common.PropertyTabsUser = require('./common/PropertyTabsUser');
 module.exports.common.PropertyTarget = require('./common/PropertyTarget');
 module.exports.common.PartySizePricing = require('./common/PartySizePricing');
