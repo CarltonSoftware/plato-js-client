@@ -17,10 +17,10 @@ function PropertyRoom(id) {
 
   this.validSchema = function() {
     return {
+      name: Joi.string().required().label('Name'),
       quantity: Joi.number().required().label('Quantity'),
       description: Joi.string().required().label('Description'),
-      roomtype: Joi.object().required().label('Default Room Type'),
-      name: Joi.string().required().label('Name')
+      roomtype: Joi.object().required().label('Default Room Type')
     }
   };
 
