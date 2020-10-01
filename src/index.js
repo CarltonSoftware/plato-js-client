@@ -262,6 +262,7 @@ module.exports.common.BookingSecurityDepositWithhold = require('./common/Booking
 module.exports.common.BookingSecurityDepositHold = require('./common/BookingSecurityDepositHold');
 module.exports.common.BookingSupplier = require('./common/BookingSupplier');
 module.exports.common.BookingService = require('./common/BookingService');
+module.exports.common.BookingRoom = require('./common/BookingRoom');
 module.exports.common.BookingServiceCharge = require('./common/BookingServiceCharge');
 module.exports.common.Bookings = require('./common/Bookings');
 module.exports.common.GuestAgeRange = require('./common/GuestAgeRange');

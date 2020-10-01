@@ -19,6 +19,7 @@ var Promotion = require('./Promotion');
 var Complaint = require('./Complaint');
 var BookingVoucher = require('./BookingVoucher');
 var BookingVehicle = require('./BookingVehicle');
+var BookingRoom = require('./BookingRoom');
 
 function Booking(id) {
   this.path = 'booking';
@@ -96,6 +97,11 @@ function Booking(id) {
   this.vehicles = new Collection({
     object: BookingVehicle,
     path: 'vehicle',
+    parent: this
+  });
+  this.rooms = new Collection({
+    object: BookingRoom,
+    path: 'room',
     parent: this
   });
 
