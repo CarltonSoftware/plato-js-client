@@ -1,5 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
+var Collection = require('./Collection');
+var OwnerPaymentSelectionBookingBrand = require('./OwnerPaymentSelectionBookingBrand');
 var Joi = require('joi');
 
 function OwnerPaymentSelection(id) {
@@ -12,17 +14,31 @@ function OwnerPaymentSelection(id) {
   this.createdby = new EntityLink({
     entity: 'TabsUser'
   });
+  this.bookingbrands = new Collection({
+    object: OwnerPaymentSelectionBookingBrand,
+    path: 'bookingbrand',
+    parent: this
+  });
 }
 OwnerPaymentSelection.prototype = new SingleEntity();
 
 OwnerPaymentSelection.prototype.toCreateArray = function() {
-  return {
-    bookingbrandid: this.bookingbrand.id,
+  var s = {
     selectbookingson: this.selectbookingson,
     paytodate: this.paytodate,
     createdbytabsuserid: this.createdbytabsuser.id,
     ownerids: this.ownerids
   };
+
+  if (this.bookingbrands.getTotal() > 0) {
+    s.bookingbrandids = this.bookingbrands.map(function(b) {
+      return b.bookingbrand.id;
+    }).join(',');
+  } else if (this.bookingbrand.id) {
+    s.bookingbrandid = this.bookingbrand.id;
+  }
+
+  return s;
 };
 
 OwnerPaymentSelection.prototype.toUpdateArray = function() {
@@ -57,7 +73,8 @@ OwnerPaymentSelection.prototype.toString = function() {
 };
 
 OwnerPaymentSelection.validCreateSchema = Joi.object().keys({
-  bookingbrand: Joi.object().label('booking brand'),
+  bookingbrand: Joi.object().optional().label('booking brand'),
+  bookingbrands: Joi.any().optional().label('booking brands'),
   selectbookingson: Joi.string().valid('fromdate', 'todate').label('select bookings on'),
   paytodate: Joi.date().required().label('pay to date'),
   createdbytabsuser: Joi.object().optional().label('created by'),
