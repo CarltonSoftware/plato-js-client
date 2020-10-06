@@ -2,6 +2,7 @@ var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
 var Collection = require('./Collection');
 var OwnerPaymentSelectionBookingBrand = require('./OwnerPaymentSelectionBookingBrand');
+var OwnerPaymentSelectionProperty = require('./OwnerPaymentSelectionProperty');
 var Joi = require('joi');
 
 function OwnerPaymentSelection(id) {
@@ -17,6 +18,11 @@ function OwnerPaymentSelection(id) {
   this.bookingbrands = new Collection({
     object: OwnerPaymentSelectionBookingBrand,
     path: 'bookingbrand',
+    parent: this
+  });
+  this.properties = new Collection({
+    object: OwnerPaymentSelectionProperty,
+    path: 'property',
     parent: this
   });
 }
