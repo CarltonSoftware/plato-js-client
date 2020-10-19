@@ -2,6 +2,7 @@ var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
 var Collection = require('./Collection');
 var OwnerPaymentSelectionBookingBrand = require('./OwnerPaymentSelectionBookingBrand');
+var OwnerPaymentSelectionProperty = require('./OwnerPaymentSelectionProperty');
 var Joi = require('joi');
 
 function OwnerPaymentSelection(id) {
@@ -19,6 +20,11 @@ function OwnerPaymentSelection(id) {
     path: 'bookingbrand',
     parent: this
   });
+  this.properties = new Collection({
+    object: OwnerPaymentSelectionProperty,
+    path: 'property',
+    parent: this
+  });
 }
 OwnerPaymentSelection.prototype = new SingleEntity();
 
@@ -26,8 +32,11 @@ OwnerPaymentSelection.prototype.toCreateArray = function() {
   var s = {
     selectbookingson: this.selectbookingson,
     paytodate: this.paytodate,
+    ownerids: this.ownerids,
+    propertyids: this.propertyids,
     createdbytabsuserid: this.createdbytabsuser.id,
-    ownerids: this.ownerids
+    balancepaid: this.balancepaid || false,
+    accidentaldamagedepositpaid: this.accidentaldamagedepositpaid || false
   };
 
   if (this.bookingbrands.getTotal() > 0) {
@@ -77,8 +86,11 @@ OwnerPaymentSelection.validCreateSchema = Joi.object().keys({
   bookingbrands: Joi.any().optional().label('booking brands'),
   selectbookingson: Joi.string().valid('fromdate', 'todate').label('select bookings on'),
   paytodate: Joi.date().required().label('pay to date'),
-  createdbytabsuser: Joi.object().optional().label('created by'),
-  ownerids: Joi.string().allow("").optional().label('owner ids')
+  ownerids: Joi.string().allow("").optional().label('owner ids'),
+  propertyids: Joi.string().allow("").optional().label('property ids'),
+  balancepaid: Joi.boolean().required().label('Bookings with balance paid'),
+  accidentaldamagedepositpaid: Joi.boolean().required().label('Bookings with ADD waiver paid'),
+  createdbytabsuser: Joi.object().optional().label('created by')
 });
 
 OwnerPaymentSelection.validUpdateSchema = Joi.object().keys({
