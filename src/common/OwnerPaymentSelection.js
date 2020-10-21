@@ -97,7 +97,11 @@ OwnerPaymentSelection.prototype.getLabel = function(bookingbrands) {
 
   if (this.properties && this.properties.collection.length) {
     description.push('Properties: ');
-    description.push(this.properties.map((p) => p.property.id).join(', '));
+    description.push(
+      this.properties.map(function(p) {
+        return p.property.id;
+      }).join(', ')
+    );
   }
 
   if (this.paytodate) {
