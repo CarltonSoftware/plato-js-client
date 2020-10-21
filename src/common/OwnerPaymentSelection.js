@@ -4,6 +4,7 @@ var Collection = require('./Collection');
 var OwnerPaymentSelectionBookingBrand = require('./OwnerPaymentSelectionBookingBrand');
 var OwnerPaymentSelectionProperty = require('./OwnerPaymentSelectionProperty');
 var Joi = require('joi');
+var moment = require('moment');
 
 function OwnerPaymentSelection(id) {
   this.path = 'ownerpaymentselection';
@@ -75,6 +76,52 @@ OwnerPaymentSelection.prototype.payOwner = function(owner, tabsUser) {
     this.path + '/' + this.id,
     { ownerid: owner.id, paidbytabsuserid: tabsUser.id }
   );
+};
+
+OwnerPaymentSelection.prototype.getLabel = function(bookingbrands) {
+  var description = [];
+  description.push("ID: " + this.id);
+
+  if (bookingbrands && bookingbrands.collection.length > 1) {
+    if (bookingbrands.collection.length > 1) {
+      description.push('Booking Brands: ');
+    } else {
+      description.push('Booking Brand: ');
+    }
+    description.push(
+      this.bookingbrands.map(function(b) {
+        return bookingbrands.getEntityById(b.bookingbrand.id).name;
+      }).join(', ')
+    );
+  }
+
+  if (this.properties && this.properties.collection.length) {
+    description.push('Properties: ');
+    description.push(this.properties.map((p) => p.property.id).join(', '));
+  }
+
+  if (this.paytodate) {
+    description.push('Pay to date: ');
+    description.push(moment(this.paytodate).format('D MMM YYYY'));
+  }
+
+  if (this.owners && this.owners.length > 0) {
+    var forOwners = this.owners.map(function(el) {
+      return `id: ${el.owner.split('/')[3]}`;
+    });
+
+    if (forOwners.length) {
+      description.push(`For owners - ${forOwners.join(', ')}`);
+    }
+  }
+
+  if (this.cancelled) {
+    description.push('- Cancelled');
+  } else if (this.paid) {
+    description.push('- Paid');
+  }
+
+  return description.join(' ');
 };
 
 OwnerPaymentSelection.prototype.toString = function() {
