@@ -111,11 +111,11 @@ OwnerPaymentSelection.prototype.getLabel = function(bookingbrands) {
 
   if (this.owners && this.owners.length > 0) {
     var forOwners = this.owners.map(function(el) {
-      return `id: ${el.owner.split('/')[3]}`;
+      return 'id: ' + el.owner.split('/')[3];
     });
 
     if (forOwners.length) {
-      description.push(`For owners - ${forOwners.join(', ')}`);
+      description.push('For owners - ' + forOwners.join(', '));
     }
   }
 
