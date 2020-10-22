@@ -44,4 +44,27 @@ PricePeriod.prototype.toArray = function() {
   };
 };
 
+PricePeriod.prototype.getDayPrice = function(day, date) {
+  var dayPrice;
+  var price = '-';
+  if (day < 7) {
+    dayPrice = this.pricetypebranding.percentages.findOne(function(percentage) {
+      return percentage.pricetype.periods == day;
+    });
+    if (dayPrice) {
+      price = dayPrice.price;
+      if (dayPrice.overrides.collection.length) {
+        var overridePrice = dayPrice.overrides.findOne(function(override) {
+          return moment(date).isBetween(override.fromdate, override.todate, null, '[)');
+        });
+        if (overridePrice) {
+          price = overridePrice.price;
+        }
+      }
+    }
+  }
+
+  return price;
+};
+
 module.exports = PricePeriod;
