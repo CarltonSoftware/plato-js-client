@@ -213,9 +213,13 @@ Property.prototype.updateAvailablebreaks = function() {
   return this.updatePromiseResult([this.path, this.id, 'availablebreaks'].join('/'), { force: true });
 };
 
+Property.prototype.getAvailableBreaksPrice = function(fromDate, days, includeCompulsoryExtras, round) {
+  var _priceWithCompulsory = function(obj) {
+    var price = obj.price;
+    if (includeCompulsoryExtras) { price += obj.compulsoryextras; }
+    return round ? Math.round(price) : price;
+  };
 
-
-Property.prototype.getAvailableBreaksPrice = function(fromDate, days) {
   var prices = this.availablebreaks.filter(function(p) {
     return moment(fromDate).isSame(p.fromdate);
   });
@@ -229,7 +233,7 @@ Property.prototype.getAvailableBreaksPrice = function(fromDate, days) {
 
     if (days <= 7) {
       if (price.length === 1) {
-        return price.pop().price;
+        return _priceWithCompulsory(price.pop());
       }
     }
 
@@ -243,7 +247,7 @@ Property.prototype.getAvailableBreaksPrice = function(fromDate, days) {
         );
 
         if (price.length === 1) {
-          prices.push(price.shift().price);
+          prices.push(_priceWithCompulsory(price.shift()));
         } else {
           prices.push(-1);
         }
