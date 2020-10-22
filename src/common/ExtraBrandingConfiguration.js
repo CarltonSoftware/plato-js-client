@@ -12,7 +12,7 @@ function ExtraBrandingConfiguration(extraId, brandingId, id) {
 }
 ExtraBrandingConfiguration.prototype = new SingleEntity();
 
-ExtraBrandingConfiguration.prototype.toCreateArray = function() {
+ExtraBrandingConfiguration.prototype.toArray = function() {
   var fields = {
     fromdate: this.fromdate,
     todate: this.todate,
@@ -34,9 +34,8 @@ ExtraBrandingConfiguration.prototype.toCreateArray = function() {
     priceoverrideallowed: this.priceoverrideallowed ? 'true' : 'false',
     changesbrochureprice: this.changesbrochureprice? 'true' : 'false',
     usepropertyprimarybranding: this.usepropertyprimarybranding ? 'true' : 'false',
+    compulsoryontransfer: this.compulsoryontransfer ? 'true' : 'false',
     type: this.type,
-    propertyid: this.propertyid,
-    copytoallbrands: this.copytoallbrands,
     commissionpercentage: this.commissionpercentage,
     bookingreasonrequired: this.bookingreasonrequired? 'true' : 'false',
     copyaction: this.copyaction
@@ -59,55 +58,20 @@ ExtraBrandingConfiguration.prototype.toCreateArray = function() {
   if (this.accountingdatedefinition && this.accountingdatedefinition.id) {
     fields.accountingdatedefinitionid = this.accountingdatedefinition.id;
   }
+
+  return fields;
+};
+
+ExtraBrandingConfiguration.prototype.toCreateArray = function() {
+  var fields = this.toArray();
+  fields.propertyid = this.propertyid;
+  fields.copytoallbrands = this.copytoallbrands;
   return fields;
 };
 
 ExtraBrandingConfiguration.prototype.toUpdateArray = function() {
-  var fields = {
-    fromdate: this.fromdate,
-    todate: this.todate,
-    bookingbookedfromdate: this.bookingbookedfromdate,
-    bookingbookedtodate: this.bookingbookedtodate,
-    pricingperiodid: this.pricingperiod && this.pricingperiod.id,
-    compulsory: this.compulsory,
-    included: this.included,
-    payagency: this.payagency,
-    payowner: this.payowner,
-    visibletoowner: this.visibletoowner,
-    vatband: this.vatband,
-    visibletocustomer: this.visibletocustomer,
-    customerselectable: this.customerselectable,
-    defaultquantity: this.defaultquantity,
-    maximumquantity: this.maximumquantity,
-    decimalplaces: this.decimalplaces,
-    quantityoverrideallowed: this.quantityoverrideallowed? 'true' : 'false',
-    priceoverrideallowed: this.priceoverrideallowed ? 'true' : 'false',
-    changesbrochureprice: this.changesbrochureprice? 'true' : 'false',
-    usepropertyprimarybranding: this.usepropertyprimarybranding ? 'true' : 'false',
-    type: this.type,
-    updateallbrands: this.updateallbrands,
-    commissionpercentage: this.commissionpercentage,
-    bookingreasonrequired: this.bookingreasonrequired? 'true' : 'false',
-    copyaction: this.copyaction
-  };
-
-  // Start TABS2-3772
-  if(this.customerpaymentfirstperiod) {
-    fields.customerpaymentfirstperiod = this.customerpaymentfirstperiod;
-  } else if (this.customerpaymentfirstperiod === false) {
-    fields.customerpaymentfirstperiod = false;
-  }
-
-  if(this.customerpaymentlastperiod) {
-    fields.customerpaymentlastperiod = this.customerpaymentlastperiod;
-  } else if (this.customerpaymentlastperiod === false ) {
-    fields.customerpaymentlastperiod = false;
-  }
-  // End TABS2-3772
-
-  if (this.accountingdatedefinition && this.accountingdatedefinition.id) {
-    fields.accountingdatedefinitionid = this.accountingdatedefinition.id;
-  }
+  var fields = this.toArray();
+  fields.updateallbrands = this.updateallbrands;
   return fields;
 };
 
@@ -132,6 +96,7 @@ ExtraBrandingConfiguration.validSchema = Joi.object().keys({
   priceoverrideallowed: Joi.boolean().required().label('price override allowed'),
   changesbrochureprice: Joi.boolean().required().label('changes brochure price'),
   usepropertyprimarybranding: Joi.boolean().required().label('use property primary branding'),
+  compulsoryontransfer: Joi.boolean().required().label('compulsory on transfer?'),
   type: Joi.string().required(),
   propertyid: Joi.when('type', {
     is: 'PropertyBrandExtraConfiguration',

@@ -216,7 +216,8 @@ Booking.prototype.toArray = function() {
     securitydeposit_dueoutdate: this.securitydeposit_dueoutdate,
 
     bypasschecks: this.bypasschecks,
-    removepromotioncode: this.removepromotioncode
+    removepromotioncode: this.removepromotioncode,
+    donotaddtransferextras: this.donotaddtransferextras
   };
 
   //Extend for TABS2-4581 field donotautocontact
