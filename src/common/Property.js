@@ -216,7 +216,9 @@ Property.prototype.updateAvailablebreaks = function() {
 Property.prototype.getAvailableBreaksPrice = function(fromDate, days, includeCompulsoryExtras, round) {
   var _priceWithCompulsory = function(obj) {
     var price = obj.price;
-    if (includeCompulsoryExtras) { price += obj.compulsoryextras; }
+    if (includeCompulsoryExtras) {
+      price += obj.compulsoryextras;
+    }
     return round ? Math.round(price) : price;
   };
 
