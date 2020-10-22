@@ -4,6 +4,7 @@ var Collection = require('./Collection');
 var ReducedOccupancyPrice = require('./ReducedOccupancyPrice');
 var EntityLink = require('./EntityLink');
 var PropertyBrandingYearPriceband = require('./PropertyBrandingYearPriceband');
+var moment = require('moment');
 
 /**
  * Property branding price period for fixed price object
