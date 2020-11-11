@@ -9,16 +9,6 @@ function PropertyEvent(id) {
 PropertyEvent.prototype = new SingleEntity();
 
 PropertyEvent.prototype.toArray = function() {
-console.log('hmm', {
-    propertyeventcategoryid: this.propertyeventcategory.id,
-    name: this.name,
-    description: this.description,
-    startdatetime: this.startdatetime,
-    enddatetime: this.enddatetime,
-    movable: this.movable,
-    donotcommunicatetocustomer: this.donotcommunicatetocustomer
-  });
-
   return {
     propertyeventcategoryid: this.propertyeventcategory.id,
     name: this.name,
