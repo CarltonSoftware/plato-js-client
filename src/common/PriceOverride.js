@@ -26,6 +26,7 @@ PriceOverride.prototype.toArray = function() {
     fromdate: this.fromdate,
     todate: this.todate,
     price: this.price,
+    overridepricetype: this.overridepricetype,
     band: this.band,
     description: this.description,
     currencycode: this.currency.code,
