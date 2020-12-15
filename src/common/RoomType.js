@@ -19,7 +19,7 @@ RoomType.prototype.validSchema = function() {
   return {
     name: Joi.string().required().label('name'),
     sleeps: Joi.string().required().label('sleeps'),
-    description: Joi.string().required().label('description')
+    description: Joi.string().required().label('description (visible to customer)')
   };
 };
 
