@@ -17,18 +17,18 @@ function PropertyRoom(id) {
 
   this.validSchema = function() {
     return {
-      name: Joi.string().required().label('Name'),
+      name: Joi.string().required().label('Name (visible to customer)'),
+      description: Joi.string().required().label('Description (visible to customer)'),
       quantity: Joi.number().required().label('Quantity'),
-      description: Joi.string().required().label('Description'),
       roomtype: Joi.object().required().label('Default Room Type')
     }
   };
 
   this.validEditSchema = function() {
     return {
-      quantity: Joi.number().required().label('Quantity'),
-      description: Joi.string().required().label('Description'),
-      name: Joi.string().required().label('Name')
+      name: Joi.string().required().label('Name (visible to customer)'),
+      description: Joi.string().required().label('Description (visible to customer)'),
+      quantity: Joi.number().required().label('Quantity')
     }
   };
 }
