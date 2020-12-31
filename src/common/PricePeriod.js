@@ -4,18 +4,18 @@ var Collection = require('./Collection');
 var ReducedOccupancyPrice = require('./ReducedOccupancyPrice');
 var EntityLink = require('./EntityLink');
 var PropertyBrandingYearPriceband = require('./PropertyBrandingYearPriceband');
-var moment = require('moment');
+var dayjs = require('dayjs');
 
 /**
  * Property branding price period for fixed price object
- * 
+ *
  */
 
 function PricePeriod(id) {
     this.path = 'priceperiod';
     this.createPath = this.path;
     this.id = id;
-    
+
   this.pricetypebranding = new PriceTypeBranding();
   this.partysizeprices = new Collection({ object: ReducedOccupancyPrice, parent: this });
   this.propertybranding = new EntityLink({
@@ -36,7 +36,7 @@ function PricePeriod(id) {
 PricePeriod.prototype = new SingleEntity();
 PricePeriod.prototype.toArray = function() {
   return {
-    level: this.level, // Agency, Branding or PropertyBranding 
+    level: this.level, // Agency, Branding or PropertyBranding
     fromdate: this.fromdate,
     todate: this.todate,
     propertybrandingid: this.propertybranding.id,
@@ -56,7 +56,7 @@ PricePeriod.prototype.getDayPrice = function(day, date) {
       price = dayPrice.price;
       if (dayPrice.overrides.collection.length) {
         var overridePrice = dayPrice.overrides.findOne(function(override) {
-          return moment(date).isBetween(override.fromdate, override.todate, null, '[)');
+          return dayjs(date).isBetween(override.fromdate, override.todate, null, '[)');
         });
         if (overridePrice) {
           price = overridePrice.price;

@@ -4,7 +4,7 @@ var Collection = require('./Collection');
 var OwnerPaymentSelectionBookingBrand = require('./OwnerPaymentSelectionBookingBrand');
 var OwnerPaymentSelectionProperty = require('./OwnerPaymentSelectionProperty');
 var Joi = require('joi');
-var moment = require('moment');
+var dayjs = require('dayjs');
 
 function OwnerPaymentSelection(id) {
   this.path = 'ownerpaymentselection';
@@ -106,7 +106,7 @@ OwnerPaymentSelection.prototype.getLabel = function(bookingbrands) {
 
   if (this.paytodate) {
     description.push('Pay to date: ');
-    description.push(moment(this.paytodate).format('D MMM YYYY'));
+    description.push(dayjs(this.paytodate).format('D MMM YYYY'));
   }
 
   if (this.owners && this.owners.length > 0) {

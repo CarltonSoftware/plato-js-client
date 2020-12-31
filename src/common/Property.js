@@ -21,7 +21,7 @@ var InspectionType = require('./InspectionType');
 var AvailableBreak = require('./AvailableBreak');
 var ParkingPermit = require('./ParkingPermit');
 var Joi = require('joi');
-var moment = require('moment');
+var dayjs = require('dayjs');
 
 function Property(id) {
   this.path = 'property';
@@ -223,7 +223,7 @@ Property.prototype.getAvailableBreaksPrice = function(fromDate, days, includeCom
   };
 
   var prices = this.availablebreaks.filter(function(p) {
-    return moment(fromDate).isSame(p.fromdate);
+    return dayjs(fromDate).isSame(p.fromdate);
   });
 
   if (prices.length > 0) {
@@ -244,7 +244,7 @@ Property.prototype.getAvailableBreaksPrice = function(fromDate, days, includeCom
         days = days || 7;
         var price = availablebreakprices.filter(
           function(p) {
-            return p.days == days && moment(p.fromdate).isSame(fromDate);
+            return p.days == days && dayjs(p.fromdate).isSame(fromDate);
           }
         );
 
@@ -265,9 +265,9 @@ Property.prototype.getAvailableBreaksPrice = function(fromDate, days, includeCom
         add = add + 7;
       }
 
-      var to = moment(fromDate).add(i * 7, 'd');
+      var to = dayjs(fromDate).add(i * 7, 'd');
       for (var i = 0; i < weeks; i++) {
-        to = moment(fromDate).add(i * 7, 'd');
+        to = dayjs(fromDate).add(i * 7, 'd');
         getPrice(_prices, this.availablebreaks, to, 7);
       }
 
