@@ -21,7 +21,7 @@ var InspectionType = require('./InspectionType');
 var AvailableBreak = require('./AvailableBreak');
 var ParkingPermit = require('./ParkingPermit');
 var Joi = require('joi');
-var dayjs = require('dayjs');
+var dayjs = require('dayjs').default;
 
 function Property(id) {
   this.path = 'property';

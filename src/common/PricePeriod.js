@@ -4,7 +4,7 @@ var Collection = require('./Collection');
 var ReducedOccupancyPrice = require('./ReducedOccupancyPrice');
 var EntityLink = require('./EntityLink');
 var PropertyBrandingYearPriceband = require('./PropertyBrandingYearPriceband');
-var dayjs = require('dayjs');
+var dayjs = require('dayjs').default;
 var isBetween = require('dayjs/plugin/isBetween');
 dayjs.extend(isBetween);
 

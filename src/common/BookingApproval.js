@@ -1,6 +1,6 @@
 var SingleEntity = require('./SingleEntity');
 var Joi = require('joi');
-var dayjs = require('dayjs');
+var dayjs = require('dayjs').default;
 var EntityLink = require('./EntityLink');
 
 function BookingApproval(id) {

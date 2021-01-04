@@ -4,7 +4,7 @@ var Collection = require('./Collection');
 var OwnerPaymentSelectionBookingBrand = require('./OwnerPaymentSelectionBookingBrand');
 var OwnerPaymentSelectionProperty = require('./OwnerPaymentSelectionProperty');
 var Joi = require('joi');
-var dayjs = require('dayjs');
+var dayjs = require('dayjs').default;
 
 function OwnerPaymentSelection(id) {
   this.path = 'ownerpaymentselection';
