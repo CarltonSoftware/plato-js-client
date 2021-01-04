@@ -5,6 +5,8 @@ var ReducedOccupancyPrice = require('./ReducedOccupancyPrice');
 var EntityLink = require('./EntityLink');
 var PropertyBrandingYearPriceband = require('./PropertyBrandingYearPriceband');
 var dayjs = require('dayjs');
+var isBetween = require('dayjs/plugin/isBetween');
+dayjs.extend(isBetween);
 
 /**
  * Property branding price period for fixed price object
