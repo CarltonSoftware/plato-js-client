@@ -7,7 +7,8 @@ var ExtraBranding = require('./ExtraBranding');
 var PropertyBrandingChangeDayTemplate = require('./PropertyBrandingChangeDayTemplate');
 var Status = require('./Status');
 var Collection = require('./Collection');
-var dayjs = require('dayjs').default;
+var dayjs = require('dayjs');
+dayjs = 'default' in dayjs ? dayjs['default'] : dayjs;
 var FilterCollection = require('./FilterCollection');
 var PricePeriod = require('./PricePeriod');
 
