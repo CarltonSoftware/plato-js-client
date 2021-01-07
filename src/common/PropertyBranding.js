@@ -131,11 +131,9 @@ PropertyBranding.prototype.getPricesFixed = function(fromDate, toDate) {
   p.addFilter('propertybrandingid', this.id);
 
   if(fromDate && toDate) {
-    // property pricing panel was missing off the last periods of the year,
-    // hence the change to a fromdate range below
-    p.addFilter('fromdate', fromDate + '/' + toDate);
-    // p.addFilter('fromdate', '>' + fromDate);
-    // p.addFilter('todate', '<' + toDate);
+    // TABS2-5778 changed to show all prices overlapping the dates as per Ian's suggestion - no blame here ;-)
+    p.addFilter('todate', '>' + fromDate);
+    p.addFilter('fromdate', '<' + toDate);
     p.limit = 100;
   }
 
