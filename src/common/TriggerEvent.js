@@ -22,4 +22,8 @@ TriggerEvent.prototype.toArray = function() {
   };
 };
 
+TriggerEvent.prototype.toString = function() {
+  return this.triggerevent;
+};
+
 module.exports = TriggerEvent;
