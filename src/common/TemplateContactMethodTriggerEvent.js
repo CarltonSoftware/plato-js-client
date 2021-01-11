@@ -1,11 +1,8 @@
 var SingleEntity = require('./SingleEntity');
-var EntityLink = require('./EntityLink');
 var TriggerEvent = require('./TriggerEvent');
-var BookingEvent = require('./BookingEvent');
 var OwnerBookingType = require('./OwnerBookingType');
 var AgencyBookingType = require('./AgencyBookingType');
 var EventType = require('./EventType');
-var Collection = require('./Collection');
 var Joi = require('joi');
 
 function TemplateContactMethodTriggerEvent(id) {
