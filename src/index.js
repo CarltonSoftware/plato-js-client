@@ -402,6 +402,7 @@ module.exports.common.TemplateContactMethodAttachment = require('./common/Templa
 module.exports.common.TemplateContactMethodBranding = require('./common/TemplateContactMethodBranding');
 module.exports.common.TemplateContactMethodAttachmentProperty = require('./common/TemplateContactMethodAttachmentProperty');
 module.exports.common.TemplateContactMethodAttachmentBranding = require('./common/TemplateContactMethodAttachmentBranding');
+module.exports.common.TemplateContactMethodTriggerEvent = require('./common/TemplateContactMethodTriggerEvent');
 module.exports.common.TemplateElement = require('./common/TemplateElement');
 module.exports.common.TemplateSource = require('./common/TemplateSource');
 module.exports.common.TemplateTarget = require('./common/TemplateTarget');

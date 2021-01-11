@@ -6,6 +6,7 @@ var Collection = require('./Collection');
 var TemplateElement = require('./TemplateElement');
 var TemplateContactMethodAttachment = require('./TemplateContactMethodAttachment');
 var TemplateContactMethodBranding = require('./TemplateContactMethodBranding');
+var TemplateContactMethodTriggerEvent = require('./TemplateContactMethodTriggerEvent');
 
 function TemplateContactMethod(id) {
   this.createPath = this.path = 'contactmethod';
@@ -25,6 +26,11 @@ function TemplateContactMethod(id) {
   this.brandings = new Collection({
     object: TemplateContactMethodBranding,
     path: 'branding',
+    parent: this
+  });
+  this.triggerevents = new Collection({
+    object: TemplateContactMethodTriggerEvent,
+    path: 'triggerevent',
     parent: this
   });
 }
