@@ -25,7 +25,7 @@
     "libphonenumber-js": "^1.1.9",
     "lz-string": "^1.4.4",
     "node-localstorage": "^1.3.1",
-    "rest": "github:jclgoodwin/rest",
+    "rest": "github:carltonsoftware/rest",
     "underscore": "^1.8.3"
   },
   "browser": {
