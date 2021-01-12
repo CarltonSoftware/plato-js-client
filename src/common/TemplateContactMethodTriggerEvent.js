@@ -17,11 +17,7 @@ function TemplateContactMethodTriggerEvent(id) {
   this.validSchema = function() {
     var s = {
       type: Joi.string().required().label('type').allow(['BookingDates', 'OwnerBookingType', 'AgencyBookingType', 'EventType']),
-      triggerevent: Joi.object().required().label('Trigger event'),
-      fromdate: Joi.date().required().label('from date'),
-      todate: Joi.date().required().label('to date'),
-      sendonce: Joi.boolean().required().label('send once'),
-      inactive: Joi.boolean().required().label('inactive')
+      triggerevent: Joi.object().required().label('Trigger event')
     };
 
     if (this.type === 'EventType') {
@@ -36,6 +32,11 @@ function TemplateContactMethodTriggerEvent(id) {
       s.holidayfromdate = Joi.date().required().label('Holiday From Date');
       s.holidaytodate = Joi.date().required().label('Holiday To Date');
     }
+
+    s.fromdate = Joi.date().required().label('from date').description('This is the start date of the period you want this configuration to be valid from.');
+    s.todate = Joi.date().required().label('to date').description('This is the end date of the period you want this configuration to be valid from.');
+    s.sendonce = Joi.boolean().required().label('send once');
+    s.inactive = Joi.boolean().required().label('inactive').description('Inactive boolean. Also used to set this configuration\'s validity');
 
     return s;
   }.bind(this)
