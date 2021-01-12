@@ -33,9 +33,10 @@ function TemplateContactMethodTriggerEvent(id) {
       s.holidaytodate = Joi.date().required().label('Holiday To Date');
     }
 
-    s.fromdate = Joi.date().required().label('from date').description('This is the start date of the period you want this configuration to be valid from.');
-    s.todate = Joi.date().required().label('to date').description('This is the end date of the period you want this configuration to be valid from.');
-    s.sendonce = Joi.boolean().required().label('send once');
+    //s.fromdate = Joi.date().required().label('from date').description('This is the start date of the period you want this configuration to be valid from.');
+    //s.todate = Joi.date().required().label('to date').description('This is the end date of the period you want this configuration to be valid from.');
+    //s.sendonce = Joi.boolean().required().label('send once');
+
     s.inactive = Joi.boolean().required().label('inactive').description('Inactive boolean. Also used to set this configuration\'s validity');
 
     return s;
@@ -47,9 +48,9 @@ TemplateContactMethodTriggerEvent.prototype = new SingleEntity();
 TemplateContactMethodTriggerEvent.prototype.toArray = function() {
   var s = {
     type: this.type,
-    fromdate: this.fromdate,
-    todate: this.todate,
-    sendonce: this.sendonce,
+    fromdate: this.fromdate || 'now',
+    todate: this.todate || '+50 years',
+    sendonce: this.sendonce || false,
     inactive: this.inactive,
     triggereventid: this.triggerevent.id
   };
