@@ -55,6 +55,7 @@ module.exports.common.SettingValueOption = require('./common/SettingValueOption'
 module.exports.common.SourceCategory = require('./common/SourceCategory');
 module.exports.common.EventType = require('./common/EventType');
 module.exports.common.EventLog = require('./common/EventLog');
+module.exports.common.LegacyApiKey = require('./common/LegacyApiKey');
 
 //Owner
 module.exports.common.OwnerEnquiryActionType = require('./common/OwnerEnquiryActionType');
