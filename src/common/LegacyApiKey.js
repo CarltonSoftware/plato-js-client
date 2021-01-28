@@ -60,7 +60,7 @@ function LegacyApiKey(id) {
 
     return s;
   }.bind(this)
-};
+}
 
 LegacyApiKey.prototype = new SingleEntity();
 LegacyApiKey.prototype.mutateResponse = function(entity) {
