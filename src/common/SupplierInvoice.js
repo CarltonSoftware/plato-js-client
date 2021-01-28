@@ -20,7 +20,9 @@ SupplierInvoice.prototype.toArray = function() {
     workordersupplierid: this.workordersupplier.id,
     invoicedate: this.invoicedate,
     invoicenumber: this.invoicenumber,
-    description: this.description
+    description: this.description,
+    totalamountnet: this.totalamountnet,
+    supplierprovided: this.supplierprovided
   };
 };
 
