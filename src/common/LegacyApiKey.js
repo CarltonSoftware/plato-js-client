@@ -86,7 +86,7 @@ LegacyApiKey.prototype.mutateResponse = function(entity) {
 };
 
 LegacyApiKey.prototype.toArray = function() {
-  const roles = [];
+  var roles = [];
   if (this.roleUser) {
     roles.push('USER');
   }
@@ -100,7 +100,7 @@ LegacyApiKey.prototype.toArray = function() {
     roles.push('OUTPUT_SEARCHPRICE');
   }
 
-  const brandings = this.brandings.map(function(b) {
+  var brandings = this.brandings.map(function(b) {
     return b.id;
   });
 
