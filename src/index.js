@@ -309,6 +309,8 @@ module.exports.common.ManagedService = require('./common/ManagedService');
 module.exports.common.ManagedActivityService = require('./common/ManagedActivityService');
 module.exports.common.PmsInvoice = require('./common/PmsInvoice');
 module.exports.common.PmsInvoiceOwnerCharge = require('./common/PmsInvoiceOwnerCharge');
+module.exports.common.ServiceTag = require('./common/ServiceTag');
+module.exports.common.WorkOrderServiceTag = require('./common/WorkOrderServiceTag');
 
 // Note Related Objects
 module.exports.common.Note = require('./common/Note');

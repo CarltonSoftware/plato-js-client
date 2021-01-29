@@ -11,6 +11,7 @@ var WorkOrderActor = require('./WorkOrderActor');
 var WorkOrderAssociation = require('./WorkOrderAssociation');
 var WorkOrderDocument = require('./WorkOrderDocument');
 var WorkOrderNote = require('./WorkOrderNote');
+var WorkOrderServiceTag = require('./WorkOrderServiceTag');
 var WorkOrderStatusHistorySubStatus = require('./WorkOrderStatusHistorySubStatus');
 var NoteFilterCollection = require('./NoteFilterCollection');
 var Collection = require('./Collection');
@@ -72,6 +73,12 @@ function WorkOrder(id) {
   this.actors = new Collection({
     object: WorkOrderActor,
     path: 'actor',
+    parent: this
+  });
+
+  this.servicetags = new Collection({
+    object: WorkOrderServiceTag,
+    path: 'servicetag',
     parent: this
   });
 
