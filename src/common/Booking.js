@@ -478,7 +478,7 @@ Booking.prototype.toString = function() {
  */
 Booking.prototype.isFullyPaid = function() {
   var sd = this.securitydeposit;
-  var balance = this.paymentsummary.booking;
+  var balance = this.paymentsummary ? this.paymentsummary.booking : 0;
   return (balance.outstanding == 0 && (!sd.id || (sd.amount - sd.balance == 0)));
 };
 
