@@ -177,6 +177,8 @@ Booking.prototype.toArray = function() {
 
     parkingpermitsrequired: this.parkingpermitsrequired,
 
+    adddefaultbookingrooms: this.adddefaultbookingrooms,
+
     /* Web Booking */
     webbooking_createddatetime: this.webbooking.createddatetime,
     webbooking_reviewstartdatetime: this.webbooking.reviewstartdatetime,
