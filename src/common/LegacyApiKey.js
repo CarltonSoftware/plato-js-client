@@ -23,7 +23,10 @@ function LegacyApiKey(id) {
       key: Joi.string().required().label('Key'),
       email: Joi.string().required().label(
         'Email Address'
-      )
+      ),
+      secret: Joi.string().optional().allow('').label(
+        'Secret'
+      ).description('Optional secret.  If left blank, tabs will create a random key.')
     };
 
     if (this.id) {
