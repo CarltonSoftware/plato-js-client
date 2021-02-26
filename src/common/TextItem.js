@@ -23,7 +23,8 @@ TextItem.prototype.toArray = function() {
     languageid: this.language.id,
     contactmethodtypeid: this.contactmethodtype.id,
     standardheader: this.standardheader,
-    standardfooter: this.standardfooter
+    standardfooter: this.standardfooter,
+    disablewysiwyg: this.disablewysiwyg,
   };
 
   if (this.branding && this.branding.id) {

@@ -408,6 +408,7 @@ module.exports.common.TemplateContactMethodAttachmentBranding = require('./commo
 module.exports.common.TemplateContactMethodTriggerEvent = require('./common/TemplateContactMethodTriggerEvent');
 module.exports.common.TemplateElement = require('./common/TemplateElement');
 module.exports.common.TemplateSource = require('./common/TemplateSource');
+module.exports.common.TemplateStyleSheet = require('./common/TemplateStyleSheet');
 module.exports.common.TemplateTarget = require('./common/TemplateTarget');
 module.exports.common.TemplateTargetSource = require('./common/TemplateTargetSource');
 module.exports.common.TextItem = require('./common/TextItem');
