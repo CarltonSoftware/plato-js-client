@@ -23,9 +23,9 @@ function TemplateContactMethodTriggerEvent(id) {
     if (this.type === 'EventType') {
       s.eventtype = Joi.object().required().label('Event Type');
     } else if (this.type === 'OwnerBookingType') {
-      s.ownerbookingtype = Joi.object().required().label('Owner Booking Type');
+      s.ownerbookingtype = Joi.object().optional().label('Owner Booking Type');
     } else if (this.type === 'AgencyBookingType') {
-      s.agencybookingtype = Joi.object().required().label('Agency Booking Type');
+      s.agencybookingtype = Joi.object().optional().label('Agency Booking Type');
     } else {
       s.bookedfromdate = Joi.date().required().label('Booking From Date');
       s.bookedtodate = Joi.date().required().label('Booking To Date');
@@ -63,9 +63,9 @@ TemplateContactMethodTriggerEvent.prototype.toArray = function() {
     s.bookingeventid = this.bookingevent.id;
   } else if (this.type === 'EventType') {
     s.eventtypeid = this.eventtype.id;
-  } else if (this.type === 'OwnerBookingType') {
+  } else if (this.type === 'OwnerBookingType' && this.ownerbookingtype) {
     s.ownerbookingtypeid = this.ownerbookingtype.id;
-  } else if (this.type === 'AgencyBookingType') {
+  } else if (this.type === 'AgencyBookingType' && this.agencybookingtype) {
     s.agencybookingtypeid = this.agencybookingtype.id;
   }
 
