@@ -4,6 +4,7 @@ var ContactMethodType = require('./ContactMethodType');
 var Language = require('./Language');
 var Collection = require('./Collection');
 var TemplateElement = require('./TemplateElement');
+var TemplateStyleSheet = require('./TemplateStyleSheet');
 var TemplateContactMethodAttachment = require('./TemplateContactMethodAttachment');
 var TemplateContactMethodBranding = require('./TemplateContactMethodBranding');
 var TemplateContactMethodTriggerEvent = require('./TemplateContactMethodTriggerEvent');
@@ -13,6 +14,7 @@ function TemplateContactMethod(id) {
   this.id = id;
   this.contactmethodtype = new ContactMethodType();
   this.language = new Language();
+  this.templatestylesheet = new TemplateStyleSheet();
   this.elements = new Collection({
     object: TemplateElement,
     path: 'element',
@@ -44,8 +46,10 @@ TemplateContactMethod.prototype.toArray = function() {
     description: this.description,
     excludestandardheader: this.excludestandardheader,
     excludestandardfooter: this.excludestandardfooter,
+    disablewysiwyg: this.disablewysiwyg,
     contactmethodtypeid: this.contactmethodtype.id,
     languageid: this.language.id,
+    templatestylesheetid: this.templatestylesheet.id,
   };
 };
 
