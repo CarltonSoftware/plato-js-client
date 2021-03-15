@@ -102,7 +102,7 @@ ExtraBrandingConfiguration.validSchema = Joi.object().keys({
   compulsoryontransfer: Joi.boolean().required().label('compulsory on transfer?'),
   originalfromdate: Joi.string().label('original from date'),
   originaltodate: Joi.string().label('original to date'),
-  onlyoneextra: Joi.boolean().required().label('only one extra'),
+  oneextraonly: Joi.boolean().required().label('one extra only'),
   type: Joi.string().required(),
   propertyid: Joi.when('type', {
     is: 'PropertyBrandExtraConfiguration',
