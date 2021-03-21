@@ -46,6 +46,7 @@ WorkOrderExpense.prototype.toArray = function() {
   if (this.ownerchargeamounttype.id >= 0) {obj.ownerchargeamounttypeid = this.ownerchargeamounttype.id;}
   if (this.chargingperiod.id >= 0) {obj.chargingperiodid = this.chargingperiod.id;}
   if (typeof this.agencyownerchargecode !== 'undefined' && this.agencyownerchargecode.id >= 0) {obj.agencyownerchargecodeid = this.agencyownerchargecode.id;}
+  if (typeof this.workorderexpensegroup !== 'undefined' && this.workorderexpensegroup.id >= 0) {obj.workorderexpensegroupid = this.workorderexpensegroup.id;}
 
   if (parseFloat(this.amountnetestimate) >= 0) {obj.amountnetestimate = this.amountnetestimate;}
   if (this.chargingperiodsestimate) {obj.chargingperiodsestimate = this.chargingperiodsestimate;}
