@@ -10,6 +10,7 @@ var Booking = require('./Booking');
 var WorkOrderActor = require('./WorkOrderActor');
 var WorkOrderAssociation = require('./WorkOrderAssociation');
 var WorkOrderDocument = require('./WorkOrderDocument');
+var WorkOrderExpenseGroup = require('./WorkOrderExpenseGroup');
 var WorkOrderNote = require('./WorkOrderNote');
 var WorkOrderServiceTag = require('./WorkOrderServiceTag');
 var WorkOrderStatusHistorySubStatus = require('./WorkOrderStatusHistorySubStatus');
@@ -79,6 +80,12 @@ function WorkOrder(id) {
   this.servicetags = new Collection({
     object: WorkOrderServiceTag,
     path: 'servicetag',
+    parent: this
+  });
+
+  this.expensegroups = new Collection({
+    object: WorkOrderExpenseGroup,
+    path: 'expensegroups',
     parent: this
   });
 

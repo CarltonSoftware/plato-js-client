@@ -15,10 +15,15 @@ function WorkOrderExpenseGroup(id) {
 WorkOrderExpenseGroup.prototype = new SingleEntity();
 
 WorkOrderExpenseGroup.prototype.toArray = function() {
-  return {
-    name: this.name,
-    workorderexpensewithownerchargesid: this.workorderexpensewithownercharges.id
+  var arr = {
+    name: this.name
   };
+
+  if (this.workorderexpensewithownercharges && this.workorderexpensewithownercharges.id) {
+    arr.workorderexpensewithownerchargesid = this.workorderexpensewithownercharges.id;
+  }
+
+  return arr;
 };
 
 module.exports = WorkOrderExpenseGroup;
