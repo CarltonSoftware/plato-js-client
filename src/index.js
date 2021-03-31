@@ -491,6 +491,7 @@ module.exports.common.ZendeskTicket = require('./common/ZendeskTicket');
 module.exports.common.Channel = require('./common/Channel');
 module.exports.common.ChannelInformationCategory = require('./common/ChannelInformationCategory');
 module.exports.common.ChannelPropertyBranding = require('./common/ChannelPropertyBranding');
+module.exports.common.ChannelPropertyBrandingException = require('./common/ChannelPropertyBrandingException');
 module.exports.common.ChannelPropertyBrandingInformationCategory = require('./common/ChannelPropertyBrandingInformationCategory');
 module.exports.common.ChannelSetting = require('./common/ChannelSetting');
 module.exports.common.ChannelSettingType = require('./common/ChannelSettingType');
