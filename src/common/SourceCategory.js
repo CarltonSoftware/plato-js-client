@@ -11,15 +11,16 @@ function SourceCategory(id) {
 SourceCategory.prototype = new SingleEntity();
 SourceCategory.prototype.toArray = function() {
   return {
-    sourcecategory: this.sourcecategory
+    sourcecategory: this.sourcecategory,
+    sourcetopicid: this.sourcetopic && this.sourcetopic.id ? this.sourcetopic.id : 0
   };
 };
 
 SourceCategory.prototype.validSchema = function() {
   return Joi.object().keys({
-    sourcecategory: Joi.string().required().label('Source Category')
+    sourcecategory: Joi.string().required().label('Source Category'),
+    sourcetopic: Joi.object().optional().label('Source Topic')
   });
 };
-
 
 module.exports = SourceCategory;
