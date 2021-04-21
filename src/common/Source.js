@@ -1,6 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var Collection = require('./Collection');
 var SourceCategory = require('./SourceCategory');
+var SourceTopic = require('./SourceTopic');
 var SourceMarketingBrand = require('./SourceMarketingBrand');
 var Joi = require('joi');
 
@@ -9,6 +10,7 @@ function Source(id) {
   this.createPath = 'source';
   this.id = id;
   this.sourcecategory = new SourceCategory();
+  this.sourcetopic = new SourceTopic();
   this.sourcemarketingbrands = new Collection({
     object: SourceMarketingBrand,
     path: 'marketingbrand',

@@ -55,6 +55,7 @@ module.exports.common.SettingValue = require('./common/SettingValue');
 module.exports.common.SettingValueType = require('./common/SettingValueType');
 module.exports.common.SettingValueOption = require('./common/SettingValueOption');
 module.exports.common.SourceCategory = require('./common/SourceCategory');
+module.exports.common.SourceTopic = require('./common/SourceTopic');
 module.exports.common.EventType = require('./common/EventType');
 module.exports.common.EventLog = require('./common/EventLog');
 module.exports.common.LegacyApiKey = require('./common/LegacyApiKey');
