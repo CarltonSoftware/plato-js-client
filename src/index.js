@@ -1,6 +1,7 @@
 module.exports.client = require('./common/platoJsClient');
 
 module.exports.common = {};
+module.exports.common.CommentMetric = require('./common/CommentMetric');
 module.exports.common.Encoding = require('./common/Encoding');
 module.exports.common.Feature = require('./common/Feature');
 module.exports.common.ApprovalType = require('./common/ApprovalType');
@@ -169,6 +170,7 @@ module.exports.common.PropertyBrandingSpecialoffer = require('./common/PropertyB
 module.exports.common.PropertyBrandingStatus = require('./common/PropertyBrandingStatus');
 module.exports.common.PropertyBrandingYearPriceband = require('./common/PropertyBrandingYearPriceband');
 module.exports.common.PropertyComment = require('./common/PropertyComment');
+module.exports.common.PropertyCommentMetric = require('./common/PropertyCommentMetric');
 module.exports.common.PropertyEvent = require('./common/PropertyEvent');
 module.exports.common.PropertyEventCategory = require('./common/PropertyEventCategory');
 module.exports.common.PropertyOwner = require('./common/PropertyOwner');
