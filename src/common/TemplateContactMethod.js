@@ -100,8 +100,8 @@ TemplateContactMethod.prototype.optOut = function(ref) {
   return client.put(this.getRefPath(ref) + '/optout');
 };
 
-TemplateContactMethod.prototype.schedule = function(ref, job) {
-  return client.put({ path: this.getRefPath(ref) + '/schedule', entity: { job: job } });
+TemplateContactMethod.prototype.schedule = function(ref, job, triggereventid) {
+  return client.put({ path: this.getRefPath(ref) + '/schedule', entity: { job: job, triggereventid: triggereventid } });
 };
 
 TemplateContactMethod.prototype.sendIfAvailable = function(ref) {
