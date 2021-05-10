@@ -17,7 +17,10 @@ function TemplateContactMethodTriggerEvent(id) {
   this.validSchema = function() {
     var s = {
       type: Joi.string().required().label('type').allow(['BookingDates', 'OwnerBookingType', 'AgencyBookingType', 'EventType']),
-      triggerevent: Joi.object().required().label('Trigger event')
+      triggerevent: Joi.object().required().label('Trigger event'),
+      sendonce: Joi.boolean().required().label('Send once?').description(
+        'This will determine if the template can be sent once or more to the same contact'
+      );
     };
 
     if (this.type === 'EventType') {
