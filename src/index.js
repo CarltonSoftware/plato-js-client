@@ -67,6 +67,7 @@ module.exports.common.OwnerBookingType = require('./common/OwnerBookingType');
 module.exports.common.OwnerPayment = require('./common/OwnerPayment');
 module.exports.common.OwnerPaymentSelection = require('./common/OwnerPaymentSelection');
 module.exports.common.OwnerPaymentSelectionBookingBrand = require('./common/OwnerPaymentSelectionBookingBrand');
+module.exports.common.OwnerPaymentSelectionProgram = require('./common/OwnerPaymentSelectionProgram');
 module.exports.common.OwnerPaymentSelectionProperty = require('./common/OwnerPaymentSelectionProperty');
 module.exports.common.OwnerPaymentTerm = require('./common/OwnerPaymentTerm');
 module.exports.common.OwnerPaymentTermExtra = require('./common/OwnerPaymentTermExtra');

@@ -2,6 +2,7 @@ var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
 var Collection = require('./Collection');
 var OwnerPaymentSelectionBookingBrand = require('./OwnerPaymentSelectionBookingBrand');
+var OwnerPaymentSelectionProgram = require('./OwnerPaymentSelectionProgram');
 var OwnerPaymentSelectionProperty = require('./OwnerPaymentSelectionProperty');
 var Joi = require('joi');
 var dayjs = require('dayjs');
@@ -22,6 +23,11 @@ function OwnerPaymentSelection(id) {
     path: 'bookingbrand',
     parent: this
   });
+  this.programs = new Collection({
+    object: OwnerPaymentSelectionProgram,
+    path: 'program',
+    parent: this
+  });
   this.properties = new Collection({
     object: OwnerPaymentSelectionProperty,
     path: 'property',
@@ -35,6 +41,7 @@ OwnerPaymentSelection.prototype.toCreateArray = function() {
     selectbookingson: this.selectbookingson,
     paytodate: this.paytodate,
     ownerids: this.ownerids,
+    programids: this.programids,
     propertyids: this.propertyids,
     createdbytabsuserid: this.createdbytabsuser.id,
     balancepaid: this.balancepaid || false,
@@ -141,6 +148,7 @@ OwnerPaymentSelection.validCreateSchema = Joi.object().keys({
   selectbookingson: Joi.string().valid('fromdate', 'todate').label('select bookings on'),
   paytodate: Joi.date().required().label('pay to date'),
   ownerids: Joi.string().allow("").optional().label('owner ids'),
+  programids: Joi.string().allow("").optional().label('Program ids'),
   propertyids: Joi.string().allow("").optional().label('property ids'),
   balancepaid: Joi.boolean().required().label('Bookings with balance paid'),
   accidentaldamagedepositpaid: Joi.boolean().required().label('Bookings with ADD waiver paid'),
