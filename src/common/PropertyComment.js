@@ -1,5 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
+var Collection = require('./Collection');
+var PropertyCommentMetric = require('./PropertyCommentMetric');
 var Joi = require('joi');
 
 function PropertyComment(id) {
@@ -7,6 +9,11 @@ function PropertyComment(id) {
   this.id = id;
   this.booking = new EntityLink({
     entity: 'Booking'
+  });
+  this.metrics = new Collection({
+    object: PropertyCommentMetric,
+    path: 'metric',
+    parent: this
   });
 }
 PropertyComment.prototype = new SingleEntity();
