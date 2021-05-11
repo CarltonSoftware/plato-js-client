@@ -85,6 +85,8 @@ Template.prototype.toArray = function() {
     showowner: this.showowner,
     showflexilet: this.showflexilet,
     showcancelledflexilet: this.showcancelledflexilet,
+    showpotentialreservation: this.showpotentialreservation,
+    showpotentialhold: this.showpotentialhold,
     bookingbrandid: this.bookingbrand.id,
     brandingid: this.branding.id,
     marketingbrandid: this.marketingbrand.id,
