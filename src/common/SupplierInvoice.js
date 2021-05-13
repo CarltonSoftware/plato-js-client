@@ -1,6 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var WorkOrderSupplier = require('./WorkOrderSupplier');
 var SupplierInvoiceItem = require('./SupplierInvoiceItem');
+var Document = require('./Document');
 var Collection = require('./Collection');
 
 function SupplierInvoice(id) {
@@ -12,6 +13,7 @@ function SupplierInvoice(id) {
     parent: this,
     object: SupplierInvoiceItem
   });
+  this.document = new Document();
 }
 
 SupplierInvoice.prototype = new SingleEntity();
@@ -20,7 +22,10 @@ SupplierInvoice.prototype.toArray = function() {
     workordersupplierid: this.workordersupplier.id,
     invoicedate: this.invoicedate,
     invoicenumber: this.invoicenumber,
-    description: this.description
+    description: this.description,
+    totalamountnet: this.totalamountnet,
+    supplierprovided: this.supplierprovided,
+    documentid: this.document.id
   };
 };
 

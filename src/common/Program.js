@@ -50,5 +50,9 @@ Program.prototype.toArray = function() {
     rejectionactiondescription: this.rejectionactiondescription
   };
 };
+Program.prototype.toString = function() {
+  return this.programname;
+};
+
 
 module.exports = Program;

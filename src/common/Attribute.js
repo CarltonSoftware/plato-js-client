@@ -48,10 +48,10 @@ function Attribute(id) {
       name: Joi.string().required().label('Name'),
       description: Joi.string().required().label('Description'),
       group: Joi.object().required().label('Group'),
-      usedinavailabilitysearch: Joi.boolean().label('Used in availability search?'),
-      baseattribute: Joi.boolean().optional().label('Base Attribute'),
-      donotmodify: Joi.boolean().optional().label('Do not modify'),
-      important: Joi.boolean().optional().label('Important')
+      usedinavailabilitysearch: Joi.boolean().required().label('Used in availability search?'),
+      baseattribute: Joi.boolean().required().label('Base Attribute'),
+      donotmodify: Joi.boolean().required().label('Do not modify'),
+      important: Joi.boolean().required().label('Important')
     };
 
     if (this.type === 'Number' || this.type === 'Hybrid') {
@@ -63,10 +63,10 @@ function Attribute(id) {
       schema.unit = Joi.object().required().label('Unit');
     }
 
-    var explainer = 'Will apply to newly created properties. Use Bulk Update Attributes to update existing properties.'; 
+    var explainer = 'Will apply to newly created properties. Use Bulk Update Attributes to update existing properties.';
     var booldef = Joi.string().optional().label('Default Boolean value').allow(['', 'true', 'false']).description(explainer);
     var stringdef = Joi.string().optional().allow('').label('Default value').description(explainer);
-    
+
     if (this.type === 'Hybrid') {
       schema.defaultnumbervalue = Joi.number().optional().label('Default Number value').description(explainer);
       schema.defaultbooleanvalue = booldef;

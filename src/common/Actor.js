@@ -18,7 +18,10 @@ var ActorManagedActivity = require('./ActorManagedActivity');
 var ActorSecurity = require('./ActorSecurity');
 var ActorSetting = require('./ActorSetting');
 var ActorCategory = require('./ActorCategory');
+var ActorProgram = require('./ActorProgram');
+var ActorContactDetailPermission = require('./ActorContactDetailPermission');
 var Flag = require('./Flag');
+var ZendeskTicket = require('./ZendeskTicket');
 var _ = require('underscore');
 
 /**
@@ -89,10 +92,28 @@ function Actor(id) {
     }
   });
 
+  this.contactdetailpermissions = new Collection({
+    object: ActorContactDetailPermission,
+    parent: this,
+    path: 'contactdetailpermission'
+  });
+
   this.flags = new Collection({
     object: Flag,
     parent: this,
     path: 'flag'
+  });
+
+  this.zendesktickets = new Collection({
+    object: ZendeskTicket,
+    path: 'zendeskticket',
+    parent: this
+  });
+
+  this.programs = new Collection({
+    object: ActorProgram,
+    path: 'program',
+    parent: this
   });
 }
 
@@ -109,6 +130,20 @@ Actor.prototype.mutateResponse = function(entity) {
     path: 'booking',
     object: Booking,
     parent: this
+  });
+
+  var CustomerPayment = require('./CustomerPayment');
+  var BookingPayment = require('./BookingPayment');
+  this.accounts = new Collection({
+    path: 'account',
+    object: CustomerPayment,
+    parent: this,
+    discriminator: 'type',
+    discriminatorMap: {
+      Actor: CustomerPayment,
+      Booking: BookingPayment,
+      SecurityDeposit: BookingPayment
+    }
   });
 
   return this.mutateEntity(entity);
@@ -430,7 +465,7 @@ Actor.prototype.toArray = function() {
   if (this.hasOwnProperty('updateworkorders')) {
     arr.updateworkorders = this.updateworkorders;
   }
-  
+
   return arr;
 };
 

@@ -147,9 +147,11 @@ SagePayPayment.prototype.detail = function() {
   return client.get([this.getUpdatePath(), 'detail'].join('/'));
 };
 
-SagePayPayment.prototype.import = function(bookingId, doNotConfirm) {
-  doNotConfirm = (typeof doNotConfirm !== 'undefined') ?  doNotConfirm : false
-  return this.updatePromiseResult([this.getUpdatePath(), 'import', bookingId, doNotConfirm].join('/'), {});
+SagePayPayment.prototype.import = function(bookingId, doNotConfirm, paymentMethod) {
+  doNotConfirm = (typeof doNotConfirm !== 'undefined') ?  doNotConfirm : false;
+  paymentMethod = (typeof paymentMethod !== 'undefined') ?  paymentMethod : 'W';
+
+  return this.updatePromiseResult([this.getUpdatePath(), 'import', bookingId, doNotConfirm, paymentMethod].join('/'), {});
 };
 
 module.exports = SagePayPayment;

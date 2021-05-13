@@ -1,6 +1,7 @@
 module.exports.client = require('./common/platoJsClient');
 
 module.exports.common = {};
+module.exports.common.CommentMetric = require('./common/CommentMetric');
 module.exports.common.Encoding = require('./common/Encoding');
 module.exports.common.Feature = require('./common/Feature');
 module.exports.common.ApprovalType = require('./common/ApprovalType');
@@ -25,8 +26,10 @@ module.exports.common.ExchangeRate = require('./common/ExchangeRate');
 module.exports.common.Language = require('./common/Language');
 module.exports.common.Postcode = require('./common/Postcode');
 module.exports.common.CancellationAction = require('./common/CancellationAction');
+module.exports.common.CancellationCategory = require('./common/CancellationCategory');
 module.exports.common.CancellationReason = require('./common/CancellationReason');
 module.exports.common.CancellationReasonGroup = require('./common/CancellationReasonGroup');
+module.exports.common.CancellationStatus = require('./common/CancellationStatus');
 module.exports.common.ContactEntity = require('./common/ContactEntity');
 module.exports.common.ContactDocument = require('./common/ContactDocument');
 module.exports.common.ContactType = require('./common/ContactType');
@@ -53,14 +56,19 @@ module.exports.common.SettingValue = require('./common/SettingValue');
 module.exports.common.SettingValueType = require('./common/SettingValueType');
 module.exports.common.SettingValueOption = require('./common/SettingValueOption');
 module.exports.common.SourceCategory = require('./common/SourceCategory');
+module.exports.common.SourceTopic = require('./common/SourceTopic');
 module.exports.common.EventType = require('./common/EventType');
 module.exports.common.EventLog = require('./common/EventLog');
+module.exports.common.LegacyApiKey = require('./common/LegacyApiKey');
 
 //Owner
 module.exports.common.OwnerEnquiryActionType = require('./common/OwnerEnquiryActionType');
 module.exports.common.OwnerBookingType = require('./common/OwnerBookingType');
 module.exports.common.OwnerPayment = require('./common/OwnerPayment');
 module.exports.common.OwnerPaymentSelection = require('./common/OwnerPaymentSelection');
+module.exports.common.OwnerPaymentSelectionBookingBrand = require('./common/OwnerPaymentSelectionBookingBrand');
+module.exports.common.OwnerPaymentSelectionProgram = require('./common/OwnerPaymentSelectionProgram');
+module.exports.common.OwnerPaymentSelectionProperty = require('./common/OwnerPaymentSelectionProperty');
 module.exports.common.OwnerPaymentTerm = require('./common/OwnerPaymentTerm');
 module.exports.common.OwnerPaymentTermExtra = require('./common/OwnerPaymentTermExtra');
 module.exports.common.OwnerPaymentType = require('./common/OwnerPaymentType');
@@ -101,6 +109,7 @@ module.exports.common.Actors = require('./common/Actors');
 module.exports.common.ActorContactDetailAddress = require('./common/ActorContactDetailAddress');
 module.exports.common.ActorContactDetailOther = require('./common/ActorContactDetailOther');
 module.exports.common.ActorContactDetailPhone = require('./common/ActorContactDetailPhone');
+module.exports.common.ActorContactDetailPermission = require('./common/ActorContactDetailPermission');
 module.exports.common.ContactPreference = require('./common/ContactPreference');
 module.exports.common.ActorManagedActivity = require('./common/ActorManagedActivity');
 module.exports.common.ActorLocation = require('./common/ActorLocation');
@@ -162,6 +171,9 @@ module.exports.common.PropertyBrandingSpecialoffer = require('./common/PropertyB
 module.exports.common.PropertyBrandingStatus = require('./common/PropertyBrandingStatus');
 module.exports.common.PropertyBrandingYearPriceband = require('./common/PropertyBrandingYearPriceband');
 module.exports.common.PropertyComment = require('./common/PropertyComment');
+module.exports.common.PropertyCommentMetric = require('./common/PropertyCommentMetric');
+module.exports.common.PropertyEvent = require('./common/PropertyEvent');
+module.exports.common.PropertyEventCategory = require('./common/PropertyEventCategory');
 module.exports.common.PropertyOwner = require('./common/PropertyOwner');
 module.exports.common.PropertyNote = require('./common/PropertyNote');
 module.exports.common.PropertyNoteConfirmation = require('./common/PropertyNoteConfirmation');
@@ -175,6 +187,7 @@ module.exports.common.DescriptionType = require('./common/DescriptionType');
 module.exports.common.PropertySecurityFeature = require('./common/PropertySecurityFeature');
 module.exports.common.PropertyDocument = require('./common/PropertyDocument');
 module.exports.common.PropertyRoom = require('./common/PropertyRoom');
+module.exports.common.PropertyRoomType = require('./common/PropertyRoomType');
 module.exports.common.PropertyTabsUser = require('./common/PropertyTabsUser');
 module.exports.common.PropertyTarget = require('./common/PropertyTarget');
 module.exports.common.PartySizePricing = require('./common/PartySizePricing');
@@ -208,6 +221,11 @@ module.exports.common.PromotePeriod = require('./common/PromotePeriod');
 module.exports.common.SpecialOfferDiscountExtra = require('./common/SpecialOfferDiscountExtra');
 module.exports.common.SpecialOfferDiscountedExtra = require('./common/SpecialOfferDiscountedExtra');
 module.exports.common.MultiOfferAction = require('./common/MultiOfferAction');
+module.exports.common.PropertyApproval = require('./common/PropertyApproval');
+module.exports.common.PropertyLink = require('./common/PropertyLink');
+module.exports.common.PropertyLinkHolidayPeriod = require('./common/PropertyLinkHolidayPeriod');
+module.exports.common.ParkingPermit = require('./common/ParkingPermit');
+module.exports.common.ParkingPermitHolidayPeriod = require('./common/ParkingPermitHolidayPeriod');
 
 // Key Related Objects
 module.exports.common.Keyy = require('./common/Keyy');
@@ -256,6 +274,7 @@ module.exports.common.BookingSecurityDepositWithhold = require('./common/Booking
 module.exports.common.BookingSecurityDepositHold = require('./common/BookingSecurityDepositHold');
 module.exports.common.BookingSupplier = require('./common/BookingSupplier');
 module.exports.common.BookingService = require('./common/BookingService');
+module.exports.common.BookingRoom = require('./common/BookingRoom');
 module.exports.common.BookingServiceCharge = require('./common/BookingServiceCharge');
 module.exports.common.Bookings = require('./common/Bookings');
 module.exports.common.GuestAgeRange = require('./common/GuestAgeRange');
@@ -297,12 +316,16 @@ module.exports.common.ManagedService = require('./common/ManagedService');
 module.exports.common.ManagedActivityService = require('./common/ManagedActivityService');
 module.exports.common.PmsInvoice = require('./common/PmsInvoice');
 module.exports.common.PmsInvoiceOwnerCharge = require('./common/PmsInvoiceOwnerCharge');
+module.exports.common.ServiceTag = require('./common/ServiceTag');
+module.exports.common.WorkOrderServiceTag = require('./common/WorkOrderServiceTag');
+module.exports.common.WorkOrderExpenseGroup = require('./common/WorkOrderExpenseGroup');
 
 // Note Related Objects
 module.exports.common.Note = require('./common/Note');
 module.exports.common.NoteText = require('./common/NoteText');
 module.exports.common.NoteType = require('./common/NoteType');
 module.exports.common.NoteActor = require('./common/NoteActor');
+module.exports.common.PropertyNoteCategory = require('./common/PropertyNoteCategory');
 
 // Payment Related Objects
 module.exports.common.ActorPaymentRefund = require('./common/ActorPaymentRefund');
@@ -377,6 +400,7 @@ module.exports.common.CronTask = require('./common/CronTask');
 
 // Property Pricing
 module.exports.common.PropertyBrandingPrice = require('./common/PropertyBrandingPrice');
+module.exports.common.PricePeriod = require('./common/PricePeriod');
 module.exports.common.PriceOverride = require('./common/PriceOverride');
 module.exports.common.ReducedOccupancyPrice = require('./common/ReducedOccupancyPrice');
 
@@ -388,8 +412,11 @@ module.exports.common.TemplateRoleReason = require('./common/TemplateRoleReason'
 module.exports.common.TemplateContactMethodAttachment = require('./common/TemplateContactMethodAttachment');
 module.exports.common.TemplateContactMethodBranding = require('./common/TemplateContactMethodBranding');
 module.exports.common.TemplateContactMethodAttachmentProperty = require('./common/TemplateContactMethodAttachmentProperty');
+module.exports.common.TemplateContactMethodAttachmentBranding = require('./common/TemplateContactMethodAttachmentBranding');
+module.exports.common.TemplateContactMethodTriggerEvent = require('./common/TemplateContactMethodTriggerEvent');
 module.exports.common.TemplateElement = require('./common/TemplateElement');
 module.exports.common.TemplateSource = require('./common/TemplateSource');
+module.exports.common.TemplateStyleSheet = require('./common/TemplateStyleSheet');
 module.exports.common.TemplateTarget = require('./common/TemplateTarget');
 module.exports.common.TemplateTargetSource = require('./common/TemplateTargetSource');
 module.exports.common.TextItem = require('./common/TextItem');
@@ -465,3 +492,18 @@ module.exports.common.AccidentalDamageDeposit = require('./common/AccidentalDama
 // Programs
 module.exports.common.Program = require('./common/Program');
 module.exports.common.ActorProgram = require('./common/ActorProgram');
+module.exports.common.ZendeskTicket = require('./common/ZendeskTicket');
+
+//ChannelManager
+module.exports.common.Channel = require('./common/Channel');
+module.exports.common.ChannelInformationCategory = require('./common/ChannelInformationCategory');
+module.exports.common.ChannelPropertyBranding = require('./common/ChannelPropertyBranding');
+module.exports.common.ChannelPropertyBrandingException = require('./common/ChannelPropertyBrandingException');
+module.exports.common.ChannelPropertyBrandingInformationCategory = require('./common/ChannelPropertyBrandingInformationCategory');
+module.exports.common.ChannelSetting = require('./common/ChannelSetting');
+module.exports.common.ChannelSettingType = require('./common/ChannelSettingType');
+module.exports.common.ChannelSettingValue = require('./common/ChannelSettingValue');
+module.exports.common.InformationCategory = require('./common/InformationCategory');
+
+module.exports.error = {};
+module.exports.error.statusError = require('./error/statusError');

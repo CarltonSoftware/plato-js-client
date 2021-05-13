@@ -10,7 +10,9 @@ var Booking = require('./Booking');
 var WorkOrderActor = require('./WorkOrderActor');
 var WorkOrderAssociation = require('./WorkOrderAssociation');
 var WorkOrderDocument = require('./WorkOrderDocument');
+var WorkOrderExpenseGroup = require('./WorkOrderExpenseGroup');
 var WorkOrderNote = require('./WorkOrderNote');
+var WorkOrderServiceTag = require('./WorkOrderServiceTag');
 var WorkOrderStatusHistorySubStatus = require('./WorkOrderStatusHistorySubStatus');
 var NoteFilterCollection = require('./NoteFilterCollection');
 var Collection = require('./Collection');
@@ -75,6 +77,18 @@ function WorkOrder(id) {
     parent: this
   });
 
+  this.servicetags = new Collection({
+    object: WorkOrderServiceTag,
+    path: 'servicetag',
+    parent: this
+  });
+
+  this.expensegroups = new Collection({
+    object: WorkOrderExpenseGroup,
+    path: 'expensegroups',
+    parent: this
+  });
+
   this.fieldsOverrides = {
     substatusmini: 'substatus',
     worktypemini: 'worktype',
@@ -102,6 +116,7 @@ WorkOrder.prototype.toArray = function() {
 
     period: this.period,
     startdate: this.startdate,
+    enddate: this.enddate,
     frequency: this.frequency,
     dayofweek: this.dayofweek,
     weekofmonth: this.weekofmonth,

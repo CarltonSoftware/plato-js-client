@@ -22,8 +22,8 @@ PaymentMethod.prototype.toArray = function() {
 PaymentMethod.prototype.validSchema = function() {
   return Joi.object().keys({
     paymentmethod: Joi.string().label('payment method'),
-    description: Joi.string().required(),
-    inactive: Joi.boolean(),
+    description: Joi.string().required().label('Description'),
+    inactive: Joi.boolean().label('Inactive'),
     paymentmethodtype: Joi.object().label('payment method type')
   });
 };

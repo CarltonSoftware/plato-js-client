@@ -15,10 +15,14 @@ var PropertyCommission = require('./PropertyCommission');
 var PropertyNote = require('./PropertyNote');
 var NoteFilterCollection = require('./NoteFilterCollection');
 var PropertyHousekeeping = require('./PropertyHousekeeping');
+var PropertyApproval = require('./PropertyApproval');
+var PropertyLink = require('./PropertyLink');
 var InspectionType = require('./InspectionType');
 var AvailableBreak = require('./AvailableBreak');
+var ParkingPermit = require('./ParkingPermit');
 var Joi = require('joi');
-var moment = require('moment');
+var dayjs = require('dayjs');
+dayjs = 'default' in dayjs ? dayjs['default'] : dayjs;
 
 function Property(id) {
   this.path = 'property';
@@ -90,6 +94,21 @@ function Property(id) {
     path: 'availablebreak',
     parent: this
   });
+  this.approvals = new Collection({
+    object: PropertyApproval,
+    path: 'approval',
+    parent: this
+  });
+  this.links = new Collection({
+    object: PropertyLink,
+    path: 'link',
+    parent: this
+  });
+  this.parkingpermits = new Collection({
+    object: ParkingPermit,
+    path: 'parkingpermit',
+    parent: this
+  });
 
   this.ratinginspectiontype = new InspectionType();
 
@@ -108,6 +127,7 @@ Property.prototype.toArray = function() {
     maximumpets: this.maximumpets,
     accomodationdescription: this.accomodationdescription,
     tabspropref: this.tabspropref,
+    virtualproperty: this.virtualproperty || false,
     status: this.status ? this.status.name : null,
     telephonenumber: this.telephonenumber,
     address_line1: this.address.line1,
@@ -118,7 +138,9 @@ Property.prototype.toArray = function() {
     address_postcode: this.address.postcode,
     address_countryalpha2code: this.address.country.alpha2,
     address_latitude: this.address.latitude,
-    address_longitude: this.address.longitude
+    address_longitude: this.address.longitude,
+    noinfants: this.noinfants,
+    nochildren: this.nochildren
   };
   if (this.checkintext) {
     prop.checkintext = this.checkintext;
@@ -192,11 +214,17 @@ Property.prototype.updateAvailablebreaks = function() {
   return this.updatePromiseResult([this.path, this.id, 'availablebreaks'].join('/'), { force: true });
 };
 
+Property.prototype.getAvailableBreaksPrice = function(fromDate, days, includeCompulsoryExtras, round) {
+  var _priceWithCompulsory = function(obj) {
+    var price = obj.price;
+    if (includeCompulsoryExtras) {
+      price += obj.compulsoryextras;
+    }
+    return round ? Math.round(price) : price;
+  };
 
-
-Property.prototype.getAvailableBreaksPrice = function(fromDate, days) {
   var prices = this.availablebreaks.filter(function(p) {
-    return moment(fromDate).isSame(p.fromdate);
+    return dayjs(fromDate).isSame(p.fromdate);
   });
 
   if (prices.length > 0) {
@@ -208,7 +236,7 @@ Property.prototype.getAvailableBreaksPrice = function(fromDate, days) {
 
     if (days <= 7) {
       if (price.length === 1) {
-        return price.pop().price;
+        return _priceWithCompulsory(price.pop());
       }
     }
 
@@ -217,12 +245,12 @@ Property.prototype.getAvailableBreaksPrice = function(fromDate, days) {
         days = days || 7;
         var price = availablebreakprices.filter(
           function(p) {
-            return p.days == days && moment(p.fromdate).isSame(fromDate);
+            return p.days == days && dayjs(p.fromdate).isSame(fromDate);
           }
         );
 
         if (price.length === 1) {
-          prices.push(price.shift().price);
+          prices.push(_priceWithCompulsory(price.shift()));
         } else {
           prices.push(-1);
         }
@@ -238,9 +266,9 @@ Property.prototype.getAvailableBreaksPrice = function(fromDate, days) {
         add = add + 7;
       }
 
-      var to = moment(fromDate).add(i * 7, 'd');
+      var to = dayjs(fromDate).add(i * 7, 'd');
       for (var i = 0; i < weeks; i++) {
-        to = moment(fromDate).add(i * 7, 'd');
+        to = dayjs(fromDate).add(i * 7, 'd');
         getPrice(_prices, this.availablebreaks, to, 7);
       }
 

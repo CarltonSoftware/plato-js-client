@@ -1,6 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var Joi = require('joi');
-var moment = require('moment');
+var dayjs = require('dayjs');
+dayjs = 'default' in dayjs ? dayjs['default'] : dayjs;
 var EntityLink = require('./EntityLink');
 
 function BookingApproval(id) {
@@ -35,7 +36,7 @@ BookingApproval.prototype.toArray = function() {
     bookingid: this.bookingid,
     approvingactortype: this.approvingactor.type,
     approvingactorid: this.approvingactor.id,
-    createddatetime: moment().format('YYYY-MM-DD HH:mm:ss'),
+    createddatetime: dayjs().format('YYYY-MM-DD HH:mm:ss'),
     approveddatetime: this.approveddatetime,
     actioneddatetime: this.actioneddatetime,
     comment: this.comment,

@@ -92,6 +92,14 @@ function Voucher(id) {
 
     return s;
   }.bind(this)
+
+  this.validExpirySchema = function() {
+    return {
+      expirydate: Joi.date().required().label(
+        'Voucher expiry date'
+      ).description('The date the voucher expires.')
+    };
+  }
 }
 
 Voucher.prototype = new SingleEntity();
@@ -103,6 +111,7 @@ Voucher.prototype.toArray = function() {
   var arr = {
     value: this.value,
     cancelleddatetime: this.cancelleddatetime,
+    expirydate: this.expirydate,
   };
 
   ['paidforbyactor', 'forusebyactor', 'usedbyactor', 'createdbyactor', 'cancelledbyactor', 'frombooking'].forEach(function(key) {

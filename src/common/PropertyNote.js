@@ -1,6 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
 var Note = require('./Note');
+var PropertyNoteCategory = require('./PropertyNoteCategory');
 
 function PropertyNote(id) {
   this.createPath = 'propertynote';
@@ -12,6 +13,7 @@ function PropertyNote(id) {
   });
 
   this.note = new Note();
+  this.propertynotecategory = new PropertyNoteCategory();
 }
 PropertyNote.prototype = new SingleEntity();
 
@@ -22,6 +24,7 @@ PropertyNote.prototype.toArray = function() {
     fromdate: this.fromdate,
     todate: this.todate,
     requiresconfirmation: this.requiresconfirmation,
+    propertynotecategoryid: this.propertynotecategory.id,
     showonweb: this.showonweb,
     showonavailability: this.showonavailability
   };

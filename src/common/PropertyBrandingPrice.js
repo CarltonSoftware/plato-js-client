@@ -4,7 +4,10 @@ var Currency = require('./Currency');
 var Collection = require('./Collection');
 var ReducedOccupancyPrice = require('./ReducedOccupancyPrice');
 var EntityLink = require('./EntityLink');
-var moment = require('moment');
+var dayjs = require('dayjs');
+dayjs = 'default' in dayjs ? dayjs['default'] : dayjs;
+var isBetween = require('dayjs/plugin/isBetween');
+dayjs.extend(isBetween);
 var PropertyBrandingYearPriceband = require('./PropertyBrandingYearPriceband');
 
 /**
@@ -65,7 +68,7 @@ PropertyBrandingPrice.prototype.getDayPrice = function(day, date) {
       price = dayPrice.price;
       if (dayPrice.overrides.collection.length) {
         var overridePrice = dayPrice.overrides.findOne(function(override) {
-          return moment(date).isBetween(override.fromdate, override.todate, null, '[)');
+          return dayjs(date).isBetween(override.fromdate, override.todate, null, '[)');
         });
         if (overridePrice) {
           price = overridePrice.price;

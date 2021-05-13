@@ -7,7 +7,10 @@ var ExtraBranding = require('./ExtraBranding');
 var PropertyBrandingChangeDayTemplate = require('./PropertyBrandingChangeDayTemplate');
 var Status = require('./Status');
 var Collection = require('./Collection');
-var moment = require('moment');
+var dayjs = require('dayjs');
+dayjs = 'default' in dayjs ? dayjs['default'] : dayjs;
+var FilterCollection = require('./FilterCollection');
+var PricePeriod = require('./PricePeriod');
 
 function PropertyBranding(id) {
   this.path = 'branding';
@@ -111,6 +114,33 @@ PropertyBranding.prototype.getPrices = function(fromDate, toDate, type) {
 };
 
 /**
+ * Get the prices Fixed
+ *
+ * @param {string} fromDate
+ * @param {string} toDate
+ * @param {string} type
+ */
+
+PropertyBranding.prototype.getPricesFixed = function(fromDate, toDate) {
+
+  var p = new FilterCollection({
+    object: PricePeriod,
+    path: 'priceperiod'
+  });
+
+  p.addFilter('propertybrandingid', this.id);
+
+  if(fromDate && toDate) {
+    // TABS2-5778 changed to show all prices overlapping the dates as per Ian's suggestion - no blame here ;-)
+    p.addFilter('todate', '>' + fromDate);
+    p.addFilter('fromdate', '<' + toDate);
+    p.limit = 100;
+  }
+
+  return p.fetch();
+};
+
+/**
  * Get the availability
  *
  * @param {string}  fromDate
@@ -144,7 +174,7 @@ PropertyBranding.prototype.getAvailability = function(fromDate, toDate, includec
 PropertyBranding.prototype.getPropertyBookedRanges = function() {
   var pb = this;
   return new Promise(function(resolve, reject) {
-    pb.getAvailability(moment().format('YYYY-MM-DD'), moment().add(2, 'year').format('YYYY-MM-DD')).then(function(collection) {
+    pb.getAvailability(dayjs().format('YYYY-MM-DD'), dayjs().add(2, 'year').format('YYYY-MM-DD')).then(function(collection) {
       var bookingPeriods = [],
         start = null,
         end = null;

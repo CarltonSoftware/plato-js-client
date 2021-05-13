@@ -106,6 +106,7 @@ SpecialOffer.prototype.toUpdateArray = function() {
     archive: this.archive,
     archiveddatetime: this.archiveddatetime,
   };
+  
   if (this.percentagepaidbyowner === null) {
     fields.percentagepaidbyowner = 'null';
   } else {
@@ -128,9 +129,13 @@ SpecialOffer.prototype.toUpdateArray = function() {
   } else if (this.useholidayperiodprices === false) {
     fields.useholidayperiodprices = this.useholidayperiodprices;
   }
-
+  
   if (this.multiofferaction && this.multiofferaction.id) {
     fields.multiofferactionid = this.multiofferaction.id;
+  }
+  
+  if (this.websitesectionids) {
+    fields.websitesectionids = this.websitesectionids;
   }
 
   return fields;
@@ -140,6 +145,11 @@ SpecialOffer.prototype.toCreateArray = function() {
   var array = this.toUpdateArray();
   array.pricingperiod = this.pricingperiod.pricingperiod;
   array.brandingids = this.brandingids;
+  /* create from another template if required */
+  if (this.createfromtemplateid && this.propertybrandingyearpricebandid) {
+    array.createfromtemplateid = this.createfromtemplateid;
+    array.propertybrandingyearpricebandid = this.propertybrandingyearpricebandid;
+  }
   /* remove active as the API rejects on create, even if false */
   delete array.active;
   return array;

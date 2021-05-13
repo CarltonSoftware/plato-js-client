@@ -4,14 +4,17 @@ var ContactMethodType = require('./ContactMethodType');
 var Language = require('./Language');
 var Collection = require('./Collection');
 var TemplateElement = require('./TemplateElement');
+var TemplateStyleSheet = require('./TemplateStyleSheet');
 var TemplateContactMethodAttachment = require('./TemplateContactMethodAttachment');
 var TemplateContactMethodBranding = require('./TemplateContactMethodBranding');
+var TemplateContactMethodTriggerEvent = require('./TemplateContactMethodTriggerEvent');
 
 function TemplateContactMethod(id) {
   this.createPath = this.path = 'contactmethod';
   this.id = id;
   this.contactmethodtype = new ContactMethodType();
   this.language = new Language();
+  this.templatestylesheet = new TemplateStyleSheet();
   this.elements = new Collection({
     object: TemplateElement,
     path: 'element',
@@ -27,6 +30,11 @@ function TemplateContactMethod(id) {
     path: 'branding',
     parent: this
   });
+  this.triggerevents = new Collection({
+    object: TemplateContactMethodTriggerEvent,
+    path: 'triggerevent',
+    parent: this
+  });
 }
 
 TemplateContactMethod.prototype = new SingleEntity();
@@ -36,8 +44,12 @@ TemplateContactMethod.prototype.toArray = function() {
     fromdate: this.fromdate,
     todate: this.todate,
     description: this.description,
+    excludestandardheader: this.excludestandardheader,
+    excludestandardfooter: this.excludestandardfooter,
+    disablewysiwyg: this.disablewysiwyg,
     contactmethodtypeid: this.contactmethodtype.id,
     languageid: this.language.id,
+    templatestylesheetid: this.templatestylesheet.id,
   };
 };
 
@@ -88,8 +100,8 @@ TemplateContactMethod.prototype.optOut = function(ref) {
   return client.put(this.getRefPath(ref) + '/optout');
 };
 
-TemplateContactMethod.prototype.schedule = function(ref, job) {
-  return client.put({ path: this.getRefPath(ref) + '/schedule', entity: { job: job } });
+TemplateContactMethod.prototype.schedule = function(ref, job, triggereventid) {
+  return client.put({ path: this.getRefPath(ref) + '/schedule', entity: { job: job, triggereventid: triggereventid } });
 };
 
 TemplateContactMethod.prototype.sendIfAvailable = function(ref) {

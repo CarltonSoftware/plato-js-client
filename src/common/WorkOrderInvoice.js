@@ -18,6 +18,9 @@ WorkOrderInvoice.prototype.toArray = function() {
   if (this.supplierinvoice_description) {
     fields.supplierinvoice_description = this.supplierinvoice_description;
   }
+  if (this.supplierinvoice_id) {
+    fields.supplierinvoice_id = this.supplierinvoice_id;
+  }
 
   return fields;
 };

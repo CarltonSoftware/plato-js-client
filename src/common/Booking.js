@@ -18,6 +18,8 @@ var BookingProperty = require('./BookingProperty');
 var Promotion = require('./Promotion');
 var Complaint = require('./Complaint');
 var BookingVoucher = require('./BookingVoucher');
+var BookingVehicle = require('./BookingVehicle');
+var BookingRoom = require('./BookingRoom');
 
 function Booking(id) {
   this.path = 'booking';
@@ -92,6 +94,16 @@ function Booking(id) {
     path: 'voucher',
     parent: this
   });
+  this.vehicles = new Collection({
+    object: BookingVehicle,
+    path: 'vehicle',
+    parent: this
+  });
+  this.rooms = new Collection({
+    object: BookingRoom,
+    path: 'room',
+    parent: this
+  });
 
   this.webbooking = new WebBooking();
 }
@@ -163,6 +175,10 @@ Booking.prototype.toArray = function() {
     ignorechangedayrules: this.ignorechangedayrules,
     donotrecalculateprice: this.donotrecalculateprice,
 
+    parkingpermitsrequired: this.parkingpermitsrequired,
+
+    adddefaultbookingrooms: this.adddefaultbookingrooms,
+
     /* Web Booking */
     webbooking_createddatetime: this.webbooking.createddatetime,
     webbooking_reviewstartdatetime: this.webbooking.reviewstartdatetime,
@@ -187,6 +203,8 @@ Booking.prototype.toArray = function() {
 
     /* Cancelled */
     cancelledbooking_reason: this.cancelledbooking_reason,
+    cancelledbooking_cancellationcategoryid: this.cancelledbooking_cancellationcategoryid,
+    cancelledbooking_cancellationstatusid: this.cancelledbooking_cancellationstatusid,
     cancelledbooking_adviseddate: this.cancelledbooking_adviseddate,
     cancelledbooking_completeddate: this.cancelledbooking_completeddate,
     cancelledbooking_completedbytabsuserid: this.cancelledbooking_completedbytabsuserid,
@@ -202,7 +220,8 @@ Booking.prototype.toArray = function() {
     securitydeposit_dueoutdate: this.securitydeposit_dueoutdate,
 
     bypasschecks: this.bypasschecks,
-    removepromotioncode: this.removepromotioncode
+    removepromotioncode: this.removepromotioncode,
+    donotaddtransferextras: this.donotaddtransferextras
   };
 
   //Extend for TABS2-4581 field donotautocontact
@@ -362,6 +381,10 @@ Booking.prototype.getStatus = function() {
         item.bookingType += ' - Cancelled';
       }
       item.showAs = 'owner';
+
+      if (this.ownerbookingtype && this.ownerbookingtype.name && this.ownerbookingtype.name.substring(0, 6).toLowerCase() === 'buffer') {
+        item.showAs = 'bookingbuffer';
+      }
       break;
     case 'customer':
       // Customer Booking
@@ -421,7 +444,7 @@ Booking.prototype.getStatus = function() {
   if (this.cancelled || this.status == 'Provisional - Transferred' || this.status == 'Confirmed - Transferred') {
     if (this.cancelled && this.cancelledbooking.priorityrebook) {
       item.showAs = 'cancelledpriority';
-    } else if (this.status == 'Confirmed - Cancelled' || this.status == 'Confirmed - Fully Paid Cancelled') {
+    } else if (this.status == 'Confirmed - Cancelled' || this.status == 'Confirmed - Fully Paid Cancelled' || this.status == 'Confirmed Fully Paid - Cancelled') {
       item.showAs = 'cancelledconfirmed';
     } else {
       item.showAs = 'cancelled';
@@ -459,7 +482,7 @@ Booking.prototype.toString = function() {
  */
 Booking.prototype.isFullyPaid = function() {
   var sd = this.securitydeposit;
-  var balance = this.paymentsummary.booking;
+  var balance = this.paymentsummary ? this.paymentsummary.booking : 0;
   return (balance.outstanding == 0 && (!sd.id || (sd.amount - sd.balance == 0)));
 };
 
