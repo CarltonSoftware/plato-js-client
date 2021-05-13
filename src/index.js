@@ -220,6 +220,7 @@ module.exports.common.AnswerOption = require('./common/AnswerOption');
 module.exports.common.PromotePeriod = require('./common/PromotePeriod');
 module.exports.common.SpecialOfferDiscountExtra = require('./common/SpecialOfferDiscountExtra');
 module.exports.common.SpecialOfferDiscountedExtra = require('./common/SpecialOfferDiscountedExtra');
+module.exports.common.MultiOfferAction = require('./common/MultiOfferAction');
 module.exports.common.PropertyApproval = require('./common/PropertyApproval');
 module.exports.common.PropertyLink = require('./common/PropertyLink');
 module.exports.common.PropertyLinkHolidayPeriod = require('./common/PropertyLinkHolidayPeriod');

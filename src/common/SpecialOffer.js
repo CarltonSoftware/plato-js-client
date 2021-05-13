@@ -1,6 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var PricingPeriod = require('./PricingPeriod');
 var Currency = require('./Currency');
+var MultiOfferAction = require('./MultiOfferAction');
 var Collection = require('./Collection');
 var Promotion = require('./Promotion');
 var SpecialOfferBranding = require('./SpecialOfferBranding');
@@ -18,6 +19,7 @@ function SpecialOffer(id) {
   this.id = id;
   this.pricingperiod = new PricingPeriod();
   this.currency = new Currency();
+  this.multiofferaction = new MultiOfferAction();
 
   this.promotions = new Collection({
     object: Promotion,
@@ -88,7 +90,6 @@ SpecialOffer.prototype.toUpdateArray = function() {
     minimumdaysbeforeholiday: this.minimumdaysbeforeholiday,
     maximumdaysbeforeholiday: this.maximumdaysbeforeholiday,
     daysbeforeappliestowholeholiday: this.daysbeforeappliestowholeholiday,
-    additional:  this.additional,
     advertise:  this.advertise,
     changedaystartfinishonly: this.changedaystartfinishonly,
     currencycode: this.currency.code,
@@ -105,6 +106,7 @@ SpecialOffer.prototype.toUpdateArray = function() {
     archive: this.archive,
     archiveddatetime: this.archiveddatetime,
   };
+  
   if (this.percentagepaidbyowner === null) {
     fields.percentagepaidbyowner = 'null';
   } else {
@@ -127,7 +129,11 @@ SpecialOffer.prototype.toUpdateArray = function() {
   } else if (this.useholidayperiodprices === false) {
     fields.useholidayperiodprices = this.useholidayperiodprices;
   }
-
+  
+  if (this.multiofferaction && this.multiofferaction.id) {
+    fields.multiofferactionid = this.multiofferaction.id;
+  }
+  
   if (this.websitesectionids) {
     fields.websitesectionids = this.websitesectionids;
   }
@@ -158,7 +164,7 @@ SpecialOffer.prototype.validSchema = function() {
     fixedprice: Joi.number().label('Fixed price'),
     percentage: Joi.number(),
     active: Joi.boolean(),
-    additional: Joi.boolean(),
+    multiofferaction: Joi.object().required().label('Multiple Offer Action'),
     advertise: Joi.boolean(),
     minimumholidaylength: Joi.number().empty('').label('Minimum holiday length'),
     maximumholidaylength: Joi.number().empty('').label('Maximum holiday length'),
