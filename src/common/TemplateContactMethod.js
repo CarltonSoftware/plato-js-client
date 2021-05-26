@@ -50,6 +50,7 @@ TemplateContactMethod.prototype.toArray = function() {
     contactmethodtypeid: this.contactmethodtype.id,
     languageid: this.language.id,
     templatestylesheetid: this.templatestylesheet.id,
+    multilingualsubject: this.multilingualsubject,
   };
 };
 
