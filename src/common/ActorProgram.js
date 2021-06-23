@@ -36,13 +36,13 @@ ActorProgram.prototype.validSchema = function() {
   // DEV-15 - slightly alter the connotations and bevahiour of programs 
   // that are agreements/contracts
   if (this.program && this.program.id) {
-    let programname = this.program.programname.toLowerCase();
+    const programname = this.program.programname.toLowerCase();
     if (programname.includes('agreement') || programname.includes('contract')) {
       fromDateLabel = 'issue date';
       toDateLabel = 'expiry date';
       actionedVisible = false;
       approvalVisible = false;
-      pendingVisible = this.approved ? false : true;
+      pendingVisible = !this.approved;
     }
   }
 
