@@ -57,6 +57,9 @@ Report.prototype.validParameters = function() {
     if (type === 'integer') {
       type = 'number';
     }
+    if (type === 'int_array') {
+      type = 'string';
+    }
     object[parameter.name] = Joi.alternatives().try(Joi[type](), Joi.number(), Joi.string()).label(parameter.toString());
     if (parameter.required) {
       object[parameter.name] = object[parameter.name].required();
