@@ -40,7 +40,7 @@ function TemplateContactMethod(id) {
 TemplateContactMethod.prototype = new SingleEntity();
 
 TemplateContactMethod.prototype.toArray = function() {
-  return {
+  var obj = {
     fromdate: this.fromdate,
     todate: this.todate,
     description: this.description,
@@ -52,6 +52,12 @@ TemplateContactMethod.prototype.toArray = function() {
     templatestylesheetid: this.templatestylesheet.id,
     multilingualsubject: this.multilingualsubject,
   };
+
+  if (this.hasOwnProperty('multilingualsubject')) {
+    obj.multilingualsubject = this.multilingualsubject;
+  }
+
+  return obj;
 };
 
 TemplateContactMethod.prototype.getRefPath = function(ref) {
