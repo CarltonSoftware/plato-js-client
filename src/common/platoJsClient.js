@@ -232,6 +232,24 @@ var platoJsClient = (function () {
          * @param {String} url
          */
         this.oAuthCallback = function(hash) {
+          var params = this.parseHash(hash)
+
+          if (params.access_token) {
+            this.token = params.access_token;
+
+            if (localStorage) {
+              localStorage.setItem(TOKENNAME, this.token);
+            }
+          }
+        };
+
+        /**
+         * oAuth call back.  Sets the token which is sent back from
+         * the oAuth server
+         *
+         * @param {String} url
+         */
+        this.parseHash = function(hash) {
           var params, queryString, regex, m;
 
           queryString = hash.indexOf('#') === 0 ? hash.substring(1) : hash;
@@ -239,16 +257,14 @@ var platoJsClient = (function () {
           regex = /([^&=]+)=([^&]*)/g;
 
           m = regex.exec(queryString);
-          do {
-            params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
-            m = regex.exec(queryString);
-          } while (m);
-
-          this.token = params.access_token;
-
-          if (localStorage) {
-            localStorage.setItem(TOKENNAME, this.token);
+          if (m) {
+            do {
+              params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+              m = regex.exec(queryString);
+            } while (m);
           }
+
+          return params;
         };
 
         /**
