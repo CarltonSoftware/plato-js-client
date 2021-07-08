@@ -5,7 +5,7 @@ function CallTag(id) {
   this.path = 'calltag';
   this.createPath = 'calltag';
   this.id = id;
-};
+}
 
 CallTag.prototype = new SingleEntity();
 CallTag.prototype.toArray = function() {

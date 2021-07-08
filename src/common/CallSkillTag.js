@@ -7,7 +7,7 @@ function CallSkillTag(id) {
   this.createPath = 'tag';
   this.id = id;
   this.calltag = new CallTag();
-};
+}
 
 CallSkillTag.prototype = new SingleEntity();
 CallSkillTag.prototype.toArray = function() {

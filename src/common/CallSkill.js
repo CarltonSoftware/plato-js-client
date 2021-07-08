@@ -16,7 +16,7 @@ function CallSkill(id) {
     path: 'tag',
     parent: this
   });
-};
+}
 
 CallSkill.prototype = new SingleEntity();
 CallSkill.prototype.toArray = function() {
