@@ -1,7 +1,7 @@
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
 var Collection = require('./Collection');
-var CallTag = require('./CallTag');
+var CallSkillTag = require('./CallSkillTag');
 var Joi = require('joi');
 
 function CallSkill(id) {
@@ -12,7 +12,7 @@ function CallSkill(id) {
     entity: 'CallSkill'
   });
   this.tags = new Collection({
-    object: CallTag,
+    object: CallSkillTag,
     path: 'tag',
     parent: this
   });
