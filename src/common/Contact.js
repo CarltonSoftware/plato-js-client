@@ -5,6 +5,7 @@ var Actor = require('./Actor');
 var ContactDocument = require('./ContactDocument');
 var ContactEntity = require('./ContactEntity');
 var ContactReason = require('./ContactReason');
+var ContactCallSkillTag = require('./ContactCallSkillTag');
 var Joi = require('joi');
 
 function Contact(contactId) {
@@ -26,6 +27,11 @@ function Contact(contactId) {
 
   this.createdby = new Actor();
   this.contactreason = new ContactReason();
+  this.callskilltags = new Collection({
+    object: ContactCallSkillTag,
+    path: 'callskilltag',
+    parent: this
+  });
 }
 Contact.prototype = new SingleEntity();
 
