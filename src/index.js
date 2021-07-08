@@ -60,6 +60,9 @@ module.exports.common.SourceTopic = require('./common/SourceTopic');
 module.exports.common.EventType = require('./common/EventType');
 module.exports.common.EventLog = require('./common/EventLog');
 module.exports.common.LegacyApiKey = require('./common/LegacyApiKey');
+module.exports.common.CallSkill = require('./common/CallSkill');
+module.exports.common.CallSkillTag = require('./common/CallSkillTag');
+module.exports.common.CallTag = require('./common/CallTag');
 
 //Owner
 module.exports.common.OwnerEnquiryActionType = require('./common/OwnerEnquiryActionType');
