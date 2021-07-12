@@ -390,7 +390,8 @@ Actor.prototype.toArray = function() {
     inactive: this.inactive,
     tabscode: this.tabscode,
     actorcode: this.actorcode,
-    accountingreference: this.accountingreference
+    accountingreference: this.accountingreference,
+    arrivalreportautosend: this.arrivalreportautosend
   };
 
   if (this.location) {
