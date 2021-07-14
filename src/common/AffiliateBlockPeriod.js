@@ -14,6 +14,7 @@ AffiliateBlockPeriod.prototype.validSchema = function() {
   return Joi.object().keys({
     fromdate: Joi.date(),
     todate: Joi.date(),
+    block: Joi.boolean(),
     bookingbrand: Joi.object()
   });
 };
@@ -22,6 +23,7 @@ AffiliateBlockPeriod.prototype.toArray = function() {
   return {
     fromdate: this.fromdate,
     todate: this.todate,
+    block: this.block,
     bookingbrandid: this.bookingbrand.id
   };
 };
