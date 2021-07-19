@@ -66,10 +66,10 @@ Contact.prototype.toCreateArray = function() {
     document_documentid: this.document_documentid,
     comments: this.comments
   };
-  if (this.callskillid && this.callskillid.id) {
-    c.callskillid = this.callskillid.id;
-  }
   if (this.contactreason && this.contactreason.id) {
+    c.contactreason = this.contactreason.id;
+  }
+  if (this.callskillid && this.callskillid.id) {
     c.callskillid = this.callskillid.id;
   }
 
