@@ -67,11 +67,13 @@ Contact.prototype.toCreateArray = function() {
     comments: this.comments
   };
   if (this.contactreason && this.contactreason.id) {
-    c.contactreason = this.contactreason.id;
+    c.contactreasonid = this.contactreason.id;
   }
   if (this.callskill && this.callskill.id) {
-    c.callskill = this.callskill.id;
+    c.callskillid = this.callskill.id;
   }
+
+  console.log(c);
 
   return c;
 };
