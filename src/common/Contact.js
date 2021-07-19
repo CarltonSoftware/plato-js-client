@@ -69,8 +69,8 @@ Contact.prototype.toCreateArray = function() {
   if (this.contactreason && this.contactreason.id) {
     c.contactreason = this.contactreason.id;
   }
-  if (this.callskillid && this.callskillid.id) {
-    c.callskillid = this.callskillid.id;
+  if (this.callskill && this.callskill.id) {
+    c.callskill = this.callskill.id;
   }
 
   return c;
