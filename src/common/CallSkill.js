@@ -21,12 +21,11 @@ function CallSkill(id) {
 CallSkill.prototype = new SingleEntity();
 CallSkill.prototype.toArray = function() {
   var s = {
+    incontactskillid: this.incontactskillid,
     skillname: this.skillname
   };
 
-  if (this.parentcallskill
-    && this.parentcallskill.id
-  ) {
+  if (this.parentcallskill && this.parentcallskill.id) {
     s.parentcallskillid = this.parentcallskill.id;
   }
 
@@ -39,6 +38,7 @@ CallSkill.prototype.toString = function() {
 
 CallSkill.prototype.validSchema = function() {
   return Joi.object().keys({
+    incontactskillid: Joi.number().required().label('InContact skill id'),
     skillname: Joi.string().required().label('skill name'),
     parentcallskill: Joi.object().optional().label('Parent call skill')
   });
