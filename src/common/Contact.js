@@ -71,6 +71,12 @@ Contact.prototype.toCreateArray = function() {
   return c;
 };
 
+Contact.prototype.getRecipient = function() {
+  return this.contactentities.filter((ce) => {
+    return ce['function'] === 'to';
+  }).shift();
+}
+
 Contact.prototype.validSchema = function () {
   return Joi.object().keys({
     details: Joi.string().min(5).label('Details'),
