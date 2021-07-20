@@ -6,6 +6,7 @@ var ContactDocument = require('./ContactDocument');
 var ContactEntity = require('./ContactEntity');
 var ContactReason = require('./ContactReason');
 var ContactCallSkillTag = require('./ContactCallSkillTag');
+var CallSkill = require('./CallSkill');
 var Joi = require('joi');
 
 function Contact(contactId) {
@@ -32,6 +33,7 @@ function Contact(contactId) {
     path: 'callskilltag',
     parent: this
   });
+  this.callskill = new CallSkill();
 }
 Contact.prototype = new SingleEntity();
 
@@ -62,11 +64,17 @@ Contact.prototype.toCreateArray = function() {
     templateentityid: this.templateentityid,
     templateid: this.template.id,
     document_documentid: this.document_documentid,
-    comments: this.comments
+    comments: this.comments,
+    requirescomments: this.requirescomments
   };
   if (this.contactreason && this.contactreason.id) {
     c.contactreasonid = this.contactreason.id;
   }
+  if (this.callskill && this.callskill.id) {
+    c.callskillid = this.callskill.id;
+  }
+
+  console.log(c);
 
   return c;
 };
