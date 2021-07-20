@@ -80,7 +80,7 @@ Contact.prototype.toCreateArray = function() {
 };
 
 Contact.prototype.getRecipient = function() {
-  return this.contactentities.filter((ce) => {
+  return this.contactentities.filter(function(ce) {
     return ce['function'] === 'to';
   }).shift();
 }
