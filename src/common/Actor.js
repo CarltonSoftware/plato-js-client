@@ -537,4 +537,14 @@ Actor.prototype.emailDocument = function(documentbase) {
   return client.put({ path: [this.path, this.id, 'senddocument'].join('/'), entity: { documentbaseid: documentbase.id } });
 };
 
+
+/**
+ * Exports the actor's contact log
+ *
+ * @returns {Promise}
+ */
+Actor.prototype.exportContactLog = function() {
+  return client.post({ path: [this.path, this.id, 'contactexport'].join('/')});
+};
+
 module.exports = Actor;
