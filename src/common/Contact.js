@@ -77,8 +77,6 @@ Contact.prototype.toCreateArray = function() {
     c.callskillid = this.callskill.id;
   }
 
-  console.log(c);
-
   return c;
 };
 
