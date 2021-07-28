@@ -47,7 +47,8 @@ OwnerPaymentSelection.prototype.toCreateArray = function() {
     balancepaid: this.balancepaid || false,
     accidentaldamagedepositpaid: this.accidentaldamagedepositpaid || false,
     includeproperties: this.includeproperties || true,
-    includeowners: this.includeowners || true
+    includeowners: this.includeowners || true,
+    ownerpaymenttermsid: this.ownerpaymenttermsid
   };
 
   if (this.bookingbrands.getTotal() > 0) {
@@ -154,7 +155,8 @@ OwnerPaymentSelection.validCreateSchema = Joi.object().keys({
   accidentaldamagedepositpaid: Joi.boolean().required().label('Bookings with ADD waiver paid'),
   includeowners: Joi.boolean().required().label('Include or Exclude owner selection?'),
   includeproperties: Joi.boolean().required().label('Include or Exclude property selection?'),
-  createdbytabsuser: Joi.object().optional().label('created by')
+  createdbytabsuser: Joi.object().optional().label('created by'),
+  ownerpaymenttermsid: Joi.number().optional().label('Owner Payment Terms'),
 });
 
 OwnerPaymentSelection.validUpdateSchema = Joi.object().keys({
