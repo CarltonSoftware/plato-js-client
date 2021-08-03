@@ -390,8 +390,7 @@ Actor.prototype.toArray = function() {
     inactive: this.inactive,
     tabscode: this.tabscode,
     actorcode: this.actorcode,
-    accountingreference: this.accountingreference,
-    arrivalreportautosend: this.arrivalreportautosend
+    accountingreference: this.accountingreference
   };
 
   if (this.location) {
@@ -436,6 +435,9 @@ Actor.prototype.toArray = function() {
   }
   if (this.branding) {
     arr.brandingid = this.branding.id;
+  }
+  if (this.arrivalreportautosend) {
+    arr.arrivalreportautosend = this.arrivalreportautosend;
   }
 
   //TABS2-3927
