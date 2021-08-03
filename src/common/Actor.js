@@ -436,6 +436,9 @@ Actor.prototype.toArray = function() {
   if (this.branding) {
     arr.brandingid = this.branding.id;
   }
+  if (this.arrivalreportautosend) {
+    arr.arrivalreportautosend = this.arrivalreportautosend;
+  }
 
   //TABS2-3927
   if(this.hasOwnProperty('addaccidentaldamagedeposit')) {
