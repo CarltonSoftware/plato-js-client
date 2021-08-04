@@ -2,9 +2,10 @@ var client = require('./platoJsClient').getInstance();
 var SingleEntity = require('./SingleEntity');
 var EntityLink = require('./EntityLink');
 
-function WorkOrderPmsChecklist(id) {
+function WorkOrderPmsChecklist(id, answersonly) {
   this.path = this.createPath = 'pmschecklist';
   this.id = id;
+  this.answersonly = answersonly;
   this.pmschecklist = new EntityLink({
     entity: 'PmsChecklist'
   });
@@ -21,7 +22,7 @@ WorkOrderPmsChecklist.prototype.toArray = function() {
 
 WorkOrderPmsChecklist.prototype.render = function() {
   return client.get(
-    'workorder/' + this.parent.id + '/' + this.path + '/' + this.id + '/render'
+    'workorder/' + this.parent.id + '/' + this.path + '/' + this.id + '/render?answersonly='+this.answersonly
   );
 };
 
