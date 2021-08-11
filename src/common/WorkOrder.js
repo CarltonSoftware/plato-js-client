@@ -193,8 +193,8 @@ WorkOrder.prototype.toArray = function() {
   return arr;
 };
 
-WorkOrder.prototype.recur = function(numOccurances=1) {
-  return this.createPromiseResult([this.path, this.id, 'recur'].join('/'), {'numOccurances': numOccurances});
+WorkOrder.prototype.recur = function(numOccurences=1) {
+  return this.createPromiseResult([this.path, this.id, 'recur'].join('/'), {'numOccurences': numOccurences});
 };
 
 WorkOrder.prototype.chargeowner = function(data) {
