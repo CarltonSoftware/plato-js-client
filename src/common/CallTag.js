@@ -1,17 +1,31 @@
 var SingleEntity = require('./SingleEntity');
+var EntityLink = require('./EntityLink');
+var StaticCollection = require('./StaticCollection');
 var Joi = require('joi');
 
 function CallTag(id) {
   this.path = 'calltag';
   this.createPath = 'calltag';
   this.id = id;
+  this.parentcalltag = new EntityLink({
+    entity: 'CallTag'
+  });
+  this.childtags = new StaticCollection({
+    object: CallTag
+  });
 }
 
 CallTag.prototype = new SingleEntity();
 CallTag.prototype.toArray = function() {
-  return {
+  var s = {
     tagname: this.tagname
   };
+
+  if (this.parentcalltag && this.parentcalltag.id) {
+    s.parentcalltagid = this.parentcalltag.id;
+  }
+
+  return s;
 };
 
 CallTag.prototype.toString = function() {
@@ -20,7 +34,8 @@ CallTag.prototype.toString = function() {
 
 CallTag.prototype.validSchema = function() {
   return Joi.object().keys({
-    tagname: Joi.string().required().label('tag name')
+    tagname: Joi.string().required().label('tag name'),
+    parentcalltag: Joi.object().optional().label('Parent tag')
   });
 };
 
