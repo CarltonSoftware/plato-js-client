@@ -18,7 +18,8 @@ function CallTag(id) {
 CallTag.prototype = new SingleEntity();
 CallTag.prototype.toArray = function() {
   var s = {
-    tagname: this.tagname
+    tagname: this.tagname,
+    textinput: this.textinput || false
   };
 
   if (this.parentcalltag && this.parentcalltag.id) {
@@ -35,6 +36,7 @@ CallTag.prototype.toString = function() {
 CallTag.prototype.validSchema = function() {
   return Joi.object().keys({
     tagname: Joi.string().required().label('tag name'),
+    textinput: Joi.boolean().required().label('text required?'),
     parentcalltag: Joi.object().optional().label('Parent tag')
   });
 };
