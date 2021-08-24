@@ -436,8 +436,9 @@ Actor.prototype.toArray = function() {
   if (this.branding) {
     arr.brandingid = this.branding.id;
   }
-  if (this.arrivalreportautosend) {
-    arr.arrivalreportautosend = this.arrivalreportautosend;
+  arr.arrivalsreportautosend = false;
+  if (this.arrivalsreportautosend) {
+    arr.arrivalsreportautosend = this.arrivalsreportautosend;
   }
 
   //TABS2-3927
