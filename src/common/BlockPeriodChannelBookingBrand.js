@@ -1,6 +1,8 @@
 var SingleEntity = require('./SingleEntity');
+var Collection = require('./Collection');
 var Channel = require('./Channel');
 var BookingBrand = require('./BookingBrand');
+var BlockPeriodException = require('./BlockPeriodException');
 var Joi = require('joi');
 
 function BlockPeriodChannelBookingBrand(id) {
@@ -9,6 +11,12 @@ function BlockPeriodChannelBookingBrand(id) {
   this.id = id;
   this.channel = new Channel();
   this.bookingbrand = new BookingBrand();
+
+  this.exceptions = new Collection({
+    object: BlockPeriodException,
+    path: 'exception',
+    parent: this
+  });
 
   this.validSchema = function() {
     return {

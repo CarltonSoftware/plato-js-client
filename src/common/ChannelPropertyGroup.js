@@ -8,7 +8,7 @@ function ChannelPropertyGroup(id) {
   this.createPath = this.path;
   this.id = id;
 
-  this.channelbookingbrand = new Collection({
+  this.properties = new Collection({
     object: ChannelPropertyGroupProperty,
     path: 'property',
     parent: this

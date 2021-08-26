@@ -4,11 +4,11 @@ var Collection = require('./Collection');
 var Joi = require('joi');
 
 function BlockPeriod(id) {
-  this.path = 'room';
+  this.path = 'blockperiod';
   this.createPath = this.path;
   this.id = id;
 
-  this.channelbookingbrand = new Collection({
+  this.channelbookingbrands = new Collection({
     object: BlockPeriodChannelBookingBrand,
     path: 'channelbookingbrand',
     parent: this
@@ -18,8 +18,8 @@ function BlockPeriod(id) {
     return {
       name: Joi.string().required().label('Name').description('Name of the block period'),
       description: Joi.string().required().label('Description').description('Description of the block period'),
-      fromdate: Joi.string().required().label('From date').description('Starting date of the period that the block period applies too.'),
-      todate: Joi.string().required().label('To date').description('End date of the period that the block period applies too.')
+      fromdate: Joi.date().required().label('From date').description('Starting date of the period that the block period applies too.'),
+      todate: Joi.date().required().label('To date').description('End date of the period that the block period applies too.')
     }
   };
 }

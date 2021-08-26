@@ -166,6 +166,9 @@ module.exports.common.AffiliatePropertyBlockPeriod = require('./common/Affiliate
 module.exports.common.AffiliatePropertyBlockPeriod = require('./common/AffiliatePropertyBlockPeriod');
 module.exports.common.BlockPeriod = require('./common/BlockPeriod');
 module.exports.common.BlockPeriodChannelBookingBrand = require('./common/BlockPeriodChannelBookingBrand');
+module.exports.common.ChannelPropertyGroup = require('./common/ChannelPropertyGroup');
+module.exports.common.ChannelPropertyGroupProperty = require('./common/ChannelPropertyGroupProperty');
+module.exports.common.BlockPeriodException = require('./common/BlockPeriodException');
 
 // Property Related Objects
 module.exports.common.Properties = require('./common/Properties');
