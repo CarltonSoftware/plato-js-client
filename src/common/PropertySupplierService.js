@@ -47,6 +47,18 @@ PropertySupplierService.prototype.toUpdateArray = function() {
   if (this.chargetype) {
     pss.chargetype = this.chargetype;
   }
+  if(this.supplycustomeremail !== null){
+    pss.supplycustomeremail = this.supplycustomeremail;
+  }
+  if(this.supplycustomeraddress !== null){
+    pss.supplycustomeraddress = this.supplycustomeraddress;
+  }
+  if(this.supplycustomerphonenumber !== null){
+    pss.supplycustomerphonenumber = this.supplycustomerphonenumber;
+  }
+  if(this.supplycustomermobilenumber !== null){
+    pss.supplycustomermobilenumber = this.supplycustomermobilenumber;
+  }
   return pss;
 };
 PropertySupplierService.prototype.toCreateArray = function() {
@@ -65,7 +77,11 @@ PropertySupplierService.prototype.validSchema = function() {
     agencybookings: Joi.boolean().required().label('Agency bookings'),
     datetouse: Joi.string().optional().allow('').label('Date to Use'),
     chargetype: Joi.string().optional().allow('').label('Charge Type'),
-    forceupdateservices: Joi.boolean().required().label('Force update services')
+    forceupdateservices: Joi.boolean().required().label('Force update services'),
+    supplycustomeremail: Joi.boolean().optional().label('Supply Customer Email'),
+    supplycustomeraddress: Joi.boolean().optional().label('Supply Customer Address'),
+    supplycustomerphonenumber: Joi.boolean().optional().label('Supply Customer Phone Number'),
+    supplycustomermobilenumber: Joi.boolean().optional().label('Supply Customer Mobile Number'),
   });
 };
 
