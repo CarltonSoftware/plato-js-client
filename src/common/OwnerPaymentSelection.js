@@ -105,11 +105,18 @@ OwnerPaymentSelection.prototype.getLabel = function(bookingbrands) {
     } else {
       description.push('Booking Brand: ');
     }
-    description.push(
-      this.bookingbrands.map(function(b) {
-        return bookingbrands.getEntityById(b.bookingbrand.id).name;
-      }).join(', ')
-    );
+
+    if (this.bookingbrands.collection.length > 3) {
+      description.push(
+        this.bookingbrands.collection.length + '.'
+      );
+    } else {
+      description.push(
+        this.bookingbrands.map(function(b) {
+          return bookingbrands.getEntityById(b.bookingbrand.id).name;
+        }).join(', ') + '.'
+      );
+    }
   }
 
   if (this.properties && this.properties.collection.length) {
