@@ -211,7 +211,7 @@ Property.prototype.getAvailablebreaks = function(fromdate, todate, nights) {
 };
 
 Property.prototype.updateAvailablebreaks = function() {
-  return this.createPromiseResult([this.path, this.id, 'availablebreaks'].join('/'), { force: true });
+  return this.updatePromiseResult([this.path, this.id, 'availablebreaks'].join('/'), { force: true });
 };
 
 Property.prototype.getAvailableBreaksPrice = function(fromDate, days, includeCompulsoryExtras, round) {
