@@ -29,6 +29,18 @@ PropertyOwner.prototype.toArray = function() {
   if (this.forceoverwrite) {
     ret.forceoverwrite = this.forceoverwrite;
   }
+  if(this.supplycustomeremail !== null){
+    ret.supplycustomeremail = this.supplycustomeremail;
+  }
+  if(this.supplycustomeraddress !== null){
+    ret.supplycustomeraddress = this.supplycustomeraddress;
+  }
+  if(this.supplycustomerphonenumber !== null){
+    ret.supplycustomerphonenumber = this.supplycustomerphonenumber;
+  }
+  if(this.supplycustomermobilenumber !== null){
+    ret.supplycustomermobilenumber = this.supplycustomermobilenumber;
+  }
   return ret;
 };
 
