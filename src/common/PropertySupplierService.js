@@ -47,16 +47,16 @@ PropertySupplierService.prototype.toUpdateArray = function() {
   if (this.chargetype) {
     pss.chargetype = this.chargetype;
   }
-  if (this.supplycustomeremail !== null){
+  if (this.supplycustomeremail !== null) {
     pss.supplycustomeremail = this.supplycustomeremail;
   }
-  if (this.supplycustomeraddress !== null){
+  if (this.supplycustomeraddress !== null) {
     pss.supplycustomeraddress = this.supplycustomeraddress;
   }
-  if (this.supplycustomerphonenumber !== null){
+  if (this.supplycustomerphonenumber !== null) {
     pss.supplycustomerphonenumber = this.supplycustomerphonenumber;
   }
-  if (this.supplycustomermobilenumber !== null){
+  if (this.supplycustomermobilenumber !== null) {
     pss.supplycustomermobilenumber = this.supplycustomermobilenumber;
   }
   return pss;
