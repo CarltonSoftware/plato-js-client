@@ -28,8 +28,8 @@ function Source(id) {
       showonweb: Joi.boolean().required().label('Show on web'),
     };
 
-    if(this.id){
-      schema.affiliate =  Joi.object().optional().label('Affiliate');
+    if (this.id) {
+      schema.affiliate = Joi.object().optional().label('Affiliate');
     }
     return schema;
   };
