@@ -4,7 +4,7 @@ var SourceCategory = require('./SourceCategory');
 var SourceTopic = require('./SourceTopic');
 var SourceMarketingBrand = require('./SourceMarketingBrand');
 var Joi = require('joi');
-const Affiliate = require('./Affiliate');
+var Affiliate = require('./Affiliate');
 
 function Source(id) {
   this.path = 'source';
@@ -20,7 +20,7 @@ function Source(id) {
   this.affiliate = new Affiliate();
 
   this.validSchema = function() {
-    let schema = {
+    var schema = {
       sourcecode: Joi.string().required().label('Source code'),
       description: Joi.string().required().label('Description'),
       sourcecategory: Joi.object().required().label('Source Category'),
