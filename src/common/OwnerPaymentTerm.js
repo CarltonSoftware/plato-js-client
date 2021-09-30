@@ -46,5 +46,8 @@ OwnerPaymentTerm.prototype.toArray = function() {
     currencyid: this.currency.id
   };
 };
+OwnerPaymentTerm.prototype.toString = function() {
+  return this.name;
+};
 
 module.exports = OwnerPaymentTerm;

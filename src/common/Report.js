@@ -13,6 +13,29 @@ function Report(id) {
   this.parameters = new StaticCollection({
     object: ReportParameter
   });
+
+  this.isRunnable = function() {
+    var runnable = true;
+    this.parameters.forEach(function(p) {
+      if (p.required && !p.value) {
+        runnable = false;
+      }
+    });
+
+    return runnable;
+  }.bind(this);
+
+  this.getReportParamters = function() {
+    var params = {};
+    this.parameters.forEach(function(p) {
+      if (typeof p.value === 'object' && p.id) {
+        params[p.name] = p.id;
+      } else {
+        params[p.name] = p.value;
+      }
+    });
+    return params;
+  }.bind(this);
 }
 Report.prototype = new SingleEntity();
 

@@ -3,6 +3,7 @@ var EntityLink = require('./EntityLink');
 var Collection = require('./Collection');
 var OwnerPaymentSelectionBookingBrand = require('./OwnerPaymentSelectionBookingBrand');
 var OwnerPaymentSelectionProgram = require('./OwnerPaymentSelectionProgram');
+var OwnerPaymentTerm = require('./OwnerPaymentTerm');
 var OwnerPaymentSelectionProperty = require('./OwnerPaymentSelectionProperty');
 var Joi = require('joi');
 var dayjs = require('dayjs');
@@ -33,6 +34,11 @@ function OwnerPaymentSelection(id) {
     path: 'property',
     parent: this
   });
+  this.terms = new Collection({
+    object: OwnerPaymentTerm,
+    path: 'ownerpaymentterms',
+    parent: 'this'
+  })
 }
 OwnerPaymentSelection.prototype = new SingleEntity();
 
@@ -47,7 +53,8 @@ OwnerPaymentSelection.prototype.toCreateArray = function() {
     balancepaid: this.balancepaid || false,
     accidentaldamagedepositpaid: this.accidentaldamagedepositpaid || false,
     includeproperties: this.includeproperties || true,
-    includeowners: this.includeowners || true
+    includeowners: this.includeowners || true,
+    ownerpaymenttermsids: this.ownerpaymenttermsids
   };
 
   if (this.bookingbrands.getTotal() > 0) {
@@ -98,11 +105,18 @@ OwnerPaymentSelection.prototype.getLabel = function(bookingbrands) {
     } else {
       description.push('Booking Brand: ');
     }
-    description.push(
-      this.bookingbrands.map(function(b) {
-        return bookingbrands.getEntityById(b.bookingbrand.id).name;
-      }).join(', ')
-    );
+
+    if (this.bookingbrands.collection.length > 3) {
+      description.push(
+        this.bookingbrands.collection.length + '.'
+      );
+    } else {
+      description.push(
+        this.bookingbrands.map(function(b) {
+          return bookingbrands.getEntityById(b.bookingbrand.id).name;
+        }).join(', ') + '.'
+      );
+    }
   }
 
   if (this.properties && this.properties.collection.length) {
@@ -154,7 +168,8 @@ OwnerPaymentSelection.validCreateSchema = Joi.object().keys({
   accidentaldamagedepositpaid: Joi.boolean().required().label('Bookings with ADD waiver paid'),
   includeowners: Joi.boolean().required().label('Include or Exclude owner selection?'),
   includeproperties: Joi.boolean().required().label('Include or Exclude property selection?'),
-  createdbytabsuser: Joi.object().optional().label('created by')
+  createdbytabsuser: Joi.object().optional().label('created by'),
+  ownerpaymenttermsids: Joi.string().allow("").optional().label('Owner Payment Terms'),
 });
 
 OwnerPaymentSelection.validUpdateSchema = Joi.object().keys({

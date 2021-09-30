@@ -65,9 +65,11 @@ Contact.prototype.toCreateArray = function() {
     templateid: this.template.id,
     document_documentid: this.document_documentid,
     comments: this.comments,
+    requirescomments: this.requirescomments,
     incontactcontactid: this.incontactcontactid,
-    incontactmasterid: this.incontactmasterid
+    incontactmasterid: this.incontactmasterid,
   };
+  
   if (this.contactreason && this.contactreason.id) {
     c.contactreasonid = this.contactreason.id;
   }
@@ -75,10 +77,14 @@ Contact.prototype.toCreateArray = function() {
     c.callskillid = this.callskill.id;
   }
 
-  console.log(c);
-
   return c;
 };
+
+Contact.prototype.getRecipient = function() {
+  return this.contactentities.filter(function(ce) {
+    return ce['function'] === 'to';
+  }).shift();
+}
 
 Contact.prototype.validSchema = function () {
   return Joi.object().keys({

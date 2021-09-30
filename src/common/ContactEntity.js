@@ -1,9 +1,12 @@
 var SingleEntity = require('./SingleEntity');
+var Actor = require('./Actor');
 
 function ContactEntity(id) {
   this.createPath = 'entity';
   this.path = 'entity';
   this.id = id;
+
+  this.createdby = new Actor();
 }
 ContactEntity.prototype = new SingleEntity();
 

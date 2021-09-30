@@ -14,7 +14,8 @@ function ContactCallSkillTag(id) {
 ContactCallSkillTag.prototype = new SingleEntity();
 ContactCallSkillTag.prototype.toArray = function() {
   return {
-    callskilltagid: this.callskilltag.id
+    callskilltagid: this.callskilltag.id,
+    value: this.value
   };
 };
 
