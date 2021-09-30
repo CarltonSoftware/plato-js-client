@@ -64,7 +64,9 @@ Contact.prototype.toCreateArray = function() {
     templateentityid: this.templateentityid,
     templateid: this.template.id,
     document_documentid: this.document_documentid,
-    comments: this.comments
+    comments: this.comments,
+    incontactcontactid: this.incontactcontactid,
+    incontactmasterid: this.incontactmasterid
   };
   if (this.contactreason && this.contactreason.id) {
     c.contactreasonid = this.contactreason.id;
