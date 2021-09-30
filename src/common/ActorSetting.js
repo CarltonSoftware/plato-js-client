@@ -16,6 +16,13 @@ function ActorSetting(id) {
       return this.value;
     }
   };
+
+  this.validSchema = function() {
+    return {
+      name: Joi.string().required().label('Name'),
+      value: Joi.string().required().label('Value'),
+    };
+  };
 }
 
 ActorSetting.prototype = new SingleEntity();
@@ -25,11 +32,5 @@ ActorSetting.prototype.toArray = function() {
     value: this.value
   };
 };
-
-ActorSetting.validSchema = Joi.object().keys({
-  name: Joi.string().required().label('Name'),
-  value: Joi.string().required().label('Value'),
-});
-
 
 module.exports = ActorSetting;
