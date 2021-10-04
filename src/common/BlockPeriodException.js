@@ -13,7 +13,7 @@ function BlockPeriodException(id) {
 
   this.validSchema = function() {
     var s = {
-      type: Joi.any().valid('Property','PropertyGroup').label('Type'),
+      type: Joi.any().valid('Property','ChannelPropertyGroup').label('Type'),
       fromdate: Joi.date().required().label('From date').description('Starting date of the period that the block period applies too.'),
       todate: Joi.date().required().label('To date').description('End date of the period that the block period applies too.'),
       block: Joi.boolean().required().label('Block?')
