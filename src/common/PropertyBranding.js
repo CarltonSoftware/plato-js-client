@@ -87,24 +87,16 @@ PropertyBranding.prototype.toArray = function() {
  *
  * @param {string} fromDate
  * @param {string} toDate
- * @param {string} type
  */
-PropertyBranding.prototype.getPrices = function(fromDate, toDate, type) {
-  if (typeof type === 'undefined') {
-    type = '';
-  }
+PropertyBranding.prototype.getPrices = function(fromDate, toDate) {
 
   var p = this.prices;
 
-  if ((fromDate && toDate) || type) {
+  if (fromDate && toDate) {
     var data = {};
-    if (type) {
-      data.type = type;
-    }
-    if (fromDate && toDate) {
-      data.fromdate = fromDate;
-      data.todate = toDate;
-    }
+    data.fromdate = fromDate;
+    data.todate = toDate;
+
     p.toArray = function() {
       return data;
     };
@@ -118,10 +110,10 @@ PropertyBranding.prototype.getPrices = function(fromDate, toDate, type) {
  *
  * @param {string} fromDate
  * @param {string} toDate
- * @param {string} type
+ * @param {int} priceTypeId
  */
 
-PropertyBranding.prototype.getPricesFixed = function(fromDate, toDate) {
+PropertyBranding.prototype.getPricesFixed = function(fromDate, toDate, priceTypeId) {
 
   var p = new FilterCollection({
     object: PricePeriod,
@@ -129,6 +121,10 @@ PropertyBranding.prototype.getPricesFixed = function(fromDate, toDate) {
   });
 
   p.addFilter('propertybrandingid', this.id);
+
+  if (priceTypeId) {
+    p.addFilter('pricetypeid', priceTypeId);
+  }
 
   if(fromDate && toDate) {
     // TABS2-5778 changed to show all prices overlapping the dates as per Ian's suggestion - no blame here ;-)
