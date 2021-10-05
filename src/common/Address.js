@@ -52,7 +52,7 @@ Address.prototype.validSchema = function() {
     line2: Joi.string().empty('').min(3).label('Line 2'),
     line3: Joi.string().empty('').min(3).label('Line 3'),
     town: Joi.string().min(3).label('Town'),
-    county: Joi.string().empty('').min(3).label('County'),
+    county: Joi.string().empty('').min(2).label('County'),
     postcode: Joi.string().min(3).label('Postcode'),
     country: Joi.object().required(),
     latitude: Joi.number().allow(''),
