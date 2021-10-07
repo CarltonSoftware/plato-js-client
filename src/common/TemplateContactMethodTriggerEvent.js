@@ -1,8 +1,10 @@
 var SingleEntity = require('./SingleEntity');
+var Collection = require('./Collection');
 var TriggerEvent = require('./TriggerEvent');
 var OwnerBookingType = require('./OwnerBookingType');
 var AgencyBookingType = require('./AgencyBookingType');
 var EventType = require('./EventType');
+var TemplateContactMethodTriggerEventFilter = require('./TemplateContactMethodTriggerEventFilter');
 var Joi = require('joi');
 
 function TemplateContactMethodTriggerEvent(id) {
@@ -13,6 +15,11 @@ function TemplateContactMethodTriggerEvent(id) {
   this.ownerbookingtype = new OwnerBookingType();
   this.agencybookingtype = new AgencyBookingType();
   this.type = 'BookingDates';
+  this.filters = new Collection({
+    path: 'filter',
+    object: TemplateContactMethodTriggerEventFilter,
+    parent: this
+  });
 
   this.validSchema = function() {
     var s = {
