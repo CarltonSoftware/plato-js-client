@@ -1,5 +1,4 @@
 var SingleEntity = require('./SingleEntity');
-var TriggerEvent = require('./TriggerEvent');
 var EventType = require('./EventType');
 var Source = require('./Source');
 var BookingService = require('./BookingService');

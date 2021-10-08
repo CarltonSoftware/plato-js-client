@@ -62,6 +62,7 @@ TemplateContactMethodTriggerEvent.prototype.toArray = function() {
     todate: this.todate || '+50 years',
     sendonce: this.sendonce || false,
     inactive: this.inactive,
+    transferredfromdepositpaid: this.transferredfromdepositpaid,
     triggereventid: this.triggerevent.id
   };
   if (this.type === 'BookingDates') {
