@@ -47,8 +47,6 @@ Contact.prototype.toArray = function() {
 
 Contact.prototype.toCreateArray = function() {
   var c = {
-    contacttype: this.contacttype,
-    contactmethodtype: this.contactmethodtype,
     subject: this.subject,
     sender: this.sender,
     sendercontactdetailid: this.sendercontactdetailid,
@@ -68,7 +66,16 @@ Contact.prototype.toCreateArray = function() {
     requirescomments: this.requirescomments,
     incontactcontactid: this.incontactcontactid,
     incontactmasterid: this.incontactmasterid,
+    callskillid: this.callskillid
   };
+
+  if (this.contacttype && this.contacttype.id) {
+    c.contacttype = this.contacttype.type;
+  }
+
+  if (this.contactmethodtype && this.contactmethodtype.id) {
+    c.contactmethodtype = this.contactmethodtype.method;
+  }
   
   if (this.contactreason && this.contactreason.id) {
     c.contactreasonid = this.contactreason.id;
