@@ -27,6 +27,9 @@ function TemplateContactMethodTriggerEvent(id) {
       triggerevent: Joi.object().required().label('Trigger event'),
       sendonce: Joi.boolean().required().label('Send once?').description(
         'This will determine if the template can be sent once or more to the same contact'
+      ),
+      transferredfromdepositpaid: Joi.boolean().required().label('Do not send on booking transfer').description(
+        'This will ensure that tabs doesn\'t send a this template for a transferred booking.'
       )
     };
 
