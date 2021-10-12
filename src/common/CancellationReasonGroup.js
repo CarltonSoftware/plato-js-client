@@ -1,6 +1,5 @@
 var SingleEntity = require('./SingleEntity');
 var Joi = require('joi');
-var FilterCollection = require('./FilterCollection');
 var SpecialOffer = require('./SpecialOffer');
 
 function CancellationReasonGroup(id) {
@@ -23,6 +22,12 @@ CancellationReasonGroup.prototype.toArray = function() {
   };
 };
 
+CancellationReasonGroup.prototype.toCreateArray = function() {
+  return {
+    groupname: this.groupname,
+    templatespecialofferid: this.templatespecialoffer ? this.templatespecialoffer.id : 0
+  };
+};
 CancellationReasonGroup.prototype.toUpdateArray = function() {
   return {
     groupname: this.groupname,
