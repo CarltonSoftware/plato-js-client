@@ -192,4 +192,8 @@ SpecialOffer.prototype.validSchema = function() {
     useholidayperiodprices: Joi.boolean().optional().label('Use the prices indicated in the Holiday Periods')
   });
 };
+
+SpecialOffer.prototype.toString = function() {
+  return this.id + ' (' + this.description + ')';
+}
 module.exports = SpecialOffer;
