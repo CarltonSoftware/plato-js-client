@@ -27,11 +27,11 @@ ActorProgram.prototype.toArray = function() {
 };
 
 ActorProgram.prototype.validSchema = function() {
-  let fromDateLabel = 'from date';
-  let toDateLabel = 'to date';
-  let actionedVisible = true;
-  let approvalVisible = true;
-  let pendingVisible = true;
+  var fromDateLabel = 'from date';
+  var toDateLabel = 'to date';
+  var actionedVisible = true;
+  var approvalVisible = true;
+  var pendingVisible = true;
 
   // DEV-15 - slightly alter the connotations and bevahiour of programs 
   // that are agreements/contracts

@@ -278,6 +278,10 @@ Booking.prototype.toArray = function() {
     array.potentialcancellation_potentialtransfer = false;
   }
 
+  if(this.potentialcancellation_potentialtransferreason) {
+    array.potentialcancellation_potentialtransferreason = this.potentialcancellation_potentialtransferreason;
+  }
+
   if(this.potentialcancellation_noaction) {
     array.potentialcancellation_noaction = this.potentialcancellation_noaction;
   } else if (this.potentialcancellation_noaction === false) {
