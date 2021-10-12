@@ -30,14 +30,4 @@ CancellationReasonGroup.prototype.toUpdateArray = function() {
   };
 };
 
-CancellationReasonGroup.prototype.getTemplateTypeCancellationsSpecialOffers = function(){
-  var specialoffer = new FilterCollection({
-    object: SpecialOffer,
-    path: 'specialoffer'
-  });
-  specialoffer.addFilter('templatetype', 'Cancellation');
-  console.log(specialoffer);
-  return specialoffer.fetch();
-};
-
 module.exports = CancellationReasonGroup;
