@@ -11,14 +11,16 @@ PropertyQuestionCategory.prototype = new SingleEntity();
 PropertyQuestionCategory.prototype.toArray = function() {
   return {
     questioncategory: this.questioncategory,
-    description: this.description
+    description: this.description,
+    displayorder: this.displayorder
   };
 };
 
 PropertyQuestionCategory.prototype.validSchema = function() {
     return Joi.object().keys({
         questioncategory: Joi.string().required().label('QuestionCategory'),
-        description: Joi.string().required().label('Description')
+        description: Joi.string().required().label('Description'),
+        displayorder: Joi.string().required().label('DisplayOrder')
     });
   };
 
