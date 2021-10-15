@@ -106,7 +106,7 @@ SpecialOffer.prototype.toUpdateArray = function() {
     archive: this.archive,
     archiveddatetime: this.archiveddatetime,
   };
-  
+
   if (this.percentagepaidbyowner === null) {
     fields.percentagepaidbyowner = 'null';
   } else {
@@ -129,13 +129,17 @@ SpecialOffer.prototype.toUpdateArray = function() {
   } else if (this.useholidayperiodprices === false) {
     fields.useholidayperiodprices = this.useholidayperiodprices;
   }
-  
+
   if (this.multiofferaction && this.multiofferaction.id) {
     fields.multiofferactionid = this.multiofferaction.id;
   }
-  
+
   if (this.websitesectionids) {
     fields.websitesectionids = this.websitesectionids;
+  }
+
+  if (this.reducedoccupancyoffer) {
+    fields.reducedoccupancyoffer = this.reducedoccupancyoffer;
   }
 
   return fields;
@@ -189,7 +193,8 @@ SpecialOffer.prototype.validSchema = function() {
     depositamount: Joi.object().optional().label('Deposit Amount'),
     percentagepaidbyowner: Joi.number().min(0).max(100).allow(null).label('Percentage paid by owner'),
     specialoffertemplatetype: Joi.object().optional().label('Template Type'),
-    useholidayperiodprices: Joi.boolean().optional().label('Use the prices indicated in the Holiday Periods')
+    useholidayperiodprices: Joi.boolean().optional().label('Use the prices indicated in the Holiday Periods'),
+    reducedoccupancyoffer: Joi.boolean().optional().label('Reduced Occupancy Offer')
   });
 };
 
