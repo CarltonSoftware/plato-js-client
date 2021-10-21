@@ -466,6 +466,10 @@ Actor.prototype.toArray = function() {
     arr.donotpay = this.donotpay;
   }
 
+  if (this.hasOwnProperty('doesnotinvoiceus')) {
+    arr.doesnotinvoiceus = this.doesnotinvoiceus;
+  }
+
   if (this.hasOwnProperty('updateworkorders')) {
     arr.updateworkorders = this.updateworkorders;
   }
