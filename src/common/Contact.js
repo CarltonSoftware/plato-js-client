@@ -47,6 +47,8 @@ Contact.prototype.toArray = function() {
 
 Contact.prototype.toCreateArray = function() {
   var c = {
+    contacttype: this.contacttype,
+    contactmethodtype: this.contactmethodtype,
     subject: this.subject,
     sender: this.sender,
     sendercontactdetailid: this.sendercontactdetailid,

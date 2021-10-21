@@ -31,6 +31,7 @@ module.exports.common.CancellationReason = require('./common/CancellationReason'
 module.exports.common.CancellationReasonGroup = require('./common/CancellationReasonGroup');
 module.exports.common.CancellationStatus = require('./common/CancellationStatus');
 module.exports.common.ContactEntity = require('./common/ContactEntity');
+module.exports.common.ContactEntityStatus = require('./common/ContactEntityStatus');
 module.exports.common.ContactDocument = require('./common/ContactDocument');
 module.exports.common.ContactType = require('./common/ContactType');
 module.exports.common.ContactMethodType = require('./common/ContactMethodType');
