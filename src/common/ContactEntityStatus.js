@@ -1,5 +1,4 @@
 var SingleEntity = require('./SingleEntity');
-var Actor = require('./Actor');
 
 function ContactEntityStatus(contactId, contactEntityId, contactEntityStatusId) {
   this.createPath = 'contact/' + contactId + '/entity/' + contactEntityId + '/status';
