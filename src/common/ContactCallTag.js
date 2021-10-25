@@ -28,4 +28,4 @@ ContactCallTag.prototype.validSchema = function() {
   });
 };
 
-module.exports = ContactCallSkillTag;
+module.exports = ContactCallTag;
