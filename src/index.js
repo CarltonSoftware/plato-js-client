@@ -64,6 +64,7 @@ module.exports.common.LegacyApiKey = require('./common/LegacyApiKey');
 module.exports.common.CallSkill = require('./common/CallSkill');
 module.exports.common.CallSkillTag = require('./common/CallSkillTag');
 module.exports.common.CallTag = require('./common/CallTag');
+module.exports.common.ContactCallTag = require('./common/ContactCallTag');
 module.exports.common.ContactCallSkillTag = require('./common/ContactCallSkillTag');
 
 //Owner

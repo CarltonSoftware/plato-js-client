@@ -5,6 +5,7 @@ var Actor = require('./Actor');
 var ContactDocument = require('./ContactDocument');
 var ContactEntity = require('./ContactEntity');
 var ContactReason = require('./ContactReason');
+var ContactCallTag = require('./ContactCallTag');
 var ContactCallSkillTag = require('./ContactCallSkillTag');
 var CallSkill = require('./CallSkill');
 var Joi = require('joi');
@@ -15,26 +16,36 @@ function Contact(contactId) {
   this.id = contactId;
   this.deleted = false;
   this.template = new Template();
+  this.createdby = new Actor();
+  this.contactreason = new ContactReason();
+
   this.documents = new Collection({
     object: ContactDocument,
     path: 'document',
     parent: this
   });
+  
   this.contactentities = new Collection({
     object: ContactEntity,
     path: 'contactentity',
     parent: this
   });
 
-  this.createdby = new Actor();
-  this.contactreason = new ContactReason();
   this.callskilltags = new Collection({
     object: ContactCallSkillTag,
     path: 'callskilltag',
     parent: this
   });
+
+  this.contactcalltags = new Collection({
+    object: ContactCallTag,
+    path: 'calltag',
+    parent: this
+  });
+
   this.callskill = new CallSkill();
 }
+
 Contact.prototype = new SingleEntity();
 
 Contact.prototype.toArray = function() {
