@@ -3,8 +3,8 @@ var Joi = require('joi');
 var CallTag = require('./CallTag');
 
 function ContactCallTag(id) {
-  this.path = 'callskilltag';
-  this.createPath = 'callskilltag';
+  this.path = 'calltag';
+  this.createPath = 'calltag';
   this.id = id;
   this.calltag = new CallTag();
 }
