@@ -232,7 +232,7 @@ function FilterCollection() {
   this.getFilterPath = function() {
     var path = this.getPath() + '?page=' + this.page + '&limit=' + this.limit + this.getFilterString();
 
-    ['orderBy', 'searchId', 'fields', 'view'].forEach(function(k) {
+    ['orderBy', 'searchId', 'fields', 'view', 'distinctField'].forEach(function(k) {
       if (this[k]) {
         path += '&' + k + '=' + this[k];
       }
