@@ -436,6 +436,10 @@ Actor.prototype.toArray = function() {
   if (this.branding) {
     arr.brandingid = this.branding.id;
   }
+  arr.arrivalsreportautosend = false;
+  if (this.arrivalsreportautosend) {
+    arr.arrivalsreportautosend = this.arrivalsreportautosend;
+  }
 
   //TABS2-3927
   if(this.hasOwnProperty('addaccidentaldamagedeposit')) {
@@ -460,6 +464,10 @@ Actor.prototype.toArray = function() {
 
   if (this.hasOwnProperty('donotpay')) {
     arr.donotpay = this.donotpay;
+  }
+
+  if (this.hasOwnProperty('doesnotinvoiceus')) {
+    arr.doesnotinvoiceus = this.doesnotinvoiceus;
   }
 
   if (this.hasOwnProperty('updateworkorders')) {
@@ -535,6 +543,16 @@ Actor.prototype.emailReport = function(reportrun) {
  */
 Actor.prototype.emailDocument = function(documentbase) {
   return client.put({ path: [this.path, this.id, 'senddocument'].join('/'), entity: { documentbaseid: documentbase.id } });
+};
+
+
+/**
+ * Exports the actor's contact log
+ *
+ * @returns {Promise}
+ */
+Actor.prototype.exportContactLog = function() {
+  return client.post({ path: [this.path, this.id, 'contactexport'].join('/')});
 };
 
 module.exports = Actor;

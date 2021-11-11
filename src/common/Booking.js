@@ -203,6 +203,8 @@ Booking.prototype.toArray = function() {
 
     /* Cancelled */
     cancelledbooking_reason: this.cancelledbooking_reason,
+    cancelledbooking_cancellationcategoryid: this.cancelledbooking_cancellationcategoryid,
+    cancelledbooking_cancellationstatusid: this.cancelledbooking_cancellationstatusid,
     cancelledbooking_adviseddate: this.cancelledbooking_adviseddate,
     cancelledbooking_completeddate: this.cancelledbooking_completeddate,
     cancelledbooking_completedbytabsuserid: this.cancelledbooking_completedbytabsuserid,
@@ -274,6 +276,10 @@ Booking.prototype.toArray = function() {
     array.potentialcancellation_potentialtransfer = this.potentialcancellation_potentialtransfer;
   } else if (this.potentialcancellation_potentialtransfer === false) {
     array.potentialcancellation_potentialtransfer = false;
+  }
+
+  if(this.potentialcancellation_potentialtransferreason) {
+    array.potentialcancellation_potentialtransferreason = this.potentialcancellation_potentialtransferreason;
   }
 
   if(this.potentialcancellation_noaction) {

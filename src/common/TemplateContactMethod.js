@@ -40,7 +40,7 @@ function TemplateContactMethod(id) {
 TemplateContactMethod.prototype = new SingleEntity();
 
 TemplateContactMethod.prototype.toArray = function() {
-  return {
+  var obj = {
     fromdate: this.fromdate,
     todate: this.todate,
     description: this.description,
@@ -51,6 +51,12 @@ TemplateContactMethod.prototype.toArray = function() {
     languageid: this.language.id,
     templatestylesheetid: this.templatestylesheet.id,
   };
+
+  if (this.hasOwnProperty('multilingualsubject')) {
+    obj.multilingualsubject = this.multilingualsubject;
+  }
+
+  return obj;
 };
 
 TemplateContactMethod.prototype.getRefPath = function(ref) {
@@ -100,8 +106,8 @@ TemplateContactMethod.prototype.optOut = function(ref) {
   return client.put(this.getRefPath(ref) + '/optout');
 };
 
-TemplateContactMethod.prototype.schedule = function(ref, job) {
-  return client.put({ path: this.getRefPath(ref) + '/schedule', entity: { job: job } });
+TemplateContactMethod.prototype.schedule = function(ref, job, triggereventid) {
+  return client.put({ path: this.getRefPath(ref) + '/schedule', entity: { job: job, triggereventid: triggereventid } });
 };
 
 TemplateContactMethod.prototype.sendIfAvailable = function(ref) {

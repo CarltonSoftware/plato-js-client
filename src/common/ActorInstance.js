@@ -4,7 +4,8 @@ var Actor = require('./Actor'),
   TabsUser = require('./TabsUser'),
   Supplier = require('./Supplier'),
   Agency = require('./Agency'),
-  Office = require('./Office');
+  Office = require('./Office'),
+  Affiliate = require('./Affiliate');
 
 module.exports = function(actorType) {
   if (actorType === 'customer') {
@@ -19,6 +20,8 @@ module.exports = function(actorType) {
     return Agency.bind(undefined);
   } else if (actorType === 'office') {
     return Office.bind(undefined);
+  } else if (actorType === 'affiliate') {
+    return Affiliate.bind(undefined);
   } else {
     return Actor.bind(undefined);
   }

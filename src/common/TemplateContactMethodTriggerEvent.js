@@ -1,8 +1,10 @@
 var SingleEntity = require('./SingleEntity');
+var Collection = require('./Collection');
 var TriggerEvent = require('./TriggerEvent');
 var OwnerBookingType = require('./OwnerBookingType');
 var AgencyBookingType = require('./AgencyBookingType');
 var EventType = require('./EventType');
+var TemplateContactMethodTriggerEventFilter = require('./TemplateContactMethodTriggerEventFilter');
 var Joi = require('joi');
 
 function TemplateContactMethodTriggerEvent(id) {
@@ -13,11 +15,22 @@ function TemplateContactMethodTriggerEvent(id) {
   this.ownerbookingtype = new OwnerBookingType();
   this.agencybookingtype = new AgencyBookingType();
   this.type = 'BookingDates';
+  this.filters = new Collection({
+    path: 'filter',
+    object: TemplateContactMethodTriggerEventFilter,
+    parent: this
+  });
 
   this.validSchema = function() {
     var s = {
       type: Joi.string().required().label('type').allow(['BookingDates', 'OwnerBookingType', 'AgencyBookingType', 'EventType']),
-      triggerevent: Joi.object().required().label('Trigger event')
+      triggerevent: Joi.object().required().label('Trigger event'),
+      sendonce: Joi.boolean().required().label('Send once?').description(
+        'This will determine if the template can be sent once or more to the same contact'
+      ),
+      transferredfromdepositpaid: Joi.boolean().required().label('Do not send on booking transfer').description(
+        'This will ensure that tabs doesn\'t send a this template for a transferred booking.'
+      )
     };
 
     if (this.type === 'EventType') {
@@ -51,7 +64,8 @@ TemplateContactMethodTriggerEvent.prototype.toArray = function() {
     fromdate: this.fromdate || 'now',
     todate: this.todate || '+50 years',
     sendonce: this.sendonce || false,
-    inactive: this.inactive,
+    inactive: this.inactive || false,
+    transferredfromdepositpaid: this.transferredfromdepositpaid || false,
     triggereventid: this.triggerevent.id
   };
   if (this.type === 'BookingDates') {

@@ -21,7 +21,9 @@ function BookingEnquiry(
   includepartysizepricing,
   includespecialoffers,
   calculatesecuritydeposit,
-  calculatedeposit
+  calculatedeposit,
+  agencybookingtypeid,
+  ownerbookingtypeid
 ) {
   this.path = '/bookingenquiry';
   this.createPath = this.path;
@@ -43,7 +45,9 @@ function BookingEnquiry(
     includepartysizepricing: includepartysizepricing,
     includespecialoffers: includespecialoffers,
     calculatesecuritydeposit: calculatesecuritydeposit,
-    calculatedeposit: calculatedeposit
+    calculatedeposit: calculatedeposit,
+    agencybookingtypeid: agencybookingtypeid,
+    ownerbookingtypeid: ownerbookingtypeid
   };
   if (currentbookingid) {
     this.params.currentbookingid = currentbookingid;

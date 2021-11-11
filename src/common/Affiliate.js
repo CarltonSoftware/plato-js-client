@@ -48,6 +48,10 @@ Affiliate.prototype.validSchema = function() {
   });
 };
 
+Affiliate.prototype.toString = function() {
+  return this.companyname + ' (' + this.id + ')';
+};
+
 Affiliate.prototype.toArray = function() {
   // TABS2-5192 - We don't want to post abroad & enquirer fields on create/update,
   // they are initialised in Actor constructor with a value though so get passed automatically.

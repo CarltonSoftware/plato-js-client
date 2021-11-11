@@ -27,15 +27,34 @@ ActorProgram.prototype.toArray = function() {
 };
 
 ActorProgram.prototype.validSchema = function() {
+  var fromDateLabel = 'from date';
+  var toDateLabel = 'to date';
+  var actionedVisible = true;
+  var approvalVisible = true;
+  var pendingVisible = true;
+
+  // DEV-15 - slightly alter the connotations and bevahiour of programs 
+  // that are agreements/contracts
+  if (this.program && this.program.id) {
+    const programname = this.program.programname.toLowerCase();
+    if (programname.includes('agreement') || programname.includes('contract')) {
+      fromDateLabel = 'issue date';
+      toDateLabel = 'expiry date';
+      actionedVisible = false;
+      approvalVisible = false;
+      pendingVisible = !this.approved;
+    }
+  }
+
   return Joi.object().keys({
     program: Joi.object().required().label('program'),
-    fromdate: Joi.date().required().label('from date'),
-    todate: Joi.date().required().label('to date'),
+    fromdate: Joi.date().required().label(fromDateLabel),
+    todate: Joi.date().required().label(toDateLabel),
     approved: Joi.boolean().required().label('Approved'),
-    actioned: Joi.boolean().required().label('Actioned'),
-    pending: Joi.boolean().required().label('Pending'),
-    approverquestion: Joi.string().optional().allow('').label('Approver question'),
-    approvaltype: Joi.object().optional().label('Approval Type')
+    actioned: Joi.boolean().required().label('Actioned').meta({ visible: actionedVisible }),
+    pending: Joi.boolean().required().label('Pending').meta({ visible: pendingVisible }),
+    approverquestion: Joi.string().optional().allow('').label('Approver question').meta({ visible: approvalVisible }),
+    approvaltype: Joi.object().optional().label('Approval Type').meta({ visible: approvalVisible })
   });
 };
 

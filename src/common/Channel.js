@@ -16,13 +16,15 @@ Channel.prototype.toArray = function() {
   return {
     channelreference: this.channelreference,
     channelname: this.channelname,
+    affiliateid: this.affiliate.id
   };
 };
 
 Channel.prototype.validSchema = function() {
   return Joi.object().keys({
-    channelreference: Joi.string().label('channelreference'),
-    channelname: Joi.string().label('channelname'),
+    channelreference: Joi.string().label('channel reference'),
+    channelname: Joi.string().label('channel name'),
+    affiliate: Joi.object().optional().label('Affiliate'),
   });
 };
 
