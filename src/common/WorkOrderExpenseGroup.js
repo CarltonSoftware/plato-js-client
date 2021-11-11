@@ -3,7 +3,7 @@ var WorkOrderExpense = require('./WorkOrderExpense');
 var Collection = require('./Collection');
 
 function WorkOrderExpenseGroup(workorderid, id) {
-  this.path = 'expensegroup';
+  this.path = 'workorder/'+workorderid+'/expensegroup';
   this.createPath = 'workorder/'+workorderid+'/expensegroup';
   this.id = id;
   this.parent = 'workorder';
