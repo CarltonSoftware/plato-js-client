@@ -19,6 +19,7 @@ PropertyQuestion.prototype.toArray = function() {
     booleananswerrequired: this.booleananswerrequired,
     textanswerallowed: this.textanswerallowed,
     textanswerrequired: this.textanswerrequired,
+    datefromtoanswerrequired: this.datefromtoanswerrequired,
     optionanswerrequired: this.optionanswerrequired,
     displayorder: this.displayorder
   };
@@ -39,6 +40,7 @@ PropertyQuestion.prototype.validSchema = function() {
     booleananswerrequired: Joi.boolean().required().label('Boolean answer required'),
     textanswerallowed: Joi.boolean().required().label('Text answer allowed'),
     textanswerrequired: Joi.boolean().required().label('Text answer required'),
+    datefromtoanswerrequired: Joi.boolean().required().label('Date from answer required'),
     answeroptiongroupid: Joi.object().optional().label('Answer Option group'),
     optionanswerrequired: Joi.boolean().required().label('Option answer required'),
     defaultansweroptionid: Joi.object().optional().label('Default Answer'),

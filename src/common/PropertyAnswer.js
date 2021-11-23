@@ -33,6 +33,12 @@ PropertyAnswer.prototype.toArray = function() {
   if (this.textanswer != null) {
     fields.textanswer = this.textanswer;
   }
+  if (this.fromdate != null) {
+    fields.fromdate = this.fromdate;
+  }
+  if (this.todate != null) {
+    fields.todate = this.todate;
+  }
   return fields;
 };
 
@@ -42,6 +48,8 @@ PropertyAnswer.prototype.validSchema = function() {
     booleananswer: Joi.boolean().optional().label('Boolean Answer'),
     textanswer: Joi.string().optional().allow('').label('Text Answer'),
     answeroption: Joi.object().optional().label('Answer Option'),
+    fromdate: Joi.date().optional().label('Date from Answer'),
+    todate: Joi.date().optional().label('Date to Answer'),
     lastupdatedatetime: Joi.string().optional().allow('').label('Last Update time'),
     lastupdatedbyactor: Joi.object().optional().label('Last Updated By Actor')
   });
