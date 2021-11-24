@@ -3,6 +3,7 @@ var EventType = require('./EventType');
 var Source = require('./Source');
 var BookingService = require('./BookingService');
 var ActorInstance = require('./ActorInstance');
+var Branding = require('./Branding');
 var Joi = require('joi');
 
 function TemplateContactMethodTriggerEventFilter(id) {
@@ -13,10 +14,12 @@ function TemplateContactMethodTriggerEventFilter(id) {
   this.actor = ActorInstance.call(this, 'affiliate');
   this.source = new Source();
   this.type = 'Source';
+  this.ownerbranding = new Branding();
+  this.bookingbranding = new Branding();
 
   this.validSchema = function() {
     var s = {
-      type: Joi.string().required().label('type').allow(['Source', 'EventType', 'Actor', 'BookingService']),
+      type: Joi.string().required().label('type').allow(['Source', 'EventType', 'Actor', 'BookingService', 'OwnerBranding', 'BookingBranding']),
       exclude: Joi.boolean().required().label('Exclude?')
     };
 
@@ -26,6 +29,10 @@ function TemplateContactMethodTriggerEventFilter(id) {
       s.eventtype = Joi.object().required().label('Event Type');
     } else if (this.type === 'Actor') {
       s.actor = Joi.object().required().label('Actor');
+    } else if (this.type === 'BookingBranding') {
+      s.bookingbranding = Joi.object().required().label('Booking Branding');
+    } else if (this.type === 'OwnerBranding') {
+      s.ownerbranding = Joi.object().required().label('Owner Branding');
     } else {
       s.source = Joi.object().required().label('Source');
     }
@@ -47,6 +54,10 @@ TemplateContactMethodTriggerEventFilter.prototype.toArray = function() {
     s.eventtypeid = this.eventtype.id;
   } else if (this.type === 'Actor') {
     s.actorid = this.actor.id;
+  } else if (this.type === 'BookingBranding') {
+    s.bookingbrandingid = this.bookingbranding.id;
+  } else if (this.type === 'OwnerBranding') {
+    s.ownerbrandingid = this.ownerbranding.id;
   } else {
     s.sourceid = this.source.id;
   }
