@@ -10,10 +10,9 @@ var ChargingPeriod = require('./ChargingPeriod');
 var WorkOrderOwnerCharge = require('./WorkOrderOwnerCharge');
 var Collection = require('./Collection');
 
-function WorkOrderExpense(id, workorderid) {
-  this.path = this.createPath = 'workorder/'+workorderid+'/expense';
+function WorkOrderExpense(id) {
+  this.path = 'expense';
   this.id = id;
-  this.parent = 'workorder';
   this.amountlimittype = new AmountLimitType();
   this.costitemcode = new CostItemCode();
   this.supplierinvoiceitem = new SupplierInvoiceItem();

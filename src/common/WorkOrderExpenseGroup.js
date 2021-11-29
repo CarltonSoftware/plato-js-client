@@ -2,11 +2,10 @@ var SingleEntity = require('./SingleEntity');
 var WorkOrderExpense = require('./WorkOrderExpense');
 var Collection = require('./Collection');
 
-function WorkOrderExpenseGroup(workorderid, id) {
-  this.path = 'workorder/'+workorderid+'/expensegroup';
-  this.createPath = 'workorder/'+workorderid+'/expensegroup';
+function WorkOrderExpenseGroup(id) {
+  this.path = 'expensegroup';
+  this.createPath = this.path;
   this.id = id;
-  this.parent = 'workorder';
   this.expenses = new Collection({
     object: WorkOrderExpense,
     path: 'expenses',
