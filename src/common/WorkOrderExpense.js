@@ -12,6 +12,7 @@ var Collection = require('./Collection');
 
 function WorkOrderExpense(id) {
   this.path = 'expense';
+  this.createPath = this.path;
   this.id = id;
   this.amountlimittype = new AmountLimitType();
   this.costitemcode = new CostItemCode();
