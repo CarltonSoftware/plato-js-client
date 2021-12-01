@@ -99,10 +99,10 @@ Contact.prototype.toCreateArray = function() {
   if (this.contactdetailid) {
     c.contactdetailid = this.contactdetailid;
   }
-  if(this.templatecontactmethod){
+  if(this.templatecontactmethod) {
     c.templatecontactmethod = this.templatecontactmethod;
   }
-  if(this.property){
+  if(this.property) {
     c.propertyid = this.property.id;
   }
 
