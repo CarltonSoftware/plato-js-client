@@ -3,6 +3,7 @@ var Joi = require('joi');
 var EntityLink = require('./EntityLink');
 var ComplaintSource = require('./ComplaintSource');
 var ComplaintReason = require('./ComplaintReason');
+var ComplaintHolidayStatus = require('./ComplaintHolidayStatus');
 
 function Complaint(id) {
   this.path = 'complaint';
@@ -16,6 +17,7 @@ function Complaint(id) {
   });
   this.source = new ComplaintSource();
   this.reason = new ComplaintReason();
+  this.complaintholidaystatus = new ComplaintHolidayStatus();
 }
 Complaint.prototype = new SingleEntity();
 
@@ -26,7 +28,11 @@ Complaint.prototype.validSchema = function() {
     complaintsource: Joi.object().required().label('Complaint Source'),
     complaintreason: Joi.object().required().label('Complaint Reason'),
     complaintdetails: Joi.string().required().label('Complaint Detail'),
-    visibletoowner: Joi.boolean().optional().label('Visible to Owner')
+    visibletoowner: Joi.boolean().optional().label('Visible to Owner'),
+    complaintsubject: Joi.string().required().label('Complaint Subject'),
+    actiontaken: Joi.string().required().label('Action Taken'),
+    nextsteps: Joi.string().required().label('Next Steps'),
+    complaintholidaystatus: Joi.object().required().label('Complaint Holiday Status'),
   };
 };
 
@@ -36,7 +42,11 @@ Complaint.prototype.toArray = function() {
     complaintsourceid: this.complaintsource.id,
     complaintreasonid: this.complaintreason.id,
     complaintdetails: this.complaintdetails,
-    visibletoowner: this.visibletoowner
+    visibletoowner: this.visibletoowner,
+    complaintsubject: this.complaintsubject,
+    actiontaken: this.actiontaken,
+    nextsteps: this.nextsteps,
+    complaintholidaystatusid: this.complaintholidaystatus.id,
   };
   if (this.customer && this.customer.id) {
       fields.customerid = this.customer.id
@@ -51,7 +61,11 @@ Complaint.prototype.toUpdateArray = function() {
     complaintsourceid: this.source.id,
     complaintreasonid: this.reason.id,
     complaintdetails: this.details,
-    visibletoowner: this.visibletoowner
+    visibletoowner: this.visibletoowner,
+    complaintsubject: this.complaintsubject,
+    actiontaken: this.actiontaken,
+    nextsteps: this.nextsteps,
+    complaintholidaystatusid: this.complaintholidaystatus.id,
   };
   if (this.customer && this.customer.id) {
       fields.customerid = this.customer.id
