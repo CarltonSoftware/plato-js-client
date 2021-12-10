@@ -29,10 +29,10 @@ Complaint.prototype.validSchema = function() {
     complaintreason: Joi.object().required().label('Complaint Reason'),
     complaintdetails: Joi.string().required().label('Complaint Detail'),
     visibletoowner: Joi.boolean().optional().label('Visible to Owner'),
-    complaintsubject: Joi.string().required().label('Complaint Subject'),
-    actiontaken: Joi.string().required().label('Action Taken'),
-    nextsteps: Joi.string().required().label('Next Steps'),
-    complaintholidaystatus: Joi.object().required().label('Complaint Holiday Status'),
+    // complaintsubject: Joi.string().required().label('Complaint Subject'),
+    // actiontaken: Joi.string().required().label('Action Taken'),
+    // nextsteps: Joi.string().required().label('Next Steps'),
+    // complaintholidaystatus: Joi.object().required().label('Complaint Holiday Status'),
   };
 };
 
