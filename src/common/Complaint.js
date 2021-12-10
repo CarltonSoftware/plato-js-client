@@ -43,10 +43,10 @@ Complaint.prototype.toArray = function() {
     complaintreasonid: this.complaintreason.id,
     complaintdetails: this.complaintdetails,
     visibletoowner: this.visibletoowner,
-    complaintsubject: this.complaintsubject,
-    actiontaken: this.actiontaken,
-    nextsteps: this.nextsteps,
-    complaintholidaystatusid: this.complaintholidaystatus.id,
+    complaintsubject: '', // this.complaintsubject
+    actiontaken: '', // this.actiontaken
+    nextsteps: '', // this.nextsteps
+    complaintholidaystatusid: { id: 1 }, // this.complaintholidaystatus.id
   };
   if (this.customer && this.customer.id) {
       fields.customerid = this.customer.id
@@ -55,17 +55,16 @@ Complaint.prototype.toArray = function() {
 };
 
 Complaint.prototype.toUpdateArray = function() {
-  console.log(this);
   var fields = {
     bookingid: this.booking.id,
     complaintsourceid: this.source.id,
     complaintreasonid: this.reason.id,
     complaintdetails: this.details,
     visibletoowner: this.visibletoowner,
-    complaintsubject: this.complaintsubject,
-    actiontaken: this.actiontaken,
-    nextsteps: this.nextsteps,
-    complaintholidaystatusid: this.complaintholidaystatus.id,
+    complaintsubject: '', // this.complaintsubject
+    actiontaken: '', // this.actiontaken
+    nextsteps: '', // this.nextsteps
+    complaintholidaystatusid: { id: 1 }, // this.complaintholidaystatus.id
   };
   if (this.customer && this.customer.id) {
       fields.customerid = this.customer.id
