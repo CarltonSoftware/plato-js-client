@@ -43,9 +43,9 @@ Complaint.prototype.toArray = function() {
     complaintreasonid: this.complaintreason.id,
     complaintdetails: this.complaintdetails,
     visibletoowner: this.visibletoowner,
-    complaintsubject: '', // this.complaintsubject
-    actiontaken: '', // this.actiontaken
-    nextsteps: '', // this.nextsteps
+    complaintsubject: 'N/A', // this.complaintsubject
+    actiontaken: 'N/A', // this.actiontaken
+    nextsteps: 'N/A', // this.nextsteps
     complaintholidaystatusid: 1, // this.complaintholidaystatus.id
   };
   if (this.customer && this.customer.id) {
