@@ -46,7 +46,7 @@ Complaint.prototype.toArray = function() {
     complaintsubject: '', // this.complaintsubject
     actiontaken: '', // this.actiontaken
     nextsteps: '', // this.nextsteps
-    complaintholidaystatusid: { id: 1 }, // this.complaintholidaystatus.id
+    complaintholidaystatusid: 1, // this.complaintholidaystatus.id
   };
   if (this.customer && this.customer.id) {
       fields.customerid = this.customer.id
@@ -64,7 +64,7 @@ Complaint.prototype.toUpdateArray = function() {
     complaintsubject: '', // this.complaintsubject
     actiontaken: '', // this.actiontaken
     nextsteps: '', // this.nextsteps
-    complaintholidaystatusid: { id: 1 }, // this.complaintholidaystatus.id
+    complaintholidaystatusid: 1, // this.complaintholidaystatus.id
   };
   if (this.customer && this.customer.id) {
       fields.customerid = this.customer.id
