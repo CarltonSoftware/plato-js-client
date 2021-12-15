@@ -29,10 +29,10 @@ Complaint.prototype.validSchema = function() {
     complaintreason: Joi.object().required().label('Complaint Reason'),
     complaintdetails: Joi.string().required().label('Complaint Detail'),
     visibletoowner: Joi.boolean().optional().label('Visible to Owner'),
-    // complaintsubject: Joi.string().required().label('Complaint Subject'),
-    // actiontaken: Joi.string().required().label('Action Taken'),
-    // nextsteps: Joi.string().required().label('Next Steps'),
-    // complaintholidaystatus: Joi.object().required().label('Complaint Holiday Status'),
+    complaintsubject: Joi.string().required().label('Complaint Subject'),
+    actiontaken: Joi.string().required().label('Action Taken'),
+    nextsteps: Joi.string().required().label('Next Steps'),
+    complaintholidaystatus: Joi.object().required().label('Complaint Holiday Status'),
   };
 };
 
@@ -43,10 +43,10 @@ Complaint.prototype.toArray = function() {
     complaintreasonid: this.complaintreason.id,
     complaintdetails: this.complaintdetails,
     visibletoowner: this.visibletoowner,
-    complaintsubject: 'N/A', // this.complaintsubject
-    actiontaken: 'N/A', // this.actiontaken
-    nextsteps: 'N/A', // this.nextsteps
-    complaintholidaystatusid: 1, // this.complaintholidaystatus.id
+    complaintsubject: this.complaintsubject,
+    actiontaken:this.actiontaken,
+    nextsteps: this.nextsteps,
+    complaintholidaystatusid: this.complaintholidaystatus.id
   };
   if (this.customer && this.customer.id) {
       fields.customerid = this.customer.id
@@ -61,17 +61,20 @@ Complaint.prototype.toUpdateArray = function() {
     complaintreasonid: this.reason.id,
     complaintdetails: this.details,
     visibletoowner: this.visibletoowner,
-    complaintsubject: 'N/A', // this.complaintsubject
-    actiontaken: 'N/A', // this.actiontaken
-    nextsteps: 'N/A', // this.nextsteps
-    complaintholidaystatusid: 1, // this.complaintholidaystatus.id
+    complaintsubject: this.complaintsubject,
+    actiontaken: this.actiontaken,
+    nextsteps: this.nextsteps,
+    complaintholidaystatusid: this.complaintholidaystatus.id
   };
+
   if (this.customer && this.customer.id) {
       fields.customerid = this.customer.id
   }
+
   if (this.complaintstatus && this.complaintstatus.id) {
     fields.complaintstatusid = this.complaintstatus.id
   }
+  
   return fields;
 };
 
