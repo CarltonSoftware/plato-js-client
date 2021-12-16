@@ -12,6 +12,8 @@ function BookingApproval(id) {
   this.approvingactor = new EntityLink({ entity: 'Actor' });
   this.actionedbyactor = new EntityLink({ entity: 'Actor' });
 
+  this.potentialtransferreason;
+
   this.validSchema = function() {
     var s = {
       approvingactor: Joi.object().required().label('Approving Actor'),
@@ -26,12 +28,17 @@ function BookingApproval(id) {
       s.approved = Joi.boolean().optional().allow(null).label('Approved');
     }
 
+    if (this.potentialtransferreason) {
+      s.potentialtransferreason = Joi.string().optional().label('Potential Transfer Reason')
+    }
+
     return s;
   }
 }
 
 BookingApproval.prototype = new SingleEntity();
 BookingApproval.prototype.toArray = function() {
+  
   var s = {
     bookingid: this.bookingid,
     approvingactortype: this.approvingactor.type,
