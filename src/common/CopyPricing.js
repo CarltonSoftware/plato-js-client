@@ -64,6 +64,11 @@ CopyPricing.prototype.toArray = function() {
     fields.deleteexistingpricing = this.deleteexistingpricing;
   }
 
+  // DEV-973
+  if (this.donotcheckbookings) {
+    fields.donotcheckbookings = this.donotcheckbookings;
+  }
+
   return fields;
 };
 
