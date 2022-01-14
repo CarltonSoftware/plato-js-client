@@ -301,6 +301,7 @@ module.exports.common.BookingApproval = require('./common/BookingApproval');
 
 // Complaints
 module.exports.common.ComplaintReason = require('./common/ComplaintReason');
+module.exports.common.ComplaintSelectedReason = require('./common/ComplaintSelectedReason');
 module.exports.common.ComplaintSource = require('./common/ComplaintSource');
 module.exports.common.ComplaintHolidayStatus = require('./common/ComplaintHolidayStatus');
 module.exports.common.ComplaintStatus = require('./common/ComplaintStatus');
