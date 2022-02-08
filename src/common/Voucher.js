@@ -15,7 +15,7 @@ function Voucher(id) {
   this.id = id;
   this.path = 'voucher';
   this.createPath = 'voucher';
-  this.vouchersource = new VoucherSource(); // TODO: 3 = 'manual', vouchersourceid field is not null!
+  this.vouchersource = new VoucherSource(3); // TODO: 3 = 'manual', vouchersourceid field is not null!
   this.complaint = new Complaint(); 
 
   this.bookingperiods = new Collection({
@@ -56,7 +56,10 @@ function Voucher(id) {
       ),
       vouchersource: Joi.object().required().label('voucher source').description(
         'Where the voucher was used.'
-      )
+      ), 
+      complaint: Joi.object().optional().label('complaint').description(
+        'which complaint this voucher relates too'
+      ),
     };
 
     if (!this.id) {
