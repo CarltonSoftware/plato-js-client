@@ -3,7 +3,9 @@ var Joi = require('joi');
 var EntityLink = require('./EntityLink');
 var ComplaintSource = require('./ComplaintSource');
 var ComplaintReason = require('./ComplaintReason');
+var ComplaintSelectedReason = require('./ComplaintSelectedReason');
 var ComplaintHolidayStatus = require('./ComplaintHolidayStatus');
+var Collection = require('./Collection');
 
 function Complaint(id) {
   this.path = 'complaint';
@@ -18,6 +20,11 @@ function Complaint(id) {
   this.source = new ComplaintSource();
   this.reason = new ComplaintReason();
   this.complaintholidaystatus = new ComplaintHolidayStatus();
+  this.selectedreasons = new Collection({
+    object: ComplaintSelectedReason,
+    path: 'selectedreason',
+    parent: this,
+  })
 }
 Complaint.prototype = new SingleEntity();
 

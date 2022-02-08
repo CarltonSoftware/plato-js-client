@@ -1,24 +1,24 @@
 var SingleEntity = require('./SingleEntity');
 var Joi = require('joi');
+var ComplaintReason = require('./ComplaintReason');
 
 function ComplaintSelectedReason(id) {
-  this.path = 'complaintselectedreason';
-  this.createPath = 'complaintselectedreason';
+  this.path = 'selectedreason';
+  this.createPath = this.path;
   this.id = id;
+  this.complaintreason = new ComplaintReason();
 }
 ComplaintSelectedReason.prototype = new SingleEntity();
 
 ComplaintSelectedReason.prototype.validSchema = function() {
   return {
-    complaintreasonid: Joi.number().required().label('Complaint Reason Id'),
-    complaintid: Joi.number().required().label('Complaint Id')
+    complaintreason: Joi.number().required().label('Complaint Reason')
   };
 };
 
 ComplaintSelectedReason.prototype.toArray = function() {
   return {
-    complaintreasonid: this.complaintreasonid,
-    complaintid: this.complaintid
+    complaintreasonid: this.complaintreason.id
   };
 };
 
