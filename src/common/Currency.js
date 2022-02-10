@@ -10,17 +10,37 @@ Currency.prototype = new SingleEntity();
 
 Currency.prototype.validSchema = function() {
   return {
-    currencycode: Joi.string().required().label('currencycode'),
-    currencyname: Joi.string().required().label('currencyname'),
-    decimalplaces: Joi.string().required().label('decimalplaces')
+    code: Joi.string().required().label('code'),
+    name: Joi.string().required().label('name'),
+    decimalplaces: Joi.string().required().label('decimalplaces'),
+    plaintextsymbol: Joi.string().label('plaintextsymbol')
   };
 };
 
 Currency.prototype.toArray = function() {
   return {
+    code: this.code,
+    name: this.name,
+    decimalplaces: this.decimalplaces,
+    plaintextsymbol: this.plaintextsymbol
+  };
+};
+
+Currency.prototype.toUpdateArray = function() {
+  return {
     currencycode: this.code,
     currencyname: this.name,
-    decimalplaces: this.decimalplaces
+    decimalplaces: this.decimalplaces,
+    plaintextsymbol: this.plaintextsymbol
+  };
+};
+
+Currency.prototype.toCreateArray = function() {
+  return {
+    currencycode: this.code,
+    currencyname: this.name,
+    decimalplaces: this.decimalplaces,
+    plaintextsymbol: this.plaintextsymbol
   };
 };
 
