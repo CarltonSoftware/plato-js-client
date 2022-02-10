@@ -141,7 +141,7 @@ Voucher.prototype.toArray = function() {
       }
     }
     arr.vouchersourceid = this.vouchersource.id;
-    if(this.complaint) {
+    if(this.complaint.id) {
       arr.complaintid = this.complaint.id;
     }
   }
