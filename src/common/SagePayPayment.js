@@ -25,17 +25,17 @@ function SagePayPayment(id) {
 
 SagePayPayment.prototype = new SingleEntity();
 SagePayPayment.prototype.toArray = function() {
-  
+
   var arr = {
     amount: this.amount,
     paymentmethodid: this.paymentmethod.id,
     currencyid: this.currency.id
   };
-  
+
   if (this.customer && this.customer.id) {
     arr.customerid = this.customer.id
-  }  
-  
+  }
+
   if (this.owner && this.owner.id) {
     arr.ownerid = this.owner.id
   }
@@ -58,6 +58,10 @@ SagePayPayment.prototype.toArray = function() {
 
   if (this.securitydepositamount && this.booking.id) {
     arr.securitydepositamount = this.securitydepositamount;
+  }
+
+  if (this.paymenttype) {
+    arr.paymenttype = this.paymenttype;
   }
 
   return arr;
