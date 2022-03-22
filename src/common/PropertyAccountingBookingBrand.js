@@ -1,10 +1,9 @@
 var SingleEntity = require('./SingleEntity');
 var BookingBrand = require('./BookingBrand');
-var EntityLink = require('./EntityLink');
 
-function PropertyAccountingBookingBrand(propertyId, bookingBrandId, id) {
+function PropertyAccountingBookingBrand(propertyId, id) {
   this.propertyId = propertyId;
-  this.path = 'property/' + this.propertyId + '/bookingbrand/' + bookingBrandId + '/accounting';
+  this.path = 'property/' + this.propertyId + '/accountingbookingbrand';
   this.createPath = this.path;
   this.id = id;
   this.bookingbrand = new BookingBrand();
