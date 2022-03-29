@@ -175,6 +175,7 @@ module.exports.common.BlockPeriodException = require('./common/BlockPeriodExcept
 // Property Related Objects
 module.exports.common.Properties = require('./common/Properties');
 module.exports.common.Property = require('./common/Property');
+module.exports.common.PropertyAccountingBookingBrand = require('./common/PropertyAccountingBookingBrand');
 module.exports.common.PropertyAttribute = require('./common/PropertyAttribute');
 module.exports.common.PropertyAvailability = require('./common/PropertyAvailability');
 module.exports.common.PropertyBranding = require('./common/PropertyBranding');
