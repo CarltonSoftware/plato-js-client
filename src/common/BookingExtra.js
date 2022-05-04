@@ -23,6 +23,10 @@ BookingExtra.prototype.toArray = function() {
     extra.extrabookingreasonid = this.extrabookingreasonid;
   }
 
+  if (this.additionalinfo) {
+    extra.additionalinfo = this.additionalinfo;
+  }
+
   return extra;
 };
 
