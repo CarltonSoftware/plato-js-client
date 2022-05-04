@@ -49,6 +49,10 @@ EventLog.prototype.toArray = function() {
     s.actorid = this.actor.id;
   }
 
+  if (this.additionalinfo) {
+    extra.additionalinfo = this.additionalinfo;
+  }
+
   return s;
 };
 
