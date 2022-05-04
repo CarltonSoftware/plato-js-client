@@ -50,7 +50,7 @@ EventLog.prototype.toArray = function() {
   }
 
   if (this.additionalinfo) {
-    extra.additionalinfo = this.additionalinfo;
+    s.additionalinfo = this.additionalinfo;
   }
 
   return s;
