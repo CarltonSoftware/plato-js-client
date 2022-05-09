@@ -25,6 +25,8 @@ function EventLog(id) {
       s.type = Joi.any().required().label('Type').allow(['Booking', 'Property', 'Actor']);
     }
 
+    s.additionalinfo = Joi.string().optional().allow('').label('Additional Info');
+
     return s;
   };
 }
