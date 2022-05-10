@@ -6,6 +6,7 @@ var VoucherHolidayPeriod = require('./VoucherHolidayPeriod');
 var VoucherRestriction = require('./VoucherRestriction');
 var VoucherSource = require('./VoucherSource');
 var Complaint = require('./Complaint');
+var Currency = require('./Currency');
 var Joi = require('joi');
 
 /**
@@ -42,6 +43,8 @@ function Voucher(id) {
   this.frombooking = new EntityLink({ entity: 'Booking' });
   this.vouchersource = new EntityLink({ entity: 'VoucherSource' });
   this.complaint = new EntityLink({ entity: 'Complaint' });
+  this.currency = new EntityLink({ entity: 'Currency' });
+  this.maxValue = 0;
 
   this.validSchema = function() {
     var s = {
@@ -60,7 +63,14 @@ function Voucher(id) {
       complaint: Joi.object().optional().label('complaint').description(
         'which complaint this voucher relates too'
       ),
+      currency: Joi.object().required().label('currency').description(
+        'the currency for this voucher'
+      ),
     };
+
+    if(this.maxValue > 0) {
+      s.value = Joi.number().required().label('voucher value').integer().min(0).max(this.maxValue);
+    }
 
     if (!this.id) {
       s.bookingperiod_fromdate = Joi.date().required().label(
@@ -141,6 +151,7 @@ Voucher.prototype.toArray = function() {
       }
     }
     arr.vouchersourceid = this.vouchersource.id;
+    arr.currencyid = this.currency.id;
     if(this.complaint && this.complaint.id) {
       arr.complaintid = this.complaint.id;
     }
