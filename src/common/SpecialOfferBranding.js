@@ -9,7 +9,7 @@ function SpecialOfferBranding(id) {
 
 SpecialOfferBranding.prototype = new SingleEntity();
 SpecialOfferBranding.prototype.toArray = function() {
-  if(this.parent.type == 'Amount' || this.parent.type == 'Fixed') {
+  if(this.type == 'Amount' || this.type == 'Fixed') {
     var amount = this.amount;
   }
 
