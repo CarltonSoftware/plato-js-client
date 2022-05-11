@@ -9,15 +9,11 @@ function SpecialOfferBranding(id) {
 
 SpecialOfferBranding.prototype = new SingleEntity();
 SpecialOfferBranding.prototype.toArray = function() {
-  if(this.parent.type == 'Amount' || this.parent.type == 'Fixed') {
-    var amount = this.amount;
-  }
-
   return {
     brandingid: this.branding.id,
     description: this.description,
     active: this.active,
-    amount: amount,
+    amount: this.amount,
   };
 };
 
