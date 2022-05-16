@@ -69,7 +69,7 @@ function Voucher(id) {
     };
 
     if(this.maxValue > 0) {
-      s.value = Joi.number().required().label('voucher value').integer().min(0).max(this.maxValue);
+      s.value = Joi.number().required().label('voucher value').min(0).max(this.maxValue);
     }
 
     if (!this.id) {
