@@ -18,6 +18,7 @@ function Voucher(id) {
   this.createPath = 'voucher';
   this.vouchersource = new VoucherSource(3); // TODO: 3 = 'manual', vouchersourceid field is not null!
   this.complaint = new Complaint(); 
+  this.currency = new Currency(); 
 
   this.bookingperiods = new Collection({
     object: VoucherBookingPeriod,
@@ -69,7 +70,7 @@ function Voucher(id) {
     };
 
     if(this.maxValue > 0) {
-      s.value = Joi.number().required().label('voucher value').integer().min(0).max(this.maxValue);
+      s.value = Joi.number().required().label('voucher value').min(0).max(this.maxValue);
     }
 
     if (!this.id) {
