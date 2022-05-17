@@ -1,5 +1,4 @@
 var SingleEntity = require('./SingleEntity');
-var client = require('./platoJsClient').getInstance();
 
 function ApexxBooking(id) {
   this.path = 'apexx/booking';
