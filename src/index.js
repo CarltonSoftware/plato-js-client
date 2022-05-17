@@ -85,6 +85,7 @@ module.exports.common.OwnerChargeImport = require('./common/OwnerChargeImport');
 module.exports.common.OwnerStatement = require('./common/OwnerStatement');
 module.exports.common.PaymentItem = require('./common/PaymentItem');
 module.exports.common.ApexxPayment = require('./common/ApexxPayment');
+module.exports.common.ApexxBooking = require('./common/ApexxBooking');
 module.exports.common.SagePayPayment = require('./common/SagePayPayment');
 module.exports.common.PersonalisedBrochure = require('./common/PersonalisedBrochure');
 module.exports.common.OwnerEnquiryInactiveReason = require('./common/OwnerEnquiryInactiveReason');
