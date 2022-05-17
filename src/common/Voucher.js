@@ -18,6 +18,7 @@ function Voucher(id) {
   this.createPath = 'voucher';
   this.vouchersource = new VoucherSource(3); // TODO: 3 = 'manual', vouchersourceid field is not null!
   this.complaint = new Complaint(); 
+  this.currency = new Currency(); 
 
   this.bookingperiods = new Collection({
     object: VoucherBookingPeriod,
