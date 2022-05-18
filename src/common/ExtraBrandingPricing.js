@@ -61,7 +61,6 @@ ExtraBrandingPricing.validSchema = Joi.object().keys({
   todate: Joi.string().required().label('holiday to date'),
   bookingbookedfromdate: Joi.string().label('booking booked from date'),
   bookingbookedtodate: Joi.string().label('booking booked to date'),
-  currency: Joi.object().required().label('currency'),
   perperiod: Joi.boolean().label('per period'),
   peradult: Joi.when('pricingtype', { is: 'Amount',then: Joi.boolean().label('per adult'), otherwise: Joi.forbidden() }),
   perchild: Joi.when('pricingtype', { is: 'Amount',then: Joi.boolean().label('per child'), otherwise: Joi.forbidden() }),
