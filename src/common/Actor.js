@@ -388,10 +388,13 @@ Actor.prototype.toArray = function() {
     //vatnumber: this.vatnumber,
     name: this.officename,
     inactive: this.inactive,
-    tabscode: this.tabscode,
     actorcode: this.actorcode,
     accountingreference: this.accountingreference
   };
+
+  if (this.tabscode) {
+    arr.tabscode = this.tabscode;
+  }
 
   if (this.location) {
     arr.location = this.location;
