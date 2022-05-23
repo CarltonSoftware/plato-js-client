@@ -220,7 +220,7 @@ Property.prototype.getAvailableBreaksPrice = function(fromDate, days, includeCom
     if (includeCompulsoryExtras) {
       price += obj.compulsoryextras;
     }
-    return round ? Math.round(price) : price;
+    return {amount: round ? Math.round(price) : price, currency: obj.currency};
   };
 
   var prices = this.availablebreaks.filter(function(p) {
@@ -278,17 +278,19 @@ Property.prototype.getAvailableBreaksPrice = function(fromDate, days, includeCom
 
       if (_prices.indexOf(-1) < 0) {
         var total = 0;
+        var currency = null;
         _prices.forEach(function(p) {
-          total += p;
+          total += p.amount;
+          currency = p.currency;
         });
 
-        return total;
+        return {amount: total, currency: currency};
       } else {
-        return 0;
+        return  {amount: 0, currency: null};
       }
     }
 
-    return 0;
+    return {amount: 0, currency: null};
   }
 };
 
