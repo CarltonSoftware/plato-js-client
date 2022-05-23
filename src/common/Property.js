@@ -214,7 +214,9 @@ Property.prototype.updateAvailablebreaks = function() {
   return this.updatePromiseResult([this.path, this.id, 'availablebreaks'].join('/'), { force: true });
 };
 
-Property.prototype.getAvailableBreaksPrice = function(fromDate, days, includeCompulsoryExtras, round) {
+Property.prototype.getAvailableBreaksPrice = function(fromDate, days, includeCompulsoryExtras, round, includeCurrency) {
+  includeCurrency = typeof includeCurrency !== 'undefined' ? includeCurrency : false;
+  
   var _priceWithCompulsory = function(obj) {
     var price = obj.price;
     if (includeCompulsoryExtras) {
@@ -236,7 +238,7 @@ Property.prototype.getAvailableBreaksPrice = function(fromDate, days, includeCom
 
     if (days <= 7) {
       if (price.length === 1) {
-        return _priceWithCompulsory(price.pop());
+        return includeCurrency ? _priceWithCompulsory(price.pop()) : _priceWithCompulsory(price.pop()).amount;
       }
     }
 
@@ -284,13 +286,13 @@ Property.prototype.getAvailableBreaksPrice = function(fromDate, days, includeCom
           currency = p.currency;
         });
 
-        return {amount: total, currency: currency};
+        return includeCurrency ? {amount: total, currency: currency} : total;
       } else {
-        return  {amount: 0, currency: null};
+        return  includeCurrency ? {amount: 0, currency: null} : 0;
       }
     }
 
-    return {amount: 0, currency: null};
+    return includeCurrency ? {amount: 0, currency: null} : 0;
   }
 };
 
