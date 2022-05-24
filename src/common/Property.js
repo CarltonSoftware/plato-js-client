@@ -214,13 +214,15 @@ Property.prototype.updateAvailablebreaks = function() {
   return this.updatePromiseResult([this.path, this.id, 'availablebreaks'].join('/'), { force: true });
 };
 
-Property.prototype.getAvailableBreaksPrice = function(fromDate, days, includeCompulsoryExtras, round) {
+Property.prototype.getAvailableBreaksPrice = function(fromDate, days, includeCompulsoryExtras, round, includeCurrency) {
+  includeCurrency = typeof includeCurrency !== 'undefined' ? includeCurrency : false;
+  
   var _priceWithCompulsory = function(obj) {
     var price = obj.price;
     if (includeCompulsoryExtras) {
       price += obj.compulsoryextras;
     }
-    return round ? Math.round(price) : price;
+    return {amount: round ? Math.round(price) : price, currency: obj.currency};
   };
 
   var prices = this.availablebreaks.filter(function(p) {
@@ -236,7 +238,7 @@ Property.prototype.getAvailableBreaksPrice = function(fromDate, days, includeCom
 
     if (days <= 7) {
       if (price.length === 1) {
-        return _priceWithCompulsory(price.pop());
+        return includeCurrency ? _priceWithCompulsory(price.pop()) : _priceWithCompulsory(price.pop()).amount;
       }
     }
 
@@ -278,17 +280,19 @@ Property.prototype.getAvailableBreaksPrice = function(fromDate, days, includeCom
 
       if (_prices.indexOf(-1) < 0) {
         var total = 0;
+        var currency = null;
         _prices.forEach(function(p) {
-          total += p;
+          total += p.amount;
+          currency = p.currency;
         });
 
-        return total;
+        return includeCurrency ? {amount: total, currency: currency} : total;
       } else {
-        return 0;
+        return  includeCurrency ? {amount: 0, currency: null} : 0;
       }
     }
 
-    return 0;
+    return includeCurrency ? {amount: 0, currency: null} : 0;
   }
 };
 
