@@ -90,6 +90,7 @@ module.exports.common.SagePayPayment = require('./common/SagePayPayment');
 module.exports.common.PersonalisedBrochure = require('./common/PersonalisedBrochure');
 module.exports.common.OwnerEnquiryInactiveReason = require('./common/OwnerEnquiryInactiveReason');
 module.exports.common.OwnerDocument = require('./common/OwnerDocument');
+module.exports.common.OwnerNonResidentPeriod = require('./common/OwnerNonResidentPeriod');
 
 // Account Related Objects
 module.exports.common.Account = require('./common/Account');
