@@ -89,11 +89,11 @@ function Property(id) {
     path: 'commission',
     parent: this
   });
-  this.availablebreaks = new Collection({
+  this.availablebreaks = [new Collection({
     object: AvailableBreak,
     path: 'availablebreak',
     parent: this
-  });
+  })];
   this.approvals = new Collection({
     object: PropertyApproval,
     path: 'approval',
@@ -189,8 +189,17 @@ Property.prototype.validSchema = function () {
  * @param {string} todate
  * @param {string} nights
  */
-Property.prototype.getAvailablebreaks = function(fromdate, todate, nights) {
-  var p = this.availablebreaks;
+Property.prototype.getAvailablebreaks = function(fromdate, todate, nights, propertyBranding, idx) {
+  if(idx > 0) {
+    this.availablebreaks.push(
+      new Collection({
+        object: AvailableBreak,
+        path: 'availablebreak',
+        parent: this
+      })
+    );
+  }
+  var p = this.availablebreaks[idx];
 
   var params = {};
   if (fromdate) {
@@ -207,6 +216,10 @@ Property.prototype.getAvailablebreaks = function(fromdate, todate, nights) {
     return params;
   };
 
+  if(propertyBranding) {
+    p.options.path = 'branding/'+propertyBranding+'/availablebreak';
+  }
+
   return p.fetch();
 };
 
@@ -214,8 +227,9 @@ Property.prototype.updateAvailablebreaks = function() {
   return this.updatePromiseResult([this.path, this.id, 'availablebreaks'].join('/'), { force: true });
 };
 
-Property.prototype.getAvailableBreaksPrice = function(fromDate, days, includeCompulsoryExtras, round, includeCurrency) {
+Property.prototype.getAvailableBreaksPrice = function(fromDate, days, includeCompulsoryExtras, round, includeCurrency, idx) {
   includeCurrency = typeof includeCurrency !== 'undefined' ? includeCurrency : false;
+  idx = typeof idx !== 'undefined' ? idx : 0;
   
   var _priceWithCompulsory = function(obj) {
     var price = obj.price;
@@ -225,7 +239,8 @@ Property.prototype.getAvailableBreaksPrice = function(fromDate, days, includeCom
     return {amount: round ? Math.round(price) : price, currency: obj.currency};
   };
 
-  var prices = this.availablebreaks.filter(function(p) {
+  var avBreaks = Array.isArray(this.availablebreaks) ? this.availablebreaks[idx] : this.availablebreaks;
+  var prices = avBreaks.filter(function(p) {
     return dayjs(fromDate).isSame(p.fromdate);
   });
 
@@ -271,11 +286,11 @@ Property.prototype.getAvailableBreaksPrice = function(fromDate, days, includeCom
       var to = dayjs(fromDate).add(i * 7, 'd');
       for (var i = 0; i < weeks; i++) {
         to = dayjs(fromDate).add(i * 7, 'd');
-        getPrice(_prices, this.availablebreaks, to, 7);
+        getPrice(_prices, avBreaks, to, 7);
       }
 
       if (to && add > 0) {
-        getPrice(_prices, this.availablebreaks, to, add);
+        getPrice(_prices, avBreaks, to, add);
       }
 
       if (_prices.indexOf(-1) < 0) {
@@ -294,6 +309,7 @@ Property.prototype.getAvailableBreaksPrice = function(fromDate, days, includeCom
 
     return includeCurrency ? {amount: 0, currency: null} : 0;
   }
+  return includeCurrency ? {amount: 0, currency: null} : 0;
 };
 
 /**
