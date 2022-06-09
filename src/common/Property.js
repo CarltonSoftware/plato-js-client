@@ -229,6 +229,7 @@ Property.prototype.updateAvailablebreaks = function() {
 
 Property.prototype.getAvailableBreaksPrice = function(fromDate, days, includeCompulsoryExtras, round, includeCurrency, idx) {
   includeCurrency = typeof includeCurrency !== 'undefined' ? includeCurrency : false;
+  idx = typeof idx !== 'undefined' ? idx : 0;
   
   var _priceWithCompulsory = function(obj) {
     var price = obj.price;
