@@ -190,8 +190,6 @@ Property.prototype.validSchema = function () {
  * @param {string} nights
  */
 Property.prototype.getAvailablebreaks = function(fromdate, todate, nights, propertyBranding, idx) {
-  var p = undefined; 
-
   if(idx > 0) {
     this.availablebreaks.push(
       new Collection({
@@ -200,10 +198,9 @@ Property.prototype.getAvailablebreaks = function(fromdate, todate, nights, prope
         parent: this
       })
     );
-    p = this.availablebreaks[idx];
-  } else {
-    p = this.availablebreaks[0];
   }
+
+  var p = this.availablebreaks[idx || 0];
 
   var params = {};
   if (fromdate) {
