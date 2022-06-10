@@ -198,8 +198,10 @@ Property.prototype.getAvailablebreaks = function(fromdate, todate, nights, prope
         parent: this
       })
     );
+    var p = this.availablebreaks[idx];
+  } else {
+    var p = this.availablebreaks[0];
   }
-  var p = this.availablebreaks[idx];
 
   var params = {};
   if (fromdate) {
