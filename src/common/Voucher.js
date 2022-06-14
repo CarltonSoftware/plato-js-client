@@ -160,7 +160,7 @@ Voucher.prototype.toArray = function() {
     if(this.complaint && this.complaint.id) {
       arr.complaintid = this.complaint.id;
     }
-    if(this.financialentity && this.financialentity.id){
+    if(this.financialentity && this.financialentity.id) {
       arr.financialentityid = this.financialentity.id;
     }
   }
