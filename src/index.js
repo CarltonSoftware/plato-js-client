@@ -66,6 +66,7 @@ module.exports.common.CallSkillTag = require('./common/CallSkillTag');
 module.exports.common.CallTag = require('./common/CallTag');
 module.exports.common.ContactCallTag = require('./common/ContactCallTag');
 module.exports.common.ContactCallSkillTag = require('./common/ContactCallSkillTag');
+module.exports.common.FinancialEntity = require('./common/FinancialEntity');
 
 //Owner
 module.exports.common.OwnerEnquiryActionType = require('./common/OwnerEnquiryActionType');

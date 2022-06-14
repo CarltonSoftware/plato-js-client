@@ -7,6 +7,7 @@ var VoucherRestriction = require('./VoucherRestriction');
 var VoucherSource = require('./VoucherSource');
 var Complaint = require('./Complaint');
 var Currency = require('./Currency');
+var FinancialEntity = require('./FinancialEntity');
 var Joi = require('joi');
 
 /**
@@ -19,6 +20,7 @@ function Voucher(id) {
   this.vouchersource = new VoucherSource(3); // TODO: 3 = 'manual', vouchersourceid field is not null!
   this.complaint = new Complaint(); 
   this.currency = new Currency(); 
+  this.financialentity = new FinancialEntity(); 
 
   this.bookingperiods = new Collection({
     object: VoucherBookingPeriod,
@@ -45,6 +47,7 @@ function Voucher(id) {
   this.vouchersource = new EntityLink({ entity: 'VoucherSource' });
   this.complaint = new EntityLink({ entity: 'Complaint' });
   this.currency = new EntityLink({ entity: 'Currency' });
+  this.financialentity = new EntityLink({ entity: 'FinancialEntity' });
   this.maxValue = 0;
 
   this.validSchema = function() {
@@ -67,6 +70,7 @@ function Voucher(id) {
       currency: Joi.object().required().label('currency').description(
         'the currency for this voucher'
       ),
+      financialentity: Joi.object().optional().label('financial entity'),
     };
 
     if(this.maxValue > 0) {
@@ -155,6 +159,9 @@ Voucher.prototype.toArray = function() {
     arr.currencyid = this.currency.id;
     if(this.complaint && this.complaint.id) {
       arr.complaintid = this.complaint.id;
+    }
+    if(this.financialentity && this.financialentity.id) {
+      arr.financialentityid = this.financialentity.id;
     }
   }
 
