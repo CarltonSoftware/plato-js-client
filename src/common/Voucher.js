@@ -70,7 +70,9 @@ function Voucher(id) {
       currency: Joi.object().required().label('currency').description(
         'the currency for this voucher'
       ),
-      financialentity: Joi.object().optional().label('financial entity'),
+      financialentity: Joi.object().optional().label('financial entity').description(
+        'Vouchers may be restricted to certain financial entities. Unrestricted vouchers will still be bound by the property portfolios of a Financial Entity.'
+      ),
     };
 
     if(this.maxValue > 0) {
